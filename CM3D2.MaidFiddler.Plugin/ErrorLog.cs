@@ -24,7 +24,6 @@ namespace CM3D2.MaidFiddler.Plugin
                         tw.WriteLine("Stack trace:");
                         tw.WriteLine(e.StackTrace);
                         dumpCreated = true;
-                        //Test
                     }
                 }
             }
