@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EC3467DD-F6D9-4CA6-8C51-B1202E2D357F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CM3D2.MaidFiddler.Plugin</RootNamespace>
+    <AssemblyName>CM3D2.MaidFiddler.Plugin</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x86_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ExIni, Version=1.0.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\ExIni.dll</HintPath>
+    </Reference>
+    <Reference Include="ReiPatcher">
+      <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\ReiPatcher.exe</HintPath>
+    </Reference>
+    <Reference Include="ReiPatcherPlus">
+      <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\ReiPatcherPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x86_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityInjector">
+      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x86_Data\Managed\UnityInjector.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Debug.cs" />
+    <Compile Include="EnumHelper.cs" />
+    <Compile Include="ErrorLog.cs" />
+    <Compile Include="Gui\GUIHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Cheats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Classes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Controls.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Hooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Info.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Maids.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Misc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Player.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Skills.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Stats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Resources.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Work.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeyHelper.cs" />
+    <Compile Include="MaidFiddler.cs" />
+    <Compile Include="Gui\MaidFiddlerGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Designer.cs">
+      <DependentUpon>MaidFiddlerGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\MaidFiddlerGUI.Game.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\MaidInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\PlayerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CM3D2.MaidFiddler.Hook\CM3D2.MaidFiddler.Hook.csproj">
+      <Project>{a3f0fe97-ed5d-4ddb-af6c-539aeeb236a3}</Project>
+      <Name>CM3D2.MaidFiddler.Hook</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Gui\MaidFiddlerGUI.resx">
+      <DependentUpon>MaidFiddlerGUI.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
