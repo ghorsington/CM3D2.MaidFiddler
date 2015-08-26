@@ -9,6 +9,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private readonly Dictionary<PlayerChangeType, Action> playerValueUpdateQueue;
         public PlayerInfo Player { get; }
 
+        public void ReloadPlayer()
+        {
+            InvokeAsync((Action)Player.UpdateAll);
+        }
+
         public void UpdatePlayerValues()
         {
             if (playerValueUpdateQueue.Count <= 0)

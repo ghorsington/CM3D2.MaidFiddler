@@ -93,7 +93,7 @@ namespace CM3D2.MaidFiddler.Plugin
         {
             Debugger.WriteLine(LogLevel.Info, $"Level loading! Save no. {saveNo}");
             gui?.ReloadMaids();
-            gui?.Player.UpdateAll();
+            gui?.ReloadPlayer();
         }
 
         public void OpenGUI()

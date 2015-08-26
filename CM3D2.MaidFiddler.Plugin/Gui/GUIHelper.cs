@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -17,9 +16,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             if (!IsHandleCreated)
             {
-                Debugger.WriteLine($"Attempted to invoke asynchronously {method.Method.Name} but found no handle! Creating one...");
+                Debugger.WriteLine(
+                $"Attempted to invoke asynchronously {method.Method.Name} but found no handle! Creating one...");
                 CreateHandle();
-                InvokeAsync(method, args);
             }
 
             BeginInvoke(method, args);

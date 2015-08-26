@@ -144,10 +144,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnVisibleChanged(object sender, EventArgs eventArgs)
         {
-            if (!initialized && IsHandleCreated)
+            if (!initialized && Visible && IsHandleCreated)
             {
                 Debugger.WriteLine(LogLevel.Info, "No handle! Creating one...");
-                CreateHandle();
+                CreateControl();
                 initialized = true;
             }
             if (Visible)
