@@ -71,10 +71,7 @@ namespace CM3D2.MaidFiddler.Plugin
             try
             {
                 if (gui == null)
-                {
                     gui = new MaidFiddlerGUI();
-                    gui.ReloadMaids();
-                }
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(gui);
             }
@@ -103,7 +100,8 @@ namespace CM3D2.MaidFiddler.Plugin
         {
             if (guiThread.ThreadState != ThreadState.Running)
                 guiThread.Start();
-            gui?.Show();
+            else
+                gui?.Show();
         }
 
         public void Update()

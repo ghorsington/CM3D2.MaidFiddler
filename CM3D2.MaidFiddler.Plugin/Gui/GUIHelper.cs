@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Threading;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
     public partial class MaidFiddlerGUI
     {
-        private bool creatingHandle;
         private bool destroyGUI;
 
         public void Close(bool exit)
@@ -15,17 +15,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         public void InvokeAsync(Delegate method, params object[] args)
         {
-            if (!IsHandleCreated && !creatingHandle)
+            if (!IsHandleCreated)
             {
-                creatingHandle = true;
-                Debugger.WriteLine(LogLevel.Info, "GUI: No handle! Creating one...");
+                Debugger.WriteLine($"Attempted to invoke asynchronously {method.Method.Name} but found no handle! Creating one...");
                 CreateHandle();
-                creatingHandle = false;
                 InvokeAsync(method, args);
-            } else if (creatingHandle)
-            {
-                InvokeAsync(method, args);
-                return;
             }
 
             BeginInvoke(method, args);

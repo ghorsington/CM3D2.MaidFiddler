@@ -9,10 +9,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 {
     public partial class MaidFiddlerGUI : Form
     {
+        private bool initialized;
+
         public MaidFiddlerGUI()
         {
             InitializeComponent();
-
+            
             Player = new PlayerInfo(this);
             removeValueLimit = false;
             InitText();
@@ -142,6 +144,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnVisibleChanged(object sender, EventArgs eventArgs)
         {
+            if (!initialized && IsHandleCreated)
+            {
+                Debugger.WriteLine(LogLevel.Info, "No handle! Creating one...");
+                CreateHandle();
+                initialized = true;
+            }
             if (Visible)
                 UpdateMaids(GameMain.Instance.CharacterMgr.GetStockMaidList());
         }
