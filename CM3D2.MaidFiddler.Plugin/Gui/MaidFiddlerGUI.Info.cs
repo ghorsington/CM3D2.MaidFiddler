@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Plugin.Utils;
 using param;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
@@ -14,9 +14,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitMaidInfoTab()
         {
-            valueUpdate = Enum.GetValues(typeof (MaidChangeType))
-                              .Cast<MaidChangeType>()
-                              .ToDictionary(e => e, e => false);
+            valueUpdate = EnumHelper.MaidChangeTypes.ToDictionary(e => e, e => false);
             uiControls = new Dictionary<Control, MaidChangeType>();
 
             GetFieldText(tabPage_info);

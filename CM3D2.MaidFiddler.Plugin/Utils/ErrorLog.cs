@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
-namespace CM3D2.MaidFiddler.Plugin
+namespace CM3D2.MaidFiddler.Plugin.Utils
 {
     public class ErrorLog
     {
@@ -37,7 +34,11 @@ namespace CM3D2.MaidFiddler.Plugin
             string dumpNotCreatedMsg =
             $"Failed to create a dump message. Send a screenshot of the following stack trace to the developer:\n==START==\n{e.GetType()}:{e.Message}\n{e.StackTrace}\n==END==";
 
-            MessageBox.Show($"Oh no! Maid Fiddler has crashed!\n{(dumpCreated ? dumpCreatedMsg : dumpNotCreatedMsg)}", "Oh noes!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(
+            $"Oh no! Maid Fiddler has crashed!\n{(dumpCreated ? dumpCreatedMsg : dumpNotCreatedMsg)}",
+            "Oh noes!",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error);
         }
     }
 }

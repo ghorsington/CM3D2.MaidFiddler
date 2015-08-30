@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Plugin.Utils;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -157,7 +158,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void OnControlLostFocus(object sender, EventArgs e)
         {
             Control c = (Control) sender;
-            if(!hasPressedEnter)
+            if (!hasPressedEnter)
                 UpdateGameValue(c, c.Text);
             hasPressedEnter = false;
         }
@@ -190,7 +191,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 if (maid == null)
                     return;
                 MaidChangeType type = uiControls[c];
-                Debugger.WriteLine(LogLevel.Info, $"Attempting to update value {type} to {value}. Allowed: {!valueUpdate[type]}.");
+                Debugger.WriteLine(
+                LogLevel.Info,
+                $"Attempting to update value {type} to {value}. Allowed: {!valueUpdate[type]}.");
                 if (!valueUpdate[type])
                     maid.SetValue(type, value);
                 valueUpdate[type] = false;

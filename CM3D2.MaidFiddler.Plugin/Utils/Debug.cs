@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace CM3D2.MaidFiddler.Plugin
+namespace CM3D2.MaidFiddler.Plugin.Utils
 {
     public struct LogLevel
     {

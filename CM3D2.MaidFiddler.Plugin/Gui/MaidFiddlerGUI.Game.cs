@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Plugin.Utils;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -14,9 +14,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void InitGameTab()
         {
             uiControlsPlayer = new Dictionary<Control, PlayerChangeType>();
-            valueUpdatePlayer = Enum.GetValues(typeof (PlayerChangeType))
-                                    .Cast<PlayerChangeType>()
-                                    .ToDictionary(e => e, e => false);
+            valueUpdatePlayer = EnumHelper.GetValues<PlayerChangeType>().ToDictionary(e => e, e => false);
 
             GetFieldText(tabPage_player);
             GetFieldText(label_salon_stats);

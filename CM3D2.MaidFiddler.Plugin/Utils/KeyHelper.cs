@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CM3D2.MaidFiddler.Plugin
+namespace CM3D2.MaidFiddler.Plugin.Utils
 {
     public class KeyHelper
     {

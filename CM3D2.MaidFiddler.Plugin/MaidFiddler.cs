@@ -2,6 +2,7 @@
 using System.Threading;
 using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Gui;
+using CM3D2.MaidFiddler.Plugin.Utils;
 using ExIni;
 using UnityEngine;
 using UnityInjector;

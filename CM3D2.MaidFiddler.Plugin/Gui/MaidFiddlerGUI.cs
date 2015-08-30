@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Plugin.Utils;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -14,7 +15,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         public MaidFiddlerGUI()
         {
             InitializeComponent();
-            
+
             Player = new PlayerInfo(this);
             removeValueLimit = false;
             InitText();

@@ -1,6 +1,6 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Plugin.Utils;
 using param;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
@@ -19,7 +19,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 column.HeaderText = GetFieldText(column.HeaderText);
             }
-            MaidClassType[] classTypes = (MaidClassType[]) Enum.GetValues(typeof (MaidClassType));
+            MaidClassType[] classTypes = EnumHelper.GetValues<MaidClassType>();
             for (int index = 0; index < classTypes.Length - 2; index++)
                 dataGridView_maid_classes.Rows.Add(
                 false,
@@ -38,7 +38,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 column.HeaderText = GetFieldText(column.HeaderText);
             }
-            YotogiClassType[] yotogiClassTypes = (YotogiClassType[]) Enum.GetValues(typeof (YotogiClassType));
+            YotogiClassType[] yotogiClassTypes = EnumHelper.GetValues<YotogiClassType>();
             for (int index = 0; index < yotogiClassTypes.Length - 2; index++)
                 dataGridView_yotogi_classes.Rows.Add(
                 false,

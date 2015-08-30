@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Plugin.Utils;
 using param;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
@@ -190,30 +191,32 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Debugger.WriteLine($"Changed status for property {EnumHelper.GetName(args.Tag)}");
             Debugger.WriteLine(
             $"Called maid: {args.CallerMaid.Param.status.first_name} {args.CallerMaid.Param.status.last_name}");
-            MaidInfo selectedMaid = SelectedMaid;
-            if (selectedMaid == null)
+
+            if (!IsMaidLoaded(args.CallerMaid))
             {
-                Debugger.WriteLine(LogLevel.Warning, "No maid selected! Aborting...");
+                Debugger.WriteLine(LogLevel.Error, "Maid not in the list! Aborting!");
                 return;
             }
 
-            if (selectedMaid.Maid != args.CallerMaid)
-            {
-                Debugger.WriteLine(LogLevel.Warning, "Selected maids are different!");
-                return;
-            }
+            MaidInfo maid = GetMaidInfo(args.CallerMaid);
 
-            if (selectedMaid.IsLocked(args.Tag))
+            if (maid.IsLocked(args.Tag))
             {
                 Debugger.WriteLine(LogLevel.Info, "Value locked! Aborting changes...");
                 args.BlockAssignment = true;
                 return;
             }
 
+            if (SelectedMaid != null && SelectedMaid.Maid != maid.Maid)
+            {
+                Debugger.WriteLine(LogLevel.Warning, "Selected maids are different!");
+                return;
+            }
+
             if (!valueUpdateQueue.ContainsKey(args.Tag))
             {
                 Debugger.WriteLine(LogLevel.Info, "Adding to update queue");
-                valueUpdateQueue.Add(args.Tag, () => selectedMaid.UpdateField(args.Tag));
+                valueUpdateQueue.Add(args.Tag, () => maid.UpdateField(args.Tag));
             }
             else
                 Debugger.WriteLine(LogLevel.Warning, "Already in update queue!");
@@ -261,8 +264,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 return;
 
             MaidInfo maid = GetMaidInfo(m);
-            foreach (
-            NightTaskCtrl.NightTaskButton nightTaskButton in
+            foreach (NightTaskCtrl.NightTaskButton nightTaskButton in
             args.List.Where(nightTaskButton => maid.IsNightWorkForceEnabled(int.Parse(nightTaskButton.id))))
             {
                 Debugger.WriteLine($"Forcing update on night work #{nightTaskButton.id}");
@@ -277,8 +279,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 return;
 
             MaidInfo maid = GetMaidInfo(m);
-            foreach (
-            DaytimeTaskCtrl.DaytimeTaskButton daytimeTaskButton in
+            foreach (DaytimeTaskCtrl.DaytimeTaskButton daytimeTaskButton in
             args.List.Where(daytimeTaskButton => maid.IsNoonWorkForceEnabled(int.Parse(daytimeTaskButton.id))))
             {
                 Debugger.WriteLine($"Forcing update on noon work #{daytimeTaskButton.id}");

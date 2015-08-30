@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Plugin.Utils;
 using param;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui

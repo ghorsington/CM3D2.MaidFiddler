@@ -11,7 +11,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         public void ReloadPlayer()
         {
-            InvokeAsync((Action)Player.UpdateAll);
+            InvokeAsync((Action) Player.UpdateAll);
         }
 
         public void UpdatePlayerValues()

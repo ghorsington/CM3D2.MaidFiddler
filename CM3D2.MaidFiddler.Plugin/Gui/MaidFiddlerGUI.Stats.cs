@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Plugin.Utils;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -157,7 +158,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (clearingTables)
+            if (clearingTables || e.ColumnIndex == PARAMS_COLUMN_LOCK)
                 return;
             DataGridView table = (DataGridView) sender;
             MaidInfo maid = SelectedMaid;
@@ -190,13 +191,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 return;
             }
 
-            if (maid.IsLocked(type.Value))
+            if (maid.IsHardLocked(type.Value))
+            {
+                Debugger.WriteLine(
+                LogLevel.Info,
+                $"Value {EnumHelper.GetName(type.Value)} is locked! Unlocking temporarily...");
                 maid.UnlockTemp(type.Value);
+            }
 
             maid.SetValue(type.Value, val);
-
-            if (maid.IsLocked(type.Value))
-                maid.UpdateField(type.Value);
         }
     }
 }

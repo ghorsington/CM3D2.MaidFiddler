@@ -18,6 +18,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Player.Player.SetSalonLoan(0);
         }
 
+        private void LockAllValues(object sender, EventArgs e)
+        {
+            MaidInfo maid = SelectedMaid;
+            maid.SetAllLock(true);
+        }
+
         private void ResetVip(object sender, EventArgs e)
         {
             foreach (KeyValuePair<int, Status.NightWorkState> workState in Player.Player.status_.night_works_state_dic)
@@ -197,6 +203,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 Player.Player.AddHaveTrophy(data.Key);
             }
+        }
+
+        private void UnlockAllValues(object sender, EventArgs e)
+        {
+            MaidInfo maid = SelectedMaid;
+            maid.SetAllLock(false);
         }
 
         private void UnlockAllYotogiClasses(object sender, EventArgs e)

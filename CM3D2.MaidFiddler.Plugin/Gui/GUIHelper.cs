@@ -1,4 +1,5 @@
 ﻿using System;
+using CM3D2.MaidFiddler.Plugin.Utils;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {

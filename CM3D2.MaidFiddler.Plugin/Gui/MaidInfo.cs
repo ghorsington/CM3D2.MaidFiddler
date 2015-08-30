@@ -4,9 +4,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Plugin.Utils;
 using param;
 using Schedule;
 using UnityInjector;
+using Debugger = CM3D2.MaidFiddler.Plugin.Utils.Debugger;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -34,10 +36,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 forceUpdateNightWorks = new Dictionary<int, bool>();
                 Maid = maid;
                 ValueLocks = new Dictionary<MaidChangeType, bool>();
-                MaidChangeType[] types = (MaidChangeType[]) Enum.GetValues(typeof (MaidChangeType));
-                types.ForEach(t => ValueLocks.Add(t, false));
+                EnumHelper.MaidChangeTypes.ForEach(t => ValueLocks.Add(t, false));
                 TempUnlocks = new Dictionary<MaidChangeType, bool>();
-                types.ForEach(t => TempUnlocks.Add(t, false));
+                EnumHelper.MaidChangeTypes.ForEach(t => TempUnlocks.Add(t, false));
 #if DEBUG
                 Debugger.WriteLine(LogLevel.Info, "Loading functions");
                 Stopwatch watch = new Stopwatch();
@@ -194,6 +195,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     forceUpdateNightWorks.Add(nightWork.Key, false);
             }
 
+            public bool IsHardLocked(MaidChangeType type)
+            {
+                return ValueLocks[type];
+            }
+
             public bool IsLocked(MaidChangeType type)
             {
                 bool result = ValueLocks[type] && !TempUnlocks[type];
@@ -217,6 +223,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 if (ValueLocks.ContainsKey(type))
                     ValueLocks[type] = true;
+            }
+
+            public void SetAllLock(bool state)
+            {
+                foreach (KeyValuePair<MaidChangeType, Action<MaidChangeType>> maidParamsUpdater in
+                maidParamsUpdaters.Where(maidParamsUpdater => maidParamsUpdater.Key <= MaidChangeType.Profile))
+                {
+                    ValueLocks[maidParamsUpdater.Key] = state;
+                    gui.MaidParameters[maidParamsUpdater.Key].Cells[PARAMS_COLUMN_LOCK].Value =
+                    ValueLocks[maidParamsUpdater.Key];
+                }
             }
 
             public void Unlock(MaidChangeType type)
@@ -338,7 +355,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             public void SetValue(MaidChangeType type, object val)
             {
-                Debugger.WriteLine($"Setting {Enum.GetName(type.GetType(), type)} to {val}");
+                Debugger.WriteLine($"Setting {EnumHelper.GetName(type)} to {val}");
                 if (setFunctionsInt.ContainsKey(type))
                 {
                     int v;

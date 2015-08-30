@@ -61,9 +61,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Debug.cs" />
-    <Compile Include="EnumHelper.cs" />
-    <Compile Include="ErrorLog.cs" />
+    <Compile Include="Utils\Debug.cs" />
+    <Compile Include="Utils\EnumHelper.cs" />
+    <Compile Include="Utils\ErrorLog.cs" />
     <Compile Include="Gui\GUIHelper.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,7 +103,7 @@
     <Compile Include="Gui\MaidFiddlerGUI.Work.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KeyHelper.cs" />
+    <Compile Include="Utils\KeyHelper.cs" />
     <Compile Include="MaidFiddler.cs" />
     <Compile Include="Gui\MaidFiddlerGUI.cs">
       <SubType>Form</SubType>

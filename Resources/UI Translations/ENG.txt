@@ -1,0 +1,400 @@
+﻿; Maid Fiddler GUI Texts
+; Syntax:
+; <GUI Label>	<Translation> (NOTE: Separate with tabs, not spaces!)
+; Comment lines with ";"
+; Comments and faulty lines (wrong separators, missing translation) are ignored
+
+; Info tab
+TAB_INFO						Information
+FirstName						First Name
+LastName						Last Name
+FirstNameCall					Call by first name
+Personal						Personality
+ContractType					Contract type
+IsLeader						Leader 
+Condition						Love state
+ConditionSpecial				Yotogi style
+Employment						Employment day
+MAID_SEX_EXP					Sexual experience
+InitSeikeiken					Initial
+Seikeiken						Current
+MAID_CLASS_SELECTED				Selected classes
+MaidClassType					Noon class
+YotogiClassType					Night class
+Profile							Maid description
+FreeComment						User comment
+
+; Table columns			
+NAME							Name
+VAL								Value
+LOCK							Locked
+HAS								Has
+LVL								Level
+TOTAL_XP						Total XP
+FORCE_ENABLE					Force enabled
+PLAY_COUNT						Times done
+
+; Maid stats			
+TAB_STATS						Parameters
+MAID_PARAMS						General parameters
+MAID_PARAMS_BONUS				Parameter bonuses
+MAID_ERO_ZONES					Erogenous zones
+MAID_STATS						Miscellaneous stats
+
+; Maid classes			
+TAB_CLASSES						Classes
+MAID_CLASS						Noon class
+YOTOGI_CLASS					Night class
+
+; Maid work
+TAB_WORK						Work data
+CURRENT_WORK					Selected work
+WORK_NOON						Noon
+WORK_NIGHT						Night
+NOON_WORK						Noon work data
+NIGHT_WORK						Night work data
+NoonWorkId						Noon
+NightWorkId						Night
+
+; Maid skills	
+TAB_YOTOGI						Yotogi skills
+
+; Maid misc			
+TAB_MISC						Traits and Fetishes
+MAID_PROPENSITY					Fetishes
+MAID_FEATURES					Traits
+
+; Game			
+TAB_GAME						Game General
+PlayerName						Player name
+Money							Credits
+ShopUseMoney					Credits used in shop
+SalonLoan						Current loan
+InitSalonLoan					Initial loan
+PhaseDays						Days (current phase)
+Days							Days (total)
+ScenarioPhase					Current phase
+SCENARIO_NEW					New game
+SCENARIO_DEBT					Debt phase
+SCENARIO_MAIN					Free play
+SALON_STATS						Club stats
+SalonClean						Tidyness
+SalonBeautiful					Beauty
+SalonEvaluation					Total evaluation
+SalonGrade						Current grade
+BestSalonGrade					Best grade
+
+; Personalities			
+Pure							Innocent
+Cool							Mature
+Pride							Proud
+
+; Contract types			
+Nurture							Training
+Free							Free
+Exclusive						Exclusive
+
+; Condition			
+Tonus							Nervous
+Contact							Close
+Trust							Trusted
+Lover							Lover
+Slave							Love Slave
+
+; Condition Special			
+Null							Normal
+Drunk							Drunk
+Osioki							Punishment
+
+; Sexual exp			
+No_No							Virgin
+Yes_No							Vaginal
+No_Yes							Anal
+Yes_Yes							Both
+
+; Maid class type			
+Maid_Novice						Novice
+Maid_Lovely						Lovely
+Maid_Elegance					Elegant
+Maid_Sexy						Sexy
+Maid_Innocent					Innocent
+Maid_Charm						Charming
+Maid_Ready						Lady
+
+; Yotogi class type			
+Yotogi_Debut					Debut
+Yotogi_Rudeness					Lewd
+Yotogi_Slave					Slave
+Yotogi_Abnormal					Abnormal
+Yotogi_Service					Service
+Yotogi_Escort					Escort
+Yotogi_Soap						Soap
+
+; Params			
+Care							Care
+Charm							Charm
+CurExcite						Excitement (Current)
+CurMind							Mind (Current)
+CurReason						Reason (Current)
+Elegance						Elegance
+Frustration						Frustration
+Hentai							Perversion
+Housi							Service
+Hp								Stamina (Max)
+Inyoku							Lust
+Likability						Impression
+Lovely							Sweetness
+MaidPoint						Maid Points
+Mind							Mind (Max)
+MValue							Masochism
+OthersPlayCount					Times entertained
+PlayNumber						Play Number
+Reason							Reason (Max)
+Reception						Reception
+StudyRate						Study rate
+TeachRate						Teaching rate
+YotogiPlayCount					Times had sex
+SexualBack						Anal
+SexualCuri						Clitoris
+SexualFront						Vaginal
+SexualMouth						Mouth
+SexualNipple					Nipples
+SexualThroat					Throat
+Sales							Money earned
+TotalSales						Total money earned
+Evaluation						Evaluation
+TotalEvaluation					Total Evaluation
+CurHp							Stamina (Current)
+PopularRank						Popularity
+
+; Bonus params
+BonusCare						Care
+BonusCharm						Charm
+BonusElegance					Elegance
+BonusHentai						Perversion
+BonusHousi						Housi
+BonusHp							Stamina
+BonusInyoku						Inyoku
+BonusLovely						Sweetness
+BonusMind						Mind
+BonusMValue						Masochism	
+BonusReception					Reception
+BonusTeachRate					Teaching rate
+
+; Noon work			
+裁縫							Sewing
+料理							Cooking
+華道							Flower Arrangement
+接客練習							Chat
+模様替え							Makeup
+掃除							Cleaning
+教養							Study
+派遣							Dispatch
+化粧							Makeup
+エステ							Spa
+メイド研修						Maid Training
+
+; Night work	
+クラブ接待							Entertainment
+夜伽							Night Service
+ソーププレイ						Soap Play
+ハメ撮りプレイ						Photo Play
+恋人プレイ						Lovers Play
+恋人プレイ（報告）					Lovers Play (Report)
+野外露出							Outdoors Exposure
+騙され接待01						Deceive Maid 1
+騙され接待02						Deceive Maid 2
+騙され接待03						Deceive Maid 3
+騙され接待（報告）					Deceive Maid (Report)
+アナルプレイ						Anal Play
+純愛ソーププレイ					Lover Soap Play
+お仕置きプレイ						Punishment Play
+お客様公開プレイ					Public Play
+路地裏露出セックス					Back Alley Sex
+詰られプレイ						Scolding Play
+
+; Yotogi skills
+;Virgin	
+処女喪失セックス					Virgin Sex
+アナル処女喪失セックス				Anal Virgin Sex
+;Pleasure	
+愛撫							Caress
+バイブ責め						Vibrator
+アナルバイブ責め					Anal Vibrator
+セックス正常位						Missionary Sex
+アナルセックス正常位					Missionary Anal Sex
+セックス後背位						Doggy Style Sex
+アナルセックス後背位					Doggy Style Anal Sex
+セックス騎乗位						Cowgirl Sex
+アナルセックス騎乗位					Cowgirl Anal Sex
+言葉責め愛撫						Verbal Abuse Caress
+グラインドセックス騎乗位				Grinding Cowgirl Sex
+グラインドアナルセックス騎乗位			Grinding Cowgirl Anal Sex
+太バイブ責め						Thick Vibrator
+バイブ責めアナルセックス正常位			Anal Missionary Sex and Vibrator
+アナルバイブ責めセックス後背位			Doggy Style Sex and Anal Vibrator
+だいしゅきホールドセックス正常位		Leg Locked Missionary Sex
+だいしゅきホールドアナルセックス正常位	Leg Locked Missionary Anal Sex
+抱きつきセックス後背位				Hugging Doggy Style Sex
+抱きつきアナルセックス後背位			Hugging Doggy Style Anal Sex
+だいしゅきホールド					Loving Hold
+;Pervert	
+かっこいいポーズ						Cool Pose
+かわいいポーズ						Cute Pose
+オナニー							Masturbation
+アナルオナニー						Anal Masturbation
+Ｈなポーズ							Sexy Pose
+手コキオナニー						Handjob and Masturbation
+フェラオナニー						Fellatio and Masturbation
+変態ポーズプレイ					Perverted Pose Play
+バイブオナニー						Vibrator Masturbation
+アナルバイブオナニー					Anal Vibrator Masturbation
+太バイブオナニー					Thick Vibrator Masturbation
+露出プレイ						Exhibitionism
+犬プレイ							Pet Play
+露出セックス背面立位				Exhibitionist Rear Standing Sex
+露出アナルセックス背面立位			Exhibitionist Anal Rear Standing Sex
+実況オナニー						Reporting Masturbation
+;Service	
+手コキ							Handjob
+フェラチオ							Fellatio
+パイズリ							Paizuri
+パイズリフェラ						Paizuri and Fellatio
+玉舐めフェラチオ					Ball Licking Fellatio
+セルフイラマ						Self Irrumatio
+シックスナイン						Sixty Nine
+スケベ椅子フェラ					Stool Fellatio
+スケベ椅子セックス					Stool Sex
+スケベ椅子アナルセックス				Stool Anal Sex
+MP全身洗い						Mat Play Body Wash
+ディープスロート						Deepthroat
+高級MP全身洗い					Luxurious Mat Play Body Wash
+全身舐め奉仕						Body Licking
+;Scolding	
+詰られパイズリ						Scolding Paizuri
+詰られ手コキ						Scolding Handjob
+詰られ騎乗位						Scolding Cowgirl
+詰られアナル騎乗位					Scolding Anal Cowgirl
+;Bondage	
+拘束愛撫							Restrained Caress
+イラマチオ							Irrumatio
+拘束セックス						Restrained Sex
+拘束アナルセックス					Restrained Anal Sex
+首絞めセックス正常位				Choking Missionary Sex
+首絞めアナルセックス正常位			Choking Missionary Anal Sex
+三角木馬拘束						Restrained Wooden Horse
+吊るし拘束						Restrained Hanging
+ギロチン拘束セックス					Restrained Guillotine Sex
+ギロチン拘束アナルセックス				Restrained Guillotine Anal Sex
+ハード吊るし拘束					Restrained Hanging (Hard)
+ハード三角木馬拘束				Restrained Wooden Horse (Hard)
+;Swapping	
+スワッピング愛撫					Swapping Caress
+スワッピングフェラチオ					Swapping Fellatio
+スワッピングセックス正常位				Swapping Missionary Sex
+スワッピングアナルセックス正常位			Swapping Missionary Anal Sex
+;Group	
+乱交愛撫							Group Caress
+乱交奉仕							Group Service
+乱交3Pセックス正常位				Group 3P Missionary Sex
+乱交3Pアナルセックス正常位			Group 3P Missionary Anal Sex
+乱交3P2穴セックス					Group 3P Double Penetration
+;Drunk Variations	
+酔い愛撫							Drunk Caress
+酔いオナニー						Drunk Masturbation
+酔いアナルオナニー					Drunk Anal Masturbation
+酔いフェラチオ						Drunk Fellatio
+酔いイラマチオ						Drunk Irrumatio
+酔いディープスロート					Drunk Deepthroat
+酔いバイブ責め						Drunk Vibrator
+酔いアナルバイブ責め					Drunk Anal Vibrator
+酔いアナルセックス正常位				Drunk Missionary Anal Sex
+酔いセックス正常位					Drunk Missionary Sex
+酔いセックス後背位					Drunk Doggy Style Sex
+酔いアナルセックス後背位				Drunk Doggy Style Anal Sex
+酔いセックス騎乗位					Drunk Cowgirl Sex
+酔いシックスナイン					Drunk Sixty Nine
+酔いアナルセックス騎乗位				Drunk Cowgirl Anal Sex
+;Punishment variations	
+お仕置き拘束愛撫					Punishment Restrained Caress
+お仕置き吊るし拘束					Punishment Restrained Hanging
+お仕置き三角木馬拘束				Punishment Restrained Wooden Horse
+お仕置き吊るしセックス				Punishment Hanging Sex
+お仕置き吊るしアナルセックス			Punishment Hanging Anal Sex
+お仕置きギロチン拘束セックス			Punishment Restrained Guillotine Sex
+お仕置きギロチン拘束アナルセックス		Punishment Restrained Guillotine Anal Sex
+お仕置きハード吊るし拘束				Punishment Restrained Hanging (Hard)
+お仕置きハード三角木馬拘束			Punishment Restrained Wooden Horse (Hard)
+お仕置きセックス後背位				Punishment Doggy Style Sex
+お仕置きアナルセックス後背位			Punishment Doggy Style Anal Sex
+
+; Propensity
+M女								Masochist
+中出し好き						Loves Creampies
+二穴好き							Loves DP
+変態							Perversion
+奉仕好き							Loves Service
+尻穴好き							Loves Anal
+淫乱							Lewdness
+飲精好き							Loves Swallowing
+
+; Features
+とことん尽くす						Devoted
+上品							Elegant
+傅く								Servant
+優美							Graceful
+優雅							Refined
+元気な笑顔						Energetic Smile
+凜とした							Dignified
+大人びた魅力						Mature Appeal
+天使							Angelic
+妖艶な魅力						Bewitching
+恥ずかしがり屋						Bashful
+朗らかな魅力						Cheerful
+疲労							Tired
+純真無垢							Pure
+素直							Meek
+過去の秘密						Past Secret
+過去の過ち						Past Error
+高貴							Noble
+魅了							Charming
+魔性の魅力						Devilish
+
+; Menu items
+MENU_GAME						Game and Salon
+MENU_ALL_MAID					Maid cheats
+MENU_MAID						Current maid
+
+; Game items
+MENU_GAME_CLEAN_DEBT			Clean debt
+MENU_GAME_MAX_RATE				Maximum grade and evaluation
+MENU_GAME_MAX_CREDIT			Maximum credits
+MENU_GAME_ALL_ITEMS				Enable all items
+MENU_GAME_ALL_TROPHY			Get all trophies
+
+; All maid cheats
+MENU_ALL_MAID_NO_LIMIT			Remove all value limits
+MENU_ALL_MAID_RESET_VIP			Reset VIP encounters
+MENU_ALL_MAID_ALL_YOTOGI_COM	All yotogi skill commands enabled
+
+; Current maid cheats
+MENU_MAID_UNLOCK				Unlock
+MENU_MAID_MAX					Unlock and set to maximum
+MENU_MAID_FORCE_ENABLE			Force all work enabled
+MENU_MAID_LOCK_ALL				Lock all stats
+MENU_MAID_UNLOCK_ALL			Unlock all stats
+
+; Current maid unlock
+UNLOCK_SKILLS					Yotogi skills
+UNLOCK_MAID_CLASSES				Noon classes
+UNLOCK_YOTOGI_CLASSES			Night classes
+UNLOCK_ALL						All of the above
+
+; Current maid max
+MAX_STATS						Maid stats
+MAX_ERO_ZONES					Erogenous zones
+MAX_YOTOGI_LVL					Yotogi skill level
+MAX_WORK_PLAY_COUNT				Noon work play count
+MAX_FEATURE						Traits
+MAX_PROPENSITY					Fetishes
+MAX_ALL							All of the above
