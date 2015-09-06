@@ -1,18 +1,25 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace CM3D2.MaidFiddler.Plugin.Utils
 {
     public class KeyHelper
     {
-        private readonly KeyCode key;
+        private readonly KeyCode[] keys;
         private bool old, current;
 
         public KeyHelper(KeyCode key)
         {
             old = false;
             current = false;
+            keys = new[] {key};
+        }
 
-            this.key = key;
+        public KeyHelper(KeyCode[] keys)
+        {
+            old = false;
+            current = false;
+            this.keys = keys;
         }
 
         public bool HasBeenPressed()
@@ -28,7 +35,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         public void Update()
         {
             old = current;
-            current = Input.GetKeyDown(key);
+            current = keys.All(Input.GetKey);
         }
     }
 }
