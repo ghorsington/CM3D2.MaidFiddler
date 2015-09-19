@@ -1,9 +1,10 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
-using System.Linq;
 using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Utils;
 using param;
+using Schedule;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -18,8 +19,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             MaidStatusChangeHooks.NewProperty += OnPropertyHasChanged;
             MaidStatusChangeHooks.PropertyRemoved += OnPropertyHasChanged;
             MaidStatusChangeHooks.CheckWorkEnabled += OnWorkEnabledCheck;
-            MaidStatusChangeHooks.ProcessNoonWorkData += PostProcessNoonWorkData;
-            MaidStatusChangeHooks.ProcessNightWorkData += PostProcessNightWorkData;
+            MaidStatusChangeHooks.ProcessNoonWorkData += ReloadNoonWorkData;
+            MaidStatusChangeHooks.ProcessNightWorkData += ReloadNightWorkData;
             MaidStatusChangeHooks.StatusUpdated += OnStatusUpdated;
             MaidStatusChangeHooks.FeaturePropensityUpdated += OnFeaturePropensityUpdated;
             MaidStatusChangeHooks.CommandUpdate += OnCommandUpdate;
@@ -255,35 +256,46 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     args.ForceEnabled = GetMaidInfo(args.CallerMaid).IsNightWorkForceEnabled(args.ID);
                     break;
             }
+            Debugger.WriteLine(
+            LogLevel.Info,
+            $"Attempting to check work enabled: ID={args.ID}, Force={args.ForceEnabled}");
         }
 
-        private void PostProcessNightWorkData(PostProcessNightEventArgs args)
+        private void ReloadNightWorkData(PostProcessNightEventArgs args)
         {
             Maid m = args.ScheduleScene.slot[args.SlotID].maid;
             if (m == null || !IsMaidLoaded(m))
                 return;
 
-            MaidInfo maid = GetMaidInfo(m);
-            foreach (NightTaskCtrl.NightTaskButton nightTaskButton in
-            args.List.Where(nightTaskButton => maid.IsNightWorkForceEnabled(int.Parse(nightTaskButton.id))))
+            Debugger.WriteLine("Reloading all night works...");
+            UpdateNightWorksData(args.ScheduleScene.slot[args.SlotID]);
+        }
+
+        private void ReloadNoonWorkData(PostProcessNoonEventArgs args)
+        {
+            Maid m = args.ScheduleScene.slot[args.SlotID].maid;
+            if (m == null || !IsMaidLoaded(m))
+                return;
+
+            Debugger.WriteLine("Reloading all noon works...");
+            UpdateNoonWorkData(args.ScheduleScene.slot[args.SlotID]);
+        }
+
+        private void UpdateNightWorksData(Slot slot)
+        {
+            slot.nightWorksData.Clear();
+            foreach (KeyValuePair<int, ScheduleCSVData.NightWork> work in ScheduleCSVData.NightWorkData)
             {
-                Debugger.WriteLine($"Forcing update on night work #{nightTaskButton.id}");
-                nightTaskButton.enableTask = true;
+                slot.nightWorksData.Add(new NightWork(slot, work.Key));
             }
         }
 
-        private void PostProcessNoonWorkData(PostProcessNoonEventArgs args)
+        private void UpdateNoonWorkData(Slot slot)
         {
-            Maid m = args.ScheduleScene.slot[args.SlotID].maid;
-            if (m == null || !IsMaidLoaded(m))
-                return;
-
-            MaidInfo maid = GetMaidInfo(m);
-            foreach (DaytimeTaskCtrl.DaytimeTaskButton daytimeTaskButton in
-            args.List.Where(daytimeTaskButton => maid.IsNoonWorkForceEnabled(int.Parse(daytimeTaskButton.id))))
+            slot.noonWorksData.Clear();
+            foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> work in ScheduleCSVData.NoonWorkData)
             {
-                Debugger.WriteLine($"Forcing update on noon work #{daytimeTaskButton.id}");
-                daytimeTaskButton.enableTask = true;
+                slot.noonWorksData.Add(new NoonWork(slot, work.Key));
             }
         }
     }

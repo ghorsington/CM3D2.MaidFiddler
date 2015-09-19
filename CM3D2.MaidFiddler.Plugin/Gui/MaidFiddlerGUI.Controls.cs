@@ -166,7 +166,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void OnSelectedIndexChanged(object sender, EventArgs e)
         {
             System.Windows.Forms.ComboBox b = (System.Windows.Forms.ComboBox) sender;
-            UpdateGameValue(b, b.SelectedIndex);
+            if (b.SelectedIndex > 0)
+                UpdateGameValue(b, b.SelectedIndex);
         }
 
         private void SetAllControlsEnabled(Control c, bool enabled)

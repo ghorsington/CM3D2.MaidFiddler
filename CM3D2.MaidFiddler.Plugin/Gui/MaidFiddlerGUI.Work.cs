@@ -11,7 +11,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private Dictionary<int, int> noonWorkIDToRow;
         private Dictionary<int, int> rowToNightWorkID;
         private Dictionary<int, int> rowToNoonWorkID;
-        //public bool updateNightWorkTable;
+        private bool updateNightWorkTable;
         private bool updateWorkTable;
 
         private void InitWorkTab()
@@ -60,8 +60,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 rowToNightWorkID.Add(index, nightWork.Value.id);
             }
             dataGridView_night_work.CellContentClick += OnNightWorkCellContentClick;
+            dataGridView_night_work.CellValueChanged += OnNightWorkCellChanged;
             dataGridView_night_work.Height = dataGridView_night_work.ColumnHeadersHeight
                                              + dataGridView_night_work.Rows[0].Height * dataGridView_night_work.RowCount;
+        }
+
+        private void OnNightWorkCellChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (clearingTables)
+                return;
+
+            UpdateNightWorkCell(e.ColumnIndex, e.RowIndex);
         }
 
         private void OnNightWorkCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -73,10 +82,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (maid == null)
                 return;
 
-            bool val = (bool) dataGridView_night_work[e.ColumnIndex, e.RowIndex].Value;
-            int workID = rowToNightWorkID[e.RowIndex];
-            maid.SetNightWorkValue(workID, !val);
-            maid.UpdateNightWorkValue(workID);
+            UpdateNightWorkCell(e.ColumnIndex, e.RowIndex);
         }
 
         private void OnWorkCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -94,6 +100,20 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 UpdateWorkCell<uint>(e.ColumnIndex, e.RowIndex);
             else
                 UpdateWorkCell<int>(e.ColumnIndex, e.RowIndex);
+        }
+
+        private void UpdateNightWorkCell(int col, int row)
+        {
+            MaidInfo maid = SelectedMaid;
+            if (maid == null)
+                return;
+
+            bool val = (bool) dataGridView_night_work[col, row].Value;
+            int workID = rowToNightWorkID[row];
+
+            if (!updateNightWorkTable)
+                maid.SetNightWorkValue(workID, !val);
+            updateWorkTable = false;
         }
 
         private void UpdateWorkCell<T>(int col, int row)

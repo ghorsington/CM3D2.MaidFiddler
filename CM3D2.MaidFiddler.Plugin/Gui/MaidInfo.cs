@@ -16,7 +16,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
     {
         // Full skill data found at Yotogi.skill_data_list
         // Full work data at ScheduleCSVData.NoonWorkData and ScheduleCSVData.NightWorkData
-        // TODO: Hook and check YotogiCommandFactory.AddCommand and UpdateCommand
         public class MaidInfo
         {
             private readonly MaidFiddlerGUI gui;
@@ -318,6 +317,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             public void SetNightWorkValue(int workId, bool val)
             {
                 forceUpdateNightWorks[workId] = val;
+                UpdateNightWorkValue(workId);
             }
 
             private void SetNoonWorkId(int index)
@@ -698,8 +698,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             public void UpdateNightWorkValue(int workID)
             {
                 int row = gui.nightWorkIDToRow[workID];
-                //gui.updateNightWorkTable = true;
+                gui.updateNightWorkTable = true;
                 gui.dataGridView_night_work[TABLE_COLUMN_HAS, row].Value = forceUpdateNightWorks[workID];
+                gui.updateNightWorkTable = false;
             }
 
             public void UpdateSkillData(int skillID)

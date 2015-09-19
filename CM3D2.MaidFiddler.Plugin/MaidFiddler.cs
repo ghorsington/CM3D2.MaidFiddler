@@ -14,7 +14,7 @@ using Application = System.Windows.Forms.Application;
 
 namespace CM3D2.MaidFiddler.Plugin
 {
-    [PluginName("Maid Fiddler"), PluginVersion("BETA 0.2a")]
+    [PluginName("Maid Fiddler"), PluginVersion("BETA 0.3")]
     public class MaidFiddler : PluginBase, IDisposable
     {
         private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.N};
@@ -74,9 +74,9 @@ namespace CM3D2.MaidFiddler.Plugin
                 try
                 {
                     string[] keyCodes = value.Value.Split(new[] {'+'}, StringSplitOptions.RemoveEmptyEntries);
-                    if(keyCodes.Length == 0) throw new Exception();
-                    foreach (
-                    KeyCode kc in
+                    if (keyCodes.Length == 0)
+                        throw new Exception();
+                    foreach (KeyCode kc in
                     keyCodes.Select(keyCode => (KeyCode) Enum.Parse(typeof (KeyCode), keyCode.Trim(), true))
                             .Where(kc => !keys.Contains(kc)))
                         keys.Add(kc);

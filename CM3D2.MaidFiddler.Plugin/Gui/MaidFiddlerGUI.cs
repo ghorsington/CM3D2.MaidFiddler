@@ -105,23 +105,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             formClosingEventArgs.Cancel = !destroyGUI;
             if (!destroyGUI)
                 Hide();
-            //else
-            //{
-            //    Console.WriteLine("Cleaning up...");
-            //    valueUpdateQueue.Clear();
-            //    for (int i = 0;
-            //         i < valueUpdate.Count;
-            //         i++)
-            //    {
-            //        valueUpdate[(ChangeType) i] = true;
-            //    }
-            //    listBox1.ClearSelected();
-            //    listBox1.Items.Clear();
-            //    loadedMaids.Clear();
-            //    maidInfos.Clear();
-            //    if (maidThumbnails.Count > 0) maidThumbnails.ForEach(m => m.Value.Dispose());
-            //    maidThumbnails.Clear();
-            //}
         }
 
         private void OnSelectedValueChanged(object sender, EventArgs e)
@@ -140,6 +123,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             LogLevel.Info,
             $"New maid: {maid.Maid.Param.status.first_name} {maid.Maid.Param.status.last_name}");
             ControlsEnabled = true;
+            ClearAllFields();
             maid.UpdateAll();
         }
 

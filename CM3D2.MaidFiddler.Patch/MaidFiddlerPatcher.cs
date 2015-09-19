@@ -74,10 +74,10 @@ namespace CM3D2.MaidFiddler.Patch
             maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnNoonWorkEnableCheck));
             MethodDefinition nightWorkEnableCheckHook =
             maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnNightWorkEnableCheck));
-            MethodDefinition postProcessNoonWorkDataHook =
-            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.PostProcessNoonWorkData));
-            MethodDefinition postProcessNightWorkDataHook =
-            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.PostProcessNightWorkData));
+            MethodDefinition reloadNoonWorkDataHook =
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.ReloadNoonWorkData));
+            MethodDefinition reloadNightWorkDataHook =
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.ReloadNightWorkData));
             MethodDefinition featurePropensityUpdatedHook =
             maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnFeaturePropensityUpdated));
 
@@ -335,39 +335,23 @@ namespace CM3D2.MaidFiddler.Patch
 
             MethodHook mh = MethodHook.FromMethodDefinition(
             daytimeTaskCtrl.GetMethod("LoadData"),
-            postProcessNoonWorkDataHook,
-            MethodFeatures.PassLocalReferences | MethodFeatures.PassMemberReferences
-            | MethodFeatures.PassMethodParametersByValue,
-            new[] {0},
+            reloadNoonWorkDataHook,
+            MethodFeatures.PassMemberReferences | MethodFeatures.PassMethodParametersByValue,
+            null,
             daytimeTaskCtrl.GetField("m_scheduleApi"));
 
-            this.AttachMethod(mh, -2);
-            //Instruction ins = mh.Target.Body.Instructions[mh.Target.Body.Instructions.Count - 2];
-            //ILProcessor il = mh.Target.Body.GetILProcessor();
-            //il.Replace(ins, il.Create(OpCodes.Nop));
-            //this.AttachMethod(mh, -1);
-            //il.InsertBefore(
-            //mh.Target.Body.Instructions[mh.Target.Body.Instructions.Count - 1],
-            //il.Create(OpCodes.Ldloc_0));
+            this.AttachMethod(mh, 5);
 
             WritePreviousLine("NightTaskCtrl.LoadData");
 
             MethodHook mh2 = MethodHook.FromMethodDefinition(
             nightTaskCtrl.GetMethod("LoadData"),
-            postProcessNightWorkDataHook,
-            MethodFeatures.PassLocalReferences | MethodFeatures.PassMemberReferences
-            | MethodFeatures.PassMethodParametersByValue,
-            new[] {0},
+            reloadNightWorkDataHook,
+            MethodFeatures.PassMemberReferences | MethodFeatures.PassMethodParametersByValue,
+            null,
             nightTaskCtrl.GetField("m_scheduleApi"));
 
-            this.AttachMethod(mh2, -2);
-            //Instruction ins2 = mh2.Target.Body.Instructions[mh2.Target.Body.Instructions.Count - 2];
-            //ILProcessor il2 = mh2.Target.Body.GetILProcessor();
-            //il2.Replace(ins2, il2.Create(OpCodes.Nop));
-            //this.AttachMethod(mh2, -1);
-            //il2.InsertBefore(
-            //mh2.Target.Body.Instructions[mh2.Target.Body.Instructions.Count - 1],
-            //il2.Create(OpCodes.Ldloc_0));
+            this.AttachMethod(mh2, 5);
 
             WritePreviousLine("UpdateFeatureAndPropensity");
 

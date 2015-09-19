@@ -139,14 +139,12 @@ namespace CM3D2.MaidFiddler.Hook
 
     public class PostProcessNoonEventArgs : EventArgs
     {
-        public List<DaytimeTaskCtrl.DaytimeTaskButton> List { get; internal set; }
         public ScheduleScene ScheduleScene { get; internal set; }
         public int SlotID { get; internal set; }
     }
 
     public class PostProcessNightEventArgs : EventArgs
     {
-        public List<NightTaskCtrl.NightTaskButton> List { get; internal set; }
         public ScheduleScene ScheduleScene { get; internal set; }
         public int SlotID { get; internal set; }
     }
@@ -171,11 +169,11 @@ namespace CM3D2.MaidFiddler.Hook
 
         public delegate void NewPropertyGetHandle(StatusChangedEventArgs e);
 
-        public delegate void PostProcessNightWorkDataHandle(PostProcessNightEventArgs e);
-
-        public delegate void PostProcessNoonWorkDataHandle(PostProcessNoonEventArgs e);
-
         public delegate void PropertyRemovedHandle(StatusChangedEventArgs e);
+
+        public delegate void ReloadNightWorkDataHandle(PostProcessNightEventArgs e);
+
+        public delegate void ReloadNoonWorkDataHandle(PostProcessNoonEventArgs e);
 
         public delegate void SkillExpAddedHandle(StatusChangedEventArgs e);
 
@@ -364,35 +362,30 @@ namespace CM3D2.MaidFiddler.Hook
             CommandUpdate?.Invoke(args);
         }
 
-        public static void PostProcessNightWorkData(ref List<NightTaskCtrl.NightTaskButton> list,
-                                                    ref ScheduleScene scheduleScene,
-                                                    int slotNo)
+        public static event ReloadNightWorkDataHandle ProcessNightWorkData;
+        public static event ReloadNoonWorkDataHandle ProcessNoonWorkData;
+        public static event PropertyRemovedHandle PropertyRemoved;
+
+        public static void ReloadNightWorkData(ref ScheduleScene scheduleScene, int slotNo)
         {
             PostProcessNightEventArgs args = new PostProcessNightEventArgs
             {
-                List = list,
                 ScheduleScene = scheduleScene,
                 SlotID = slotNo
             };
             ProcessNightWorkData?.Invoke(args);
         }
 
-        public static void PostProcessNoonWorkData(ref List<DaytimeTaskCtrl.DaytimeTaskButton> list,
-                                                   ref ScheduleScene scheduleScene,
-                                                   int slotNo)
+        public static void ReloadNoonWorkData(ref ScheduleScene scheduleScene, int slotNo)
         {
             PostProcessNoonEventArgs args = new PostProcessNoonEventArgs
             {
-                List = list,
                 ScheduleScene = scheduleScene,
                 SlotID = slotNo
             };
             ProcessNoonWorkData?.Invoke(args);
         }
 
-        public static event PostProcessNightWorkDataHandle ProcessNightWorkData;
-        public static event PostProcessNoonWorkDataHandle ProcessNoonWorkData;
-        public static event PropertyRemovedHandle PropertyRemoved;
         public static event SkillExpAddedHandle SkillExpAdded;
         public static event StatusChangeHandle StatusChanged;
         public static event StatusChangeIDHandle StatusChangedID;
