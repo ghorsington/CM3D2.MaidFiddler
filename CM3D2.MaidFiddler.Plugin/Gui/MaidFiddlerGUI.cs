@@ -123,7 +123,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             LogLevel.Info,
             $"New maid: {maid.Maid.Param.status.first_name} {maid.Maid.Param.status.last_name}");
             ControlsEnabled = true;
-            ClearAllFields();
             maid.UpdateAll();
         }
 

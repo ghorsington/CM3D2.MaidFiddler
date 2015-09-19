@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Plugin.Utils;
 using Schedule;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
@@ -67,10 +68,16 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnNightWorkCellChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (clearingTables)
+            if (clearingTables || e.ColumnIndex != TABLE_COLUMN_HAS)
+                return;
+            MaidInfo maid = SelectedMaid;
+            if (maid == null)
                 return;
 
-            UpdateNightWorkCell(e.ColumnIndex, e.RowIndex);
+            int workID = rowToNightWorkID[e.RowIndex];
+            if(!updateNightWorkTable)
+                maid.UpdateNightWorkValue(workID);
+            updateNightWorkTable = false;
         }
 
         private void OnNightWorkCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -81,7 +88,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             MaidInfo maid = SelectedMaid;
             if (maid == null)
                 return;
-
             UpdateNightWorkCell(e.ColumnIndex, e.RowIndex);
         }
 
@@ -104,16 +110,18 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void UpdateNightWorkCell(int col, int row)
         {
+            if (col != TABLE_COLUMN_HAS)
+                return;
             MaidInfo maid = SelectedMaid;
             if (maid == null)
                 return;
 
-            bool val = (bool) dataGridView_night_work[col, row].Value;
+            bool val = !(bool) dataGridView_night_work[col, row].Value;
             int workID = rowToNightWorkID[row];
 
             if (!updateNightWorkTable)
-                maid.SetNightWorkValue(workID, !val);
-            updateWorkTable = false;
+                maid.SetNightWorkValue(workID, val);
+            updateNightWorkTable = false;
         }
 
         private void UpdateWorkCell<T>(int col, int row)

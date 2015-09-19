@@ -700,7 +700,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 int row = gui.nightWorkIDToRow[workID];
                 gui.updateNightWorkTable = true;
                 gui.dataGridView_night_work[TABLE_COLUMN_HAS, row].Value = forceUpdateNightWorks[workID];
-                gui.updateNightWorkTable = false;
             }
 
             public void UpdateSkillData(int skillID)
