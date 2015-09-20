@@ -80,6 +80,8 @@ namespace CM3D2.MaidFiddler.Patch
             maidHooks.GetMethod(nameof(MaidStatusChangeHooks.ReloadNightWorkData));
             MethodDefinition featurePropensityUpdatedHook =
             maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnFeaturePropensityUpdated));
+            MethodDefinition nightWorkVisCheckHook =
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.CheckNightWorkVisibility));
 
             MethodDefinition onValueRoundInt1 = valueLimitHooks.GetMethod(
             nameof(ValueLimitHooks.OnValueRound),
@@ -352,6 +354,15 @@ namespace CM3D2.MaidFiddler.Patch
             nightTaskCtrl.GetField("m_scheduleApi"));
 
             this.AttachMethod(mh2, 5);
+
+            WritePreviousLine("VisibleNightWork");
+
+            this.AttachMethod(
+            scheduleAPI.GetMethod("VisibleNightWork"),
+            nightWorkVisCheckHook,
+            0,
+            0,
+            MethodFeatures.PassReturn | MethodFeatures.PassMethodParametersByValue);
 
             WritePreviousLine("UpdateFeatureAndPropensity");
 

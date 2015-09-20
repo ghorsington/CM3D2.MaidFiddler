@@ -376,6 +376,7 @@ MENU_GAME_ALL_TROPHY			Get all trophies
 MENU_ALL_MAID_NO_LIMIT			Remove all value limits
 MENU_ALL_MAID_RESET_VIP			Reset VIP encounters
 MENU_ALL_MAID_ALL_YOTOGI_COM	All yotogi skill commands enabled
+MENU_ALL_MAID_ALL_VIP_VISIBLE_ALWAYS	VIP encounters always visible
 
 ; Current maid cheats
 MENU_MAID_UNLOCK				Unlock

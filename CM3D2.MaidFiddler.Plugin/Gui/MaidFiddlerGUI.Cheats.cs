@@ -12,6 +12,14 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
     {
         private bool allYotogiCommandsVisible;
         private bool removeValueLimit;
+        private bool vipAlwaysVisible;
+
+        private void ToggleVIPVisible(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            vipAlwaysVisible = !vipAlwaysVisible;
+            item.Checked = vipAlwaysVisible;
+        }
 
         private void CleanDebt(object sender, EventArgs e)
         {

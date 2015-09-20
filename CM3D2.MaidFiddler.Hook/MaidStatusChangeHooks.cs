@@ -163,6 +163,13 @@ namespace CM3D2.MaidFiddler.Hook
         public YotogiPlay.PlayerState PlayerState { get; internal set; }
     }
 
+    public class NightWorkVisibleEventArgs : EventArgs
+    {
+        public int WorkID { get; internal set; }
+        public bool Visible { get; set; }
+        public bool Force { get; set; }
+    }
+
     public static class MaidStatusChangeHooks
     {
         public delegate void ClassUpdateHandle(HookEventArgs e);
@@ -191,11 +198,22 @@ namespace CM3D2.MaidFiddler.Hook
 
         public delegate void WorkEnableCheckHandle(WorkEventArgs e);
 
+        public delegate void NightWorkVisibleCheckHandle(NightWorkVisibleEventArgs e);
+
         public static event WorkEnableCheckHandle CheckWorkEnabled;
         public static event ClassUpdateHandle ClassUpdated;
         public static event UpdateCommandHandle CommandUpdate;
         public static event UpdateFeaturePropensityHandle FeaturePropensityUpdated;
         public static event NewPropertyGetHandle NewProperty;
+        public static event NightWorkVisibleCheckHandle NightWorkVisibilityCheck;
+
+        public static bool CheckNightWorkVisibility(out bool result, int workID)
+        {
+            NightWorkVisibleEventArgs args = new NightWorkVisibleEventArgs {Visible = false, Force = false, WorkID = workID};
+            NightWorkVisibilityCheck?.Invoke(args);
+            result = args.Visible;
+            return args.Force;
+        }
 
         public static void OnClassTypeUpdate(int tag, ref Maid currentMaid)
         {
