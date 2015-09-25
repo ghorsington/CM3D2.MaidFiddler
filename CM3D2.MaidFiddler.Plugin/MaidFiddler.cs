@@ -14,7 +14,7 @@ using Application = System.Windows.Forms.Application;
 
 namespace CM3D2.MaidFiddler.Plugin
 {
-    [PluginName("Maid Fiddler"), PluginVersion("BETA 0.3")]
+    [PluginName("Maid Fiddler"), PluginVersion("BETA 0.4")]
     public class MaidFiddler : PluginBase, IDisposable
     {
         private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.N};
