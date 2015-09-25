@@ -6,7 +6,6 @@ using System.Linq;
 using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Utils;
 using UnityEngine;
-using UnityInjector;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -82,14 +81,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 goto update;
 
             newMaids.Sort((m1, m2) => string.CompareOrdinal(m1.Param.status.guid, m2.Param.status.guid));
-            if (newMaids.SequenceEqual(loadedMaids.Values.Select(m => m.Maid), new MaidCompater()))
+            if (newMaids.SequenceEqual(loadedMaids.Values.Select(m => m.Maid), new MaidComparer()))
                 return;
 
             update:
             Debugger.WriteLine(LogLevel.Info, "Updating maid list!");
             Dictionary<string, Maid> newMaidList = newMaids.ToDictionary(m => m.Param.status.guid, m => m);
-            Debugger.WriteLine(LogLevel.Info, "Count: " + newMaids.Count + " DIC: " + newMaidList.Count);
-            Debugger.WriteLine(LogLevel.Info, "Loaded Count: " + loadedMaids.Count);
+            Debugger.WriteLine(LogLevel.Info, $" New count:  {newMaids.Count}, Loaded count: {loadedMaids.Count}");
             loadedMaids = new SortedList<string, MaidInfo>(
             loadedMaids.Where(
             m =>
@@ -99,20 +97,19 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     newMaidList.Remove(m.Key);
                 else
                 {
-                    MaidInfo maid = listBox1.SelectedItem as MaidInfo;
-                    if (maid != null && m.Value.Maid == maid.Maid)
+                    if (SelectedMaid != null && m.Value.Maid == SelectedMaid.Maid)
                         valueUpdateQueue.Clear();
                     if (maidThumbnails.ContainsKey(m.Key))
                         maidThumbnails[m.Key].Dispose();
                     maidThumbnails.Remove(m.Key);
                 }
                 return result;
-            }).Union(
+            }).ToList().Union(
             newMaidList.ToDictionary(
             m => m.Key,
             m =>
             {
-                Debugger.WriteLine(LogLevel.Info, "Adding maid info.");
+                Debugger.WriteLine(LogLevel.Info, "Adding new maid info.");
                 MaidInfo info = new MaidInfo(m.Value, this);
                 Debugger.WriteLine(LogLevel.Info, "Loading thumbnail");
                 Texture2D thumb = m.Value.GetThumIcon();
@@ -125,13 +122,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 }
                 return info;
             })).ToDictionary(m => m.Key, m => m.Value));
-            Debugger.WriteLine(LogLevel.Info, "Loaded maids count : " + loadedMaids.Count);
+
+
+            Debugger.WriteLine(LogLevel.Info, $"New loaded maids count: {loadedMaids.Count}");
 #if DEBUG
             newMaidList.ForEach(
-            m => Debugger.WriteLine("Added " + m.Value.Param.status.first_name + " " + m.Value.Param.status.last_name));
+            m => Debugger.WriteLine($"Added {m.Value.Param.status.first_name} {m.Value.Param.status.last_name}"));
             Debugger.WriteLine();
 #endif
+            Debugger.WriteLine("Updating list.");
             UpdateList();
+            Debugger.WriteLine("Finished updating list.");
         }
 
         public void UpdateSelectedMaidValues()
@@ -152,7 +153,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             valueUpdateQueue.Clear();
         }
 
-        private class MaidCompater : IEqualityComparer<Maid>
+        private class MaidComparer : IEqualityComparer<Maid>
         {
             public bool Equals(Maid x, Maid y)
             {

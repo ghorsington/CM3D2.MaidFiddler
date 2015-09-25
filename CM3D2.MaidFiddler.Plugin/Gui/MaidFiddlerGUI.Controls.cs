@@ -75,13 +75,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
         }
 
-        private void InitField(Label label, Control control, MaidChangeType type)
+        private void InitControl(Control control)
         {
-            if (label != null)
-                label.Text = GetFieldText(EnumHelper.GetName(type));
-            if (control is CheckBox)
-                control.Text = GetFieldText(EnumHelper.GetName(type));
-            uiControls.Add(control, type);
             if (control is TextBox)
             {
                 control.LostFocus += OnControlLostFocus;
@@ -106,6 +101,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
         }
 
+        private void InitField(Label label, Control control, MaidChangeType type)
+        {
+            if (label != null)
+                label.Text = GetFieldText(EnumHelper.GetName(type));
+            if (control is CheckBox)
+                control.Text = GetFieldText(EnumHelper.GetName(type));
+            uiControls.Add(control, type);
+
+            InitControl(control);
+        }
+
         private void InitField(Label label, Control control, PlayerChangeType type)
         {
             if (label != null)
@@ -113,28 +119,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (control is CheckBox)
                 control.Text = GetFieldText(EnumHelper.GetName(type));
             uiControlsPlayer.Add(control, type);
-            if (control is TextBox)
-            {
-                control.Leave += OnControlLostFocus;
-                control.KeyPress += OnControlKeyPress;
-            }
-            else
-            {
-                System.Windows.Forms.ComboBox box = control as System.Windows.Forms.ComboBox;
-                if (box != null)
-                {
-                    System.Windows.Forms.ComboBox b = box;
-                    b.SelectedIndexChanged += OnSelectedIndexChanged;
-                }
-                else
-                {
-                    CheckBox checkBox = control as CheckBox;
-                    if (checkBox == null)
-                        return;
-                    CheckBox cb = checkBox;
-                    cb.CheckStateChanged += OnCheckStateChanged;
-                }
-            }
+
+            InitControl(control);
         }
 
         private void OnCheckStateChanged(object sender, EventArgs e)
@@ -205,7 +191,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     return;
 
                 PlayerChangeType type = uiControlsPlayer[c];
-
+                Debugger.WriteLine(
+                LogLevel.Info,
+                $"Attempting to update player value {type} to {value}. Allowed: {!valueUpdatePlayer[type]}.");
                 if (!valueUpdatePlayer[type])
                     Player.SetValue(type, value);
                 valueUpdatePlayer[type] = false;

@@ -44,12 +44,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\ExIni.dll</HintPath>
     </Reference>
-    <Reference Include="ReiPatcher">
-      <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\ReiPatcher.exe</HintPath>
-    </Reference>
-    <Reference Include="ReiPatcherPlus">
-      <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\ReiPatcherPlus.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -61,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utils\CollectionUtils.cs" />
     <Compile Include="Utils\Debug.cs" />
     <Compile Include="Utils\EnumHelper.cs" />
     <Compile Include="Utils\ErrorLog.cs" />

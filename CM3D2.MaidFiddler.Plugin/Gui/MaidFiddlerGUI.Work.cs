@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
-using CM3D2.MaidFiddler.Plugin.Utils;
 using Schedule;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
@@ -75,7 +74,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 return;
 
             int workID = rowToNightWorkID[e.RowIndex];
-            if(!updateNightWorkTable)
+            if (!updateNightWorkTable)
                 maid.UpdateNightWorkValue(workID);
             updateNightWorkTable = false;
         }

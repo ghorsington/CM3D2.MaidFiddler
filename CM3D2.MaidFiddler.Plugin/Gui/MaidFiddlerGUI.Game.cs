@@ -37,6 +37,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             InitField(label_salon_evaluation, textBox_salon_evaluation, PlayerChangeType.SalonEvaluation);
             InitField(label_current_salon_grade, textBox_current_salon_grade, PlayerChangeType.SalonGrade);
             InitField(label_best_salon_grade, textBox_best_salon_grade, PlayerChangeType.BestSalonGrade);
+            InitField(label_maid_points_base, textBox_maid_points_base, PlayerChangeType.BaseMaidPoints);
         }
     }
 }

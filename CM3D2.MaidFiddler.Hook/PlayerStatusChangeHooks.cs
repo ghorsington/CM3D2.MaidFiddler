@@ -24,7 +24,9 @@ namespace CM3D2.MaidFiddler.Hook
         InitSalonLoan,
 
         // Set (string)
-        Name
+        Name,
+
+        BaseMaidPoints
     }
 
     public class PlayerValueChangeEventArgs : EventArgs

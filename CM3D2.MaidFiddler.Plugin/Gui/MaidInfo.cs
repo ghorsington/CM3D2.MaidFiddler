@@ -7,7 +7,6 @@ using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Utils;
 using param;
 using Schedule;
-using UnityInjector;
 using Debugger = CM3D2.MaidFiddler.Plugin.Utils.Debugger;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui

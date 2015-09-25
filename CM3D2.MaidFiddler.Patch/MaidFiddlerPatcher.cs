@@ -32,6 +32,7 @@ namespace CM3D2.MaidFiddler.Patch
             TypeDefinition playerParam = args.Assembly.MainModule.GetType("PlayerParam");
             TypeDefinition yotogiPlayMgr = args.Assembly.MainModule.GetType("YotogiPlayManager");
             TypeDefinition wf = args.Assembly.MainModule.GetType("wf");
+            TypeDefinition status = args.Assembly.MainModule.GetType("param.Status");
 
             TypeDefinition hookType = FiddlerAssembly.MainModule.GetType("CM3D2.MaidFiddler.Hook.FiddlerHooks");
             TypeDefinition maidHooks = FiddlerAssembly.MainModule.GetType(
@@ -499,6 +500,8 @@ namespace CM3D2.MaidFiddler.Patch
             WritePreviousLine("MaidParam.status_");
             this.ChangeAccess(playerParam, "status_");
 
+            WritePreviousLine("param.Status.kInitMaidPoint");
+            this.ChangeAccess(status, "kInitMaidPoint");
 
             SetPatchedAttribute(args.Assembly, TAG);
             Console.WriteLine("\nPatching complete.");

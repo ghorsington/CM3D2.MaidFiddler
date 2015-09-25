@@ -14,13 +14,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private bool removeValueLimit;
         private bool vipAlwaysVisible;
 
-        private void ToggleVIPVisible(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            vipAlwaysVisible = !vipAlwaysVisible;
-            item.Checked = vipAlwaysVisible;
-        }
-
         private void CleanDebt(object sender, EventArgs e)
         {
             Player.Player.SetSalonLoan(0);
@@ -161,6 +154,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             ToolStripMenuItem item = (ToolStripMenuItem) sender;
             removeValueLimit = !removeValueLimit;
             item.Checked = removeValueLimit;
+        }
+
+        private void ToggleVIPVisible(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem) sender;
+            vipAlwaysVisible = !vipAlwaysVisible;
+            item.Checked = vipAlwaysVisible;
         }
 
         private void ToggleYotogiCommandEnable(object sender, EventArgs e)

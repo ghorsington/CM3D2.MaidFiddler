@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Plugin.Utils;
+using param;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -34,7 +36,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     {PlayerChangeType.SalonEvaluation, SetSalonEvaluation},
                     {PlayerChangeType.BestSalonGrade, SetBestSalonGrade},
                     {PlayerChangeType.SalonGrade, SetSalonGrade},
-                    {PlayerChangeType.ScenarioPhase, SetScenarioPhase}
+                    {PlayerChangeType.ScenarioPhase, SetScenarioPhase},
+                    {PlayerChangeType.BaseMaidPoints, SetBaseMaidPoints}
                 };
 
                 setMethodLong = new Dictionary<PlayerChangeType, Action<long>>
@@ -61,8 +64,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     {PlayerChangeType.SalonGrade, UpdateSalonGrade},
                     {PlayerChangeType.ScenarioPhase, UpdateScenatioPhase},
                     {PlayerChangeType.InitSalonLoan, UpdateInitSalonLoad},
-                    {PlayerChangeType.Name, UpdateName}
+                    {PlayerChangeType.Name, UpdateName},
+                    {PlayerChangeType.BaseMaidPoints, UpdateBaseMaidPoints}
                 };
+            }
+
+            private void SetBaseMaidPoints(int obj)
+            {
+                Debugger.WriteLine($"Setting init maid points to {obj}");
+                Status.kInitMaidPoint = obj;
             }
 
             private void SetBestSalonGrade(int obj)
@@ -175,7 +185,14 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     gui.valueUpdatePlayer[updateMethod.Key] = true;
                     updateMethod.Value();
+                    gui.valueUpdatePlayer[updateMethod.Key] = false;
                 }
+            }
+
+            private void UpdateBaseMaidPoints()
+            {
+                Debugger.WriteLine($"Updating init maid points");
+                gui.textBox_maid_points_base.Text = Status.kInitMaidPoint.ToString();
             }
 
             private void UpdateBestSalonGrade()
@@ -194,6 +211,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     return;
                 gui.valueUpdatePlayer[type] = true;
                 updateMethods[type]();
+                gui.valueUpdatePlayer[type] = false;
             }
 
             private void UpdateInitSalonLoad()

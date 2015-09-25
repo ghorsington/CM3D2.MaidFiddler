@@ -83,6 +83,7 @@ SalonBeautiful					Beauty
 SalonEvaluation					Total evaluation
 SalonGrade						Current grade
 BestSalonGrade					Best grade
+BaseMaidPoints					Initial maid points (no bonus)
 
 ; Personalities			
 Pure							Innocent

@@ -170,6 +170,7 @@
             this.mENUALLMAIDLIMITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sexSkillsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -188,7 +189,8 @@
             this.mENUMAIDLOCKALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMAIDUNLOCKALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maidFiddlerGUIBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label_maid_points_base = new System.Windows.Forms.Label();
+            this.textBox_maid_points_base = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_info.SuspendLayout();
@@ -1624,6 +1626,8 @@
             this.tableLayoutPanel3.Controls.Add(this.textBox_days, 1, 9);
             this.tableLayoutPanel3.Controls.Add(this.label_shop_use_money, 3, 3);
             this.tableLayoutPanel3.Controls.Add(this.textBox_shop_use_money, 4, 3);
+            this.tableLayoutPanel3.Controls.Add(this.label_maid_points_base, 3, 9);
+            this.tableLayoutPanel3.Controls.Add(this.textBox_maid_points_base, 4, 9);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -2058,6 +2062,13 @@
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem.Text = "MENU_ALL_MAID_ALL_YOTOGI_COM";
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem.Click += new System.EventHandler(this.ToggleYotogiCommandEnable);
             // 
+            // mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem
+            // 
+            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Name = "mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem";
+            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Text = "MENU_ALL_MAID_ALL_VIP_VISIBLE_ALWAYS";
+            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Click += new System.EventHandler(this.ToggleVIPVisible);
+            // 
             // maidToolStripMenuItem
             // 
             this.maidToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2193,12 +2204,28 @@
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Text = "MENU_MAID_UNLOCK_ALL";
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Click += new System.EventHandler(this.UnlockAllValues);
             // 
-            // mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem
+            // label_maid_points_base
             // 
-            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Name = "mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem";
-            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
-            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Text = "MENU_ALL_MAID_ALL_VIP_VISIBLE_ALWAYS";
-            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Click += new System.EventHandler(this.ToggleVIPVisible);
+            this.label_maid_points_base.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_maid_points_base.AutoSize = true;
+            this.label_maid_points_base.Location = new System.Drawing.Point(204, 141);
+            this.label_maid_points_base.Name = "label_maid_points_base";
+            this.label_maid_points_base.Size = new System.Drawing.Size(83, 20);
+            this.label_maid_points_base.TabIndex = 43;
+            this.label_maid_points_base.Text = "BaseMaidPoints";
+            this.label_maid_points_base.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox_maid_points_base
+            // 
+            this.textBox_maid_points_base.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_maid_points_base.Location = new System.Drawing.Point(290, 141);
+            this.textBox_maid_points_base.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox_maid_points_base.Name = "textBox_maid_points_base";
+            this.textBox_maid_points_base.Size = new System.Drawing.Size(100, 20);
+            this.textBox_maid_points_base.TabIndex = 44;
             // 
             // MaidFiddlerGUI
             // 
@@ -2432,5 +2459,7 @@
         private System.Windows.Forms.ToolStripMenuItem mENUMAIDLOCKALLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mENUMAIDUNLOCKALLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem;
+        private System.Windows.Forms.Label label_maid_points_base;
+        private System.Windows.Forms.TextBox textBox_maid_points_base;
     }
 }

@@ -31,19 +31,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             ValueLimitHooks.ToggleValueLimit += OnValueRound;
         }
 
-        private void OnNightWorkVisibilityCheck(NightWorkVisibleEventArgs e)
-        {
-            Debugger.WriteLine("Attempting to check for visibility");
-            ScheduleCSVData.NightWorkType workType = ScheduleCSVData.NightWorkData[e.WorkID].nightWorkType;
-            if (workType == ScheduleCSVData.NightWorkType.Trainee || workType == ScheduleCSVData.NightWorkType.Trainer)
-                return;
-            if (!vipAlwaysVisible)
-                return;
-            e.Force = true;
-            e.Visible = true;
-            Debugger.WriteLine("Visibility set to true!");
-        }
-
         private void OnClassUpdated(HookEventArgs args)
         {
             Debugger.WriteLine("Updating maid and/or yotogi class info.");
@@ -141,6 +128,19 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
 
             listBox1.Invalidate();
+        }
+
+        private void OnNightWorkVisibilityCheck(NightWorkVisibleEventArgs e)
+        {
+            Debugger.WriteLine("Attempting to check for visibility");
+            ScheduleCSVData.NightWorkType workType = ScheduleCSVData.NightWorkData[e.WorkID].nightWorkType;
+            if (workType == ScheduleCSVData.NightWorkType.Trainee || workType == ScheduleCSVData.NightWorkType.Trainer)
+                return;
+            if (!vipAlwaysVisible)
+                return;
+            e.Force = true;
+            e.Visible = true;
+            Debugger.WriteLine("Visibility set to true!");
         }
 
         private void OnPlayerValueChanged(PlayerValueChangeEventArgs args)

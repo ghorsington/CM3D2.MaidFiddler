@@ -165,9 +165,9 @@ namespace CM3D2.MaidFiddler.Hook
 
     public class NightWorkVisibleEventArgs : EventArgs
     {
-        public int WorkID { get; internal set; }
-        public bool Visible { get; set; }
         public bool Force { get; set; }
+        public bool Visible { get; set; }
+        public int WorkID { get; internal set; }
     }
 
     public static class MaidStatusChangeHooks
@@ -175,6 +175,8 @@ namespace CM3D2.MaidFiddler.Hook
         public delegate void ClassUpdateHandle(HookEventArgs e);
 
         public delegate void NewPropertyGetHandle(StatusChangedEventArgs e);
+
+        public delegate void NightWorkVisibleCheckHandle(NightWorkVisibleEventArgs e);
 
         public delegate void PropertyRemovedHandle(StatusChangedEventArgs e);
 
@@ -198,7 +200,18 @@ namespace CM3D2.MaidFiddler.Hook
 
         public delegate void WorkEnableCheckHandle(WorkEventArgs e);
 
-        public delegate void NightWorkVisibleCheckHandle(NightWorkVisibleEventArgs e);
+        public static bool CheckNightWorkVisibility(out bool result, int workID)
+        {
+            NightWorkVisibleEventArgs args = new NightWorkVisibleEventArgs
+            {
+                Visible = false,
+                Force = false,
+                WorkID = workID
+            };
+            NightWorkVisibilityCheck?.Invoke(args);
+            result = args.Visible;
+            return args.Force;
+        }
 
         public static event WorkEnableCheckHandle CheckWorkEnabled;
         public static event ClassUpdateHandle ClassUpdated;
@@ -206,14 +219,6 @@ namespace CM3D2.MaidFiddler.Hook
         public static event UpdateFeaturePropensityHandle FeaturePropensityUpdated;
         public static event NewPropertyGetHandle NewProperty;
         public static event NightWorkVisibleCheckHandle NightWorkVisibilityCheck;
-
-        public static bool CheckNightWorkVisibility(out bool result, int workID)
-        {
-            NightWorkVisibleEventArgs args = new NightWorkVisibleEventArgs {Visible = false, Force = false, WorkID = workID};
-            NightWorkVisibilityCheck?.Invoke(args);
-            result = args.Visible;
-            return args.Force;
-        }
 
         public static void OnClassTypeUpdate(int tag, ref Maid currentMaid)
         {
