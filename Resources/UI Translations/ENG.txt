@@ -130,6 +130,7 @@ Yotogi_Abnormal					Abnormal
 Yotogi_Service					Service
 Yotogi_Escort					Escort
 Yotogi_Soap						Soap
+Yotogi_Sweet					Sweet
 
 ; Params			
 Care							Care

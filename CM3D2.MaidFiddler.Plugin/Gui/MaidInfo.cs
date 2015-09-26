@@ -611,6 +611,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         cType = updateFunction.Key;
                         gui.valueUpdate[updateFunction.Key] = true;
                         updateFunction.Value();
+                        gui.valueUpdate[updateFunction.Key] = false;
                     }
                     action = "Updating maid parameter {0}";
                     foreach (
@@ -677,6 +678,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     gui.valueUpdate[type] = true;
                     if (updateFunctionsID.ContainsKey(type))
                         updateFunctionsID[type](id, val);
+                    gui.valueUpdate[type] = false;
                 },
                 $"Failed to update maid field for type {EnumHelper.GetName(type)}");
             }
@@ -694,6 +696,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         maidParamsUpdaters[type](type);
                     else
                         Debugger.WriteLine(LogLevel.Error, $"No update function found for {EnumHelper.GetName(type)}!");
+                    gui.valueUpdate[type] = false;
                 },
                 $"Failed to update maid field for type {EnumHelper.GetName(type)}");
             }
@@ -741,10 +744,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         case MaidChangeType.Feature:
                             gui.updateFeature = true;
                             gui.checkedListBox_feature.SetItemChecked(enumVal - 1, val);
+                            gui.updateFeature = false;
                             break;
                         case MaidChangeType.Propensity:
                             gui.updatePropensity = true;
                             gui.checkedListBox_propensity.SetItemChecked(enumVal - 1, val);
+                            gui.updatePropensity = false;
                             break;
                     }
                 },
@@ -765,6 +770,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                             {
                                 gui.updateFeature = true;
                                 gui.checkedListBox_feature.SetItemChecked(enumVal - 1, newVal);
+                                gui.updateFeature = false;
                             }
                             break;
                         case MaidChangeType.Propensity:
@@ -773,6 +779,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                             {
                                 gui.updatePropensity = true;
                                 gui.checkedListBox_propensity.SetItemChecked(enumVal - 1, newVal);
+                                gui.updatePropensity = false;
                             }
                             break;
                     }
@@ -788,6 +795,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     int row = gui.nightWorkIDToRow[workID];
                     gui.updateNightWorkTable = true;
                     gui.dataGridView_night_work[TABLE_COLUMN_HAS, row].Value = forceUpdateNightWorks[workID];
+                    gui.updateNightWorkTable = false;
                 },
                 $"Failed to update night work force value for {workID}");
             }
@@ -824,6 +832,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         gui.updateSkillTable = true;
                         row.Cells[SKILL_COLUMN_PLAY_COUNT].Value = Maid.Param.status_.skill_data[skillID].play_count;
                     }
+                    gui.updateSkillTable = false;
                 },
                 $"Failed to update skill data for skill ID {skillID}");
             }
@@ -842,6 +851,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     gui.updateSkillTable = true;
                     gui.dataGridView_skill_data[TABLE_COLUMN_TOTAL_XP, gui.skillIDToRow[skillID]].Value =
                     Maid.Param.status_.skill_data[skillID].exp_system.GetTotalExp();
+                    gui.updateSkillTable = false;
                 },
                 $"Failed to update skill exp for skill ID {skillID}");
             }
@@ -856,6 +866,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     gui.updateSkillTable = true;
                     gui.dataGridView_skill_data[SKILL_COLUMN_PLAY_COUNT, gui.skillIDToRow[skillID]].Value =
                     Maid.Param.status_.skill_data[skillID].play_count;
+                    gui.updateSkillTable = false;
                 },
                 $"Failed ti update skill play count for {skillID}");
             }
@@ -884,6 +895,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         gui.updateWorkTable = true;
                         row.Cells[TABLE_COLUMN_TOTAL_XP].Value = Maid.Param.status_.work_data[workId].play_count;
                     }
+                    gui.updateWorkTable = false;
                 },
                 $"Failed to update work data for work ID {workId}");
             }
@@ -895,6 +907,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 gui.updateWorkTable = true;
                 gui.dataGridView_noon_work_data[TABLE_COLUMN_LEVEL, gui.noonWorkIDToRow[workID]].Value =
                 Maid.Param.status_.work_data[workID].level;
+                gui.updateWorkTable = false;
             }
 
             private void UpdateWorkPlayCount(int workID, int _)
@@ -904,6 +917,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 gui.updateWorkTable = true;
                 gui.dataGridView_noon_work_data[TABLE_COLUMN_TOTAL_XP, gui.noonWorkIDToRow[workID]].Value =
                 Maid.Param.status_.work_data[workID].play_count;
+                gui.updateWorkTable = false;
             }
 
             public void UpdateYotogiClass()
@@ -911,7 +925,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Debugger.Assert(
                 () =>
                 {
-                    for (YotogiClassType e = YotogiClassType.Debut; e < YotogiClassType.EnabledMAX; e++)
+                    for (YotogiClassType e = 0; e < YotogiClassType.EnabledMAX; e++)
                         UpdateField(MaidChangeType.YotogiClassType, (int) e);
                 },
                 "Failed to update maid yotogi class");
@@ -959,6 +973,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     gui.updateYotogiClassField = true;
                     gui.dataGridView_yotogi_classes[TABLE_COLUMN_TOTAL_XP, (int) yotogiClass].Value =
                     Maid.Param.status_.yotogi_class_data[(int) yotogiClass].exp_system.GetCurrentExp();
+                    gui.updateYotogiClassField = false;
                 },
                 $"Failed to update yotogi class data for class ID {id}");
             }
@@ -984,6 +999,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     gui.updateMaidClassField = true;
                     gui.dataGridView_maid_classes[TABLE_COLUMN_TOTAL_XP, (int) maidClass].Value =
                     Maid.Param.status_.maid_class_data[(int) maidClass].exp_system.GetCurrentExp();
+                    gui.updateMaidClassField = false;
                 },
                 $"Failed to update maid class data for class ID {id}");
             }
@@ -1141,7 +1157,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         break;
                 }
                 Debugger.Assert(
-                () => { gui.MaidParameters[type].Cells[PARAMS_COLUMN_VALUE].Value = val; },
+                () =>
+                {
+                    gui.MaidParameters[type].Cells[PARAMS_COLUMN_VALUE].Value = val;
+                    gui.valueUpdate[type] = false;
+                },
                 $"Failed to update maid parameter {EnumHelper.GetName(type)} for maid {Maid.Param.status.first_name} {Maid.Param.status.last_name}");
             }
 

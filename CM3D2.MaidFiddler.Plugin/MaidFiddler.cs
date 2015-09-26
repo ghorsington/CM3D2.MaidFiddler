@@ -17,12 +17,12 @@ namespace CM3D2.MaidFiddler.Plugin
     [PluginName("Maid Fiddler"), PluginVersion(VERSION)]
     public class MaidFiddler : PluginBase, IDisposable
     {
-        public const string VERSION = "BETA 0.4a";
+        public const string VERSION = "BETA 0.4b";
         private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.N};
-        public static MaidFiddlerGUI Gui { get; set; }
-        public static Thread GuiThread { get; set; }
         private KeyHelper keyCreateGUI;
         public static string DATA_PATH { get; private set; }
+        public static MaidFiddlerGUI Gui { get; set; }
+        public static Thread GuiThread { get; set; }
 
         public void Dispose()
         {
