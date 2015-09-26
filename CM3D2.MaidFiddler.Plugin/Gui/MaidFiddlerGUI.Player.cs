@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Plugin.Utils;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -18,10 +19,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             if (playerValueUpdateQueue.Count <= 0)
                 return;
-            foreach (KeyValuePair<PlayerChangeType, Action> update in playerValueUpdateQueue)
+            Debugger.Assert(
+            () =>
             {
-                update.Value();
-            }
+                foreach (KeyValuePair<PlayerChangeType, Action> update in playerValueUpdateQueue)
+                {
+                    update.Value();
+                }
+            },
+            "Failed to update player values");
             playerValueUpdateQueue.Clear();
         }
     }

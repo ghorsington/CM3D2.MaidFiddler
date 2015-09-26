@@ -24,6 +24,18 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         private const string TAG = "MaidFiddler";
         private const ConsoleColor TAG_COLOR = ConsoleColor.Green;
 
+        public static void Assert(Action action, string errMsg)
+        {
+            try
+            {
+                action();
+            }
+            catch (Exception e)
+            {
+                ErrorLog.ThrowErrorMessage(e, errMsg);
+            }
+        }
+
         [Conditional("DEBUG")]
         public static void WriteLine(string s)
         {

@@ -77,34 +77,44 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             if (!allYotogiCommandsVisible)
                 return;
-            for (int i = 0; i < args.Commands[args.PlayerState].Length; i++)
+            Debugger.Assert(
+            () =>
             {
-                Yotogi.SkillData.Command.Data data = args.Commands[args.PlayerState][i];
-                args.CommandFactory.AddCommand(data);
-            }
+                for (int i = 0; i < args.Commands[args.PlayerState].Length; i++)
+                {
+                    Yotogi.SkillData.Command.Data data = args.Commands[args.PlayerState][i];
+                    args.CommandFactory.AddCommand(data);
+                }
+            },
+            "Failed to manually add yotogi command");
         }
 
         private void OnFeaturePropensityUpdated(UpdateFeaturePropensityEventArgs args)
         {
-            MaidInfo maid = SelectedMaid;
-            if (maid == null)
-                return;
-
-            if (args.CallerMaid != maid.Maid)
-                return;
-
-            if (args.UpdateFeature)
+            Debugger.Assert(
+            () =>
             {
-                Debugger.WriteLine(LogLevel.Info, "Updating all features!");
-                for (Feature e = Feature.Null + 1; e < Feature.Max; e++)
-                    maid.UpdateMiscStatus(MaidChangeType.Feature, (int) e);
-            }
-            else if (args.UpdatePropensity)
-            {
-                Debugger.WriteLine(LogLevel.Info, "Updating all propensities!");
-                for (Propensity e = Propensity.Null + 1; e < Propensity.Max; e++)
-                    maid.UpdateMiscStatus(MaidChangeType.Propensity, (int) e);
-            }
+                MaidInfo maid = SelectedMaid;
+                if (maid == null)
+                    return;
+
+                if (args.CallerMaid != maid.Maid)
+                    return;
+
+                if (args.UpdateFeature)
+                {
+                    Debugger.WriteLine(LogLevel.Info, "Updating all features!");
+                    for (Feature e = Feature.Null + 1; e < Feature.Max; e++)
+                        maid.UpdateMiscStatus(MaidChangeType.Feature, (int) e);
+                }
+                else if (args.UpdatePropensity)
+                {
+                    Debugger.WriteLine(LogLevel.Info, "Updating all propensities!");
+                    for (Propensity e = Propensity.Null + 1; e < Propensity.Max; e++)
+                        maid.UpdateMiscStatus(MaidChangeType.Propensity, (int) e);
+                }
+            },
+            "Failed to update maid features/propensities");
         }
 
         private void OnMaidThumbnailChanged(ThumbnailEventArgs args)

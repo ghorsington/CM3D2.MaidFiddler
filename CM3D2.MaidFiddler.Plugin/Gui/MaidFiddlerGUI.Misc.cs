@@ -12,26 +12,31 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitMiscTab()
         {
-            GetFieldText(tabPage_misc);
-
-            // Propensity
-            GetFieldText(groupBox_propensity);
-            for (Propensity e = Propensity.Null + 1; e < Propensity.Max; e++)
+            Debugger.Assert(
+            () =>
             {
-                checkedListBox_propensity.Items.Add(GetFieldText(EnumHelper.GetName(e)), false);
-            }
-            checkedListBox_propensity.Height = checkedListBox_propensity.ItemHeight
-                                               * checkedListBox_propensity.Items.Count;
-            checkedListBox_propensity.ItemCheck += OnPropensityChecked;
+                GetFieldText(tabPage_misc);
 
-            // Features
-            GetFieldText(groupBox_feature);
-            for (Feature e = Feature.Null + 1; e < Feature.Max; e++)
-            {
-                checkedListBox_feature.Items.Add(GetFieldText(EnumHelper.GetName(e)), false);
-            }
-            checkedListBox_feature.Height = checkedListBox_feature.ItemHeight * checkedListBox_feature.Items.Count;
-            checkedListBox_feature.ItemCheck += OnFeatureChecked;
+                // Propensity
+                GetFieldText(groupBox_propensity);
+                for (Propensity e = Propensity.Null + 1; e < Propensity.Max; e++)
+                {
+                    checkedListBox_propensity.Items.Add(GetFieldText(EnumHelper.GetName(e)), false);
+                }
+                checkedListBox_propensity.Height = checkedListBox_propensity.ItemHeight
+                                                   * checkedListBox_propensity.Items.Count;
+                checkedListBox_propensity.ItemCheck += OnPropensityChecked;
+
+                // Features
+                GetFieldText(groupBox_feature);
+                for (Feature e = Feature.Null + 1; e < Feature.Max; e++)
+                {
+                    checkedListBox_feature.Items.Add(GetFieldText(EnumHelper.GetName(e)), false);
+                }
+                checkedListBox_feature.Height = checkedListBox_feature.ItemHeight * checkedListBox_feature.Items.Count;
+                checkedListBox_feature.ItemCheck += OnFeatureChecked;
+            },
+            "Failed to initialize propensity/feature tab");
         }
 
         private void OnFeatureChecked(object sender, ItemCheckEventArgs e)

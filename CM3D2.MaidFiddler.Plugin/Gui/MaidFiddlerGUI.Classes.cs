@@ -11,45 +11,50 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitClassesTab()
         {
-            GetFieldText(tabPage_classes);
-
-            // Maid classes
-            GetFieldText(groupBox_maid_classes);
-            foreach (DataGridViewColumn column in dataGridView_maid_classes.Columns)
+            Debugger.Assert(
+            () =>
             {
-                column.HeaderText = GetFieldText(column.HeaderText);
-            }
-            MaidClassType[] classTypes = EnumHelper.GetValues<MaidClassType>();
-            for (int index = 0; index < classTypes.Length - 2; index++)
-                dataGridView_maid_classes.Rows.Add(
-                false,
-                GetFieldText($"Maid_{EnumHelper.GetName(classTypes[index])}"),
-                0,
-                0);
-            dataGridView_maid_classes.CellValueChanged += OnClassTabCellValueChanged;
-            dataGridView_maid_classes.CellContentClick += OnClassTabCellContentClick;
-            dataGridView_maid_classes.Height = dataGridView_maid_classes.ColumnHeadersHeight
-                                               + dataGridView_maid_classes.Rows[0].Height
-                                               * dataGridView_maid_classes.RowCount;
+                GetFieldText(tabPage_classes);
 
-            // Yotogi classes
-            GetFieldText(groupBox_yotogi_classes);
-            foreach (DataGridViewColumn column in dataGridView_yotogi_classes.Columns)
-            {
-                column.HeaderText = GetFieldText(column.HeaderText);
-            }
-            YotogiClassType[] yotogiClassTypes = EnumHelper.GetValues<YotogiClassType>();
-            for (int index = 0; index < yotogiClassTypes.Length - 2; index++)
-                dataGridView_yotogi_classes.Rows.Add(
-                false,
-                GetFieldText($"Yotogi_{EnumHelper.GetName(yotogiClassTypes[index])}"),
-                0,
-                0);
-            dataGridView_yotogi_classes.CellValueChanged += OnClassTabCellValueChanged;
-            dataGridView_yotogi_classes.CellContentClick += OnClassTabCellContentClick;
-            dataGridView_yotogi_classes.Height = dataGridView_yotogi_classes.ColumnHeadersHeight
-                                                 + dataGridView_yotogi_classes.Rows[0].Height
-                                                 * dataGridView_yotogi_classes.RowCount;
+                // Maid classes
+                GetFieldText(groupBox_maid_classes);
+                foreach (DataGridViewColumn column in dataGridView_maid_classes.Columns)
+                {
+                    column.HeaderText = GetFieldText(column.HeaderText);
+                }
+                MaidClassType[] classTypes = EnumHelper.GetValues<MaidClassType>();
+                for (int index = 0; index < classTypes.Length - 2; index++)
+                    dataGridView_maid_classes.Rows.Add(
+                    false,
+                    GetFieldText($"Maid_{EnumHelper.GetName(classTypes[index])}"),
+                    0,
+                    0);
+                dataGridView_maid_classes.CellValueChanged += OnClassTabCellValueChanged;
+                dataGridView_maid_classes.CellContentClick += OnClassTabCellContentClick;
+                dataGridView_maid_classes.Height = dataGridView_maid_classes.ColumnHeadersHeight
+                                                   + dataGridView_maid_classes.Rows[0].Height
+                                                   * dataGridView_maid_classes.RowCount;
+
+                // Yotogi classes
+                GetFieldText(groupBox_yotogi_classes);
+                foreach (DataGridViewColumn column in dataGridView_yotogi_classes.Columns)
+                {
+                    column.HeaderText = GetFieldText(column.HeaderText);
+                }
+                YotogiClassType[] yotogiClassTypes = EnumHelper.GetValues<YotogiClassType>();
+                for (int index = 0; index < yotogiClassTypes.Length - 2; index++)
+                    dataGridView_yotogi_classes.Rows.Add(
+                    false,
+                    GetFieldText($"Yotogi_{EnumHelper.GetName(yotogiClassTypes[index])}"),
+                    0,
+                    0);
+                dataGridView_yotogi_classes.CellValueChanged += OnClassTabCellValueChanged;
+                dataGridView_yotogi_classes.CellContentClick += OnClassTabCellContentClick;
+                dataGridView_yotogi_classes.Height = dataGridView_yotogi_classes.ColumnHeadersHeight
+                                                     + dataGridView_yotogi_classes.Rows[0].Height
+                                                     * dataGridView_yotogi_classes.RowCount;
+            },
+            "Failed to load maid classes tab");
         }
 
         private void OnClassTabCellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -181,11 +181,18 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             public void UpdateAll()
             {
-                foreach (KeyValuePair<PlayerChangeType, Action> updateMethod in updateMethods)
+                try
                 {
-                    gui.valueUpdatePlayer[updateMethod.Key] = true;
-                    updateMethod.Value();
-                    gui.valueUpdatePlayer[updateMethod.Key] = false;
+                    foreach (KeyValuePair<PlayerChangeType, Action> updateMethod in updateMethods)
+                    {
+                        gui.valueUpdatePlayer[updateMethod.Key] = true;
+                        updateMethod.Value();
+                        gui.valueUpdatePlayer[updateMethod.Key] = false;
+                    }
+                }
+                catch (Exception e)
+                {
+                    ErrorLog.ThrowErrorMessage(e, "Failed to update player values");
                 }
             }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Plugin.Utils;
 using Schedule;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
@@ -16,53 +17,59 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitWorkTab()
         {
-            GetFieldText(tabPage_work);
-            GetFieldText(groupBox_maid_current_work);
+            Debugger.Assert(
+            () =>
+            {
+                GetFieldText(tabPage_work);
+                GetFieldText(groupBox_maid_current_work);
 
-            // Noon
-            GetFieldText(groupBox_noon_work);
-            InitField(label_work_noon, comboBox_work_noon, MaidChangeType.NoonWorkId);
-            rowToNoonWorkID = new Dictionary<int, int>();
-            noonWorkIDToRow = new Dictionary<int, int>();
-            foreach (DataGridViewColumn column in dataGridView_noon_work_data.Columns)
-            {
-                column.HeaderText = GetFieldText(column.HeaderText);
-            }
-            foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
-            {
-                string name = GetFieldText(noonWork.Value.name);
-                int index = dataGridView_noon_work_data.Rows.Add(false, name, 0, (uint) 0);
-                comboBox_work_noon.Items.Add(name);
-                rowToNoonWorkID.Add(index, noonWork.Key);
-                noonWorkIDToRow.Add(noonWork.Key, index);
-            }
-            dataGridView_noon_work_data.CellContentClick += OnWorkCellContentClick;
-            dataGridView_noon_work_data.CellValueChanged += OnWorkCellValueChanged;
-            dataGridView_noon_work_data.Height = dataGridView_noon_work_data.ColumnHeadersHeight
-                                                 + dataGridView_noon_work_data.Rows[0].Height
-                                                 * dataGridView_noon_work_data.RowCount;
+                // Noon
+                GetFieldText(groupBox_noon_work);
+                InitField(label_work_noon, comboBox_work_noon, MaidChangeType.NoonWorkId);
+                rowToNoonWorkID = new Dictionary<int, int>();
+                noonWorkIDToRow = new Dictionary<int, int>();
+                foreach (DataGridViewColumn column in dataGridView_noon_work_data.Columns)
+                {
+                    column.HeaderText = GetFieldText(column.HeaderText);
+                }
+                foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
+                {
+                    string name = GetFieldText(noonWork.Value.name);
+                    int index = dataGridView_noon_work_data.Rows.Add(false, name, 0, (uint) 0);
+                    comboBox_work_noon.Items.Add(name);
+                    rowToNoonWorkID.Add(index, noonWork.Key);
+                    noonWorkIDToRow.Add(noonWork.Key, index);
+                }
+                dataGridView_noon_work_data.CellContentClick += OnWorkCellContentClick;
+                dataGridView_noon_work_data.CellValueChanged += OnWorkCellValueChanged;
+                dataGridView_noon_work_data.Height = dataGridView_noon_work_data.ColumnHeadersHeight
+                                                     + dataGridView_noon_work_data.Rows[0].Height
+                                                     * dataGridView_noon_work_data.RowCount;
 
-            // Night
-            GetFieldText(groupBox_night_work);
-            InitField(label_work_night, comboBox_work_night, MaidChangeType.NightWorkId);
-            nightWorkIDToRow = new Dictionary<int, int>();
-            rowToNightWorkID = new Dictionary<int, int>();
-            foreach (DataGridViewColumn column in dataGridView_night_work.Columns)
-            {
-                column.HeaderText = GetFieldText(column.HeaderText);
-            }
-            foreach (KeyValuePair<int, ScheduleCSVData.NightWork> nightWork in ScheduleCSVData.NightWorkData)
-            {
-                string name = GetFieldText(nightWork.Value.name);
-                int index = dataGridView_night_work.Rows.Add(false, name);
-                comboBox_work_night.Items.Add(GetFieldText(nightWork.Value.name));
-                nightWorkIDToRow.Add(nightWork.Value.id, index);
-                rowToNightWorkID.Add(index, nightWork.Value.id);
-            }
-            dataGridView_night_work.CellContentClick += OnNightWorkCellContentClick;
-            dataGridView_night_work.CellValueChanged += OnNightWorkCellChanged;
-            dataGridView_night_work.Height = dataGridView_night_work.ColumnHeadersHeight
-                                             + dataGridView_night_work.Rows[0].Height * dataGridView_night_work.RowCount;
+                // Night
+                GetFieldText(groupBox_night_work);
+                InitField(label_work_night, comboBox_work_night, MaidChangeType.NightWorkId);
+                nightWorkIDToRow = new Dictionary<int, int>();
+                rowToNightWorkID = new Dictionary<int, int>();
+                foreach (DataGridViewColumn column in dataGridView_night_work.Columns)
+                {
+                    column.HeaderText = GetFieldText(column.HeaderText);
+                }
+                foreach (KeyValuePair<int, ScheduleCSVData.NightWork> nightWork in ScheduleCSVData.NightWorkData)
+                {
+                    string name = GetFieldText(nightWork.Value.name);
+                    int index = dataGridView_night_work.Rows.Add(false, name);
+                    comboBox_work_night.Items.Add(GetFieldText(nightWork.Value.name));
+                    nightWorkIDToRow.Add(nightWork.Value.id, index);
+                    rowToNightWorkID.Add(index, nightWork.Value.id);
+                }
+                dataGridView_night_work.CellContentClick += OnNightWorkCellContentClick;
+                dataGridView_night_work.CellValueChanged += OnNightWorkCellChanged;
+                dataGridView_night_work.Height = dataGridView_night_work.ColumnHeadersHeight
+                                                 + dataGridView_night_work.Rows[0].Height
+                                                 * dataGridView_night_work.RowCount;
+            },
+            "Failed to initialize maid work tab");
         }
 
         private void OnNightWorkCellChanged(object sender, DataGridViewCellEventArgs e)

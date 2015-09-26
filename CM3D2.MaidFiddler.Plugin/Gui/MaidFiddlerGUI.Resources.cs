@@ -26,46 +26,56 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitText()
         {
-            Debugger.WriteLine("Loading texts");
-            translationDictionary = new Dictionary<string, string>();
-            string filePath = Path.Combine(MaidFiddler.DATA_PATH, TEXT_FILE_NAME);
-            Debugger.WriteLine(LogLevel.Info, $"File path: {filePath}");
-            if (File.Exists(filePath))
+            Debugger.Assert(
+            () =>
             {
-                using (TextReader reader = File.OpenText(filePath))
+                Debugger.WriteLine("Loading texts");
+                translationDictionary = new Dictionary<string, string>();
+                string filePath = Path.Combine(MaidFiddler.DATA_PATH, TEXT_FILE_NAME);
+                Debugger.WriteLine(LogLevel.Info, $"File path: {filePath}");
+                if (File.Exists(filePath))
                 {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
+                    using (TextReader reader = File.OpenText(filePath))
                     {
-                        line = line.Trim();
-                        if (line == string.Empty || line.StartsWith(";"))
-                            continue;
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
+                        {
+                            line = line.Trim();
+                            if (line == string.Empty || line.StartsWith(";"))
+                                continue;
 
-                        string[] parts = line.Split(new[] {'\t'}, StringSplitOptions.RemoveEmptyEntries);
-                        if (parts.Length != 2)
-                            continue;
+                            string[] parts = line.Split(new[] {'\t'}, StringSplitOptions.RemoveEmptyEntries);
+                            if (parts.Length != 2)
+                                continue;
 
-                        translationDictionary.Add(parts[0], parts[1]);
+                            translationDictionary.Add(parts[0], parts[1]);
+                        }
                     }
                 }
-            }
-            Debugger.WriteLine(LogLevel.Info, "Texts loaded");
+                Debugger.WriteLine(LogLevel.Info, "Texts loaded");
+            },
+            "Texts loaded");
         }
 
         private void InitThumbnail()
         {
-            Debugger.WriteLine("Loading generic maid thumbnail...");
-            string thumbPath = Path.Combine(MaidFiddler.DATA_PATH, @"MaidFiddler\Images\no_thumbnail.png");
-            Debugger.WriteLine($"Path: {thumbPath}");
-            try
+            Debugger.Assert(
+            () =>
             {
-                defaultThumb = File.Exists(thumbPath) ? Image.FromFile(thumbPath) : null;
-            }
-            catch (FileNotFoundException)
-            {
-                Debugger.WriteLine(LogLevel.Error, "Could not find the default thumbnail!");
-                defaultThumb = null;
-            }
+                Debugger.WriteLine("Loading generic maid thumbnail...");
+                string thumbPath = Path.Combine(MaidFiddler.DATA_PATH, @"MaidFiddler\Images\no_thumbnail.png");
+                Debugger.WriteLine($"Path: {thumbPath}");
+                try
+                {
+                    defaultThumb = File.Exists(thumbPath) ? Image.FromFile(thumbPath) : null;
+                }
+                catch (FileNotFoundException)
+                {
+                    Debugger.WriteLine(LogLevel.Error, "Could not find the default thumbnail!");
+                    defaultThumb = null;
+                }
+            },
+            "Failed to load the generic maid thumbnail");
         }
     }
 }

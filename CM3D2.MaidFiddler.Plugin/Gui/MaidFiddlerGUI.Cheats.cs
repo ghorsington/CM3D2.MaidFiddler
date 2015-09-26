@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using CM3D2.MaidFiddler.Plugin.Utils;
 using param;
 using Schedule;
 using Status = param_player.Status;
@@ -36,15 +37,20 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void SetForceEnableAll(object sender, EventArgs e)
         {
             MaidInfo maid = SelectedMaid;
-            foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
+            Debugger.Assert(
+            () =>
             {
-                maid.SetWorkValue(noonWork.Value.id, TABLE_COLUMN_HAS, true);
-            }
-            foreach (KeyValuePair<int, ScheduleCSVData.NightWork> nightWork in ScheduleCSVData.NightWorkData)
-            {
-                maid.SetNightWorkValue(nightWork.Value.id, true);
-                maid.UpdateNightWorkValue(nightWork.Value.id);
-            }
+                foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
+                {
+                    maid.SetWorkValue(noonWork.Value.id, TABLE_COLUMN_HAS, true);
+                }
+                foreach (KeyValuePair<int, ScheduleCSVData.NightWork> nightWork in ScheduleCSVData.NightWorkData)
+                {
+                    maid.SetNightWorkValue(nightWork.Value.id, true);
+                    maid.UpdateNightWorkValue(nightWork.Value.id);
+                }
+            },
+            "Failed to force all work enabled");
         }
 
         private void SetMaxAll(object sender, EventArgs e)

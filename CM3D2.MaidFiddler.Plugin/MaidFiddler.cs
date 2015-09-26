@@ -14,18 +14,19 @@ using Application = System.Windows.Forms.Application;
 
 namespace CM3D2.MaidFiddler.Plugin
 {
-    [PluginName("Maid Fiddler"), PluginVersion("BETA 0.4")]
+    [PluginName("Maid Fiddler"), PluginVersion(VERSION)]
     public class MaidFiddler : PluginBase, IDisposable
     {
+        public const string VERSION = "BETA 0.4a";
         private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.N};
-        private MaidFiddlerGUI gui;
-        private Thread guiThread;
+        public static MaidFiddlerGUI Gui { get; set; }
+        public static Thread GuiThread { get; set; }
         private KeyHelper keyCreateGUI;
         public static string DATA_PATH { get; private set; }
 
         public void Dispose()
         {
-            gui?.Dispose();
+            Gui?.Dispose();
         }
 
         public void Awake()
@@ -33,7 +34,7 @@ namespace CM3D2.MaidFiddler.Plugin
             DATA_PATH = DataPath;
             LoadConfig();
 
-            guiThread = new Thread(LoadGUI);
+            GuiThread = new Thread(LoadGUI);
 
             FiddlerHooks.SaveLoadedEvent += OnSaveLoaded;
             Debugger.WriteLine("MaidFiddler loaded!");
@@ -54,8 +55,8 @@ namespace CM3D2.MaidFiddler.Plugin
 
         public void LateUpdate()
         {
-            gui?.UpdateSelectedMaidValues();
-            gui?.UpdatePlayerValues();
+            Gui?.UpdateSelectedMaidValues();
+            Gui?.UpdatePlayerValues();
         }
 
         private void LoadConfig()
@@ -102,38 +103,39 @@ namespace CM3D2.MaidFiddler.Plugin
         {
             try
             {
-                if (gui == null)
-                    gui = new MaidFiddlerGUI();
+                if (Gui == null)
+                    Gui = new MaidFiddlerGUI();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(gui);
+                Application.Run(Gui);
             }
             catch (Exception e)
             {
-                ErrorLog.ThrowErrorMessage(e);
+                ErrorLog.ThrowErrorMessage(e, "Generic error");
             }
         }
 
         public void OnDestroy()
         {
-            if (gui == null)
+            if (Gui == null)
                 return;
             Debugger.WriteLine("Closing GUI...");
-            gui.Close(true);
+            Gui.Close(true);
+            Gui = null;
         }
 
         public void OnSaveLoaded(int saveNo)
         {
             Debugger.WriteLine(LogLevel.Info, $"Level loading! Save no. {saveNo}");
-            gui?.ReloadMaids();
-            gui?.ReloadPlayer();
+            Gui?.ReloadMaids();
+            Gui?.ReloadPlayer();
         }
 
         public void OpenGUI()
         {
-            if (guiThread.ThreadState != ThreadState.Running)
-                guiThread.Start();
+            if (GuiThread.ThreadState != ThreadState.Running)
+                GuiThread.Start();
             else
-                gui?.Show();
+                Gui?.Show();
         }
 
         public void Update()
@@ -142,7 +144,7 @@ namespace CM3D2.MaidFiddler.Plugin
 
             if (keyCreateGUI.HasBeenPressed())
                 OpenGUI();
-            gui?.UpdateMaids();
+            Gui?.UpdateMaids();
         }
     }
 }

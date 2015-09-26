@@ -16,33 +16,40 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             InitializeComponent();
 
-            Player = new PlayerInfo(this);
-            removeValueLimit = false;
-            InitText();
-            InitMenuText();
-            InitThumbnail();
-            InitMaidInfoTab();
-            InitMaidStatsTab();
-            InitClassesTab();
-            InitWorkTab();
-            InitYotogiSkillTab();
-            InitMiscTab();
-            InitGameTab();
-            ControlsEnabled = false;
-            Player.UpdateAll();
+            try
+            {
+                Player = new PlayerInfo(this);
+                removeValueLimit = false;
+                InitText();
+                InitMenuText();
+                InitThumbnail();
+                InitMaidInfoTab();
+                InitMaidStatsTab();
+                InitClassesTab();
+                InitWorkTab();
+                InitYotogiSkillTab();
+                InitMiscTab();
+                InitGameTab();
+                ControlsEnabled = false;
+                Player.UpdateAll();
 
-            InitMaids();
+                InitMaids();
 
-            playerValueUpdateQueue = new Dictionary<PlayerChangeType, Action>();
+                playerValueUpdateQueue = new Dictionary<PlayerChangeType, Action>();
 
-            FormClosing += OnFormClosing;
-            VisibleChanged += OnVisibleChanged;
+                FormClosing += OnFormClosing;
+                VisibleChanged += OnVisibleChanged;
 
-            listBox1.DrawMode = DrawMode.OwnerDrawFixed;
-            listBox1.DrawItem += DrawListBox;
-            listBox1.SelectedValueChanged += OnSelectedValueChanged;
+                listBox1.DrawMode = DrawMode.OwnerDrawFixed;
+                listBox1.DrawItem += DrawListBox;
+                listBox1.SelectedValueChanged += OnSelectedValueChanged;
 
-            InitHookCallbacks();
+                InitHookCallbacks();
+            }
+            catch (Exception e)
+            {
+                ErrorLog.ThrowErrorMessage(e, "Failed to initalize core components");
+            }
         }
 
         private void DrawListBox(object sender, DrawItemEventArgs e)
@@ -128,26 +135,36 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnVisibleChanged(object sender, EventArgs eventArgs)
         {
-            if (!initialized && Visible && IsHandleCreated)
+            Debugger.Assert(
+            () =>
             {
-                Debugger.WriteLine(LogLevel.Info, "No handle! Creating one...");
-                CreateControl();
-                initialized = true;
-            }
-            if (Visible)
-                UpdateMaids(GameMain.Instance.CharacterMgr.GetStockMaidList());
+                if (!initialized && Visible && IsHandleCreated)
+                {
+                    Debugger.WriteLine(LogLevel.Info, "No handle! Creating one...");
+                    CreateControl();
+                    initialized = true;
+                }
+                if (Visible)
+                    UpdateMaids(GameMain.Instance.CharacterMgr.GetStockMaidList());
+            },
+            $"Failed to {(Visible ? "restore" : "hide")} the Maid Fiddler window");
         }
 
         private void UpdateList()
         {
-            listBox1.ClearSelected();
-            ClearAllFields();
-            listBox1.BeginUpdate();
-            listBox1.Items.Clear();
-            if (loadedMaids.Count > 0)
-                listBox1.Items.AddRange(loadedMaids.Select(m => m.Value as object).ToArray());
-            listBox1.EndUpdate();
-            listBox1.Invalidate();
+            Debugger.Assert(
+            () =>
+            {
+                listBox1.ClearSelected();
+                ClearAllFields();
+                listBox1.BeginUpdate();
+                listBox1.Items.Clear();
+                if (loadedMaids.Count > 0)
+                    listBox1.Items.AddRange(loadedMaids.Select(m => m.Value as object).ToArray());
+                listBox1.EndUpdate();
+                listBox1.Invalidate();
+            },
+            "Failed to update maid GUI list");
         }
 
         private delegate void UpdateInternal(List<Maid> newMaids);

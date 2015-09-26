@@ -29,7 +29,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void ClearAllFields()
         {
-            ClearAllFields(tabControl1);
+            Debugger.Assert(() => { ClearAllFields(tabControl1); }, "Failed to clear all GUI fields");
         }
 
         private void ClearAllFields(Control c)
@@ -177,26 +177,35 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 MaidInfo maid = SelectedMaid;
                 if (maid == null)
                     return;
-                MaidChangeType type = uiControls[c];
-                Debugger.WriteLine(
-                LogLevel.Info,
-                $"Attempting to update value {type} to {value}. Allowed: {!valueUpdate[type]}.");
-                if (!valueUpdate[type])
-                    maid.SetValue(type, value);
-                valueUpdate[type] = false;
+                Debugger.Assert(
+                () =>
+                {
+                    MaidChangeType type = uiControls[c];
+                    Debugger.WriteLine(
+                    LogLevel.Info,
+                    $"Attempting to update value {type} to {value}. Allowed: {!valueUpdate[type]}.");
+                    if (!valueUpdate[type])
+                        maid.SetValue(type, value);
+                    valueUpdate[type] = false;
+                },
+                $"Failed to set maid value for {maid.Maid.Param.status.first_name} {maid.Maid.Param.status.last_name}");
             }
             else if (uiControlsPlayer.ContainsKey(c))
             {
                 if (Player == null)
                     return;
-
-                PlayerChangeType type = uiControlsPlayer[c];
-                Debugger.WriteLine(
-                LogLevel.Info,
-                $"Attempting to update player value {type} to {value}. Allowed: {!valueUpdatePlayer[type]}.");
-                if (!valueUpdatePlayer[type])
-                    Player.SetValue(type, value);
-                valueUpdatePlayer[type] = false;
+                Debugger.Assert(
+                () =>
+                {
+                    PlayerChangeType type = uiControlsPlayer[c];
+                    Debugger.WriteLine(
+                    LogLevel.Info,
+                    $"Attempting to update player value {type} to {value}. Allowed: {!valueUpdatePlayer[type]}.");
+                    if (!valueUpdatePlayer[type])
+                        Player.SetValue(type, value);
+                    valueUpdatePlayer[type] = false;
+                },
+                "Failed to set player value");
             }
         }
     }

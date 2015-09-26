@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using CM3D2.MaidFiddler.Plugin.Utils;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -12,24 +13,30 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitYotogiSkillTab()
         {
-            GetFieldText(tabPage_skills);
+            Debugger.Assert(
+            () =>
+            {
+                GetFieldText(tabPage_skills);
 
-            rowToSkillID = new Dictionary<int, int>();
-            skillIDToRow = new Dictionary<int, int>();
-            foreach (DataGridViewColumn column in dataGridView_skill_data.Columns)
-            {
-                column.HeaderText = GetFieldText(column.HeaderText);
-            }
-            foreach (KeyValuePair<int, Yotogi.SkillData> dataDic in Yotogi.skill_data_list.SelectMany(e => e))
-            {
-                int row = dataGridView_skill_data.Rows.Add(false, GetFieldText(dataDic.Value.name), 0, 0, (uint) 0);
-                rowToSkillID.Add(row, dataDic.Key);
-                skillIDToRow.Add(dataDic.Key, row);
-            }
-            dataGridView_skill_data.CellContentClick += OnSkillCellContentClick;
-            dataGridView_skill_data.CellValueChanged += OnSkillCellValueChanged;
-            dataGridView_skill_data.Height = dataGridView_skill_data.ColumnHeadersHeight
-                                             + dataGridView_skill_data.Rows[0].Height * dataGridView_skill_data.RowCount;
+                rowToSkillID = new Dictionary<int, int>();
+                skillIDToRow = new Dictionary<int, int>();
+                foreach (DataGridViewColumn column in dataGridView_skill_data.Columns)
+                {
+                    column.HeaderText = GetFieldText(column.HeaderText);
+                }
+                foreach (KeyValuePair<int, Yotogi.SkillData> dataDic in Yotogi.skill_data_list.SelectMany(e => e))
+                {
+                    int row = dataGridView_skill_data.Rows.Add(false, GetFieldText(dataDic.Value.name), 0, 0, (uint) 0);
+                    rowToSkillID.Add(row, dataDic.Key);
+                    skillIDToRow.Add(dataDic.Key, row);
+                }
+                dataGridView_skill_data.CellContentClick += OnSkillCellContentClick;
+                dataGridView_skill_data.CellValueChanged += OnSkillCellValueChanged;
+                dataGridView_skill_data.Height = dataGridView_skill_data.ColumnHeadersHeight
+                                                 + dataGridView_skill_data.Rows[0].Height
+                                                 * dataGridView_skill_data.RowCount;
+            },
+            "Failed to initalize yotogi skill tab");
         }
 
         private void OnSkillCellContentClick(object sender, DataGridViewCellEventArgs e)
