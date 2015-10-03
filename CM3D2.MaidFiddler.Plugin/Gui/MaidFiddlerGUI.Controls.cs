@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Utils;
+using CBox = System.Windows.Forms.ComboBox;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -50,7 +51,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     checkBox.Checked = false;
                 else
                 {
-                    System.Windows.Forms.ComboBox comboBox = c as System.Windows.Forms.ComboBox;
+                    CBox comboBox = c as CBox;
                     if (comboBox != null)
                         comboBox.SelectedIndex = -1;
                     else
@@ -84,10 +85,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
             else
             {
-                System.Windows.Forms.ComboBox box = control as System.Windows.Forms.ComboBox;
+                CBox box = control as CBox;
                 if (box != null)
                 {
-                    System.Windows.Forms.ComboBox b = box;
+                    CBox b = box;
                     b.SelectedIndexChanged += OnSelectedIndexChanged;
                 }
                 else
@@ -151,7 +152,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            System.Windows.Forms.ComboBox b = (System.Windows.Forms.ComboBox) sender;
+            CBox b = (CBox) sender;
             if (b.SelectedIndex >= 0)
                 UpdateGameValue(b, b.SelectedIndex);
         }

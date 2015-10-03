@@ -33,19 +33,20 @@
   <ItemGroup>
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\CM3D2.TextClipboard\CM3D2.TextClipboard\lib\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\Mono.Cecil.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Cecil.Inject">
+      <HintPath>..\..\Cecil.Inject\Cecil.Inject\bin\Release\Mono.Cecil.Inject.dll</HintPath>
+    </Reference>
     <Reference Include="ReiPatcher">
       <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\ReiPatcher.exe</HintPath>
     </Reference>
-    <Reference Include="ReiPatcherPlus">
-      <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\ReiPatcherPlus.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x86_Data\Managed\UnityEngine.dll</HintPath>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
