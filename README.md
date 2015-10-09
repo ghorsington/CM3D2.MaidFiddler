@@ -6,7 +6,8 @@ The tool uses in-game API, ReiPatcher and UnityInjector to hook itself into game
 To sucessfully build Maid Fiddler from source, one neeeds the following libraries:
 * ReiPatcher.exe  (Found in ReiPatcher)
 * UnityInjector.dll (Found in UnityInjector)
-* ReiPatcherPlus.dll  (Found in ReiPatcherPlus 2.2)
+* Mono.Cecil.dll  (Found in ReiPatcher or from its project on GitHub)
+* Mono.Cecil.Inject.dll (Found in its own GitHub project)
 * ExIni.exe (Found in ReiPatcher)
 * Assembly-CSharp.dll (Found in CM3D2's own assemblies)
 
