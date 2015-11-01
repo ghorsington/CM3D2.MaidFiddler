@@ -728,7 +728,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Debugger.Assert(
                 () =>
                 {
-                    for (MaidClassType e = MaidClassType.Novice; e < MaidClassType.EnabledMAX; e++)
+                    for (MaidClassType e = 0; e < EnumHelper.MaxMaidClassType; e++)
                         UpdateField(MaidChangeType.MaidClassType, (int) e);
                 },
                 "Failed to update maid class type");
@@ -925,7 +925,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Debugger.Assert(
                 () =>
                 {
-                    for (YotogiClassType e = 0; e < YotogiClassType.EnabledMAX; e++)
+                    for (YotogiClassType e = 0; e < EnumHelper.MaxYotogiClass; e++)
                         UpdateField(MaidChangeType.YotogiClassType, (int) e);
                 },
                 "Failed to update maid yotogi class");
@@ -959,7 +959,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     YotogiClassType yotogiClass = (YotogiClassType) id;
                     Debugger.WriteLine($"Updating yotogi class type {EnumHelper.GetName(yotogiClass)}");
-                    if (yotogiClass >= YotogiClassType.EnabledMAX)
+                    if (yotogiClass >= EnumHelper.MaxYotogiClass)
                         return;
 
                     gui.updateYotogiClassField = true;
@@ -985,7 +985,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     MaidClassType maidClass = (MaidClassType) id;
                     Debugger.WriteLine($"Updating maid class type {EnumHelper.GetName(maidClass)}");
-                    if (maidClass >= MaidClassType.EnabledMAX)
+                    if (maidClass >= EnumHelper.MaxMaidClassType)
                         return;
 
                     gui.updateMaidClassField = true;

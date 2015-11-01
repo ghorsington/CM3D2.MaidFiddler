@@ -6,13 +6,18 @@ using CM3D2.MaidFiddler.Plugin.Gui;
 
 namespace CM3D2.MaidFiddler.Plugin.Utils
 {
-    public class ErrorLog
+    public static class ErrorLog
     {
+        private static bool errorThrown;
+
         public static void ThrowErrorMessage(Exception e, string action)
         {
+            if (errorThrown)
+                return;
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("=== Maid Fiddler DUMP ===").AppendLine();
-            sb.AppendLine($"Version: {MaidFiddler.VERSION}");
+            sb.AppendLine($"Game version: {Misc.GAME_VERSION}");
+            sb.AppendLine($"Mod version: {MaidFiddler.VERSION}");
             sb.AppendLine($"Info: {action}");
             sb.AppendLine($"Error message: {e}");
             if (e.InnerException != null)
@@ -50,6 +55,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             MaidFiddlerGUI guiLoc = MaidFiddler.Gui;
             MaidFiddler.Gui = null;
             guiLoc?.Close(true);
+            errorThrown = true;
         }
     }
 }

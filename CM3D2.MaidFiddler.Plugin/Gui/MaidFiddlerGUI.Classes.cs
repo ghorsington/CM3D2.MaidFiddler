@@ -22,11 +22,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     column.HeaderText = GetFieldText(column.HeaderText);
                 }
-                MaidClassType[] classTypes = EnumHelper.GetValues<MaidClassType>();
-                for (int index = 0; index < classTypes.Length - 2; index++)
+                for (MaidClassType e = 0; e < EnumHelper.MaxMaidClassType; e++)
                     dataGridView_maid_classes.Rows.Add(
                     false,
-                    GetFieldText($"Maid_{EnumHelper.GetName(classTypes[index])}"),
+                    GetFieldText($"Maid_{EnumHelper.GetName(e)}"),
                     0,
                     0);
                 dataGridView_maid_classes.CellValueChanged += OnClassTabCellValueChanged;
@@ -41,7 +40,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     column.HeaderText = GetFieldText(column.HeaderText);
                 }
-                for (YotogiClassType e = 0; e < YotogiClassType.EnabledMAX; e++)
+                for (YotogiClassType e = 0; e < EnumHelper.MaxYotogiClass; e++)
                     dataGridView_yotogi_classes.Rows.Add(false, GetFieldText($"Yotogi_{EnumHelper.GetName(e)}"), 0, 0);
                 dataGridView_yotogi_classes.CellValueChanged += OnClassTabCellValueChanged;
                 dataGridView_yotogi_classes.CellContentClick += OnClassTabCellContentClick;

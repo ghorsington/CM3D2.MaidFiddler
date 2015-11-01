@@ -38,8 +38,9 @@
     <Reference Include="Mono.Cecil">
       <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\Mono.Cecil.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil.Inject">
-      <HintPath>..\..\Cecil.Inject\Cecil.Inject\bin\Release\Mono.Cecil.Inject.dll</HintPath>
+    <Reference Include="Mono.Cecil.Inject, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Mono.Cecil.Inject\Mono.Cecil.Inject\bin\Release\Mono.Cecil.Inject.dll</HintPath>
     </Reference>
     <Reference Include="ReiPatcher">
       <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\ReiPatcher.exe</HintPath>

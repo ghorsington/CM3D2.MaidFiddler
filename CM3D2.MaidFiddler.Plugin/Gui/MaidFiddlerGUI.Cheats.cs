@@ -195,7 +195,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void UnlockAllMaidClasses(object sender, EventArgs e)
         {
             MaidInfo maid = SelectedMaid;
-            for (MaidClassType i = 0; i < MaidClassType.EnabledMAX; i++)
+            for (MaidClassType i = 0; i < EnumHelper.MaxMaidClassType; i++)
             {
                 maid.SetValue(i, TABLE_COLUMN_HAS, true);
             }
@@ -228,7 +228,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void UnlockAllYotogiClasses(object sender, EventArgs e)
         {
             MaidInfo maid = SelectedMaid;
-            for (YotogiClassType i = 0; i < YotogiClassType.EnabledMAX; i++)
+            for (YotogiClassType i = 0; i < EnumHelper.MaxYotogiClass; i++)
             {
                 maid.SetValue(i, TABLE_COLUMN_HAS, true);
             }

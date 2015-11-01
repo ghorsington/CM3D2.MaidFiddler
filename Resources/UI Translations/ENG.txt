@@ -131,6 +131,7 @@ Yotogi_Service					Service
 Yotogi_Escort					Escort
 Yotogi_Soap						Soap
 Yotogi_Sweet					Sweet
+Yotogi_Party					Party
 
 ; Params			
 Care							Care
@@ -218,58 +219,99 @@ BonusTeachRate					Teaching rate
 ; Yotogi skills
 ;Virgin	
 処女喪失セックス					Virgin Sex
+処女喪失セックスChu-B				[Chu-B] Virgin Sex
 アナル処女喪失セックス				Anal Virgin Sex
+アナル処女喪失セックスChu-B			[Chu-B] Anal Virgin Sex
 ;Pleasure	
 愛撫							Caress
+愛撫Chu-B						[Chu-B] Caress
 バイブ責め						Vibrator
+バイブ責めChu-B					[Chu-B] Vibrator
 アナルバイブ責め					Anal Vibrator
+アナルバイブ責めChu-B				[Chu-B] Anal Vibrator
 セックス正常位						Missionary Sex
+セックス正常位Chu-B				[Chu-B] Missionary Sex
 アナルセックス正常位					Missionary Anal Sex
+アナルセックス正常位Chu-B			[Chu-B] Missionary Anal Sex
 セックス後背位						Doggy Style Sex
+セックス後背位Chu-B				[Chu-B] Doggy Style Sex
 アナルセックス後背位					Doggy Style Anal Sex
+アナルセックス後背位Chu-B			[Chu-B] Doggy Style Anal Sex
 セックス騎乗位						Cowgirl Sex
+セックス騎乗位Chu-B				[Chu-B] Cowgirl Sex
 アナルセックス騎乗位					Cowgirl Anal Sex
+アナルセックス騎乗位Chu-B			[Chu-B] Cowgirl Anal Sex
 言葉責め愛撫						Verbal Abuse Caress
 グラインドセックス騎乗位				Grinding Cowgirl Sex
+グラインドセックス騎乗位Chu-B			[Chu-B] Grinding Cowgirl Sex
 グラインドアナルセックス騎乗位			Grinding Cowgirl Anal Sex
+グラインドアナルセックス騎乗位Chu-B		[Chu-B] Grinding Cowgirl Anal Sex
 太バイブ責め						Thick Vibrator
+太バイブ責めChu-B					[Chu-B] Thick Vibrator
 バイブ責めアナルセックス正常位			Anal Missionary Sex and Vibrator
+バイブ責めアナルセックス正常位Chu-B	[Chu-B] Anal Missionary Sex and Vibrator
 アナルバイブ責めセックス後背位			Doggy Style Sex and Anal Vibrator
+アナルバイブ責めセックス後背位Chu-B	[Chu-B] Doggy Style Sex and Anal Vibrator
 だいしゅきホールドセックス正常位		Leg Locked Missionary Sex
+だいしゅきホールドセックス正常位Chu-B	[Chu-B] Leg Locked Missionary Sex
 だいしゅきホールドアナルセックス正常位	Leg Locked Missionary Anal Sex
+だいしゅきホールドアナル正常位Chu-B	[Chu-B] Leg Locked Missionary Anal Sex
 抱きつきセックス後背位				Hugging Doggy Style Sex
+抱きつきセックス後背位Chu-B			[Chu-B] Hugging Doggy Style Sex
 抱きつきアナルセックス後背位			Hugging Doggy Style Anal Sex
+抱きつきアナルセックス後背位Chu-B		[Chu-B] Hugging Doggy Style Anal Sex
 だいしゅきホールド					Loving Hold
-;Pervert	
+;Pervert
 かっこいいポーズ						Cool Pose
 かわいいポーズ						Cute Pose
 オナニー							Masturbation
+オナニーChu-B						[Chu-B] Masturbation
 アナルオナニー						Anal Masturbation
+アナルオナニーChu-B					[Chu-B] Anal Masturbation
 Ｈなポーズ							Sexy Pose
 手コキオナニー						Handjob and Masturbation
+手コキオナニーChu-B					[Chu-B] Handjob and Masturbation
 フェラオナニー						Fellatio and Masturbation
+フェラオナニーChu-B					[Chu-B] Fellatio and Masturbation
 変態ポーズプレイ					Perverted Pose Play
 バイブオナニー						Vibrator Masturbation
+バイブオナニーChu-B					[Chu-B] Vibrator Masturbation
 アナルバイブオナニー					Anal Vibrator Masturbation
+アナルバイブオナニーChu-B				[Chu-B] Anal Vibrator Masturbation
 太バイブオナニー					Thick Vibrator Masturbation
+太バイブオナニーChu-B				[Chu-B] Thick Vibrator Masturbation
 露出プレイ						Exhibitionism
 犬プレイ							Pet Play
 露出セックス背面立位				Exhibitionist Rear Standing Sex
+露出セックス背面立位Chu-B			[Chu-B] Exhibitionist Rear Standing Sex
 露出アナルセックス背面立位			Exhibitionist Anal Rear Standing Sex
+露出アナルセックス背面立位Chu-B		[Chu-B] Exhibitionist Anal Rear Standing Sex
 実況オナニー						Reporting Masturbation
-;Service	
+実況オナニーChu-B					[Chu-B] Reporting Masturbation
+;Service
 手コキ							Handjob
+手コキChu-B						[Chu-B] Handjob
 フェラチオ							Fellatio
+フェラチオChu-B						[Chu-B] Fellatio
 パイズリ							Paizuri
+パイズリChu-B						[Chu-B] Paizuri
 パイズリフェラ						Paizuri and Fellatio
+パイズリフェラChu-B					[Chu-B] Paizuri and Fellatio
 玉舐めフェラチオ					Ball Licking Fellatio
 セルフイラマ						Self Irrumatio
+セルフイラマChu-B					[Chu-B] Self Irrumatio
 シックスナイン						Sixty Nine
+シックスナインChu-B					[Chu-B] Sixty Nine
 スケベ椅子フェラ					Stool Fellatio
+スケベ椅子フェラChu-B				[Chu-B] Stool Fellatio
 スケベ椅子セックス					Stool Sex
+スケベ椅子セックスChu-B				[Chu-B] Stool Sex
 スケベ椅子アナルセックス				Stool Anal Sex
+スケベ椅子アナルセックスChu-B			[Chu-B] Stool Anal Sex
 MP全身洗い						Mat Play Body Wash
+MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 ディープスロート						Deepthroat
+ディープスロートChu-B				[Chu-B] Deepthroat
 高級MP全身洗い					Luxurious Mat Play Body Wash
 全身舐め奉仕						Body Licking
 ;Scolding	
@@ -279,15 +321,23 @@ MP全身洗い						Mat Play Body Wash
 詰られアナル騎乗位					Scolding Anal Cowgirl
 ;Bondage	
 拘束愛撫							Restrained Caress
+拘束愛撫Chu-B					[Chu-B] Restrained Caress
 イラマチオ							Irrumatio
+イラマチオChu-B					[Chu-B] Irrumatio
 拘束セックス						Restrained Sex
+拘束セックスChu-B					[Chu-B] Restrained Sex
 拘束アナルセックス					Restrained Anal Sex
+拘束アナルセックスChu-B				[Chu-B] Restrained Anal Sex
 首絞めセックス正常位				Choking Missionary Sex
+首絞めセックス正常位Chu-B			[Chu-B] Choking Missionary Sex
 首絞めアナルセックス正常位			Choking Missionary Anal Sex
+首絞めアナルセックス正常位Chu-B		[Chu-B] Choking Missionary Anal Sex
 三角木馬拘束						Restrained Wooden Horse
 吊るし拘束						Restrained Hanging
 ギロチン拘束セックス					Restrained Guillotine Sex
+ギロチン拘束セックスChu-B			[Chu-B] Restrained Guillotine Sex	
 ギロチン拘束アナルセックス				Restrained Guillotine Anal Sex
+ギロチン拘束アナルセックスChu-B		[Chu-B] Restrained Guillotine Anal Sex
 ハード吊るし拘束					Restrained Hanging (Hard)
 ハード三角木馬拘束				Restrained Wooden Horse (Hard)
 ;Swapping	
@@ -328,7 +378,13 @@ MP全身洗い						Mat Play Body Wash
 お仕置きハード吊るし拘束				Punishment Restrained Hanging (Hard)
 お仕置きハード三角木馬拘束			Punishment Restrained Wooden Horse (Hard)
 お仕置きセックス後背位				Punishment Doggy Style Sex
+お仕置きセックス後背位Chu-B			[Chu-B] Punishment Doggy Style Sex
 お仕置きアナルセックス後背位			Punishment Doggy Style Anal Sex
+お仕置きアナルセックス後背位Chu-B		[Chu-B] Punishment Doggy Style Anal Sex
+
+; Additional
+オナホコキ							Onahole play
+足コキ							Footjob
 
 ; Propensity
 M女								Masochist
