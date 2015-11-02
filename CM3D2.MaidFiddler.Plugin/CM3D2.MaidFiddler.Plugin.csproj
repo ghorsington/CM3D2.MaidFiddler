@@ -45,8 +45,10 @@
       <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\ExIni.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\UnityEngine.dll</HintPath>
@@ -57,6 +59,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gui\TextDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\TextDialog.Designer.cs">
+      <DependentUpon>TextDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\CollectionUtils.cs" />
     <Compile Include="Utils\Debug.cs" />
     <Compile Include="Utils\EnumHelper.cs" />
@@ -129,6 +137,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Gui\MaidFiddlerGUI.resx">
       <DependentUpon>MaidFiddlerGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\TextDialog.resx">
+      <DependentUpon>TextDialog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

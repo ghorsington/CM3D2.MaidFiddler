@@ -23,11 +23,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     column.HeaderText = GetFieldText(column.HeaderText);
                 }
                 for (MaidClassType e = 0; e < EnumHelper.MaxMaidClassType; e++)
-                    dataGridView_maid_classes.Rows.Add(
-                    false,
-                    GetFieldText($"Maid_{EnumHelper.GetName(e)}"),
-                    0,
-                    0);
+                    dataGridView_maid_classes.Rows.Add(false, GetFieldText($"Maid_{EnumHelper.GetName(e)}"), 0, 0);
                 dataGridView_maid_classes.CellValueChanged += OnClassTabCellValueChanged;
                 dataGridView_maid_classes.CellContentClick += OnClassTabCellContentClick;
                 dataGridView_maid_classes.Height = dataGridView_maid_classes.ColumnHeadersHeight

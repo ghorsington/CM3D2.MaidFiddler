@@ -69,6 +69,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                                 cell.Value = 0;
                             else if (cell.Value is long)
                                 cell.Value = 0L;
+                            else if (cell.Value is uint)
+                                cell.Value = (uint) 0;
                         }
                         clearingTables = false;
                     }

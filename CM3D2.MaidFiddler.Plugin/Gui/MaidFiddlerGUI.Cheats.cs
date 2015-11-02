@@ -151,7 +151,36 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 maid.Maid.Param.SetNewGetSkill(dataDic.Value.id);
                 maid.Maid.Param.AddSkillExp(dataDic.Value.id, 10000);
+                maid.Maid.Param.status_.skill_data[dataDic.Value.id].play_count = 1;
                 maid.UpdateSkillData(dataDic.Value.id);
+            }
+        }
+
+        private void SetYotogiUsedTimes(object sender, EventArgs e)
+        {
+            uint v;
+            TextDialog td = new TextDialog(
+            GetFieldText("GUI_YOTOGI_TIMES_TITLE"),
+            GetFieldText("GUI_YOTOGI_TIMES_PROMPT"),
+            "0",
+            s => uint.TryParse(s, out v),
+            GetFieldText("OK"),
+            GetFieldText("CANCEL")) {StartPosition = FormStartPosition.CenterParent};
+            DialogResult dr = td.ShowDialog(this);
+            Debugger.WriteLine(LogLevel.Info, $"Prompt result: {EnumHelper.GetName(dr)}, {td.Input}");
+
+            if (dr != DialogResult.OK)
+                return;
+            v = uint.Parse(td.Input);
+            td.Dispose();
+
+            MaidInfo maid = SelectedMaid;
+
+            foreach (KeyValuePair<int, Yotogi.SkillData> skill in
+            Yotogi.skill_data_list.SelectMany(ee => ee).Where(ss => maid.Maid.Param.status.IsGetSkill(ss.Key)))
+            {
+                maid.Maid.Param.status_.skill_data[skill.Key].play_count = v;
+                maid.UpdateSkillData(skill.Value.id);
             }
         }
 

@@ -159,6 +159,8 @@
             this.textBox_days = new System.Windows.Forms.TextBox();
             this.label_shop_use_money = new System.Windows.Forms.Label();
             this.textBox_shop_use_money = new System.Windows.Forms.TextBox();
+            this.label_maid_points_base = new System.Windows.Forms.Label();
+            this.textBox_maid_points_base = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cheatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cleanLoanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -189,8 +191,7 @@
             this.mENUMAIDLOCKALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMAIDUNLOCKALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maidFiddlerGUIBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label_maid_points_base = new System.Windows.Forms.Label();
-            this.textBox_maid_points_base = new System.Windows.Forms.TextBox();
+            this.mENUMAIDSETYOTOGITIMESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_info.SuspendLayout();
@@ -1971,6 +1972,29 @@
             this.textBox_shop_use_money.Size = new System.Drawing.Size(100, 20);
             this.textBox_shop_use_money.TabIndex = 42;
             // 
+            // label_maid_points_base
+            // 
+            this.label_maid_points_base.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label_maid_points_base.AutoSize = true;
+            this.label_maid_points_base.Location = new System.Drawing.Point(204, 141);
+            this.label_maid_points_base.Name = "label_maid_points_base";
+            this.label_maid_points_base.Size = new System.Drawing.Size(83, 20);
+            this.label_maid_points_base.TabIndex = 43;
+            this.label_maid_points_base.Text = "BaseMaidPoints";
+            this.label_maid_points_base.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox_maid_points_base
+            // 
+            this.textBox_maid_points_base.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_maid_points_base.Location = new System.Drawing.Point(290, 141);
+            this.textBox_maid_points_base.Margin = new System.Windows.Forms.Padding(0);
+            this.textBox_maid_points_base.Name = "textBox_maid_points_base";
+            this.textBox_maid_points_base.Size = new System.Drawing.Size(100, 20);
+            this.textBox_maid_points_base.TabIndex = 44;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -2076,7 +2100,8 @@
             this.setMaxValuesToolStripMenuItem,
             this.mENUMAIDFORCEENABLEToolStripMenuItem,
             this.mENUMAIDLOCKALLToolStripMenuItem,
-            this.mENUMAIDUNLOCKALLToolStripMenuItem});
+            this.mENUMAIDUNLOCKALLToolStripMenuItem,
+            this.mENUMAIDSETYOTOGITIMESToolStripMenuItem});
             this.maidToolStripMenuItem.Name = "maidToolStripMenuItem";
             this.maidToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
             this.maidToolStripMenuItem.Text = "MENU_MAID";
@@ -2089,7 +2114,7 @@
             this.nightClassesToolStripMenuItem,
             this.allToolStripMenuItem1});
             this.unlockToolStripMenuItem.Name = "unlockToolStripMenuItem";
-            this.unlockToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.unlockToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.unlockToolStripMenuItem.Text = "MENU_MAID_UNLOCK";
             // 
             // sexSkillsToolStripMenuItem
@@ -2131,7 +2156,7 @@
             this.sexualAddictionsToolStripMenuItem,
             this.allToolStripMenuItem});
             this.setMaxValuesToolStripMenuItem.Name = "setMaxValuesToolStripMenuItem";
-            this.setMaxValuesToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.setMaxValuesToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.setMaxValuesToolStripMenuItem.Text = "MENU_MAID_MAX";
             // 
             // statsToolStripMenuItem
@@ -2186,46 +2211,30 @@
             // mENUMAIDFORCEENABLEToolStripMenuItem
             // 
             this.mENUMAIDFORCEENABLEToolStripMenuItem.Name = "mENUMAIDFORCEENABLEToolStripMenuItem";
-            this.mENUMAIDFORCEENABLEToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.mENUMAIDFORCEENABLEToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.mENUMAIDFORCEENABLEToolStripMenuItem.Text = "MENU_MAID_FORCE_ENABLE";
             this.mENUMAIDFORCEENABLEToolStripMenuItem.Click += new System.EventHandler(this.SetForceEnableAll);
             // 
             // mENUMAIDLOCKALLToolStripMenuItem
             // 
             this.mENUMAIDLOCKALLToolStripMenuItem.Name = "mENUMAIDLOCKALLToolStripMenuItem";
-            this.mENUMAIDLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.mENUMAIDLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.mENUMAIDLOCKALLToolStripMenuItem.Text = "MENU_MAID_LOCK_ALL";
             this.mENUMAIDLOCKALLToolStripMenuItem.Click += new System.EventHandler(this.LockAllValues);
             // 
             // mENUMAIDUNLOCKALLToolStripMenuItem
             // 
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Name = "mENUMAIDUNLOCKALLToolStripMenuItem";
-            this.mENUMAIDUNLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.mENUMAIDUNLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Text = "MENU_MAID_UNLOCK_ALL";
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Click += new System.EventHandler(this.UnlockAllValues);
             // 
-            // label_maid_points_base
+            // mENUMAIDSETYOTOGITIMESToolStripMenuItem
             // 
-            this.label_maid_points_base.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_maid_points_base.AutoSize = true;
-            this.label_maid_points_base.Location = new System.Drawing.Point(204, 141);
-            this.label_maid_points_base.Name = "label_maid_points_base";
-            this.label_maid_points_base.Size = new System.Drawing.Size(83, 20);
-            this.label_maid_points_base.TabIndex = 43;
-            this.label_maid_points_base.Text = "BaseMaidPoints";
-            this.label_maid_points_base.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox_maid_points_base
-            // 
-            this.textBox_maid_points_base.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_maid_points_base.Location = new System.Drawing.Point(290, 141);
-            this.textBox_maid_points_base.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox_maid_points_base.Name = "textBox_maid_points_base";
-            this.textBox_maid_points_base.Size = new System.Drawing.Size(100, 20);
-            this.textBox_maid_points_base.TabIndex = 44;
+            this.mENUMAIDSETYOTOGITIMESToolStripMenuItem.Name = "mENUMAIDSETYOTOGITIMESToolStripMenuItem";
+            this.mENUMAIDSETYOTOGITIMESToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.mENUMAIDSETYOTOGITIMESToolStripMenuItem.Text = "MENU_MAID_SET_YOTOGI_TIMES";
+            this.mENUMAIDSETYOTOGITIMESToolStripMenuItem.Click += new System.EventHandler(this.SetYotogiUsedTimes);
             // 
             // MaidFiddlerGUI
             // 
@@ -2461,5 +2470,6 @@
         private System.Windows.Forms.ToolStripMenuItem mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem;
         private System.Windows.Forms.Label label_maid_points_base;
         private System.Windows.Forms.TextBox textBox_maid_points_base;
+        private System.Windows.Forms.ToolStripMenuItem mENUMAIDSETYOTOGITIMESToolStripMenuItem;
     }
 }

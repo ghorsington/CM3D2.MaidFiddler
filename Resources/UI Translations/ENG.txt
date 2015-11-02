@@ -442,6 +442,7 @@ MENU_MAID_MAX					Unlock and set to maximum
 MENU_MAID_FORCE_ENABLE			Force all work enabled
 MENU_MAID_LOCK_ALL				Lock all stats
 MENU_MAID_UNLOCK_ALL			Unlock all stats
+MENU_MAID_SET_YOTOGI_TIMES		Set enabled yotogi skills play count to...
 
 ; Current maid unlock
 UNLOCK_SKILLS					Yotogi skills
@@ -457,3 +458,9 @@ MAX_WORK_PLAY_COUNT				Noon work play count
 MAX_FEATURE						Traits
 MAX_PROPENSITY					Fetishes
 MAX_ALL							All of the above
+
+; GUI and misc windows
+GUI_YOTOGI_TIMES_TITLE			Set enabled yotogi skills play count to...
+GUI_YOTOGI_TIMES_PROMPT			Update play count for all enabled yotogi skills. Specify the number to which to set the play count.
+OK								Ok
+CANCEL							Cancel

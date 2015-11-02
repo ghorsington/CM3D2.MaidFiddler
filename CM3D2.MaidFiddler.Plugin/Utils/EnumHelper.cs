@@ -9,7 +9,6 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         public static readonly MaidChangeType[] MaidChangeTypes;
         public static readonly MaidClassType[] MaidClasses;
         public static readonly YotogiClassType[] YotogiClasses;
-
         public static YotogiClassType MaxYotogiClass;
         public static MaidClassType MaxMaidClassType;
 
