@@ -1,4 +1,8 @@
 ﻿; Maid Fiddler GUI Texts
+;
+; Most of the translations are not by me! Thank the HF Translation team and
+; some members of the HF community! (Algester, etc.)
+;
 ; Syntax:
 ; <GUI Label>	<Translation> (NOTE: Separate with tabs, not spaces!)
 ; Comment lines with ";"
@@ -383,8 +387,16 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 お仕置きアナルセックス後背位Chu-B		[Chu-B] Punishment Doggy Style Anal Sex
 
 ; Additional
-オナホコキ							Onahole play
+オナホコキ							Onahole Play
 足コキ							Footjob
+セックス対面座位					Lotus
+アナルセックス対面座位				Anal Lotus
+セックス背面駅弁					Victory
+アナルセックス背面駅弁				Anal Victory
+セックス側位						Leg Glider
+アナルセックス側位					Anal Leg Glider
+まんぐり返しセックス					Piledriver
+まんぐり返しアナルセックス				Anal Piledriver
 
 ; Propensity
 M女								Masochist
