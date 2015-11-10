@@ -34,6 +34,44 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
         }
 
+        private void SetClassLevel(object sender, EventArgs e)
+        {
+            Debugger.WriteLine(LogLevel.Info, "Prompting class level set.");
+            uint v;
+            TextDialog td = new TextDialog(
+            GetFieldText("GUI_CLASS_LVL_TITLE"),
+            GetFieldText("GUI_CLASS_LVL_PROMPT"),
+            "0",
+            s => uint.TryParse(s, out v) && v <= 10,
+            GetFieldText("OK"),
+            GetFieldText("CANCEL")) {StartPosition = FormStartPosition.CenterParent};
+            DialogResult dr = td.ShowDialog(this);
+            Debugger.WriteLine(LogLevel.Info, $"Prompt result: {EnumHelper.GetName(dr)}, {td.Input}");
+
+            if (dr != DialogResult.OK)
+                return;
+            v = uint.Parse(td.Input);
+            int val = (int) v;
+            td.Dispose();
+
+            MaidInfo selected = SelectedMaid;
+            Maid maid = selected.Maid;
+
+            for (int maidClass = 0; maidClass < (int) EnumHelper.MaxMaidClass; maidClass++)
+            {
+                maid.Param.status_.maid_class_data[maidClass].is_have = true;
+                maid.Param.status_.maid_class_data[maidClass].exp_system.SetLevel(val);
+            }
+            selected.UpdateMaidClasses();
+
+            for (int yotogiClass = 0; yotogiClass < (int) EnumHelper.MaxYotogiClass; yotogiClass++)
+            {
+                maid.Param.status_.yotogi_class_data[yotogiClass].is_have = true;
+                maid.Param.status_.yotogi_class_data[yotogiClass].exp_system.SetLevel(val);
+            }
+            selected.UpdateYotogiClasses();
+        }
+
         private void SetForceEnableAll(object sender, EventArgs e)
         {
             MaidInfo maid = SelectedMaid;
@@ -61,6 +99,27 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             SetMaxWorkPlayCount(sender, e);
             SetMaxFeature(sender, e);
             SetMaxPropensity(sender, e);
+            SetMaxClassLevel(sender, e);
+        }
+
+        private void SetMaxClassLevel(object sender, EventArgs e)
+        {
+            MaidInfo selected = SelectedMaid;
+            Maid maid = selected.Maid;
+
+            for (int maidClass = 0; maidClass < (int) EnumHelper.MaxMaidClass; maidClass++)
+            {
+                maid.Param.status_.maid_class_data[maidClass].is_have = true;
+                maid.Param.status_.maid_class_data[maidClass].exp_system.SetLevel(10);
+            }
+            selected.UpdateMaidClasses();
+
+            for (int yotogiClass = 0; yotogiClass < (int) EnumHelper.MaxYotogiClass; yotogiClass++)
+            {
+                maid.Param.status_.yotogi_class_data[yotogiClass].is_have = true;
+                maid.Param.status_.yotogi_class_data[yotogiClass].exp_system.SetLevel(10);
+            }
+            selected.UpdateYotogiClasses();
         }
 
         private void SetMaxCredits(object sender, EventArgs e)
@@ -224,7 +283,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void UnlockAllMaidClasses(object sender, EventArgs e)
         {
             MaidInfo maid = SelectedMaid;
-            for (MaidClassType i = 0; i < EnumHelper.MaxMaidClassType; i++)
+            for (MaidClassType i = 0; i < EnumHelper.MaxMaidClass; i++)
             {
                 maid.SetValue(i, TABLE_COLUMN_HAS, true);
             }

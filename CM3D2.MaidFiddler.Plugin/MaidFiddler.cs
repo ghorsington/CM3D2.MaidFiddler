@@ -120,6 +120,7 @@ namespace CM3D2.MaidFiddler.Plugin
                 return;
             Debugger.WriteLine("Closing GUI...");
             Gui.Close(true);
+            GuiThread.Abort();
             Gui = null;
         }
 

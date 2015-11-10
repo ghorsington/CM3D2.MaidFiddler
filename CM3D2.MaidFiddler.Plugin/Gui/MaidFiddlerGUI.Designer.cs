@@ -180,6 +180,7 @@
             this.nightClassesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.setMaxValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mAXCLASSLVLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.erogenousZonesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sexSkillLVLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -187,11 +188,13 @@
             this.featuresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sexualAddictionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mENUMAIDSETToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mENUMAIDSETCLASSLVLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mENUMAIDSETYOTOGITIMESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMAIDFORCEENABLEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMAIDLOCKALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMAIDUNLOCKALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maidFiddlerGUIBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mENUMAIDSETYOTOGITIMESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_info.SuspendLayout();
@@ -2098,10 +2101,10 @@
             this.maidToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.unlockToolStripMenuItem,
             this.setMaxValuesToolStripMenuItem,
+            this.mENUMAIDSETToolStripMenuItem,
             this.mENUMAIDFORCEENABLEToolStripMenuItem,
             this.mENUMAIDLOCKALLToolStripMenuItem,
-            this.mENUMAIDUNLOCKALLToolStripMenuItem,
-            this.mENUMAIDSETYOTOGITIMESToolStripMenuItem});
+            this.mENUMAIDUNLOCKALLToolStripMenuItem});
             this.maidToolStripMenuItem.Name = "maidToolStripMenuItem";
             this.maidToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
             this.maidToolStripMenuItem.Text = "MENU_MAID";
@@ -2114,7 +2117,7 @@
             this.nightClassesToolStripMenuItem,
             this.allToolStripMenuItem1});
             this.unlockToolStripMenuItem.Name = "unlockToolStripMenuItem";
-            this.unlockToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.unlockToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.unlockToolStripMenuItem.Text = "MENU_MAID_UNLOCK";
             // 
             // sexSkillsToolStripMenuItem
@@ -2148,6 +2151,7 @@
             // setMaxValuesToolStripMenuItem
             // 
             this.setMaxValuesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mAXCLASSLVLToolStripMenuItem,
             this.statsToolStripMenuItem,
             this.erogenousZonesToolStripMenuItem,
             this.sexSkillLVLToolStripMenuItem,
@@ -2156,8 +2160,15 @@
             this.sexualAddictionsToolStripMenuItem,
             this.allToolStripMenuItem});
             this.setMaxValuesToolStripMenuItem.Name = "setMaxValuesToolStripMenuItem";
-            this.setMaxValuesToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.setMaxValuesToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.setMaxValuesToolStripMenuItem.Text = "MENU_MAID_MAX";
+            // 
+            // mAXCLASSLVLToolStripMenuItem
+            // 
+            this.mAXCLASSLVLToolStripMenuItem.Name = "mAXCLASSLVLToolStripMenuItem";
+            this.mAXCLASSLVLToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.mAXCLASSLVLToolStripMenuItem.Text = "MAX_CLASS_LVL";
+            this.mAXCLASSLVLToolStripMenuItem.Click += new System.EventHandler(this.SetMaxClassLevel);
             // 
             // statsToolStripMenuItem
             // 
@@ -2208,26 +2219,21 @@
             this.allToolStripMenuItem.Text = "MAX_ALL";
             this.allToolStripMenuItem.Click += new System.EventHandler(this.SetMaxAll);
             // 
-            // mENUMAIDFORCEENABLEToolStripMenuItem
+            // mENUMAIDSETToolStripMenuItem
             // 
-            this.mENUMAIDFORCEENABLEToolStripMenuItem.Name = "mENUMAIDFORCEENABLEToolStripMenuItem";
-            this.mENUMAIDFORCEENABLEToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
-            this.mENUMAIDFORCEENABLEToolStripMenuItem.Text = "MENU_MAID_FORCE_ENABLE";
-            this.mENUMAIDFORCEENABLEToolStripMenuItem.Click += new System.EventHandler(this.SetForceEnableAll);
+            this.mENUMAIDSETToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mENUMAIDSETCLASSLVLToolStripMenuItem,
+            this.mENUMAIDSETYOTOGITIMESToolStripMenuItem});
+            this.mENUMAIDSETToolStripMenuItem.Name = "mENUMAIDSETToolStripMenuItem";
+            this.mENUMAIDSETToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.mENUMAIDSETToolStripMenuItem.Text = "MENU_MAID_SET";
             // 
-            // mENUMAIDLOCKALLToolStripMenuItem
+            // mENUMAIDSETCLASSLVLToolStripMenuItem
             // 
-            this.mENUMAIDLOCKALLToolStripMenuItem.Name = "mENUMAIDLOCKALLToolStripMenuItem";
-            this.mENUMAIDLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
-            this.mENUMAIDLOCKALLToolStripMenuItem.Text = "MENU_MAID_LOCK_ALL";
-            this.mENUMAIDLOCKALLToolStripMenuItem.Click += new System.EventHandler(this.LockAllValues);
-            // 
-            // mENUMAIDUNLOCKALLToolStripMenuItem
-            // 
-            this.mENUMAIDUNLOCKALLToolStripMenuItem.Name = "mENUMAIDUNLOCKALLToolStripMenuItem";
-            this.mENUMAIDUNLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
-            this.mENUMAIDUNLOCKALLToolStripMenuItem.Text = "MENU_MAID_UNLOCK_ALL";
-            this.mENUMAIDUNLOCKALLToolStripMenuItem.Click += new System.EventHandler(this.UnlockAllValues);
+            this.mENUMAIDSETCLASSLVLToolStripMenuItem.Name = "mENUMAIDSETCLASSLVLToolStripMenuItem";
+            this.mENUMAIDSETCLASSLVLToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.mENUMAIDSETCLASSLVLToolStripMenuItem.Text = "MENU_MAID_SET_CLASS_LVL";
+            this.mENUMAIDSETCLASSLVLToolStripMenuItem.Click += new System.EventHandler(this.SetClassLevel);
             // 
             // mENUMAIDSETYOTOGITIMESToolStripMenuItem
             // 
@@ -2235,6 +2241,27 @@
             this.mENUMAIDSETYOTOGITIMESToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
             this.mENUMAIDSETYOTOGITIMESToolStripMenuItem.Text = "MENU_MAID_SET_YOTOGI_TIMES";
             this.mENUMAIDSETYOTOGITIMESToolStripMenuItem.Click += new System.EventHandler(this.SetYotogiUsedTimes);
+            // 
+            // mENUMAIDFORCEENABLEToolStripMenuItem
+            // 
+            this.mENUMAIDFORCEENABLEToolStripMenuItem.Name = "mENUMAIDFORCEENABLEToolStripMenuItem";
+            this.mENUMAIDFORCEENABLEToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.mENUMAIDFORCEENABLEToolStripMenuItem.Text = "MENU_MAID_FORCE_ENABLE";
+            this.mENUMAIDFORCEENABLEToolStripMenuItem.Click += new System.EventHandler(this.SetForceEnableAll);
+            // 
+            // mENUMAIDLOCKALLToolStripMenuItem
+            // 
+            this.mENUMAIDLOCKALLToolStripMenuItem.Name = "mENUMAIDLOCKALLToolStripMenuItem";
+            this.mENUMAIDLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.mENUMAIDLOCKALLToolStripMenuItem.Text = "MENU_MAID_LOCK_ALL";
+            this.mENUMAIDLOCKALLToolStripMenuItem.Click += new System.EventHandler(this.LockAllValues);
+            // 
+            // mENUMAIDUNLOCKALLToolStripMenuItem
+            // 
+            this.mENUMAIDUNLOCKALLToolStripMenuItem.Name = "mENUMAIDUNLOCKALLToolStripMenuItem";
+            this.mENUMAIDUNLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.mENUMAIDUNLOCKALLToolStripMenuItem.Text = "MENU_MAID_UNLOCK_ALL";
+            this.mENUMAIDUNLOCKALLToolStripMenuItem.Click += new System.EventHandler(this.UnlockAllValues);
             // 
             // MaidFiddlerGUI
             // 
@@ -2471,5 +2498,8 @@
         private System.Windows.Forms.Label label_maid_points_base;
         private System.Windows.Forms.TextBox textBox_maid_points_base;
         private System.Windows.Forms.ToolStripMenuItem mENUMAIDSETYOTOGITIMESToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mAXCLASSLVLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mENUMAIDSETToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mENUMAIDSETCLASSLVLToolStripMenuItem;
     }
 }

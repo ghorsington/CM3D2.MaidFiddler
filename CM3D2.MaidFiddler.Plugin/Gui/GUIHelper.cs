@@ -10,6 +10,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         public void Close(bool exit)
         {
             destroyGUI = exit;
+            if (destroyGUI)
+                RemoveHookCallbacks();
             Close();
         }
 

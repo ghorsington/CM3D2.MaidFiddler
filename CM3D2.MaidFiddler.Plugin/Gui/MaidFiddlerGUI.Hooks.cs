@@ -55,10 +55,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             switch (args.Tag)
             {
                 case MaidChangeType.MaidClassType:
-                    valueUpdateQueue.Add(args.Tag, () => maid.UpdateMaidClass());
+                    valueUpdateQueue.Add(args.Tag, () => maid.UpdateMaidClasses());
                     break;
                 case MaidChangeType.YotogiClassType:
-                    valueUpdateQueue.Add(args.Tag, () => maid.UpdateYotogiClass());
+                    valueUpdateQueue.Add(args.Tag, () => maid.UpdateYotogiClasses());
                     break;
                 case MaidChangeType.MaidAndYotogiClass:
                     valueUpdateQueue.Add(
@@ -66,8 +66,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     () =>
                     {
                         maid.UpdateMaidBonusValues();
-                        maid.UpdateMaidClass();
-                        maid.UpdateYotogiClass();
+                        maid.UpdateMaidClasses();
+                        maid.UpdateYotogiClasses();
                     });
                     break;
             }
@@ -303,6 +303,27 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             Debugger.WriteLine("Reloading all noon works...");
             UpdateNoonWorkData(args.ScheduleScene.slot[args.SlotID]);
+        }
+
+        private void RemoveHookCallbacks()
+        {
+            MaidStatusChangeHooks.StatusChanged -= OnStatusChanged;
+            MaidStatusChangeHooks.ThumbnailChanged -= OnMaidThumbnailChanged;
+            MaidStatusChangeHooks.StatusChangedID -= OnStatusChanged;
+            MaidStatusChangeHooks.ClassUpdated -= OnClassUpdated;
+            MaidStatusChangeHooks.NewProperty -= OnPropertyHasChanged;
+            MaidStatusChangeHooks.PropertyRemoved -= OnPropertyHasChanged;
+            MaidStatusChangeHooks.CheckWorkEnabled -= OnWorkEnabledCheck;
+            MaidStatusChangeHooks.ProcessNoonWorkData -= ReloadNoonWorkData;
+            MaidStatusChangeHooks.ProcessNightWorkData -= ReloadNightWorkData;
+            MaidStatusChangeHooks.StatusUpdated -= OnStatusUpdated;
+            MaidStatusChangeHooks.FeaturePropensityUpdated -= OnFeaturePropensityUpdated;
+            MaidStatusChangeHooks.CommandUpdate -= OnCommandUpdate;
+            MaidStatusChangeHooks.NightWorkVisibilityCheck -= OnNightWorkVisibilityCheck;
+
+            PlayerStatusChangeHooks.PlayerValueChanged -= OnPlayerValueChanged;
+
+            ValueLimitHooks.ToggleValueLimit -= OnValueRound;
         }
 
         private void UpdateNightWorksData(Slot slot)

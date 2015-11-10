@@ -55,7 +55,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     comboBox_seikeiken.Items.Add(GetFieldText(EnumHelper.GetName(e)));
 
                 InitField(label_curr_maid_class, comboBox_current_maid_class, MaidChangeType.MaidClassType);
-                for (MaidClassType e = 0; e < EnumHelper.MaxMaidClassType; e++)
+                for (MaidClassType e = 0; e < EnumHelper.MaxMaidClass; e++)
                     comboBox_current_maid_class.Items.Add(GetFieldText($"Maid_{EnumHelper.GetName(e)}"));
 
                 InitField(label_curr_yotogi_class, comboBox_current_yotogi_class, MaidChangeType.YotogiClassType);

@@ -646,8 +646,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     action = "Updating maid propensity";
                     for (Propensity e = Propensity.Null + 1; e < Propensity.Max; e++)
                         UpdateMiscStatus(MaidChangeType.Propensity, (int) e);
-                    UpdateMaidClass();
-                    UpdateYotogiClass();
+                    UpdateMaidClasses();
+                    UpdateYotogiClasses();
                 }
                 catch (Exception e)
                 {
@@ -723,13 +723,14 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 $"Failed to update work ID {workID}");
             }
 
-            public void UpdateMaidClass()
+            public void UpdateMaidClasses()
             {
                 Debugger.Assert(
                 () =>
                 {
-                    for (MaidClassType e = 0; e < EnumHelper.MaxMaidClassType; e++)
-                        UpdateField(MaidChangeType.MaidClassType, (int) e);
+                    for (MaidClassType e = 0; e < EnumHelper.MaxMaidClass; e++)
+                        UpdateMaidClass((int) e, 0);
+                    //UpdateField(MaidChangeType.MaidClassType, (int) e);
                 },
                 "Failed to update maid class type");
             }
@@ -920,13 +921,14 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 gui.updateWorkTable = false;
             }
 
-            public void UpdateYotogiClass()
+            public void UpdateYotogiClasses()
             {
                 Debugger.Assert(
                 () =>
                 {
                     for (YotogiClassType e = 0; e < EnumHelper.MaxYotogiClass; e++)
-                        UpdateField(MaidChangeType.YotogiClassType, (int) e);
+                        UpdateYotogiClass((int) e, 0);
+                    //UpdateField(MaidChangeType.YotogiClassType, (int) e);
                 },
                 "Failed to update maid yotogi class");
             }
@@ -985,7 +987,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     MaidClassType maidClass = (MaidClassType) id;
                     Debugger.WriteLine($"Updating maid class type {EnumHelper.GetName(maidClass)}");
-                    if (maidClass >= EnumHelper.MaxMaidClassType)
+                    if (maidClass >= EnumHelper.MaxMaidClass)
                         return;
 
                     gui.updateMaidClassField = true;

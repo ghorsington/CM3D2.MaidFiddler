@@ -10,7 +10,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         public static readonly MaidClassType[] MaidClasses;
         public static readonly YotogiClassType[] YotogiClasses;
         public static YotogiClassType MaxYotogiClass;
-        public static MaidClassType MaxMaidClassType;
+        public static MaidClassType MaxMaidClass;
 
         static EnumHelper()
         {
@@ -18,7 +18,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             MaidClasses = (MaidClassType[]) Enum.GetValues(typeof (MaidClassType));
             YotogiClasses = (YotogiClassType[]) Enum.GetValues(typeof (YotogiClassType));
 
-            MaxMaidClassType = MaidClasses[MaidClasses.Length - 2];
+            MaxMaidClass = MaidClasses[MaidClasses.Length - 2];
             MaxYotogiClass = YotogiClasses[YotogiClasses.Length - 2];
         }
 
