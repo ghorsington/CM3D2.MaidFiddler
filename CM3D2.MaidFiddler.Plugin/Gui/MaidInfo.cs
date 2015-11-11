@@ -824,11 +824,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         gui.updateSkillTable = true;
                         row.Cells[TABLE_COLUMN_HAS].Value = true;
                         gui.updateSkillTable = true;
-                        row.Cells[TABLE_COLUMN_LEVEL].Value =
-                        skillData.exp_system.GetCurrentLevel();
+                        row.Cells[TABLE_COLUMN_LEVEL].Value = skillData.exp_system.GetCurrentLevel();
                         gui.updateSkillTable = true;
-                        row.Cells[TABLE_COLUMN_TOTAL_XP].Value =
-                        skillData.exp_system.GetTotalExp();
+                        row.Cells[TABLE_COLUMN_TOTAL_XP].Value = skillData.exp_system.GetTotalExp();
                         gui.updateSkillTable = true;
                         row.Cells[SKILL_COLUMN_PLAY_COUNT].Value = skillData.play_count;
                     }

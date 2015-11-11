@@ -26,7 +26,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 }
                 foreach (KeyValuePair<int, Yotogi.SkillData> dataDic in Yotogi.skill_data_list.SelectMany(e => e))
                 {
-                    int row = dataGridView_skill_data.Rows.Add(false, Resources.GetFieldText(dataDic.Value.name), 0, 0, (uint) 0);
+                    int row = dataGridView_skill_data.Rows.Add(
+                    false,
+                    Resources.GetFieldText(dataDic.Value.name),
+                    0,
+                    0,
+                    (uint) 0);
                     rowToSkillID.Add(row, dataDic.Key);
                     skillIDToRow.Add(dataDic.Key, row);
                 }

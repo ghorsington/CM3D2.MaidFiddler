@@ -12,7 +12,6 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         public static readonly Personal[] Personalities;
         public static readonly Condition[] Conditions;
         public static readonly ContractType[] ContractTypes;
-
         public static readonly ContractType MaxContractType;
         public static readonly Condition MaxCondition;
         public static readonly Personal MaxPersonality;

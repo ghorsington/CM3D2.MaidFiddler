@@ -11,13 +11,13 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         private const string TEXT_FILE_NAME = @"MaidFiddler\labels.txt";
         private static Dictionary<string, string> translationDictionary;
 
-        public static Image DefaultThumbnail { get; private set; } 
-
         static Resources()
         {
             InitText();
             InitThumbnail();
         }
+
+        public static Image DefaultThumbnail { get; private set; }
 
         public static void GetFieldText(Control c)
         {
