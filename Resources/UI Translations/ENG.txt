@@ -8,6 +8,9 @@
 ; Comment lines with ";"
 ; Comments and faulty lines (wrong separators, missing translation) are ignored
 
+; Title text for lulz
+TITLE_TEXT						- Your meidos are worth it
+
 ; Info tab
 TAB_INFO						Information
 FirstName						First Name
@@ -15,7 +18,7 @@ LastName						Last Name
 FirstNameCall					Call by first name
 Personal						Personality
 ContractType					Contract type
-IsLeader						Leader 
+Leader							Leader 
 Condition						Love state
 ConditionSpecial				Yotogi style
 Employment						Employment day
@@ -487,7 +490,7 @@ GUI_YOTOGI_TIMES_TITLE			Set enabled yotogi skills play count to...
 GUI_YOTOGI_TIMES_PROMPT			Update play count for all enabled yotogi skills. Specify the number to which to set the play count.
 
 GUI_CLASS_LVL_TITLE				Set all class levels to...
-GUI_CLASS_LVL_PROMPT				Specify the level (1-10) to set all maid and yotogi classes to.
+GUI_CLASS_LVL_PROMPT			Specify the level (1-10) to set all maid and yotogi classes to.
 
 OK								Ok
 CANCEL							Cancel

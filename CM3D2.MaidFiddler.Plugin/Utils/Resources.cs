@@ -3,28 +3,36 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using CM3D2.MaidFiddler.Plugin.Utils;
 
-namespace CM3D2.MaidFiddler.Plugin.Gui
+namespace CM3D2.MaidFiddler.Plugin.Utils
 {
-    public partial class MaidFiddlerGUI
+    public static class Resources
     {
         private const string TEXT_FILE_NAME = @"MaidFiddler\labels.txt";
-        private Image defaultThumb;
-        private Dictionary<string, string> translationDictionary;
+        private static Dictionary<string, string> translationDictionary;
 
-        private void GetFieldText(Control c)
+        public static Image DefaultThumbnail { get; private set; } 
+
+        static Resources()
         {
-            if (translationDictionary.ContainsKey(c.Text))
-                c.Text = translationDictionary[c.Text];
+            InitText();
+            InitThumbnail();
         }
 
-        private string GetFieldText(string id)
+        public static void GetFieldText(Control c)
         {
-            return translationDictionary.ContainsKey(id) ? translationDictionary[id] : id;
+            string result;
+            if (translationDictionary.TryGetValue(c.Text, out result))
+                c.Text = result;
         }
 
-        private void InitText()
+        public static string GetFieldText(string id)
+        {
+            string result;
+            return translationDictionary.TryGetValue(id, out result) ? result : id;
+        }
+
+        private static void InitText()
         {
             Debugger.Assert(
             () =>
@@ -57,7 +65,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             "Texts loaded");
         }
 
-        private void InitThumbnail()
+        public static void InitThumbnail()
         {
             Debugger.Assert(
             () =>
@@ -67,12 +75,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Debugger.WriteLine($"Path: {thumbPath}");
                 try
                 {
-                    defaultThumb = File.Exists(thumbPath) ? Image.FromFile(thumbPath) : null;
+                    DefaultThumbnail = File.Exists(thumbPath) ? Image.FromFile(thumbPath) : null;
                 }
                 catch (FileNotFoundException)
                 {
                     Debugger.WriteLine(LogLevel.Error, "Could not find the default thumbnail!");
-                    defaultThumb = null;
+                    DefaultThumbnail = null;
                 }
             },
             "Failed to load the generic maid thumbnail");

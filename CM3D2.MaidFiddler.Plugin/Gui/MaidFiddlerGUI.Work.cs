@@ -20,21 +20,21 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Debugger.Assert(
             () =>
             {
-                GetFieldText(tabPage_work);
-                GetFieldText(groupBox_maid_current_work);
+                Resources.GetFieldText(tabPage_work);
+                Resources.GetFieldText(groupBox_maid_current_work);
 
                 // Noon
-                GetFieldText(groupBox_noon_work);
+                Resources.GetFieldText(groupBox_noon_work);
                 InitField(label_work_noon, comboBox_work_noon, MaidChangeType.NoonWorkId);
                 rowToNoonWorkID = new Dictionary<int, int>();
                 noonWorkIDToRow = new Dictionary<int, int>();
                 foreach (DataGridViewColumn column in dataGridView_noon_work_data.Columns)
                 {
-                    column.HeaderText = GetFieldText(column.HeaderText);
+                    column.HeaderText = Resources.GetFieldText(column.HeaderText);
                 }
                 foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
                 {
-                    string name = GetFieldText(noonWork.Value.name);
+                    string name = Resources.GetFieldText(noonWork.Value.name);
                     int index = dataGridView_noon_work_data.Rows.Add(false, name, 0, (uint) 0);
                     comboBox_work_noon.Items.Add(name);
                     rowToNoonWorkID.Add(index, noonWork.Key);
@@ -47,19 +47,19 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                                                      * dataGridView_noon_work_data.RowCount;
 
                 // Night
-                GetFieldText(groupBox_night_work);
+                Resources.GetFieldText(groupBox_night_work);
                 InitField(label_work_night, comboBox_work_night, MaidChangeType.NightWorkId);
                 nightWorkIDToRow = new Dictionary<int, int>();
                 rowToNightWorkID = new Dictionary<int, int>();
                 foreach (DataGridViewColumn column in dataGridView_night_work.Columns)
                 {
-                    column.HeaderText = GetFieldText(column.HeaderText);
+                    column.HeaderText = Resources.GetFieldText(column.HeaderText);
                 }
                 foreach (KeyValuePair<int, ScheduleCSVData.NightWork> nightWork in ScheduleCSVData.NightWorkData)
                 {
-                    string name = GetFieldText(nightWork.Value.name);
+                    string name = Resources.GetFieldText(nightWork.Value.name);
                     int index = dataGridView_night_work.Rows.Add(false, name);
-                    comboBox_work_night.Items.Add(GetFieldText(nightWork.Value.name));
+                    comboBox_work_night.Items.Add(Resources.GetFieldText(nightWork.Value.name));
                     nightWorkIDToRow.Add(nightWork.Value.id, index);
                     rowToNightWorkID.Add(index, nightWork.Value.id);
                 }

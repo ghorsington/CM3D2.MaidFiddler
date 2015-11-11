@@ -39,12 +39,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Debugger.WriteLine(LogLevel.Info, "Prompting class level set.");
             uint v;
             TextDialog td = new TextDialog(
-            GetFieldText("GUI_CLASS_LVL_TITLE"),
-            GetFieldText("GUI_CLASS_LVL_PROMPT"),
+            Resources.GetFieldText("GUI_CLASS_LVL_TITLE"),
+            Resources.GetFieldText("GUI_CLASS_LVL_PROMPT"),
             "0",
             s => uint.TryParse(s, out v) && v <= 10,
-            GetFieldText("OK"),
-            GetFieldText("CANCEL")) {StartPosition = FormStartPosition.CenterParent};
+            Resources.GetFieldText("OK"),
+            Resources.GetFieldText("CANCEL")) {StartPosition = FormStartPosition.CenterParent};
             DialogResult dr = td.ShowDialog(this);
             Debugger.WriteLine(LogLevel.Info, $"Prompt result: {EnumHelper.GetName(dr)}, {td.Input}");
 
@@ -219,12 +219,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             uint v;
             TextDialog td = new TextDialog(
-            GetFieldText("GUI_YOTOGI_TIMES_TITLE"),
-            GetFieldText("GUI_YOTOGI_TIMES_PROMPT"),
+            Resources.GetFieldText("GUI_YOTOGI_TIMES_TITLE"),
+            Resources.GetFieldText("GUI_YOTOGI_TIMES_PROMPT"),
             "0",
             s => uint.TryParse(s, out v),
-            GetFieldText("OK"),
-            GetFieldText("CANCEL")) {StartPosition = FormStartPosition.CenterParent};
+            Resources.GetFieldText("OK"),
+            Resources.GetFieldText("CANCEL")) {StartPosition = FormStartPosition.CenterParent};
             DialogResult dr = td.ShowDialog(this);
             Debugger.WriteLine(LogLevel.Info, $"Prompt result: {EnumHelper.GetName(dr)}, {td.Input}");
 

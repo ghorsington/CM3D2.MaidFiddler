@@ -9,17 +9,30 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         public static readonly MaidChangeType[] MaidChangeTypes;
         public static readonly MaidClassType[] MaidClasses;
         public static readonly YotogiClassType[] YotogiClasses;
-        public static YotogiClassType MaxYotogiClass;
-        public static MaidClassType MaxMaidClass;
+        public static readonly Personal[] Personalities;
+        public static readonly Condition[] Conditions;
+        public static readonly ContractType[] ContractTypes;
+
+        public static readonly ContractType MaxContractType;
+        public static readonly Condition MaxCondition;
+        public static readonly Personal MaxPersonality;
+        public static readonly YotogiClassType MaxYotogiClass;
+        public static readonly MaidClassType MaxMaidClass;
 
         static EnumHelper()
         {
-            MaidChangeTypes = (MaidChangeType[]) Enum.GetValues(typeof (MaidChangeType));
-            MaidClasses = (MaidClassType[]) Enum.GetValues(typeof (MaidClassType));
-            YotogiClasses = (YotogiClassType[]) Enum.GetValues(typeof (YotogiClassType));
+            ContractTypes = GetValues<ContractType>();
+            Conditions = GetValues<Condition>();
+            Personalities = GetValues<Personal>();
+            MaidChangeTypes = GetValues<MaidChangeType>();
+            MaidClasses = GetValues<MaidClassType>();
+            YotogiClasses = GetValues<YotogiClassType>();
 
             MaxMaidClass = MaidClasses[MaidClasses.Length - 2];
             MaxYotogiClass = YotogiClasses[YotogiClasses.Length - 2];
+            MaxPersonality = Personalities[Personalities.Length - 1];
+            MaxCondition = Conditions[Conditions.Length - 1];
+            MaxContractType = ContractTypes[ContractTypes.Length - 1];
         }
 
         public static string GetName<T>(T value)

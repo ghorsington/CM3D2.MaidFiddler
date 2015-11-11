@@ -148,7 +148,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             public void SetValue(PlayerChangeType type, object value)
             {
-                if (setMethodInt.ContainsKey(type))
+                Action<int> setValInt;
+                Action<long> setValLong;
+                Action<string> setValString;
+                if (setMethodInt.TryGetValue(type, out setValInt))
                 {
                     int val;
                     string s = value as string;
@@ -161,19 +164,19 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     else
                         return;
 
-                    setMethodInt[type](val);
+                    setValInt(val);
                 }
-                else if (setMethodLong.ContainsKey(type))
+                else if (setMethodLong.TryGetValue(type, out setValLong))
                 {
                     long val;
                     string s = value as string;
                     if (s == null || !long.TryParse(s, out val))
                         return;
 
-                    setMethodLong[type](val);
+                    setValLong(val);
                 }
-                else if (value is string && setMethodString.ContainsKey(type))
-                    setMethodString[type]((string) value);
+                else if (value is string && setMethodString.TryGetValue(type, out setValString))
+                    setValString((string) value);
 
                 gui.valueUpdatePlayer[type] = true;
                 UpdateField(type);
@@ -214,10 +217,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             public void UpdateField(PlayerChangeType type)
             {
-                if (!updateMethods.ContainsKey(type))
+                Action updateVal;
+                if (!updateMethods.TryGetValue(type, out updateVal))
                     return;
                 gui.valueUpdatePlayer[type] = true;
-                updateMethods[type]();
+                updateVal();
                 gui.valueUpdatePlayer[type] = false;
             }
 

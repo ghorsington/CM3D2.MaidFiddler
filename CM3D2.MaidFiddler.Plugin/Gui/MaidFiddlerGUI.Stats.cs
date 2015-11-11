@@ -19,8 +19,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                             bool addLock = true)
         {
             int index = addLock
-                        ? table.Rows.Add(GetFieldText(EnumHelper.GetName(type)), 0, false)
-                        : table.Rows.Add(GetFieldText(EnumHelper.GetName(type)), 0);
+                        ? table.Rows.Add(Resources.GetFieldText(EnumHelper.GetName(type)), 0, false)
+                        : table.Rows.Add(Resources.GetFieldText(EnumHelper.GetName(type)), 0);
             dic.Add(index, type);
             MaidParameters.Add(type, table.Rows[index]);
         }
@@ -31,14 +31,14 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             () =>
             {
                 MaidParameters = new Dictionary<MaidChangeType, DataGridViewRow>();
-                GetFieldText(tabPage_stats);
+                Resources.GetFieldText(tabPage_stats);
 
                 // Maid params
-                GetFieldText(groupBox_params);
+                Resources.GetFieldText(groupBox_params);
                 maidParamsTableDic = new Dictionary<int, MaidChangeType>();
                 foreach (DataGridViewColumn column in dataGridView_params.Columns)
                 {
-                    column.HeaderText = GetFieldText(column.HeaderText);
+                    column.HeaderText = Resources.GetFieldText(column.HeaderText);
                 }
                 dataGridView_params.CellValueChanged += OnCellValueChanged;
                 dataGridView_params.CellContentClick += OnCellContentClick;
@@ -64,11 +64,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                                              + dataGridView_params.Rows[0].Height * dataGridView_params.RowCount;
 
                 // Maid bonus params
-                GetFieldText(groupBox_maid_params_bonus);
+                Resources.GetFieldText(groupBox_maid_params_bonus);
                 maidBonusStatsTableDic = new Dictionary<int, MaidChangeType>();
                 foreach (DataGridViewColumn column in dataGridView_maid_params_bonus.Columns)
                 {
-                    column.HeaderText = GetFieldText(column.HeaderText);
+                    column.HeaderText = Resources.GetFieldText(column.HeaderText);
                 }
                 dataGridView_maid_params_bonus.CellValueChanged += OnCellValueChanged;
                 AddRow(MaidChangeType.BonusCare, dataGridView_maid_params_bonus, maidBonusStatsTableDic, false);
@@ -88,11 +88,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                                                         * dataGridView_maid_params_bonus.RowCount;
 
                 // Maid ero zones
-                GetFieldText(groupBox_ero_zones);
+                Resources.GetFieldText(groupBox_ero_zones);
                 maidEroTableDic = new Dictionary<int, MaidChangeType>();
                 foreach (DataGridViewColumn column in dataGridView_ero_zones.Columns)
                 {
-                    column.HeaderText = GetFieldText(column.HeaderText);
+                    column.HeaderText = Resources.GetFieldText(column.HeaderText);
                 }
                 dataGridView_ero_zones.CellValueChanged += OnCellValueChanged;
                 dataGridView_ero_zones.CellContentClick += OnCellContentClick;
@@ -108,11 +108,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
 
                 // Maid stats
-                GetFieldText(groupBox_statistics);
+                Resources.GetFieldText(groupBox_statistics);
                 maidStatsTableDic = new Dictionary<int, MaidChangeType>();
                 foreach (DataGridViewColumn column in dataGridView_statistics.Columns)
                 {
-                    column.HeaderText = GetFieldText(column.HeaderText);
+                    column.HeaderText = Resources.GetFieldText(column.HeaderText);
                 }
                 dataGridView_statistics.CellValueChanged += OnCellValueChanged;
                 dataGridView_statistics.CellContentClick += OnCellContentClick;

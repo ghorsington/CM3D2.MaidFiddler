@@ -15,23 +15,23 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Debugger.Assert(
             () =>
             {
-                GetFieldText(tabPage_misc);
+                Resources.GetFieldText(tabPage_misc);
 
                 // Propensity
-                GetFieldText(groupBox_propensity);
+                Resources.GetFieldText(groupBox_propensity);
                 for (Propensity e = Propensity.Null + 1; e < Propensity.Max; e++)
                 {
-                    checkedListBox_propensity.Items.Add(GetFieldText(EnumHelper.GetName(e)), false);
+                    checkedListBox_propensity.Items.Add(Resources.GetFieldText(EnumHelper.GetName(e)), false);
                 }
                 checkedListBox_propensity.Height = checkedListBox_propensity.ItemHeight
                                                    * checkedListBox_propensity.Items.Count;
                 checkedListBox_propensity.ItemCheck += OnPropensityChecked;
 
                 // Features
-                GetFieldText(groupBox_feature);
+                Resources.GetFieldText(groupBox_feature);
                 for (Feature e = Feature.Null + 1; e < Feature.Max; e++)
                 {
-                    checkedListBox_feature.Items.Add(GetFieldText(EnumHelper.GetName(e)), false);
+                    checkedListBox_feature.Items.Add(Resources.GetFieldText(EnumHelper.GetName(e)), false);
                 }
                 checkedListBox_feature.Height = checkedListBox_feature.ItemHeight * checkedListBox_feature.Items.Count;
                 checkedListBox_feature.ItemCheck += OnFeatureChecked;

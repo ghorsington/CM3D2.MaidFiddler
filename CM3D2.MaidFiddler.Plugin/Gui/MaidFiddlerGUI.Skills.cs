@@ -16,17 +16,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Debugger.Assert(
             () =>
             {
-                GetFieldText(tabPage_skills);
+                Resources.GetFieldText(tabPage_skills);
 
                 rowToSkillID = new Dictionary<int, int>();
                 skillIDToRow = new Dictionary<int, int>();
                 foreach (DataGridViewColumn column in dataGridView_skill_data.Columns)
                 {
-                    column.HeaderText = GetFieldText(column.HeaderText);
+                    column.HeaderText = Resources.GetFieldText(column.HeaderText);
                 }
                 foreach (KeyValuePair<int, Yotogi.SkillData> dataDic in Yotogi.skill_data_list.SelectMany(e => e))
                 {
-                    int row = dataGridView_skill_data.Rows.Add(false, GetFieldText(dataDic.Value.name), 0, 0, (uint) 0);
+                    int row = dataGridView_skill_data.Rows.Add(false, Resources.GetFieldText(dataDic.Value.name), 0, 0, (uint) 0);
                     rowToSkillID.Add(row, dataDic.Key);
                     skillIDToRow.Add(dataDic.Key, row);
                 }

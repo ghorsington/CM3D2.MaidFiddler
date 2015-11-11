@@ -102,9 +102,7 @@
     <Compile Include="Gui\MaidFiddlerGUI.Stats.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Gui\MaidFiddlerGUI.Resources.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Utils\Resources.cs" />
     <Compile Include="Gui\MaidFiddlerGUI.Work.cs">
       <SubType>Form</SubType>
     </Compile>

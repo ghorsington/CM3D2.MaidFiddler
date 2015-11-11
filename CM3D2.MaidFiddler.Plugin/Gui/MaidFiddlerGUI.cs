@@ -15,14 +15,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         public MaidFiddlerGUI()
         {
             InitializeComponent();
-
+            Text = $"CM3D2 Maid Fiddler {MaidFiddler.VERSION} {Resources.GetFieldText("TITLE_TEXT")}";
             try
             {
                 Player = new PlayerInfo(this);
                 removeValueLimit = false;
-                InitText();
                 InitMenuText();
-                InitThumbnail();
                 InitMaidInfoTab();
                 InitMaidStatsTab();
                 InitClassesTab();
@@ -61,15 +59,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (m == null)
                 return;
 
-            Image maidThumb = maidThumbnails.ContainsKey(m.Maid.Param.status.guid)
-                              ? maidThumbnails[m.Maid.Param.status.guid] : null;
+            Image maidThumb;
+            maidThumbnails.TryGetValue(m.Maid.Param.status.guid, out maidThumb);
 
-            if (maidThumb == null && defaultThumb == null)
+            if (maidThumb == null && Resources.DefaultThumbnail == null)
                 e.Graphics.FillRectangle(Brushes.BlueViolet, e.Bounds.X, e.Bounds.Y, e.Bounds.Height, e.Bounds.Height);
             else
             {
                 e.Graphics.DrawImage(
-                maidThumb ?? defaultThumb,
+                maidThumb ?? Resources.DefaultThumbnail,
                 e.Bounds.X,
                 e.Bounds.Y,
                 e.Bounds.Height,
@@ -91,7 +89,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             foreach (ToolStripDropDownItem item in menuStrip1.Items)
             {
                 LoadMenuText(item);
-                item.Text = GetFieldText(item.Text);
+                item.Text = Resources.GetFieldText(item.Text);
             }
         }
 
@@ -102,7 +100,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 ToolStripDropDownItem downItem = toolStripItem as ToolStripDropDownItem;
                 if (downItem != null)
                     LoadMenuText(downItem);
-                toolStripItem.Text = GetFieldText(toolStripItem.Text);
+                toolStripItem.Text = Resources.GetFieldText(toolStripItem.Text);
             }
         }
 

@@ -334,6 +334,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Debugger.Assert(
                 () =>
                 {
+                    Status.SkillData skillData;
                     switch (column)
                     {
                         case TABLE_COLUMN_HAS:
@@ -344,16 +345,16 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                                 Maid.Param.RemoveSkill(skillID);
                             break;
                         case TABLE_COLUMN_LEVEL:
-                            if (Maid.Param.status_.skill_data.ContainsKey(skillID))
-                                Maid.Param.status_.skill_data[skillID].exp_system.SetLevel((int) val);
+                            if (Maid.Param.status_.skill_data.TryGetValue(skillID, out skillData))
+                                skillData.exp_system.SetLevel((int) val);
                             break;
                         case TABLE_COLUMN_TOTAL_XP:
-                            if (Maid.Param.status_.skill_data.ContainsKey(skillID))
-                                Maid.Param.status_.skill_data[skillID].exp_system.SetTotalExp((int) val);
+                            if (Maid.Param.status_.skill_data.TryGetValue(skillID, out skillData))
+                                skillData.exp_system.SetTotalExp((int) val);
                             break;
                         case SKILL_COLUMN_PLAY_COUNT:
-                            if (Maid.Param.status_.skill_data.ContainsKey(skillID))
-                                Maid.Param.status_.skill_data[skillID].play_count = (uint) val;
+                            if (Maid.Param.status_.skill_data.TryGetValue(skillID, out skillData))
+                                skillData.play_count = (uint) val;
                             break;
                     }
                     gui.updateSkillTable = true;
@@ -368,7 +369,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 () =>
                 {
                     Debugger.WriteLine($"Setting {EnumHelper.GetName(type)} to {val}");
-                    if (setFunctionsInt.ContainsKey(type))
+                    Action<int> setValInt;
+                    Action<long> setValLong;
+                    Action<string> setValString;
+                    Action<bool> setValBool;
+                    if (setFunctionsInt.TryGetValue(type, out setValInt))
                     {
                         int v;
                         string str = val as string;
@@ -381,21 +386,21 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         else
                             return;
 
-                        setFunctionsInt[type](v);
+                        setValInt(v);
                     }
-                    else if (setFunctionsLong.ContainsKey(type))
+                    else if (setFunctionsLong.TryGetValue(type, out setValLong))
                     {
                         long v;
                         string str = val as string;
                         if (str == null || !long.TryParse(str, out v))
                             return;
 
-                        setFunctionsLong[type](v);
+                        setValLong(v);
                     }
-                    else if (val is string && setFunctionsString.ContainsKey(type))
-                        setFunctionsString[type]((string) val);
-                    else if (val is bool && setFunctionsBool.ContainsKey(type))
-                        setFunctionsBool[type]((bool) val);
+                    else if (val is string && setFunctionsString.TryGetValue(type, out setValString))
+                        setValString((string) val);
+                    else if (val is bool && setFunctionsBool.TryGetValue(type, out setValBool))
+                        setValBool((bool) val);
                     else
                         Debugger.WriteLine(LogLevel.Error, $"No setter function found for {EnumHelper.GetName(type)}!");
 
@@ -466,6 +471,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Debugger.Assert(
                 () =>
                 {
+                    Status.WorkData workData;
                     switch (column)
                     {
                         case TABLE_COLUMN_HAS:
@@ -473,12 +479,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                             forceUpdateNoonWorks[workID] = value;
                             break;
                         case TABLE_COLUMN_LEVEL:
-                            if (Maid.Param.status_.work_data.ContainsKey(workID))
-                                Maid.Param.status_.work_data[workID].level = (int) val;
+                            if (Maid.Param.status_.work_data.TryGetValue(workID, out workData))
+                                workData.level = (int) val;
                             break;
                         case TABLE_COLUMN_TOTAL_XP:
-                            if (Maid.Param.status_.work_data.ContainsKey(workID))
-                                Maid.Param.status_.work_data[workID].play_count = (uint) val;
+                            if (Maid.Param.status_.work_data.TryGetValue(workID, out workData))
+                                workData.play_count = (uint) val;
                             break;
                     }
                     UpdateWorkData(workID);
@@ -676,8 +682,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     Debugger.WriteLine($"Updating value {EnumHelper.GetName(type)}");
                     gui.valueUpdate[type] = true;
-                    if (updateFunctionsID.ContainsKey(type))
-                        updateFunctionsID[type](id, val);
+                    Action<int, int> updateValID;
+                    if (updateFunctionsID.TryGetValue(type, out updateValID))
+                        updateValID(id, val);
                     gui.valueUpdate[type] = false;
                 },
                 $"Failed to update maid field for type {EnumHelper.GetName(type)}");
@@ -690,10 +697,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     Debugger.WriteLine($"Updating value {EnumHelper.GetName(type)}");
                     gui.valueUpdate[type] = true;
-                    if (UpdateFunctions.ContainsKey(type))
-                        UpdateFunctions[type]();
-                    else if (maidParamsUpdaters.ContainsKey(type))
-                        maidParamsUpdaters[type](type);
+                    Action updateVal;
+                    Action<MaidChangeType> updateParam;
+                    if (UpdateFunctions.TryGetValue(type, out updateVal))
+                        updateVal();
+                    else if (maidParamsUpdaters.TryGetValue(type, out updateParam))
+                        updateParam(type);
                     else
                         Debugger.WriteLine(LogLevel.Error, $"No update function found for {EnumHelper.GetName(type)}!");
                     gui.valueUpdate[type] = false;
@@ -809,7 +818,21 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     int rowIndex = gui.skillIDToRow[skillID];
                     DataGridViewRow row = gui.dataGridView_skill_data.Rows[rowIndex];
 
-                    if (!Maid.Param.status_.skill_data.ContainsKey(skillID))
+                    Status.SkillData skillData;
+                    if (Maid.Param.status_.skill_data.TryGetValue(skillID, out skillData))
+                    {
+                        gui.updateSkillTable = true;
+                        row.Cells[TABLE_COLUMN_HAS].Value = true;
+                        gui.updateSkillTable = true;
+                        row.Cells[TABLE_COLUMN_LEVEL].Value =
+                        skillData.exp_system.GetCurrentLevel();
+                        gui.updateSkillTable = true;
+                        row.Cells[TABLE_COLUMN_TOTAL_XP].Value =
+                        skillData.exp_system.GetTotalExp();
+                        gui.updateSkillTable = true;
+                        row.Cells[SKILL_COLUMN_PLAY_COUNT].Value = skillData.play_count;
+                    }
+                    else
                     {
                         gui.updateSkillTable = true;
                         row.Cells[TABLE_COLUMN_HAS].Value = false;
@@ -819,19 +842,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         row.Cells[TABLE_COLUMN_TOTAL_XP].Value = 0;
                         gui.updateSkillTable = true;
                         row.Cells[SKILL_COLUMN_PLAY_COUNT].Value = 0;
-                    }
-                    else
-                    {
-                        gui.updateSkillTable = true;
-                        row.Cells[TABLE_COLUMN_HAS].Value = true;
-                        gui.updateSkillTable = true;
-                        row.Cells[TABLE_COLUMN_LEVEL].Value =
-                        Maid.Param.status_.skill_data[skillID].exp_system.GetCurrentLevel();
-                        gui.updateSkillTable = true;
-                        row.Cells[TABLE_COLUMN_TOTAL_XP].Value =
-                        Maid.Param.status_.skill_data[skillID].exp_system.GetTotalExp();
-                        gui.updateSkillTable = true;
-                        row.Cells[SKILL_COLUMN_PLAY_COUNT].Value = Maid.Param.status_.skill_data[skillID].play_count;
                     }
                     gui.updateSkillTable = false;
                 },
@@ -882,19 +892,20 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
                     gui.updateWorkTable = true;
                     row.Cells[TABLE_COLUMN_HAS].Value = forceUpdateNoonWorks[workId];
-                    if (!Maid.Param.status_.work_data.ContainsKey(workId))
-                    {
-                        gui.updateWorkTable = true;
-                        row.Cells[TABLE_COLUMN_LEVEL].Value = 0;
-                        gui.updateWorkTable = true;
-                        row.Cells[TABLE_COLUMN_TOTAL_XP].Value = 0;
-                    }
-                    else
+                    Status.WorkData workData;
+                    if (Maid.Param.status_.work_data.TryGetValue(workId, out workData))
                     {
                         gui.updateWorkTable = true;
                         row.Cells[TABLE_COLUMN_LEVEL].Value = Maid.Param.status_.work_data[workId].level;
                         gui.updateWorkTable = true;
                         row.Cells[TABLE_COLUMN_TOTAL_XP].Value = Maid.Param.status_.work_data[workId].play_count;
+                    }
+                    else
+                    {
+                        gui.updateWorkTable = true;
+                        row.Cells[TABLE_COLUMN_LEVEL].Value = 0;
+                        gui.updateWorkTable = true;
+                        row.Cells[TABLE_COLUMN_TOTAL_XP].Value = 0;
                     }
                     gui.updateWorkTable = false;
                 },

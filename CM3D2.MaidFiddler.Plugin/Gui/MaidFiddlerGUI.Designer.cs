@@ -2278,7 +2278,7 @@
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "MaidFiddlerGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Maid Fiddler for CM3D2";
+            this.Text = "Maid Fiddler";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage_info.ResumeLayout(false);

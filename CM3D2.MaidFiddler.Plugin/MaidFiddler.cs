@@ -18,7 +18,7 @@ namespace CM3D2.MaidFiddler.Plugin
     public class MaidFiddler : PluginBase, IDisposable
     {
         public const string VERSION = "BETA 0.6";
-        private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.N};
+        private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.LeftAlt, KeyCode.LeftControl};
         private KeyHelper keyCreateGUI;
         public static string DATA_PATH { get; private set; }
         public static MaidFiddlerGUI Gui { get; set; }
@@ -37,7 +37,7 @@ namespace CM3D2.MaidFiddler.Plugin
             GuiThread = new Thread(LoadGUI);
 
             FiddlerHooks.SaveLoadedEvent += OnSaveLoaded;
-            Debugger.WriteLine("MaidFiddler loaded!");
+            Debugger.WriteLine($"MaidFiddler {VERSION} loaded!");
         }
 
         private static string GetKeyCombo(IList<KeyCode> keys)
