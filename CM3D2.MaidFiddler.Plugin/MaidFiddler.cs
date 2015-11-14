@@ -18,11 +18,14 @@ namespace CM3D2.MaidFiddler.Plugin
     public class MaidFiddler : PluginBase, IDisposable
     {
         public const string VERSION = "BETA 0.6";
+        private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
         private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.LeftAlt, KeyCode.LeftControl};
+        private static bool useJapNameStyle;
         private KeyHelper keyCreateGUI;
         public static string DATA_PATH { get; private set; }
         public static MaidFiddlerGUI Gui { get; set; }
         public static Thread GuiThread { get; set; }
+        public static bool USE_JAPANESE_NAME_STYLE => useJapNameStyle;
 
         public void Dispose()
         {
@@ -97,6 +100,18 @@ namespace CM3D2.MaidFiddler.Plugin
             }
             keyCreateGUI = new KeyHelper(keys.ToArray());
             Debugger.WriteLine(LogLevel.Info, $"Loaded {keys.Count} long key combo: {GetKeyCombo(keys)}");
+
+            Debugger.WriteLine(LogLevel.Info, "Loading name style info...");
+            value = Preferences["GUI"]["UseJapaneseNameStyle"];
+            if (value.Value == null || value.Value.Trim() == string.Empty
+                || !bool.TryParse(value.Value, out useJapNameStyle))
+            {
+                value.Value = DEFAULT_USE_JAPANESE_NAME_STYLE.ToString();
+                useJapNameStyle = DEFAULT_USE_JAPANESE_NAME_STYLE;
+                SaveConfig();
+            }
+
+            Debugger.WriteLine(LogLevel.Info, $"Using Japanese name style: {useJapNameStyle}");
         }
 
         public void LoadGUI()
