@@ -19,7 +19,7 @@ namespace CM3D2.MaidFiddler.Plugin
     {
         public const string VERSION = "BETA 0.6";
         private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
-        private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.LeftAlt, KeyCode.LeftControl};
+        private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.KeypadEnter, KeyCode.Keypad0};
         private static bool useJapNameStyle;
         private KeyHelper keyCreateGUI;
         public static string DATA_PATH { get; private set; }
