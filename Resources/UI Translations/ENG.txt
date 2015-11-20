@@ -9,7 +9,7 @@
 ; Comments and faulty lines (wrong separators, missing translation) are ignored
 
 ; Title text for lulz
-TITLE_TEXT						- Your meidos are worth it
+TITLE_TEXT						- Now with 0.0001% less bugs!
 
 ; Info tab
 TAB_INFO						Information
