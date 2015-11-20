@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Utils;
 using UnityEngine;
+using Debugger = CM3D2.MaidFiddler.Plugin.Utils.Debugger;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
     public partial class MaidFiddlerGUI
     {
-        private SortedList<string, MaidInfo> loadedMaids;
+        public delegate int MaidCompareMethod(Maid x, Maid y);
+
+        private const string NAME_FORMAT = "{0}{1}";
+        private readonly MaidComparer comparer = new MaidComparer();
+        private SortedList<Maid, MaidInfo> loadedMaids;
         private Dictionary<string, Image> maidThumbnails;
         private Dictionary<MaidChangeType, Action> valueUpdateQueue;
 
@@ -22,19 +28,62 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private MaidInfo GetMaidInfo(Maid maid)
         {
-            return loadedMaids[maid.Param.status.guid];
+            return loadedMaids[maid];
         }
 
         private void InitMaids()
         {
-            loadedMaids = new SortedList<string, MaidInfo>();
+            loadedMaids = new SortedList<Maid, MaidInfo>(comparer);
             maidThumbnails = new Dictionary<string, Image>();
             valueUpdateQueue = new Dictionary<MaidChangeType, Action>();
         }
 
         private bool IsMaidLoaded(Maid maid)
         {
-            return loadedMaids.ContainsKey(maid.Param.status.guid);
+            return loadedMaids.ContainsKey(maid);
+        }
+
+        public static int MaidCompareCreateTime(Maid x, Maid y)
+        {
+            int result;
+            if (x.Param.status.create_time_num < y.Param.status.create_time_num)
+                result = -1;
+            else
+                result = x.Param.status.create_time_num == y.Param.status.create_time_num ? 0 : 1;
+            return MaidFiddler.MaidOrderDirection * result;
+        }
+
+        public static int MaidCompareFirstLastName(Maid x, Maid y)
+        {
+            return MaidFiddler.MaidOrderDirection
+                   * string.CompareOrdinal(
+                   string.Format(
+                   NAME_FORMAT,
+                   x.Param.status.first_name.ToUpperInvariant(),
+                   x.Param.status.last_name.ToUpperInvariant()),
+                   string.Format(
+                   NAME_FORMAT,
+                   y.Param.status.first_name.ToUpperInvariant(),
+                   y.Param.status.last_name.ToUpperInvariant()));
+        }
+
+        public static int MaidCompareID(Maid x, Maid y)
+        {
+            return MaidFiddler.MaidOrderDirection * string.CompareOrdinal(x.Param.status.guid, y.Param.status.guid);
+        }
+
+        public static int MaidCompareLastFirstName(Maid x, Maid y)
+        {
+            return MaidFiddler.MaidOrderDirection
+                   * string.CompareOrdinal(
+                   string.Format(
+                   NAME_FORMAT,
+                   x.Param.status.last_name.ToUpperInvariant(),
+                   x.Param.status.first_name.ToUpperInvariant()),
+                   string.Format(
+                   NAME_FORMAT,
+                   y.Param.status.last_name.ToUpperInvariant(),
+                   y.Param.status.first_name.ToUpperInvariant()));
         }
 
         public void ReloadMaids()
@@ -55,9 +104,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 if (maidThumbnails.Count > 0)
                     maidThumbnails.ForEach(thumb => thumb.Value.Dispose());
                 maidThumbnails.Clear();
-                loadedMaids =
-                new SortedList<string, MaidInfo>(
-                maids.ToDictionary(m => m.Param.status.guid, m => new MaidInfo(m, this)));
+                loadedMaids = new SortedList<Maid, MaidInfo>(
+                maids.ToDictionary(m => m, m => new MaidInfo(m, this)),
+                comparer);
                 loadedMaids.ForEach(
                 m =>
                 {
@@ -67,7 +116,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     using (MemoryStream stream = new MemoryStream(thumb.EncodeToPNG()))
                     {
                         Debugger.WriteLine("Loading PNG of size: " + stream.Length);
-                        maidThumbnails.Add(m.Key, Image.FromStream(stream));
+                        maidThumbnails.Add(m.Key.Param.status.guid, Image.FromStream(stream));
                     }
                 });
 
@@ -78,7 +127,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         public void UpdateMaids()
         {
-            InvokeAsync((UpdateInternal) UpdateMaids, GameMain.Instance.CharacterMgr.GetStockMaidList());
+            InvokeAsync((UpdateInternal) UpdateMaids, GameMain.Instance.CharacterMgr.GetStockMaidList().ToList());
         }
 
         private void UpdateMaids(List<Maid> newMaids)
@@ -89,54 +138,59 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 if (newMaids.Count != loadedMaids.Count)
                     goto update;
 
-                newMaids.Sort((m1, m2) => string.CompareOrdinal(m1.Param.status.guid, m2.Param.status.guid));
-                if (newMaids.SequenceEqual(loadedMaids.Values.Select(m => m.Maid), new MaidComparer()))
+                newMaids.Sort((m1, m2) => MaidFiddler.MaidCompare(m1, m2));
+                if (newMaids.SequenceEqual(loadedMaids.Values.Select(m => m.Maid), comparer))
                     return;
 
                 update:
+#if DEBUG
+                Stopwatch sw = Stopwatch.StartNew();
+#endif
                 Debugger.WriteLine(LogLevel.Info, "Updating maid list!");
-                Dictionary<string, Maid> newMaidList = newMaids.ToDictionary(m => m.Param.status.guid, m => m);
                 Debugger.WriteLine(LogLevel.Info, $" New count:  {newMaids.Count}, Loaded count: {loadedMaids.Count}");
-                loadedMaids = new SortedList<string, MaidInfo>(
+                loadedMaids = new SortedList<Maid, MaidInfo>(
                 loadedMaids.Where(
                 m =>
                 {
-                    bool result = newMaidList.ContainsKey(m.Key);
+                    bool result = newMaids.Contains(m.Key);
                     if (result)
-                        newMaidList.Remove(m.Key);
+                        newMaids.Remove(m.Key);
                     else
                     {
                         if (SelectedMaid != null && m.Value.Maid == SelectedMaid.Maid)
                             valueUpdateQueue.Clear();
-                        if (maidThumbnails.ContainsKey(m.Key))
-                            maidThumbnails[m.Key].Dispose();
-                        maidThumbnails.Remove(m.Key);
+                        if (maidThumbnails.ContainsKey(m.Key.Param.status.guid))
+                            maidThumbnails[m.Key.Param.status.guid].Dispose();
+                        maidThumbnails.Remove(m.Key.Param.status.guid);
                     }
                     return result;
                 }).ToList().Union(
-                newMaidList.ToDictionary(
-                m => m.Key,
+                newMaids.Select(
                 m =>
                 {
                     Debugger.WriteLine(LogLevel.Info, "Adding new maid info.");
-                    MaidInfo info = new MaidInfo(m.Value, this);
+                    MaidInfo info = new MaidInfo(m, this);
                     Debugger.WriteLine(LogLevel.Info, "Loading thumbnail");
-                    Texture2D thumb = m.Value.GetThumIcon();
+                    Texture2D thumb = m.GetThumIcon();
                     if (thumb == null)
-                        return info;
+                        return new KeyValuePair<Maid, MaidInfo>(m, info);
                     using (MemoryStream stream = new MemoryStream(thumb.EncodeToPNG()))
                     {
                         Debugger.WriteLine("Loading PNG of size: " + stream.Length);
-                        maidThumbnails.Add(m.Key, Image.FromStream(stream));
+                        maidThumbnails.Add(m.Param.status.guid, Image.FromStream(stream));
                     }
-                    return info;
-                })).ToDictionary(m => m.Key, m => m.Value));
+                    return new KeyValuePair<Maid, MaidInfo>(m, info);
+                })).ToDictionary(m => m.Key, m => m.Value),
+                comparer);
 
 
                 Debugger.WriteLine(LogLevel.Info, $"New loaded maids count: {loadedMaids.Count}");
 #if DEBUG
-                newMaidList.ForEach(
-                m => Debugger.WriteLine($"Added {m.Value.Param.status.first_name} {m.Value.Param.status.last_name}"));
+                sw.Stop();
+                Debugger.WriteLine(LogLevel.Info, $"Updated maid list in {sw.Elapsed.TotalMilliseconds} ms");
+
+                newMaids.ForEach(
+                m => Debugger.WriteLine($"Added {m.Param.status.first_name} {m.Param.status.last_name}"));
                 Debugger.WriteLine();
 #endif
                 Debugger.WriteLine("Updating list.");
@@ -170,8 +224,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             $"Failed to update scheduled maid value. Type: {cType}");
         }
 
-        private class MaidComparer : IEqualityComparer<Maid>
+        private class MaidComparer : IEqualityComparer<Maid>, IComparer<Maid>
         {
+            public int Compare(Maid x, Maid y)
+            {
+                return MaidFiddler.MaidCompare(x, y);
+            }
+
             public bool Equals(Maid x, Maid y)
             {
                 return x.Param.status.guid.Equals(y.Param.status.guid);

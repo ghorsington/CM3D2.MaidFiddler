@@ -73,7 +73,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 e.Bounds.Height,
                 e.Bounds.Height);
             }
-            string name = MaidFiddler.USE_JAPANESE_NAME_STYLE
+            string name = MaidFiddler.UseJapaneseNameStyle
                           ? $"{m.Maid.Param.status.last_name} {m.Maid.Param.status.first_name}"
                           : $"{m.Maid.Param.status.first_name} {m.Maid.Param.status.last_name}";
             e.Graphics.DrawString(

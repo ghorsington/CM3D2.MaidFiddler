@@ -183,7 +183,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     maidParamsUpdaters.Add(e, UpdateMaidParam);
                 }
 
-
                 forceUpdateNoonWorks = new Dictionary<int, bool>();
                 foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
                     forceUpdateNoonWorks.Add(noonWork.Key, false);
@@ -403,9 +402,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         setValBool((bool) val);
                     else
                         Debugger.WriteLine(LogLevel.Error, $"No setter function found for {EnumHelper.GetName(type)}!");
-
-                    //gui.valueUpdate[type] = true;
-                    //UpdateField(type);
                 },
                 $"Failed to set value for type {EnumHelper.GetName(type)} to {val}");
             }
@@ -739,7 +735,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     for (MaidClassType e = 0; e < EnumHelper.MaxMaidClass; e++)
                         UpdateMaidClass((int) e, 0);
-                    //UpdateField(MaidChangeType.MaidClassType, (int) e);
                 },
                 "Failed to update maid class type");
             }
@@ -937,7 +932,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     for (YotogiClassType e = 0; e < EnumHelper.MaxYotogiClass; e++)
                         UpdateYotogiClass((int) e, 0);
-                    //UpdateField(MaidChangeType.YotogiClassType, (int) e);
                 },
                 "Failed to update maid yotogi class");
             }

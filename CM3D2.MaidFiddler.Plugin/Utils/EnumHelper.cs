@@ -43,5 +43,19 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         {
             return (T[]) Enum.GetValues(typeof (T));
         }
+
+        public static bool TryParse<T>(string val, out T result, bool ignoreCase = false)
+        {
+            try
+            {
+                result = (T) Enum.Parse(typeof (T), val, ignoreCase);
+            }
+            catch (Exception)
+            {
+                result = default(T);
+                return false;
+            }
+            return true;
+        }
     }
 }
