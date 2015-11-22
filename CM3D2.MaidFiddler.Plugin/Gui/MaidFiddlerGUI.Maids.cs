@@ -5,9 +5,10 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using CM3D2.MaidFiddler.Hook;
-using CM3D2.MaidFiddler.Plugin.Utils;
 using UnityEngine;
+using CollectionUtils = CM3D2.MaidFiddler.Plugin.Utils.CollectionUtils;
 using Debugger = CM3D2.MaidFiddler.Plugin.Utils.Debugger;
+using LogLevel = CM3D2.MaidFiddler.Plugin.Utils.LogLevel;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -102,12 +103,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 loadedMaids.Clear();
                 valueUpdateQueue.Clear();
                 if (maidThumbnails.Count > 0)
-                    maidThumbnails.ForEach(thumb => thumb.Value.Dispose());
+                    CollectionUtils.ForEach(maidThumbnails, thumb => thumb.Value.Dispose());
                 maidThumbnails.Clear();
                 loadedMaids = new SortedList<Maid, MaidInfo>(
                 maids.ToDictionary(m => m, m => new MaidInfo(m, this)),
                 comparer);
-                loadedMaids.ForEach(
+                CollectionUtils.ForEach(
+                loadedMaids,
                 m =>
                 {
                     Texture2D thumb = m.Value.Maid.GetThumIcon();

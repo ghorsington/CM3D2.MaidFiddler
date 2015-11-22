@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BBD5579E-067E-41D6-99E0-505BE3F2ADEA}</ProjectGuid>
+    <ProjectGuid>{538BB761-A1B8-48FE-8024-30F8A5FDDE68}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CM3D2.MaidFiddler.Patch</RootNamespace>
-    <AssemblyName>CM3D2.MaidFiddler.Patch</AssemblyName>
+    <RootNamespace>CM3D2.MaidFiddler.Sybaris.Patcher</RootNamespace>
+    <AssemblyName>CM3D2.MaidFiddler.Sybaris.Patcher</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,23 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
     <Reference Include="Mono.Cecil">
-      <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\Mono.Cecil.dll</HintPath>
+      <HintPath>..\..\Mono.Cecil.Inject\lib\Mono.Cecil.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil.Inject, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Mono.Cecil.Inject\Mono.Cecil.Inject\bin\Release\Mono.Cecil.Inject.dll</HintPath>
-    </Reference>
-    <Reference Include="ReiPatcher">
-      <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\ReiPatcher.exe</HintPath>
+    <Reference Include="Mono.Cecil.Inject">
+      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\ReiPatcher\Mono.Cecil.Inject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="System.Core" />
+    <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
