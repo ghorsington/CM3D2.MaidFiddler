@@ -168,6 +168,7 @@ namespace CM3D2.MaidFiddler.Hook
         public bool Force { get; set; }
         public bool Visible { get; set; }
         public int WorkID { get; internal set; }
+        public Maid CallerMaid { get; internal set; }
     }
 
     public static class MaidStatusChangeHooks
@@ -200,13 +201,14 @@ namespace CM3D2.MaidFiddler.Hook
 
         public delegate void WorkEnableCheckHandle(WorkEventArgs e);
 
-        public static bool CheckNightWorkVisibility(out bool result, int workID)
+        public static bool CheckNightWorkVisibility(out bool result, int workID, Maid maid)
         {
             NightWorkVisibleEventArgs args = new NightWorkVisibleEventArgs
             {
                 Visible = false,
                 Force = false,
-                WorkID = workID
+                WorkID = workID,
+                CallerMaid = maid
             };
             NightWorkVisibilityCheck?.Invoke(args);
             result = args.Visible;

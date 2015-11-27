@@ -8,8 +8,8 @@
 ; Comment lines with ";"
 ; Comments and faulty lines (wrong separators, missing translation) are ignored
 
-; Title text for lulz
-TITLE_TEXT						- Now with 0.0001% less bugs!
+; Feel free to edit the title of the tool!
+TITLE_TEXT						- Pimp My Bride!
 
 ; Info tab
 TAB_INFO						Information
@@ -85,7 +85,7 @@ SCENARIO_NEW					New game
 SCENARIO_DEBT					Debt phase
 SCENARIO_MAIN					Free play
 SALON_STATS						Club stats
-SalonClean						Tidyness
+SalonClean						Tidiness
 SalonBeautiful					Beauty
 SalonEvaluation					Total evaluation
 SalonGrade						Current grade
@@ -139,6 +139,7 @@ Yotogi_Escort					Escort
 Yotogi_Soap						Soap
 Yotogi_Sweet					Sweet
 Yotogi_Party					Party
+Yotogi_SexSlave					Sex Slave
 
 ; Params			
 Care							Care
@@ -196,11 +197,11 @@ BonusTeachRate					Teaching rate
 料理							Cooking
 華道							Flower Arrangement
 接客練習							Chat
-模様替え							Makeup
+模様替え							Make-up
 掃除							Cleaning
 教養							Study
 派遣							Dispatch
-化粧							Makeup
+化粧							Make-up
 エステ							Spa
 メイド研修						Maid Training
 
@@ -492,5 +493,5 @@ GUI_YOTOGI_TIMES_PROMPT			Update play count for all enabled yotogi skills. Speci
 GUI_CLASS_LVL_TITLE				Set all class levels to...
 GUI_CLASS_LVL_PROMPT			Specify the level (1-10) to set all maid and yotogi classes to.
 
-OK								Ok
+OK								OK
 CANCEL							Cancel

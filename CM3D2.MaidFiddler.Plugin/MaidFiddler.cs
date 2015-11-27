@@ -17,7 +17,7 @@ namespace CM3D2.MaidFiddler.Plugin
     [PluginName("Maid Fiddler"), PluginVersion(VERSION)]
     public class MaidFiddler : PluginBase, IDisposable
     {
-        public const string VERSION = "BETA 0.6.1";
+        public const string VERSION = "BETA 0.6.1a";
         private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
         private const MaidOrderStyle DEFAULT_ORDER_STYLE = MaidOrderStyle.GUID;
         private const MaidOrderDirection DEFAULT_ORDER_DIRECTION = Plugin.MaidOrderDirection.Ascending;
