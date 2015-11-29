@@ -168,7 +168,11 @@ namespace CM3D2.MaidFiddler.Hook
         public bool Force { get; set; }
         public bool Visible { get; set; }
         public int WorkID { get; internal set; }
-        public Maid CallerMaid { get; internal set; }
+    }
+
+    public class YotogiSkillVisibleEventArgs : EventArgs
+    {
+        public bool ForceVisible { get; set; }
     }
 
     public static class MaidStatusChangeHooks
@@ -201,14 +205,15 @@ namespace CM3D2.MaidFiddler.Hook
 
         public delegate void WorkEnableCheckHandle(WorkEventArgs e);
 
-        public static bool CheckNightWorkVisibility(out bool result, int workID, Maid maid)
+        public delegate void YotogiSkillVisibleHandle(YotogiSkillVisibleEventArgs e);
+
+        public static bool CheckNightWorkVisibility(out bool result, int workID)
         {
             NightWorkVisibleEventArgs args = new NightWorkVisibleEventArgs
             {
                 Visible = false,
                 Force = false,
-                WorkID = workID,
-                CallerMaid = maid
+                WorkID = workID
             };
             NightWorkVisibilityCheck?.Invoke(args);
             result = args.Visible;
@@ -387,6 +392,14 @@ namespace CM3D2.MaidFiddler.Hook
             CommandUpdate?.Invoke(args);
         }
 
+        public static bool OnYotogiSkillVisibilityCheck(out bool ret)
+        {
+            YotogiSkillVisibleEventArgs args = new YotogiSkillVisibleEventArgs {ForceVisible = false};
+            YotogiSkillVisibilityCheck?.Invoke(args);
+            ret = true;
+            return args.ForceVisible;
+        }
+
         public static event ReloadNightWorkDataHandle ProcessNightWorkData;
         public static event ReloadNoonWorkDataHandle ProcessNoonWorkData;
         public static event PropertyRemovedHandle PropertyRemoved;
@@ -416,5 +429,6 @@ namespace CM3D2.MaidFiddler.Hook
         public static event StatusChangeIDHandle StatusChangedID;
         public static event StatusUpdateHandle StatusUpdated;
         public static event ThumbnailUpdateHandle ThumbnailChanged;
+        public static event YotogiSkillVisibleHandle YotogiSkillVisibilityCheck;
     }
 }

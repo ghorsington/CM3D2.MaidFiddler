@@ -195,6 +195,7 @@
             this.mENUMAIDLOCKALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMAIDUNLOCKALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maidFiddlerGUIBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_info.SuspendLayout();
@@ -2063,6 +2064,7 @@
             this.mENUALLMAIDLIMITToolStripMenuItem,
             this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem,
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem,
+            this.mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem,
             this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem});
             this.mENUALLMAIDToolStripMenuItem.Name = "mENUALLMAIDToolStripMenuItem";
             this.mENUALLMAIDToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
@@ -2262,6 +2264,13 @@
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Text = "MENU_MAID_UNLOCK_ALL";
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Click += new System.EventHandler(this.UnlockAllValues);
+            // 
+            // mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem
+            // 
+            this.mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem.Name = "mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem";
+            this.mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem.Text = "MENU_ALL_MAID_ALL_YOTOGI_VISIBLE";
+            this.mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem.Click += new System.EventHandler(this.ToggleYotogiSkillsVisible);
             // 
             // MaidFiddlerGUI
             // 
@@ -2501,5 +2510,6 @@
         private System.Windows.Forms.ToolStripMenuItem mAXCLASSLVLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mENUMAIDSETToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mENUMAIDSETCLASSLVLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem;
     }
 }

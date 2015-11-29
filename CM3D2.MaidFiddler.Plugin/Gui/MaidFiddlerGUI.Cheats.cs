@@ -14,6 +14,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private bool allYotogiCommandsVisible;
         private bool removeValueLimit;
         private bool vipAlwaysVisible;
+        private bool yotogiSkillsVisible;
 
         private void CleanDebt(object sender, EventArgs e)
         {
@@ -262,6 +263,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             ToolStripMenuItem item = (ToolStripMenuItem) sender;
             allYotogiCommandsVisible = !allYotogiCommandsVisible;
             item.Checked = allYotogiCommandsVisible;
+        }
+
+        private void ToggleYotogiSkillsVisible(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem) sender;
+            yotogiSkillsVisible = !yotogiSkillsVisible;
+            item.Checked = yotogiSkillsVisible;
         }
 
         private void UnlockAll(object sender, EventArgs e)

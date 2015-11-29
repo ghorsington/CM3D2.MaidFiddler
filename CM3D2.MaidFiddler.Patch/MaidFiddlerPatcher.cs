@@ -40,6 +40,8 @@ namespace CM3D2.MaidFiddler.Patch
             TypeDefinition yotogiPlayMgr = args.Assembly.MainModule.GetType("YotogiPlayManager");
             TypeDefinition wf = args.Assembly.MainModule.GetType("wf");
             TypeDefinition status = args.Assembly.MainModule.GetType("param.Status");
+            TypeDefinition skillData =
+            args.Assembly.MainModule.GetType("Yotogi").NestedTypes.FirstOrDefault(t => t.Name == "SkillData");
 
             TypeDefinition hookType = FiddlerAssembly.MainModule.GetType("CM3D2.MaidFiddler.Hook.FiddlerHooks");
             TypeDefinition maidHooks = FiddlerAssembly.MainModule.GetType(
@@ -87,6 +89,8 @@ namespace CM3D2.MaidFiddler.Patch
             maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnFeaturePropensityUpdated));
             MethodDefinition nightWorkVisCheckHook =
             maidHooks.GetMethod(nameof(MaidStatusChangeHooks.CheckNightWorkVisibility));
+            MethodDefinition yotogiSkillVisCheckHook =
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnYotogiSkillVisibilityCheck));
 
             MethodDefinition onValueRoundInt1 = valueLimitHooks.GetMethod(
             nameof(ValueLimitHooks.OnValueRound),
@@ -299,6 +303,7 @@ namespace CM3D2.MaidFiddler.Patch
                        0,
                        InjectFlags.ModifyReturn | InjectFlags.PassParametersVal);
 
+
             WritePreviousLine("UpdateFeatureAndPropensity");
             maidParam.GetMethod("UpdateFeatureAndPropensity")
                      .InjectWith(
@@ -341,6 +346,12 @@ namespace CM3D2.MaidFiddler.Patch
                              yotogiPlayMgr.GetField("valid_command_dic_"),
                              yotogiPlayMgr.GetField("command_factory_")
                          });
+
+            WritePreviousLine("IsExecMaid");
+            skillData.GetMethod("IsExecMaid").InjectWith(yotogiSkillVisCheckHook, 0, 0, InjectFlags.ModifyReturn);
+
+            WritePreviousLine("IsExecStage");
+            skillData.GetMethod("IsExecStage").InjectWith(yotogiSkillVisCheckHook, 0, 0, InjectFlags.ModifyReturn);
 
             WritePreviousLine("NumRound2");
             wf.GetMethod("NumRound2")

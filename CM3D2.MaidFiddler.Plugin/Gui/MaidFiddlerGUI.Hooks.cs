@@ -25,6 +25,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             MaidStatusChangeHooks.FeaturePropensityUpdated += OnFeaturePropensityUpdated;
             MaidStatusChangeHooks.CommandUpdate += OnCommandUpdate;
             MaidStatusChangeHooks.NightWorkVisibilityCheck += OnNightWorkVisibilityCheck;
+            MaidStatusChangeHooks.YotogiSkillVisibilityCheck += OnYotogiSkillVisibilityCheck;
 
             PlayerStatusChangeHooks.PlayerValueChanged += OnPlayerValueChanged;
 
@@ -285,6 +286,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             $"Attempting to check work enabled: ID={args.ID}, Force={args.ForceEnabled}");
         }
 
+        private void OnYotogiSkillVisibilityCheck(YotogiSkillVisibleEventArgs e)
+        {
+            Debugger.WriteLine(LogLevel.Info, $"Checking for skill visibility. Setting to {yotogiSkillsVisible}");
+            e.ForceVisible = yotogiSkillsVisible;
+        }
+
         private void ReloadNightWorkData(PostProcessNightEventArgs args)
         {
             Maid m = args.ScheduleScene.slot[args.SlotID].maid;
@@ -320,6 +327,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             MaidStatusChangeHooks.FeaturePropensityUpdated -= OnFeaturePropensityUpdated;
             MaidStatusChangeHooks.CommandUpdate -= OnCommandUpdate;
             MaidStatusChangeHooks.NightWorkVisibilityCheck -= OnNightWorkVisibilityCheck;
+            MaidStatusChangeHooks.YotogiSkillVisibilityCheck -= OnYotogiSkillVisibilityCheck;
 
             PlayerStatusChangeHooks.PlayerValueChanged -= OnPlayerValueChanged;
 

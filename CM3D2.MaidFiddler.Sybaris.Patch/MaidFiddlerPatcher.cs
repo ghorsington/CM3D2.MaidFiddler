@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using CM3D2.MaidFiddler.Hook;
 using Mono.Cecil;
@@ -30,6 +31,8 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
             TypeDefinition yotogiPlayMgr = assembly.MainModule.GetType("YotogiPlayManager");
             TypeDefinition wf = assembly.MainModule.GetType("wf");
             TypeDefinition status = assembly.MainModule.GetType("param.Status");
+            TypeDefinition skillData =
+            assembly.MainModule.GetType("Yotogi").NestedTypes.FirstOrDefault(t => t.Name == "SkillData");
 
             TypeDefinition hookType = hookAssembly.MainModule.GetType("CM3D2.MaidFiddler.Hook.FiddlerHooks");
             TypeDefinition maidHooks = hookAssembly.MainModule.GetType("CM3D2.MaidFiddler.Hook.MaidStatusChangeHooks");
@@ -75,6 +78,8 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
             maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnFeaturePropensityUpdated));
             MethodDefinition nightWorkVisCheckHook =
             maidHooks.GetMethod(nameof(MaidStatusChangeHooks.CheckNightWorkVisibility));
+            MethodDefinition yotogiSkillVisCheckHook =
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnYotogiSkillVisibilityCheck));
 
             MethodDefinition onValueRoundInt1 = valueLimitHooks.GetMethod(
             nameof(ValueLimitHooks.OnValueRound),
@@ -299,6 +304,10 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
                              yotogiPlayMgr.GetField("valid_command_dic_"),
                              yotogiPlayMgr.GetField("command_factory_")
                          });
+
+            skillData.GetMethod("IsExecMaid").InjectWith(yotogiSkillVisCheckHook, 0, 0, InjectFlags.ModifyReturn);
+
+            skillData.GetMethod("IsExecStage").InjectWith(yotogiSkillVisCheckHook, 0, 0, InjectFlags.ModifyReturn);
 
             wf.GetMethod("NumRound2")
               .InjectWith(onValueRoundInt1, 0, 0, InjectFlags.ModifyReturn | InjectFlags.PassParametersVal);
