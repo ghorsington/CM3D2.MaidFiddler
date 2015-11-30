@@ -46,7 +46,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
             catch (Exception e)
             {
-                ErrorLog.ThrowErrorMessage(e, "Failed to initalize core components");
+                FiddlerUtils.ThrowErrorMessage(e, "Failed to initalize core components");
             }
         }
 

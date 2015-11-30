@@ -17,6 +17,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         // Full work data at ScheduleCSVData.NoonWorkData and ScheduleCSVData.NightWorkData
         public class MaidInfo
         {
+            /*
+            private static readonly FieldInfo MaidStatusField = typeof (MaidParam).GetField(
+            "status_",
+            BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+            */
+
             private readonly MaidFiddlerGUI gui;
             private Dictionary<int, bool> forceUpdateNightWorks;
             private Dictionary<int, bool> forceUpdateNoonWorks;
@@ -33,6 +39,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 this.gui = gui;
                 forceUpdateNightWorks = new Dictionary<int, bool>();
                 Maid = maid;
+
                 ValueLocks = new Dictionary<MaidChangeType, bool>();
                 EnumHelper.MaidChangeTypes.ForEach(t => ValueLocks.Add(t, false));
                 TempUnlocks = new Dictionary<MaidChangeType, bool>();
@@ -55,6 +62,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             private Dictionary<MaidChangeType, bool> TempUnlocks { get; }
             private Dictionary<MaidChangeType, Action> UpdateFunctions { get; set; }
             private Dictionary<MaidChangeType, bool> ValueLocks { get; }
+            /*
+            private Status MaidStatus
+            {
+                get { return (Status)MaidStatusField.GetValue(Maid.Param); }
+                set { MaidStatusField.SetValue(Maid.Param, value);}
+            }
+            */
 
             private void InitFunctions()
             {
@@ -254,6 +268,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             private void SetBonusCare(int val)
             {
+                /*
+                Status maidStatus = MaidStatus;
+                maidStatus.maid_class_bonus_status.care = val;
+                MaidStatus = maidStatus;
+                */
                 Maid.Param.status_.maid_class_bonus_status.care = val;
             }
 
@@ -643,17 +662,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         UpdateSkillData(skill.Value.id);
                     }
                     action = "Updating maid features";
-                    for (Feature e = Feature.Null + 1; e < Feature.Max; e++)
+                    for (Feature e = Feature.Null + 1; e < EnumHelper.MaxFeature; e++)
                         UpdateMiscStatus(MaidChangeType.Feature, (int) e);
                     action = "Updating maid propensity";
-                    for (Propensity e = Propensity.Null + 1; e < Propensity.Max; e++)
+                    for (Propensity e = Propensity.Null + 1; e < EnumHelper.MaxPropensity; e++)
                         UpdateMiscStatus(MaidChangeType.Propensity, (int) e);
                     UpdateMaidClasses();
                     UpdateYotogiClasses();
                 }
                 catch (Exception e)
                 {
-                    ErrorLog.ThrowErrorMessage(
+                    FiddlerUtils.ThrowErrorMessage(
                     e,
                     $"Failed to update maid value for maid {Maid.Param.status.first_name} {Maid.Param.status.last_name}. Reason: {string.Format(action, EnumHelper.GetName(cType))}");
                 }

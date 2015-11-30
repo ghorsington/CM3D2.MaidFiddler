@@ -35,6 +35,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -43,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FiddlerHooks.cs" />
+    <Compile Include="MaidFiddlerPatchedAttribute.cs" />
     <Compile Include="PlayerStatusChangeHooks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MaidStatusChangeHooks.cs" />

@@ -19,7 +19,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
                 // Propensity
                 Resources.GetFieldText(groupBox_propensity);
-                for (Propensity e = Propensity.Null + 1; e < Propensity.Max; e++)
+                for (Propensity e = Propensity.Null + 1; e < EnumHelper.MaxPropensity; e++)
                 {
                     checkedListBox_propensity.Items.Add(Resources.GetFieldText(EnumHelper.GetName(e)), false);
                 }
@@ -29,7 +29,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
                 // Features
                 Resources.GetFieldText(groupBox_feature);
-                for (Feature e = Feature.Null + 1; e < Feature.Max; e++)
+                for (Feature e = Feature.Null + 1; e < EnumHelper.MaxFeature; e++)
                 {
                     checkedListBox_feature.Items.Add(Resources.GetFieldText(EnumHelper.GetName(e)), false);
                 }

@@ -11,6 +11,7 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
 {
     public static class MaidFiddlerPatcher
     {
+        private const uint PATCHER_VERSION = 1000;
         public static readonly string[] TargetAssemblyNames = {"Assembly-CSharp.dll"};
 
         public static void Patch(AssemblyDefinition assembly)
@@ -335,6 +336,8 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
             playerParam.ChangeAccess("status_");
 
             status.ChangeAccess("kInitMaidPoint");
+
+            SetCustomPatchedAttribute(assembly);
         }
 
         private static void PatchFuncEnum(MaidChangeType tag, MethodDefinition target, MethodDefinition hook)
@@ -366,6 +369,16 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
             il.InsertBefore(start, il.Create(OpCodes.Ldarg_1));
             il.InsertBefore(start, il.Create(OpCodes.Ldarg_2));
             il.InsertBefore(start, il.Create(OpCodes.Call, hookRef));
+        }
+
+        private static void SetCustomPatchedAttribute(AssemblyDefinition ass)
+        {
+            CustomAttribute attr =
+            new CustomAttribute(
+            ass.MainModule.Import(typeof (MaidFiddlerPatchedAttribute).GetConstructor(new[] {typeof (uint)})));
+            attr.ConstructorArguments.Add(
+            new CustomAttributeArgument(ass.MainModule.Import(typeof (uint)), PATCHER_VERSION));
+            ass.MainModule.GetType("Maid").CustomAttributes.Add(attr);
         }
     }
 }

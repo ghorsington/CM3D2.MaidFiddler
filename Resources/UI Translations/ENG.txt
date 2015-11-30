@@ -9,7 +9,7 @@
 ; Comments and faulty lines (wrong separators, missing translation) are ignored
 
 ; Feel free to edit the title of the tool!
-TITLE_TEXT						- Pimp My Bride!
+TITLE_TEXT						- Fiddle me up, Scotty!
 
 ; Info tab
 TAB_INFO						Information
@@ -441,6 +441,10 @@ M女								Masochist
 高貴							Noble
 魅了							Charming
 魔性の魅力						Devilish
+雅								Elegant
+撫子							Loveable
+一途							Earnest
+盲目的							Reckless
 
 ; Menu items
 MENU_GAME						Game and Salon
@@ -460,6 +464,7 @@ MENU_ALL_MAID_RESET_VIP			Reset VIP encounters
 MENU_ALL_MAID_ALL_YOTOGI_COM	All yotogi skill commands enabled
 MENU_ALL_MAID_ALL_VIP_VISIBLE_ALWAYS	VIP encounters always visible
 MENU_ALL_MAID_ALL_YOTOGI_VISIBLE		All yotogi skills always visible
+MENU_ALL_MAID_UNLOCK_MAX_ALL	Unlock and set all to max for every maid
 
 ; Current maid cheats
 MENU_MAID_UNLOCK				Unlock

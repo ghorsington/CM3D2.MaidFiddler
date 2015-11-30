@@ -105,13 +105,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 if (args.UpdateFeature)
                 {
                     Debugger.WriteLine(LogLevel.Info, "Updating all features!");
-                    for (Feature e = Feature.Null + 1; e < Feature.Max; e++)
+                    for (Feature e = Feature.Null + 1; e < EnumHelper.MaxFeature; e++)
                         maid.UpdateMiscStatus(MaidChangeType.Feature, (int) e);
                 }
                 else if (args.UpdatePropensity)
                 {
                     Debugger.WriteLine(LogLevel.Info, "Updating all propensities!");
-                    for (Propensity e = Propensity.Null + 1; e < Propensity.Max; e++)
+                    for (Propensity e = Propensity.Null + 1; e < EnumHelper.MaxPropensity; e++)
                         maid.UpdateMiscStatus(MaidChangeType.Propensity, (int) e);
                 }
             },

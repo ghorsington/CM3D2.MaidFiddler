@@ -13,10 +13,11 @@ namespace CM3D2.MaidFiddler.Patch
 {
     public class MaidFiddlerPatcher : PatchBase
     {
+        private const uint PATCHER_VERSION = 1000;
         private const string TAG = "CM3D2_MAID_FIDDLER";
         private AssemblyDefinition FiddlerAssembly;
         public override string Name => "MaidFiddler Patcher";
-        public override string Version => GetType().Assembly.GetName().Version.ToString();
+        public override string Version => PATCHER_VERSION.ToString();
 
         public override bool CanPatch(PatcherArguments args)
         {
@@ -392,6 +393,7 @@ namespace CM3D2.MaidFiddler.Patch
             status.ChangeAccess("kInitMaidPoint");
 
             SetPatchedAttribute(args.Assembly, TAG);
+            SetCustomPatchedAttribute(args.Assembly);
             Console.WriteLine("\nPatching complete.");
         }
 
@@ -432,6 +434,16 @@ namespace CM3D2.MaidFiddler.Patch
             RPConfig.RequestAssembly("Assembly-CSharp.dll");
             Console.WriteLine("Loading assembly");
             FiddlerAssembly = AssemblyLoader.LoadAssembly(Path.Combine(AssembliesDir, "CM3D2.MaidFiddler.Hook.dll"));
+        }
+
+        private void SetCustomPatchedAttribute(AssemblyDefinition ass)
+        {
+            CustomAttribute attr =
+            new CustomAttribute(
+            ass.MainModule.Import(typeof (MaidFiddlerPatchedAttribute).GetConstructor(new[] {typeof (uint)})));
+            attr.ConstructorArguments.Add(
+            new CustomAttributeArgument(ass.MainModule.Import(typeof (uint)), PATCHER_VERSION));
+            ass.MainModule.GetType("Maid").CustomAttributes.Add(attr);
         }
 
         private void WritePreviousLine(string msg)

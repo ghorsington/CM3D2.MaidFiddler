@@ -18,6 +18,8 @@ namespace CM3D2.MaidFiddler.Plugin
     public class MaidFiddler : PluginBase, IDisposable
     {
         public const string VERSION = "BETA 0.7";
+        public const uint SUPPORTED_PATCH_MAX = 1000;
+        public const uint SUPPORTED_PATCH_MIN = 1000;
         private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
         private const MaidOrderStyle DEFAULT_ORDER_STYLE = MaidOrderStyle.GUID;
         private const MaidOrderDirection DEFAULT_ORDER_DIRECTION = Plugin.MaidOrderDirection.Ascending;
@@ -46,6 +48,12 @@ namespace CM3D2.MaidFiddler.Plugin
 
         public void Awake()
         {
+            if (!FiddlerUtils.CheckPatcherVersion())
+            {
+                Destroy(this);
+                return;
+            }
+
             DATA_PATH = DataPath;
             LoadConfig();
 
@@ -178,7 +186,7 @@ namespace CM3D2.MaidFiddler.Plugin
             }
             catch (Exception e)
             {
-                ErrorLog.ThrowErrorMessage(e, "Generic error");
+                FiddlerUtils.ThrowErrorMessage(e, "Generic error");
             }
         }
 

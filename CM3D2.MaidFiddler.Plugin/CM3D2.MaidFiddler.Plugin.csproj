@@ -68,7 +68,7 @@
     <Compile Include="Utils\CollectionUtils.cs" />
     <Compile Include="Utils\Debug.cs" />
     <Compile Include="Utils\EnumHelper.cs" />
-    <Compile Include="Utils\ErrorLog.cs" />
+    <Compile Include="Utils\FiddlerUtils.cs" />
     <Compile Include="Gui\GUIHelper.cs">
       <SubType>Form</SubType>
     </Compile>

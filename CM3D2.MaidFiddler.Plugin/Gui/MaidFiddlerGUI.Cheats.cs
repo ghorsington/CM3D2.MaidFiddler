@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Plugin.Utils;
 using param;
@@ -141,7 +140,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             MaidParam maidParam = SelectedMaid.Maid.Param;
 
-            for (Feature i = Feature.Null + 1; i < Feature.Max; i++)
+            for (Feature i = Feature.Null + 1; i < EnumHelper.MaxFeature; i++)
             {
                 maidParam.SetFeature(i, true);
             }
@@ -151,7 +150,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             MaidParam maidParam = SelectedMaid.Maid.Param;
 
-            for (Propensity i = Propensity.Null + 1; i < Propensity.Max; i++)
+            for (Propensity i = Propensity.Null + 1; i < EnumHelper.MaxPropensity; i++)
             {
                 maidParam.SetPropensity(i, true);
             }
@@ -172,9 +171,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             maidParam.SetCare(9999);
             maidParam.SetCharm(9999);
-            maidParam.SetCurHp(999);
-            maidParam.SetCurMind(999);
-            maidParam.SetCurReason(999);
             maidParam.SetElegance(9999);
             maidParam.SetEvaluation(999999L);
             maidParam.SetFrustration(0);
@@ -192,6 +188,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             maidParam.SetReception(9999);
             maidParam.SetPopularRank(99);
             maidParam.SetSales(9999999999L);
+            maidParam.SetCurHp(999);
+            maidParam.SetCurMind(999);
+            maidParam.SetCurReason(999);
         }
 
         private void SetMaxWorkPlayCount(object sender, EventArgs e)
@@ -213,6 +212,87 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 maid.Maid.Param.AddSkillExp(dataDic.Value.id, 10000);
                 maid.Maid.Param.status_.skill_data[dataDic.Value.id].play_count = 1;
                 maid.UpdateSkillData(dataDic.Value.id);
+            }
+        }
+
+        private void SetUnlockMaxAllMaids(object sender, EventArgs e)
+        {
+            foreach (KeyValuePair<Maid, MaidInfo> maid in loadedMaids)
+            {
+                MaidInfo maidInfo = maid.Value;
+                Maid currentMaid = maid.Key;
+                MaidParam maidParam = currentMaid.Param;
+                Debugger.WriteLine(
+                LogLevel.Info,
+                $"Setting all to max for {currentMaid.Param.status.first_name} {currentMaid.Param.status.last_name}");
+
+                for (int maidClass = 0; maidClass < (int) EnumHelper.MaxMaidClass; maidClass++)
+                {
+                    maidParam.status_.maid_class_data[maidClass].is_have = true;
+                    maidParam.status_.maid_class_data[maidClass].exp_system.SetLevel(10);
+                }
+                maidInfo.UpdateMaidClasses();
+
+                for (int yotogiClass = 0; yotogiClass < (int) EnumHelper.MaxYotogiClass; yotogiClass++)
+                {
+                    maidParam.status_.yotogi_class_data[yotogiClass].is_have = true;
+                    maidParam.status_.yotogi_class_data[yotogiClass].exp_system.SetLevel(10);
+                }
+                maidInfo.UpdateYotogiClasses();
+
+                maidParam.SetSexualMouth(1000);
+                maidParam.SetSexualCuri(1000);
+                maidParam.SetSexualNipple(1000);
+                maidParam.SetSexualThroat(1000);
+
+                for (Feature i = Feature.Null + 1; i < EnumHelper.MaxFeature; i++)
+                    maidParam.SetFeature(i, true);
+
+                for (Propensity i = Propensity.Null + 1; i < EnumHelper.MaxPropensity; i++)
+                    maidParam.SetPropensity(i, true);
+
+                maidParam.SetCare(9999);
+                maidParam.SetCharm(9999);
+                maidParam.SetElegance(9999);
+                maidParam.SetEvaluation(999999L);
+                maidParam.SetFrustration(0);
+                maidParam.SetHentai(9999);
+                maidParam.SetHousi(9999);
+                maidParam.SetHp(999);
+                maidParam.SetInyoku(9999);
+                maidParam.SetLikability(999);
+                maidParam.SetLovely(9999);
+                maidParam.SetMValue(9999);
+                maidParam.SetMaidPoint(999);
+                maidParam.SetPlayNumber(9999);
+                maidParam.SetMind(9999);
+                maidParam.SetReason(9999);
+                maidParam.SetReception(9999);
+                maidParam.SetPopularRank(99);
+                maidParam.SetSales(9999999999L);
+                maidParam.SetCurHp(999);
+                maidParam.SetCurMind(999);
+                maidParam.SetCurReason(999);
+
+                foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
+                {
+                    maidParam.SetNewGetWork(noonWork.Value.id);
+                    maidInfo.SetWorkValue(noonWork.Value.id, TABLE_COLUMN_TOTAL_XP, 999U);
+                }
+
+                foreach (KeyValuePair<int, Yotogi.SkillData> dataDic in Yotogi.skill_data_list.SelectMany(s => s))
+                {
+                    maidParam.SetNewGetSkill(dataDic.Value.id);
+                    maidParam.AddSkillExp(dataDic.Value.id, 10000);
+                    maidParam.status_.skill_data[dataDic.Value.id].play_count = 1;
+                    maidInfo.UpdateSkillData(dataDic.Value.id);
+                }
+
+                foreach (KeyValuePair<int, Yotogi.SkillData> dataDic in Yotogi.skill_data_list.SelectMany(s => s))
+                {
+                    maidParam.SetNewGetSkill(dataDic.Value.id);
+                    maidInfo.UpdateHasSkill(dataDic.Value.id);
+                }
             }
         }
 

@@ -32,7 +32,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             }
             catch (Exception e)
             {
-                ErrorLog.ThrowErrorMessage(e, errMsg);
+                FiddlerUtils.ThrowErrorMessage(e, errMsg);
             }
         }
 
