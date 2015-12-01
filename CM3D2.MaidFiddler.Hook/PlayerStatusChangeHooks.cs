@@ -36,14 +36,12 @@ namespace CM3D2.MaidFiddler.Hook
 
     public static class PlayerStatusChangeHooks
     {
-        public delegate void PlayerValueChangeHandle(PlayerValueChangeEventArgs args);
+        public static event EventHandler<PlayerValueChangeEventArgs> PlayerValueChanged;
 
         public static void OnPlayerStatChanged(int tag)
         {
             PlayerValueChangeEventArgs args = new PlayerValueChangeEventArgs {Tag = (PlayerChangeType) tag};
-            PlayerValueChanged?.Invoke(args);
+            PlayerValueChanged?.Invoke(null, args);
         }
-
-        public static event PlayerValueChangeHandle PlayerValueChanged;
     }
 }

@@ -32,7 +32,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             ValueLimitHooks.ToggleValueLimit += OnValueRound;
         }
 
-        private void OnClassUpdated(HookEventArgs args)
+        private void OnClassUpdated(object sender, HookEventArgs args)
         {
             Debugger.WriteLine("Updating maid and/or yotogi class info.");
             MaidInfo maid = SelectedMaid;
@@ -74,7 +74,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
         }
 
-        private void OnCommandUpdate(CommandUpdateEventArgs args)
+        private void OnCommandUpdate(object sender, CommandUpdateEventArgs args)
         {
             if (!allYotogiCommandsVisible)
                 return;
@@ -90,7 +90,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             "Failed to manually add yotogi command");
         }
 
-        private void OnFeaturePropensityUpdated(UpdateFeaturePropensityEventArgs args)
+        private void OnFeaturePropensityUpdated(object sender, UpdateFeaturePropensityEventArgs args)
         {
             Debugger.Assert(
             () =>
@@ -118,7 +118,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             "Failed to update maid features/propensities");
         }
 
-        private void OnMaidThumbnailChanged(ThumbnailEventArgs args)
+        private void OnMaidThumbnailChanged(object sender, ThumbnailEventArgs args)
         {
             if (!IsMaidLoaded(args.Maid))
                 return;
@@ -141,7 +141,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             listBox1.Invalidate();
         }
 
-        private void OnNightWorkVisibilityCheck(NightWorkVisibleEventArgs e)
+        private void OnNightWorkVisibilityCheck(object sender, NightWorkVisibleEventArgs e)
         {
             Debugger.WriteLine("Attempting to check for visibility");
             ScheduleCSVData.NightWorkType workType = ScheduleCSVData.NightWorkData[e.WorkID].nightWorkType;
@@ -154,7 +154,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Debugger.WriteLine("Visibility set to true!");
         }
 
-        private void OnPlayerValueChanged(PlayerValueChangeEventArgs args)
+        private void OnPlayerValueChanged(object sender, PlayerValueChangeEventArgs args)
         {
             if (Player.Player == null)
                 return;
@@ -163,7 +163,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 playerValueUpdateQueue.Add(args.Tag, () => Player.UpdateField(args.Tag));
         }
 
-        private void OnPropertyHasChanged(StatusChangedEventArgs args)
+        private void OnPropertyHasChanged(object sender, StatusChangedEventArgs args)
         {
             MaidInfo maid = SelectedMaid;
             if (maid == null)
@@ -190,7 +190,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
         }
 
-        private void OnStatusChanged(StatusChangedEventArgs args)
+        private void OnStatusChanged(object sender, StatusChangedEventArgs args)
         {
             Debugger.WriteLine($"Changed status for property {EnumHelper.GetName(args.Tag)}");
             MaidInfo maid = SelectedMaid;
@@ -212,7 +212,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Debugger.WriteLine(LogLevel.Warning, "Tag already in update queue! Aborting...");
         }
 
-        private void OnStatusChanged(StatusEventArgs args)
+        private void OnStatusChanged(object sender, StatusEventArgs args)
         {
             Debugger.WriteLine($"Changed status for property {EnumHelper.GetName(args.Tag)}");
             Debugger.WriteLine(
@@ -248,7 +248,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Debugger.WriteLine(LogLevel.Warning, "Already in update queue!");
         }
 
-        private void OnStatusUpdated(StatusUpdateEventArgs args)
+        private void OnStatusUpdated(object sender, StatusUpdateEventArgs args)
         {
             MaidInfo maid = SelectedMaid;
             if (maid == null)
@@ -260,12 +260,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             maid.UpdateMiscStatus(args.Tag, args.EnumVal, args.Value);
         }
 
-        private void OnValueRound(ValueLimitEventArgs args)
+        private void OnValueRound(object sender, ValueLimitEventArgs args)
         {
             args.RemoveLimit = removeValueLimit;
         }
 
-        private void OnWorkEnabledCheck(WorkEventArgs args)
+        private void OnWorkEnabledCheck(object sender, WorkEventArgs args)
         {
             if (args.CallerMaid == null)
                 return;
@@ -286,13 +286,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             $"Attempting to check work enabled: ID={args.ID}, Force={args.ForceEnabled}");
         }
 
-        private void OnYotogiSkillVisibilityCheck(YotogiSkillVisibleEventArgs e)
+        private void OnYotogiSkillVisibilityCheck(object sender, YotogiSkillVisibleEventArgs e)
         {
             Debugger.WriteLine(LogLevel.Info, $"Checking for skill visibility. Setting to {yotogiSkillsVisible}");
             e.ForceVisible = yotogiSkillsVisible;
         }
 
-        private void ReloadNightWorkData(PostProcessNightEventArgs args)
+        private void ReloadNightWorkData(object sender, PostProcessNightEventArgs args)
         {
             Maid m = args.ScheduleScene.slot[args.SlotID].maid;
             if (m == null || !IsMaidLoaded(m))
@@ -302,7 +302,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             UpdateNightWorksData(args.ScheduleScene.slot[args.SlotID]);
         }
 
-        private void ReloadNoonWorkData(PostProcessNoonEventArgs args)
+        private void ReloadNoonWorkData(object sender, PostProcessNoonEventArgs args)
         {
             Maid m = args.ScheduleScene.slot[args.SlotID].maid;
             if (m == null || !IsMaidLoaded(m))
