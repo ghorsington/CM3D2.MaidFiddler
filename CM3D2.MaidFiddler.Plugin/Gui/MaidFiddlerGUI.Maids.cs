@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using CM3D2.MaidFiddler.Hook;
@@ -16,6 +17,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         public delegate int MaidCompareMethod(Maid x, Maid y);
 
         private const string NAME_FORMAT = "{0}{1}";
+        private static readonly CultureInfo jaJpCultureInfo = new CultureInfo("ja-JP");
         private readonly MaidComparer comparer = new MaidComparer();
         private SortedList<Maid, MaidInfo> loadedMaids;
         private Dictionary<string, Image> maidThumbnails;
@@ -45,12 +47,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         public static int MaidCompareCreateTime(Maid x, Maid y)
         {
-            int result;
-            if (x.Param.status.create_time_num < y.Param.status.create_time_num)
-                result = -1;
-            else
-                result = x.Param.status.create_time_num == y.Param.status.create_time_num ? 0 : 1;
-            return MaidFiddler.MaidOrderDirection * result;
+            try
+            {
+                return MaidFiddler.MaidOrderDirection
+                       * DateTime.Compare(
+                       DateTime.Parse(x.Param.status.create_time, jaJpCultureInfo),
+                       DateTime.Parse(y.Param.status.create_time, jaJpCultureInfo));
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
 
         public static int MaidCompareFirstLastName(Maid x, Maid y)
