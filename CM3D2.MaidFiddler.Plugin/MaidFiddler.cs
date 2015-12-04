@@ -21,7 +21,6 @@ namespace CM3D2.MaidFiddler.Plugin
         public const uint SUPPORTED_PATCH_MAX = 1000;
         public const uint SUPPORTED_PATCH_MIN = 1000;
         private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
-        private const MaidOrderStyle DEFAULT_ORDER_STYLE = MaidOrderStyle.GUID;
         private const MaidOrderDirection DEFAULT_ORDER_DIRECTION = Plugin.MaidOrderDirection.Ascending;
         private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.KeypadEnter, KeyCode.Keypad0};
 
@@ -30,14 +29,16 @@ namespace CM3D2.MaidFiddler.Plugin
             MaidFiddlerGUI.MaidCompareID,
             MaidFiddlerGUI.MaidCompareCreateTime,
             MaidFiddlerGUI.MaidCompareFirstLastName,
-            MaidFiddlerGUI.MaidCompareLastFirstName
+            MaidFiddlerGUI.MaidCompareLastFirstName,
+            MaidFiddlerGUI.MaidCompareEmployedDay
         };
 
+        private readonly MaidOrderStyle[] DEFAULT_ORDER_STYLES = {MaidOrderStyle.GUID};
         private KeyHelper keyCreateGUI;
         public static string DATA_PATH { get; private set; }
         public static MaidFiddlerGUI Gui { get; set; }
         public static Thread GuiThread { get; set; }
-        public static MaidFiddlerGUI.MaidCompareMethod MaidCompare { get; private set; }
+        public static MaidFiddlerGUI.MaidCompareMethod[] MaidCompareMethods { get; private set; }
         public static int MaidOrderDirection { get; private set; }
         public static bool UseJapaneseNameStyle { get; private set; }
 
@@ -63,14 +64,14 @@ namespace CM3D2.MaidFiddler.Plugin
             Debugger.WriteLine($"MaidFiddler {VERSION} loaded!");
         }
 
-        private static string GetKeyCombo(IList<KeyCode> keys)
+        private static string EnumsToString<T>(IList<T> keys, char separator)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < keys.Count; i++)
             {
                 sb.Append(EnumHelper.GetName(keys[i]));
                 if (i != keys.Count - 1)
-                    sb.Append('+');
+                    sb.Append(separator);
             }
 
             return sb.ToString();
@@ -89,7 +90,7 @@ namespace CM3D2.MaidFiddler.Plugin
             IniKey value = Preferences["Keys"]["StartGUIKey"];
             if (value.Value == null || value.Value.Trim() == string.Empty)
             {
-                value.Value = GetKeyCombo(DEFAULT_KEY_CODE);
+                value.Value = EnumsToString(DEFAULT_KEY_CODE, '+');
                 keys.AddRange(DEFAULT_KEY_CODE);
                 SaveConfig();
             }
@@ -106,20 +107,20 @@ namespace CM3D2.MaidFiddler.Plugin
                         keys.Add(kc);
                     if (keyCodes.Length != keys.Count)
                     {
-                        value.Value = GetKeyCombo(keys);
+                        value.Value = EnumsToString(keys, '+');
                         SaveConfig();
                     }
                 }
                 catch (Exception)
                 {
                     Debugger.WriteLine(LogLevel.Warning, "Failed to parse given key combo. Using default combination");
-                    value.Value = GetKeyCombo(DEFAULT_KEY_CODE);
+                    value.Value = EnumsToString(DEFAULT_KEY_CODE, '+');
                     keys.AddRange(DEFAULT_KEY_CODE);
                     SaveConfig();
                 }
             }
             keyCreateGUI = new KeyHelper(keys.ToArray());
-            Debugger.WriteLine(LogLevel.Info, $"Loaded {keys.Count} long key combo: {GetKeyCombo(keys)}");
+            Debugger.WriteLine(LogLevel.Info, $"Loaded {keys.Count} long key combo: {EnumsToString(keys, '+')}");
 
             Debugger.WriteLine(LogLevel.Info, "Loading name style info...");
             value = Preferences["GUI"]["UseJapaneseNameStyle"];
@@ -140,20 +141,44 @@ namespace CM3D2.MaidFiddler.Plugin
 
             Debugger.WriteLine(LogLevel.Info, "Loading order style info...");
             value = Preferences["GUI"]["OrderStyle"];
-            MaidOrderStyle orderStyle;
+            IEnumerable<MaidOrderStyle> orderStyles;
             string v;
-            if (value.Value == null || (v = value.Value.Trim()) == string.Empty
-                || !EnumHelper.TryParse(v, out orderStyle, true))
+            if (value.Value == null || (v = value.Value.Trim()) == string.Empty)
             {
                 Debugger.WriteLine(LogLevel.Warning, "Failed to get order style. Setting do default...");
-                value.Value = EnumHelper.GetName(DEFAULT_ORDER_STYLE);
-                MaidCompare = COMPARE_METHODS[(int) DEFAULT_ORDER_STYLE];
+                value.Value = EnumsToString(DEFAULT_ORDER_STYLES, '|');
+                orderStyles = DEFAULT_ORDER_STYLES;
                 SaveConfig();
             }
             else
-                MaidCompare = COMPARE_METHODS[(int) orderStyle];
+            {
+                string[] vals = v.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries);
+                try
+                {
+                    List<MaidOrderStyle> os = new List<MaidOrderStyle>();
+                    foreach (
+                    MaidOrderStyle s in
+                    vals.Select(val => (MaidOrderStyle) Enum.Parse(typeof (MaidOrderStyle), val.Trim(), true))
+                        .Where(s => !os.Contains(s)))
+                    {
+                        os.Add(s);
+                    }
+                    orderStyles = os;
+                }
+                catch (Exception)
+                {
+                    Debugger.WriteLine(LogLevel.Warning, "Failed to get order style. Setting do default...");
+                    value.Value = EnumsToString(DEFAULT_ORDER_STYLES, '|');
+                    orderStyles = DEFAULT_ORDER_STYLES;
+                    SaveConfig();
+                }
+            }
 
-            Debugger.WriteLine(LogLevel.Info, $"Sorting maids by {MaidCompare.Method.Name} method");
+            MaidCompareMethods = orderStyles.Select(o => COMPARE_METHODS[(int) o]).ToArray();
+
+            Debugger.WriteLine(
+            LogLevel.Info,
+            $"Sorting maids by method order {EnumsToString(orderStyles.ToList(), '>')}");
 
 
             Debugger.WriteLine(LogLevel.Info, "Loading order direction info...");
@@ -230,7 +255,8 @@ namespace CM3D2.MaidFiddler.Plugin
         GUID = 0,
         CreationTime = 1,
         FirstName_LastName = 2,
-        LastName_FirstName = 3
+        LastName_FirstName = 3,
+        EmployedDay = 4
     }
 
     public enum MaidOrderDirection

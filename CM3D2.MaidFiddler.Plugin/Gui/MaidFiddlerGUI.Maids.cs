@@ -43,14 +43,19 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             return loadedMaids.ContainsKey(maid);
         }
 
+        public static int MaidCompareEmployedDay(Maid x, Maid y)
+        {
+            return ComputeOrder(x.Param.status.employment_day, y.Param.status.employment_day);
+        }
+
         public static int MaidCompareCreateTime(Maid x, Maid y)
         {
-            int result;
-            if (x.Param.status.create_time_num < y.Param.status.create_time_num)
-                result = -1;
-            else
-                result = x.Param.status.create_time_num == y.Param.status.create_time_num ? 0 : 1;
-            return MaidFiddler.MaidOrderDirection * result;
+            return ComputeOrder(x.Param.status.create_time_num, y.Param.status.create_time_num);
+        }
+
+        private static int ComputeOrder<T>(T x, T y) where T : IComparable<T>
+        {
+            return MaidFiddler.MaidOrderDirection * x.CompareTo(y);
         }
 
         public static int MaidCompareFirstLastName(Maid x, Maid y)
@@ -138,7 +143,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 if (newMaids.Count != loadedMaids.Count)
                     goto update;
 
-                newMaids.Sort((m1, m2) => MaidFiddler.MaidCompare(m1, m2));
+                newMaids.Sort((m1, m2) => comparer.Compare(m1, m2));
                 if (newMaids.SequenceEqual(loadedMaids.Values.Select(m => m.Maid), comparer))
                     return;
 
@@ -228,7 +233,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             public int Compare(Maid x, Maid y)
             {
-                return MaidFiddler.MaidCompare(x, y);
+                int result = 0;
+                return MaidFiddler.MaidCompareMethods.Any(method => (result = method(x, y)) != 0)
+                       ? result : MaidCompareID(x, y);
             }
 
             public bool Equals(Maid x, Maid y)
