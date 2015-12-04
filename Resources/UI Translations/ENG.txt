@@ -9,7 +9,7 @@
 ; Comments and faulty lines (wrong separators, missing translation) are ignored
 
 ; Feel free to edit the title of the tool!
-TITLE_TEXT						- Fiddle me up, Scotty!
+TITLE_TEXT						- Setting phasers to fiddle!
 
 ; Info tab
 TAB_INFO						Information
