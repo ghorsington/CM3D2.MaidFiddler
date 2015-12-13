@@ -9,7 +9,7 @@
 ; Comments and faulty lines (wrong separators, missing translation) are ignored
 
 ; Feel free to edit the title of the tool!
-TITLE_TEXT						- Setting phasers to fiddle!
+TITLE_TEXT						- [FIDDLING INTENSIFIES]
 
 ; Info tab
 TAB_INFO						Information
@@ -96,6 +96,7 @@ BaseMaidPoints					Initial maid points (no bonus)
 Pure							Innocent
 Cool							Mature
 Pride							Proud
+Yandere							Yandere
 
 ; Contract types			
 Nurture							Training
@@ -409,6 +410,15 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 乱交3P口＆アナルセックス後背位		Group 3P Anal Doggy Style w/ Fellatio
 乱交3P2穴セックス正常位				Group 3P Double Penetration Missionary
 乱交4Pセックス						Group 4P
+足舐め							Foot licking
+足舐めオナニー						Foot licking w/ masturbation
+ポーズ維持プレイ１					Pose Maitenance play 1
+ポーズ維持プレイ２					Pose Maitenance play 2
+拘束イラマチオ						Restrained Deepthroat
+拘束台愛撫						Restrained Standing Caress
+磔プレイ							Crucifixion play
+ハード首絞めセックス					Choking Sex
+ハード首絞めアナルセックス				Choking Anal Sex
 
 ; Propensity
 M女								Masochist
