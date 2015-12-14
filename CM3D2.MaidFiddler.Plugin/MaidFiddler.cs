@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Gui;
 using CM3D2.MaidFiddler.Plugin.Utils;
@@ -15,7 +16,7 @@ using Application = System.Windows.Forms.Application;
 namespace CM3D2.MaidFiddler.Plugin
 {
     [PluginName("Maid Fiddler"), PluginVersion(VERSION)]
-    public class MaidFiddler : PluginBase, IDisposable
+    public class MaidFiddler : PluginBase
     {
         public const string VERSION = "BETA 0.7";
         public const uint SUPPORTED_PATCH_MAX = 1000;
@@ -54,13 +55,17 @@ namespace CM3D2.MaidFiddler.Plugin
                 Destroy(this);
                 return;
             }
+            DontDestroyOnLoad(this);
 
             DATA_PATH = DataPath;
             LoadConfig();
 
-            GuiThread = new Thread(LoadGUI);
-
             FiddlerHooks.SaveLoadedEvent += OnSaveLoaded;
+
+            Debugger.WriteLine(LogLevel.Info, "Creating the GUI thread");
+            GuiThread = new Thread(LoadGUI);
+            GuiThread.Start();
+
             Debugger.WriteLine($"MaidFiddler {VERSION} loaded!");
         }
 
@@ -79,8 +84,8 @@ namespace CM3D2.MaidFiddler.Plugin
 
         public void LateUpdate()
         {
-            Gui?.UpdateSelectedMaidValues();
-            Gui?.UpdatePlayerValues();
+            Gui?.DoIfVisible(Gui.UpdateSelectedMaidValues);
+            Gui?.DoIfVisible(Gui.UpdatePlayerValues);
         }
 
         private void LoadConfig()
@@ -204,9 +209,9 @@ namespace CM3D2.MaidFiddler.Plugin
         {
             try
             {
+                Application.SetCompatibleTextRenderingDefault(false);
                 if (Gui == null)
                     Gui = new MaidFiddlerGUI();
-                Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(Gui);
             }
             catch (Exception e)
@@ -221,23 +226,22 @@ namespace CM3D2.MaidFiddler.Plugin
                 return;
             Debugger.WriteLine("Closing GUI...");
             Gui.Close(true);
-            GuiThread.Abort();
             Gui = null;
+            Debugger.WriteLine("GUI closed. Suspending the thread...");
+            GuiThread.Abort();
+            Debugger.WriteLine("Thread suspended");
         }
 
         public void OnSaveLoaded(int saveNo)
         {
             Debugger.WriteLine(LogLevel.Info, $"Level loading! Save no. {saveNo}");
-            Gui?.ReloadMaids();
-            Gui?.ReloadPlayer();
+            Gui?.DoIfVisible(Gui.ReloadMaids);
+            Gui?.DoIfVisible(Gui.ReloadPlayer);
         }
 
         public void OpenGUI()
         {
-            if (GuiThread.ThreadState != ThreadState.Running)
-                GuiThread.Start();
-            else
-                Gui?.Show();
+            Gui?.Show();
         }
 
         public void Update()
@@ -246,7 +250,7 @@ namespace CM3D2.MaidFiddler.Plugin
 
             if (keyCreateGUI.HasBeenPressed())
                 OpenGUI();
-            Gui?.UpdateMaids();
+            Gui?.DoIfVisible(Gui.UpdateMaids);
         }
     }
 

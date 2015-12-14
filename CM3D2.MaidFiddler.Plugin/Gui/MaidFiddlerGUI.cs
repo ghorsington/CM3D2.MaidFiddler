@@ -15,6 +15,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         public MaidFiddlerGUI()
         {
             InitializeComponent();
+            Opacity = 0.0;
             Text = $"CM3D2 Maid Fiddler {MaidFiddler.VERSION} {Resources.GetFieldText("TITLE_TEXT")}";
             try
             {
@@ -35,6 +36,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
                 playerValueUpdateQueue = new Dictionary<PlayerChangeType, Action>();
 
+                Shown += OnShown;
                 FormClosing += OnFormClosing;
                 VisibleChanged += OnVisibleChanged;
 
@@ -48,6 +50,18 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 FiddlerUtils.ThrowErrorMessage(e, "Failed to initalize core components");
             }
+        }
+
+        private void OnShown(object sender, EventArgs e)
+        {
+            Visible = false;
+            Opacity = 1.0;
+        }
+
+        public void DoIfVisible(Action action)
+        {
+            if (Visible)
+                action();
         }
 
         private void DrawListBox(object sender, DrawItemEventArgs e)
@@ -109,10 +123,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnFormClosing(object sender, FormClosingEventArgs formClosingEventArgs)
         {
-            Debugger.WriteLine($"Closing GUI. Destroying the GUI: {destroyGUI}");
+            Debugger.WriteLine($"Closing GUI. Destroying the GUI: {destroyGUI}. Running on application thread: {!InvokeRequired}");
             formClosingEventArgs.Cancel = !destroyGUI;
             if (!destroyGUI)
                 Hide();
+            else
+                Application.ExitThread();
         }
 
         private void OnSelectedValueChanged(object sender, EventArgs e)

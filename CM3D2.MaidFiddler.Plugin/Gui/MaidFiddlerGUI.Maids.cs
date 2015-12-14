@@ -207,15 +207,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         public void UpdateSelectedMaidValues()
         {
+            if (InvokeRequired)
+            {
+                InvokeAsync((Action)UpdateSelectedMaidValues);
+                return;
+            }
             MaidChangeType cType = 0;
             Debugger.Assert(
             () =>
             {
-                if (InvokeRequired)
-                {
-                    InvokeAsync((Action) UpdateSelectedMaidValues);
-                    return;
-                }
                 if (valueUpdateQueue.Count <= 0)
                     return;
                 Debugger.WriteLine(LogLevel.Info, "Updating values...");
