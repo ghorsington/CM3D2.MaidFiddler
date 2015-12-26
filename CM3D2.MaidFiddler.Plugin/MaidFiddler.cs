@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Gui;
 using CM3D2.MaidFiddler.Plugin.Utils;
@@ -23,6 +22,7 @@ namespace CM3D2.MaidFiddler.Plugin
         public const uint SUPPORTED_PATCH_MIN = 1000;
         private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
         private const MaidOrderDirection DEFAULT_ORDER_DIRECTION = Plugin.MaidOrderDirection.Ascending;
+        private const string DEFAULT_LANGUAGE_FILE = "ENG";
         private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.KeypadEnter, KeyCode.Keypad0};
 
         private static readonly MaidFiddlerGUI.MaidCompareMethod[] COMPARE_METHODS =
@@ -41,6 +41,21 @@ namespace CM3D2.MaidFiddler.Plugin
         public static Thread GuiThread { get; set; }
         public static MaidFiddlerGUI.MaidCompareMethod[] MaidCompareMethods { get; private set; }
         public static int MaidOrderDirection { get; private set; }
+
+        public string SelectedLanguage
+        {
+            get
+            {
+                string result = Preferences["GUI"]["DefaultTranslation"].Value;
+                if (result != null && (result = result.Trim()) != string.Empty)
+                    return result;
+                Preferences["GUI"]["DefaultTranslation"].Value = result = DEFAULT_LANGUAGE_FILE;
+                SaveConfig();
+                return result;
+            }
+            set { Preferences["GUI"]["DefaultTranslation"].Value = value; }
+        }
+
         public static bool UseJapaneseNameStyle { get; private set; }
 
         public void Dispose()
@@ -161,8 +176,7 @@ namespace CM3D2.MaidFiddler.Plugin
                 try
                 {
                     List<MaidOrderStyle> os = new List<MaidOrderStyle>();
-                    foreach (
-                    MaidOrderStyle s in
+                    foreach (MaidOrderStyle s in
                     vals.Select(val => (MaidOrderStyle) Enum.Parse(typeof (MaidOrderStyle), val.Trim(), true))
                         .Where(s => !os.Contains(s)))
                     {
@@ -211,7 +225,7 @@ namespace CM3D2.MaidFiddler.Plugin
             {
                 Application.SetCompatibleTextRenderingDefault(false);
                 if (Gui == null)
-                    Gui = new MaidFiddlerGUI();
+                    Gui = new MaidFiddlerGUI(this);
                 Application.Run(Gui);
             }
             catch (Exception e)

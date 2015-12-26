@@ -1,10 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using CM3D2.MaidFiddler.Hook;
-using Mono.Cecil;
-using Mono.Cecil.Cil;
 using Mono.Cecil.Inject;
 
 namespace CM3D2.MaidFiddler.Sybaris.Patcher

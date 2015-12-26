@@ -141,6 +141,7 @@ Yotogi_Soap						Soap
 Yotogi_Sweet					Sweet
 Yotogi_Party					Party
 Yotogi_SexSlave					Sex Slave
+Yotogi_Festival					Festival
 
 ; Params			
 Care							Care
@@ -451,7 +452,7 @@ M女								Masochist
 高貴							Noble
 魅了							Charming
 魔性の魅力						Devilish
-雅								Stylish
+雅								Refined
 撫子							Loveable
 一途							Earnest
 盲目的							Reckless

@@ -107,9 +107,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void InitField(Label label, Control control, MaidChangeType type)
         {
             if (label != null)
-                label.Text = Resources.GetFieldText(EnumHelper.GetName(type));
+            //label.Text = Resources.GetFieldText(EnumHelper.GetName(type));
+                Resources.AddTranslatableControl(label);
             if (control is CheckBox)
-                control.Text = Resources.GetFieldText(EnumHelper.GetName(type));
+            //control.Text = Resources.GetFieldText(EnumHelper.GetName(type));
+                Resources.AddTranslatableControl(control);
             uiControls.Add(control, type);
 
             InitControl(control);
@@ -118,9 +120,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void InitField(Label label, Control control, PlayerChangeType type)
         {
             if (label != null)
-                label.Text = Resources.GetFieldText(EnumHelper.GetName(type));
+            //label.Text = Resources.GetFieldText(EnumHelper.GetName(type));
+                Resources.AddTranslatableControl(label);
             if (control is CheckBox)
-                control.Text = Resources.GetFieldText(EnumHelper.GetName(type));
+            //control.Text = Resources.GetFieldText(EnumHelper.GetName(type));
+                Resources.AddTranslatableControl(control);
             uiControlsPlayer.Add(control, type);
 
             InitControl(control);

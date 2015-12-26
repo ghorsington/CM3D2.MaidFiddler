@@ -4,7 +4,6 @@ using System.Linq;
 using CM3D2.MaidFiddler.Hook;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
-using Mono.Cecil.Inject;
 using param;
 using ReiPatcher;
 using ReiPatcher.Patch;

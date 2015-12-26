@@ -11,12 +11,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
     public partial class MaidFiddlerGUI : Form
     {
         private bool initialized;
+        private MaidFiddler pluginBase;
 
-        public MaidFiddlerGUI()
+        public MaidFiddlerGUI(MaidFiddler pluginBase)
         {
+            this.pluginBase = pluginBase;
             InitializeComponent();
             Opacity = 0.0;
-            Text = $"CM3D2 Maid Fiddler {MaidFiddler.VERSION} {Resources.GetFieldText("TITLE_TEXT")}";
+            Text = $"CM3D2 Maid Fiddler {MaidFiddler.VERSION}";
+            Resources.AddTranslationAction("TITLE_TEXT", s => Text = $"CM3D2 Maid Fiddler {MaidFiddler.VERSION} {s}");
             try
             {
                 Player = new PlayerInfo(this);
@@ -45,6 +48,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 listBox1.SelectedValueChanged += OnSelectedValueChanged;
 
                 InitHookCallbacks();
+
+                Resources.LoadTranslation(pluginBase.SelectedLanguage);
             }
             catch (Exception e)
             {
@@ -106,7 +111,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             foreach (ToolStripDropDownItem item in menuStrip1.Items)
             {
                 LoadMenuText(item);
-                item.Text = Resources.GetFieldText(item.Text);
+                Resources.AddTranslationAction(item.Text, s => item.Text = s);
+                //item.Text = Resources.GetFieldText(item.Text);
             }
         }
 
@@ -117,13 +123,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 ToolStripDropDownItem downItem = toolStripItem as ToolStripDropDownItem;
                 if (downItem != null)
                     LoadMenuText(downItem);
-                toolStripItem.Text = Resources.GetFieldText(toolStripItem.Text);
+                //toolStripItem.Text = Resources.GetFieldText(toolStripItem.Text);
+                Resources.AddTranslationAction(toolStripItem.Text, s => toolStripItem.Text = s);
             }
         }
 
         private void OnFormClosing(object sender, FormClosingEventArgs formClosingEventArgs)
         {
-            Debugger.WriteLine($"Closing GUI. Destroying the GUI: {destroyGUI}. Running on application thread: {!InvokeRequired}");
+            Debugger.WriteLine(
+            $"Closing GUI. Destroying the GUI: {destroyGUI}. Running on application thread: {!InvokeRequired}");
             formClosingEventArgs.Cancel = !destroyGUI;
             if (!destroyGUI)
                 Hide();

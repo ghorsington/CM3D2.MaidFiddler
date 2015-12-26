@@ -257,6 +257,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (args.CallerMaid != maid.Maid)
                 return;
 
+            Debugger.WriteLine(
+            LogLevel.Info,
+            $"Updating {EnumHelper.GetName(args.Tag)}.{(args.Tag == MaidChangeType.Feature ? Resources.GetFieldText(EnumHelper.GetName((Feature) args.EnumVal)) : Resources.GetFieldText(EnumHelper.GetName((Propensity) args.EnumVal)))} to {args.Value}...");
+
             maid.UpdateMiscStatus(args.Tag, args.EnumVal, args.Value);
         }
 

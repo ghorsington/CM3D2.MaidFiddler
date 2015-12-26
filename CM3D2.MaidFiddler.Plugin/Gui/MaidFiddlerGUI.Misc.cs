@@ -15,23 +15,28 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Debugger.Assert(
             () =>
             {
-                Resources.GetFieldText(tabPage_misc);
+                Resources.AddTranslatableControl(tabPage_misc);
 
                 // Propensity
-                Resources.GetFieldText(groupBox_propensity);
+                Resources.AddTranslatableControl(groupBox_propensity);
+                string key;
                 for (Propensity e = Propensity.Null + 1; e < EnumHelper.MaxPropensity; e++)
                 {
-                    checkedListBox_propensity.Items.Add(Resources.GetFieldText(EnumHelper.GetName(e)), false);
+                    key = EnumHelper.GetName(e);
+                    int i = checkedListBox_propensity.Items.Add(key, false);
+                    Resources.AddTranslationAction(key, s => checkedListBox_propensity.Items[i] = s);
                 }
                 checkedListBox_propensity.Height = checkedListBox_propensity.ItemHeight
                                                    * checkedListBox_propensity.Items.Count;
                 checkedListBox_propensity.ItemCheck += OnPropensityChecked;
 
                 // Features
-                Resources.GetFieldText(groupBox_feature);
+                Resources.AddTranslatableControl(groupBox_feature);
                 for (Feature e = Feature.Null + 1; e < EnumHelper.MaxFeature; e++)
                 {
-                    checkedListBox_feature.Items.Add(Resources.GetFieldText(EnumHelper.GetName(e)), false);
+                    key = EnumHelper.GetName(e);
+                    int i = checkedListBox_feature.Items.Add(key, false);
+                    Resources.AddTranslationAction(key, s => checkedListBox_feature.Items[i] = s);
                 }
                 checkedListBox_feature.Height = checkedListBox_feature.ItemHeight * checkedListBox_feature.Items.Count;
                 checkedListBox_feature.ItemCheck += OnFeatureChecked;

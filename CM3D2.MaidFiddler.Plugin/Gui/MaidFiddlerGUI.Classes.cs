@@ -14,20 +14,21 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Debugger.Assert(
             () =>
             {
-                Resources.GetFieldText(tabPage_classes);
+                Resources.AddTranslatableControl(tabPage_classes);
 
                 // Maid classes
-                Resources.GetFieldText(groupBox_maid_classes);
+                Resources.AddTranslatableControl(groupBox_maid_classes);
                 foreach (DataGridViewColumn column in dataGridView_maid_classes.Columns)
                 {
-                    column.HeaderText = Resources.GetFieldText(column.HeaderText);
+                    //column.HeaderText = Resources.GetFieldText(column.HeaderText);
+                    Resources.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
                 for (MaidClassType e = 0; e < EnumHelper.MaxMaidClass; e++)
-                    dataGridView_maid_classes.Rows.Add(
-                    false,
-                    Resources.GetFieldText($"Maid_{EnumHelper.GetName(e)}"),
-                    0,
-                    0);
+                {
+                    string key = $"Maid_{EnumHelper.GetName(e)}";
+                    int i = dataGridView_maid_classes.Rows.Add(false, key, 0, 0);
+                    Resources.AddTranslationAction(key, s => dataGridView_maid_classes.Rows[i].Cells[1].Value = s);
+                }
                 dataGridView_maid_classes.CellValueChanged += OnClassTabCellValueChanged;
                 dataGridView_maid_classes.CellContentClick += OnClassTabCellContentClick;
                 dataGridView_maid_classes.Height = dataGridView_maid_classes.ColumnHeadersHeight
@@ -35,17 +36,18 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                                                    * dataGridView_maid_classes.RowCount;
 
                 // Yotogi classes
-                Resources.GetFieldText(groupBox_yotogi_classes);
+                Resources.AddTranslatableControl(groupBox_yotogi_classes);
                 foreach (DataGridViewColumn column in dataGridView_yotogi_classes.Columns)
                 {
-                    column.HeaderText = Resources.GetFieldText(column.HeaderText);
+                    //column.HeaderText = Resources.GetFieldText(column.HeaderText);
+                    Resources.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
                 for (YotogiClassType e = 0; e < EnumHelper.MaxYotogiClass; e++)
-                    dataGridView_yotogi_classes.Rows.Add(
-                    false,
-                    Resources.GetFieldText($"Yotogi_{EnumHelper.GetName(e)}"),
-                    0,
-                    0);
+                {
+                    string key = $"Yotogi_{EnumHelper.GetName(e)}";
+                    int i = dataGridView_yotogi_classes.Rows.Add(false, key, 0, 0);
+                    Resources.AddTranslationAction(key, s => dataGridView_yotogi_classes.Rows[i].Cells[1].Value = s);
+                }
                 dataGridView_yotogi_classes.CellValueChanged += OnClassTabCellValueChanged;
                 dataGridView_yotogi_classes.CellContentClick += OnClassTabCellContentClick;
                 dataGridView_yotogi_classes.Height = dataGridView_yotogi_classes.ColumnHeadersHeight

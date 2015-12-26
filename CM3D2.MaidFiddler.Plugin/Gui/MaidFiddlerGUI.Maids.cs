@@ -209,7 +209,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             if (InvokeRequired)
             {
-                InvokeAsync((Action)UpdateSelectedMaidValues);
+                InvokeAsync((Action) UpdateSelectedMaidValues);
                 return;
             }
             MaidChangeType cType = 0;
