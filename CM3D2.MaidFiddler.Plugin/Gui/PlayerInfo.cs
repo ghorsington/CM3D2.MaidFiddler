@@ -201,7 +201,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             private void UpdateBaseMaidPoints()
             {
-                Debugger.WriteLine($"Updating init maid points");
+                Debugger.WriteLine("Updating init maid points");
                 gui.textBox_maid_points_base.Text = Status.kInitMaidPoint.ToString();
             }
 

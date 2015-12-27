@@ -20,9 +20,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 valueUpdate = EnumHelper.MaidChangeTypes.ToDictionary(e => e, e => false);
                 uiControls = new Dictionary<Control, MaidChangeType>();
 
-                Resources.AddTranslatableControl(tabPage_info);
-                Resources.AddTranslatableControl(label_sex_experience);
-                Resources.AddTranslatableControl(label_curr_class);
+                Translation.AddTranslatableControl(tabPage_info);
+                Translation.AddTranslatableControl(label_sex_experience);
+                Translation.AddTranslatableControl(label_curr_class);
 
                 InitField(label_first_name, textBox_first_name, MaidChangeType.FirstName);
                 InitField(label_last_name, textBox_last_name, MaidChangeType.LastName);
@@ -34,7 +34,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     key = EnumHelper.GetName(e);
                     int i = comboBox_personality.Items.Add(key);
-                    Resources.AddTranslationAction(key, s => comboBox_personality.Items[i] = s);
+                    Translation.AddTranslationAction(key, s => comboBox_personality.Items[i] = s);
                 }
 
                 InitField(label_contract_type, comboBox_contract_type, MaidChangeType.ContractType);
@@ -42,7 +42,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     key = EnumHelper.GetName(e);
                     int i = comboBox_contract_type.Items.Add(key);
-                    Resources.AddTranslationAction(key, s => comboBox_contract_type.Items[i] = s);
+                    Translation.AddTranslationAction(key, s => comboBox_contract_type.Items[i] = s);
                 }
 
                 InitField(null, checkBox_leader, MaidChangeType.Leader);
@@ -51,7 +51,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     key = EnumHelper.GetName(e);
                     int i = comboBox_condition.Items.Add(key);
-                    Resources.AddTranslationAction(key, s => comboBox_condition.Items[i] = s);
+                    Translation.AddTranslationAction(key, s => comboBox_condition.Items[i] = s);
                 }
 
                 InitField(label_condition_special, comboBox_condition_special, MaidChangeType.ConditionSpecial);
@@ -59,7 +59,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     key = EnumHelper.GetName(e);
                     int i = comboBox_condition_special.Items.Add(key);
-                    Resources.AddTranslationAction(key, s => comboBox_condition_special.Items[i] = s);
+                    Translation.AddTranslationAction(key, s => comboBox_condition_special.Items[i] = s);
                 }
 
                 InitField(label_employment_day, textBox_employment_day, MaidChangeType.Employment);
@@ -68,7 +68,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     key = EnumHelper.GetName(e);
                     int i = comboBox_init_seikeiken.Items.Add(key);
-                    Resources.AddTranslationAction(key, s => comboBox_init_seikeiken.Items[i] = s);
+                    Translation.AddTranslationAction(key, s => comboBox_init_seikeiken.Items[i] = s);
                 }
 
                 InitField(label_seikeiken, comboBox_seikeiken, MaidChangeType.Seikeiken);
@@ -76,7 +76,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     key = EnumHelper.GetName(e);
                     int i = comboBox_seikeiken.Items.Add(key);
-                    Resources.AddTranslationAction(key, s => comboBox_seikeiken.Items[i] = s);
+                    Translation.AddTranslationAction(key, s => comboBox_seikeiken.Items[i] = s);
                 }
 
                 InitField(label_curr_maid_class, comboBox_current_maid_class, MaidChangeType.MaidClassType);
@@ -84,7 +84,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     key = $"Maid_{EnumHelper.GetName(e)}";
                     int i = comboBox_current_maid_class.Items.Add(key);
-                    Resources.AddTranslationAction(key, s => comboBox_current_maid_class.Items[i] = s);
+                    Translation.AddTranslationAction(key, s => comboBox_current_maid_class.Items[i] = s);
                 }
 
                 InitField(label_curr_yotogi_class, comboBox_current_yotogi_class, MaidChangeType.YotogiClassType);
@@ -92,7 +92,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     key = $"Yotogi_{EnumHelper.GetName(e)}";
                     int i = comboBox_current_yotogi_class.Items.Add(key);
-                    Resources.AddTranslationAction(key, s => comboBox_current_yotogi_class.Items[i] = s);
+                    Translation.AddTranslationAction(key, s => comboBox_current_yotogi_class.Items[i] = s);
                 }
 
                 InitField(label_profile, textBox_profile, MaidChangeType.Profile);

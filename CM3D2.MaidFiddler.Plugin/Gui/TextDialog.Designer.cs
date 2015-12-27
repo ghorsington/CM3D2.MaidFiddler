@@ -82,13 +82,14 @@
             this.Controls.Add(this.textBox_input);
             this.Controls.Add(this.button_ok);
             this.Controls.Add(this.button_cancel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TextDialog";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TITLE";
-            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

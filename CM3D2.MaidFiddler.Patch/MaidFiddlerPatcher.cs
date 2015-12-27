@@ -13,11 +13,10 @@ namespace CM3D2.MaidFiddler.Patch
 {
     public class MaidFiddlerPatcher : PatchBase
     {
-        private const uint PATCHER_VERSION = 1000;
         private const string TAG = "CM3D2_MAID_FIDDLER";
         private AssemblyDefinition FiddlerAssembly;
         public override string Name => "MaidFiddler Patcher";
-        public override string Version => PATCHER_VERSION.ToString();
+        public override string Version => "1.0.0.0";
 
         public override bool CanPatch(PatcherArguments args)
         {
@@ -442,7 +441,7 @@ namespace CM3D2.MaidFiddler.Patch
             new CustomAttribute(
             ass.MainModule.Import(typeof (MaidFiddlerPatchedAttribute).GetConstructor(new[] {typeof (uint)})));
             attr.ConstructorArguments.Add(
-            new CustomAttributeArgument(ass.MainModule.Import(typeof (uint)), PATCHER_VERSION));
+            new CustomAttributeArgument(ass.MainModule.Import(typeof (uint)), uint.Parse(Version.Replace(".", ""))));
             ass.MainModule.GetType("Maid").CustomAttributes.Add(attr);
         }
 

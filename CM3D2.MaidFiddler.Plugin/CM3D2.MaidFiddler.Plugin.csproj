@@ -38,27 +38,37 @@
   <ItemGroup>
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\Libs\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="ExIni, Version=1.0.2.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\ExIni.dll</HintPath>
+      <HintPath>..\Libs\ExIni.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\Libs\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityInjector, Version=1.0.3.4, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="UnityInjector, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\UnityInjector.dll</HintPath>
+      <HintPath>..\Libs\UnityInjector.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gui\AboutGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\AboutGUI.Designer.cs">
+      <DependentUpon>AboutGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\TranslationSelectionGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\TranslationSelectionGUI.Designer.cs">
+      <DependentUpon>TranslationSelectionGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\TextDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +113,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Utils\Resources.cs" />
+    <Compile Include="Utils\Translation.cs" />
     <Compile Include="Gui\MaidFiddlerGUI.Work.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +143,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Gui\AboutGUI.resx">
+      <DependentUpon>AboutGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\TranslationSelectionGUI.resx">
+      <DependentUpon>TranslationSelectionGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gui\MaidFiddlerGUI.resx">
       <DependentUpon>MaidFiddlerGUI.cs</DependentUpon>
     </EmbeddedResource>

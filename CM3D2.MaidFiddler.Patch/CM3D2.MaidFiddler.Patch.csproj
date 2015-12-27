@@ -33,22 +33,23 @@
   <ItemGroup>
     <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\Libs\Assembly-CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\Mono.Cecil.dll</HintPath>
+    <Reference Include="Mono.Cecil, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Inject, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\ReiPatcher\Mono.Cecil.Inject.dll</HintPath>
+      <HintPath>..\Libs\Mono.Cecil.Inject.dll</HintPath>
     </Reference>
-    <Reference Include="ReiPatcher">
-      <HintPath>..\..\..\..\Program Files\KISS\ReiPatcher\ReiPatcher.exe</HintPath>
+    <Reference Include="ReiPatcher, Version=0.9.0.8, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\ReiPatcher.exe</HintPath>
     </Reference>
-    <Reference Include="System" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\Libs\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

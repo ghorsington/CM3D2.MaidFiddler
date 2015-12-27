@@ -67,13 +67,10 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             string filename = $"MaidFiddler_err_{DateTime.Now.Ticks}.txt";
             try
             {
-                using (FileStream fs = File.Create(filename))
+                using (TextWriter tw = new StreamWriter(File.Create(filename)))
                 {
-                    using (TextWriter tw = new StreamWriter(fs))
-                    {
-                        tw.Write(sb.ToString());
-                        dumpCreated = true;
-                    }
+                    tw.Write(sb.ToString());
+                    dumpCreated = true;
                 }
             }
             catch (Exception)

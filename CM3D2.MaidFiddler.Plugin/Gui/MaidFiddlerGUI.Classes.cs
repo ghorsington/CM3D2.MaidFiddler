@@ -14,20 +14,19 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Debugger.Assert(
             () =>
             {
-                Resources.AddTranslatableControl(tabPage_classes);
+                Translation.AddTranslatableControl(tabPage_classes);
 
                 // Maid classes
-                Resources.AddTranslatableControl(groupBox_maid_classes);
+                Translation.AddTranslatableControl(groupBox_maid_classes);
                 foreach (DataGridViewColumn column in dataGridView_maid_classes.Columns)
                 {
-                    //column.HeaderText = Resources.GetFieldText(column.HeaderText);
-                    Resources.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
+                    Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
                 for (MaidClassType e = 0; e < EnumHelper.MaxMaidClass; e++)
                 {
                     string key = $"Maid_{EnumHelper.GetName(e)}";
                     int i = dataGridView_maid_classes.Rows.Add(false, key, 0, 0);
-                    Resources.AddTranslationAction(key, s => dataGridView_maid_classes.Rows[i].Cells[1].Value = s);
+                    Translation.AddTranslationAction(key, s => dataGridView_maid_classes.Rows[i].Cells[1].Value = s);
                 }
                 dataGridView_maid_classes.CellValueChanged += OnClassTabCellValueChanged;
                 dataGridView_maid_classes.CellContentClick += OnClassTabCellContentClick;
@@ -36,17 +35,16 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                                                    * dataGridView_maid_classes.RowCount;
 
                 // Yotogi classes
-                Resources.AddTranslatableControl(groupBox_yotogi_classes);
+                Translation.AddTranslatableControl(groupBox_yotogi_classes);
                 foreach (DataGridViewColumn column in dataGridView_yotogi_classes.Columns)
                 {
-                    //column.HeaderText = Resources.GetFieldText(column.HeaderText);
-                    Resources.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
+                    Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
                 for (YotogiClassType e = 0; e < EnumHelper.MaxYotogiClass; e++)
                 {
                     string key = $"Yotogi_{EnumHelper.GetName(e)}";
                     int i = dataGridView_yotogi_classes.Rows.Add(false, key, 0, 0);
-                    Resources.AddTranslationAction(key, s => dataGridView_yotogi_classes.Rows[i].Cells[1].Value = s);
+                    Translation.AddTranslationAction(key, s => dataGridView_yotogi_classes.Rows[i].Cells[1].Value = s);
                 }
                 dataGridView_yotogi_classes.CellValueChanged += OnClassTabCellValueChanged;
                 dataGridView_yotogi_classes.CellContentClick += OnClassTabCellContentClick;

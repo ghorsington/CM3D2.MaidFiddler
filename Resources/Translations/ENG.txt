@@ -1,4 +1,5 @@
-﻿; Maid Fiddler GUI Texts
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.20" "Denikson, Algester and the CM3D2 Translation Team"
+; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
 ; Special thanks go to the HF Translation team and Algester for providing Japanese translations!
@@ -9,7 +10,7 @@
 ; Comments and faulty lines (wrong separators, missing translation) are ignored
 
 ; Feel free to edit the title of the tool!
-TITLE_TEXT						- [FIDDLING INTENSIFIES]
+TITLE_TEXT						- A weapon to surpass Metal Gear!
 
 ; Info tab
 TAB_INFO						Information
@@ -487,6 +488,11 @@ MENU_MAID_SET_CLASS_LVL			Set all class levels to...
 MENU_MAID_SET_YOTOGI_TIMES		Set enabled yotogi skills play count to...
 MENU_MAID_SET					Set values
 
+; Misc tools menu
+MENU_MISC						?
+MENU_MISC_LANG_SELECT			Language...
+MENU_MISC_ABOUT					About Maid Fiddler
+
 ; Current maid unlock
 UNLOCK_SKILLS					Yotogi skills
 UNLOCK_MAID_CLASSES				Noon classes
@@ -505,10 +511,25 @@ MAX_ALL							All of the above
 
 ; GUI and misc windows
 GUI_YOTOGI_TIMES_TITLE			Set enabled yotogi skills play count to...
-GUI_YOTOGI_TIMES_PROMPT			Update play count for all enabled yotogi skills. Specify the number to which to set the play count.
+GUI_YOTOGI_TIMES_PROMPT			Update play count for all enabled yotogi skills.\nSpecify the number to which to set the play count.
 
 GUI_CLASS_LVL_TITLE				Set all class levels to...
 GUI_CLASS_LVL_PROMPT			Specify the level (1-10) to set all maid and yotogi classes to.
 
+; Language selection GUI
+GUI_TRANS_SELECT_TITLE			Language select
+GUI_TRANS_SELECT_PROMPT			Below is the list of available translations.\nSelect one and press Apply to apply it.
+GUI_TS_OPEN_TS_FOLDER			Open Translations folder
+GUI_TS_LANG						Language:
+GUI_TS_VERSION					Version:
+GUI_TS_AUTHOR					Author(s):
+
+; About menu
+GUI_ABOUT_TITLE					About Maid Fiddler
+GUI_ABOUT_VERSION				Version:
+GUI_ABOUT_CONTRIBUTORS			Contributors:
+
 OK								OK
 CANCEL							Cancel
+APPLY							Apply
+UNKNOWN							Not available

@@ -17,7 +17,9 @@ namespace CM3D2.MaidFiddler.Plugin
     [PluginName("Maid Fiddler"), PluginVersion(VERSION)]
     public class MaidFiddler : PluginBase
     {
-        public const string VERSION = "BETA 0.7";
+        public const string CONTRIBUTORS = "denikson";
+        public const string VERSION = "BETA 0.8";
+        public const string WIKI_PAGE = "https://github.com/denikson/CM3D2.MaidFiddler/wiki";
         public const uint SUPPORTED_PATCH_MAX = 1000;
         public const uint SUPPORTED_PATCH_MIN = 1000;
         private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
@@ -42,18 +44,25 @@ namespace CM3D2.MaidFiddler.Plugin
         public static MaidFiddlerGUI.MaidCompareMethod[] MaidCompareMethods { get; private set; }
         public static int MaidOrderDirection { get; private set; }
 
-        public string SelectedLanguage
+        public string SelectedDefaultLanguage
         {
             get
             {
                 string result = Preferences["GUI"]["DefaultTranslation"].Value;
-                if (result != null && (result = result.Trim()) != string.Empty)
+                if (result != null && (result = result.Trim()) != string.Empty && Translation.Exists(result))
                     return result;
                 Preferences["GUI"]["DefaultTranslation"].Value = result = DEFAULT_LANGUAGE_FILE;
                 SaveConfig();
                 return result;
             }
-            set { Preferences["GUI"]["DefaultTranslation"].Value = value; }
+            set
+            {
+                if (value != null && (value = value.Trim()) != string.Empty && Translation.Exists(value))
+                    Preferences["GUI"]["DefaultTranslation"].Value = value;
+                else
+                    Preferences["GUI"]["DefaultTranslation"].Value = DEFAULT_LANGUAGE_FILE;
+                SaveConfig();
+            }
         }
 
         public static bool UseJapaneseNameStyle { get; private set; }

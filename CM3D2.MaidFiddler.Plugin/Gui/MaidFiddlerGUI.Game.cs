@@ -19,8 +19,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 uiControlsPlayer = new Dictionary<Control, PlayerChangeType>();
                 valueUpdatePlayer = EnumHelper.GetValues<PlayerChangeType>().ToDictionary(e => e, e => false);
 
-                Resources.AddTranslatableControl(tabPage_player);
-                Resources.AddTranslatableControl(label_salon_stats);
+                Translation.AddTranslatableControl(tabPage_player);
+                Translation.AddTranslatableControl(label_salon_stats);
 
                 InitField(label_player_name, textBox_player_name, PlayerChangeType.Name);
                 InitField(label_money, textBox_money, PlayerChangeType.Money);
@@ -31,9 +31,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 InitField(label_scenario_phase, comboBox_scenario_phase, PlayerChangeType.ScenarioPhase);
                 for (int i = 0; i < comboBox_scenario_phase.Items.Count; i++)
                 {
-                    //comboBox_scenario_phase.Items[i] = (string) comboBox_scenario_phase.Items[i];
                     int i1 = i;
-                    Resources.AddTranslationAction(
+                    Translation.AddTranslationAction(
                     (string) comboBox_scenario_phase.Items[i],
                     s => comboBox_scenario_phase.Items[i1] = s);
                 }

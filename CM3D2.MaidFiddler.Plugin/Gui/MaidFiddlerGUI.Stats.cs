@@ -21,7 +21,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             string key = EnumHelper.GetName(type);
             int index = addLock ? table.Rows.Add(key, 0, false) : table.Rows.Add(key, 0);
             dic.Add(index, type);
-            Resources.AddTranslationAction(key, s => table.Rows[index].Cells[0].Value = s);
+            Translation.AddTranslationAction(key, s => table.Rows[index].Cells[0].Value = s);
             MaidParameters.Add(type, table.Rows[index]);
         }
 
@@ -31,15 +31,14 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             () =>
             {
                 MaidParameters = new Dictionary<MaidChangeType, DataGridViewRow>();
-                Resources.AddTranslatableControl(tabPage_stats);
+                Translation.AddTranslatableControl(tabPage_stats);
 
                 // Maid params
-                Resources.AddTranslatableControl(groupBox_params);
+                Translation.AddTranslatableControl(groupBox_params);
                 maidParamsTableDic = new Dictionary<int, MaidChangeType>();
                 foreach (DataGridViewColumn column in dataGridView_params.Columns)
                 {
-                    //column.HeaderText = Resources.GetFieldText(column.HeaderText);
-                    Resources.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
+                    Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
                 dataGridView_params.CellValueChanged += OnCellValueChanged;
                 dataGridView_params.CellContentClick += OnCellContentClick;
@@ -65,12 +64,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                                              + dataGridView_params.Rows[0].Height * dataGridView_params.RowCount;
 
                 // Maid bonus params
-                Resources.AddTranslatableControl(groupBox_maid_params_bonus);
+                Translation.AddTranslatableControl(groupBox_maid_params_bonus);
                 maidBonusStatsTableDic = new Dictionary<int, MaidChangeType>();
                 foreach (DataGridViewColumn column in dataGridView_maid_params_bonus.Columns)
                 {
-                    //column.HeaderText = Resources.GetFieldText(column.HeaderText);
-                    Resources.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
+                    Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
                 dataGridView_maid_params_bonus.CellValueChanged += OnCellValueChanged;
                 AddRow(MaidChangeType.BonusCare, dataGridView_maid_params_bonus, maidBonusStatsTableDic, false);
@@ -90,12 +88,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                                                         * dataGridView_maid_params_bonus.RowCount;
 
                 // Maid ero zones
-                Resources.AddTranslatableControl(groupBox_ero_zones);
+                Translation.AddTranslatableControl(groupBox_ero_zones);
                 maidEroTableDic = new Dictionary<int, MaidChangeType>();
                 foreach (DataGridViewColumn column in dataGridView_ero_zones.Columns)
                 {
-                    //column.HeaderText = Resources.GetFieldText(column.HeaderText);
-                    Resources.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
+                    Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
                 dataGridView_ero_zones.CellValueChanged += OnCellValueChanged;
                 dataGridView_ero_zones.CellContentClick += OnCellContentClick;
@@ -111,12 +108,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
 
                 // Maid stats
-                Resources.AddTranslatableControl(groupBox_statistics);
+                Translation.AddTranslatableControl(groupBox_statistics);
                 maidStatsTableDic = new Dictionary<int, MaidChangeType>();
                 foreach (DataGridViewColumn column in dataGridView_statistics.Columns)
                 {
-                    //column.HeaderText = Resources.GetFieldText(column.HeaderText);
-                    Resources.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
+                    Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
                 dataGridView_statistics.CellValueChanged += OnCellValueChanged;
                 dataGridView_statistics.CellContentClick += OnCellContentClick;

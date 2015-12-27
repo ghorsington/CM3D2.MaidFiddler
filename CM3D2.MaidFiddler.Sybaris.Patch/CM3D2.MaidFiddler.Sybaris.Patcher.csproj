@@ -31,17 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mono.Cecil">
-      <HintPath>..\..\Mono.Cecil.Inject\lib\Mono.Cecil.dll</HintPath>
+    <Reference Include="Mono.Cecil, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Mono.Cecil.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil.Inject, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\ReiPatcher\Mono.Cecil.Inject.dll</HintPath>
+      <HintPath>..\Libs\Mono.Cecil.Inject.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\Program Files\KISS\CM3D2\CM3D2x64_Data\Managed\UnityEngine.dll</HintPath>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

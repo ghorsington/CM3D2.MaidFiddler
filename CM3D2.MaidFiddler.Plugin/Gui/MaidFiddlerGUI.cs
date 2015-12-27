@@ -10,16 +10,16 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 {
     public partial class MaidFiddlerGUI : Form
     {
+        private readonly MaidFiddler plugin;
         private bool initialized;
-        private MaidFiddler pluginBase;
 
-        public MaidFiddlerGUI(MaidFiddler pluginBase)
+        public MaidFiddlerGUI(MaidFiddler plugin)
         {
-            this.pluginBase = pluginBase;
+            this.plugin = plugin;
             InitializeComponent();
             Opacity = 0.0;
             Text = $"CM3D2 Maid Fiddler {MaidFiddler.VERSION}";
-            Resources.AddTranslationAction("TITLE_TEXT", s => Text = $"CM3D2 Maid Fiddler {MaidFiddler.VERSION} {s}");
+            Translation.AddTranslationAction("TITLE_TEXT", s => Text = $"CM3D2 Maid Fiddler {MaidFiddler.VERSION} {s}");
             try
             {
                 Player = new PlayerInfo(this);
@@ -49,7 +49,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
                 InitHookCallbacks();
 
-                Resources.LoadTranslation(pluginBase.SelectedLanguage);
+                Translation.LoadTranslation(plugin.SelectedDefaultLanguage);
             }
             catch (Exception e)
             {
@@ -111,8 +111,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             foreach (ToolStripDropDownItem item in menuStrip1.Items)
             {
                 LoadMenuText(item);
-                Resources.AddTranslationAction(item.Text, s => item.Text = s);
-                //item.Text = Resources.GetFieldText(item.Text);
+                Translation.AddTranslationAction(item.Text, s => item.Text = s);
             }
         }
 
@@ -123,8 +122,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 ToolStripDropDownItem downItem = toolStripItem as ToolStripDropDownItem;
                 if (downItem != null)
                     LoadMenuText(downItem);
-                //toolStripItem.Text = Resources.GetFieldText(toolStripItem.Text);
-                Resources.AddTranslationAction(toolStripItem.Text, s => toolStripItem.Text = s);
+                Translation.AddTranslationAction(toolStripItem.Text, s => toolStripItem.Text = s);
             }
         }
 
@@ -190,6 +188,21 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 listBox1.Invalidate();
             },
             "Failed to update maid GUI list");
+        }
+
+        private void OpenLangMenu(object sender, EventArgs e)
+        {
+            Debugger.WriteLine(LogLevel.Info, "Opening language select menu...");
+            TranslationSelectionGUI tsGui = new TranslationSelectionGUI(plugin);
+            tsGui.ShowDialog(this);
+            tsGui.Dispose();
+        }
+
+        private void OpenAboutMenu(object sender, EventArgs e)
+        {
+            AboutGUI aboutGui = new AboutGUI();
+            aboutGui.ShowDialog(this);
+            aboutGui.Dispose();
         }
 
         private delegate void UpdateInternal(List<Maid> newMaids);
