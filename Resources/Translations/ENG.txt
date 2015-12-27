@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.20" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.20-1" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -14,20 +14,20 @@ TITLE_TEXT						- A weapon to surpass Metal Gear!
 
 ; Info tab
 TAB_INFO						Information
-FirstName						First Name
-LastName						Last Name
+FirstName						First name
+LastName						Last name
 FirstNameCall					Call by first name
 Personal						Personality
 ContractType					Contract type
-Leader							Leader 
-Condition						Love state
-ConditionSpecial				Yotogi style
+Leader							Is leader
+Condition						Love status
+ConditionSpecial				Yotogi state
 Employment						Employment day
 MAID_SEX_EXP					Sexual experience
 InitSeikeiken					Initial
 Seikeiken						Current
 MAID_CLASS_SELECTED				Selected classes
-MaidClassType					Noon class
+MaidClassType					Maid class
 YotogiClassType					Night class
 Profile							Maid description
 FreeComment						User comment
@@ -47,15 +47,15 @@ TAB_STATS						Parameters
 MAID_PARAMS						General parameters
 MAID_PARAMS_BONUS				Parameter bonuses
 MAID_ERO_ZONES					Erogenous zones
-MAID_STATS						Miscellaneous stats
+MAID_STATS						Miscellaneous parameters
 
 ; Maid classes			
 TAB_CLASSES						Classes
-MAID_CLASS						Noon class
+MAID_CLASS						Maid class
 YOTOGI_CLASS					Night class
 
 ; Maid work
-TAB_WORK						Work data
+TAB_WORK						Work Data
 CURRENT_WORK					Selected work
 WORK_NOON						Noon
 WORK_NIGHT						Night
@@ -65,7 +65,7 @@ NoonWorkId						Noon
 NightWorkId						Night
 
 ; Maid skills	
-TAB_YOTOGI						Yotogi skills
+TAB_YOTOGI						Yotogi Skills
 
 ; Maid misc			
 TAB_MISC						Traits and Fetishes
@@ -77,16 +77,16 @@ TAB_GAME						Game General
 PlayerName						Player name
 Money							Credits
 ShopUseMoney					Credits used in shop
-SalonLoan						Current loan
-InitSalonLoan					Initial loan
+SalonLoan						Current debt
+InitSalonLoan					Initial debt
 PhaseDays						Days (current phase)
 Days							Days (total)
 ScenarioPhase					Current phase
 SCENARIO_NEW					New game
 SCENARIO_DEBT					Debt phase
 SCENARIO_MAIN					Free play
-SALON_STATS						Club stats
-SalonClean						Tidiness
+SALON_STATS						Club status
+SalonClean						Clean
 SalonBeautiful					Beauty
 SalonEvaluation					Total evaluation
 SalonGrade						Current grade
@@ -102,7 +102,7 @@ Yandere							Yandere
 ; Contract types			
 Nurture							Training
 Free							Free
-Exclusive						Exclusive
+Exclusive						Personal
 
 ; Condition			
 Tonus							Nervous
@@ -165,8 +165,8 @@ OthersPlayCount					Times entertained
 PlayNumber						Play Number
 Reason							Reason (Max)
 Reception						Reception
-StudyRate						Study rate
-TeachRate						Teaching rate
+StudyRate						Learning rate
+TeachRate						Leadership
 YotogiPlayCount					Times had sex
 SexualBack						Anal
 SexualCuri						Clitoris
@@ -186,9 +186,9 @@ BonusCare						Care
 BonusCharm						Charm
 BonusElegance					Elegance
 BonusHentai						Perversion
-BonusHousi						Housi
+BonusHousi						Service
 BonusHp							Stamina
-BonusInyoku						Inyoku
+BonusInyoku						Lust
 BonusLovely						Sweetness
 BonusMind						Mind
 BonusMValue						Masochism	
