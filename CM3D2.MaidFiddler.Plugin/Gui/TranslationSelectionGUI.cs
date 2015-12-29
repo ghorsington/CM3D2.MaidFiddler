@@ -12,21 +12,18 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
     {
         private readonly MaidFiddler plugin;
 
-        private readonly Regex tagPattern =
-        new Regex("#MAIDFIDDLER_TRANSLATION \"(?<lang>.*)\" \"(?<ver>.*)\" \"(?<auth>.*)\"");
-
         public TranslationSelectionGUI(MaidFiddler plugin)
         {
             this.plugin = plugin;
             InitializeComponent();
-            Text = Translation.GetFieldText(Text);
-            Translation.GetFieldText(label_prompt);
-            Translation.GetFieldText(label_lang_name);
-            Translation.GetFieldText(label_lang_version);
-            Translation.GetFieldText(label_lang_author);
-            Translation.GetFieldText(button_apply);
-            Translation.GetFieldText(button_cancel);
-            Translation.GetFieldText(button_open_translation_folder);
+            Text = Translation.GetTranslation(Text);
+            Translation.GetTranslation(label_prompt);
+            Translation.GetTranslation(label_lang_name);
+            Translation.GetTranslation(label_lang_version);
+            Translation.GetTranslation(label_lang_author);
+            Translation.GetTranslation(button_apply);
+            Translation.GetTranslation(button_cancel);
+            Translation.GetTranslation(button_open_translation_folder);
             listBox_translations.DisplayMember = "DisplayName";
             listBox_translations.SelectedValueChanged += OnLanguageSelected;
             LoadTranslations(Translation.CurrentTranslationFile);
@@ -38,11 +35,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 return;
             TranslationData translationData = (TranslationData) listBox_translations.SelectedItem;
             label_lang_val.Text = translationData.Language != string.Empty
-                                  ? translationData.Language : Translation.GetFieldText("UNKNOWN");
+                                  ? translationData.Language : Translation.GetTranslation("UNKNOWN");
             label_version_val.Text = translationData.Version != string.Empty
-                                     ? translationData.Version : Translation.GetFieldText("UNKNOWN");
+                                     ? translationData.Version : Translation.GetTranslation("UNKNOWN");
             label_author_val.Text = translationData.Author != string.Empty
-                                    ? translationData.Author : Translation.GetFieldText("UNKNOWN");
+                                    ? translationData.Author : Translation.GetTranslation("UNKNOWN");
         }
 
         private void LoadTranslations(string selectedLanguageFile)
@@ -70,7 +67,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     if (line == null || line.Trim() == string.Empty)
                         continue;
 
-                    Match match = tagPattern.Match(line);
+                    Match match = Translation.TagPattern.Match(line);
                     if (!match.Success)
                         continue;
 
@@ -95,13 +92,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnApplyTranslation(object sender, EventArgs e)
         {
+            TranslationData? translationData = listBox_translations.SelectedIndex != -1
+                                               ? (TranslationData?) listBox_translations.SelectedItem : null;
             string langFileName;
-            if (listBox_translations.SelectedIndex != -1
-                && Translation.CurrentTranslationFile
-                != (langFileName = ((TranslationData) listBox_translations.SelectedItem).FileName))
+            if (translationData.HasValue
+                && (Translation.CurrentTranslationFile != (langFileName = translationData.Value.FileName)
+                    || Translation.CurrentTranslationFile == langFileName
+                    && (Translation.CurrentTranslationVersion == string.Empty
+                        || Translation.CurrentTranslationVersion != translationData.Value.Version)))
             {
                 Translation.LoadTranslation(langFileName);
-                plugin.SelectedDefaultLanguage = langFileName;
+                plugin.CFGSelectedDefaultLanguage = langFileName;
             }
             Close();
         }

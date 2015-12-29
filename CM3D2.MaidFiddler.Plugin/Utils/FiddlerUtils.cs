@@ -50,7 +50,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             return true;
         }
 
-        public static void ThrowErrorMessage(Exception e, string action)
+        public static void ThrowErrorMessage(Exception e, string action, MaidFiddler plugin)
         {
             if (errorThrown)
                 return;
@@ -89,8 +89,8 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             MessageBoxButtons.OK,
             MessageBoxIcon.Error);
 
-            MaidFiddlerGUI guiLoc = MaidFiddler.Gui;
-            MaidFiddler.Gui = null;
+            MaidFiddlerGUI guiLoc = plugin.Gui;
+            plugin.Gui = null;
             guiLoc?.Close(true);
             errorThrown = true;
         }

@@ -61,13 +61,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnValidate(object sender, CancelEventArgs e)
         {
-            if (!checker(textBox_input.Text))
-            {
-                e.Cancel = true;
-                textBox_input.Text = defaultVal;
-                textBox_input.Select(0, defaultVal.Length);
-                SystemSounds.Hand.Play();
-            }
+            if (checker(textBox_input.Text))
+                return;
+            e.Cancel = true;
+            textBox_input.Text = defaultVal;
+            textBox_input.Select(0, defaultVal.Length);
+            SystemSounds.Hand.Play();
         }
 
         private void OnVisibleChanged(object sender, EventArgs e)

@@ -93,6 +93,7 @@
             // 
             // labelProductName
             // 
+            this.labelProductName.AutoSize = true;
             this.tableLayoutPanel.SetColumnSpan(this.labelProductName, 2);
             this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelProductName.Location = new System.Drawing.Point(6, 0);

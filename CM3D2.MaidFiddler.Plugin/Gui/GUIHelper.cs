@@ -9,6 +9,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         public void Close(bool exit)
         {
+            Debugger.WriteLine($"Called Close on main thread. Destroy GUI: {exit}");
             destroyGUI = exit;
             if (destroyGUI)
                 RemoveHookCallbacks();

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Gui;
@@ -19,37 +18,79 @@ namespace CM3D2.MaidFiddler.Plugin
     {
         public const string CONTRIBUTORS = "denikson";
         public const string VERSION = "BETA 0.8";
-        public const string WIKI_PAGE = "https://github.com/denikson/CM3D2.MaidFiddler/wiki";
+        public const string PROJECT_PAGE = "https://github.com/denikson/CM3D2.MaidFiddler";
         public const uint SUPPORTED_PATCH_MAX = 1000;
         public const uint SUPPORTED_PATCH_MIN = 1000;
         private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
         private const MaidOrderDirection DEFAULT_ORDER_DIRECTION = Plugin.MaidOrderDirection.Ascending;
         private const string DEFAULT_LANGUAGE_FILE = "ENG";
         private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.KeypadEnter, KeyCode.Keypad0};
-
-        private static readonly MaidFiddlerGUI.MaidCompareMethod[] COMPARE_METHODS =
-        {
-            MaidFiddlerGUI.MaidCompareID,
-            MaidFiddlerGUI.MaidCompareCreateTime,
-            MaidFiddlerGUI.MaidCompareFirstLastName,
-            MaidFiddlerGUI.MaidCompareLastFirstName,
-            MaidFiddlerGUI.MaidCompareEmployedDay
-        };
-
-        private readonly MaidOrderStyle[] DEFAULT_ORDER_STYLES = {MaidOrderStyle.GUID};
+        private readonly List<MaidOrderStyle> DEFAULT_ORDER_STYLES = new List<MaidOrderStyle> {MaidOrderStyle.GUID};
+        public MaidFiddlerGUI.MaidCompareMethod[] COMPARE_METHODS;
         private KeyHelper keyCreateGUI;
-        public static string DATA_PATH { get; private set; }
-        public static MaidFiddlerGUI Gui { get; set; }
-        public static Thread GuiThread { get; set; }
-        public static MaidFiddlerGUI.MaidCompareMethod[] MaidCompareMethods { get; private set; }
-        public static int MaidOrderDirection { get; private set; }
 
-        public string SelectedDefaultLanguage
+        public MaidOrderDirection CFGOrderDirection
+        {
+            get
+            {
+                IniKey value = Preferences["GUI"]["OrderDirection"];
+                MaidOrderDirection orderDirection = DEFAULT_ORDER_DIRECTION;
+                if (!string.IsNullOrEmpty(value.Value) && EnumHelper.TryParse(value.Value, out orderDirection, true))
+                    return orderDirection;
+                Debugger.WriteLine(LogLevel.Warning, "Failed to get order direction. Setting do default...");
+                value.Value = EnumHelper.GetName(DEFAULT_ORDER_DIRECTION);
+                SaveConfig();
+
+                return orderDirection;
+            }
+
+            set
+            {
+                Preferences["GUI"]["OrderDirection"].Value = value.ToString();
+                SaveConfig();
+                MaidOrderDirection = (int) value;
+            }
+        }
+
+        public List<MaidOrderStyle> CFGOrderStyle
+        {
+            get
+            {
+                IniKey value = Preferences["GUI"]["OrderStyle"];
+                List<MaidOrderStyle> orderStyles;
+                if (string.IsNullOrEmpty(value.Value))
+                {
+                    Debugger.WriteLine(LogLevel.Warning, "Failed to get order style. Setting do default...");
+                    value.Value = EnumHelper.EnumsToString(DEFAULT_ORDER_STYLES, '|');
+                    orderStyles = DEFAULT_ORDER_STYLES;
+                    SaveConfig();
+                }
+                else
+                {
+                    orderStyles = EnumHelper.ParseEnums<MaidOrderStyle>(value.Value, '|');
+                    if (orderStyles.Count != 0)
+                        return orderStyles;
+                    Debugger.WriteLine(LogLevel.Warning, "Failed to get order style. Setting do default...");
+                    value.Value = EnumHelper.EnumsToString(DEFAULT_ORDER_STYLES, '|');
+                    orderStyles = DEFAULT_ORDER_STYLES;
+                    SaveConfig();
+                }
+                return orderStyles;
+            }
+            set
+            {
+                MaidCompareMethods = value.Select(o => COMPARE_METHODS[(int) o]).ToArray();
+                Preferences["GUI"]["OrderStyle"].Value = EnumHelper.EnumsToString(value, '|');
+                SaveConfig();
+            }
+        }
+
+        public string CFGSelectedDefaultLanguage
         {
             get
             {
                 string result = Preferences["GUI"]["DefaultTranslation"].Value;
-                if (result != null && (result = result.Trim()) != string.Empty && Translation.Exists(result))
+                if (!string.IsNullOrEmpty(result) && Translation.Exists(result))
                     return result;
                 Preferences["GUI"]["DefaultTranslation"].Value = result = DEFAULT_LANGUAGE_FILE;
                 SaveConfig();
@@ -65,7 +106,67 @@ namespace CM3D2.MaidFiddler.Plugin
             }
         }
 
-        public static bool UseJapaneseNameStyle { get; private set; }
+        public List<KeyCode> CFGStartGUIKey
+        {
+            get
+            {
+                List<KeyCode> keys = new List<KeyCode>();
+                IniKey value = Preferences["Keys"]["StartGUIKey"];
+                if (string.IsNullOrEmpty(value.Value))
+                {
+                    value.Value = EnumHelper.EnumsToString(DEFAULT_KEY_CODE, '+');
+                    keys.AddRange(DEFAULT_KEY_CODE);
+                    SaveConfig();
+                }
+                else
+                {
+                    keys = EnumHelper.ParseEnums<KeyCode>(value.Value, '+');
+
+                    if (keys.Count != 0)
+                        return keys;
+                    Debugger.WriteLine(LogLevel.Warning, "Failed to parse given key combo. Using default combination");
+                    keys = DEFAULT_KEY_CODE.ToList();
+                    value.Value = EnumHelper.EnumsToString(keys, '+');
+                    SaveConfig();
+                }
+                return keys;
+            }
+
+            set
+            {
+                Preferences["Keys"]["StartGUIKey"].Value = EnumHelper.EnumsToString(value, '+');
+                keyCreateGUI.Keys = value.ToArray();
+                SaveConfig();
+            }
+        }
+
+        public bool CFGUseJapaneseNameStyle
+        {
+            get
+            {
+                IniKey value = Preferences["GUI"]["UseJapaneseNameStyle"];
+                bool useJapNameStyle = DEFAULT_USE_JAPANESE_NAME_STYLE;
+                if (!string.IsNullOrEmpty(value.Value) && bool.TryParse(value.Value, out useJapNameStyle))
+                    return useJapNameStyle;
+                Debugger.WriteLine(LogLevel.Warning, "Failed to get name style info. Setting to default...");
+                value.Value = DEFAULT_USE_JAPANESE_NAME_STYLE.ToString();
+                SaveConfig();
+                return useJapNameStyle;
+            }
+            set
+            {
+                UseJapaneseNameStyle = value;
+                Preferences["GUI"]["UseJapaneseNameStyle"].Value = value.ToString();
+                SaveConfig();
+            }
+        }
+
+        public static string DATA_PATH { get; private set; }
+        public MaidFiddlerGUI Gui { get; set; }
+        public Thread GuiThread { get; set; }
+        public MaidFiddlerGUI.MaidCompareMethod[] MaidCompareMethods { get; private set; }
+        public int MaidOrderDirection { get; private set; }
+        public bool UseJapaneseNameStyle { get; private set; }
 
         public void Dispose()
         {
@@ -81,6 +182,17 @@ namespace CM3D2.MaidFiddler.Plugin
             }
             DontDestroyOnLoad(this);
 
+            Debugger.ErrorOccured += (exception, message) => FiddlerUtils.ThrowErrorMessage(exception, message, this);
+
+            COMPARE_METHODS = new MaidFiddlerGUI.MaidCompareMethod[]
+            {
+                MaidCompareID,
+                MaidCompareCreateTime,
+                MaidCompareFirstName,
+                MaidCompareLastName,
+                MaidCompareEmployedDay
+            };
+
             DATA_PATH = DataPath;
             LoadConfig();
 
@@ -93,19 +205,6 @@ namespace CM3D2.MaidFiddler.Plugin
             Debugger.WriteLine($"MaidFiddler {VERSION} loaded!");
         }
 
-        private static string EnumsToString<T>(IList<T> keys, char separator)
-        {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < keys.Count; i++)
-            {
-                sb.Append(EnumHelper.GetName(keys[i]));
-                if (i != keys.Count - 1)
-                    sb.Append(separator);
-            }
-
-            return sb.ToString();
-        }
-
         public void LateUpdate()
         {
             Gui?.DoIfVisible(Gui.UpdateSelectedMaidValues);
@@ -115,117 +214,30 @@ namespace CM3D2.MaidFiddler.Plugin
         private void LoadConfig()
         {
             Debugger.WriteLine(LogLevel.Info, "Loading launching key combination...");
-            List<KeyCode> keys = new List<KeyCode>();
-            IniKey value = Preferences["Keys"]["StartGUIKey"];
-            if (value.Value == null || value.Value.Trim() == string.Empty)
-            {
-                value.Value = EnumsToString(DEFAULT_KEY_CODE, '+');
-                keys.AddRange(DEFAULT_KEY_CODE);
-                SaveConfig();
-            }
-            else
-            {
-                try
-                {
-                    string[] keyCodes = value.Value.Split(new[] {'+'}, StringSplitOptions.RemoveEmptyEntries);
-                    if (keyCodes.Length == 0)
-                        throw new Exception();
-                    foreach (KeyCode kc in
-                    keyCodes.Select(keyCode => (KeyCode) Enum.Parse(typeof (KeyCode), keyCode.Trim(), true))
-                            .Where(kc => !keys.Contains(kc)))
-                        keys.Add(kc);
-                    if (keyCodes.Length != keys.Count)
-                    {
-                        value.Value = EnumsToString(keys, '+');
-                        SaveConfig();
-                    }
-                }
-                catch (Exception)
-                {
-                    Debugger.WriteLine(LogLevel.Warning, "Failed to parse given key combo. Using default combination");
-                    value.Value = EnumsToString(DEFAULT_KEY_CODE, '+');
-                    keys.AddRange(DEFAULT_KEY_CODE);
-                    SaveConfig();
-                }
-            }
-            keyCreateGUI = new KeyHelper(keys.ToArray());
-            Debugger.WriteLine(LogLevel.Info, $"Loaded {keys.Count} long key combo: {EnumsToString(keys, '+')}");
-
-            Debugger.WriteLine(LogLevel.Info, "Loading name style info...");
-            value = Preferences["GUI"]["UseJapaneseNameStyle"];
-            bool useJapNameStyle;
-            if (value.Value == null || value.Value.Trim() == string.Empty
-                || !bool.TryParse(value.Value, out useJapNameStyle))
-            {
-                Debugger.WriteLine(LogLevel.Warning, "Failed to get name style info. Setting do default...");
-                value.Value = DEFAULT_USE_JAPANESE_NAME_STYLE.ToString();
-                UseJapaneseNameStyle = DEFAULT_USE_JAPANESE_NAME_STYLE;
-                SaveConfig();
-            }
-            else
-                UseJapaneseNameStyle = useJapNameStyle;
-
-            Debugger.WriteLine(LogLevel.Info, $"Using Japanese name style: {UseJapaneseNameStyle}");
-
-
-            Debugger.WriteLine(LogLevel.Info, "Loading order style info...");
-            value = Preferences["GUI"]["OrderStyle"];
-            IEnumerable<MaidOrderStyle> orderStyles;
-            string v;
-            if (value.Value == null || (v = value.Value.Trim()) == string.Empty)
-            {
-                Debugger.WriteLine(LogLevel.Warning, "Failed to get order style. Setting do default...");
-                value.Value = EnumsToString(DEFAULT_ORDER_STYLES, '|');
-                orderStyles = DEFAULT_ORDER_STYLES;
-                SaveConfig();
-            }
-            else
-            {
-                string[] vals = v.Split(new[] {'|'}, StringSplitOptions.RemoveEmptyEntries);
-                try
-                {
-                    List<MaidOrderStyle> os = new List<MaidOrderStyle>();
-                    foreach (MaidOrderStyle s in
-                    vals.Select(val => (MaidOrderStyle) Enum.Parse(typeof (MaidOrderStyle), val.Trim(), true))
-                        .Where(s => !os.Contains(s)))
-                    {
-                        os.Add(s);
-                    }
-                    orderStyles = os;
-                }
-                catch (Exception)
-                {
-                    Debugger.WriteLine(LogLevel.Warning, "Failed to get order style. Setting do default...");
-                    value.Value = EnumsToString(DEFAULT_ORDER_STYLES, '|');
-                    orderStyles = DEFAULT_ORDER_STYLES;
-                    SaveConfig();
-                }
-            }
-
-            MaidCompareMethods = orderStyles.Select(o => COMPARE_METHODS[(int) o]).ToArray();
-
+            keyCreateGUI = new KeyHelper(CFGStartGUIKey.ToArray());
             Debugger.WriteLine(
             LogLevel.Info,
-            $"Sorting maids by method order {EnumsToString(orderStyles.ToList(), '>')}");
+            $"Loaded {keyCreateGUI.Keys.Length} long key combo: {EnumHelper.EnumsToString(keyCreateGUI.Keys, '+')}");
+
+            Debugger.WriteLine(LogLevel.Info, "Loading name style info...");
+            UseJapaneseNameStyle = CFGUseJapaneseNameStyle;
+            Debugger.WriteLine(LogLevel.Info, $"Using Japanese name style: {UseJapaneseNameStyle}");
+
+            Debugger.WriteLine(LogLevel.Info, "Loading order style info...");
+            List<MaidOrderStyle> orderStyles = CFGOrderStyle;
+            MaidCompareMethods = orderStyles.Select(o => COMPARE_METHODS[(int) o]).ToArray();
+            Debugger.WriteLine(
+            LogLevel.Info,
+            $"Sorting maids by method order {EnumHelper.EnumsToString(orderStyles, '>')}");
 
 
             Debugger.WriteLine(LogLevel.Info, "Loading order direction info...");
-            value = Preferences["GUI"]["OrderDirection"];
-            MaidOrderDirection orderDirection;
-            if (value.Value == null || (v = value.Value.Trim()) == string.Empty
-                || !EnumHelper.TryParse(v, out orderDirection, true))
-            {
-                Debugger.WriteLine(LogLevel.Warning, "Failed to get order direction. Setting do default...");
-                value.Value = EnumHelper.GetName(DEFAULT_ORDER_DIRECTION);
-                MaidOrderDirection = (int) DEFAULT_ORDER_DIRECTION;
-                SaveConfig();
-            }
-            else
-                MaidOrderDirection = (int) orderDirection;
-
+            MaidOrderDirection = (int) CFGOrderDirection;
             Debugger.WriteLine(
             LogLevel.Info,
             $"Sorting maids in {EnumHelper.GetName((MaidOrderDirection) MaidOrderDirection)} direction");
+
+            Translation.LoadTranslation(CFGSelectedDefaultLanguage);
         }
 
         public void LoadGUI()
@@ -239,7 +251,7 @@ namespace CM3D2.MaidFiddler.Plugin
             }
             catch (Exception e)
             {
-                FiddlerUtils.ThrowErrorMessage(e, "Generic error");
+                FiddlerUtils.ThrowErrorMessage(e, "Generic error", this);
             }
         }
 
@@ -275,14 +287,50 @@ namespace CM3D2.MaidFiddler.Plugin
                 OpenGUI();
             Gui?.DoIfVisible(Gui.UpdateMaids);
         }
+
+        public int MaidCompareEmployedDay(Maid x, Maid y)
+        {
+            return ComputeOrder(x.Param.status.employment_day, y.Param.status.employment_day);
+        }
+
+        public int MaidCompareCreateTime(Maid x, Maid y)
+        {
+            return ComputeOrder(x.Param.status.create_time_num, y.Param.status.create_time_num);
+        }
+
+        private int ComputeOrder<T>(T x, T y) where T : IComparable<T>
+        {
+            return MaidOrderDirection * x.CompareTo(y);
+        }
+
+        public int MaidCompareFirstName(Maid x, Maid y)
+        {
+            return MaidOrderDirection
+                   * string.CompareOrdinal(
+                   x.Param.status.first_name.ToUpperInvariant(),
+                   y.Param.status.first_name.ToUpperInvariant());
+        }
+
+        public int MaidCompareID(Maid x, Maid y)
+        {
+            return MaidOrderDirection * string.CompareOrdinal(x.Param.status.guid, y.Param.status.guid);
+        }
+
+        public int MaidCompareLastName(Maid x, Maid y)
+        {
+            return MaidOrderDirection
+                   * string.CompareOrdinal(
+                   x.Param.status.last_name.ToUpperInvariant(),
+                   y.Param.status.last_name.ToUpperInvariant());
+        }
     }
 
     public enum MaidOrderStyle
     {
         GUID = 0,
         CreationTime = 1,
-        FirstName_LastName = 2,
-        LastName_FirstName = 3,
+        FirstName = 2,
+        LastName = 3,
         EmployedDay = 4
     }
 

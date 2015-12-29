@@ -674,7 +674,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     FiddlerUtils.ThrowErrorMessage(
                     e,
-                    $"Failed to update maid value for maid {Maid.Param.status.first_name} {Maid.Param.status.last_name}. Reason: {string.Format(action, EnumHelper.GetName(cType))}");
+                    $"Failed to update maid value for maid {Maid.Param.status.first_name} {Maid.Param.status.last_name}. Reason: {string.Format(action, EnumHelper.GetName(cType))}",
+                    gui.Plugin);
                 }
             }
 

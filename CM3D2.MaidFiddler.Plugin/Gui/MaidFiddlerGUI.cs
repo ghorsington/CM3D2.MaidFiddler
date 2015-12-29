@@ -10,12 +10,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 {
     public partial class MaidFiddlerGUI : Form
     {
-        private readonly MaidFiddler plugin;
         private bool initialized;
 
         public MaidFiddlerGUI(MaidFiddler plugin)
         {
-            this.plugin = plugin;
+            Plugin = plugin;
             InitializeComponent();
             Opacity = 0.0;
             Text = $"CM3D2 Maid Fiddler {MaidFiddler.VERSION}";
@@ -49,13 +48,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
                 InitHookCallbacks();
 
-                Translation.LoadTranslation(plugin.SelectedDefaultLanguage);
+                Translation.ApplyTranslation();
             }
             catch (Exception e)
             {
-                FiddlerUtils.ThrowErrorMessage(e, "Failed to initalize core components");
+                FiddlerUtils.ThrowErrorMessage(e, "Failed to initalize core components", plugin);
             }
         }
+
+        public MaidFiddler Plugin { get; }
 
         private void OnShown(object sender, EventArgs e)
         {
@@ -92,7 +93,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 e.Bounds.Height,
                 e.Bounds.Height);
             }
-            string name = MaidFiddler.UseJapaneseNameStyle
+            string name = Plugin.UseJapaneseNameStyle
                           ? $"{m.Maid.Param.status.last_name} {m.Maid.Param.status.first_name}"
                           : $"{m.Maid.Param.status.first_name} {m.Maid.Param.status.last_name}";
             e.Graphics.DrawString(
@@ -193,7 +194,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void OpenLangMenu(object sender, EventArgs e)
         {
             Debugger.WriteLine(LogLevel.Info, "Opening language select menu...");
-            TranslationSelectionGUI tsGui = new TranslationSelectionGUI(plugin);
+            TranslationSelectionGUI tsGui = new TranslationSelectionGUI(Plugin);
             tsGui.ShowDialog(this);
             tsGui.Dispose();
         }
@@ -203,6 +204,14 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             AboutGUI aboutGui = new AboutGUI();
             aboutGui.ShowDialog(this);
             aboutGui.Dispose();
+        }
+
+        private void OpenSettings(object sender, EventArgs e)
+        {
+            SettingsGUI settings = new SettingsGUI(Plugin);
+            settings.ShowDialog(this);
+            settings.Dispose();
+            listBox1.Refresh();
         }
 
         private delegate void UpdateInternal(List<Maid> newMaids);

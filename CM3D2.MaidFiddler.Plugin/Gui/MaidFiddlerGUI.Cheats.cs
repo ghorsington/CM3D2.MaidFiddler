@@ -40,12 +40,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Debugger.WriteLine(LogLevel.Info, "Prompting class level set.");
             uint v;
             TextDialog td = new TextDialog(
-            Translation.GetFieldText("GUI_CLASS_LVL_TITLE"),
-            Translation.GetFieldText("GUI_CLASS_LVL_PROMPT"),
+            Translation.GetTranslation("GUI_CLASS_LVL_TITLE"),
+            Translation.GetTranslation("GUI_CLASS_LVL_PROMPT"),
             "0",
             s => uint.TryParse(s, out v) && v <= 10,
-            Translation.GetFieldText("OK"),
-            Translation.GetFieldText("CANCEL")) {StartPosition = FormStartPosition.CenterParent};
+            Translation.GetTranslation("OK"),
+            Translation.GetTranslation("CANCEL")) {StartPosition = FormStartPosition.CenterParent};
             DialogResult dr = td.ShowDialog(this);
             Debugger.WriteLine(LogLevel.Info, $"Prompt result: {EnumHelper.GetName(dr)}, {td.Input}");
 
@@ -301,12 +301,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             uint v;
             TextDialog td = new TextDialog(
-            Translation.GetFieldText("GUI_YOTOGI_TIMES_TITLE"),
-            Translation.GetFieldText("GUI_YOTOGI_TIMES_PROMPT"),
+            Translation.GetTranslation("GUI_YOTOGI_TIMES_TITLE"),
+            Translation.GetTranslation("GUI_YOTOGI_TIMES_PROMPT"),
             "0",
             s => uint.TryParse(s, out v),
-            Translation.GetFieldText("OK"),
-            Translation.GetFieldText("CANCEL")) {StartPosition = FormStartPosition.CenterParent};
+            Translation.GetTranslation("OK"),
+            Translation.GetTranslation("CANCEL")) {StartPosition = FormStartPosition.CenterParent};
             DialogResult dr = td.ShowDialog(this);
             Debugger.WriteLine(LogLevel.Info, $"Prompt result: {EnumHelper.GetName(dr)}, {td.Input}");
 
@@ -364,9 +364,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             string[] names = Player.Player.status_.have_item_list.Keys.ToArray();
             for (int i = 0; i < Player.Player.status_.have_item_list.Keys.Count; i++)
-            {
                 Player.Player.AddHaveItem(names[i]);
-            }
+            foreach (KeyValuePair<int, Shop.ItemDataBase> shopItem in Shop.item_data_dic)
+                Player.Player.SetShopLineup(shopItem.Value.id, Status.ShopItemStatus.Purchased);
         }
 
         private void UnlockAllMaidClasses(object sender, EventArgs e)

@@ -195,7 +195,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 }
                 catch (Exception e)
                 {
-                    FiddlerUtils.ThrowErrorMessage(e, "Failed to update player values");
+                    FiddlerUtils.ThrowErrorMessage(e, "Failed to update player values", gui.Plugin);
                 }
             }
 

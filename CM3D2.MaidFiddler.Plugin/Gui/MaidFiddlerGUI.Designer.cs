@@ -200,6 +200,7 @@
             this.mENUMISCLANGSELECTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMISCABOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maidFiddlerGUIBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mENUMISCSETTINGSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_info.SuspendLayout();
@@ -2290,6 +2291,7 @@
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mENUMISCLANGSELECTToolStripMenuItem,
+            this.mENUMISCSETTINGSToolStripMenuItem,
             this.mENUMISCABOUTToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(86, 20);
@@ -2308,6 +2310,13 @@
             this.mENUMISCABOUTToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.mENUMISCABOUTToolStripMenuItem.Text = "MENU_MISC_ABOUT";
             this.mENUMISCABOUTToolStripMenuItem.Click += new System.EventHandler(this.OpenAboutMenu);
+            // 
+            // mENUMISCSETTINGSToolStripMenuItem
+            // 
+            this.mENUMISCSETTINGSToolStripMenuItem.Name = "mENUMISCSETTINGSToolStripMenuItem";
+            this.mENUMISCSETTINGSToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.mENUMISCSETTINGSToolStripMenuItem.Text = "MENU_MISC_SETTINGS";
+            this.mENUMISCSETTINGSToolStripMenuItem.Click += new System.EventHandler(this.OpenSettings);
             // 
             // MaidFiddlerGUI
             // 
@@ -2553,5 +2562,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mENUMISCLANGSELECTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mENUMISCABOUTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mENUMISCSETTINGSToolStripMenuItem;
     }
 }

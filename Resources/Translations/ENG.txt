@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.20-1" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.20-2" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -421,6 +421,10 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 磔プレイ							Crucifixion play
 ハード首絞めセックス					Choking Sex
 ハード首絞めアナルセックス				Choking Anal Sex
+セックス背面騎乗位					Inverse Cowgirl
+アナルセックス背面騎乗位				Inverse Anal Cowgirl
+公開オナニー						Public Masturbation
+公開アナルオナニー					Public Anal Masturbation
 
 ; Propensity
 M女								Masochist
@@ -482,16 +486,17 @@ MENU_ALL_MAID_UNLOCK_MAX_ALL	Unlock and set all to max for every maid
 MENU_MAID_UNLOCK				Unlock
 MENU_MAID_MAX					Unlock and set to maximum
 MENU_MAID_FORCE_ENABLE			Force all work enabled
-MENU_MAID_LOCK_ALL				Lock all stats
+MENU_MAID_LOCK_ALL				Lock all parameters
 MENU_MAID_UNLOCK_ALL			Unlock all state
 MENU_MAID_SET_CLASS_LVL			Set all class levels to...
 MENU_MAID_SET_YOTOGI_TIMES		Set enabled yotogi skills play count to...
 MENU_MAID_SET					Set values
 
 ; Misc tools menu
-MENU_MISC						?
+MENU_MISC						Other
 MENU_MISC_LANG_SELECT			Language...
 MENU_MISC_ABOUT					About Maid Fiddler
+MENU_MISC_SETTINGS				Settings
 
 ; Current maid unlock
 UNLOCK_SKILLS					Yotogi skills
@@ -501,7 +506,7 @@ UNLOCK_ALL						All of the above
 
 ; Current maid max
 MAX_CLASS_LVL					Maid/Yotogi class levels
-MAX_STATS						Maid stats
+MAX_STATS						Maid parameters
 MAX_ERO_ZONES					Erogenous zones
 MAX_YOTOGI_LVL					Yotogi skill level
 MAX_WORK_PLAY_COUNT				Noon work play count
@@ -528,6 +533,30 @@ GUI_TS_AUTHOR					Author(s):
 GUI_ABOUT_TITLE					About Maid Fiddler
 GUI_ABOUT_VERSION				Version:
 GUI_ABOUT_CONTRIBUTORS			Contributors:
+
+; Settings menu
+GUI_SETTINGS_TITLE				Settings
+GUI_SETTINGS_KEY				Maid Fiddler Launch Key
+GUI_SETTINGS_KEY_DESCRIPTION	Specify the key code(s) that will used to launch Maid Fiddler.\nRefer to Unity Scripting API KeyCode enumeration for a complete list of all keys.\nTo specify a key combination, separate the keys with a "+" sign.
+GUI_SETTINGS_KEY_LABEL			Maid Fiddler launch key(s)
+GUI_SETTINGS_GUI				GUI Settings
+GUI_SETTINGS_NAME_STYLE			Maids' naming style
+GUI_SETTINGS_ORDER				Ordering Settings
+GUI_SETTINGS_ORDER_DESCRIPTION	You can specify how maids are ordered in Maid Fiddler.\nSelect the available ordering methods by clicking on them and by pressing ">". Remove from selected by pressing "<".\nChange the order priority by pressing "˄" or "˅".\n\n
+GUI_SETTINGS_ORDER_AVAILABLE	Available order styles
+GUI_SETTINGS_ORDER_SELECTED		Selected order styles
+GUI_SETTINGS_ORDER_DIRECTION	Order direction
+GUI_SETTINGS_NS_FIRST_LAST		First name, Last name
+GUI_SETTINGS_NS_LAST_FIRST		Last name, First name
+GUI_SETTINGS_DIR_DESC			Descending
+GUI_SETTINGS_DIR_ASC			Ascending
+
+; Order styles
+OrderStyle_GUID					Order by ID
+OrderStyle_CreationTime			Order by creation time
+OrderStyle_FirstName			Order by first name
+OrderStyle_LastName				Order by last name
+OrderStyle_EmployedDay			Order by employment day
 
 OK								OK
 CANCEL							Cancel

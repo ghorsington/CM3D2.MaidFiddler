@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace CM3D2.MaidFiddler.Plugin.Utils
@@ -11,14 +12,19 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         private static readonly Dictionary<string, string> translationDictionary;
         private static readonly Dictionary<string, List<Action<string>>> translatableControlsDictionary;
 
+        public static readonly Regex TagPattern =
+        new Regex("#MAIDFIDDLER_TRANSLATION \"(?<lang>.*)\" \"(?<ver>.*)\" \"(?<auth>.*)\"");
+
         static Translation()
         {
             translatableControlsDictionary = new Dictionary<string, List<Action<string>>>();
             translationDictionary = new Dictionary<string, string>();
             CurrentTranslationFile = null;
+            CurrentTranslationVersion = string.Empty;
         }
 
         public static string CurrentTranslationFile { get; private set; }
+        public static string CurrentTranslationVersion { get; private set; }
 
         public static void AddTranslatableControl(Control c)
         {
@@ -36,14 +42,14 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             actions.Add(translationAction);
         }
 
-        public static void GetFieldText(Control c)
+        public static void GetTranslation(Control c)
         {
             string result;
             if (translationDictionary.TryGetValue(c.Text, out result))
                 c.Text = result;
         }
 
-        public static string GetFieldText(string id)
+        public static string GetTranslation(string id)
         {
             string result;
             return translationDictionary.TryGetValue(id, out result) ? result : id;
@@ -56,6 +62,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             {
                 Debugger.WriteLine($"Loading translation: {filename}");
                 string filePath = Path.Combine(MaidFiddler.DATA_PATH, $@"{TRANSLATIONS_PATH}\{filename}.txt");
+                string version = string.Empty;
                 Debugger.WriteLine(LogLevel.Info, $"File path: {filePath}");
                 if (!File.Exists(filePath))
                 {
@@ -68,7 +75,20 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                     translationDictionary.Clear();
                     using (TextReader reader = File.OpenText(filePath))
                     {
-                        string line;
+                        string line = reader.ReadLine();
+                        if (line != null)
+                        {
+                            Match match = TagPattern.Match(line);
+                            if (match.Success)
+                            {
+                                version = match.Groups["ver"].Value;
+                                Debugger.WriteLine(
+                                LogLevel.Info,
+                                $"Found translation tag! Language: '{match.Groups["lang"]}', Version: '{match.Groups["ver"]}', Author(s): '{match.Groups["auth"]}'");
+                            }
+                            else
+                                Debugger.WriteLine(LogLevel.Warning, "Did not find any translation tags!");
+                        }
                         while ((line = reader.ReadLine()) != null)
                         {
                             line = line.Trim();
@@ -87,9 +107,10 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                 }
                 Debugger.WriteLine(LogLevel.Info, "Texts loaded");
                 CurrentTranslationFile = filename;
+                CurrentTranslationVersion = version;
                 ApplyTranslation();
             },
-            "Texts loaded");
+            "Failed to load texts");
         }
 
         public static void ApplyTranslation()

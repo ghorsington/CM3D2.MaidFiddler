@@ -15,8 +15,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
     {
         public delegate int MaidCompareMethod(Maid x, Maid y);
 
-        private const string NAME_FORMAT = "{0}{1}";
-        private readonly MaidComparer comparer = new MaidComparer();
+        private MaidComparer comparer;
         private SortedList<Maid, MaidInfo> loadedMaids;
         private Dictionary<string, Image> maidThumbnails;
         private Dictionary<MaidChangeType, Action> valueUpdateQueue;
@@ -33,6 +32,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitMaids()
         {
+            comparer = new MaidComparer(Plugin);
             loadedMaids = new SortedList<Maid, MaidInfo>(comparer);
             maidThumbnails = new Dictionary<string, Image>();
             valueUpdateQueue = new Dictionary<MaidChangeType, Action>();
@@ -41,54 +41,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private bool IsMaidLoaded(Maid maid)
         {
             return loadedMaids.ContainsKey(maid);
-        }
-
-        public static int MaidCompareEmployedDay(Maid x, Maid y)
-        {
-            return ComputeOrder(x.Param.status.employment_day, y.Param.status.employment_day);
-        }
-
-        public static int MaidCompareCreateTime(Maid x, Maid y)
-        {
-            return ComputeOrder(x.Param.status.create_time_num, y.Param.status.create_time_num);
-        }
-
-        private static int ComputeOrder<T>(T x, T y) where T : IComparable<T>
-        {
-            return MaidFiddler.MaidOrderDirection * x.CompareTo(y);
-        }
-
-        public static int MaidCompareFirstLastName(Maid x, Maid y)
-        {
-            return MaidFiddler.MaidOrderDirection
-                   * string.CompareOrdinal(
-                   string.Format(
-                   NAME_FORMAT,
-                   x.Param.status.first_name.ToUpperInvariant(),
-                   x.Param.status.last_name.ToUpperInvariant()),
-                   string.Format(
-                   NAME_FORMAT,
-                   y.Param.status.first_name.ToUpperInvariant(),
-                   y.Param.status.last_name.ToUpperInvariant()));
-        }
-
-        public static int MaidCompareID(Maid x, Maid y)
-        {
-            return MaidFiddler.MaidOrderDirection * string.CompareOrdinal(x.Param.status.guid, y.Param.status.guid);
-        }
-
-        public static int MaidCompareLastFirstName(Maid x, Maid y)
-        {
-            return MaidFiddler.MaidOrderDirection
-                   * string.CompareOrdinal(
-                   string.Format(
-                   NAME_FORMAT,
-                   x.Param.status.last_name.ToUpperInvariant(),
-                   x.Param.status.first_name.ToUpperInvariant()),
-                   string.Format(
-                   NAME_FORMAT,
-                   y.Param.status.last_name.ToUpperInvariant(),
-                   y.Param.status.first_name.ToUpperInvariant()));
         }
 
         public void ReloadMaids()
@@ -231,11 +183,18 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private class MaidComparer : IEqualityComparer<Maid>, IComparer<Maid>
         {
+            private readonly MaidFiddler plugin;
+
+            public MaidComparer(MaidFiddler plugin)
+            {
+                this.plugin = plugin;
+            }
+
             public int Compare(Maid x, Maid y)
             {
                 int result = 0;
-                return MaidFiddler.MaidCompareMethods.Any(method => (result = method(x, y)) != 0)
-                       ? result : MaidCompareID(x, y);
+                return plugin.MaidCompareMethods.Any(method => (result = method(x, y)) != 0)
+                       ? result : plugin.MaidCompareID(x, y);
             }
 
             public bool Equals(Maid x, Maid y)
