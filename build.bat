@@ -38,9 +38,19 @@ if not %ERRORLEVEL%==0 (
 	exit /b 1
 )
 
+echo Building Sybaris Patcher
+"%msbuildpath%\msbuild.exe" %cd%\CM3D2.MaidFiddler.Sybaris.Patch\CM3D2.MaidFiddler.Sybaris.Patcher.csproj /p:Configuration=%buildconf%
+
+if not %ERRORLEVEL%==0 (
+	echo Failed to compile Hook and Patch! Make sure you have all the needed assemblies in the "Libs" folder!
+	pause
+	exit /b 1
+)
+
 mkdir Build
 move /Y %cd%\CM3D2.MaidFiddler.Patch\bin\%buildconf%\CM3D2.MaidFiddler.Hook.dll %cd%\Build\CM3D2.MaidFiddler.Hook.dll
 move /Y %cd%\CM3D2.MaidFiddler.Patch\bin\%buildconf%\CM3D2.MaidFiddler.Patch.dll %cd%\Build\CM3D2.MaidFiddler.Patch.dll
+move /Y %cd%\CM3D2.MaidFiddler.Sybaris.Patch\bin\%buildconf%\CM3D2.MaidFiddler.Sybaris.Patcher.dll %cd%\Build\CM3D2.MaidFiddler.Sybaris.Patcher.dll
 
 echo -----------------
 echo PHASE 1 Complete!
@@ -53,7 +63,8 @@ echo 2. Move %cd%\Build\CM3D2.MaidFiddler.Patch.dll to "<ReiPatcher Install Dire
 echo 3. Run ReiPatcher to patch CM3D2.
 echo 4. Copy Assembly-CSharp.dll from "<CM3D2 Root Directory>\CM3D2(x86/x64)_Data\Managed to %cd%\Libs".
 echo.
-echo Press any key when you have performed the following (or have done that beforehand).
+echo You may skip these steps if you already have a patched Assembly-CSharp in the Libs folder.
+echo Press any key when you have performed the steps above.
 pause
 
 echo PHASE 2: Building Plugin
@@ -66,17 +77,7 @@ if not %ERRORLEVEL%==0 (
 	exit /b 1
 )
 
-echo Building Sybaris Patcher
-"%msbuildpath%\msbuild.exe" %cd%\CM3D2.MaidFiddler.Sybaris.Patch\CM3D2.MaidFiddler.Sybaris.Patcher.csproj /p:Configuration=%buildconf%
-
-if not %ERRORLEVEL%==0 (
-	echo Failed to compile Sybaris patcher!
-	pause
-	exit /b 1
-)
-
 move /Y %cd%\CM3D2.MaidFiddler.Plugin\bin\%buildconf%\CM3D2.MaidFiddler.Plugin.dll %cd%\Build\CM3D2.MaidFiddler.Plugin.dll
-move /Y %cd%\CM3D2.MaidFiddler.Sybaris.Patch\bin\%buildconf%\CM3D2.MaidFiddler.Sybaris.Patcher.dll %cd%\Build\CM3D2.MaidFiddler.Sybaris.Patcher.dll
 
 echo All done!
 pause
