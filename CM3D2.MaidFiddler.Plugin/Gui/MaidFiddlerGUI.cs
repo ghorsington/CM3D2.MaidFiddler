@@ -168,8 +168,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     CreateControl();
                     initialized = true;
                 }
-                if (Visible)
-                    UpdateMaids(GameMain.Instance.CharacterMgr.GetStockMaidList());
+                if (!Visible)
+                    return;
+                UpdateMaids(GameMain.Instance.CharacterMgr.GetStockMaidList());
+                Player.UpdateAll();
             },
             $"Failed to {(Visible ? "restore" : "hide")} the Maid Fiddler window");
         }
