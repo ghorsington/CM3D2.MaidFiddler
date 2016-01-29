@@ -14,7 +14,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Translation.GetTranslation(labelContributors);
             Translation.GetTranslation(okButton);
             label_contributors.Text = MaidFiddler.CONTRIBUTORS;
-            label_version.Text = $"{MaidFiddler.VERSION} (CM3D2 Version {Misc.GAME_VERSION})";
+            label_version.Text = $"{MaidFiddler.VERSION} (CM3D2 Version {FiddlerUtils.GameVersion})";
             labelProductName.Text += $"\n{MaidFiddler.PROJECT_PAGE}";
         }
 

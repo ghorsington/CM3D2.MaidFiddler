@@ -11,6 +11,8 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
     {
         private static bool errorThrown;
 
+        public static int GameVersion => (int)typeof (Misc).GetField(nameof(Misc.GAME_VERSION)).GetValue(null);
+
         public static bool CheckPatcherVersion()
         {
             try
@@ -56,7 +58,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                 return;
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("=== Maid Fiddler DUMP ===").AppendLine();
-            sb.AppendLine($"Game version: {Misc.GAME_VERSION}");
+            sb.AppendLine($"Game version: {GameVersion}");
             sb.AppendLine($"Mod version: {MaidFiddler.VERSION}");
             sb.AppendLine($"Info: {action}");
             sb.AppendLine($"Error message: {e}");
