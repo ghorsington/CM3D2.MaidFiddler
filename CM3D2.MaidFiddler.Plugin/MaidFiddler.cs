@@ -17,10 +17,10 @@ namespace CM3D2.MaidFiddler.Plugin
     public class MaidFiddler : PluginBase
     {
         public const string CONTRIBUTORS = "denikson";
-        public const string VERSION = "BETA 0.8b";
+        public const string VERSION = "BETA 0.8c";
         public const string PROJECT_PAGE = "https://github.com/denikson/CM3D2.MaidFiddler";
-        public const uint SUPPORTED_PATCH_MAX = 1000;
-        public const uint SUPPORTED_PATCH_MIN = 1000;
+        public const uint SUPPORTED_PATCH_MAX = 1100;
+        public const uint SUPPORTED_PATCH_MIN = 1100;
         private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
         private const MaidOrderDirection DEFAULT_ORDER_DIRECTION = Plugin.MaidOrderDirection.Ascending;
         private const string DEFAULT_LANGUAGE_FILE = "ENG";

@@ -12,9 +12,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
     public partial class MaidFiddlerGUI
     {
         private bool allYotogiCommandsVisible;
+        private bool forceAllScenesEnabled;
         private bool removeValueLimit;
         private bool vipAlwaysVisible;
         private bool yotogiSkillsVisible;
+
+        private void ToggleAllScenesVisible(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem) sender;
+            forceAllScenesEnabled = !forceAllScenesEnabled;
+            item.Checked = forceAllScenesEnabled;
+        }
 
         private void CleanDebt(object sender, EventArgs e)
         {

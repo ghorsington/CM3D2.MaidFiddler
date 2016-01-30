@@ -26,10 +26,22 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             MaidStatusChangeHooks.CommandUpdate += OnCommandUpdate;
             MaidStatusChangeHooks.NightWorkVisibilityCheck += OnNightWorkVisibilityCheck;
             MaidStatusChangeHooks.YotogiSkillVisibilityCheck += OnYotogiSkillVisibilityCheck;
+            MaidStatusChangeHooks.ProcessFreeModeScene += ProcessFreeModeScene;
 
             PlayerStatusChangeHooks.PlayerValueChanged += OnPlayerValueChanged;
 
             ValueLimitHooks.ToggleValueLimit += OnValueRound;
+        }
+
+        private void ProcessFreeModeScene(object sender, PostProcessSceneEventArgs e)
+        {
+            if (forceAllScenesEnabled)
+            {
+                Debugger.WriteLine("Forcing free mode scene visible");
+                e.ForceEnabled = true;
+            }
+            else
+                Debugger.WriteLine("Processing free mode scene");
         }
 
         private void OnClassUpdated(object sender, HookEventArgs args)
@@ -332,6 +344,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             MaidStatusChangeHooks.CommandUpdate -= OnCommandUpdate;
             MaidStatusChangeHooks.NightWorkVisibilityCheck -= OnNightWorkVisibilityCheck;
             MaidStatusChangeHooks.YotogiSkillVisibilityCheck -= OnYotogiSkillVisibilityCheck;
+            MaidStatusChangeHooks.ProcessFreeModeScene -= ProcessFreeModeScene;
 
             PlayerStatusChangeHooks.PlayerValueChanged -= OnPlayerValueChanged;
 

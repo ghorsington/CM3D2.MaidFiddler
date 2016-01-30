@@ -62,13 +62,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             private Dictionary<MaidChangeType, bool> TempUnlocks { get; }
             private Dictionary<MaidChangeType, Action> UpdateFunctions { get; set; }
             private Dictionary<MaidChangeType, bool> ValueLocks { get; }
-            /*
-            private Status MaidStatus
-            {
-                get { return (Status)MaidStatusField.GetValue(Maid.Param); }
-                set { MaidStatusField.SetValue(Maid.Param, value);}
-            }
-            */
 
             private void InitFunctions()
             {
@@ -172,7 +165,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     {MaidChangeType.MaidClassExp, UpdateCurrentMaidClass},
                     {MaidChangeType.YotogiClassExp, UpdateCurrentYotogiClass},
                     {MaidChangeType.NightWorkId, UpdateCurrentNightWorkId},
-                    {MaidChangeType.NoonWorkId, UpdateCurrentNoonWorkId}
+                    {MaidChangeType.NoonWorkId, UpdateCurrentNoonWorkId},
+                    {MaidChangeType.Sexual, UpdateSexual}
                 };
 
                 updateFunctionsID = new Dictionary<MaidChangeType, Action<int, int>>
@@ -192,6 +186,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 }
                 maidParamsUpdaters.Add(MaidChangeType.CurHp, UpdateMaidParam);
                 maidParamsUpdaters.Add(MaidChangeType.PopularRank, UpdateMaidParam);
+                maidParamsUpdaters.Add(MaidChangeType.FeatureHash, UpdateFeaturePropensityHash);
+                maidParamsUpdaters.Add(MaidChangeType.PropensityHash, UpdateFeaturePropensityHash);
                 for (MaidChangeType e = MaidChangeType.BonusCare; e <= MaidChangeType.BonusTeachRate; e++)
                 {
                     maidParamsUpdaters.Add(e, UpdateMaidParam);
@@ -204,6 +200,69 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 forceUpdateNightWorks = new Dictionary<int, bool>();
                 foreach (KeyValuePair<int, ScheduleCSVData.NightWork> nightWork in ScheduleCSVData.NightWorkData)
                     forceUpdateNightWorks.Add(nightWork.Key, false);
+            }
+
+            private void UpdateFeaturePropensityHash(MaidChangeType e)
+            {
+                Status maidStatus = Maid.Param.status_;
+                switch (e)
+                {
+                    case MaidChangeType.FeatureHash:
+                        gui.updateFeature = true;
+                        gui.checkedListBox_feature.ClearSelected();
+                        foreach (Feature feature in maidStatus.feature)
+                        {
+                            gui.updateFeature = true;
+                            gui.checkedListBox_feature.SetItemChecked((int) feature - 1, true);
+                            gui.updateFeature = false;
+                        }
+                        gui.updateFeature = false;
+                        break;
+                    case MaidChangeType.PropensityHash:
+                        gui.updatePropensity = true;
+                        gui.checkedListBox_propensity.ClearSelected();
+                        foreach (Propensity propensity in maidStatus.propensity)
+                        {
+                            gui.updatePropensity = true;
+                            gui.checkedListBox_propensity.SetItemChecked((int) propensity - 1, true);
+                            gui.updatePropensity = false;
+                        }
+                        gui.updatePropensity = false;
+                        break;
+                }
+            }
+
+            private void UpdateSexual()
+            {
+                Status maidStatus = Maid.Param.status_;
+                object val = null;
+                for (MaidChangeType e = MaidChangeType.SexualBack; e <= MaidChangeType.SexualThroat; e++)
+                {
+                    switch (e)
+                    {
+                        case MaidChangeType.SexualBack:
+                            val = maidStatus.sexual.back;
+                            break;
+                        case MaidChangeType.SexualCuri:
+                            val = maidStatus.sexual.curi;
+                            break;
+                        case MaidChangeType.SexualFront:
+                            val = maidStatus.sexual.front;
+                            break;
+                        case MaidChangeType.SexualMouth:
+                            val = maidStatus.sexual.mouth;
+                            break;
+                        case MaidChangeType.SexualNipple:
+                            val = maidStatus.sexual.nipple;
+                            break;
+                        case MaidChangeType.SexualThroat:
+                            val = maidStatus.sexual.throat;
+                            break;
+                    }
+                    gui.valueUpdate[e] = true;
+                    gui.MaidParameters[e].Cells[PARAMS_COLUMN_VALUE].Value = val;
+                    gui.valueUpdate[e] = false;
+                }
             }
 
             public bool IsHardLocked(MaidChangeType type)
@@ -244,9 +303,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     foreach (KeyValuePair<MaidChangeType, Action<MaidChangeType>> maidParamsUpdater in
                     maidParamsUpdaters.Where(maidParamsUpdater => maidParamsUpdater.Key <= MaidChangeType.Profile))
                     {
+                        DataGridViewRow row;
+                        if (!gui.MaidParameters.TryGetValue(maidParamsUpdater.Key, out row))
+                            continue;
                         ValueLocks[maidParamsUpdater.Key] = state;
-                        gui.MaidParameters[maidParamsUpdater.Key].Cells[PARAMS_COLUMN_LOCK].Value =
-                        ValueLocks[maidParamsUpdater.Key];
+                        row.Cells[PARAMS_COLUMN_LOCK].Value = ValueLocks[maidParamsUpdater.Key];
                     }
                 },
                 "Failed to set lock state to all parameters");
@@ -640,11 +701,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     {
                         cType = maidParamsUpdater.Key;
                         maidParamsUpdater.Value(maidParamsUpdater.Key);
-                        if (maidParamsUpdater.Key <= MaidChangeType.Profile)
-                        {
-                            gui.MaidParameters[maidParamsUpdater.Key].Cells[PARAMS_COLUMN_LOCK].Value =
-                            ValueLocks[maidParamsUpdater.Key];
-                        }
+                        DataGridViewRow row;
+                        if (maidParamsUpdater.Key <= MaidChangeType.Profile
+                            && gui.MaidParameters.TryGetValue(maidParamsUpdater.Key, out row))
+                            row.Cells[PARAMS_COLUMN_LOCK].Value = ValueLocks[maidParamsUpdater.Key];
                     }
                     action = "Updating maid noon work";
                     foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)

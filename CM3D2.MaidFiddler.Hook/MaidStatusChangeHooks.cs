@@ -15,6 +15,9 @@ namespace CM3D2.MaidFiddler.Hook
         WorkLevel, // Set (id, level)
         Propensity, // Set (target, val)
         Feature, // Set (target, val)
+        FeatureHash, // Set (HashMap)
+        PropensityHash, // Set (HashMap)
+        Sexual, // Set
         // Set (return booleans)
         NewGetSkill,
         NewGetWork,
@@ -175,6 +178,11 @@ namespace CM3D2.MaidFiddler.Hook
         public bool ForceVisible { get; set; }
     }
 
+    public class PostProcessSceneEventArgs : EventArgs
+    {
+        public bool ForceEnabled { get; set; }
+    }
+
     public static class MaidStatusChangeHooks
     {
         public static event EventHandler<WorkEventArgs> CheckWorkEnabled;
@@ -192,6 +200,7 @@ namespace CM3D2.MaidFiddler.Hook
         public static event EventHandler<StatusUpdateEventArgs> StatusUpdated;
         public static event EventHandler<ThumbnailEventArgs> ThumbnailChanged;
         public static event EventHandler<YotogiSkillVisibleEventArgs> YotogiSkillVisibilityCheck;
+        public static event EventHandler<PostProcessSceneEventArgs> ProcessFreeModeScene;
 
         public static bool CheckNightWorkVisibility(out bool result, int workID)
         {
@@ -240,6 +249,13 @@ namespace CM3D2.MaidFiddler.Hook
                 Value = -1
             };
             NewProperty?.Invoke(null, args);
+        }
+
+        public static void PostProcessFreeModeScene(ref bool enabled)
+        {
+            PostProcessSceneEventArgs args = new PostProcessSceneEventArgs {ForceEnabled = enabled};
+            ProcessFreeModeScene?.Invoke(null, args);
+            enabled = args.ForceEnabled;
         }
 
         public static bool OnNightWorkEnableCheck(out bool result, int workID, Maid maid, bool calledTargetCheck)
@@ -309,6 +325,20 @@ namespace CM3D2.MaidFiddler.Hook
             StatusChanged?.Invoke(null, args);
 
             return args.BlockAssignment;
+        }
+
+        public static void OnStatusChangedCallback(int tag, ref Maid currentMaid)
+        {
+            StatusChangedEventArgs args = new StatusChangedEventArgs
+            {
+                Tag = (MaidChangeType) tag,
+                CallerMaid = currentMaid,
+                ID = -1,
+                Value = -1,
+                BlockAssignment = false
+            };
+
+            StatusChanged?.Invoke(null, args);
         }
 
         public static bool OnStatusChangedID(int tag, ref Maid currentMaid, int id)

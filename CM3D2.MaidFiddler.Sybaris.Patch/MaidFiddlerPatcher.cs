@@ -34,6 +34,8 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
             TypeDefinition status = assembly.MainModule.GetType("param.Status");
             TypeDefinition skillData =
             assembly.MainModule.GetType("Yotogi").NestedTypes.FirstOrDefault(t => t.Name == "SkillData");
+            TypeDefinition freeModeItemEveryday = assembly.MainModule.GetType("FreeModeItemEveryday");
+            TypeDefinition freeModeItemVip = assembly.MainModule.GetType("FreeModeItemVip");
 
             TypeDefinition hookType = hookAssembly.MainModule.GetType("CM3D2.MaidFiddler.Hook.FiddlerHooks");
             TypeDefinition maidHooks = hookAssembly.MainModule.GetType("CM3D2.MaidFiddler.Hook.MaidStatusChangeHooks");
@@ -47,6 +49,8 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
 
             // Maid hooks
             MethodDefinition statusChangeHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnStatusChanged));
+            MethodDefinition statusChangeCallbackHook =
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnStatusChangedCallback));
             MethodDefinition propertyGetHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnNewPropertyGet));
             MethodDefinition statusChangeIDHook1 = maidHooks.GetMethod(
             nameof(MaidStatusChangeHooks.OnStatusChangedID),
@@ -81,6 +85,8 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
             maidHooks.GetMethod(nameof(MaidStatusChangeHooks.CheckNightWorkVisibility));
             MethodDefinition yotogiSkillVisCheckHook =
             maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnYotogiSkillVisibilityCheck));
+            MethodDefinition postProcessFreeModeSceneHook =
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.PostProcessFreeModeScene));
 
             MethodDefinition onValueRoundInt1 = valueLimitHooks.GetMethod(
             nameof(ValueLimitHooks.OnValueRound),
@@ -123,6 +129,14 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
                 maidParam.GetMethod($"Set{typeNames[i]}")
                          .InjectWith(statusChangeHook, 0, i, features1, typeFields: new[] {maidParam.GetField("maid_")});
             }
+
+            maidParam.GetMethod("SetSexual")
+                     .InjectWith(
+                     statusChangeHook,
+                     -1,
+                     (int) MaidChangeType.Sexual,
+                     features1,
+                     typeFields: new[] {maidParam.GetField("maid_")});
 
             for (int i = (int) MaidChangeType.FirstName; i <= (int) MaidChangeType.Seikeiken; i++)
             {
@@ -276,6 +290,22 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
                      InjectFlags.PassFields | InjectFlags.PassParametersVal,
                      typeFields: new[] {maidParam.GetField("maid_")});
 
+            maidParam.GetMethod("SetFeature", "System.Collections.Generic.HashSet`1<param.Feature>")
+                     .InjectWith(
+                     statusChangeCallbackHook,
+                     -1,
+                     (int) MaidChangeType.FeatureHash,
+                     InjectFlags.PassTag | InjectFlags.PassFields,
+                     typeFields: new[] {maidParam.GetField("maid_")});
+
+            maidParam.GetMethod("SetPropensity", "System.Collections.Generic.HashSet`1<param.Propensity>")
+                     .InjectWith(
+                     statusChangeCallbackHook,
+                     -1,
+                     (int) MaidChangeType.PropensityHash,
+                     InjectFlags.PassTag | InjectFlags.PassFields,
+                     typeFields: new[] {maidParam.GetField("maid_")});
+
             for (PlayerChangeType e = PlayerChangeType.Days; e <= PlayerChangeType.ShopUseMoney; e++)
             {
                 string addMethod = $"Add{Enum.GetName(typeof (PlayerChangeType), e)}";
@@ -330,6 +360,22 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
 
             wf.GetMethod("RoundMinMax", typeof (long), typeof (long), typeof (long))
               .InjectWith(onValueRoundLong3, 0, 0, InjectFlags.ModifyReturn | InjectFlags.PassParametersVal);
+
+            freeModeItemEveryday.GetMethod(".ctor")
+                                .InjectWith(
+                                postProcessFreeModeSceneHook,
+                                -1,
+                                0,
+                                InjectFlags.PassFields,
+                                typeFields: new[] {freeModeItemEveryday.GetField("is_enabled_")});
+
+            freeModeItemVip.GetMethod(".ctor")
+                           .InjectWith(
+                           postProcessFreeModeSceneHook,
+                           -1,
+                           0,
+                           InjectFlags.PassFields,
+                           typeFields: new[] {freeModeItemVip.GetField("is_enabled_")});
 
             maidParam.ChangeAccess("status_");
 

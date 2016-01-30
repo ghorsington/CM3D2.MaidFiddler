@@ -10,8 +10,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
     public static class FiddlerUtils
     {
         private static bool errorThrown;
-
-        public static int GameVersion => (int)typeof (Misc).GetField(nameof(Misc.GAME_VERSION)).GetValue(null);
+        public static int GameVersion => (int) typeof (Misc).GetField(nameof(Misc.GAME_VERSION)).GetValue(null);
 
         public static bool CheckPatcherVersion()
         {
