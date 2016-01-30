@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.22-1" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.22-2" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -20,6 +20,7 @@ FirstNameCall					Call by first name
 Personal						Personality
 ContractType					Contract type
 Leader							Is leader
+RentalMaid						Is rental
 Condition						Love status
 ConditionSpecial				Yotogi state
 Employment						Employment day

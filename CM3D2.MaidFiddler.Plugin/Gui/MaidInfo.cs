@@ -134,7 +134,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 setFunctionsBool = new Dictionary<MaidChangeType, Action<bool>>
                 {
                     {MaidChangeType.FirstNameCall, SetFirstNameCall},
-                    {MaidChangeType.Leader, SetLeader}
+                    {MaidChangeType.Leader, SetLeader},
+                    {MaidChangeType.RentalMaid, SetRentalMaid}
                 };
 
                 setFunctionsLong = new Dictionary<MaidChangeType, Action<long>>
@@ -159,6 +160,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     {MaidChangeType.FirstName, UpdateFirstName},
                     {MaidChangeType.LastName, UpdateLastName},
                     {MaidChangeType.Leader, UpdateLeader},
+                    {MaidChangeType.RentalMaid, UpdateRentalMaid},
                     {MaidChangeType.FirstNameCall, UpdateFirstNameCall},
                     {MaidChangeType.FreeComment, UpdateFreeComment},
                     {MaidChangeType.Profile, UpdateProfile},
@@ -200,69 +202,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 forceUpdateNightWorks = new Dictionary<int, bool>();
                 foreach (KeyValuePair<int, ScheduleCSVData.NightWork> nightWork in ScheduleCSVData.NightWorkData)
                     forceUpdateNightWorks.Add(nightWork.Key, false);
-            }
-
-            private void UpdateFeaturePropensityHash(MaidChangeType e)
-            {
-                Status maidStatus = Maid.Param.status_;
-                switch (e)
-                {
-                    case MaidChangeType.FeatureHash:
-                        gui.updateFeature = true;
-                        gui.checkedListBox_feature.ClearSelected();
-                        foreach (Feature feature in maidStatus.feature)
-                        {
-                            gui.updateFeature = true;
-                            gui.checkedListBox_feature.SetItemChecked((int) feature - 1, true);
-                            gui.updateFeature = false;
-                        }
-                        gui.updateFeature = false;
-                        break;
-                    case MaidChangeType.PropensityHash:
-                        gui.updatePropensity = true;
-                        gui.checkedListBox_propensity.ClearSelected();
-                        foreach (Propensity propensity in maidStatus.propensity)
-                        {
-                            gui.updatePropensity = true;
-                            gui.checkedListBox_propensity.SetItemChecked((int) propensity - 1, true);
-                            gui.updatePropensity = false;
-                        }
-                        gui.updatePropensity = false;
-                        break;
-                }
-            }
-
-            private void UpdateSexual()
-            {
-                Status maidStatus = Maid.Param.status_;
-                object val = null;
-                for (MaidChangeType e = MaidChangeType.SexualBack; e <= MaidChangeType.SexualThroat; e++)
-                {
-                    switch (e)
-                    {
-                        case MaidChangeType.SexualBack:
-                            val = maidStatus.sexual.back;
-                            break;
-                        case MaidChangeType.SexualCuri:
-                            val = maidStatus.sexual.curi;
-                            break;
-                        case MaidChangeType.SexualFront:
-                            val = maidStatus.sexual.front;
-                            break;
-                        case MaidChangeType.SexualMouth:
-                            val = maidStatus.sexual.mouth;
-                            break;
-                        case MaidChangeType.SexualNipple:
-                            val = maidStatus.sexual.nipple;
-                            break;
-                        case MaidChangeType.SexualThroat:
-                            val = maidStatus.sexual.throat;
-                            break;
-                    }
-                    gui.valueUpdate[e] = true;
-                    gui.MaidParameters[e].Cells[PARAMS_COLUMN_VALUE].Value = val;
-                    gui.valueUpdate[e] = false;
-                }
             }
 
             public bool IsHardLocked(MaidChangeType type)
@@ -326,6 +265,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
 
             #region Setters
+
+            private void SetRentalMaid(bool obj)
+            {
+                gui.valueUpdate[MaidChangeType.RentalMaid] = false;
+                Maid.Param.SetRentalMaid(obj);
+            }
 
             private void SetBonusCare(int val)
             {
@@ -736,6 +681,76 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     e,
                     $"Failed to update maid value for maid {Maid.Param.status.first_name} {Maid.Param.status.last_name}. Reason: {string.Format(action, EnumHelper.GetName(cType))}",
                     gui.Plugin);
+                }
+            }
+
+            private void UpdateRentalMaid()
+            {
+                gui.valueUpdate[MaidChangeType.Leader] = false;
+                gui.checkBox_rental.Checked = Maid.Param.status.is_rental_maid;
+            }
+
+
+            private void UpdateFeaturePropensityHash(MaidChangeType e)
+            {
+                Status maidStatus = Maid.Param.status_;
+                switch (e)
+                {
+                    case MaidChangeType.FeatureHash:
+                        gui.updateFeature = true;
+                        gui.checkedListBox_feature.ClearSelected();
+                        foreach (Feature feature in maidStatus.feature)
+                        {
+                            gui.updateFeature = true;
+                            gui.checkedListBox_feature.SetItemChecked((int) feature - 1, true);
+                            gui.updateFeature = false;
+                        }
+                        gui.updateFeature = false;
+                        break;
+                    case MaidChangeType.PropensityHash:
+                        gui.updatePropensity = true;
+                        gui.checkedListBox_propensity.ClearSelected();
+                        foreach (Propensity propensity in maidStatus.propensity)
+                        {
+                            gui.updatePropensity = true;
+                            gui.checkedListBox_propensity.SetItemChecked((int) propensity - 1, true);
+                            gui.updatePropensity = false;
+                        }
+                        gui.updatePropensity = false;
+                        break;
+                }
+            }
+
+            private void UpdateSexual()
+            {
+                Status maidStatus = Maid.Param.status_;
+                object val = null;
+                for (MaidChangeType e = MaidChangeType.SexualBack; e <= MaidChangeType.SexualThroat; e++)
+                {
+                    switch (e)
+                    {
+                        case MaidChangeType.SexualBack:
+                            val = maidStatus.sexual.back;
+                            break;
+                        case MaidChangeType.SexualCuri:
+                            val = maidStatus.sexual.curi;
+                            break;
+                        case MaidChangeType.SexualFront:
+                            val = maidStatus.sexual.front;
+                            break;
+                        case MaidChangeType.SexualMouth:
+                            val = maidStatus.sexual.mouth;
+                            break;
+                        case MaidChangeType.SexualNipple:
+                            val = maidStatus.sexual.nipple;
+                            break;
+                        case MaidChangeType.SexualThroat:
+                            val = maidStatus.sexual.throat;
+                            break;
+                    }
+                    gui.valueUpdate[e] = true;
+                    gui.MaidParameters[e].Cells[PARAMS_COLUMN_VALUE].Value = val;
+                    gui.valueUpdate[e] = false;
                 }
             }
 

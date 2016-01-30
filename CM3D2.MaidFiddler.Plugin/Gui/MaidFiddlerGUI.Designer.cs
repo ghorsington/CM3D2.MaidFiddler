@@ -170,13 +170,14 @@
             this.unlockAllTrophiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUALLMAIDToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUALLMAIDLIMITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -204,7 +205,7 @@
             this.mENUMISCSETTINGSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMISCABOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maidFiddlerGUIBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.checkBox_rental = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_info.SuspendLayout();
@@ -344,6 +345,7 @@
             this.tableLayoutPanel2.Controls.Add(this.textBox_profile, 0, 16);
             this.tableLayoutPanel2.Controls.Add(this.textBox_free_comment, 0, 18);
             this.tableLayoutPanel2.Controls.Add(this.label_free_comment, 0, 17);
+            this.tableLayoutPanel2.Controls.Add(this.checkBox_rental, 6, 5);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -367,6 +369,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 81F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(555, 505);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
@@ -2093,12 +2096,12 @@
             this.mENUALLMAIDLIMITToolStripMenuItem.Text = "MENU_ALL_MAID_NO_LIMIT";
             this.mENUALLMAIDLIMITToolStripMenuItem.Click += new System.EventHandler(this.ToggleValueLimit);
             // 
-            // mENUALLMAIDALLVIPVISIBLEToolStripMenuItem
+            // mENUALLMAIDUNLOCKMAXALLToolStripMenuItem
             // 
-            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Name = "mENUALLMAIDALLVIPVISIBLEToolStripMenuItem";
-            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
-            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Text = "MENU_ALL_MAID_RESET_VIP";
-            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Click += new System.EventHandler(this.ResetVip);
+            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Name = "mENUALLMAIDUNLOCKMAXALLToolStripMenuItem";
+            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Text = "MENU_ALL_MAID_UNLOCK_MAX_ALL";
+            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Click += new System.EventHandler(this.SetUnlockMaxAllMaids);
             // 
             // toolStripSeparator1
             // 
@@ -2124,6 +2127,13 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(304, 6);
             // 
+            // mENUALLMAIDALLVIPVISIBLEToolStripMenuItem
+            // 
+            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Name = "mENUALLMAIDALLVIPVISIBLEToolStripMenuItem";
+            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Text = "MENU_ALL_MAID_RESET_VIP";
+            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Click += new System.EventHandler(this.ResetVip);
+            // 
             // mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem
             // 
             this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Name = "mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem";
@@ -2131,12 +2141,10 @@
             this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Text = "MENU_ALL_MAID_ALL_VIP_VISIBLE_ALWAYS";
             this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Click += new System.EventHandler(this.ToggleVIPVisible);
             // 
-            // mENUALLMAIDUNLOCKMAXALLToolStripMenuItem
+            // toolStripSeparator3
             // 
-            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Name = "mENUALLMAIDUNLOCKMAXALLToolStripMenuItem";
-            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
-            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Text = "MENU_ALL_MAID_UNLOCK_MAX_ALL";
-            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Click += new System.EventHandler(this.SetUnlockMaxAllMaids);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(304, 6);
             // 
             // mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem
             // 
@@ -2343,10 +2351,18 @@
             this.mENUMISCABOUTToolStripMenuItem.Text = "MENU_MISC_ABOUT";
             this.mENUMISCABOUTToolStripMenuItem.Click += new System.EventHandler(this.OpenAboutMenu);
             // 
-            // toolStripSeparator3
+            // checkBox_rental
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(304, 6);
+            this.checkBox_rental.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBox_rental.AutoSize = true;
+            this.checkBox_rental.Location = new System.Drawing.Point(402, 81);
+            this.checkBox_rental.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBox_rental.Name = "checkBox_rental";
+            this.checkBox_rental.Size = new System.Drawing.Size(80, 21);
+            this.checkBox_rental.TabIndex = 30;
+            this.checkBox_rental.Text = "RentalMaid";
+            this.checkBox_rental.UseVisualStyleBackColor = true;
             // 
             // MaidFiddlerGUI
             // 
@@ -2597,5 +2613,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.CheckBox checkBox_rental;
     }
 }

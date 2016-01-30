@@ -46,6 +46,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 }
 
                 InitField(null, checkBox_leader, MaidChangeType.Leader);
+                InitField(null, checkBox_rental, MaidChangeType.RentalMaid);
                 InitField(label_condition, comboBox_condition, MaidChangeType.Condition);
                 for (Condition e = 0; e < EnumHelper.MaxCondition; e++)
                 {
