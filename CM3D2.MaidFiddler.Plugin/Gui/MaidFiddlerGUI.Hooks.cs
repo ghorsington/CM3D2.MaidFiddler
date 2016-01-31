@@ -60,7 +60,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 return;
             }
 
-            if (valueUpdateQueue.ContainsKey(args.Tag))
+            if (valueUpdateQueue[currentQueue].ContainsKey(args.Tag))
             {
                 Debugger.WriteLine(LogLevel.Error, "Tag already in update queue! Aborting...");
                 return;
@@ -68,13 +68,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             switch (args.Tag)
             {
                 case MaidChangeType.MaidClassType:
-                    valueUpdateQueue.Add(args.Tag, () => maid.UpdateMaidClasses());
+                    valueUpdateQueue[currentQueue].Add(args.Tag, () => maid.UpdateMaidClasses());
                     break;
                 case MaidChangeType.YotogiClassType:
-                    valueUpdateQueue.Add(args.Tag, () => maid.UpdateYotogiClasses());
+                    valueUpdateQueue[currentQueue].Add(args.Tag, () => maid.UpdateYotogiClasses());
                     break;
                 case MaidChangeType.MaidAndYotogiClass:
-                    valueUpdateQueue.Add(
+                    valueUpdateQueue[currentQueue].Add(
                     args.Tag,
                     () =>
                     {
@@ -184,20 +184,20 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (maid.Maid != args.CallerMaid)
                 return;
 
-            if (valueUpdateQueue.ContainsKey(args.Tag))
+            if (valueUpdateQueue[currentQueue].ContainsKey(args.Tag))
             {
-                Debugger.WriteLine(LogLevel.Warning, "Tag already in update queue! Aborting...");
+                Debugger.WriteLine(LogLevel.Warning, $"Tag already in update queue {currentQueue}! Aborting...");
                 return;
             }
             switch (args.Tag)
             {
                 case MaidChangeType.NewGetWork:
                 case MaidChangeType.Work:
-                    valueUpdateQueue.Add(args.Tag, () => maid.UpdateHasWork(args.ID));
+                    valueUpdateQueue[currentQueue].Add(args.Tag, () => maid.UpdateHasWork(args.ID));
                     break;
                 case MaidChangeType.NewGetSkill:
                 case MaidChangeType.Skill:
-                    valueUpdateQueue.Add(args.Tag, () => maid.UpdateHasSkill(args.ID));
+                    valueUpdateQueue[currentQueue].Add(args.Tag, () => maid.UpdateHasSkill(args.ID));
                     break;
             }
         }
@@ -218,10 +218,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 return;
             }
 
-            if (!valueUpdateQueue.ContainsKey(args.Tag))
-                valueUpdateQueue.Add(args.Tag, () => maid.UpdateField(args.Tag, args.ID, args.Value));
+            if (!valueUpdateQueue[currentQueue].ContainsKey(args.Tag))
+                valueUpdateQueue[currentQueue].Add(args.Tag, () => maid.UpdateField(args.Tag, args.ID, args.Value));
             else
-                Debugger.WriteLine(LogLevel.Warning, "Tag already in update queue! Aborting...");
+                Debugger.WriteLine(LogLevel.Warning, $"Tag already in update queue {currentQueue}! Aborting...");
         }
 
         private void OnStatusChanged(object sender, StatusEventArgs args)
@@ -251,13 +251,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 return;
             }
 
-            if (!valueUpdateQueue.ContainsKey(args.Tag))
+            if (!valueUpdateQueue[currentQueue].ContainsKey(args.Tag))
             {
                 Debugger.WriteLine(LogLevel.Info, "Adding to update queue");
-                valueUpdateQueue.Add(args.Tag, () => maid.UpdateField(args.Tag));
+                valueUpdateQueue[currentQueue].Add(args.Tag, () => maid.UpdateField(args.Tag));
             }
             else
-                Debugger.WriteLine(LogLevel.Warning, $"Already in update queue! Queue length: {valueUpdateQueue.Count}");
+                Debugger.WriteLine(LogLevel.Warning, $"Already in update queue {currentQueue}! Queue length: {valueUpdateQueue[currentQueue].Count}");
         }
 
         private void OnStatusUpdated(object sender, StatusUpdateEventArgs args)

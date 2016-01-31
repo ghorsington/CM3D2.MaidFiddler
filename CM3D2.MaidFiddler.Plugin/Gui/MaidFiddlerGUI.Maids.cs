@@ -18,7 +18,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private MaidComparer comparer;
         private SortedList<Maid, MaidInfo> loadedMaids;
         private Dictionary<string, Image> maidThumbnails;
-        private Dictionary<MaidChangeType, Action> valueUpdateQueue;
+        private Dictionary<MaidChangeType, Action>[] valueUpdateQueue;
+        private int currentQueue = 0;
 
         public MaidInfo SelectedMaid
             =>
@@ -35,7 +36,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             comparer = new MaidComparer(Plugin);
             loadedMaids = new SortedList<Maid, MaidInfo>(comparer);
             maidThumbnails = new Dictionary<string, Image>();
-            valueUpdateQueue = new Dictionary<MaidChangeType, Action>();
+            valueUpdateQueue = new Dictionary<MaidChangeType, Action>[2];
+            valueUpdateQueue[0] = new Dictionary<MaidChangeType, Action>();
+            valueUpdateQueue[1] = new Dictionary<MaidChangeType, Action>();
         }
 
         private bool IsMaidLoaded(Maid maid)
@@ -57,7 +60,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Debugger.WriteLine(LogLevel.Info, $"Maids: {maids.Count}");
                 Debugger.WriteLine(LogLevel.Info, $"Loaded maids: {loadedMaids.Count}");
                 loadedMaids.Clear();
-                valueUpdateQueue.Clear();
+                currentQueue = 0;
+                valueUpdateQueue[0].Clear();
+                valueUpdateQueue[1].Clear();
                 if (maidThumbnails.Count > 0)
                     maidThumbnails.ForEach(thumb => thumb.Value.Dispose());
                 maidThumbnails.Clear();
@@ -115,7 +120,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     else
                     {
                         if (SelectedMaid != null && m.Value.Maid == SelectedMaid.Maid)
-                            valueUpdateQueue.Clear();
+                        {
+                            currentQueue = 0;
+                            valueUpdateQueue[0].Clear();
+                            valueUpdateQueue[1].Clear();
+                        }
                         if (maidThumbnails.ContainsKey(m.Key.Param.status.guid))
                             maidThumbnails[m.Key.Param.status.guid].Dispose();
                         maidThumbnails.Remove(m.Key.Param.status.guid);
@@ -168,15 +177,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Debugger.Assert(
             () =>
             {
-                if (valueUpdateQueue.Count <= 0)
+                int processingQueue = currentQueue;
+                currentQueue = 1 - currentQueue;
+                if (valueUpdateQueue[processingQueue].Count <= 0)
                     return;
-                Debugger.WriteLine(LogLevel.Info, "Updating values...");
-                foreach (KeyValuePair<MaidChangeType, Action> type in valueUpdateQueue)
+                Debugger.WriteLine(LogLevel.Info, $"Updating values (Queue {processingQueue})...");
+                foreach (KeyValuePair<MaidChangeType, Action> type in valueUpdateQueue[processingQueue])
                 {
                     cType = type.Key;
                     type.Value();
                 }
-                valueUpdateQueue.Clear();
+                valueUpdateQueue[processingQueue].Clear();
             },
             $"Failed to update scheduled maid value. Type: {cType}");
         }

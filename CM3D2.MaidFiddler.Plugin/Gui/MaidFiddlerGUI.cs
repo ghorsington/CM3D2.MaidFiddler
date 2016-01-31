@@ -141,7 +141,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void OnSelectedValueChanged(object sender, EventArgs e)
         {
             Debugger.WriteLine("Changed selected maid!");
-            valueUpdateQueue.Clear();
+            currentQueue = -1;
+            valueUpdateQueue[0].Clear();
+            valueUpdateQueue[1].Clear();
+            currentQueue = 0;
             MaidInfo maid = SelectedMaid;
             if (maid == null)
             {
