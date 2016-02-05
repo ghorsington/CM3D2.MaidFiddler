@@ -11,9 +11,13 @@ To sucessfully build Maid Fiddler from source, one neeeds the following librarie
 * ExIni.exe (Found in ReiPatcher)
 * Assembly-CSharp.dll (Found in CM3D2's own assemblies)
 
+## Download/Build
+### [Download the latest released distribution](https://github.com/denikson/CM3D2.MaidFiddler/releases)
+### [How to build from source](https://github.com/denikson/CM3D2.MaidFiddler/wiki/Working-with-source#building)
+
 ## Structure of the plug-in
 ### CM3D2.MaidFiddler.Hooks
-`CM3D2.MaidFiddler.Hooks` acts as a birdge between the game's native API and Maid Fiddler. Maid Fiddler, and other plug-ins,
+`CM3D2.MaidFiddler.Hooks` acts as a bridge between the game's native API and Maid Fiddler. Maid Fiddler, and other plug-ins,
 may use it to link their logic to in-game events and method calls.
 
 ### CM3D2.MaidFiddler.Patch
