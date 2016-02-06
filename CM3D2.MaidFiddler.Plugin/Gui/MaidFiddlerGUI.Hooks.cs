@@ -257,7 +257,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 valueUpdateQueue[currentQueue].Add(args.Tag, () => maid.UpdateField(args.Tag));
             }
             else
-                Debugger.WriteLine(LogLevel.Warning, $"Already in update queue {currentQueue}! Queue length: {valueUpdateQueue[currentQueue].Count}");
+            {
+                Debugger.WriteLine(
+                LogLevel.Warning,
+                $"Already in update queue {currentQueue}! Queue length: {valueUpdateQueue[currentQueue].Count}");
+            }
         }
 
         private void OnStatusUpdated(object sender, StatusUpdateEventArgs args)

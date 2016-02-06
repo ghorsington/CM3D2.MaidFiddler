@@ -16,10 +16,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         public delegate int MaidCompareMethod(Maid x, Maid y);
 
         private MaidComparer comparer;
+        private int currentQueue;
         private SortedList<Maid, MaidInfo> loadedMaids;
         private Dictionary<string, Image> maidThumbnails;
         private Dictionary<MaidChangeType, Action>[] valueUpdateQueue;
-        private int currentQueue = 0;
 
         public MaidInfo SelectedMaid
             =>

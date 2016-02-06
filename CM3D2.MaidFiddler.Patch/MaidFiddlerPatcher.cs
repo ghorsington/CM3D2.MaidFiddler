@@ -279,9 +279,12 @@ namespace CM3D2.MaidFiddler.Patch
             WritePreviousLine("ThumShot");
             maidType.GetMethod("ThumShot").InjectWith(thumbnailChangedHook, -1, 0, InjectFlags.PassInvokingInstance);
 
-            WritePreviousLine("SetThumIcon");
-            maidType.GetMethod("SetThumIcon").InjectWith(thumbnailChangedHook, -1, 0, InjectFlags.PassInvokingInstance);
-
+            MethodDefinition setThumIcon = maidType.GetMethod("SetThumIcon");
+            if (setThumIcon != null)
+            {
+                WritePreviousLine("SetThumIcon");
+                setThumIcon.InjectWith(thumbnailChangedHook, -1, 0, InjectFlags.PassInvokingInstance);
+            }
             WritePreviousLine("EnableNoonWork");
             scheduleAPI.GetMethod("EnableNoonWork")
                        .InjectWith(
@@ -418,23 +421,29 @@ namespace CM3D2.MaidFiddler.Patch
             wf.GetMethod("RoundMinMax", typeof (long), typeof (long), typeof (long))
               .InjectWith(onValueRoundLong3, 0, 0, InjectFlags.ModifyReturn | InjectFlags.PassParametersVal);
 
-            WritePreviousLine("FreeModeItemEveryday.ctor");
-            freeModeItemEveryday.GetMethod(".ctor")
-                                .InjectWith(
-                                postProcessFreeModeSceneHook,
-                                -1,
-                                0,
-                                InjectFlags.PassFields,
-                                typeFields: new[] {freeModeItemEveryday.GetField("is_enabled_")});
+            if (freeModeItemEveryday != null)
+            {
+                WritePreviousLine("FreeModeItemEveryday.ctor");
+                freeModeItemEveryday.GetMethod(".ctor")
+                                    .InjectWith(
+                                    postProcessFreeModeSceneHook,
+                                    -1,
+                                    0,
+                                    InjectFlags.PassFields,
+                                    typeFields: new[] {freeModeItemEveryday.GetField("is_enabled_")});
+            }
 
-            WritePreviousLine("FreeModeItemVip.ctor");
-            freeModeItemVip.GetMethod(".ctor")
-                           .InjectWith(
-                           postProcessFreeModeSceneHook,
-                           -1,
-                           0,
-                           InjectFlags.PassFields,
-                           typeFields: new[] {freeModeItemVip.GetField("is_enabled_")});
+            if (freeModeItemVip != null)
+            {
+                WritePreviousLine("FreeModeItemVip.ctor");
+                freeModeItemVip.GetMethod(".ctor")
+                               .InjectWith(
+                               postProcessFreeModeSceneHook,
+                               -1,
+                               0,
+                               InjectFlags.PassFields,
+                               typeFields: new[] {freeModeItemVip.GetField("is_enabled_")});
+            }
 
             Console.WriteLine("Done. Patching class members:\n");
             WritePreviousLine("MaidParam.status_");

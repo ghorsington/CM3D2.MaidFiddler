@@ -130,7 +130,7 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
                          .InjectWith(statusChangeHook, 0, i, features1, typeFields: new[] {maidParam.GetField("maid_")});
             }
 
-            maidParam.GetMethod("SetSexual")
+            maidParam.GetMethod("SetSexual")?
                      .InjectWith(
                      statusChangeHook,
                      -1,
@@ -246,6 +246,7 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
             statusChangeIDHook1);
 
             maidType.GetMethod("ThumShot").InjectWith(thumbnailChangedHook, -1, 0, InjectFlags.PassInvokingInstance);
+            maidType.GetMethod("SetThumIcon")?.InjectWith(thumbnailChangedHook, -1, 0, InjectFlags.PassInvokingInstance);
 
             scheduleAPI.GetMethod("EnableNoonWork")
                        .InjectWith(
@@ -361,21 +362,21 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
             wf.GetMethod("RoundMinMax", typeof (long), typeof (long), typeof (long))
               .InjectWith(onValueRoundLong3, 0, 0, InjectFlags.ModifyReturn | InjectFlags.PassParametersVal);
 
-            freeModeItemEveryday.GetMethod(".ctor")
-                                .InjectWith(
-                                postProcessFreeModeSceneHook,
-                                -1,
-                                0,
-                                InjectFlags.PassFields,
-                                typeFields: new[] {freeModeItemEveryday.GetField("is_enabled_")});
+            freeModeItemEveryday?.GetMethod(".ctor")
+                                 .InjectWith(
+                                 postProcessFreeModeSceneHook,
+                                 -1,
+                                 0,
+                                 InjectFlags.PassFields,
+                                 typeFields: new[] {freeModeItemEveryday.GetField("is_enabled_")});
 
-            freeModeItemVip.GetMethod(".ctor")
-                           .InjectWith(
-                           postProcessFreeModeSceneHook,
-                           -1,
-                           0,
-                           InjectFlags.PassFields,
-                           typeFields: new[] {freeModeItemVip.GetField("is_enabled_")});
+            freeModeItemVip?.GetMethod(".ctor")
+                            .InjectWith(
+                            postProcessFreeModeSceneHook,
+                            -1,
+                            0,
+                            InjectFlags.PassFields,
+                            typeFields: new[] {freeModeItemVip.GetField("is_enabled_")});
 
             maidParam.ChangeAccess("status_");
 
