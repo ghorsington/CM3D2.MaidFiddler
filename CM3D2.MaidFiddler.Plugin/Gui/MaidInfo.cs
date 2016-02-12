@@ -500,12 +500,24 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                             forceUpdateNoonWorks[workID] = value;
                             break;
                         case TABLE_COLUMN_LEVEL:
-                            if (Maid.Param.status_.work_data.TryGetValue(workID, out workData))
-                                workData.level = (int) val;
+                            bool contains = Maid.Param.status_.work_data.ContainsKey(workID);
+                            int level = (int) val;
+                            if (!contains && level > 0)
+                                Maid.Param.SetNewGetWork(workID);
+                            else if (contains && level <= 0)
+                            {
+                                Maid.Param.RemoveWork(workID);
+                                break;
+                            }
+                            workData = Maid.Param.status_.work_data[workID];
+                            workData.level = level;
                             break;
                         case TABLE_COLUMN_TOTAL_XP:
-                            if (Maid.Param.status_.work_data.TryGetValue(workID, out workData))
-                                workData.play_count = (uint) val;
+                            uint play_count = (uint) val;
+                            if (!Maid.Param.status_.work_data.ContainsKey(workID) && play_count > 0)
+                                Maid.Param.SetNewGetWork(workID);
+                            workData = Maid.Param.status_.work_data[workID];
+                            workData.play_count = play_count;
                             break;
                     }
                     UpdateWorkData(workID);

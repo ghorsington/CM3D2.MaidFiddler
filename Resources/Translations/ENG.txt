@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.22-2" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.22-3" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -146,7 +146,7 @@ Yotogi_SexSlave					Sex Slave
 Yotogi_Festival					Festival
 Yotogi_Harlem					Harem
 Yotogi_Royalsoap				Royal Soap
-Yotogi_Toilet					Toilet
+Yotogi_Toilet					Toilet/Play
 Yotogi_Immoral					Immoral
 
 ; Params			
@@ -231,17 +231,17 @@ BonusTeachRate					Teaching rate
 お客様公開プレイ					Public Play
 路地裏露出セックス					Back Alley Sex
 詰られプレイ						Scolding Play
-らぶらぶ媚薬プレイ					Love Potion Play
+らぶらぶ媚薬プレイ					Love Love Aphrodisiac Play
 乱暴なお客様前半					Rough Customer (Part 1)
-乱暴なお客様後半１					Rough Customer (Part 2)
-AV撮影							AV Photography
-純愛プレイ前半						Innocent Love Play (Part 1)
-純愛プレイ後半						Innocent Love Play (Part 2)	
-なりきり新婚プレイ					Newlyweds play
-乱暴なお客様後半２					Rough Customer (Part 3)
-フリー撮影会						Photo Session
-フリー逆ナンパ						Reverse Pick-up
-フリー痴漢プレイ					Pervert Play
+乱暴なお客様後半１					Rough Customer (Part 2) I
+AV撮影							AV Shooting
+純愛プレイ前半						Pure Love Play (Part 1)
+純愛プレイ後半						Pure Love Play (Part 2)
+なりきり新婚プレイ					Honeymoon play
+乱暴なお客様後半２					Rough Customer (Part 2) II
+フリー撮影会						Free Photo Session
+フリー逆ナンパ						Free Nanpa (Seduction) Pick-up
+フリー痴漢プレイ					Free Molester Play
 痴漢克服プレイ						Molester Play
 媚薬プレイ						Aphrodisiac Play
 お風呂接待						Bath Play
@@ -459,9 +459,9 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 尻舐め							Ass Licking
 尻舐めオナニー						Ass Licking /w Masturbation
 潜望鏡フェラ						Periscope Fellatio
-ダブルフェラ						Two Maid Fellatio
-ダブル足コキ						Two Maid Foot Handjob
-ダブル奉仕						Two Maid Service
+ダブルフェラ						Double Fellatio
+ダブル足コキ						Double Foot Handjob
+ダブル奉仕						Double Service
 ハーレム奉仕						Harem Service
 ハーレムセックス						Harem Sex
 ハーレムアナルセックス					Harem Anal Sex
@@ -532,6 +532,7 @@ MENU_MAID_UNLOCK_ALL			Unlock all parameters
 MENU_MAID_SET_CLASS_LVL			Set all class levels to...
 MENU_MAID_SET_YOTOGI_TIMES		Set enabled yotogi skills play count to...
 MENU_MAID_SET					Set values
+MENU_MAID_WORK_FORCE_DISABLE	Disable force all work
 
 ; Misc tools menu
 MENU_MISC						Other

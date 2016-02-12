@@ -64,6 +64,7 @@
             this.textBox_profile = new System.Windows.Forms.TextBox();
             this.textBox_free_comment = new System.Windows.Forms.TextBox();
             this.label_free_comment = new System.Windows.Forms.Label();
+            this.checkBox_rental = new System.Windows.Forms.CheckBox();
             this.tabPage_stats = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox_maid_params_bonus = new System.Windows.Forms.GroupBox();
@@ -89,16 +90,8 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox_maid_classes = new System.Windows.Forms.GroupBox();
             this.dataGridView_maid_classes = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn7 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox_yotogi_classes = new System.Windows.Forms.GroupBox();
             this.dataGridView_yotogi_classes = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage_work = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox_night_work = new System.Windows.Forms.GroupBox();
@@ -107,10 +100,6 @@
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox_noon_work = new System.Windows.Forms.GroupBox();
             this.dataGridView_noon_work_data = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox_maid_current_work = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBox_work_night = new System.Windows.Forms.ComboBox();
@@ -119,11 +108,6 @@
             this.comboBox_work_noon = new System.Windows.Forms.ComboBox();
             this.tabPage_skills = new System.Windows.Forms.TabPage();
             this.dataGridView_skill_data = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage_misc = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox_feature = new System.Windows.Forms.GroupBox();
@@ -198,6 +182,7 @@
             this.mENUMAIDSETCLASSLVLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMAIDSETYOTOGITIMESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMAIDFORCEENABLEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mENUMAIDWORKFORCEDISABLEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMAIDLOCKALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMAIDUNLOCKALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -205,7 +190,23 @@
             this.mENUMISCSETTINGSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMISCABOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maidFiddlerGUIBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.checkBox_rental = new System.Windows.Forms.CheckBox();
+            this.dataGridViewCheckBoxColumn6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn7 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_info.SuspendLayout();
@@ -741,6 +742,19 @@
             this.label_free_comment.Text = "FreeComment";
             this.label_free_comment.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // checkBox_rental
+            // 
+            this.checkBox_rental.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBox_rental.AutoSize = true;
+            this.checkBox_rental.Location = new System.Drawing.Point(402, 81);
+            this.checkBox_rental.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBox_rental.Name = "checkBox_rental";
+            this.checkBox_rental.Size = new System.Drawing.Size(80, 21);
+            this.checkBox_rental.TabIndex = 30;
+            this.checkBox_rental.Text = "RentalMaid";
+            this.checkBox_rental.UseVisualStyleBackColor = true;
+            // 
             // tabPage_stats
             // 
             this.tabPage_stats.AutoScroll = true;
@@ -1092,41 +1106,6 @@
             this.dataGridView_maid_classes.Size = new System.Drawing.Size(526, 281);
             this.dataGridView_maid_classes.TabIndex = 0;
             // 
-            // dataGridViewCheckBoxColumn7
-            // 
-            this.dataGridViewCheckBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewCheckBoxColumn7.HeaderText = "HAS";
-            this.dataGridViewCheckBoxColumn7.Name = "dataGridViewCheckBoxColumn7";
-            this.dataGridViewCheckBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCheckBoxColumn7.Width = 35;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn16.HeaderText = "NAME";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn17.HeaderText = "LVL";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn17.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn17.Width = 40;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn18.HeaderText = "TOTAL_XP";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn18.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn18.Width = 70;
-            // 
             // groupBox_yotogi_classes
             // 
             this.groupBox_yotogi_classes.AutoSize = true;
@@ -1166,41 +1145,6 @@
             this.dataGridView_yotogi_classes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView_yotogi_classes.Size = new System.Drawing.Size(526, 282);
             this.dataGridView_yotogi_classes.TabIndex = 0;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewCheckBoxColumn1.HeaderText = "HAS";
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCheckBoxColumn1.Width = 35;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.HeaderText = "NAME";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn2.HeaderText = "LVL";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn2.Width = 40;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn3.HeaderText = "TOTAL_XP";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn3.Width = 70;
             // 
             // tabPage_work
             // 
@@ -1325,42 +1269,6 @@
             this.dataGridView_noon_work_data.Size = new System.Drawing.Size(543, 194);
             this.dataGridView_noon_work_data.TabIndex = 2;
             // 
-            // dataGridViewCheckBoxColumn5
-            // 
-            this.dataGridViewCheckBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewCheckBoxColumn5.HeaderText = "FORCE_ENABLE";
-            this.dataGridViewCheckBoxColumn5.Name = "dataGridViewCheckBoxColumn5";
-            this.dataGridViewCheckBoxColumn5.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCheckBoxColumn5.Width = 95;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn10.HeaderText = "NAME";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn11.HeaderText = "LVL";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn11.Width = 40;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn12.HeaderText = "PLAY_COUNT";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn12.Width = 85;
-            // 
             // groupBox_maid_current_work
             // 
             this.groupBox_maid_current_work.Controls.Add(this.tableLayoutPanel8);
@@ -1394,7 +1302,7 @@
             // 
             // comboBox_work_night
             // 
-            this.comboBox_work_night.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox_work_night.Dock = System.Windows.Forms.DockStyle.Left;
             this.comboBox_work_night.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_work_night.FormattingEnabled = true;
             this.comboBox_work_night.Location = new System.Drawing.Point(363, 0);
@@ -1476,49 +1384,6 @@
             this.dataGridView_skill_data.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView_skill_data.Size = new System.Drawing.Size(555, 170);
             this.dataGridView_skill_data.TabIndex = 4;
-            // 
-            // dataGridViewCheckBoxColumn6
-            // 
-            this.dataGridViewCheckBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewCheckBoxColumn6.HeaderText = "HAS";
-            this.dataGridViewCheckBoxColumn6.Name = "dataGridViewCheckBoxColumn6";
-            this.dataGridViewCheckBoxColumn6.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCheckBoxColumn6.Width = 35;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn13.HeaderText = "NAME";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn14.HeaderText = "LVL";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn14.Width = 40;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewTextBoxColumn15.HeaderText = "TOTAL_XP";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn15.Width = 70;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column1.HeaderText = "PLAY_COUNT";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 85;
             // 
             // tabPage_misc
             // 
@@ -2160,6 +2025,7 @@
             this.setMaxValuesToolStripMenuItem,
             this.mENUMAIDSETToolStripMenuItem,
             this.mENUMAIDFORCEENABLEToolStripMenuItem,
+            this.mENUMAIDWORKFORCEDISABLEToolStripMenuItem,
             this.mENUMAIDLOCKALLToolStripMenuItem,
             this.mENUMAIDUNLOCKALLToolStripMenuItem});
             this.maidToolStripMenuItem.Name = "maidToolStripMenuItem";
@@ -2174,7 +2040,7 @@
             this.nightClassesToolStripMenuItem,
             this.allToolStripMenuItem1});
             this.unlockToolStripMenuItem.Name = "unlockToolStripMenuItem";
-            this.unlockToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.unlockToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.unlockToolStripMenuItem.Text = "MENU_MAID_UNLOCK";
             // 
             // sexSkillsToolStripMenuItem
@@ -2217,7 +2083,7 @@
             this.sexualAddictionsToolStripMenuItem,
             this.allToolStripMenuItem});
             this.setMaxValuesToolStripMenuItem.Name = "setMaxValuesToolStripMenuItem";
-            this.setMaxValuesToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.setMaxValuesToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.setMaxValuesToolStripMenuItem.Text = "MENU_MAID_MAX";
             // 
             // mAXCLASSLVLToolStripMenuItem
@@ -2282,7 +2148,7 @@
             this.mENUMAIDSETCLASSLVLToolStripMenuItem,
             this.mENUMAIDSETYOTOGITIMESToolStripMenuItem});
             this.mENUMAIDSETToolStripMenuItem.Name = "mENUMAIDSETToolStripMenuItem";
-            this.mENUMAIDSETToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.mENUMAIDSETToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.mENUMAIDSETToolStripMenuItem.Text = "MENU_MAID_SET";
             // 
             // mENUMAIDSETCLASSLVLToolStripMenuItem
@@ -2302,21 +2168,28 @@
             // mENUMAIDFORCEENABLEToolStripMenuItem
             // 
             this.mENUMAIDFORCEENABLEToolStripMenuItem.Name = "mENUMAIDFORCEENABLEToolStripMenuItem";
-            this.mENUMAIDFORCEENABLEToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.mENUMAIDFORCEENABLEToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.mENUMAIDFORCEENABLEToolStripMenuItem.Text = "MENU_MAID_FORCE_ENABLE";
             this.mENUMAIDFORCEENABLEToolStripMenuItem.Click += new System.EventHandler(this.SetForceEnableAll);
+            // 
+            // mENUMAIDWORKFORCEDISABLEToolStripMenuItem
+            // 
+            this.mENUMAIDWORKFORCEDISABLEToolStripMenuItem.Name = "mENUMAIDWORKFORCEDISABLEToolStripMenuItem";
+            this.mENUMAIDWORKFORCEDISABLEToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.mENUMAIDWORKFORCEDISABLEToolStripMenuItem.Text = "MENU_MAID_WORK_FORCE_DISABLE";
+            this.mENUMAIDWORKFORCEDISABLEToolStripMenuItem.Click += new System.EventHandler(this.SetForceDisableAll);
             // 
             // mENUMAIDLOCKALLToolStripMenuItem
             // 
             this.mENUMAIDLOCKALLToolStripMenuItem.Name = "mENUMAIDLOCKALLToolStripMenuItem";
-            this.mENUMAIDLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.mENUMAIDLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.mENUMAIDLOCKALLToolStripMenuItem.Text = "MENU_MAID_LOCK_ALL";
             this.mENUMAIDLOCKALLToolStripMenuItem.Click += new System.EventHandler(this.LockAllValues);
             // 
             // mENUMAIDUNLOCKALLToolStripMenuItem
             // 
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Name = "mENUMAIDUNLOCKALLToolStripMenuItem";
-            this.mENUMAIDUNLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.mENUMAIDUNLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Text = "MENU_MAID_UNLOCK_ALL";
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Click += new System.EventHandler(this.UnlockAllValues);
             // 
@@ -2351,18 +2224,154 @@
             this.mENUMISCABOUTToolStripMenuItem.Text = "MENU_MISC_ABOUT";
             this.mENUMISCABOUTToolStripMenuItem.Click += new System.EventHandler(this.OpenAboutMenu);
             // 
-            // checkBox_rental
+            // dataGridViewCheckBoxColumn6
             // 
-            this.checkBox_rental.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox_rental.AutoSize = true;
-            this.checkBox_rental.Location = new System.Drawing.Point(402, 81);
-            this.checkBox_rental.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox_rental.Name = "checkBox_rental";
-            this.checkBox_rental.Size = new System.Drawing.Size(80, 21);
-            this.checkBox_rental.TabIndex = 30;
-            this.checkBox_rental.Text = "RentalMaid";
-            this.checkBox_rental.UseVisualStyleBackColor = true;
+            this.dataGridViewCheckBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewCheckBoxColumn6.HeaderText = "HAS";
+            this.dataGridViewCheckBoxColumn6.Name = "dataGridViewCheckBoxColumn6";
+            this.dataGridViewCheckBoxColumn6.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCheckBoxColumn6.Width = 35;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn13.HeaderText = "NAME";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.dataGridViewTextBoxColumn13.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn14.HeaderText = "LVL";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn14.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn15.HeaderText = "TOTAL_XP";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn15.Width = 70;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column1.HeaderText = "PLAY_COUNT";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 85;
+            // 
+            // dataGridViewCheckBoxColumn5
+            // 
+            this.dataGridViewCheckBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewCheckBoxColumn5.HeaderText = "FORCE_ENABLE";
+            this.dataGridViewCheckBoxColumn5.Name = "dataGridViewCheckBoxColumn5";
+            this.dataGridViewCheckBoxColumn5.ReadOnly = true;
+            this.dataGridViewCheckBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCheckBoxColumn5.Width = 95;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn10.HeaderText = "NAME";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn11.HeaderText = "LVL";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn11.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn12.HeaderText = "PLAY_COUNT";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn12.Width = 85;
+            // 
+            // dataGridViewCheckBoxColumn7
+            // 
+            this.dataGridViewCheckBoxColumn7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewCheckBoxColumn7.HeaderText = "HAS";
+            this.dataGridViewCheckBoxColumn7.Name = "dataGridViewCheckBoxColumn7";
+            this.dataGridViewCheckBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCheckBoxColumn7.Width = 35;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn16.HeaderText = "NAME";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.dataGridViewTextBoxColumn16.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn17.HeaderText = "LVL";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn17.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn17.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn18.HeaderText = "TOTAL_XP";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn18.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn18.Width = 70;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewCheckBoxColumn1.HeaderText = "HAS";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCheckBoxColumn1.Width = 35;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.HeaderText = "NAME";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn2.HeaderText = "LVL";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn2.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn3.HeaderText = "TOTAL_XP";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn3.Width = 70;
             // 
             // MaidFiddlerGUI
             // 
@@ -2552,10 +2561,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
         private System.Windows.Forms.TextBox textBox_free_comment;
         private System.Windows.Forms.Label label_free_comment;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.GroupBox groupBox_maid_params_bonus;
         private System.Windows.Forms.DataGridView dataGridView_maid_params_bonus;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
@@ -2569,20 +2574,7 @@
         private System.Windows.Forms.Label label_work_night;
         private System.Windows.Forms.Label label_work_noon;
         private System.Windows.Forms.ComboBox comboBox_work_noon;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridView dataGridView_skill_data;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private System.Windows.Forms.GroupBox groupBox_night_work;
         private System.Windows.Forms.DataGridView dataGridView_night_work;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn8;
@@ -2614,5 +2606,23 @@
         private System.Windows.Forms.ToolStripMenuItem mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.CheckBox checkBox_rental;
+        private System.Windows.Forms.ToolStripMenuItem mENUMAIDWORKFORCEDISABLEToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

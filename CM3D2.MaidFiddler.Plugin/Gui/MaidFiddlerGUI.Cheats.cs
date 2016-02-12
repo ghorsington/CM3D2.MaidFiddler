@@ -100,6 +100,25 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             "Failed to force all work enabled");
         }
 
+        private void SetForceDisableAll(object sender, EventArgs e)
+        {
+            MaidInfo maid = SelectedMaid;
+            Debugger.Assert(
+            () =>
+            {
+                foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
+                {
+                    maid.SetWorkValue(noonWork.Value.id, TABLE_COLUMN_HAS, false);
+                }
+                foreach (KeyValuePair<int, ScheduleCSVData.NightWork> nightWork in ScheduleCSVData.NightWorkData)
+                {
+                    maid.SetNightWorkValue(nightWork.Value.id, false);
+                    maid.UpdateNightWorkValue(nightWork.Value.id);
+                }
+            },
+            "Failed to force all work disabled");
+        }
+
         private void SetMaxAll(object sender, EventArgs e)
         {
             SetMaxStats(sender, e);
