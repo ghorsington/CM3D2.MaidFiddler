@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.22-3" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.22-4" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -10,7 +10,7 @@
 ; Comments and faulty lines (wrong separators, missing translation) are ignored
 
 ; Feel free to edit the title of the tool!
-TITLE_TEXT						- The fiddling never ends!
+TITLE_TEXT						- All your maids are belong to us!
 
 ; Info tab
 TAB_INFO						Information
@@ -228,7 +228,7 @@ BonusTeachRate					Teaching rate
 アナルプレイ						Anal Play
 純愛ソーププレイ					Lover Soap Play
 お仕置きプレイ						Punishment Play
-お客様公開プレイ					Public Play
+お客様公開プレイ					Guest Exhibition Play
 路地裏露出セックス					Back Alley Sex
 詰られプレイ						Scolding Play
 らぶらぶ媚薬プレイ					Love Love Aphrodisiac Play
@@ -242,10 +242,10 @@ AV撮影							AV Shooting
 フリー撮影会						Free Photo Session
 フリー逆ナンパ						Free Nanpa (Seduction) Pick-up
 フリー痴漢プレイ					Free Molester Play
-痴漢克服プレイ						Molester Play
-媚薬プレイ						Aphrodisiac Play
-お風呂接待						Bath Play
-ハーレム特訓プレイ					Harem Training
+痴漢克服プレイ						Molester Play [Yoshiko's VIP]
+媚薬プレイ						Aphrodisiac Play [Ayumi's VIP]
+お風呂接待						Bath Play [Sakura's VIP]
+ハーレム特訓プレイ					Harem Training [Ai's VIP]
 
 ; Yotogi skills
 ;Virgin	

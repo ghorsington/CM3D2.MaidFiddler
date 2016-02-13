@@ -1,0 +1,299 @@
+﻿#MAIDFIDDLER_TRANSLATION "日本語" "1.22-2" "anon"
+; Maid Fiddler GUI Texts
+;
+; Syntax:
+; <GUI Label>	<Translation> (NOTE: Separate with tabs, not spaces!)
+; Comment lines with ";"
+; Comments and faulty lines (wrong separators, missing translation) are ignored
+
+; Feel free to edit the title of the tool!
+TITLE_TEXT						- The fiddling never ends!
+
+; Info tab
+TAB_INFO						情報
+FirstName						名
+LastName						姓
+FirstNameCall					名前で呼ぶ
+Personal						性格
+ContractType					契約タイプ
+Leader							リーダー
+RentalMaid						レンタル
+Condition						関係
+ConditionSpecial				夜伽時の状態
+Employment						雇用日
+MAID_SEX_EXP					性経験
+InitSeikeiken					初期
+Seikeiken						現在
+MAID_CLASS_SELECTED				クラス選択
+MaidClassType					メイドクラス
+YotogiClassType					夜伽クラス
+Profile							プロフィールコメント
+FreeComment						フリーコメント
+
+; Table columns			
+NAME							名称
+VAL								値
+LOCK							固定
+HAS								選択
+LVL								レベル
+TOTAL_XP						総経験値
+FORCE_ENABLE					強制的に有効
+PLAY_COUNT						実行回数
+
+; Maid stats			
+TAB_STATS						パラメーター
+MAID_PARAMS						基本パラメーター
+MAID_PARAMS_BONUS				パラメーターボーナス
+MAID_ERO_ZONES					性感帯
+MAID_STATS						その他のパラメーター
+
+; Maid classes			
+TAB_CLASSES						クラス
+MAID_CLASS						メイドクラス
+YOTOGI_CLASS					夜伽クラス
+
+; Maid work
+TAB_WORK						スケジュール
+CURRENT_WORK					スケジュール選択
+WORK_NOON						昼
+WORK_NIGHT						夜
+NOON_WORK						昼スケジュール
+NIGHT_WORK						夜スケジュール
+NoonWorkId						昼
+NightWorkId						夜
+
+; Maid skills	
+TAB_YOTOGI						夜伽スキル
+
+; Maid misc			
+TAB_MISC						特徴と性癖
+MAID_PROPENSITY					性癖
+MAID_FEATURES					特徴
+
+; Game			
+TAB_GAME						ゲーム情報
+PlayerName						プレイヤー名
+Money							所持金
+ShopUseMoney					ショップで使用した金額
+SalonLoan						現在のローン
+InitSalonLoan					初期のローン
+PhaseDays						日数 (現段階)
+Days							日数 (トータル)
+ScenarioPhase					今の段階
+SCENARIO_NEW					ニューゲーム
+SCENARIO_DEBT					ローン返済中
+SCENARIO_MAIN					ローン完済
+SALON_STATS						クラブの状態
+SalonClean						清潔
+SalonBeautiful					絢爛
+SalonEvaluation					評価
+SalonGrade						現在のグレード
+BestSalonGrade					過去最高のグレード
+BaseMaidPoints					初期メイドポイント (ボーナス無し)
+
+; Personalities			
+Pure							純真無垢
+Cool							クール
+Pride							プライド
+Yandere							ヤンデレ
+
+; Contract types			
+Nurture							育成中
+Free							フリー
+Exclusive						専属
+
+; Condition			
+Tonus							緊張
+Contact							お近づき
+Trust							信頼
+Lover							恋人
+Slave							愛奴
+
+; Condition Special			
+Null							ノーマル
+Drunk							酔い
+Osioki							お仕置き
+
+; Sexual exp			
+No_No							処女
+Yes_No							経験あり
+No_Yes							後ろ経験あり
+Yes_Yes							両方経験あり
+
+; Maid class type			
+Maid_Novice						ノービス
+Maid_Lovely						ラブリー
+Maid_Elegance					エレガント
+Maid_Sexy						セクシー
+Maid_Innocent					イノセント
+Maid_Charm						チャーム
+Maid_Ready						レディー
+
+; Yotogi class type			
+Yotogi_Debut					デビュー
+Yotogi_Rudeness					ルードネス
+Yotogi_Slave					スレイブ
+Yotogi_Abnormal					アブノーマル
+Yotogi_Service					サービス
+Yotogi_Escort					エスコート
+Yotogi_Soap						ソープ
+Yotogi_Sweet					スウィート
+Yotogi_Party					パーティ
+Yotogi_SexSlave					セックススレイブ
+Yotogi_Festival					フェスティバル
+Yotogi_Harlem					ハーレム
+Yotogi_Royalsoap				ロイヤルソープ
+Yotogi_Toilet					プレイ
+Yotogi_Immoral					インモラル
+
+; Params			
+Care							お世話
+Charm							魅惑
+CurExcite						興奮値 (現在)
+CurMind							精神 (現在)
+CurReason						理性 (現在)
+Elegance						気品
+Frustration						欲求
+Hentai							変態
+Housi							奉仕
+Hp								体力 (最大)
+Inyoku							淫欲
+Likability						好感度
+Lovely							可憐
+MaidPoint						メイドポイント
+Mind							精神 (最大)
+MValue							M性
+OthersPlayCount					接客回数
+PlayNumber						プレイ回数
+Reason							理性 (最大)
+Reception						接待
+StudyRate						習得率
+TeachRate						指導
+YotogiPlayCount					夜伽回数
+SexualBack						アナル
+SexualCuri						クリトリス
+SexualFront						マンコ
+SexualMouth						口
+SexualNipple					乳首
+SexualThroat					喉
+Sales							取得資金
+TotalSales						合計取得資金
+Evaluation						取得客評価
+TotalEvaluation					合計取得客評価
+CurHp							体力 (現在)
+PopularRank						ランキング
+
+; Bonus params
+BonusCare						お世話
+BonusCharm						魅惑
+BonusElegance					気品
+BonusHentai						変態
+BonusHousi						奉仕
+BonusHp							体力
+BonusInyoku						淫欲
+BonusLovely						可憐
+BonusMind						精神
+BonusMValue						M性	
+BonusReception					接待
+BonusTeachRate					指導
+
+; Menu items
+MENU_GAME						ゲームとサロン
+MENU_ALL_MAID					全てのメイド
+MENU_MAID						選択中のメイド
+
+; Game items
+MENU_GAME_CLEAN_DEBT			借金返済
+MENU_GAME_MAX_RATE				クラブグレードと評価最大
+MENU_GAME_MAX_CREDIT			所持金最大
+MENU_GAME_ALL_ITEMS				全アイテム入手
+MENU_GAME_ALL_TROPHY			トロフィー全て入手
+
+; All maid cheats
+MENU_ALL_MAID_NO_LIMIT			全ての値の限界を削除
+MENU_ALL_MAID_RESET_VIP			VIPとの出会いをリセット
+MENU_ALL_MAID_ALL_YOTOGI_COM	全ての夜伽スキルコマンドを有効にする
+MENU_ALL_MAID_ALL_VIP_VISIBLE_ALWAYS	VIPに毎回出会うようにする
+MENU_ALL_MAID_ALL_YOTOGI_VISIBLE		全ての夜伽スキルを常に表示
+MENU_ALL_MAID_UNLOCK_MAX_ALL	全てのメイドのあらゆる値を最大に設定
+MENU_ALL_MAID_ALL_SCENES_VISIBLE	フリーモードで全てのシーンを有効
+
+; Current maid cheats
+MENU_MAID_UNLOCK				アンロック
+MENU_MAID_MAX					アンロックして値を最大に
+MENU_MAID_FORCE_ENABLE			強制的にすべての作業を有効にする
+MENU_MAID_LOCK_ALL				すべてのパラメーターを固定
+MENU_MAID_UNLOCK_ALL			パラメーターの固定を解除
+MENU_MAID_SET_CLASS_LVL			クラスレベルの一括変更
+MENU_MAID_SET_YOTOGI_TIMES		夜伽スキルの使用回数の一括変更
+MENU_MAID_SET					値の入力
+
+; Misc tools menu
+MENU_MISC						その他
+MENU_MISC_LANG_SELECT			言語
+MENU_MISC_ABOUT					このMODについて
+MENU_MISC_SETTINGS				設定
+
+; Current maid unlock
+UNLOCK_SKILLS					夜伽スキル
+UNLOCK_MAID_CLASSES				メイドクラス
+UNLOCK_YOTOGI_CLASSES			夜伽クラス
+UNLOCK_ALL						全て
+
+; Current maid max
+MAX_CLASS_LVL					メイドクラスと夜伽クラス
+MAX_STATS						パラメーター
+MAX_ERO_ZONES					性感帯
+MAX_YOTOGI_LVL					夜伽スキルレベル
+MAX_WORK_PLAY_COUNT				昼仕事の回数
+MAX_FEATURE						特徴
+MAX_PROPENSITY					性癖
+MAX_ALL							全て
+
+; GUI and misc windows
+GUI_YOTOGI_TIMES_TITLE			夜伽スキルの使用回数の一括変更
+GUI_YOTOGI_TIMES_PROMPT			夜伽スキルの使用回数を変更します\n夜伽スキルの使用回数を入力してください
+
+GUI_CLASS_LVL_TITLE				クラスレベルの一括変更
+GUI_CLASS_LVL_PROMPT			レベルの選択(1-10) 全てのメイドクラス、夜伽クラスに適用されます
+
+; Language selection GUI
+GUI_TRANS_SELECT_TITLE			言語選択
+GUI_TRANS_SELECT_PROMPT			利用可能な言語\n選択後、適用ボタンを押してください
+GUI_TS_OPEN_TS_FOLDER			フォルダーを開く
+GUI_TS_LANG						言語:
+GUI_TS_VERSION					Version:
+GUI_TS_AUTHOR					作者:
+
+; About menu
+GUI_ABOUT_TITLE					このMODについて
+GUI_ABOUT_VERSION				Version:
+GUI_ABOUT_CONTRIBUTORS			Contributors:
+
+; Settings menu
+GUI_SETTINGS_TITLE				設定
+GUI_SETTINGS_KEY				起動キー
+GUI_SETTINGS_KEY_DESCRIPTION	MODを起動するキーバインドを設定します\n使用できるキーについてはUnity Scripting API KeyCodeを参照してください\n"+"キーを使えば複数キーの使用も可能です
+GUI_SETTINGS_KEY_LABEL			起動キーバインド
+GUI_SETTINGS_GUI				GUI 設定
+GUI_SETTINGS_NAME_STYLE			メイドの名前表示
+GUI_SETTINGS_ORDER				並び順の設定
+GUI_SETTINGS_ORDER_DESCRIPTION	Maid Fiddler内でのメイドの並び順の設定ができます\n使用する並び方を選び">"を押して追加します\n削除したい場合は"<"を押してください\n設定の優先順位を変更したい場合は"˄" もしくは"˅"で変更してください.\n\n
+GUI_SETTINGS_ORDER_AVAILABLE	使用可能な並び方
+GUI_SETTINGS_ORDER_SELECTED		選択された並び方
+GUI_SETTINGS_ORDER_DIRECTION	並ぶ方向
+GUI_SETTINGS_NS_FIRST_LAST		名前, 姓
+GUI_SETTINGS_NS_LAST_FIRST		姓, 名前
+GUI_SETTINGS_DIR_DESC			下→上
+GUI_SETTINGS_DIR_ASC			上→下
+
+; Order styles
+OrderStyle_GUID					ID順
+OrderStyle_CreationTime			作成日順
+OrderStyle_FirstName			名前順
+OrderStyle_LastName				姓順
+OrderStyle_EmployedDay			雇用日順
+OK								OK
+CANCEL							キャンセル
+APPLY							確定
+UNKNOWN							Not available
