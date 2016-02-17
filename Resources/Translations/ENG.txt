@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.22-4" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.22-5" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -8,6 +8,7 @@
 ; <GUI Label>	<Translation> (NOTE: Separate with tabs, not spaces!)
 ; Comment lines with ";"
 ; Comments and faulty lines (wrong separators, missing translation) are ignored
+; If the translation is missing, <GUI Label> is used as the translation of itself (useful if one wants to leave Japanese labels untranslated).
 
 ; Feel free to edit the title of the tool!
 TITLE_TEXT						- All your maids are belong to us!
@@ -146,7 +147,7 @@ Yotogi_SexSlave					Sex Slave
 Yotogi_Festival					Festival
 Yotogi_Harlem					Harem
 Yotogi_Royalsoap				Royal Soap
-Yotogi_Toilet					Toilet/Play
+Yotogi_Toilet					Toilet
 Yotogi_Immoral					Immoral
 
 ; Params			
@@ -232,15 +233,15 @@ BonusTeachRate					Teaching rate
 路地裏露出セックス					Back Alley Sex
 詰られプレイ						Scolding Play
 らぶらぶ媚薬プレイ					Love Love Aphrodisiac Play
-乱暴なお客様前半					Rough Customer (Part 1)
-乱暴なお客様後半１					Rough Customer (Part 2) I
+乱暴なお客様前半					Rough Customer 1
+乱暴なお客様後半１					Rough Customer 2 (Normal end)
 AV撮影							AV Shooting
-純愛プレイ前半						Pure Love Play (Part 1)
-純愛プレイ後半						Pure Love Play (Part 2)
+純愛プレイ前半						Pure Love Play 1
+純愛プレイ後半						Pure Love Play 2
 なりきり新婚プレイ					Honeymoon play
-乱暴なお客様後半２					Rough Customer (Part 2) II
+乱暴なお客様後半２					Rough Customer 2 (Bad end)
 フリー撮影会						Free Photo Session
-フリー逆ナンパ						Free Nanpa (Seduction) Pick-up
+フリー逆ナンパ						Free Seduction Pick-up
 フリー痴漢プレイ					Free Molester Play
 痴漢克服プレイ						Molester Play [Yoshiko's VIP]
 媚薬プレイ						Aphrodisiac Play [Ayumi's VIP]

@@ -1,10 +1,11 @@
-﻿#MAIDFIDDLER_TRANSLATION "日本語" "1.22-2" "anon"
+﻿#MAIDFIDDLER_TRANSLATION "日本語" "1.22-3" "anon"
 ; Maid Fiddler GUI Texts
 ;
 ; Syntax:
 ; <GUI Label>	<Translation> (NOTE: Separate with tabs, not spaces!)
 ; Comment lines with ";"
 ; Comments and faulty lines (wrong separators, missing translation) are ignored
+; If the translation is missing, <GUI Label> is used as the translation of itself (useful if one wants to leave Japanese labels untranslated).
 
 ; Feel free to edit the title of the tool!
 TITLE_TEXT						- The fiddling never ends!
@@ -210,13 +211,13 @@ MENU_GAME_ALL_ITEMS				全アイテム入手
 MENU_GAME_ALL_TROPHY			トロフィー全て入手
 
 ; All maid cheats
-MENU_ALL_MAID_NO_LIMIT			全ての値の限界を削除
-MENU_ALL_MAID_RESET_VIP			VIPとの出会いをリセット
-MENU_ALL_MAID_ALL_YOTOGI_COM	全ての夜伽スキルコマンドを有効にする
+MENU_ALL_MAID_NO_LIMIT					全ての値の限界を削除
+MENU_ALL_MAID_RESET_VIP					VIPとの出会いをリセット
+MENU_ALL_MAID_ALL_YOTOGI_COM			全ての夜伽スキルコマンドを有効にする
 MENU_ALL_MAID_ALL_VIP_VISIBLE_ALWAYS	VIPに毎回出会うようにする
 MENU_ALL_MAID_ALL_YOTOGI_VISIBLE		全ての夜伽スキルを常に表示
-MENU_ALL_MAID_UNLOCK_MAX_ALL	全てのメイドのあらゆる値を最大に設定
-MENU_ALL_MAID_ALL_SCENES_VISIBLE	フリーモードで全てのシーンを有効
+MENU_ALL_MAID_UNLOCK_MAX_ALL			全てのメイドのあらゆる値を最大に設定
+MENU_ALL_MAID_ALL_SCENES_VISIBLE		フリーモードで全てのシーンを有効
 
 ; Current maid cheats
 MENU_MAID_UNLOCK				アンロック
@@ -227,11 +228,12 @@ MENU_MAID_UNLOCK_ALL			パラメーターの固定を解除
 MENU_MAID_SET_CLASS_LVL			クラスレベルの一括変更
 MENU_MAID_SET_YOTOGI_TIMES		夜伽スキルの使用回数の一括変更
 MENU_MAID_SET					値の入力
+MENU_MAID_WORK_FORCE_DISABLE	全仕事封印
 
 ; Misc tools menu
 MENU_MISC						その他
 MENU_MISC_LANG_SELECT			言語
-MENU_MISC_ABOUT					このMODについて
+MENU_MISC_ABOUT					Maid Fiddlerについて
 MENU_MISC_SETTINGS				設定
 
 ; Current maid unlock
@@ -262,18 +264,18 @@ GUI_TRANS_SELECT_TITLE			言語選択
 GUI_TRANS_SELECT_PROMPT			利用可能な言語\n選択後、適用ボタンを押してください
 GUI_TS_OPEN_TS_FOLDER			フォルダーを開く
 GUI_TS_LANG						言語:
-GUI_TS_VERSION					Version:
+GUI_TS_VERSION					バージョン:
 GUI_TS_AUTHOR					作者:
 
 ; About menu
-GUI_ABOUT_TITLE					このMODについて
-GUI_ABOUT_VERSION				Version:
-GUI_ABOUT_CONTRIBUTORS			Contributors:
+GUI_ABOUT_TITLE					Maid Fiddlerについて
+GUI_ABOUT_VERSION				バージョン:
+GUI_ABOUT_CONTRIBUTORS			貢献者:
 
 ; Settings menu
 GUI_SETTINGS_TITLE				設定
 GUI_SETTINGS_KEY				起動キー
-GUI_SETTINGS_KEY_DESCRIPTION	MODを起動するキーバインドを設定します\n使用できるキーについてはUnity Scripting API KeyCodeを参照してください\n"+"キーを使えば複数キーの使用も可能です
+GUI_SETTINGS_KEY_DESCRIPTION	Maid Fiddlerを起動するキーバインドを設定します\n使用できるキーについてはUnity Scripting API KeyCodeを参照してください\n"+"キーを使えば複数キーの使用も可能です
 GUI_SETTINGS_KEY_LABEL			起動キーバインド
 GUI_SETTINGS_GUI				GUI 設定
 GUI_SETTINGS_NAME_STYLE			メイドの名前表示
@@ -296,4 +298,4 @@ OrderStyle_EmployedDay			雇用日順
 OK								OK
 CANCEL							キャンセル
 APPLY							確定
-UNKNOWN							Not available
+UNKNOWN							設定不可
