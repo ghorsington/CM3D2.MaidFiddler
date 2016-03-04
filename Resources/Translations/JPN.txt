@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "日本語" "1.22-4" "anon"
+﻿#MAIDFIDDLER_TRANSLATION "日本語" "1.26" "anon"
 ; Maid Fiddler GUI Texts
 ;
 ; Syntax:

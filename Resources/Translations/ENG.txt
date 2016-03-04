@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.22-6" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.26" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
