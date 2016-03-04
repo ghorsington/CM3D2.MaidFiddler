@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.22-5" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.22-6" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -149,6 +149,7 @@ Yotogi_Harlem					Harem
 Yotogi_Royalsoap				Royal Soap
 Yotogi_Toilet					Toilet
 Yotogi_Immoral					Immoral
+Yotogi_Bride					Bridal
 
 ; Params			
 Care							Care
@@ -446,6 +447,14 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 アナルセックス背面騎乗位				Inverse Anal Cowgirl
 公開オナニー						Public Masturbation
 公開アナルオナニー					Public Anal Masturbation
+セックス立位						Standing Sex
+アナルセックス立位					Standing Anal Sex
+抱えセックス正常位					Hip-Raised Missionary Sex
+抱えアナルセックス正常位				Hip-Raised Missionary Anal Sex
+寄り添いセックス側位					Side Spooning Sex
+寄り添いアナルセックス側位			Side Spooning Anal Sex
+尻上げ後背位						Ass-Raised Doggy Style Sex
+尻上げアナル後背位					Ass-Raised Anal Doggy Style Sex
 
 ; CM3D2+ Skills
 トイレセックス						Toilet Sex
