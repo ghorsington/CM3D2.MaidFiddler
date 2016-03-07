@@ -22,7 +22,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                 if (attributes.Length != 1)
                 {
                     MessageBox.Show(
-                    $"Maid Fiddler {MaidFiddler.VERSION} detects that the assembly hasn't been patched or is patched with an outdated version of Maid Fiddler Patcher.\nIn order to function, Maid Fiddler requires that the assembly is patched with ReiPatcher or Sybaris.\nThe game may be unstable, until it is patched.\n\nMake sure you have the latest patcher downloaded and re-patch the game.",
+                    $"Maid Fiddler {MaidFiddler.VERSION} detects that Assembly-CSharp.dll hasn't been patched or is patched with an outdated version of Maid Fiddler Patcher.\nIn order to function, Maid Fiddler requires that the assembly is patched with ReiPatcher or Sybaris.\nThe game may be unstable, until it is patched.\n\nMake sure you have the latest patcher downloaded and re-patch the game.",
                     "Did you forget something?",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
@@ -32,7 +32,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                     || attributes[0].PatchVersion > MaidFiddler.SUPPORTED_PATCH_MAX)
                 {
                     MessageBox.Show(
-                    $"Maid Fiddler {MaidFiddler.VERSION} detected that the game is patched with an unsupported version of Maid Fiddler Patcher.\nThe game was patched with patcher version {attributes[0].PatchVersion}, but this version of Maid Fiddler supports only patcher versions {MaidFiddler.SUPPORTED_PATCH_MIN} through {MaidFiddler.SUPPORTED_PATCH_MAX}.\nThe game may not be functional until it is re-patched!\n\nMake sure you have the latest patcher downloaded and re-patch the game.",
+                    $"Maid Fiddler {MaidFiddler.VERSION} detected that Assembly-CSharp.dll is patched with an unsupported version of Maid Fiddler Patcher.\nThe game was patched with patcher version {attributes[0].PatchVersion}, but this version of Maid Fiddler supports only patcher versions {MaidFiddler.SUPPORTED_PATCH_MIN} through {MaidFiddler.SUPPORTED_PATCH_MAX}.\nThe game may not be functional until it is re-patched!\n\nMake sure you have the latest patcher downloaded and re-patch the game.",
                     "Unsupported patch version",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
@@ -42,7 +42,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             catch (Exception)
             {
                 MessageBox.Show(
-                "Maid Fiddler failed to check that the game has been patched properly. Perhaps some other patch is causing the issue.\nMaid Fiddler can still be used, but it may cause errors.\n\nPlease re-patch the game and make sure no other plug-ins cause any interference.",
+                "Maid Fiddler failed to check that Assembly-CSharp.dll has been patched properly. Perhaps some other patch is causing the issue.\nMaid Fiddler can still be used, but it may cause errors.\n\nPlease re-patch the game and make sure no other plug-ins cause any interference.",
                 "Failed to locate the patcher",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Exclamation);

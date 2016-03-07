@@ -21,6 +21,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Translation.GetTranslation(label_lang_name);
             Translation.GetTranslation(label_lang_version);
             Translation.GetTranslation(label_lang_author);
+            Translation.GetTranslation(button_download_github);
+            Translation.GetTranslation(button_download_url);
             Translation.GetTranslation(button_apply);
             Translation.GetTranslation(button_cancel);
             Translation.GetTranslation(button_open_translation_folder);
@@ -127,6 +129,16 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             public string FileName, Language, Version, Author;
             public string DisplayName => Language == string.Empty ? FileName : Language;
+        }
+
+        private void OpenTranslationDownloadGithub(object sender, EventArgs e)
+        {
+            MessageBox.Show("Placeholder for official translation download menu.", "Boop!", MessageBoxButtons.OK, MessageBoxIcon.None);
+        }
+
+        private void OpenTranslationDownloadUrl(object sender, EventArgs e)
+        {
+            MessageBox.Show("Placeholder for URL translation download menu.", "Boop!", MessageBoxButtons.OK, MessageBoxIcon.None);
         }
     }
 }

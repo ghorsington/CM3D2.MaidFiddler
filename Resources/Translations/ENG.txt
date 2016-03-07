@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.26" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.26-1" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -577,6 +577,8 @@ GUI_CLASS_LVL_PROMPT			Specify the level (1-10) to set all maid and yotogi class
 GUI_TRANS_SELECT_TITLE			Language select
 GUI_TRANS_SELECT_PROMPT			Below is the list of available translations.\nSelect one and press Apply to apply it.
 GUI_TS_OPEN_TS_FOLDER			Open Translations folder
+GUI_TS_DL_URL					Download from URL
+GUI_TS_DL_GITHUB				Get official translations
 GUI_TS_LANG						Language:
 GUI_TS_VERSION					Version:
 GUI_TS_AUTHOR					Author(s):

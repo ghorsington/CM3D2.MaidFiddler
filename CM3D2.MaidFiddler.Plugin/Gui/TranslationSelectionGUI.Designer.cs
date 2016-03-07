@@ -40,6 +40,8 @@
             this.button_apply = new System.Windows.Forms.Button();
             this.button_cancel = new System.Windows.Forms.Button();
             this.button_open_translation_folder = new System.Windows.Forms.Button();
+            this.button_download_url = new System.Windows.Forms.Button();
+            this.button_download_github = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,7 +146,7 @@
             // 
             // button_apply
             // 
-            this.button_apply.Location = new System.Drawing.Point(316, 226);
+            this.button_apply.Location = new System.Drawing.Point(316, 256);
             this.button_apply.Name = "button_apply";
             this.button_apply.Size = new System.Drawing.Size(75, 23);
             this.button_apply.TabIndex = 10;
@@ -155,7 +157,7 @@
             // button_cancel
             // 
             this.button_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_cancel.Location = new System.Drawing.Point(397, 226);
+            this.button_cancel.Location = new System.Drawing.Point(397, 256);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(75, 23);
             this.button_cancel.TabIndex = 11;
@@ -165,7 +167,7 @@
             // 
             // button_open_translation_folder
             // 
-            this.button_open_translation_folder.Location = new System.Drawing.Point(316, 197);
+            this.button_open_translation_folder.Location = new System.Drawing.Point(316, 228);
             this.button_open_translation_folder.Name = "button_open_translation_folder";
             this.button_open_translation_folder.Size = new System.Drawing.Size(156, 23);
             this.button_open_translation_folder.TabIndex = 12;
@@ -173,13 +175,36 @@
             this.button_open_translation_folder.UseVisualStyleBackColor = true;
             this.button_open_translation_folder.Click += new System.EventHandler(this.OpenTranslationsFolder);
             // 
+            // button_download_url
+            // 
+            this.button_download_url.Location = new System.Drawing.Point(147, 257);
+            this.button_download_url.Name = "button_download_url";
+            this.button_download_url.Size = new System.Drawing.Size(110, 23);
+            this.button_download_url.TabIndex = 13;
+            this.button_download_url.Text = "GUI_TS_DL_URL";
+            this.button_download_url.UseVisualStyleBackColor = true;
+            this.button_download_url.Click += new System.EventHandler(this.OpenTranslationDownloadUrl);
+            // 
+            // button_download_github
+            // 
+            this.button_download_github.Location = new System.Drawing.Point(12, 257);
+            this.button_download_github.Name = "button_download_github";
+            this.button_download_github.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button_download_github.Size = new System.Drawing.Size(129, 23);
+            this.button_download_github.TabIndex = 14;
+            this.button_download_github.Text = "GUI_TS_DL_GITHUB";
+            this.button_download_github.UseVisualStyleBackColor = true;
+            this.button_download_github.Click += new System.EventHandler(this.OpenTranslationDownloadGithub);
+            // 
             // TranslationSelectionGUI
             // 
             this.AcceptButton = this.button_apply;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button_cancel;
-            this.ClientSize = new System.Drawing.Size(484, 261);
+            this.ClientSize = new System.Drawing.Size(484, 291);
+            this.Controls.Add(this.button_download_github);
+            this.Controls.Add(this.button_download_url);
             this.Controls.Add(this.button_open_translation_folder);
             this.Controls.Add(this.button_cancel);
             this.Controls.Add(this.button_apply);
@@ -214,5 +239,7 @@
         private System.Windows.Forms.Label label_version_val;
         private System.Windows.Forms.Label label_author_val;
         private System.Windows.Forms.Button button_open_translation_folder;
+        private System.Windows.Forms.Button button_download_url;
+        private System.Windows.Forms.Button button_download_github;
     }
 }

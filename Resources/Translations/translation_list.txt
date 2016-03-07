@@ -1,0 +1,2 @@
+﻿ENG	English		English	1.26
+JPN	Japanese	日本語	1.26
