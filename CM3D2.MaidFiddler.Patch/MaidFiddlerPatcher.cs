@@ -145,14 +145,19 @@ namespace CM3D2.MaidFiddler.Patch
                          .InjectWith(statusChangeHook, 0, i, features1, typeFields: new[] {maidParam.GetField("maid_")});
             }
 
-            WritePreviousLine("SetSexual");
-            maidParam.GetMethod("SetSexual")
-                     .InjectWith(
-                     statusChangeHook,
-                     -1,
-                     (int) MaidChangeType.Sexual,
-                     features1,
-                     typeFields: new[] {maidParam.GetField("maid_")});
+            MethodDefinition setSexual = maidParam.GetMethod("SetSexual");
+            if (setSexual != null)
+            {
+                WritePreviousLine("SetSexual");
+                maidParam.GetMethod("SetSexual")
+                         .InjectWith(
+                         statusChangeHook,
+                         -1,
+                         (int) MaidChangeType.Sexual,
+                         features1,
+                         typeFields: new[] {maidParam.GetField("maid_")});
+            }
+
 
             for (int i = (int) MaidChangeType.FirstName; i <= (int) MaidChangeType.Seikeiken; i++)
             {

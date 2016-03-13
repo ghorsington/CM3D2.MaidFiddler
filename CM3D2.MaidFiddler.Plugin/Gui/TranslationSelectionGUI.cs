@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Plugin.Utils;
@@ -46,6 +48,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void LoadTranslations(string selectedLanguageFile)
         {
+            listBox_translations.Items.Clear();
             Debugger.WriteLine(
             LogLevel.Info,
             $"Loading translation files. Selected language file: {selectedLanguageFile}");
@@ -125,20 +128,99 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Process.Start(translationsPath);
         }
 
-        private struct TranslationData
-        {
-            public string FileName, Language, Version, Author;
-            public string DisplayName => Language == string.Empty ? FileName : Language;
-        }
-
         private void OpenTranslationDownloadGithub(object sender, EventArgs e)
         {
-            MessageBox.Show("Placeholder for official translation download menu.", "Boop!", MessageBoxButtons.OK, MessageBoxIcon.None);
+            string list = string.Empty;
+            LoadingBarGUI loadingBarGui = new LoadingBarGUI(
+            Translation.GetTranslation("LOADING"),
+            Translation.GetTranslation("TL_LIST_LOADING"),
+            true,
+            g =>
+            {
+                HttpWebRequest webRequest =
+                (HttpWebRequest)
+                WebRequest.Create($"{MaidFiddler.RESOURCE_URL}/Resources/Translations/translation_list.txt");
+                g.Timer.Start();
+                Debugger.WriteLine(LogLevel.Info, "Getting translation list...");
+                webRequest.BeginGetResponse(
+                ar =>
+                {
+                    try
+                    {
+                        HttpWebResponse response = (HttpWebResponse) webRequest.EndGetResponse(ar);
+                        Debugger.WriteLine(LogLevel.Info, "Got response!");
+                        Debugger.WriteLine(LogLevel.Info, $"Response: {response.StatusCode}");
+                        if (response.StatusCode == HttpStatusCode.NotFound)
+                        {
+                            MessageBox.Show(
+                            "Failed to retreive translation list: List not found.",
+                            "Boop!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                        }
+                        Stream s = response.GetResponseStream();
+                        Debugger.WriteLine(LogLevel.Info, "Reading response");
+                        StringBuilder sb = new StringBuilder();
+                        byte[] responseBuffer = new byte[1024];
+                        int read;
+                        do
+                        {
+                            read = s.Read(responseBuffer, 0, responseBuffer.Length);
+                            sb.Append(Encoding.UTF8.GetString(responseBuffer, 0, read));
+                        } while (read > 0);
+                        list = sb.ToString();
+                        g.DialogResult = DialogResult.OK;
+                    }
+                    catch (WebException we)
+                    {
+                        MessageBox.Show(
+                        $"Failed to retreive translation list.\nResponse: {we.Message}",
+                        "Boop!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                        g.DialogResult = DialogResult.Abort;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                        $"Unknown error occurred.\nInfo: {ex.ToString()}",
+                        "Boop!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                        g.DialogResult = DialogResult.Abort;
+                    }
+                    finally
+                    {
+                        g.Timer.Stop();
+                        g.Close();
+                    }
+                },
+                null);
+            });
+            DialogResult result = loadingBarGui.ShowDialog(this);
+            loadingBarGui.Dispose();
+            if (result != DialogResult.OK)
+                return;
+            GithubTranslationsGUI tlGui = new GithubTranslationsGUI(list.Remove(0, 1));
+            tlGui.ShowDialog(this);
+            tlGui.Dispose();
+            LoadTranslations(Translation.CurrentTranslationFile);
         }
 
         private void OpenTranslationDownloadUrl(object sender, EventArgs e)
         {
-            MessageBox.Show("Placeholder for URL translation download menu.", "Boop!", MessageBoxButtons.OK, MessageBoxIcon.None);
+            //TextDialog tdURL = new TextDialog(Translation.GetTranslation("TL_URL_TITLE"), Translation.GetTranslation("TL_URL_TEXT"), string.Empty, s => true,);
+            MessageBox.Show(
+            "Placeholder for URL translation download menu.",
+            "Boop!",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.None);
+        }
+
+        private struct TranslationData
+        {
+            public string FileName, Language, Version, Author;
+            public string DisplayName => Language == string.Empty ? FileName : Language;
         }
     }
 }

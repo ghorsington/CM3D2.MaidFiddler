@@ -65,6 +65,18 @@
     <Compile Include="Gui\AboutGUI.Designer.cs">
       <DependentUpon>AboutGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\GithubTranslationsGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\GithubTranslationsGUI.Designer.cs">
+      <DependentUpon>GithubTranslationsGUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\LoadingBarGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\LoadingBarGUI.Designer.cs">
+      <DependentUpon>LoadingBarGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\SettingsGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +165,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Gui\AboutGUI.resx">
       <DependentUpon>AboutGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\GithubTranslationsGUI.resx">
+      <DependentUpon>GithubTranslationsGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\LoadingBarGUI.resx">
+      <DependentUpon>LoadingBarGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\SettingsGUI.resx">
       <DependentUpon>SettingsGUI.cs</DependentUpon>

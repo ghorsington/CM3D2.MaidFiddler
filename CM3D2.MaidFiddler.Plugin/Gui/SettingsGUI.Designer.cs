@@ -41,6 +41,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label_name_style = new System.Windows.Forms.Label();
             this.comboBox_name_style = new System.Windows.Forms.ComboBox();
+            this.checkBox_open_on_startup = new System.Windows.Forms.CheckBox();
             this.groupBox_order = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.listBox_order_available = new System.Windows.Forms.ListBox();
@@ -146,7 +147,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(484, 461);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(484, 491);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
             // flowLayoutPanel1
@@ -157,7 +158,7 @@
             this.flowLayoutPanel1.Controls.Add(this.button_cancel);
             this.flowLayoutPanel1.Controls.Add(this.button_apply);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(319, 425);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(319, 457);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(162, 27);
             this.flowLayoutPanel1.TabIndex = 5;
@@ -190,7 +191,7 @@
             this.groupBox_gui.Controls.Add(this.tableLayoutPanel2);
             this.groupBox_gui.Location = new System.Drawing.Point(3, 99);
             this.groupBox_gui.Name = "groupBox_gui";
-            this.groupBox_gui.Size = new System.Drawing.Size(478, 47);
+            this.groupBox_gui.Size = new System.Drawing.Size(478, 79);
             this.groupBox_gui.TabIndex = 1;
             this.groupBox_gui.TabStop = false;
             this.groupBox_gui.Text = "GUI_SETTINGS_GUI";
@@ -204,12 +205,14 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.label_name_style, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.comboBox_name_style, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.checkBox_open_on_startup, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(472, 28);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(472, 60);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label_name_style
@@ -219,7 +222,7 @@
             this.label_name_style.AutoSize = true;
             this.label_name_style.Location = new System.Drawing.Point(3, 0);
             this.label_name_style.Name = "label_name_style";
-            this.label_name_style.Size = new System.Drawing.Size(163, 28);
+            this.label_name_style.Size = new System.Drawing.Size(163, 27);
             this.label_name_style.TabIndex = 0;
             this.label_name_style.Text = "GUI_SETTINGS_NAME_STYLE";
             this.label_name_style.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -237,11 +240,24 @@
             this.comboBox_name_style.Size = new System.Drawing.Size(297, 21);
             this.comboBox_name_style.TabIndex = 1;
             // 
+            // checkBox_open_on_startup
+            // 
+            this.checkBox_open_on_startup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBox_open_on_startup.AutoSize = true;
+            this.checkBox_open_on_startup.Location = new System.Drawing.Point(172, 30);
+            this.checkBox_open_on_startup.Name = "checkBox_open_on_startup";
+            this.checkBox_open_on_startup.Size = new System.Drawing.Size(220, 27);
+            this.checkBox_open_on_startup.TabIndex = 3;
+            this.checkBox_open_on_startup.Text = "GUI_SETTINGS_OPEN_ON_STARTUP";
+            this.checkBox_open_on_startup.UseVisualStyleBackColor = true;
+            this.checkBox_open_on_startup.CheckedChanged += new System.EventHandler(this.OnOpenOnStartupCheckedChanged);
+            // 
             // groupBox_order
             // 
             this.groupBox_order.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox_order.Controls.Add(this.tableLayoutPanel4);
-            this.groupBox_order.Location = new System.Drawing.Point(3, 152);
+            this.groupBox_order.Location = new System.Drawing.Point(3, 184);
             this.groupBox_order.Name = "groupBox_order";
             this.groupBox_order.Size = new System.Drawing.Size(478, 267);
             this.groupBox_order.TabIndex = 2;
@@ -405,7 +421,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.ClientSize = new System.Drawing.Size(484, 491);
             this.Controls.Add(this.tableLayoutPanel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -462,5 +478,6 @@
         private System.Windows.Forms.TextBox textBox_key;
         private System.Windows.Forms.Label label_key;
         private System.Windows.Forms.Label label_key_description;
+        private System.Windows.Forms.CheckBox checkBox_open_on_startup;
     }
 }

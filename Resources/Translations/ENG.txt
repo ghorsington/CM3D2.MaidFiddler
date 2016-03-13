@@ -595,6 +595,7 @@ GUI_SETTINGS_KEY_DESCRIPTION	Specify the key code(s) that will used to launch Ma
 GUI_SETTINGS_KEY_LABEL			Maid Fiddler launch key(s)
 GUI_SETTINGS_GUI				GUI Settings
 GUI_SETTINGS_NAME_STYLE			Maids' naming style
+GUI_SETTINGS_OPEN_ON_STARTUP	Open Maid Fiddler when CM3D2 starts
 GUI_SETTINGS_ORDER				Ordering Settings
 GUI_SETTINGS_ORDER_DESCRIPTION	You can specify how maids are ordered in Maid Fiddler.\nSelect the available ordering methods by clicking on them and by pressing ">". Remove from selected by pressing "<".\nChange the order priority by pressing "˄" or "˅".\n\n
 GUI_SETTINGS_ORDER_AVAILABLE	Available order styles
@@ -612,7 +613,23 @@ OrderStyle_FirstName			Order by first name
 OrderStyle_LastName				Order by last name
 OrderStyle_EmployedDay			Order by employment day
 
+; GitHub TL Menu
+TL_GITHUB_TITLE					Maid Fiddler Translations from GitHub
+TL_GITHUB_TEXT					Here you can download translations from Maid Fiddler's GitHub repository.\nSelect the translation from the list and click "Download translation" to install it.
+TL_NAME							Language
+TL_NAME_ENG						Language (In English)
+TL_VERSION						Version
+TL_CURR_VERSION					Installed version
+TL_DOWNLOAD						Download translation	
+TL_NOT_INSTALLED				NOT INSTALLED
+TL_LIST_LOADING					Downloading translation list. Please wait...
+TL_TRANSLATION_DOWNLOAD			Downloading translation:
+TL_DOWNLOAD_DONE				Translations downloaded.\nTo apply the translations, click "Close", select the translation and click "Apply".
+TL_DOWNLOAD_DONE_TITLE			Download complete
+
 OK								OK
 CANCEL							Cancel
 APPLY							Apply
 UNKNOWN							Not available
+CLOSE							Close
+LOADING							Loading

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading;
 using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Gui;
@@ -17,17 +18,39 @@ namespace CM3D2.MaidFiddler.Plugin
     public class MaidFiddler : PluginBase
     {
         public const string CONTRIBUTORS = "denikson";
-        public const string VERSION = "BETA 0.8d";
+        public const string VERSION = "BETA 0.9-pre";
         public const string PROJECT_PAGE = "https://github.com/denikson/CM3D2.MaidFiddler";
+        public const string RESOURCE_URL = "https://raw.githubusercontent.com/denikson/CM3D2.MaidFiddler/master";
         public const uint SUPPORTED_PATCH_MAX = 1100;
         public const uint SUPPORTED_PATCH_MIN = 1100;
         private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
+        private const bool DEFAULT_OPEN_ON_STARTUP = false;
         private const MaidOrderDirection DEFAULT_ORDER_DIRECTION = Plugin.MaidOrderDirection.Ascending;
         private const string DEFAULT_LANGUAGE_FILE = "ENG";
         private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.KeypadEnter, KeyCode.Keypad0};
         private readonly List<MaidOrderStyle> DEFAULT_ORDER_STYLES = new List<MaidOrderStyle> {MaidOrderStyle.GUID};
         public MaidFiddlerGUI.MaidCompareMethod[] COMPARE_METHODS;
         private KeyHelper keyCreateGUI;
+
+        public bool CFGOpenOnStartup
+        {
+            get
+            {
+                IniKey value = Preferences["GUI"]["OpenOnStartup"];
+                bool openOnStartup = DEFAULT_OPEN_ON_STARTUP;
+                if (!string.IsNullOrEmpty(value.Value) && bool.TryParse(value.Value, out openOnStartup))
+                    return openOnStartup;
+                Debugger.WriteLine(LogLevel.Warning, "Failed to get OpenOnStartup value. Setting to default...");
+                value.Value = DEFAULT_OPEN_ON_STARTUP.ToString();
+                SaveConfig();
+                return openOnStartup;
+            }
+            set
+            {
+                Preferences["GUI"]["OpenOnStartup"].Value = value.ToString();
+                SaveConfig();
+            }
+        }
 
         public MaidOrderDirection CFGOrderDirection
         {
@@ -148,7 +171,7 @@ namespace CM3D2.MaidFiddler.Plugin
                 bool useJapNameStyle = DEFAULT_USE_JAPANESE_NAME_STYLE;
                 if (!string.IsNullOrEmpty(value.Value) && bool.TryParse(value.Value, out useJapNameStyle))
                     return useJapNameStyle;
-                Debugger.WriteLine(LogLevel.Warning, "Failed to get name style info. Setting to default...");
+                Debugger.WriteLine(LogLevel.Warning, "Failed to get UseJapaneseNameStyle value. Setting to default...");
                 value.Value = DEFAULT_USE_JAPANESE_NAME_STYLE.ToString();
                 SaveConfig();
                 return useJapNameStyle;
@@ -182,6 +205,7 @@ namespace CM3D2.MaidFiddler.Plugin
             }
             DontDestroyOnLoad(this);
 
+            ServicePointManager.ServerCertificateValidationCallback += FiddlerUtils.RemoteCertificateValidationCallback;
             Debugger.ErrorOccured += (exception, message) => FiddlerUtils.ThrowErrorMessage(exception, message, this);
 
             COMPARE_METHODS = new MaidFiddlerGUI.MaidCompareMethod[]

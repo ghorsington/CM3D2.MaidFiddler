@@ -60,7 +60,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnShown(object sender, EventArgs e)
         {
-            Visible = false;
+            Visible = Plugin.CFGOpenOnStartup;
             Opacity = 1.0;
         }
 

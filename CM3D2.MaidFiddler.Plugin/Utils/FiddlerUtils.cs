@@ -1,5 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
@@ -49,6 +52,28 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                 return true;
             }
             return true;
+        }
+
+        public static bool RemoteCertificateValidationCallback(object sender,
+                                                               X509Certificate certificate,
+                                                               X509Chain chain,
+                                                               SslPolicyErrors sslPolicyErrors)
+        {
+            bool pass = true;
+            if (sslPolicyErrors == SslPolicyErrors.None)
+                return true;
+            foreach (
+            X509ChainStatus t in chain.ChainStatus.Where(t => t.Status != X509ChainStatusFlags.RevocationStatusUnknown))
+            {
+                chain.ChainPolicy.RevocationFlag = X509RevocationFlag.EntireChain;
+                chain.ChainPolicy.RevocationMode = X509RevocationMode.Online;
+                chain.ChainPolicy.UrlRetrievalTimeout = new TimeSpan(0, 1, 0);
+                chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllFlags;
+                bool chainIsValid = chain.Build((X509Certificate2) certificate);
+                if (!chainIsValid)
+                    pass = false;
+            }
+            return pass;
         }
 
         public static void ThrowErrorMessage(Exception e, string action, MaidFiddler plugin)
