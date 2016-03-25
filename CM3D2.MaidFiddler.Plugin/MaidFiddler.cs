@@ -18,7 +18,7 @@ namespace CM3D2.MaidFiddler.Plugin
     public class MaidFiddler : PluginBase
     {
         public const string CONTRIBUTORS = "denikson";
-        public const string VERSION = "BETA 0.9-pre";
+        public const string VERSION = "BETA 0.9-pre2";
         public const string PROJECT_PAGE = "https://github.com/denikson/CM3D2.MaidFiddler";
         public const string RESOURCE_URL = "https://raw.githubusercontent.com/denikson/CM3D2.MaidFiddler/master";
         public const uint SUPPORTED_PATCH_MAX = 1100;
@@ -198,11 +198,6 @@ namespace CM3D2.MaidFiddler.Plugin
 
         public void Awake()
         {
-            if (!FiddlerUtils.CheckPatcherVersion())
-            {
-                Destroy(this);
-                return;
-            }
             DontDestroyOnLoad(this);
 
             ServicePointManager.ServerCertificateValidationCallback += FiddlerUtils.RemoteCertificateValidationCallback;
@@ -219,6 +214,12 @@ namespace CM3D2.MaidFiddler.Plugin
 
             DATA_PATH = DataPath;
             LoadConfig();
+
+            if (!FiddlerUtils.CheckPatcherVersion())
+            {
+                Destroy(this);
+                return;
+            }
 
             FiddlerHooks.SaveLoadedEvent += OnSaveLoaded;
 

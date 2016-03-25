@@ -137,6 +137,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                                 "Boop!",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
+                                g.DialogResult = DialogResult.Abort;
+                                g.Timer.Stop();
+                                g.Close();
+                                return;
                             }
 
                             Stream s = response.GetResponseStream();

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Media;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Plugin.Utils;
@@ -19,7 +18,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                           string cancelText = "CANCEL")
         {
             InitializeComponent();
-            AutoValidate = AutoValidate.EnablePreventFocusChange;
 
             Text = title;
             label_input.Text = dialog;
@@ -30,12 +28,19 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             this.checker = checker;
             this.defaultVal = defaultVal;
             textBox_input.Text = defaultVal;
-            textBox_input.Validating += OnValidate;
+            textBox_input.KeyPress += TextBoxInputOnKeyPress;
             VisibleChanged += OnVisibleChanged;
             FormClosing += OnFormClosing;
         }
 
         public string Input => textBox_input.Text;
+
+        private void TextBoxInputOnKeyPress(object sender, KeyPressEventArgs keyPressEventArgs)
+        {
+            if (keyPressEventArgs.KeyChar != '\n' || ValidateInput())
+                return;
+            keyPressEventArgs.Handled = true;
+        }
 
         private void button_cancel_Click(object sender, EventArgs e)
         {
@@ -45,8 +50,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void button_ok_Click(object sender, EventArgs e)
         {
-            if (!ValidateChildren())
+            if (!ValidateInput())
+            {
+                Debugger.WriteLine("Validation failed");
                 return;
+            }
+            Debugger.WriteLine("Validation OK!");
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -59,14 +68,14 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             e.Cancel = false;
         }
 
-        private void OnValidate(object sender, CancelEventArgs e)
+        private bool ValidateInput()
         {
             if (checker(textBox_input.Text))
-                return;
-            e.Cancel = true;
+                return true;
             textBox_input.Text = defaultVal;
             textBox_input.Select(0, defaultVal.Length);
             SystemSounds.Hand.Play();
+            return false;
         }
 
         private void OnVisibleChanged(object sender, EventArgs e)

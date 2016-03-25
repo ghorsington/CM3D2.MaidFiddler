@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.26-1" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.26-2" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -11,7 +11,7 @@
 ; If the translation is missing, <GUI Label> is used as the translation of itself (useful if one wants to leave Japanese labels untranslated).
 
 ; Feel free to edit the title of the tool!
-TITLE_TEXT						- All your maids are belong to us!
+TITLE_TEXT						- Vive la Maid Fiddler!
 
 ; Info tab
 TAB_INFO						Information
@@ -626,6 +626,23 @@ TL_LIST_LOADING					Downloading translation list. Please wait...
 TL_TRANSLATION_DOWNLOAD			Downloading translation:
 TL_DOWNLOAD_DONE				Translations downloaded.\nTo apply the translations, click "Close", select the translation and click "Apply".
 TL_DOWNLOAD_DONE_TITLE			Download complete
+TL_URL_DOWNLOADING				Downloading the translation
+TL_URL_TITLE					Download translation from URL
+TL_URL_TEXT						Input a valid URL of the translation file.\nCurrently Maid Fiddler supports only HTTP or HTTPS links.\n\nNote that the translation file must have a valid translation tag in order to be saved.
+TL_NAME_CHANGE_TITLE			Rename translation file name
+TL_NAME_CHANGE					The translation file with the name below already exists (or the translation file has no name).\nYou can	rename the file and click "OK", or click "CANCEL" to overwrite the existing translation file.\nIf the field is left empty, Maid Fiddler will generate a random file name.
+
+; Errors
+ERROR_UNPATCHED					Maid Fiddler {0} detects that Assembly-CSharp.dll hasn't been patched or is patched with an outdated version of Maid Fiddler Patcher.\nIn order to function, Maid Fiddler requires that the assembly is patched with ReiPatcher or Sybaris.\nThe game may be unstable, until it is patched.\n\nMake sure you have the latest patcher downloaded and re-patch the game.
+ERROR_UNPATCHED_TITLE			No patch detected
+ERROR_OLD_PATCH					Maid Fiddler {0} detected that Assembly-CSharp.dll is patched with an unsupported version of Maid Fiddler Patcher.\nThe game was patched with patcher version {1}, but this version of Maid Fiddler supports only patcher versions {2} through {3}.\nThe game may not be functional until it is re-patched!\n\nMake sure you have the latest patcher downloaded and re-patch the game.
+ERROR_OLD_PATCH_TITLE			Outdated Maid Fiddler patch
+ERROR_CHECK_FAILED				Maid Fiddler failed to check that Assembly-CSharp.dll has been patched properly. Perhaps some other patch is causing the issue.\nMaid Fiddler can still be used, but it may cause errors.\n\nPlease re-patch the game and make sure no other plug-ins cause any interference.
+ERROR_CHECK_FAILED_TITLE		Failed to locate the patcher
+ERROR_LOG_MESSAGE_TITLE			Oh noes! An error!
+ERROR_LOG_MESSAGE				Oh no! An error has occurred in Maid Fiddler!
+ERROR_LOG_CREATED				A log named {0} was created.\nPlease, send this log to the developer with the description of what you attempted to do.
+ERROR_LOG_NOT_CREATED			Failed to create a dump message. Send a screenshot of the following stack trace to the developer:\n==START==\n{0}\n==END==
 
 OK								OK
 CANCEL							Cancel

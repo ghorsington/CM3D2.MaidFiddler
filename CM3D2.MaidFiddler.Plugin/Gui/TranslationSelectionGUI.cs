@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -209,12 +210,156 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OpenTranslationDownloadUrl(object sender, EventArgs e)
         {
-            //TextDialog tdURL = new TextDialog(Translation.GetTranslation("TL_URL_TITLE"), Translation.GetTranslation("TL_URL_TEXT"), string.Empty, s => true,);
+            Uri uri = null;
+            TextDialog tdURL = new TextDialog(
+            Translation.GetTranslation("TL_URL_TITLE"),
+            Translation.GetTranslation("TL_URL_TEXT"),
+            string.Empty,
+            s =>
+            {
+                try
+                {
+                    uri = new Uri(s);
+                    return uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            },
+            Translation.GetTranslation("OK"),
+            Translation.GetTranslation("CANCEL"));
+            DialogResult promptDialog = tdURL.ShowDialog(this);
+            tdURL.Dispose();
+
+            if (promptDialog != DialogResult.OK)
+                return;
+
+            string translationsPath = Path.Combine(MaidFiddler.DATA_PATH, Translation.TRANSLATIONS_PATH);
+            LoadingBarGUI loadingBarGui = new LoadingBarGUI(
+            Translation.GetTranslation("LOADING"),
+            Translation.GetTranslation("TL_URL_DOWNLOADING"),
+            true,
+            g =>
+            {
+                HttpWebRequest webRequest = (HttpWebRequest) WebRequest.Create(uri);
+                g.Timer.Start();
+                Debugger.WriteLine(LogLevel.Info, "Getting translation...");
+                webRequest.BeginGetResponse(
+                ar =>
+                {
+                    try
+                    {
+                        HttpWebResponse response = (HttpWebResponse) webRequest.EndGetResponse(ar);
+                        Debugger.WriteLine(LogLevel.Info, "Got response!");
+                        Debugger.WriteLine(LogLevel.Info, $"Response: {response.StatusCode}");
+                        if (response.StatusCode == HttpStatusCode.NotFound)
+                        {
+                            MessageBox.Show(
+                            "Failed to download the translation: File not found",
+                            "Boop!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                            g.DialogResult = DialogResult.Abort;
+                            g.Timer.Stop();
+                            g.Close();
+                            return;
+                        }
+                        Stream s = response.GetResponseStream();
+                        Debugger.WriteLine(LogLevel.Info, "Reading response");
+                        StringBuilder sb = new StringBuilder();
+                        byte[] responseBuffer = new byte[1024];
+                        int read;
+                        do
+                        {
+                            read = s.Read(responseBuffer, 0, responseBuffer.Length);
+                            sb.Append(Encoding.UTF8.GetString(responseBuffer, 0, read));
+                        } while (read > 0);
+
+                        using (TextReader tr = new StringReader(sb.ToString()))
+                        {
+                            if (!Translation.TagPattern.Match(tr.ReadLine()).Success)
+                            {
+                                Debugger.WriteLine(LogLevel.Error, "Failed to parse the translation: No tag found!");
+                                MessageBox.Show(
+                                "The file does not contain the translation tag and thus cannot be recognised as a Maid Fiddler translation file.\nThe file has not been saved.",
+                                "Boop!",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                                g.DialogResult = DialogResult.Abort;
+                                g.Timer.Stop();
+                                g.Close();
+                                return;
+                            }
+                        }
+
+                        string tlFileName = Path.GetFileNameWithoutExtension(uri.AbsolutePath);
+                        Debugger.WriteLine($"File name: {tlFileName}");
+
+                        if (tlFileName == string.Empty
+                            || File.Exists(Path.Combine(translationsPath, $"{tlFileName}.txt")))
+                        {
+                            char[] invalidChars = Path.GetInvalidFileNameChars();
+                            TextDialog tdFileName = new TextDialog(
+                            Translation.GetTranslation("TL_NAME_CHANGE_TITLE"),
+                            Translation.GetTranslation("TL_NAME_CHANGE"),
+                            tlFileName,
+                            s1 => !s1.Any(c => invalidChars.Contains(c)),
+                            Translation.GetTranslation("OK"),
+                            Translation.GetTranslation("CANCEL"));
+                            if (tdFileName.ShowDialog(g) == DialogResult.OK)
+                                tlFileName = tdFileName.Input;
+                            if (tlFileName == string.Empty)
+                            {
+                                tlFileName =
+                                Convert.ToBase64String(BitConverter.GetBytes(DateTime.Now.Ticks)).Replace('/', '$');
+                            }
+
+                            tdFileName.Dispose();
+                        }
+
+                        string path = Path.Combine(translationsPath, $"{tlFileName}.txt");
+                        Debugger.WriteLine($"Writing translation to {path}");
+
+                        using (TextWriter tw = File.CreateText(path))
+                            tw.Write(sb.ToString());
+                        g.DialogResult = DialogResult.OK;
+                    }
+                    catch (WebException we)
+                    {
+                        MessageBox.Show(
+                        $"Failed to retreive translation.\nResponse: {we.Message}",
+                        "Boop!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                        g.DialogResult = DialogResult.Abort;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                        $"Unknown error occurred.\nInfo: {ex.ToString()}",
+                        "Boop!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                        g.DialogResult = DialogResult.Abort;
+                    }
+                    finally
+                    {
+                        g.Timer.Stop();
+                        g.Close();
+                    }
+                },
+                null);
+            });
+            DialogResult result = loadingBarGui.ShowDialog(this);
+            loadingBarGui.Dispose();
+            if (result != DialogResult.OK)
+                return;
             MessageBox.Show(
-            "Placeholder for URL translation download menu.",
-            "Boop!",
-            MessageBoxButtons.OK,
-            MessageBoxIcon.None);
+            Translation.GetTranslation("TL_DOWNLOAD_DONE"),
+            Translation.GetTranslation("TL_DOWNLOAD_DONE_TITLE"),
+            MessageBoxButtons.OK);
+            LoadTranslations(Translation.CurrentTranslationFile);
         }
 
         private struct TranslationData
