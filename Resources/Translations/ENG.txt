@@ -150,6 +150,7 @@ Yotogi_Royalsoap				Royal Soap
 Yotogi_Toilet					Toilet
 Yotogi_Immoral					Immoral
 Yotogi_Bride					Bridal
+Yotogi_Succubus					Succubus
 
 ; Params			
 Care							Care
