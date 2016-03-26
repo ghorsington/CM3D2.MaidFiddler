@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.26-2" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.26-3" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -11,7 +11,7 @@
 ; If the translation is missing, <GUI Label> is used as the translation of itself (useful if one wants to leave Japanese labels untranslated).
 
 ; Feel free to edit the title of the tool!
-TITLE_TEXT						- Vive la Maid Fiddler!
+TITLE_TEXT						- Fiddle responsibly!
 
 ; Info tab
 TAB_INFO						Information
@@ -456,6 +456,16 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 寄り添いアナルセックス側位			Side Spooning Anal Sex
 尻上げ後背位						Ass-Raised Doggy Style Sex
 尻上げアナル後背位					Ass-Raised Anal Doggy Style Sex
+スワッピング吊るしセックス				Swapping Hanging Sex
+スワッピング吊るしアナルセックス			Swapping Hanging Anal Sex
+乱交3P2穴駅弁					Group 3P Two-Hole Carrying Sex
+乱交3P口＆セックス騎乗位			Group 3P Oral /w Cowgirl Sex
+乱交3P口＆アナルセックス騎乗位		Group 3P Oral /w Anal Cowgirl Sex
+乱交3Pセックス側位					Group 3P Oral /w Spooning Sex
+乱交3Pアナルセックス側位				Group 3P Oral /w Anal Spooning Sex
+乱交4Pセックス正常位				Group 4P Missionary Sex
+乱交4Pアナルセックス正常位			Group 4P Anal Missionary Sex	
+	
 
 ; CM3D2+ Skills
 トイレセックス						Toilet Sex
@@ -512,6 +522,9 @@ M女								Masochist
 撫子							Loveable
 一途							Earnest
 盲目的							Reckless
+風雅							Tasteful
+母性的							Motherly
+女神							Goddess
 
 ; Menu items
 MENU_GAME						Game and Salon

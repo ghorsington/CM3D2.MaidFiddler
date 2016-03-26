@@ -9,7 +9,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
     public static class Translation
     {
         public const string TRANSLATIONS_PATH = @"MaidFiddler\Translations";
-        private static readonly Dictionary<string, string> translationDictionary;
+        private static Dictionary<string, string> translationDictionary;
         private static readonly Dictionary<string, List<Action<string>>> translatableControlsDictionary;
 
         public static readonly Regex TagPattern =
@@ -72,7 +72,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                 else
                 {
                     Debugger.WriteLine(LogLevel.Info, "Loading translation labels.");
-                    translationDictionary.Clear();
+                    Dictionary<string, string> newTranslationDictionary = new Dictionary<string, string>();
                     using (TextReader reader = File.OpenText(filePath))
                     {
                         string line = reader.ReadLine();
@@ -101,9 +101,17 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
 
                             string text = parts[1].Replace(@"\n", "\n").Replace(@"\r", "\r");
 
-                            translationDictionary.Add(parts[0], text);
+                            if (!newTranslationDictionary.ContainsKey(parts[0]))
+                                newTranslationDictionary.Add(parts[0], text);
+                            else
+                            {
+                                Debugger.WriteLine(LogLevel.Warning, $"Translation for {parts[0]} already exists! Replacing with a newer version...");
+                                newTranslationDictionary[parts[0]] = text;
+                            }
                         }
                     }
+                    translationDictionary.Clear();
+                    translationDictionary = newTranslationDictionary;
                 }
                 Debugger.WriteLine(LogLevel.Info, "Texts loaded");
                 CurrentTranslationFile = filename;
@@ -116,15 +124,17 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         public static void ApplyTranslation()
         {
             Debugger.WriteLine(LogLevel.Info, "Applying translation");
-
-            foreach (KeyValuePair<string, List<Action<string>>> translationItems in translatableControlsDictionary)
+            Debugger.Assert(() =>
             {
-                string translation;
-                if (translationDictionary.TryGetValue(translationItems.Key, out translation))
-                    translationItems.Value.ForEach(a => a.Invoke(translation));
-                else
-                    translationItems.Value.ForEach(a => a.Invoke(translationItems.Key));
-            }
+                foreach (KeyValuePair<string, List<Action<string>>> translationItems in translatableControlsDictionary)
+                {
+                    string translation;
+                    if (translationDictionary.TryGetValue(translationItems.Key, out translation))
+                        translationItems.Value.ForEach(a => a.Invoke(translation));
+                    else
+                        translationItems.Value.ForEach(a => a.Invoke(translationItems.Key));
+                }
+            }, "Failed to apply translation.");
         }
 
         public static bool Exists(string name)
