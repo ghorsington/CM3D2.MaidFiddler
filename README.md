@@ -1,27 +1,21 @@
+![Preview](http://www.hongfire.com/forum/attachment.php?attachmentid=295661&stc=1&d=1440535987)
 # CM3D2.MaidFiddler
 Maid Fiddler is a plug-in for CM3D2 which functions as a real-time game editor.
 The tool uses in-game API, ReiPatcher and UnityInjector to hook itself into game's logic.
 
 ## Requirements
-To sucessfully build Maid Fiddler from source, one neeeds the following libraries:
-* ReiPatcher.exe  (Found in ReiPatcher)
-* UnityInjector.dll (Found in UnityInjector)
-* Mono.Cecil.dll  (Found in ReiPatcher or from its project on GitHub)
-* Mono.Cecil.Inject.dll (Found in its own GitHub project)
-* ExIni.exe (Found in ReiPatcher)
-* Assembly-CSharp.dll (Found in CM3D2's own assemblies)
+In order to install Maid Fiddler, the following libraries/programs are needed:
+* CM3D2
+* One of the following patchers
+ - ReiPatcher 0.9.0.8+ ([**HongFire**](http://www.hongfire.com/forum/showthread.php/444566-ReiPatcher-General-Purpose-Net-Assembly-Patcher), [**GitHub**](https://usagirei.github.io/#!/downloads/reipatcher/main))
+ - Sybaris 15117+ ([**Seesaawiki**](http://seesaawiki.jp/cm3d2/d/%b2%fe%c2%a4#sybaris))
+* UnityInjector 1.0.4.0+ ([**HongFire**](http://www.hongfire.com/forum/showthread.php/444567-UnityInjector-Plugin-Powered-Unity-Code-Injector), [**GitHub**](https://usagirei.github.io/#!/downloads/unityinjector/main))
+* Mono.Cecil (comes with ReiPatcher and Sybaris)
+* Cecil.Inject 1.1+ ([**HongFire**](http://www.hongfire.com/forum/showthread.php/444581-Cecil-Inject-An-extension-to-Mono-Cecil-1-0-1), [**GitHub**](https://github.com/denikson/Mono.Cecil.Inject/releases))
 
 ## Download/Build
 ### [Download the latest released distribution](https://github.com/denikson/CM3D2.MaidFiddler/releases)
 ### [How to build from source](https://github.com/denikson/CM3D2.MaidFiddler/wiki/Working-with-source#building)
 
-## Structure of the plug-in
-### CM3D2.MaidFiddler.Hooks
-`CM3D2.MaidFiddler.Hooks` acts as a bridge between the game's native API and Maid Fiddler. Maid Fiddler, and other plug-ins,
-may use it to link their logic to in-game events and method calls.
-
-### CM3D2.MaidFiddler.Patch
-`CM3D2.MaidFiddler.Patch` contains the code that links hook methods specified in `CM3D2.MaidFiddler.Hooks` with in-game method calls.
-
-### CM3D2.MaidFiddler.Plugin
-This is the core of Maid Fiddler. It contains the GUI, the plug-in and all its logic
+## Help
+For more help, visit the [FAQ](https://github.com/denikson/CM3D2.MaidFiddler/wiki/FAQ).
