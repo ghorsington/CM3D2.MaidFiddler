@@ -194,7 +194,6 @@ namespace CM3D2.MaidFiddler.Hook
         public static event EventHandler<PostProcessNightEventArgs> ProcessNightWorkData;
         public static event EventHandler<PostProcessNoonEventArgs> ProcessNoonWorkData;
         public static event EventHandler<StatusChangedEventArgs> PropertyRemoved;
-        public static event EventHandler<StatusChangedEventArgs> SkillExpAdded;
         public static event EventHandler<StatusEventArgs> StatusChanged;
         public static event EventHandler<StatusChangedEventArgs> StatusChangedID;
         public static event EventHandler<StatusUpdateEventArgs> StatusUpdated;
@@ -299,18 +298,6 @@ namespace CM3D2.MaidFiddler.Hook
                 BlockAssignment = false
             };
             PropertyRemoved?.Invoke(null, args);
-        }
-
-        public static void OnSkillExpAdded(ref Maid currentMaid, int id, int addval)
-        {
-            StatusChangedEventArgs args = new StatusChangedEventArgs
-            {
-                Tag = MaidChangeType.SkillExp,
-                CallerMaid = currentMaid,
-                ID = id,
-                Value = addval
-            };
-            SkillExpAdded?.Invoke(null, args);
         }
 
         public static bool OnStatusChanged(int tag, ref Maid currentMaid)

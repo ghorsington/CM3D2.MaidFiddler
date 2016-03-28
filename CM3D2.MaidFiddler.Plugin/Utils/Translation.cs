@@ -105,7 +105,9 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                                 newTranslationDictionary.Add(parts[0], text);
                             else
                             {
-                                Debugger.WriteLine(LogLevel.Warning, $"Translation for {parts[0]} already exists! Replacing with a newer version...");
+                                Debugger.WriteLine(
+                                LogLevel.Warning,
+                                $"Translation for {parts[0]} already exists! Replacing with a newer version...");
                                 newTranslationDictionary[parts[0]] = text;
                             }
                         }
@@ -124,7 +126,8 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         public static void ApplyTranslation()
         {
             Debugger.WriteLine(LogLevel.Info, "Applying translation");
-            Debugger.Assert(() =>
+            Debugger.Assert(
+            () =>
             {
                 foreach (KeyValuePair<string, List<Action<string>>> translationItems in translatableControlsDictionary)
                 {
@@ -134,7 +137,8 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                     else
                         translationItems.Value.ForEach(a => a.Invoke(translationItems.Key));
                 }
-            }, "Failed to apply translation.");
+            },
+            "Failed to apply translation.");
         }
 
         public static bool Exists(string name)

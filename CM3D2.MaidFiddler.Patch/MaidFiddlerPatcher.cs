@@ -79,7 +79,6 @@ namespace CM3D2.MaidFiddler.Patch
             MethodDefinition maidYotogiUpdateHook =
             maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnMaidClassAndYotogiUpdate));
             MethodDefinition classUpdateHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnClassTypeUpdate));
-            MethodDefinition skillExpAddedHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnSkillExpAdded));
             MethodDefinition thumbnailChangedHook = maidHooks.GetMethod(
             nameof(MaidStatusChangeHooks.OnThumbnailChanged));
             MethodDefinition noonWorkEnableCheckHook =
@@ -197,10 +196,10 @@ namespace CM3D2.MaidFiddler.Patch
             WritePreviousLine($"Add{typeNames[(int) MaidChangeType.SkillExp]}");
             maidParam.GetMethod($"Add{typeNames[(int) MaidChangeType.SkillExp]}")
                      .InjectWith(
-                     skillExpAddedHook,
+                     statusChangeIDHook2,
                      0,
-                     0,
-                     InjectFlags.PassFields | InjectFlags.PassParametersVal,
+                     (int) MaidChangeType.SkillExp,
+                     InjectFlags.PassFields | InjectFlags.PassTag | InjectFlags.PassParametersVal,
                      typeFields: new[] {maidParam.GetField("maid_")});
 
             WritePreviousLine($"Set{typeNames[(int) MaidChangeType.WorkLevel]}");

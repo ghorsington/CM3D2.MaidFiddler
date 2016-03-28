@@ -18,7 +18,7 @@ namespace CM3D2.MaidFiddler.Plugin
     public class MaidFiddler : PluginBase
     {
         public const string CONTRIBUTORS = "denikson";
-        public const string VERSION = "BETA 0.9-pre3";
+        public const string VERSION = "BETA 0.9-pre4";
         public const string PROJECT_PAGE = "https://github.com/denikson/CM3D2.MaidFiddler";
         public const string RESOURCE_URL = "https://raw.githubusercontent.com/denikson/CM3D2.MaidFiddler/master";
         public const uint SUPPORTED_PATCH_MAX = 1100;

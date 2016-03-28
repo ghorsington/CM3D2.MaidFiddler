@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.26-3" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.26-4" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -529,7 +529,7 @@ M女								Masochist
 ; Menu items
 MENU_GAME						Game and Salon
 MENU_ALL_MAID					Maid cheats
-MENU_MAID						Current maid
+MENU_MAID						Selected maid
 
 ; Game items
 MENU_GAME_CLEAN_DEBT			Clean debt
