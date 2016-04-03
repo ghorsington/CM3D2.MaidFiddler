@@ -310,10 +310,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                             if (tdFileName.ShowDialog(g) == DialogResult.OK)
                                 tlFileName = tdFileName.Input;
                             if (tlFileName == string.Empty)
-                            {
-                                tlFileName =
-                                Convert.ToBase64String(BitConverter.GetBytes(DateTime.Now.Ticks)).Replace('/', '$');
-                            }
+                                tlFileName = FiddlerUtils.GenerateFileName();
 
                             tdFileName.Dispose();
                         }

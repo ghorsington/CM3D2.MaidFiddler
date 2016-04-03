@@ -42,6 +42,11 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             actions.Add(translationAction);
         }
 
+        public static bool IsTranslated(string label)
+        {
+            return translationDictionary.ContainsKey(label);
+        }
+
         public static void GetTranslation(Control c)
         {
             string result;
@@ -100,6 +105,14 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                                 continue;
 
                             string text = parts[1].Replace(@"\n", "\n").Replace(@"\r", "\r");
+
+                            if (text.Trim() == string.Empty)
+                            {
+                                Debugger.WriteLine(
+                                LogLevel.Warning,
+                                $"Translation for {parts[0]} is empty! Skipping...");
+                                continue;
+                            }
 
                             if (!newTranslationDictionary.ContainsKey(parts[0]))
                                 newTranslationDictionary.Add(parts[0], text);
