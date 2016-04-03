@@ -1,4 +1,4 @@
-![Preview](http://www.hongfire.com/forum/attachment.php?attachmentid=308586&d=1459008509)
+![Preview](https://raw.githubusercontent.com/denikson/CM3D2.MaidFiddler/master/thumbnail.png)
 # CM3D2.MaidFiddler
 Maid Fiddler is a plug-in for CM3D2 which functions as a real-time game editor.
 The tool uses in-game API, ReiPatcher and UnityInjector to hook itself into game's logic.
