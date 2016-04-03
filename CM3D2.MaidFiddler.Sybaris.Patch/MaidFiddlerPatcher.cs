@@ -63,6 +63,7 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
             "Maid&",
             "System.Int32",
             "System.Int32");
+            MethodDefinition statusChangeIDHook3 = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnStatusChangedID2));
             MethodDefinition propertyRemovedHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnPropertyRemoved));
             MethodDefinition statusUpdateHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnStatusUpdate));
             MethodDefinition maidYotogiUpdateHook =
@@ -170,7 +171,7 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
 
             maidParam.GetMethod($"Add{typeNames[(int) MaidChangeType.SkillExp]}")
                      .InjectWith(
-                     statusChangeIDHook2,
+                     statusChangeIDHook3,
                      0,
                      (int) MaidChangeType.SkillExp,
                      InjectFlags.PassFields | InjectFlags.PassTag | InjectFlags.PassParametersVal,

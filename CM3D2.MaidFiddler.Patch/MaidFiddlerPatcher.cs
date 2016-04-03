@@ -74,6 +74,7 @@ namespace CM3D2.MaidFiddler.Patch
             typeof (Maid).MakeByRefType(),
             typeof (int),
             typeof (int));
+            MethodDefinition statusChangeIDHook3 = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnStatusChangedID2));
             MethodDefinition propertyRemovedHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnPropertyRemoved));
             MethodDefinition statusUpdateHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnStatusUpdate));
             MethodDefinition maidYotogiUpdateHook =
@@ -196,7 +197,7 @@ namespace CM3D2.MaidFiddler.Patch
             WritePreviousLine($"Add{typeNames[(int) MaidChangeType.SkillExp]}");
             maidParam.GetMethod($"Add{typeNames[(int) MaidChangeType.SkillExp]}")
                      .InjectWith(
-                     statusChangeIDHook2,
+                     statusChangeIDHook3,
                      0,
                      (int) MaidChangeType.SkillExp,
                      InjectFlags.PassFields | InjectFlags.PassTag | InjectFlags.PassParametersVal,
