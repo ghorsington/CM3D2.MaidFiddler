@@ -1,0 +1,617 @@
+﻿#MAIDFIDDLER_TRANSLATION "简体中文" "2.0 for1.25" "kumo31"
+; Maid Fiddler GUI Texts
+;
+; Most of the translations are not by me! 
+; Special thanks go to the HF Translation team and Algester for providing Japanese translations!
+;
+; Syntax:
+; <GUI Label>	<Translation> (NOTE: Separate with tabs, not spaces!)
+; Comment lines with ";"
+; Comments and faulty lines (wrong separators, missing translation) are ignored
+
+; Feel free to edit the title of the tool!
+TITLE_TEXT						- 修改永无止境！
+
+; Info tab
+Name						主人名
+TAB_INFO						女仆信息
+FirstName						名字
+LastName						姓氏
+FirstNameCall					以名字称呼
+Personal						性格
+ContractType					合同类型
+Leader						女仆长
+Condition						关系
+ConditionSpecial				夜战状态
+Employment						雇佣于 天
+MAID_SEX_EXP					性经验
+InitSeikeiken					初始
+Seikeiken						现在
+MAID_CLASS_SELECTED				类型
+MaidClassType					女仆类型
+YotogiClassType					夜战类型
+Profile							女仆简介
+FreeComment						用户简介
+
+; Table columns			
+NAME							名称
+VAL								数值
+LOCK							锁定
+HAS								获得
+LVL								等级
+TOTAL_XP						总经验
+FORCE_ENABLE					强行解锁
+PLAY_COUNT						次数
+
+; Maid stats			
+TAB_STATS						属性
+MAID_PARAMS						常规属性
+MAID_PARAMS_BONUS				额外属性
+MAID_ERO_ZONES					性感带
+MAID_STATS						女仆状态
+
+; Maid classes			
+TAB_CLASSES						类型
+MAID_CLASS						女仆类型
+YOTOGI_CLASS					夜战类型
+
+; Maid work
+TAB_WORK						工作
+CURRENT_WORK					日程
+WORK_NOON						白天
+WORK_NIGHT						夜晚
+NOON_WORK						白天工作
+NIGHT_WORK						夜晚工作
+NoonWorkId						白天
+NightWorkId						夜晚
+
+; Maid skills	
+TAB_YOTOGI						夜战技能
+
+; Maid misc			
+TAB_MISC						特征与癖好
+MAID_PROPENSITY					性癖
+MAID_FEATURES					特征
+
+; Game			
+TAB_GAME						游戏设置
+PlayerName						玩家姓名
+Money							现金
+ShopUseMoney					在商店中的消费
+SalonLoan						现在的欠款
+InitSalonLoan					初始的欠款
+PhaseDays						天数 (现阶段)
+Days							天数 (总共)
+ScenarioPhase					现阶段
+SCENARIO_NEW					新游戏
+SCENARIO_DEBT					还款阶段
+SCENARIO_MAIN					自由阶段
+SALON_STATS						俱乐部状态
+SalonClean						清洁
+SalonBeautiful					绚丽
+SalonEvaluation					评价
+SalonGrade						现在星级
+BestSalonGrade					最高星级
+BaseMaidPoints					初始女仆点数（无额外）
+
+; Personalities			
+Pure							纯真妹系
+Cool							冷静成熟系
+Pride							傲娇系
+Yandere							病娇系
+
+; Contract types			
+Nurture							训练中
+Free							自由
+Exclusive						专属
+
+; Condition			
+Tonus							紧张
+Contact							亲近
+Trust							信任
+Lover							恋人
+Slave							爱奴
+
+; Condition Special			
+Null							普通
+Drunk							醉酒
+Osioki							惩罚
+
+; Sexual exp			
+No_No							处女
+Yes_No							小穴非处
+No_Yes							菊花非处
+Yes_Yes							穴菊非处
+
+; Maid class type			
+Maid_Novice						新手女仆
+Maid_Lovely						可爱女仆
+Maid_Elegance					优雅女仆
+Maid_Sexy						性感女仆
+Maid_Innocent					纯洁女仆
+Maid_Charm						魅力女仆
+Maid_Ready						老练女仆
+
+; Yotogi class type			
+Yotogi_Debut					出道女仆
+Yotogi_Rudeness					放纵女仆
+Yotogi_Slave					奴隶女仆
+Yotogi_Abnormal					变态女仆
+Yotogi_Service					服务女仆
+Yotogi_Escort					护卫女仆
+Yotogi_Soap						泡泡女仆
+Yotogi_Sweet					甜美女仆
+Yotogi_Party					派对女仆
+Yotogi_SexSlave					性奴女仆
+Yotogi_Festival					节日女仆
+Yotogi_Harlem					后宫女仆
+Yotogi_Royalsoap				贵族泡泡女仆
+Yotogi_Toilet					公厕女仆
+Yotogi_Immoral					背德女仆
+
+; Params			
+Care							关怀
+Charm							魅惑
+CurExcite						兴奋值 (此时)
+CurMind							精神 (此时)
+CurReason						理性 (此时)
+Elegance						优雅
+Frustration						失败
+Hentai							变态
+Housi							侍奉
+Hp						体力 (最高)
+Inyoku							淫欲
+Likability						好感度
+Lovely							可怜
+MaidPoint						女仆点数
+Mind							精神 (最高)
+MValue							M性
+OthersPlayCount					接客次数
+PlayNumber						交换次数
+Reason							理性 (最高)
+Reception						接待
+StudyRate						习得率 (x10)
+TeachRate						指导 (x10)
+YotogiPlayCount					夜战次数
+SexualBack						菊花
+SexualCuri						阴帝
+SexualFront						阴道
+SexualMouth						嘴
+SexualNipple					乳头
+SexualThroat					喉
+Sales							获得资金
+TotalSales						获得总资金
+Evaluation						Evaluation
+TotalEvaluation					Total Evaluation
+CurHp							体力 (此时)
+PopularRank						排名
+
+; Bonus params
+BonusCare						关怀
+BonusCharm					魅惑	
+BonusElegance					优雅
+BonusHentai						变态
+BonusHousi						侍奉
+BonusHp							体力
+BonusInyoku						淫欲
+BonusLovely						可怜
+BonusMind						精神
+BonusMValue						M性	
+BonusReception					接待
+BonusTeachRate					习得率
+
+; Noon work			
+裁縫							裁缝
+料理							料理
+華道							花道
+接客練習						接客练习
+模様替え						整容
+掃除							扫除
+教養							教养
+派遣							派遣
+化粧							化妆
+エステ							美容
+メイド研修						女仆训练
+
+; Night work	
+クラブ接待							接待
+夜伽							夜战
+ソーププレイ						泡泡Play
+ハメ撮りプレイ						摄影Play
+恋人プレイ						恋人Play
+恋人プレイ（報告）					恋人Play (报告)
+野外露出						野外露出
+騙され接待01						仙人跳 01
+騙され接待02						仙人跳 02
+騙され接待03						仙人跳 03
+騙され接待（報告）					仙人跳 (报告)
+アナルプレイ						菊花Play
+純愛ソーププレイ					纯爱泡泡Play
+お仕置きプレイ						惩罚Play
+お客様公開プレイ					公开Play
+路地裏露出セックス					小巷露出啪啪啪
+詰られプレイ						淫语Play
+らぶらぶ媚薬プレイ					LOVELOVE春药Play				
+乱暴なお客様前半					粗暴的客人前半					
+乱暴なお客様後半１					粗暴的客人后半					
+AV撮影						AV摄影						
+純愛プレイ前半					纯爱Play前半						
+純愛プレイ後半					纯爱Play后半						
+なりきり新婚プレイ					扮演新婚play				
+乱暴なお客様後半２					粗暴的客人后半2					
+フリー撮影会					自由摄影会						
+フリー逆ナンパ					自由逆搭讪						
+フリー痴漢プレイ					自由痴汉play				
+痴漢克服プレイ					痴汉克服play						
+媚薬プレイ					春药play						
+お風呂接待					洗澡招待						
+ハーレム特訓プレイ					后宫特训
+
+; Yotogi skills
+;Virgin	
+処女喪失セックス					破处
+処女喪失セックスChu-B				[Chu-B] 破处
+アナル処女喪失セックス				菊花破处
+アナル処女喪失セックスChu-B			[Chu-B] 菊花破处
+;Pleasure	
+愛撫							爱抚
+愛撫Chu-B						[Chu-B] 爱抚
+バイブ責め						振动棒自慰
+バイブ責めChu-B					[Chu-B] 振动棒自慰
+アナルバイブ責め					菊花振动棒自慰
+アナルバイブ責めChu-B				[Chu-B] 菊花振动棒自慰
+セックス正常位						啪啪啪正常位
+セックス正常位Chu-B				[Chu-B] 啪啪啪正常位
+アナルセックス正常位					菊花啪啪啪正常位
+アナルセックス正常位Chu-B			[Chu-B] 菊花啪啪啪正常位
+セックス後背位						啪啪啪后背位
+セックス後背位Chu-B				[Chu-B] 啪啪啪后背位
+アナルセックス後背位					菊花啪啪啪后背位
+アナルセックス後背位Chu-B			[Chu-B] 菊花啪啪啪后背位
+セックス騎乗位						啪啪啪骑乘位
+セックス騎乗位Chu-B				[Chu-B] 啪啪啪骑乘位
+アナルセックス騎乗位					菊花啪啪啪骑乘位
+アナルセックス騎乗位Chu-B			[Chu-B]菊花啪啪啪骑乘位
+言葉責め愛撫						语言爱抚
+グラインドセックス騎乗位				扭腰骑乘位啪啪啪
+グラインドセックス騎乗位Chu-B			[Chu-B] 扭腰骑乘位啪啪啪
+グラインドアナルセックス騎乗位			扭腰骑乘位菊花啪啪啪
+グラインドアナルセックス騎乗位Chu-B		[Chu-B] 扭腰骑乘位菊花啪啪啪
+太バイブ責め						巨大振动棒自慰
+太バイブ責めChu-B					[Chu-B] 巨大振动棒自慰
+バイブ責めアナルセックス正常位			两穴插入正常位啪啪啪(主菊花)
+バイブ責めアナルセックス正常位Chu-B	[Chu-B] 两穴插入正常位啪啪啪(主菊花)
+アナルバイブ責めセックス後背位			两穴插入后背位啪啪啪(主前穴)
+アナルバイブ責めセックス後背位Chu-B	[Chu-B] 两穴插入后背位啪啪啪(主前穴)
+だいしゅきホールドセックス正常位		双腿夹住正常位啪啪啪
+だいしゅきホールドセックス正常位Chu-B	[Chu-B] 双腿夹住正常位啪啪啪
+だいしゅきホールドアナルセックス正常位	双腿夹住正常位菊花啪啪啪
+だいしゅきホールドアナル正常位Chu-B	[Chu-B] 双腿夹住正常位菊花啪啪啪
+抱きつきセックス後背位				环腰抱后背位啪啪啪
+抱きつきセックス後背位Chu-B			[Chu-B] 环腰抱后背位啪啪啪
+抱きつきアナルセックス後背位			环腰抱后背位菊花啪啪啪
+抱きつきアナルセックス後背位Chu-B		[Chu-B] 环腰抱后背位菊花啪啪啪
+だいしゅきホールド					爱的拥抱
+;Pervert
+かっこいいポーズ						帅气姿势
+かわいいポーズ						可爱姿势
+オナニー							自慰
+オナニーChu-B						[Chu-B] 自慰
+アナルオナニー						慰菊
+アナルオナニーChu-B					[Chu-B] 慰菊
+Ｈなポーズ							性感姿势
+手コキオナニー						手交振动棒
+手コキオナニーChu-B					[Chu-B] 手交振动棒
+フェラオナニー						口交振动棒
+フェラオナニーChu-B					[Chu-B] 口交振动棒
+変態ポーズプレイ					变态姿势play
+バイブオナニー						乳交口交
+バイブオナニーChu-B					[Chu-B] 乳交口交
+アナルバイブオナニー					菊花振动棒振动棒
+アナルバイブオナニーChu-B				[Chu-B] 菊花振动棒振动棒
+太バイブオナニー					巨大振动棒自慰
+太バイブオナニーChu-B				[Chu-B] 巨大振动棒自慰
+露出プレイ						露出Play
+犬プレイ							犬Play
+露出セックス背面立位				露出背面立位啪啪啪
+露出セックス背面立位Chu-B			[Chu-B] 露出背面立位啪啪啪
+露出アナルセックス背面立位			露出背面立位菊花啪啪啪
+露出アナルセックス背面立位Chu-B		[Chu-B] 露出背面立位菊花啪啪啪
+実況オナニー						直播自慰
+実況オナニーChu-B					[Chu-B] 直播自慰
+;Service
+手コキ							手交
+手コキChu-B						[Chu-B] 手交
+フェラチオ							口交
+フェラチオChu-B						[Chu-B] 口交
+パイズリ							乳交
+パイズリChu-B						[Chu-B]乳交
+パイズリフェラ						乳交+口交
+パイズリフェラChu-B					[Chu-B] 乳交+口交
+玉舐めフェラチオ					舔蛋口交
+セルフイラマ						强制深喉
+セルフイラマChu-B					[Chu-B] 强制深喉
+シックスナイン						69
+シックスナインChu-B					[Chu-B] 69
+スケベ椅子フェラ					淫椅口交
+スケベ椅子フェラChu-B				[Chu-B] 淫椅口交
+スケベ椅子セックス					淫椅啪啪啪
+スケベ椅子セックスChu-B				[Chu-B] 淫椅啪啪啪
+スケベ椅子アナルセックス				淫椅菊花啪啪啪
+スケベ椅子アナルセックスChu-B			[Chu-B] 淫椅菊花啪啪啪
+MP全身洗い						泰国浴
+MP全身洗いChu-B					[Chu-B] 泰国浴
+ディープスロート						深喉
+ディープスロートChu-B				[Chu-B] 深喉
+高級MP全身洗い					高级泰国浴
+全身舐め奉仕						舔身体
+;Scolding	
+詰られパイズリ						淫语乳交
+詰られ手コキ						淫语手交
+詰られ騎乗位						淫语骑乘位
+詰られアナル騎乗位					淫语菊花骑乘位
+;Bondage	
+拘束愛撫							拘束爱抚
+拘束愛撫Chu-B					[Chu-B] 拘束爱抚
+イラマチオ							深喉
+イラマチオChu-B					[Chu-B] 深喉
+拘束セックス						拘束啪啪啪
+拘束セックスChu-B					[Chu-B] 拘束啪啪啪
+拘束アナルセックス					拘束菊花啪啪啪
+拘束アナルセックスChu-B				[Chu-B] 拘束菊花啪啪啪
+首絞めセックス正常位				窒息啪啪啪正常位
+首絞めセックス正常位Chu-B			[Chu-B] 窒息啪啪啪正常位
+首絞めアナルセックス正常位			窒息菊花啪啪啪正常位
+首絞めアナルセックス正常位Chu-B		[Chu-B] 窒息菊花啪啪啪正常位
+三角木馬拘束						三角木马拘束
+吊るし拘束						捆绑拘束
+ギロチン拘束セックス					行刑台拘束啪啪啪
+ギロチン拘束セックスChu-B			[Chu-B] 行刑台拘束啪啪啪	
+ギロチン拘束アナルセックス				行刑台拘束菊花啪啪啪
+ギロチン拘束アナルセックスChu-B		[Chu-B] 行刑台拘束菊花啪啪啪
+ハード吊るし拘束					用力悬吊拘束
+ハード三角木馬拘束				用力三角木马拘束
+;Swapping	
+スワッピング愛撫					交换爱抚
+スワッピングフェラチオ					交换口交
+スワッピングセックス正常位				交换啪啪啪正常位
+スワッピングアナルセックス正常位			交换菊花啪啪啪正常位
+;Group	
+乱交愛撫							乱交爱抚
+乱交奉仕							乱交侍奉
+乱交3Pセックス正常位				乱交3P啪啪啪正常位
+乱交3Pアナルセックス正常位			乱交3P菊花啪啪啪正常位
+乱交3P2穴セックス					乱交3P2穴啪啪啪
+;Drunk Variations	
+酔い愛撫						醉酒爱抚
+酔いオナニー						醉酒自慰
+酔いアナルオナニー					醉酒菊花自慰
+酔いフェラチオ						醉酒口交
+酔いイラマチオ						醉酒深喉调教
+酔いディープスロート					醉酒深喉侍奉
+酔いバイブ責め						醉酒振动器自慰
+酔いアナルバイブ責め					醉酒菊花振动器自慰
+酔いアナルセックス正常位				醉酒菊花啪啪啪正常位
+酔いセックス正常位					醉酒啪啪啪正常位
+酔いセックス後背位					醉酒啪啪啪后背位
+酔いアナルセックス後背位				醉酒菊花啪啪啪后背位
+酔いセックス騎乗位					醉酒啪啪啪骑乘位
+酔いシックスナイン					醉酒69
+酔いアナルセックス騎乗位				醉酒菊花啪啪啪骑乘位
+;Punishment variations	
+お仕置き拘束愛撫					SM拘束爱抚
+お仕置き吊るし拘束					SM捆绑拘束
+お仕置き三角木馬拘束				SM三角木马拘束
+お仕置き吊るしセックス				SM悬吊啪啪啪
+お仕置き吊るしアナルセックス			SM悬吊菊花啪啪啪
+お仕置きギロチン拘束セックス			SM断头台拘束啪啪啪
+お仕置きギロチン拘束アナルセックス		SM断头台拘束菊花啪啪啪
+お仕置きハード吊るし拘束			SM用力悬吊拘束
+お仕置きハード三角木馬拘束			SM用力三角木马拘束
+お仕置きセックス後背位				SM后背位啪啪啪
+お仕置きセックス後背位Chu-B			[Chu-B] SM后背位啪啪啪
+お仕置きアナルセックス後背位			SM后背位菊花啪啪啪
+お仕置きアナルセックス後背位Chu-B		[Chu-B] SM后背位菊花啪啪啪
+;夜伽4
+セックス立位				立位啪啪啪
+アナルセックス立位				立位菊花啪啪啪
+抱えセックス正常位				拥抱正常位啪啪啪
+抱えアナルセックス正常位			拥抱正常位菊花啪啪啪
+寄り添いセックス側位			依偎侧位啪啪啪
+寄り添いアナルセックス側位			依偎侧位菊花啪啪啪
+尻上げ後背位				抬起屁股后背位啪啪啪
+尻上げアナル後背位				抬起屁股后背位菊花啪啪啪
+；denkigai2015wpants
+パンツコキ				用胖次撸
+; Additional (Skill sets etc)
+オナホコキ							飞机杯交
+足コキ							足交
+セックス側位					侧面位啪啪啪
+アナルセックス側位				菊花侧面位啪啪啪
+セックス対面座位				对面坐啪啪啪
+アナルセックス対面座位				菊花对面坐啪啪啪
+セックス背面駅弁				背后站立啪啪啪
+アナルセックス背面駅弁				菊花背后站立啪啪啪
+まんぐり返しセックス				抬腿啪啪啪
+まんぐり返しアナルセックス			抬腿菊花啪啪啪
+スワッピングセックス後背位			交换后背位啪啪啪		
+スワッピングアナルセックス後背位		交换后背位菊花啪啪啪
+スワッピングセックス騎乗位			交换骑乘位啪啪啪
+スワッピングアナルセックス騎乗位		交换骑乘位菊花啪啪啪
+乱交3P口＆セックス後背位			乱交3P口＆小穴后背位
+乱交3P口＆アナルセックス後背位			乱交3P口＆菊花后背位
+乱交3P2穴セックス正常位				乱交3P两穴正常位			
+乱交4Pセックス					乱交4P啪啪啪
+足舐め						舔足
+足舐めオナニー					舔足自慰
+ポーズ維持プレイ１				维持姿势Play1
+ポーズ維持プレイ２				维持姿势Play2
+拘束イラマチオ					拘束深喉
+拘束台愛撫					拘束台爱抚
+磔プレイ					绑柱子Play
+ハード首絞めセックス				用力窒息啪啪啪
+ハード首絞めアナルセックス			用力窒息菊花啪啪啪
+セックス背面騎乗位					后背骑乘位啪啪啪
+アナルセックス背面騎乗位				菊花后背骑乘位啪啪啪
+公開オナニー						露出自慰
+公開アナルオナニー					露出菊花自慰
+
+; CM3D2+ Skills
+トイレセックス					厕所啪啪啪	
+トイレアナルセックス				厕所菊花啪啪啪
+トイレオナニー					厕所自慰
+トイレアナルオナニー				厕所慰菊
+痴漢愛撫						痴汉爱抚	
+痴漢アナル愛撫					痴汉菊花爱抚
+痴漢セックス					痴汉啪啪啪	
+痴漢アナルセックス					痴汉菊花啪啪啪
+洗い						清洗	
+尻舐め						舔屁股	
+尻舐めオナニー					舔屁股自慰
+尻舐め手コキオナニー				舔屁股的手交自慰
+潜望鏡フェラ					潜望镜口交	
+ダブルフェラ					双人口交	
+ダブル足コキ					双人足交
+ダブル奉仕					双人侍奉
+ハーレム奉仕					多人侍奉	
+ハーレムセックス					多人啪啪啪	
+ハーレムアナルセックス				多人菊花啪啪啪
+
+; Propensity
+M女								M女
+中出し好き						喜欢中出
+二穴好き							喜欢两穴
+変態							变态
+奉仕好き							喜欢侍奉
+尻穴好き							喜欢爆菊
+淫乱							淫乱
+飲精好き							喜欢吞精
+
+; Features
+とことん尽くす						竭尽全力
+上品							高雅
+傅く								服侍
+優美							优美
+優雅							优雅
+元気な笑顔						活力的笑脸
+凜とした							凛然
+大人びた魅力						成熟的魅力
+天使							天使
+妖艶な魅力						妖艳的魅力
+恥ずかしがり屋						害羞
+朗らかな魅力						性格开朗的魅力
+疲労							疲劳
+純真無垢							纯真无垢
+素直							坦率
+過去の秘密						过去的秘密
+過去の過ち						过去的过失
+高貴							高贵
+魅了							魅力
+魔性の魅力						魔性的魅力
+雅								雅
+撫子							贤惠
+一途							热心
+盲目的							盲目的
+
+; Menu items
+MENU_GAME						游戏与沙龙
+MENU_ALL_MAID					女仆金手指
+MENU_MAID						女仆现状
+
+; Game items
+MENU_GAME_CLEAN_DEBT			还清债务
+MENU_GAME_MAX_RATE				俱乐部等级及数值全满
+MENU_GAME_MAX_CREDIT			现金全满
+MENU_GAME_ALL_ITEMS				解锁所有道具
+MENU_GAME_ALL_TROPHY			解锁所有奖杯
+
+; All maid cheats
+MENU_ALL_MAID_NO_LIMIT			移除所有数值限制
+MENU_ALL_MAID_RESET_VIP			重置VIP状态
+MENU_ALL_MAID_ALL_YOTOGI_COM	解锁所有夜战指令
+MENU_ALL_MAID_ALL_VIP_VISIBLE_ALWAYS	VIP总是可用
+MENU_ALL_MAID_ALL_YOTOGI_VISIBLE		所有夜战技能总是可见
+MENU_ALL_MAID_UNLOCK_MAX_ALL	解锁并最大值所有女仆
+MENU_ALL_MAID_ALL_SCENES_VISIBLE	解锁自由模式的所有场景
+
+; Current maid cheats
+MENU_MAID_UNLOCK				解锁
+MENU_MAID_MAX					解锁并值最大
+MENU_MAID_FORCE_ENABLE			解锁所有工作
+MENU_MAID_LOCK_ALL				锁定所有状态
+MENU_MAID_UNLOCK_ALL			解锁所有状态
+MENU_MAID_SET_CLASS_LVL			设置所有类型的等级为...
+MENU_MAID_SET_YOTOGI_TIMES		设置已解锁夜战技能的使用次数为...
+MENU_MAID_SET					批量设置
+MENU_MAID_WORK_FORCE_DISABLE		重锁所有工作
+
+; Misc tools menu
+MENU_MISC						其他
+MENU_MISC_LANG_SELECT			语言...
+MENU_MISC_ABOUT					关于 Maid Fiddler
+MENU_MISC_SETTINGS				设置
+
+; Current maid unlock
+UNLOCK_SKILLS					夜战技能
+UNLOCK_MAID_CLASSES				女仆类型
+UNLOCK_YOTOGI_CLASSES			夜战类型
+UNLOCK_ALL						以上全部
+
+; Current maid max
+MAX_CLASS_LVL					女仆/夜战类型等级
+MAX_STATS						女仆属性值
+MAX_ERO_ZONES					性感带
+MAX_YOTOGI_LVL					夜战技能等级
+MAX_WORK_PLAY_COUNT				白天工作等级
+MAX_FEATURE						性癖
+MAX_PROPENSITY					特征
+MAX_ALL							以上全部
+
+; GUI and misc windows
+GUI_YOTOGI_TIMES_TITLE			设置已解锁夜战技能的使用次数为...
+GUI_YOTOGI_TIMES_PROMPT			设置所有已解锁夜战技能的使用次数，请输入数字。
+
+GUI_CLASS_LVL_TITLE			设置所有类型的等级为...
+GUI_CLASS_LVL_PROMPT			请输入1-10来设置想要的等级.
+
+; Language selection GUI
+GUI_TRANS_SELECT_TITLE			语言选择
+GUI_TRANS_SELECT_PROMPT			以下为可用语言.\n选择一个后点击[应用].
+GUI_TS_OPEN_TS_FOLDER			打开翻译文件夹
+GUI_TS_LANG						语言:
+GUI_TS_VERSION					版本:
+GUI_TS_AUTHOR					作者:
+
+; About menu
+GUI_ABOUT_TITLE					关于Maid Fiddler
+GUI_ABOUT_VERSION				版本:
+GUI_ABOUT_CONTRIBUTORS			贡献者:
+
+; Settings menu
+GUI_SETTINGS_TITLE				设置
+GUI_SETTINGS_KEY				Maid Fiddler启动热键
+GUI_SETTINGS_KEY_DESCRIPTION	设置的按键（或组合）将用来启动Maid Fiddler.\n请参考Unity Scripting API KeyCode系列.\n如果想要使用组合键，使用【+】符号分隔.
+GUI_SETTINGS_KEY_LABEL			Maid Fiddler启动热键
+GUI_SETTINGS_GUI				界面设置
+GUI_SETTINGS_NAME_STYLE			女仆名字格式
+GUI_SETTINGS_ORDER				排序设置
+GUI_SETTINGS_ORDER_DESCRIPTION	你可以设置Maid Fiddler中女仆的排序方式.\n单击选择一个可用排序并点击【>】.按【<】可以移除选中的方式.\n按【˄】or【˅】调整排序的优先级.\n\n
+GUI_SETTINGS_ORDER_AVAILABLE	可用排序方式
+GUI_SETTINGS_ORDER_SELECTED		已选排序方式
+GUI_SETTINGS_ORDER_DIRECTION	排列升降序
+GUI_SETTINGS_NS_FIRST_LAST		名,姓
+GUI_SETTINGS_NS_LAST_FIRST		姓,名
+GUI_SETTINGS_DIR_DESC			降序
+GUI_SETTINGS_DIR_ASC			升序
+
+; Order styles
+OrderStyle_GUID					按ID排列
+OrderStyle_CreationTime			按创建时间排列
+OrderStyle_FirstName			按名排列
+OrderStyle_LastName				按姓排列
+OrderStyle_EmployedDay			按雇佣天数排列
+
+OK								确定
+CANCEL							取消
+APPLY							应用
+UNKNOWN							不可用

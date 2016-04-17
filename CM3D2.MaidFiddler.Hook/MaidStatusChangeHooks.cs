@@ -356,19 +356,6 @@ namespace CM3D2.MaidFiddler.Hook
             return args.BlockAssignment;
         }
 
-        public static void OnStatusChangedID2(int tag, ref Maid currentMaid, int id, int val)
-        {
-            StatusChangedEventArgs args = new StatusChangedEventArgs
-            {
-                Tag = (MaidChangeType)tag,
-                CallerMaid = currentMaid,
-                ID = id,
-                Value = val,
-                BlockAssignment = false
-            };
-            StatusChangedID?.Invoke(null, args);
-        }
-
         public static void OnStatusUpdate(int tag, ref Maid currentMaid, int enumVal, bool value)
         {
             StatusUpdateEventArgs args = new StatusUpdateEventArgs
