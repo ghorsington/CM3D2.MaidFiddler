@@ -173,7 +173,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 }
                 if (!Visible)
                     return;
-                UpdateMaids(GameMain.Instance.CharacterMgr.GetStockMaidList());
+                UpdateMaids(GameMain.Instance.CharacterMgr.GetStockMaidList().ToList());
                 Player.UpdateAll();
             },
             $"Failed to {(Visible ? "restore" : "hide")} the Maid Fiddler window");

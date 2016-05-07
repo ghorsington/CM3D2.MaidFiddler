@@ -48,7 +48,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         public void ReloadMaids()
         {
-            InvokeAsync((UpdateInternal) ReloadMaids, GameMain.Instance.CharacterMgr.GetStockMaidList());
+            InvokeAsync((UpdateInternal) ReloadMaids, GameMain.Instance.CharacterMgr.GetStockMaidList().ToList());
         }
 
         private void ReloadMaids(List<Maid> maids)
