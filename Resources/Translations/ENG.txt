@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.26-4" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.30" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -100,6 +100,7 @@ Pure							Innocent
 Cool							Mature
 Pride							Proud
 Yandere							Yandere
+Anesan							Onee-san
 
 ; Contract types			
 Nurture							Training
