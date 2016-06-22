@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.30" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.31" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -152,6 +152,7 @@ Yotogi_Toilet					Toilet
 Yotogi_Immoral					Immoral
 Yotogi_Bride					Bridal
 Yotogi_Succubus					Succubus
+Yotogi_Queen					Queen
 
 ; Params			
 Care							Care
@@ -465,8 +466,15 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 乱交3Pセックス側位					Group 3P Oral /w Spooning Sex
 乱交3Pアナルセックス側位				Group 3P Oral /w Anal Spooning Sex
 乱交4Pセックス正常位				Group 4P Missionary Sex
-乱交4Pアナルセックス正常位			Group 4P Anal Missionary Sex	
-	
+乱交4Pアナルセックス正常位			Group 4P Anal Missionary Sex
+淫乱淫語正常位					Dirty Talk Missionary Sex
+ちんぐりセックス						Reverse Piledriver Sex
+ちんぐりアナルセックス					Reverse Piledriver Anal Sex
+ちんぐりフェラ						Reverse Piledriver Fellatio
+ちんぐり手コキ						Reverse Piledriver Handjob
+顔面騎乗位						Facial Cowgirl
+椅子拘束騎乗位					Chair-restrained Cowgirl Sex
+椅子拘束アナル騎乗位				Chair-restrained Cowgirl Anal Sex
 
 ; CM3D2+ Skills
 トイレセックス						Toilet Sex
