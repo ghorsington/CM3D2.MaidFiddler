@@ -18,7 +18,7 @@ namespace CM3D2.MaidFiddler.Plugin
     public class MaidFiddler : PluginBase
     {
         public const string CONTRIBUTORS = "denikson";
-        public const string VERSION = "BETA 0.9b";
+        public const string VERSION = "BETA 0.9c";
         public const string PROJECT_PAGE = "https://github.com/denikson/CM3D2.MaidFiddler";
         public const string RESOURCE_URL = "https://raw.githubusercontent.com/denikson/CM3D2.MaidFiddler/master";
         public const uint SUPPORTED_PATCH_MAX = 1100;
@@ -295,6 +295,8 @@ namespace CM3D2.MaidFiddler.Plugin
         public void OnSaveLoaded(int saveNo)
         {
             Debugger.WriteLine(LogLevel.Info, $"Level loading! Save no. {saveNo}");
+            if (!(Gui?.Visible).GetValueOrDefault(true))
+                Gui?.UnloadMaids();
             Gui?.DoIfVisible(Gui.ReloadMaids);
             Gui?.DoIfVisible(Gui.ReloadPlayer);
         }

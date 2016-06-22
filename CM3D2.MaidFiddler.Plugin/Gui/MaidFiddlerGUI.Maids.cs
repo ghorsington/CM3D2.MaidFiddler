@@ -51,6 +51,30 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             InvokeAsync((UpdateInternal) ReloadMaids, GameMain.Instance.CharacterMgr.GetStockMaidList().ToList());
         }
 
+        public void UnloadMaids()
+        {
+            InvokeAsync((Action) _UnloadMaids);
+        }
+
+        private void _UnloadMaids()
+        {
+            Debugger.Assert(
+            () =>
+            {
+                Debugger.WriteLine(LogLevel.Info, "Unloading maids!");
+                Debugger.WriteLine(LogLevel.Info, $"Loaded maids: {loadedMaids.Count}");
+                loadedMaids.Clear();
+                currentQueue = 0;
+                valueUpdateQueue[0].Clear();
+                valueUpdateQueue[1].Clear();
+                if (maidThumbnails.Count > 0)
+                    maidThumbnails.ForEach(thumb => thumb.Value.Dispose());
+                maidThumbnails.Clear();
+                UpdateList();
+            },
+            "Failed to unload maids");
+        }
+
         private void ReloadMaids(List<Maid> maids)
         {
             Debugger.Assert(
@@ -210,7 +234,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             public bool Equals(Maid x, Maid y)
             {
-                return x.Param.status.guid.Equals(y.Param.status.guid);
+                return x.Param.status.Equals(y.Param.status);
             }
 
             public int GetHashCode(Maid obj)

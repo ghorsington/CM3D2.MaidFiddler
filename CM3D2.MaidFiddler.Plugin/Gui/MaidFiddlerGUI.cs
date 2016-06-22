@@ -165,7 +165,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Debugger.Assert(
             () =>
             {
-                if (!initialized && Visible && IsHandleCreated)
+                if (!initialized && Visible && !IsHandleCreated)
                 {
                     Debugger.WriteLine(LogLevel.Info, "No handle! Creating one...");
                     CreateControl();
