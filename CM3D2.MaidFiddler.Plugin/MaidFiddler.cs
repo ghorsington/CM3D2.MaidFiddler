@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading;
@@ -18,11 +19,11 @@ namespace CM3D2.MaidFiddler.Plugin
     public class MaidFiddler : PluginBase
     {
         public const string CONTRIBUTORS = "denikson";
-        public const string VERSION = "BETA 0.9c";
+        public const string VERSION = "BETA 0.9d";
         public const string PROJECT_PAGE = "https://github.com/denikson/CM3D2.MaidFiddler";
         public const string RESOURCE_URL = "https://raw.githubusercontent.com/denikson/CM3D2.MaidFiddler/master";
-        public const uint SUPPORTED_PATCH_MAX = 1100;
-        public const uint SUPPORTED_PATCH_MIN = 1100;
+        public const uint SUPPORTED_PATCH_MAX = 1200;
+        public const uint SUPPORTED_PATCH_MIN = 1200;
         private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
         private const bool DEFAULT_OPEN_ON_STARTUP = false;
         private const MaidOrderDirection DEFAULT_ORDER_DIRECTION = Plugin.MaidOrderDirection.Ascending;
@@ -189,6 +190,17 @@ namespace CM3D2.MaidFiddler.Plugin
         public Thread GuiThread { get; set; }
         public MaidFiddlerGUI.MaidCompareMethod[] MaidCompareMethods { get; private set; }
         public int MaidOrderDirection { get; private set; }
+
+        public static bool RunningOnSybaris
+        {
+            get
+            {
+                object[] attributes = typeof (Maid).GetCustomAttributes(typeof (MaidFiddlerPatcherAttribute), false);
+                return attributes.Length == 1
+                       && (PatcherType) ((MaidFiddlerPatcherAttribute) attributes[0]).PatcherType == PatcherType.Sybaris;
+            }
+        }
+
         public bool UseJapaneseNameStyle { get; private set; }
 
         public void Dispose()
@@ -212,7 +224,10 @@ namespace CM3D2.MaidFiddler.Plugin
                 MaidCompareEmployedDay
             };
 
-            DATA_PATH = DataPath;
+            DATA_PATH = RunningOnSybaris
+                        ? Path.Combine(DataPath, "..\\..\\Sybaris\\Plugins\\UnityInjector\\Config\\") : DataPath;
+
+            Debugger.WriteLine(LogLevel.Info, $"Data path: {DATA_PATH}");
             LoadConfig();
 
             if (!FiddlerUtils.CheckPatcherVersion())

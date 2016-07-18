@@ -121,12 +121,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void OpenTranslationsFolder(object sender, EventArgs e)
         {
             string translationsPath = Path.Combine(MaidFiddler.DATA_PATH, Translation.TRANSLATIONS_PATH);
+            Debugger.WriteLine(LogLevel.Info, $"Opening translation folder at {translationsPath}");
             if (!Directory.Exists(translationsPath))
             {
                 Debugger.WriteLine(LogLevel.Warning, "No translation folder found. Creating one...");
                 Directory.CreateDirectory(translationsPath);
             }
-            Process.Start(translationsPath);
+            Process.Start(new ProcessStartInfo {FileName = translationsPath, UseShellExecute = true, Verb = "open"});
         }
 
         private void OpenTranslationDownloadGithub(object sender, EventArgs e)

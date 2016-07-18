@@ -11,7 +11,7 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
 {
     public static class MaidFiddlerPatcher
     {
-        private const uint PATCHER_VERSION = 1100;
+        private const uint PATCHER_VERSION = 1200;
         public static readonly string[] TargetAssemblyNames = {"Assembly-CSharp.dll"};
 
         public static void Patch(AssemblyDefinition assembly)
@@ -424,7 +424,15 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
             ass.MainModule.Import(typeof (MaidFiddlerPatchedAttribute).GetConstructor(new[] {typeof (uint)})));
             attr.ConstructorArguments.Add(
             new CustomAttributeArgument(ass.MainModule.Import(typeof (uint)), PATCHER_VERSION));
+
+            CustomAttribute attr2 =
+            new CustomAttribute(
+            ass.MainModule.Import(typeof (MaidFiddlerPatcherAttribute).GetConstructor(new[] {typeof (uint)})));
+            attr2.ConstructorArguments.Add(
+            new CustomAttributeArgument(ass.MainModule.Import(typeof (uint)), (uint) PatcherType.Sybaris));
+
             ass.MainModule.GetType("Maid").CustomAttributes.Add(attr);
+            ass.MainModule.GetType("Maid").CustomAttributes.Add(attr2);
         }
     }
 }
