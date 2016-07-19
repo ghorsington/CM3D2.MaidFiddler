@@ -28,7 +28,7 @@ namespace CM3D2.MaidFiddler.Plugin
         private const bool DEFAULT_OPEN_ON_STARTUP = false;
         private const MaidOrderDirection DEFAULT_ORDER_DIRECTION = Plugin.MaidOrderDirection.Ascending;
         private const string DEFAULT_LANGUAGE_FILE = "ENG";
-        private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.KeypadEnter, KeyCode.Keypad0};
+        private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.A};
         private readonly List<MaidOrderStyle> DEFAULT_ORDER_STYLES = new List<MaidOrderStyle> {MaidOrderStyle.GUID};
         public MaidFiddlerGUI.MaidCompareMethod[] COMPARE_METHODS;
         private KeyHelper keyCreateGUI;
