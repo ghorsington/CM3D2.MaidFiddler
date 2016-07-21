@@ -1,4 +1,4 @@
-#MAIDFIDDLER_TRANSLATION "简体中文" "2.1 (for 1.32)" "kumo31 (fix by Cai_Miao)"
+#MAIDFIDDLER_TRANSLATION "简体中文" "2.2 (for 1.32)" "kumo31 (fix by Cai_Miao)"
 ; Maid Fiddler GUI文本
 ;
 ; 排序与英文版保持一致，便于日后添加维护
@@ -21,10 +21,10 @@ FirstNameCall					以名字称呼
 Personal						性格
 ContractType					合同类型
 Leader							女仆长
-RentalMaid						雇佣
+RentalMaid						租用
 Condition						关系
 ConditionSpecial				夜战状态
-Employment						雇佣天数
+Employment						租用时天数
 MAID_SEX_EXP					性经验
 InitSeikeiken					初始
 Seikeiken						现在
@@ -38,8 +38,7 @@ FreeComment						用户简介
 NAME							名称
 VAL								数值
 LOCK							锁定
-; <HAS>适应UI使用单字翻译 -- by Cai_Miao
-HAS								有
+HAS								已有
 LVL								等级
 TOTAL_XP						总经验
 FORCE_ENABLE					强行解锁
@@ -101,7 +100,7 @@ Pure							纯真妹系
 Cool							冷静成熟系
 Pride							傲娇系
 Yandere							病娇系
-Anesan							大姐姐系*
+Anesan							姐姐系
 
 ; Contract types			
 Nurture							训练中
@@ -110,8 +109,8 @@ Exclusive						专属
 
 ; Condition			
 Tonus							紧张
-Contact							亲近
-Trust							信任
+Contact							认识
+Trust							信赖
 Lover							恋人
 Slave							爱奴
 
@@ -151,10 +150,10 @@ Yotogi_Harlem					后宫女仆
 Yotogi_Royalsoap				贵族泡泡女仆
 Yotogi_Toilet					公厕女仆
 Yotogi_Immoral					背德女仆
-Yotogi_Bride					花嫁女仆*
-Yotogi_Succubus					妖艳女仆*
-Yotogi_Queen					女仆皇*
-;Yotogi_Darkness					黑暗女仆*
+Yotogi_Bride					新娘女仆
+Yotogi_Succubus					魅魔女仆
+Yotogi_Queen					女王女仆
+Yotogi_Darkness					黑化女仆
 
 ; Params			
 Care							关怀
@@ -188,9 +187,9 @@ SexualNipple					乳头
 SexualThroat					喉
 Sales							获得资金
 TotalSales						获得总资金
-; 刚玩这游戏，应该是新版本参数，请老司机补完 -- by Cai_Miao
-Evaluation						Evaluation
-TotalEvaluation					Total Evaluation
+; Evaluation应该是对应这个参数，如果不对请帮忙改掉 -- by Cai_Miao
+Evaluation						客户评价
+TotalEvaluation					累计客户评价
 CurHp							体力（实时）
 PopularRank						排名
 
@@ -239,21 +238,25 @@ BonusTeachRate					习得率
 お客様公開プレイ				公开Play
 路地裏露出セックス				小巷露出啪啪啪
 詰られプレイ					淫语Play
-らぶらぶ媚薬プレイ				LOVELOVE春药Play				
-乱暴なお客様前半				粗暴的客人前半					
-乱暴なお客様後半１				粗暴的客人后半					
-AV撮影							AV摄影						
-純愛プレイ前半					纯爱Play前半						
-純愛プレイ後半					纯爱Play后半						
-なりきり新婚プレイ				扮演新婚play				
-乱暴なお客様後半２				粗暴的客人后半2					
-フリー撮影会					自由摄影会						
-フリー逆ナンパ					自由逆搭讪						
-フリー痴漢プレイ				自由痴汉play				
-痴漢克服プレイ					痴汉克服play						
-媚薬プレイ						春药play						
-お風呂接待						洗澡招待						
+らぶらぶ媚薬プレイ				LOVELOVE春药Play
+乱暴なお客様前半				粗暴的客人前半
+乱暴なお客様後半１				粗暴的客人后半
+AV撮影							AV摄影
+純愛プレイ前半					纯爱Play前半
+純愛プレイ後半					纯爱Play后半
+なりきり新婚プレイ				扮演新婚play
+乱暴なお客様後半２				粗暴的客人后半2	
+フリー撮影会					自由摄影会
+フリー逆ナンパ					自由逆搭讪
+フリー痴漢プレイ				自由痴汉play
+痴漢克服プレイ					痴汉克服play
+媚薬プレイ						春药play
+お風呂接待						洗澡招待
 ハーレム特訓プレイ				后宫特训
+催眠強制オナニー				催眠强制自慰
+催眠復取られプレイ				催眠NTR play
+対魔忍イメージプレイ			对魔忍形象play
+対魔忍乱暴プレイ				对魔忍乱暴play
 
 ; Yotogi skills
 ;Virgin	
@@ -301,196 +304,198 @@ AV撮影							AV摄影
 抱きつきアナルセックス後背位Chu-B		[Chu-B] 环腰抱后背位菊花啪啪啪
 だいしゅきホールド						爱的拥抱
 ;Pervert
-かっこいいポーズ					帅气姿势
-かわいいポーズ						可爱姿势
-オナニー							自慰
-オナニーChu-B						[Chu-B] 自慰
-アナルオナニー						慰菊
-アナルオナニーChu-B					[Chu-B] 慰菊
-Ｈなポーズ							性感姿势
-手コキオナニー						手交振动棒
-手コキオナニーChu-B					[Chu-B] 手交振动棒
-フェラオナニー						口交振动棒
-フェラオナニーChu-B					[Chu-B] 口交振动棒
-変態ポーズプレイ					变态姿势play
-バイブオナニー						乳交口交
-バイブオナニーChu-B					[Chu-B] 乳交口交
-アナルバイブオナニー				菊花振动棒振动棒
-アナルバイブオナニーChu-B			[Chu-B] 菊花振动棒振动棒
-太バイブオナニー					巨大振动棒自慰
-太バイブオナニーChu-B				[Chu-B] 巨大振动棒自慰
-露出プレイ							露出Play
-犬プレイ							犬Play
-露出セックス背面立位				露出背面立位啪啪啪
-露出セックス背面立位Chu-B			[Chu-B] 露出背面立位啪啪啪
+かっこいいポーズ				帅气姿势
+かわいいポーズ					可爱姿势
+オナニー						自慰
+オナニーChu-B					[Chu-B] 自慰
+アナルオナニー					慰菊
+アナルオナニーChu-B				[Chu-B] 慰菊
+Ｈなポーズ						性感姿势
+手コキオナニー					手交振动棒
+手コキオナニーChu-B				[Chu-B] 手交振动棒
+フェラオナニー					口交振动棒
+フェラオナニーChu-B				[Chu-B] 口交振动棒
+変態ポーズプレイ				变态姿势play
+バイブオナニー					乳交口交
+バイブオナニーChu-B				[Chu-B] 乳交口交
+アナルバイブオナニー			菊花振动棒振动棒
+アナルバイブオナニーChu-B		[Chu-B] 菊花振动棒振动棒
+太バイブオナニー				巨大振动棒自慰
+太バイブオナニーChu-B			[Chu-B] 巨大振动棒自慰
+露出プレイ						露出Play
+犬プレイ						犬Play
+露出セックス背面立位			露出背面立位啪啪啪
+露出セックス背面立位Chu-B		[Chu-B] 露出背面立位啪啪啪
 露出アナルセックス背面立位			露出背面立位菊花啪啪啪
 露出アナルセックス背面立位Chu-B		[Chu-B] 露出背面立位菊花啪啪啪
-実況オナニー						直播自慰
-実況オナニーChu-B					[Chu-B] 直播自慰
+実況オナニー					直播自慰
+実況オナニーChu-B				[Chu-B] 直播自慰
 ;Service
-手コキ								手交
-手コキChu-B							[Chu-B] 手交
-フェラチオ							口交
-フェラチオChu-B						[Chu-B] 口交
-パイズリ							乳交
-パイズリChu-B						[Chu-B]乳交
-パイズリフェラ						乳交+口交
-パイズリフェラChu-B					[Chu-B] 乳交+口交
-玉舐めフェラチオ					舔蛋口交
-セルフイラマ						强制深喉
-セルフイラマChu-B					[Chu-B] 强制深喉
-シックスナイン						69
-シックスナインChu-B					[Chu-B] 69
-スケベ椅子フェラ					淫椅口交
-スケベ椅子フェラChu-B				[Chu-B] 淫椅口交
-スケベ椅子セックス					淫椅啪啪啪
-スケベ椅子セックスChu-B				[Chu-B] 淫椅啪啪啪
-スケベ椅子アナルセックス			淫椅菊花啪啪啪
-スケベ椅子アナルセックスChu-B		[Chu-B] 淫椅菊花啪啪啪
-MP全身洗い							泰国浴
-MP全身洗いChu-B						[Chu-B] 泰国浴
-ディープスロート					深喉
-ディープスロートChu-B				[Chu-B] 深喉
-高級MP全身洗い						高级泰国浴
-全身舐め奉仕						舔身体
+手コキ							手交
+手コキChu-B						[Chu-B] 手交
+フェラチオ						口交
+フェラチオChu-B					[Chu-B] 口交
+パイズリ						乳交
+パイズリChu-B					[Chu-B]乳交
+パイズリフェラ					乳交+口交
+パイズリフェラChu-B				[Chu-B] 乳交+口交
+玉舐めフェラチオ				舔蛋口交
+セルフイラマ					强制深喉
+セルフイラマChu-B				[Chu-B] 强制深喉
+シックスナイン					69
+シックスナインChu-B				[Chu-B] 69
+スケベ椅子フェラ				淫椅口交
+スケベ椅子フェラChu-B			[Chu-B] 淫椅口交
+スケベ椅子セックス				淫椅啪啪啪
+スケベ椅子セックスChu-B			[Chu-B] 淫椅啪啪啪
+スケベ椅子アナルセックス		淫椅菊花啪啪啪
+スケベ椅子アナルセックスChu-B	[Chu-B] 淫椅菊花啪啪啪
+MP全身洗い						泰国浴
+MP全身洗いChu-B					[Chu-B] 泰国浴
+ディープスロート				深喉
+ディープスロートChu-B			[Chu-B] 深喉
+高級MP全身洗い					高级泰国浴
+全身舐め奉仕					舔身体
 ;Scolding	
-詰られパイズリ						淫语乳交
-詰られ手コキ						淫语手交
-詰られ騎乗位						淫语骑乘位
-詰られアナル騎乗位					淫语菊花骑乘位
+詰られパイズリ					淫语乳交
+詰られ手コキ					淫语手交
+詰られ騎乗位					淫语骑乘位
+詰られアナル騎乗位				淫语菊花骑乘位
 ;Bondage	
-拘束愛撫							拘束爱抚
-拘束愛撫Chu-B						[Chu-B] 拘束爱抚
-イラマチオ							深喉
-イラマチオChu-B						[Chu-B] 深喉
-拘束セックス						拘束啪啪啪
-拘束セックスChu-B					[Chu-B] 拘束啪啪啪
-拘束アナルセックス					拘束菊花啪啪啪
-拘束アナルセックスChu-B				[Chu-B] 拘束菊花啪啪啪
-首絞めセックス正常位				窒息啪啪啪正常位
-首絞めセックス正常位Chu-B			[Chu-B] 窒息啪啪啪正常位
+拘束愛撫						拘束爱抚
+拘束愛撫Chu-B					[Chu-B] 拘束爱抚
+イラマチオ						深喉
+イラマチオChu-B					[Chu-B] 深喉
+拘束セックス					拘束啪啪啪
+拘束セックスChu-B				[Chu-B] 拘束啪啪啪
+拘束アナルセックス				拘束菊花啪啪啪
+拘束アナルセックスChu-B			[Chu-B] 拘束菊花啪啪啪
+首絞めセックス正常位			窒息啪啪啪正常位
+首絞めセックス正常位Chu-B		[Chu-B] 窒息啪啪啪正常位
 首絞めアナルセックス正常位			窒息菊花啪啪啪正常位
 首絞めアナルセックス正常位Chu-B		[Chu-B] 窒息菊花啪啪啪正常位
-三角木馬拘束						三角木马拘束
-吊るし拘束							捆绑拘束
-ギロチン拘束セックス				行刑台拘束啪啪啪
-ギロチン拘束セックスChu-B			[Chu-B] 行刑台拘束啪啪啪	
+三角木馬拘束					三角木马拘束
+吊るし拘束						捆绑拘束
+ギロチン拘束セックス			行刑台拘束啪啪啪
+ギロチン拘束セックスChu-B		[Chu-B] 行刑台拘束啪啪啪	
 ギロチン拘束アナルセックス			行刑台拘束菊花啪啪啪
 ギロチン拘束アナルセックスChu-B		[Chu-B] 行刑台拘束菊花啪啪啪
-ハード吊るし拘束					用力悬吊拘束
-ハード三角木馬拘束					用力三角木马拘束
+ハード吊るし拘束				用力悬吊拘束
+ハード三角木馬拘束				用力三角木马拘束
 ;Swapping	
-スワッピング愛撫					交换爱抚
-スワッピングフェラチオ				交换口交
+スワッピング愛撫				交换爱抚
+スワッピングフェラチオ			交换口交
 スワッピングセックス正常位			交换啪啪啪正常位
 スワッピングアナルセックス正常位	交换菊花啪啪啪正常位
 ;Group	
-乱交愛撫							乱交爱抚
-乱交奉仕							乱交侍奉
-乱交3Pセックス正常位				乱交3P啪啪啪正常位
-乱交3Pアナルセックス正常位			乱交3P菊花啪啪啪正常位
-乱交3P2穴セックス					乱交3P2穴啪啪啪
+乱交愛撫						乱交爱抚
+乱交奉仕						乱交侍奉
+乱交3Pセックス正常位			乱交3P啪啪啪正常位
+乱交3Pアナルセックス正常位		乱交3P菊花啪啪啪正常位
+乱交3P2穴セックス				乱交3P2穴啪啪啪
 ;Drunk Variations	
-酔い愛撫							醉酒爱抚
-酔いオナニー						醉酒自慰
-酔いアナルオナニー					醉酒菊花自慰
-酔いフェラチオ						醉酒口交
-酔いイラマチオ						醉酒深喉调教
-酔いディープスロート				醉酒深喉侍奉
-酔いバイブ責め						醉酒振动器自慰
-酔いアナルバイブ責め				醉酒菊花振动器自慰
-酔いアナルセックス正常位			醉酒菊花啪啪啪正常位
-酔いセックス正常位					醉酒啪啪啪正常位
-酔いセックス後背位					醉酒啪啪啪后背位
-酔いアナルセックス後背位			醉酒菊花啪啪啪后背位
-酔いセックス騎乗位					醉酒啪啪啪骑乘位
-酔いシックスナイン					醉酒69
-酔いアナルセックス騎乗位			醉酒菊花啪啪啪骑乘位
+酔い愛撫						醉酒爱抚
+酔いオナニー					醉酒自慰
+酔いアナルオナニー				醉酒菊花自慰
+酔いフェラチオ					醉酒口交
+酔いイラマチオ					醉酒深喉调教
+酔いディープスロート			醉酒深喉侍奉
+酔いバイブ責め					醉酒振动器自慰
+酔いアナルバイブ責め			醉酒菊花振动器自慰
+酔いアナルセックス正常位		醉酒菊花啪啪啪正常位
+酔いセックス正常位				醉酒啪啪啪正常位
+酔いセックス後背位				醉酒啪啪啪后背位
+酔いアナルセックス後背位		醉酒菊花啪啪啪后背位
+酔いセックス騎乗位				醉酒啪啪啪骑乘位
+酔いシックスナイン				醉酒69
+酔いアナルセックス騎乗位		醉酒菊花啪啪啪骑乘位
 ;Punishment variations	
-お仕置き拘束愛撫					SM拘束爱抚
-お仕置き吊るし拘束					SM捆绑拘束
-お仕置き三角木馬拘束				SM三角木马拘束
-お仕置き吊るしセックス				SM悬吊啪啪啪
-お仕置き吊るしアナルセックス		SM悬吊菊花啪啪啪
+お仕置き拘束愛撫				SM拘束爱抚
+お仕置き吊るし拘束				SM捆绑拘束
+お仕置き三角木馬拘束			SM三角木马拘束
+お仕置き吊るしセックス			SM悬吊啪啪啪
+お仕置き吊るしアナルセックス	SM悬吊菊花啪啪啪
 お仕置きギロチン拘束セックス		SM断头台拘束啪啪啪
 お仕置きギロチン拘束アナルセックス	SM断头台拘束菊花啪啪啪
-お仕置きハード吊るし拘束			SM用力悬吊拘束
-お仕置きハード三角木馬拘束			SM用力三角木马拘束
-お仕置きセックス後背位				SM后背位啪啪啪
-お仕置きセックス後背位Chu-B			[Chu-B] SM后背位啪啪啪
+お仕置きハード吊るし拘束		SM用力悬吊拘束
+お仕置きハード三角木馬拘束		SM用力三角木马拘束
+お仕置きセックス後背位			SM后背位啪啪啪
+お仕置きセックス後背位Chu-B		[Chu-B] SM后背位啪啪啪
 お仕置きアナルセックス後背位		SM后背位菊花啪啪啪
 お仕置きアナルセックス後背位Chu-B	[Chu-B] SM后背位菊花啪啪啪
 
 ; Additional (Skill sets etc)
-オナホコキ							飞机杯交
-足コキ								足交
-セックス側位						侧面位啪啪啪
-アナルセックス側位					菊花侧面位啪啪啪
-セックス対面座位					对面坐啪啪啪
-アナルセックス対面座位				菊花对面坐啪啪啪
-セックス背面駅弁					背后站立啪啪啪
-アナルセックス背面駅弁				菊花背后站立啪啪啪
-まんぐり返しセックス				抬腿啪啪啪
-まんぐり返しアナルセックス			抬腿菊花啪啪啪
+オナホコキ						飞机杯交
+足コキ							足交
+セックス側位					侧面位啪啪啪
+アナルセックス側位				菊花侧面位啪啪啪
+セックス対面座位				对面坐啪啪啪
+アナルセックス対面座位			菊花对面坐啪啪啪
+セックス背面駅弁				背后站立啪啪啪
+アナルセックス背面駅弁			菊花背后站立啪啪啪
+まんぐり返しセックス			抬腿啪啪啪
+まんぐり返しアナルセックス		抬腿菊花啪啪啪
 スワッピングセックス後背位			交换后背位啪啪啪		
 スワッピングアナルセックス後背位	交换后背位菊花啪啪啪
 スワッピングセックス騎乗位			交换骑乘位啪啪啪
 スワッピングアナルセックス騎乗位	交换骑乘位菊花啪啪啪
-乱交3P口＆セックス後背位			乱交3P口＆小穴后背位
-乱交3P口＆アナルセックス後背位		乱交3P口＆菊花后背位
-乱交3P2穴セックス正常位				乱交3P两穴正常位			
-乱交4Pセックス						乱交4P啪啪啪
-足舐め								舔足
-足舐めオナニー						舔足自慰
-ポーズ維持プレイ１					维持姿势Play1
-ポーズ維持プレイ２					维持姿势Play2
-拘束イラマチオ						拘束深喉
-拘束台愛撫							拘束台爱抚
-磔プレイ							绑柱子Play
-ハード首絞めセックス				用力窒息啪啪啪
-ハード首絞めアナルセックス			用力窒息菊花啪啪啪
-セックス背面騎乗位					后背骑乘位啪啪啪
-アナルセックス背面騎乗位			菊花后背骑乘位啪啪啪
-公開オナニー						露出自慰
-公開アナルオナニー					露出菊花自慰
-セックス立位						立位啪啪啪
-アナルセックス立位					立位菊花啪啪啪
-抱えセックス正常位					拥抱正常位啪啪啪
-抱えアナルセックス正常位			拥抱正常位菊花啪啪啪
-寄り添いセックス側位				依偎侧位啪啪啪
-寄り添いアナルセックス側位			依偎侧位菊花啪啪啪
-尻上げ後背位						抬起屁股后背位啪啪啪
-尻上げアナル後背位					抬起屁股后背位菊花啪啪啪
-;スワッピング吊るしセックス				Swapping Hanging Sex
-;スワッピング吊るしアナルセックス			Swapping Hanging Anal Sex
-;乱交3P2穴駅弁					Group 3P Two-Hole Carrying Sex
-;乱交3P口＆セックス騎乗位			Group 3P Oral /w Cowgirl Sex
-;乱交3P口＆アナルセックス騎乗位		Group 3P Oral /w Anal Cowgirl Sex
-;乱交3Pセックス側位					Group 3P Oral /w Spooning Sex
-;乱交3Pアナルセックス側位				Group 3P Oral /w Anal Spooning Sex
-;乱交4Pセックス正常位				Group 4P Missionary Sex
-;乱交4Pアナルセックス正常位			Group 4P Anal Missionary Sex
-;淫乱淫語正常位					Dirty Talk Missionary Sex
-;ちんぐりセックス						Reverse Piledriver Sex
-;ちんぐりアナルセックス					Reverse Piledriver Anal Sex
-;ちんぐりフェラ						Reverse Piledriver Fellatio
-;ちんぐり手コキ						Reverse Piledriver Handjob
-;顔面騎乗位						Facial Cowgirl
-;椅子拘束騎乗位					Chair-restrained Cowgirl Sex
-;椅子拘束アナル騎乗位				Chair-restrained Cowgirl Anal Sex
+乱交3P口＆セックス後背位		乱交3P口＆小穴后背位
+乱交3P口＆アナルセックス後背位	乱交3P口＆菊花后背位
+乱交3P2穴セックス正常位			乱交3P两穴正常位			
+乱交4Pセックス					乱交4P啪啪啪
+足舐め							舔足
+足舐めオナニー					舔足自慰
+ポーズ維持プレイ１				维持姿势Play1
+ポーズ維持プレイ２				维持姿势Play2
+拘束イラマチオ					拘束深喉
+拘束台愛撫						拘束台爱抚
+磔プレイ						绑柱子Play
+ハード首絞めセックス			用力窒息啪啪啪
+ハード首絞めアナルセックス		用力窒息菊花啪啪啪
+セックス背面騎乗位				后背骑乘位啪啪啪
+アナルセックス背面騎乗位		菊花后背骑乘位啪啪啪
+公開オナニー					露出自慰
+公開アナルオナニー				露出菊花自慰
+セックス立位					立位啪啪啪
+アナルセックス立位				立位菊花啪啪啪
+抱えセックス正常位				拥抱正常位啪啪啪
+抱えアナルセックス正常位		拥抱正常位菊花啪啪啪
+寄り添いセックス側位			依偎侧位啪啪啪
+寄り添いアナルセックス側位		依偎侧位菊花啪啪啪
+尻上げ後背位					抬起屁股后背位啪啪啪
+尻上げアナル後背位				抬起屁股后背位菊花啪啪啪
+スワッピング吊るしセックス			交换悬吊啪啪啪
+スワッピング吊るしアナルセックス	交换悬吊菊花啪啪啪
+乱交3P2穴駅弁					乱交3P2穴便当
+乱交3P口＆セックス騎乗位		乱交3P口+啪啪啪骑乘位
+乱交3P口＆アナルセックス騎乗位	乱交3P口+菊花啪啪啪骑乘位
+乱交3Pセックス側位				乱交3P啪啪啪侧位
+乱交3Pアナルセックス側位		乱交3P菊花啪啪啪侧位
+乱交4Pセックス正常位			乱交4P啪啪啪正常位
+乱交4Pアナルセックス正常位		乱交4P菊花啪啪啪正常位
+淫乱淫語正常位					淫乱淫语正常位
+ちんぐりセックス				双手提脚啪啪啪
+ちんぐりアナルセックス			双手提脚菊花啪啪啪
+ちんぐりフェラ					双手提脚口交
+ちんぐり手コキ					双手提脚手交
+顔面騎乗位						颜面骑乘位啪啪啪
+椅子拘束騎乗位					椅子拘束骑乘位啪啪啪
+椅子拘束アナル騎乗位			椅子拘束菊花啪啪啪
+
 ; v1.32+ (?)
 ;淫乱淫語尻穴拡げアナル後背位	？
 ;淫乱淫語犬プレイセックス		？
-;首絞めセックス後背位			？
-;腕拘束イラマチオ				？
-;拘束愛撫バイブ責め				？
-;拘束愛撫アナルバイブ責め		？
-;吊るし正常位セックス			？
-;吊るし正常位アナルセックス		？
-;乱交３P馬乗りイラマチオ			？
-;乱交３P馬乗りアナルイラマチオ	？
+; 夜伽7
+首絞めセックス後背位			窒息啪啪啪后背位
+腕拘束イラマチオ				手臂拘束深喉
+拘束愛撫バイブ責め				拘束爱抚振动棒
+拘束愛撫アナルバイブ責め		拘束爱抚菊花振动棒
+吊るし正常位セックス			捆绑正常位啪啪啪
+吊るし正常位アナルセックス		捆绑正常位菊花啪啪啪
+乱交３P馬乗りイラマチオ			乱交3P骑乘位啪啪啪+深喉
+乱交３P馬乗りアナルイラマチオ	乱交3P骑乘位菊花啪啪啪+深喉
 ; denkigai2015wpants
-パンツコキ				用胖次撸
+パンツコキ						用胖次撸
 
 
 ; CM3D2+ Skills
@@ -505,7 +510,7 @@ MP全身洗いChu-B						[Chu-B] 泰国浴
 洗い							清洗	
 尻舐め							舔屁股	
 尻舐めオナニー					舔屁股自慰
-; [NOT FOUND]尻舐め手コキオナニー			舔屁股的手交自慰
+;[NOT FOUND] 尻舐め手コキオナニー			舔屁股的手交自慰
 潜望鏡フェラ					潜望镜口交	
 ダブルフェラ					双人口交	
 ダブル足コキ					双人足交
@@ -549,9 +554,9 @@ M女								M女
 撫子							贤惠
 一途							热心
 盲目的							盲目的
-風雅							风雅*
-母性的							母性的*
-女神							女神*
+風雅							风雅
+;母性的							
+;女神							
 
 ; Menu items
 MENU_GAME						游戏与沙龙
@@ -611,7 +616,7 @@ MAX_ALL							以上全部
 GUI_YOTOGI_TIMES_TITLE			设置已解锁夜战技能的使用次数为...
 GUI_YOTOGI_TIMES_PROMPT			设置所有已解锁夜战技能的使用次数，\n请输入数字。
 
-GUI_CLASS_LVL_TITLE			设置所有类型的等级为...
+GUI_CLASS_LVL_TITLE				设置所有类型的等级为...
 GUI_CLASS_LVL_PROMPT			请输入1-10来设置想要的等级。
 
 ; Language selection GUI
@@ -674,15 +679,15 @@ TL_NAME_CHANGE_TITLE			重命名翻译文件名称
 TL_NAME_CHANGE					The translation file with the name below already exists (or the translation file has no name).\nYou can	rename the file and click "OK", or click "CANCEL" to overwrite the existing translation file.\nIf the field is left empty, Maid Fiddler will generate a random file name.
 
 ; Errors
-ERROR_UNPATCHED					Maid Fiddler {0} detects that Assembly-CSharp.dll hasn't been patched or is patched with an outdated version of Maid Fiddler Patcher.\nIn order to function, Maid Fiddler requires that the assembly is patched with ReiPatcher or Sybaris.\nThe game may be unstable, until it is patched.\n\nMake sure you have the latest patcher downloaded and re-patch the game.
-ERROR_UNPATCHED_TITLE			No patch detected
-ERROR_OLD_PATCH					Maid Fiddler {0} detected that Assembly-CSharp.dll is patched with an unsupported version of Maid Fiddler Patcher.\nThe game was patched with patcher version {1}, but this version of Maid Fiddler supports only patcher versions {2} through {3}.\nThe game may not be functional until it is re-patched!\n\nMake sure you have the latest patcher downloaded and re-patch the game.
-ERROR_OLD_PATCH_TITLE			Outdated Maid Fiddler patch
-ERROR_CHECK_FAILED				Maid Fiddler failed to check that Assembly-CSharp.dll has been patched properly. Perhaps some other patch is causing the issue.\nMaid Fiddler can still be used, but it may cause errors.\n\nPlease re-patch the game and make sure no other plug-ins cause any interference.
-ERROR_CHECK_FAILED_TITLE		Failed to locate the patcher
-ERROR_LOG_MESSAGE_TITLE			Oh noes! An error!
-ERROR_LOG_MESSAGE				Oh no! An error has occurred in Maid Fiddler!
-ERROR_LOG_CREATED				A log named {0} was created.\nPlease, send this log to the developer with the description of what you attempted to do.
+ERROR_UNPATCHED					Maid Fiddler {0} detects that Assembly-CSharp.dll hasn't been patched or is patched with an outdated version of Maid Fiddler Patcher.\nIn order to function, Maid Fiddler requires that the assembly is patched with ReiPatcher or Sybaris.\nThe game may be unstable, until it is patched.\n\n请确认你下载了最新的patcher并重新给游戏打补丁。
+ERROR_UNPATCHED_TITLE			未检测到补丁
+ERROR_OLD_PATCH					Maid Fiddler {0} detected that Assembly-CSharp.dll is patched with an unsupported version of Maid Fiddler Patcher.\nThe game was patched with patcher version {1}, but this version of Maid Fiddler supports only patcher versions {2} through {3}.\nThe game may not be functional until it is re-patched!\n\n请确认你下载了最新的patcher并重新给游戏打补丁。
+ERROR_OLD_PATCH_TITLE			过时的Maid Fiddler补丁
+ERROR_CHECK_FAILED				Maid Fiddler failed to check that Assembly-CSharp.dll has been patched properly. Perhaps some other patch is causing the issue.\nMaid Fiddler can still be used, but it may cause errors.\n\n请重新给游戏打补丁并确认没有其他插件会引起冲突。
+ERROR_CHECK_FAILED_TITLE		定位Patcher失败
+ERROR_LOG_MESSAGE_TITLE			哎呀，出错了
+ERROR_LOG_MESSAGE				哎呀，Maid Fiddler发生了错误。
+ERROR_LOG_CREATED				日志文件（{0}）已被创建。\n请将这份日志发送给开发者并说明当时你想要进行的操作。
 ERROR_LOG_NOT_CREATED			Failed to create a dump message. Send a screenshot of the following stack trace to the developer:\n==START==\n{0}\n==END==
 
 OK								确定
