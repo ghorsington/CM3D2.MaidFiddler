@@ -17,7 +17,7 @@ namespace CM3D2.MaidFiddler.Patch
         private const string TAG = "CM3D2_MAID_FIDDLER";
         private AssemblyDefinition FiddlerAssembly;
         public override string Name => "MaidFiddler Patcher";
-        public override string Version => "1.2.0.0";
+        public override string Version => "1.2.1.0";
 
         public override bool CanPatch(PatcherArguments args)
         {

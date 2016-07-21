@@ -69,6 +69,7 @@ namespace CM3D2.MaidFiddler.Hook
         PopularRank,
         // Set (bool)
         Employment,
+        Marriage,
         FirstNameCall,
         Leader,
         RentalMaid,

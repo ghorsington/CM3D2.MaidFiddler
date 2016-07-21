@@ -22,7 +22,7 @@ namespace CM3D2.MaidFiddler.Plugin
         public const string VERSION = "BETA 0.9d";
         public const string PROJECT_PAGE = "https://github.com/denikson/CM3D2.MaidFiddler";
         public const string RESOURCE_URL = "https://raw.githubusercontent.com/denikson/CM3D2.MaidFiddler/master";
-        public const uint SUPPORTED_PATCH_MAX = 1200;
+        public const uint SUPPORTED_PATCH_MAX = 1210;
         public const uint SUPPORTED_PATCH_MIN = 1200;
         private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
         private const bool DEFAULT_OPEN_ON_STARTUP = false;

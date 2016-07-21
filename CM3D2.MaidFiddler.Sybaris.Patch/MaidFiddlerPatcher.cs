@@ -11,7 +11,7 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
 {
     public static class MaidFiddlerPatcher
     {
-        private const uint PATCHER_VERSION = 1200;
+        private const uint PATCHER_VERSION = 1210;
         public static readonly string[] TargetAssemblyNames = {"Assembly-CSharp.dll"};
 
         public static void Patch(AssemblyDefinition assembly)

@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.31" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.33" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -11,7 +11,7 @@
 ; If the translation is missing, <GUI Label> is used as the translation of itself (useful if one wants to leave Japanese labels untranslated).
 
 ; Feel free to edit the title of the tool!
-TITLE_TEXT						- Fiddle responsibly!
+TITLE_TEXT						- Now with one-click marriages!
 
 ; Info tab
 TAB_INFO						Information
@@ -22,6 +22,7 @@ Personal						Personality
 ContractType					Contract type
 Leader							Is leader
 RentalMaid						Is rental
+IsMarriage						Is married
 Condition						Love status
 ConditionSpecial				Yotogi state
 Employment						Employment day
@@ -153,6 +154,11 @@ Yotogi_Immoral					Immoral
 Yotogi_Bride					Bridal
 Yotogi_Succubus					Succubus
 Yotogi_Queen					Queen
+Yotogi_Darkness					Darkness
+Yotogi_School					School
+Yotogi_NTR						NTR
+Yotogi_Marriage					Marriage
+Yotogi_Lily						Lily
 
 ; Params			
 Care							Care
@@ -217,6 +223,7 @@ BonusTeachRate					Teaching rate
 化粧							Make-up
 エステ							Spa
 メイド研修						Maid Training
+休日							Day off
 
 ; Night work	
 クラブ接待							Entertainment
@@ -475,6 +482,14 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 顔面騎乗位						Facial Cowgirl
 椅子拘束騎乗位					Chair-restrained Cowgirl Sex
 椅子拘束アナル騎乗位				Chair-restrained Cowgirl Anal Sex
+首絞めセックス後背位				Choking Doggy
+首絞めアナルセックス後背位			Choking Anal Doggy
+腕拘束イラマチオ					Restrained Deep Throating
+拘束愛撫バイブ責め					Restrained Vibrator
+拘束愛撫アナルバイブ責め				Restrained Anal Vibrator
+吊るし正常位セックス					Hanging Missionary
+吊るし正常位アナルセックス			Hanging Anal Missionary
+
 
 ; CM3D2+ Skills
 トイレセックス						Toilet Sex

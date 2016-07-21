@@ -27,6 +27,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 InitField(label_first_name, textBox_first_name, MaidChangeType.FirstName);
                 InitField(label_last_name, textBox_last_name, MaidChangeType.LastName);
                 InitField(null, checkBox_is_fist_name_call, MaidChangeType.FirstNameCall);
+                InitField(null, checkBox_is_marriage, MaidChangeType.Marriage);
 
                 InitField(label_personality, comboBox_personality, MaidChangeType.Personal);
                 string key;

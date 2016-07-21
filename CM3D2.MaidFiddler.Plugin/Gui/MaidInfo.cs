@@ -135,7 +135,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     {MaidChangeType.FirstNameCall, SetFirstNameCall},
                     {MaidChangeType.Leader, SetLeader},
-                    {MaidChangeType.RentalMaid, SetRentalMaid}
+                    {MaidChangeType.RentalMaid, SetRentalMaid},
+                    {MaidChangeType.Marriage, SetMarriage}
                 };
 
                 setFunctionsLong = new Dictionary<MaidChangeType, Action<long>>
@@ -160,6 +161,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     {MaidChangeType.FirstName, UpdateFirstName},
                     {MaidChangeType.LastName, UpdateLastName},
                     {MaidChangeType.Leader, UpdateLeader},
+                    {MaidChangeType.Marriage, UpdateMarriage},
                     {MaidChangeType.RentalMaid, UpdateRentalMaid},
                     {MaidChangeType.FirstNameCall, UpdateFirstNameCall},
                     {MaidChangeType.FreeComment, UpdateFreeComment},
@@ -265,6 +267,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
 
             #region Setters
+
+            private void SetMarriage(bool marriage)
+            {
+                gui.valueUpdate[MaidChangeType.Marriage] = false;
+                Maid.Param.SetMarriage(marriage);
+            }
 
             private void SetRentalMaid(bool obj)
             {
@@ -698,7 +706,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             private void UpdateRentalMaid()
             {
-                gui.valueUpdate[MaidChangeType.Leader] = false;
+                gui.valueUpdate[MaidChangeType.RentalMaid] = false;
                 gui.checkBox_rental.Checked = Maid.Param.status.is_rental_maid;
             }
 
@@ -1327,6 +1335,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 gui.valueUpdate[MaidChangeType.LastName] = false;
                 gui.textBox_last_name.Text = Maid.Param.status.last_name;
                 gui.listBox1.Invalidate();
+            }
+
+            private void UpdateMarriage()
+            {
+                gui.valueUpdate[MaidChangeType.Marriage] = false;
+                gui.checkBox_is_marriage.Checked = Maid.Param.status.is_marriage;
             }
 
             private void UpdateLeader()
