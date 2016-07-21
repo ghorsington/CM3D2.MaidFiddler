@@ -161,8 +161,18 @@ namespace CM3D2.MaidFiddler.Patch
             for (int i = (int) MaidChangeType.FirstName; i <= (int) MaidChangeType.Seikeiken; i++)
             {
                 WritePreviousLine($"Set{typeNames[i]}");
-                maidParam.GetMethod($"Set{typeNames[i]}")
-                         .InjectWith(statusChangeHook, 0, i, features1, typeFields: new[] {maidParam.GetField("maid_")});
+                MethodDefinition setDefinition = maidParam.GetMethod($"Set{typeNames[i]}");
+                if (setDefinition == null)
+                {
+                    Console.WriteLine("Method not found (probably older version of the game). Skipping...");
+                    continue;
+                }
+                setDefinition.InjectWith(
+                statusChangeHook,
+                0,
+                i,
+                features1,
+                typeFields: new[] {maidParam.GetField("maid_")});
             }
 
             for (int i = (int) MaidChangeType.MaidClassExp; i <= (int) MaidChangeType.YotogiClassExp; i++)

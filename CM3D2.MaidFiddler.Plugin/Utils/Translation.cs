@@ -150,6 +150,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                     else
                         translationItems.Value.ForEach(a => a.Invoke(translationItems.Key));
                 }
+                Resources.InitThumbnail();
             },
             "Failed to apply translation.");
         }

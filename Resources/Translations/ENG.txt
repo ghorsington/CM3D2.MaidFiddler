@@ -13,6 +13,12 @@
 ; Feel free to edit the title of the tool!
 TITLE_TEXT						- Now with one-click marriages!
 
+; Generic maid thumbnail
+THUMB_TEXT_SIZE					11.0
+THUMB_TEXT_POS_X				0.0
+THUMB_TEXT_POS_Y				55.0
+THUMB_NONE						        NO\nTHUMBNAIL
+
 ; Info tab
 TAB_INFO						Information
 FirstName						First name
@@ -231,7 +237,7 @@ BonusTeachRate					Teaching rate
 ソーププレイ						Soap Play
 ハメ撮りプレイ						Photo Play
 恋人プレイ						Lovers Play
-恋人プレイ（報告）					Lovers Play (Report)
+恋人プ���イ（報告）					Lovers Play (Report)
 野外露出							Outdoors Exposure
 騙され接待01						Deceive Maid 1
 騙され接待02						Deceive Maid 2
@@ -272,7 +278,7 @@ AV撮影							AV Shooting
 バイブ責めChu-B					[Chu-B] Vibrator
 アナルバイブ責め					Anal Vibrator
 アナルバイブ責めChu-B				[Chu-B] Anal Vibrator
-セックス正常位						Missionary Sex
+セックス正常���						Missionary Sex
 セックス正常位Chu-B				[Chu-B] Missionary Sex
 アナルセックス正常位					Missionary Anal Sex
 アナルセックス正常位Chu-B			[Chu-B] Missionary Anal Sex
@@ -303,7 +309,7 @@ AV撮影							AV Shooting
 抱きつきセックス後背位Chu-B			[Chu-B] Hugging Doggy Style Sex
 抱きつきアナルセックス後背位			Hugging Doggy Style Anal Sex
 抱きつきアナルセックス後背位Chu-B		[Chu-B] Hugging Doggy Style Anal Sex
-だいしゅきホールド					Loving Hold
+だいしゅ���ホールド					Loving Hold
 ;Pervert
 かっこいいポーズ						Cool Pose
 かわいいポーズ						Cute Pose
@@ -324,7 +330,7 @@ AV撮影							AV Shooting
 太バイブオナニー					Thick Vibrator Masturbation
 太バイブオナニーChu-B				[Chu-B] Thick Vibrator Masturbation
 露出プレイ						Exhibitionism
-犬プレイ							Pet Play
+犬プ���イ							Pet Play
 露出セックス背面立位				Exhibitionist Rear Standing Sex
 露出セックス背面立位Chu-B			[Chu-B] Exhibitionist Rear Standing Sex
 露出アナルセックス背面立位			Exhibitionist Anal Rear Standing Sex
@@ -369,7 +375,7 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 イラマチオChu-B					[Chu-B] Irrumatio
 拘束セックス						Restrained Sex
 拘束セックスChu-B					[Chu-B] Restrained Sex
-拘束アナルセックス					Restrained Anal Sex
+拘束アナルセ���クス					Restrained Anal Sex
 拘束アナルセックスChu-B				[Chu-B] Restrained Anal Sex
 首絞めセックス正常位				Choking Missionary Sex
 首絞めセックス正常位Chu-B			[Chu-B] Choking Missionary Sex
@@ -479,7 +485,7 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 ちんぐりアナルセックス					Reverse Piledriver Anal Sex
 ちんぐりフェラ						Reverse Piledriver Fellatio
 ちんぐり手コキ						Reverse Piledriver Handjob
-顔面騎乗位						Facial Cowgirl
+顔面騎乗���						Facial Cowgirl
 椅子拘束騎乗位					Chair-restrained Cowgirl Sex
 椅子拘束アナル騎乗位				Chair-restrained Cowgirl Anal Sex
 首絞めセックス後背位				Choking Doggy

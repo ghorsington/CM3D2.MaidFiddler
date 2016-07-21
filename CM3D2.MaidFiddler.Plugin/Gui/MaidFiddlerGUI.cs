@@ -23,6 +23,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 Player = new PlayerInfo(this);
                 removeValueLimit = false;
+                Resources.InitThumbnail();
                 InitMenuText();
                 InitMaidInfoTab();
                 InitMaidStatsTab();

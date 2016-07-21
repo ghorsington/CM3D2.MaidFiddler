@@ -139,7 +139,7 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
 
             for (int i = (int) MaidChangeType.FirstName; i <= (int) MaidChangeType.Seikeiken; i++)
             {
-                maidParam.GetMethod($"Set{typeNames[i]}")
+                maidParam.GetMethod($"Set{typeNames[i]}")?
                          .InjectWith(statusChangeHook, 0, i, features1, typeFields: new[] {maidParam.GetField("maid_")});
             }
 
