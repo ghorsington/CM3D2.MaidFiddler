@@ -23,6 +23,12 @@ if not exist "%msbuildpath%\msbuild.exe" (
 	exit /b 1
 )
 
+echo PHASE 0: Cleaning up
+rmdir /Q /S %cd%\CM3D2.MaidFiddler.Hook\bin\%buildconf%
+rmdir /Q /S %cd%\CM3D2.MaidFiddler.Patch\bin\%buildconf%
+rmdir /Q /S %cd%\CM3D2.MaidFiddler.Plugin\bin\%buildconf%
+rmdir /Q /S %cd%\CM3D2.MaidFiddler.Sybaris.Patch\bin\%buildconf%
+
 echo PHASE 1: Building Hook and Patch
 
 "%msbuildpath%\msbuild.exe" %cd%\CM3D2.MaidFiddler.Patch\CM3D2.MaidFiddler.Patch.csproj /p:Configuration=%buildconf%
