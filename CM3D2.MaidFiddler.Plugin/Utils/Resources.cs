@@ -65,7 +65,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             () =>
             {
                 Debugger.WriteLine("Loading generic maid thumbnail...");
-                float size = Translation.GetTranslation("THUMB_TEXT_SIZE").Parse(16.0F);
+                float size = Translation.GetTranslation("THUMB_TEXT_SIZE").Parse(10.0F);
                 float posX = Translation.GetTranslation("THUMB_TEXT_POS_X").Parse(0.0F);
                 float posY = Translation.GetTranslation("THUMB_TEXT_POS_Y").Parse(0.0F);
 

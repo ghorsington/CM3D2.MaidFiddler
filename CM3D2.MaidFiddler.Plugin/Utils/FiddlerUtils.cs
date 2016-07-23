@@ -12,9 +12,10 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
 {
     public static class FiddlerUtils
     {
-        private const int ERROR_UNPATCHED = 0;
-        private const int ERROR_OLD_PATCH = 1;
-        private const int ERROR_CHECK_FAILED_TITLE = 2;
+        private const string ERROR_UNPATCHED = "ERR_UNPATCHED";
+        private const string ERROR_OLD_PATCH = "ERR_OLD_PATCH";
+        private const string ERROR_CHECK_FAILED = "ERR_CHECK_FAILED";
+        private const string WRN_OLD_VERSION = "WRN_OLD_CM3D2_VERSION";
         private static bool errorThrown;
         public static int GameVersion => (int) typeof (Misc).GetField(nameof(Misc.GAME_VERSION)).GetValue(null);
 
@@ -57,12 +58,27 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                     MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
                 }
+                if (GameVersion < MaidFiddler.SUPPORTED_CM3D2_VERSION)
+                {
+                    title = Translation.IsTranslated("WRN_OLD_VERSION_TITLE")
+                            ? $"{Translation.GetTranslation("WRN_OLD_VERSION_TITLE")} (ID: {WRN_OLD_VERSION})"
+                            : $"Old version of CM3D2 (ID: {WRN_OLD_VERSION})";
+                    text = Translation.IsTranslated("WRN_OLD_VERSION")
+                           ? string.Format(
+                           Translation.GetTranslation("WRN_OLD_VERSION"),
+                           MaidFiddler.VERSION,
+                           $"{GameVersion / 100}.{GameVersion % 100}",
+                           $"{MaidFiddler.SUPPORTED_CM3D2_VERSION / 100}.{MaidFiddler.SUPPORTED_CM3D2_VERSION % 100}")
+                           : $"Maid Fiddler {MaidFiddler.VERSION} detected that you are running an older version of CM3D2. Your version of CM3D2 is {GameVersion / 100}.{GameVersion % 100}, but Maid Fiddler supports versions {MaidFiddler.SUPPORTED_CM3D2_VERSION / 100}.{MaidFiddler.SUPPORTED_CM3D2_VERSION % 100} and higher.\nMaid Fiddler can be used, but some features may be disabled\n\nUpdate your game in order to use all of Maid Fiddler's features.";
+                    MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return true;
+                }
             }
             catch (Exception)
             {
                 title = Translation.IsTranslated("ERROR_CHECK_FAILED_TITLE")
-                        ? $"{Translation.GetTranslation("ERROR_CHECK_FAILED_TITLE")} (ID: {ERROR_CHECK_FAILED_TITLE})"
-                        : $"Failed to locate the patcher (ID: {ERROR_CHECK_FAILED_TITLE})";
+                        ? $"{Translation.GetTranslation("ERROR_CHECK_FAILED_TITLE")} (ID: {ERROR_CHECK_FAILED})"
+                        : $"Failed to locate the patcher (ID: {ERROR_CHECK_FAILED})";
                 text = Translation.IsTranslated("ERROR_CHECK_FAILED")
                        ? Translation.GetTranslation("ERROR_CHECK_FAILED")
                        : "Maid Fiddler failed to check that Assembly-CSharp.dll has been patched properly. Perhaps some other patch is causing the issue.\nMaid Fiddler can still be used, but it may cause errors.\n\nPlease re-patch the game and make sure no other plug-ins cause any interference.";

@@ -71,7 +71,6 @@ echo Creating ReiPatcher distribution
 mkdir Distribution\ReiPatcher\Managed 2>NUL
 mkdir Distribution\ReiPatcher\Patches 2>NUL
 mkdir Distribution\ReiPatcher\UnityInjector 2>NUL
-mkdir Distribution\ReiPatcher\UnityInjector\Config\MaidFiddler\Images 2>NUL
 mkdir Distribution\ReiPatcher\UnityInjector\Config\MaidFiddler\Translations 2>NUL
 
 copy /Y %cd%\Build\CM3D2.MaidFiddler.Hook.dll %cd%\Distribution\ReiPatcher\Managed\CM3D2.MaidFiddler.Hook.dll >NUL
@@ -79,13 +78,11 @@ copy /Y %cd%\Build\CM3D2.MaidFiddler.Patch.dll %cd%\Distribution\ReiPatcher\Patc
 copy /Y %cd%\Build\CM3D2.MaidFiddler.Plugin.dll %cd%\Distribution\ReiPatcher\UnityInjector\CM3D2.MaidFiddler.Plugin.dll >NUL
 
 copy /Y %cd%\Resources\Translations\ENG.txt %cd%\Distribution\ReiPatcher\UnityInjector\Config\MaidFiddler\Translations\ENG.txt >NUL
-copy /Y %cd%\Resources\Images\no_thumbnail.png %cd%\Distribution\ReiPatcher\UnityInjector\Config\MaidFiddler\Images\no_thumbnail.png >NUL
 
 echo Creating Sybaris distribution
 mkdir Distribution\Sybaris\Managed 2>NUL
 mkdir Distribution\Sybaris\Loader 2>NUL
 mkdir Distribution\Sybaris\UnityInjector 2>NUL
-mkdir Distribution\Sybaris\UnityInjector\Config\MaidFiddler\Images 2>NUL
 mkdir Distribution\Sybaris\UnityInjector\Config\MaidFiddler\Translations 2>NUL
 
 copy /Y %cd%\Build\CM3D2.MaidFiddler.Hook.dll %cd%\Distribution\Sybaris\Managed\CM3D2.MaidFiddler.Hook.dll >NUL
@@ -93,7 +90,6 @@ copy /Y %cd%\Build\CM3D2.MaidFiddler.Sybaris.Patcher.dll %cd%\Distribution\Sybar
 copy /Y %cd%\Build\CM3D2.MaidFiddler.Plugin.dll %cd%\Distribution\Sybaris\UnityInjector\CM3D2.MaidFiddler.Plugin.dll >NUL
 
 copy /Y %cd%\Resources\Translations\ENG.txt %cd%\Distribution\Sybaris\UnityInjector\Config\MaidFiddler\Translations\ENG.txt >NUL
-copy /Y %cd%\Resources\Images\no_thumbnail.png %cd%\Distribution\Sybaris\UnityInjector\Config\MaidFiddler\Images\no_thumbnail.png >NUL
 
 echo Done
 pause

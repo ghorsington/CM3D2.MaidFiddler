@@ -688,6 +688,10 @@ ERROR_LOG_MESSAGE				Oh no! An error has occurred in Maid Fiddler!
 ERROR_LOG_CREATED				A log named {0} was created.\nPlease, send this log to the developer with the description of what you attempted to do.
 ERROR_LOG_NOT_CREATED			Failed to create a dump message. Send a screenshot of the following stack trace to the developer:\n==START==\n{0}\n==END==
 
+; Warnings
+WRN_OLD_VERSION_TITLE			Old version of CM3D2
+WRN_OLD_VERSION					Maid Fiddler {0} detected that you are running an older version of CM3D2. Your version of CM3D2 is {1}, but Maid Fiddler supports versions {2} and higher.\nMaid Fiddler can be used, but some features may be disabled\n\nUpdate your game in order to use all of Maid Fiddler's features.
+
 OK								OK
 CANCEL							Cancel
 APPLY							Apply
