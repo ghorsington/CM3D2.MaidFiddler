@@ -35,6 +35,8 @@
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label_licence = new System.Windows.Forms.Label();
             this.label_contributors = new System.Windows.Forms.Label();
+            this.labelPlugins = new System.Windows.Forms.Label();
+            this.label_plugins = new System.Windows.Forms.Label();
             this.tableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +45,7 @@
             this.label_version.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label_version.AutoSize = true;
-            this.label_version.Location = new System.Drawing.Point(176, 37);
+            this.label_version.Location = new System.Drawing.Point(176, 33);
             this.label_version.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.label_version.MaximumSize = new System.Drawing.Size(0, 17);
             this.label_version.Name = "label_version";
@@ -56,7 +58,7 @@
             // 
             this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.okButton.Location = new System.Drawing.Point(301, 127);
+            this.okButton.Location = new System.Drawing.Point(301, 167);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 24;
@@ -68,7 +70,7 @@
             this.labelContributors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelContributors.AutoSize = true;
-            this.labelContributors.Location = new System.Drawing.Point(6, 50);
+            this.labelContributors.Location = new System.Drawing.Point(6, 106);
             this.labelContributors.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelContributors.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelContributors.Name = "labelContributors";
@@ -82,7 +84,7 @@
             this.labelVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelVersion.AutoSize = true;
-            this.labelVersion.Location = new System.Drawing.Point(44, 37);
+            this.labelVersion.Location = new System.Drawing.Point(44, 33);
             this.labelVersion.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelVersion.Name = "labelVersion";
@@ -100,7 +102,7 @@
             this.labelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelProductName.Name = "labelProductName";
-            this.labelProductName.Size = new System.Drawing.Size(370, 17);
+            this.labelProductName.Size = new System.Drawing.Size(370, 13);
             this.labelProductName.TabIndex = 19;
             this.labelProductName.Text = "Maid Fiddler - An in-game editor for CM3D2";
             this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -112,11 +114,13 @@
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.Controls.Add(this.labelProductName, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.labelVersion, 0, 2);
-            this.tableLayoutPanel.Controls.Add(this.labelContributors, 0, 3);
             this.tableLayoutPanel.Controls.Add(this.okButton, 1, 6);
-            this.tableLayoutPanel.Controls.Add(this.label_version, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.label_licence, 0, 5);
-            this.tableLayoutPanel.Controls.Add(this.label_contributors, 1, 3);
+            this.tableLayoutPanel.Controls.Add(this.labelContributors, 0, 4);
+            this.tableLayoutPanel.Controls.Add(this.labelPlugins, 0, 3);
+            this.tableLayoutPanel.Controls.Add(this.label_contributors, 1, 4);
+            this.tableLayoutPanel.Controls.Add(this.label_version, 1, 2);
+            this.tableLayoutPanel.Controls.Add(this.label_plugins, 1, 3);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(9, 9);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -124,11 +128,11 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel.Size = new System.Drawing.Size(379, 153);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(379, 193);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // label_licence
@@ -136,7 +140,7 @@
             this.label_licence.AutoSize = true;
             this.tableLayoutPanel.SetColumnSpan(this.label_licence, 2);
             this.label_licence.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_licence.Location = new System.Drawing.Point(3, 83);
+            this.label_licence.Location = new System.Drawing.Point(3, 119);
             this.label_licence.Name = "label_licence";
             this.label_licence.Size = new System.Drawing.Size(373, 26);
             this.label_licence.TabIndex = 26;
@@ -149,11 +153,37 @@
             this.label_contributors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label_contributors.AutoSize = true;
-            this.label_contributors.Location = new System.Drawing.Point(173, 50);
+            this.label_contributors.Location = new System.Drawing.Point(173, 106);
             this.label_contributors.Name = "label_contributors";
             this.label_contributors.Size = new System.Drawing.Size(63, 13);
             this.label_contributors.TabIndex = 27;
             this.label_contributors.Text = "Contributors";
+            // 
+            // labelPlugins
+            // 
+            this.labelPlugins.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelPlugins.AutoSize = true;
+            this.labelPlugins.Location = new System.Drawing.Point(45, 46);
+            this.labelPlugins.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.labelPlugins.MaximumSize = new System.Drawing.Size(0, 17);
+            this.labelPlugins.Name = "labelPlugins";
+            this.labelPlugins.Size = new System.Drawing.Size(122, 17);
+            this.labelPlugins.TabIndex = 28;
+            this.labelPlugins.Text = "GUI_ABOUT_PLUGINS";
+            this.labelPlugins.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label_plugins
+            // 
+            this.label_plugins.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label_plugins.AutoSize = true;
+            this.label_plugins.Location = new System.Drawing.Point(173, 46);
+            this.label_plugins.Name = "label_plugins";
+            this.label_plugins.Size = new System.Drawing.Size(41, 60);
+            this.label_plugins.TabIndex = 29;
+            this.label_plugins.Text = "Plugins";
+            this.label_plugins.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // AboutGUI
             // 
@@ -161,7 +191,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(397, 171);
+            this.ClientSize = new System.Drawing.Size(397, 211);
             this.Controls.Add(this.tableLayoutPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
@@ -188,5 +218,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.Label label_licence;
         private System.Windows.Forms.Label label_contributors;
+        private System.Windows.Forms.Label labelPlugins;
+        private System.Windows.Forms.Label label_plugins;
     }
 }

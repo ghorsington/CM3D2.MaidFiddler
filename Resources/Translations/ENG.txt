@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.33" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.34" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -574,6 +574,7 @@ MENU_ALL_MAID_RESET_VIP			Reset VIP encounters
 MENU_ALL_MAID_ALL_YOTOGI_COM	All yotogi skill commands enabled
 MENU_ALL_MAID_ALL_VIP_VISIBLE_ALWAYS	VIP encounters always visible
 MENU_ALL_MAID_ALL_YOTOGI_VISIBLE		All yotogi skills always visible
+MENU_ALL_MAID_ALL_YOTOGI_VISIBLE_BASIC		All stage-specific yotogi skills visible
 MENU_ALL_MAID_UNLOCK_MAX_ALL	Unlock and set all to max for every maid
 MENU_ALL_MAID_ALL_SCENES_VISIBLE	Enable all scenes in Free Mode
 
@@ -631,6 +632,7 @@ GUI_TS_AUTHOR					Author(s):
 GUI_ABOUT_TITLE					About Maid Fiddler
 GUI_ABOUT_VERSION				Version:
 GUI_ABOUT_CONTRIBUTORS			Contributors:
+GUI_ABOUT_PLUGINS				Installed DLC:
 
 ; Settings menu
 GUI_SETTINGS_TITLE				Settings

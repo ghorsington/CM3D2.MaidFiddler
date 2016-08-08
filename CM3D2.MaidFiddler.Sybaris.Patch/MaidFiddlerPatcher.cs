@@ -11,7 +11,7 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
 {
     public static class MaidFiddlerPatcher
     {
-        private const uint PATCHER_VERSION = 1210;
+        private const uint PATCHER_VERSION = 1220;
         public static readonly string[] TargetAssemblyNames = {"Assembly-CSharp.dll"};
 
         public static void Patch(AssemblyDefinition assembly)
@@ -336,9 +336,11 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
                              yotogiPlayMgr.GetField("command_factory_")
                          });
 
-            skillData.GetMethod("IsExecMaid").InjectWith(yotogiSkillVisCheckHook, 0, 0, InjectFlags.ModifyReturn);
+            skillData.GetMethod("IsExecMaid")
+                     .InjectWith(yotogiSkillVisCheckHook, 0, 0, InjectFlags.PassTag | InjectFlags.ModifyReturn);
 
-            skillData.GetMethod("IsExecStage").InjectWith(yotogiSkillVisCheckHook, 0, 0, InjectFlags.ModifyReturn);
+            skillData.GetMethod("IsExecStage")
+                     .InjectWith(yotogiSkillVisCheckHook, 0, 1, InjectFlags.PassTag | InjectFlags.ModifyReturn);
 
             wf.GetMethod("NumRound2")
               .InjectWith(onValueRoundInt1, 0, 0, InjectFlags.ModifyReturn | InjectFlags.PassParametersVal);

@@ -26,6 +26,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             MaidStatusChangeHooks.CommandUpdate += OnCommandUpdate;
             MaidStatusChangeHooks.NightWorkVisibilityCheck += OnNightWorkVisibilityCheck;
             MaidStatusChangeHooks.YotogiSkillVisibilityCheck += OnYotogiSkillVisibilityCheck;
+            MaidStatusChangeHooks.YotogiSkillVisibilityStageCheck += OnYotogiSkillVisibilityStageCheck;
             MaidStatusChangeHooks.ProcessFreeModeScene += ProcessFreeModeScene;
 
             PlayerStatusChangeHooks.PlayerValueChanged += OnPlayerValueChanged;
@@ -306,10 +307,20 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             $"Attempting to check work enabled: ID={args.ID}, Force={args.ForceEnabled}");
         }
 
+        private void OnYotogiSkillVisibilityStageCheck(object sender, YotogiSkillVisibleEventArgs e)
+        {
+            Debugger.WriteLine(
+            LogLevel.Info,
+            $"Checking for skill stage visibility. Forcing visible: {yotogiAllSkillsVisible}");
+            e.ForceVisible = yotogiAllSkillsVisible;
+        }
+
         private void OnYotogiSkillVisibilityCheck(object sender, YotogiSkillVisibleEventArgs e)
         {
-            Debugger.WriteLine(LogLevel.Info, $"Checking for skill visibility. Setting to {yotogiSkillsVisible}");
-            e.ForceVisible = yotogiSkillsVisible;
+            Debugger.WriteLine(
+            LogLevel.Info,
+            $"Checking for skill visibility. Forcing visible: {yotogiSkillsVisible || yotogiAllSkillsVisible}");
+            e.ForceVisible = yotogiSkillsVisible || yotogiAllSkillsVisible;
         }
 
         private void ReloadNightWorkData(object sender, PostProcessNightEventArgs args)

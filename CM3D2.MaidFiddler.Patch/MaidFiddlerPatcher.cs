@@ -17,7 +17,7 @@ namespace CM3D2.MaidFiddler.Patch
         private const string TAG = "CM3D2_MAID_FIDDLER";
         private AssemblyDefinition FiddlerAssembly;
         public override string Name => "MaidFiddler Patcher";
-        public override string Version => "1.2.1.0";
+        public override string Version => "1.2.2.0";
 
         public override bool CanPatch(PatcherArguments args)
         {
@@ -402,10 +402,12 @@ namespace CM3D2.MaidFiddler.Patch
                          });
 
             WritePreviousLine("IsExecMaid");
-            skillData.GetMethod("IsExecMaid").InjectWith(yotogiSkillVisCheckHook, 0, 0, InjectFlags.ModifyReturn);
+            skillData.GetMethod("IsExecMaid")
+                     .InjectWith(yotogiSkillVisCheckHook, 0, 0, InjectFlags.PassTag | InjectFlags.ModifyReturn);
 
             WritePreviousLine("IsExecStage");
-            skillData.GetMethod("IsExecStage").InjectWith(yotogiSkillVisCheckHook, 0, 0, InjectFlags.ModifyReturn);
+            skillData.GetMethod("IsExecStage")
+                     .InjectWith(yotogiSkillVisCheckHook, 0, 1, InjectFlags.PassTag | InjectFlags.ModifyReturn);
 
             WritePreviousLine("NumRound2");
             wf.GetMethod("NumRound2")

@@ -40,6 +40,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\Libs\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
     <Reference Include="ExIni, Version=1.0.2.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\ExIni.dll</HintPath>

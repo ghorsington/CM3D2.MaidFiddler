@@ -34,6 +34,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_info = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.checkBox_is_marriage = new System.Windows.Forms.CheckBox();
             this.label_first_name = new System.Windows.Forms.Label();
             this.textBox_first_name = new System.Windows.Forms.TextBox();
             this.label_last_name = new System.Windows.Forms.Label();
@@ -174,7 +175,7 @@
             this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_item_all_yotogi_vis = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -207,7 +208,7 @@
             this.mENUMISCSETTINGSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMISCABOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maidFiddlerGUIBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.checkBox_is_marriage = new System.Windows.Forms.CheckBox();
+            this.menu_item_all_yotogi_vis_basic = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_info.SuspendLayout();
@@ -375,6 +376,19 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(555, 505);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // checkBox_is_marriage
+            // 
+            this.checkBox_is_marriage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBox_is_marriage.AutoSize = true;
+            this.checkBox_is_marriage.Location = new System.Drawing.Point(402, 110);
+            this.checkBox_is_marriage.Margin = new System.Windows.Forms.Padding(0);
+            this.checkBox_is_marriage.Name = "checkBox_is_marriage";
+            this.checkBox_is_marriage.Size = new System.Drawing.Size(75, 20);
+            this.checkBox_is_marriage.TabIndex = 31;
+            this.checkBox_is_marriage.Text = "IsMarriage";
+            this.checkBox_is_marriage.UseVisualStyleBackColor = true;
             // 
             // label_first_name
             // 
@@ -2095,7 +2109,8 @@
             this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem,
             this.toolStripSeparator1,
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem,
-            this.mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem,
+            this.menu_item_all_yotogi_vis_basic,
+            this.menu_item_all_yotogi_vis,
             this.toolStripSeparator2,
             this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem,
             this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem,
@@ -2108,64 +2123,64 @@
             // mENUALLMAIDLIMITToolStripMenuItem
             // 
             this.mENUALLMAIDLIMITToolStripMenuItem.Name = "mENUALLMAIDLIMITToolStripMenuItem";
-            this.mENUALLMAIDLIMITToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.mENUALLMAIDLIMITToolStripMenuItem.Size = new System.Drawing.Size(319, 22);
             this.mENUALLMAIDLIMITToolStripMenuItem.Text = "MENU_ALL_MAID_NO_LIMIT";
             this.mENUALLMAIDLIMITToolStripMenuItem.Click += new System.EventHandler(this.ToggleValueLimit);
             // 
             // mENUALLMAIDUNLOCKMAXALLToolStripMenuItem
             // 
             this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Name = "mENUALLMAIDUNLOCKMAXALLToolStripMenuItem";
-            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Size = new System.Drawing.Size(319, 22);
             this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Text = "MENU_ALL_MAID_UNLOCK_MAX_ALL";
             this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Click += new System.EventHandler(this.SetUnlockMaxAllMaids);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(304, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(316, 6);
             // 
             // mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem
             // 
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem.Name = "mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem";
-            this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem.Size = new System.Drawing.Size(319, 22);
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem.Text = "MENU_ALL_MAID_ALL_YOTOGI_COM";
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem.Click += new System.EventHandler(this.ToggleYotogiCommandEnable);
             // 
-            // mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem
+            // menu_item_all_yotogi_vis
             // 
-            this.mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem.Name = "mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem";
-            this.mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
-            this.mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem.Text = "MENU_ALL_MAID_ALL_YOTOGI_VISIBLE";
-            this.mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem.Click += new System.EventHandler(this.ToggleYotogiSkillsVisible);
+            this.menu_item_all_yotogi_vis.Name = "menu_item_all_yotogi_vis";
+            this.menu_item_all_yotogi_vis.Size = new System.Drawing.Size(319, 22);
+            this.menu_item_all_yotogi_vis.Text = "MENU_ALL_MAID_ALL_YOTOGI_VISIBLE";
+            this.menu_item_all_yotogi_vis.Click += new System.EventHandler(this.ToggleYotogiSkillsVisible);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(304, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(316, 6);
             // 
             // mENUALLMAIDALLVIPVISIBLEToolStripMenuItem
             // 
             this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Name = "mENUALLMAIDALLVIPVISIBLEToolStripMenuItem";
-            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Size = new System.Drawing.Size(319, 22);
             this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Text = "MENU_ALL_MAID_RESET_VIP";
             this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Click += new System.EventHandler(this.ResetVip);
             // 
             // mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem
             // 
             this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Name = "mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem";
-            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Size = new System.Drawing.Size(319, 22);
             this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Text = "MENU_ALL_MAID_ALL_VIP_VISIBLE_ALWAYS";
             this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Click += new System.EventHandler(this.ToggleVIPVisible);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(304, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(316, 6);
             // 
             // mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem
             // 
             this.mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem.Name = "mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem";
-            this.mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem.Size = new System.Drawing.Size(307, 22);
+            this.mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem.Size = new System.Drawing.Size(319, 22);
             this.mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem.Text = "MENU_ALL_MAID_ALL_SCENES_VISIBLE";
             this.mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem.Click += new System.EventHandler(this.ToggleAllScenesVisible);
             // 
@@ -2375,18 +2390,12 @@
             this.mENUMISCABOUTToolStripMenuItem.Text = "MENU_MISC_ABOUT";
             this.mENUMISCABOUTToolStripMenuItem.Click += new System.EventHandler(this.OpenAboutMenu);
             // 
-            // checkBox_is_marriage
+            // menu_item_all_yotogi_vis_basic
             // 
-            this.checkBox_is_marriage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox_is_marriage.AutoSize = true;
-            this.checkBox_is_marriage.Location = new System.Drawing.Point(402, 110);
-            this.checkBox_is_marriage.Margin = new System.Windows.Forms.Padding(0);
-            this.checkBox_is_marriage.Name = "checkBox_is_marriage";
-            this.checkBox_is_marriage.Size = new System.Drawing.Size(75, 20);
-            this.checkBox_is_marriage.TabIndex = 31;
-            this.checkBox_is_marriage.Text = "IsMarriage";
-            this.checkBox_is_marriage.UseVisualStyleBackColor = true;
+            this.menu_item_all_yotogi_vis_basic.Name = "menu_item_all_yotogi_vis_basic";
+            this.menu_item_all_yotogi_vis_basic.Size = new System.Drawing.Size(319, 22);
+            this.menu_item_all_yotogi_vis_basic.Text = "MENU_ALL_MAID_ALL_YOTOGI_VISIBLE_BASIC";
+            this.menu_item_all_yotogi_vis_basic.Click += new System.EventHandler(this.ToggleYotogiSkillsVisibleBasic);
             // 
             // MaidFiddlerGUI
             // 
@@ -2610,7 +2619,7 @@
         private System.Windows.Forms.ToolStripMenuItem mAXCLASSLVLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mENUMAIDSETToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mENUMAIDSETCLASSLVLToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mENUALLMAIDALLYOTOGIVISIBLEToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menu_item_all_yotogi_vis;
         private System.Windows.Forms.ToolStripMenuItem mENUALLMAIDUNLOCKMAXALLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mENUMISCLANGSELECTToolStripMenuItem;
@@ -2640,5 +2649,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.CheckBox checkBox_is_marriage;
+        private System.Windows.Forms.ToolStripMenuItem menu_item_all_yotogi_vis_basic;
     }
 }

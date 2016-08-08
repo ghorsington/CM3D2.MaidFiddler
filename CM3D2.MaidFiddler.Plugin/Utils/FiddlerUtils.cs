@@ -15,9 +15,10 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         private const string ERROR_UNPATCHED = "ERR_UNPATCHED";
         private const string ERROR_OLD_PATCH = "ERR_OLD_PATCH";
         private const string ERROR_CHECK_FAILED = "ERR_CHECK_FAILED";
-        private const string WRN_OLD_VERSION = "WRN_OLD_CM3D2_VERSION";
         private static bool errorThrown;
         public static int GameVersion => (int) typeof (Misc).GetField(nameof(Misc.GAME_VERSION)).GetValue(null);
+        public static bool PlusPack2Installed => GameUty.CheckPackFlag(PluginData.Type.PP002);
+        public static bool PlusPackInstalled => GameUty.CheckPackFlag(PluginData.Type.PP001);
 
         public static bool CheckPatcherVersion()
         {
@@ -57,21 +58,6 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
 
                     MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
-                }
-                if (GameVersion < MaidFiddler.SUPPORTED_CM3D2_VERSION)
-                {
-                    title = Translation.IsTranslated("WRN_OLD_VERSION_TITLE")
-                            ? $"{Translation.GetTranslation("WRN_OLD_VERSION_TITLE")} (ID: {WRN_OLD_VERSION})"
-                            : $"Old version of CM3D2 (ID: {WRN_OLD_VERSION})";
-                    text = Translation.IsTranslated("WRN_OLD_VERSION")
-                           ? string.Format(
-                           Translation.GetTranslation("WRN_OLD_VERSION"),
-                           MaidFiddler.VERSION,
-                           $"{GameVersion / 100}.{GameVersion % 100}",
-                           $"{MaidFiddler.SUPPORTED_CM3D2_VERSION / 100}.{MaidFiddler.SUPPORTED_CM3D2_VERSION % 100}")
-                           : $"Maid Fiddler {MaidFiddler.VERSION} detected that you are running an older version of CM3D2. Your version of CM3D2 is {GameVersion / 100}.{GameVersion % 100}, but Maid Fiddler supports versions {MaidFiddler.SUPPORTED_CM3D2_VERSION / 100}.{MaidFiddler.SUPPORTED_CM3D2_VERSION % 100} and higher.\nMaid Fiddler can be used, but some features may be disabled\n\nUpdate your game in order to use all of Maid Fiddler's features.";
-                    MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return true;
                 }
             }
             catch (Exception)

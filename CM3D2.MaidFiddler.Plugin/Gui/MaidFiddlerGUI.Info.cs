@@ -100,10 +100,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 InitField(label_profile, textBox_profile, MaidChangeType.Profile);
                 InitField(label_free_comment, textBox_free_comment, MaidChangeType.FreeComment);
 
-                if (FiddlerUtils.GameVersion < 121)
+                if (FiddlerUtils.GameVersion < 121 || !FiddlerUtils.PlusPackInstalled)
                     checkBox_rental.Hide();
 
-                if (FiddlerUtils.GameVersion < 133)
+                if (FiddlerUtils.GameVersion < 133 || !FiddlerUtils.PlusPack2Installed)
                     checkBox_is_marriage.Hide();
             },
             "Failed to initialize maid info tab");

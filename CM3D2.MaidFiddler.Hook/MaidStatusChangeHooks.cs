@@ -200,6 +200,7 @@ namespace CM3D2.MaidFiddler.Hook
         public static event EventHandler<StatusUpdateEventArgs> StatusUpdated;
         public static event EventHandler<ThumbnailEventArgs> ThumbnailChanged;
         public static event EventHandler<YotogiSkillVisibleEventArgs> YotogiSkillVisibilityCheck;
+        public static event EventHandler<YotogiSkillVisibleEventArgs> YotogiSkillVisibilityStageCheck;
         public static event EventHandler<PostProcessSceneEventArgs> ProcessFreeModeScene;
 
         public static bool CheckNightWorkVisibility(out bool result, int workID)
@@ -389,10 +390,18 @@ namespace CM3D2.MaidFiddler.Hook
             CommandUpdate?.Invoke(null, args);
         }
 
-        public static bool OnYotogiSkillVisibilityCheck(out bool ret)
+        public static bool OnYotogiSkillVisibilityCheck(int tag, out bool ret)
         {
             YotogiSkillVisibleEventArgs args = new YotogiSkillVisibleEventArgs {ForceVisible = false};
-            YotogiSkillVisibilityCheck?.Invoke(null, args);
+            switch (tag)
+            {
+                case 0:
+                    YotogiSkillVisibilityCheck?.Invoke(null, args);
+                    break;
+                case 1:
+                    YotogiSkillVisibilityStageCheck?.Invoke(null, args);
+                    break;
+            }
             ret = true;
             return args.ForceVisible;
         }

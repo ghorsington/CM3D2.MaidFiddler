@@ -15,6 +15,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private bool forceAllScenesEnabled;
         private bool removeValueLimit;
         private bool vipAlwaysVisible;
+        private bool yotogiAllSkillsVisible;
         private bool yotogiSkillsVisible;
 
         private void ToggleAllScenesVisible(object sender, EventArgs e)
@@ -373,11 +374,26 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             item.Checked = allYotogiCommandsVisible;
         }
 
-        private void ToggleYotogiSkillsVisible(object sender, EventArgs e)
+        private void ToggleYotogiSkillsVisibleBasic(object sender, EventArgs e)
         {
             ToolStripMenuItem item = (ToolStripMenuItem) sender;
             yotogiSkillsVisible = !yotogiSkillsVisible;
             item.Checked = yotogiSkillsVisible;
+            if (!yotogiAllSkillsVisible)
+                return;
+            yotogiAllSkillsVisible = false;
+            menu_item_all_yotogi_vis.Checked = false;
+        }
+
+        private void ToggleYotogiSkillsVisible(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = (ToolStripMenuItem) sender;
+            yotogiAllSkillsVisible = !yotogiAllSkillsVisible;
+            item.Checked = yotogiAllSkillsVisible;
+            if (!yotogiSkillsVisible)
+                return;
+            yotogiSkillsVisible = false;
+            menu_item_all_yotogi_vis_basic.Checked = false;
         }
 
         private void UnlockAll(object sender, EventArgs e)
