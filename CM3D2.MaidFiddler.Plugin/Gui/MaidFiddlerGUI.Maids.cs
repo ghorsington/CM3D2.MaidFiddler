@@ -23,8 +23,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         public MaidInfo SelectedMaid
             =>
-            listBox1.Items.Count == 0 || listBox1.SelectedIndex == -1
-            ? null : (MaidInfo) listBox1.Items[listBox1.SelectedIndex];
+                listBox1.Items.Count == 0 || listBox1.SelectedIndex == -1
+                    ? null : (MaidInfo) listBox1.Items[listBox1.SelectedIndex];
 
         private MaidInfo GetMaidInfo(Maid maid)
         {
@@ -58,8 +58,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void _UnloadMaids()
         {
-            Debugger.Assert(
-            () =>
+            Debugger.Assert(() =>
             {
                 Debugger.WriteLine(LogLevel.Info, "Unloading maids!");
                 Debugger.WriteLine(LogLevel.Info, $"Loaded maids: {loadedMaids.Count}");
@@ -67,18 +66,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 currentQueue = 0;
                 valueUpdateQueue[0].Clear();
                 valueUpdateQueue[1].Clear();
-                if (maidThumbnails.Count > 0)
-                    maidThumbnails.ForEach(thumb => thumb.Value.Dispose());
+                if (maidThumbnails.Count > 0) maidThumbnails.ForEach(thumb => thumb.Value.Dispose());
                 maidThumbnails.Clear();
                 UpdateList();
-            },
-            "Failed to unload maids");
+            }, "Failed to unload maids");
         }
 
         private void ReloadMaids(List<Maid> maids)
         {
-            Debugger.Assert(
-            () =>
+            Debugger.Assert(() =>
             {
                 Debugger.WriteLine(LogLevel.Info, "Reloading maids!");
                 Debugger.WriteLine(LogLevel.Info, $"Maids: {maids.Count}");
@@ -87,18 +83,14 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 currentQueue = 0;
                 valueUpdateQueue[0].Clear();
                 valueUpdateQueue[1].Clear();
-                if (maidThumbnails.Count > 0)
-                    maidThumbnails.ForEach(thumb => thumb.Value.Dispose());
+                if (maidThumbnails.Count > 0) maidThumbnails.ForEach(thumb => thumb.Value.Dispose());
                 maidThumbnails.Clear();
-                loadedMaids = new SortedList<Maid, MaidInfo>(
-                maids.ToDictionary(m => m, m => new MaidInfo(m, this)),
-                comparer);
-                loadedMaids.ForEach(
-                m =>
+                loadedMaids = new SortedList<Maid, MaidInfo>(maids.ToDictionary(m => m, m => new MaidInfo(m, this)),
+                    comparer);
+                loadedMaids.ForEach(m =>
                 {
                     Texture2D thumb = m.Value.Maid.GetThumIcon();
-                    if (thumb == null)
-                        return;
+                    if (thumb == null) return;
                     using (MemoryStream stream = new MemoryStream(thumb.EncodeToPNG()))
                     {
                         Debugger.WriteLine("Loading PNG of size: " + stream.Length);
@@ -107,8 +99,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 });
 
                 UpdateList();
-            },
-            "Failed to reload all maids");
+            }, "Failed to reload all maids");
         }
 
         public void UpdateMaids()
@@ -118,15 +109,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void UpdateMaids(List<Maid> newMaids)
         {
-            Debugger.Assert(
-            () =>
+            Debugger.Assert(() =>
             {
-                if (newMaids.Count != loadedMaids.Count)
-                    goto update;
+                if (newMaids.Count != loadedMaids.Count) goto update;
 
                 newMaids.Sort((m1, m2) => comparer.Compare(m1, m2));
-                if (newMaids.SequenceEqual(loadedMaids.Values.Select(m => m.Maid), comparer))
-                    return;
+                if (newMaids.SequenceEqual(loadedMaids.Values.Select(m => m.Maid), comparer)) return;
 
                 update:
 #if DEBUG
@@ -134,13 +122,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 #endif
                 Debugger.WriteLine(LogLevel.Info, "Updating maid list!");
                 Debugger.WriteLine(LogLevel.Info, $" New count:  {newMaids.Count}, Loaded count: {loadedMaids.Count}");
-                loadedMaids = new SortedList<Maid, MaidInfo>(
-                loadedMaids.Where(
-                m =>
+                loadedMaids = new SortedList<Maid, MaidInfo>(loadedMaids.Where(m =>
                 {
                     bool result = newMaids.Contains(m.Key);
-                    if (result)
-                        newMaids.Remove(m.Key);
+                    if (result) newMaids.Remove(m.Key);
                     else
                     {
                         if (SelectedMaid != null && m.Value.Maid == SelectedMaid.Maid)
@@ -149,29 +134,24 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                             valueUpdateQueue[0].Clear();
                             valueUpdateQueue[1].Clear();
                         }
-                        if (maidThumbnails.ContainsKey(m.Key.Param.status.guid))
-                            maidThumbnails[m.Key.Param.status.guid].Dispose();
+                        if (maidThumbnails.ContainsKey(m.Key.Param.status.guid)) maidThumbnails[m.Key.Param.status.guid].Dispose();
                         maidThumbnails.Remove(m.Key.Param.status.guid);
                     }
                     return result;
-                }).ToList().Union(
-                newMaids.Select(
-                m =>
+                }).ToList().Union(newMaids.Select(m =>
                 {
                     Debugger.WriteLine(LogLevel.Info, "Adding new maid info.");
                     MaidInfo info = new MaidInfo(m, this);
                     Debugger.WriteLine(LogLevel.Info, "Loading thumbnail");
                     Texture2D thumb = m.GetThumIcon();
-                    if (thumb == null)
-                        return new KeyValuePair<Maid, MaidInfo>(m, info);
+                    if (thumb == null) return new KeyValuePair<Maid, MaidInfo>(m, info);
                     using (MemoryStream stream = new MemoryStream(thumb.EncodeToPNG()))
                     {
                         Debugger.WriteLine("Loading PNG of size: " + stream.Length);
                         maidThumbnails.Add(m.Param.status.guid, Image.FromStream(stream));
                     }
                     return new KeyValuePair<Maid, MaidInfo>(m, info);
-                })).ToDictionary(m => m.Key, m => m.Value),
-                comparer);
+                })).ToDictionary(m => m.Key, m => m.Value), comparer);
 
 
                 Debugger.WriteLine(LogLevel.Info, $"New loaded maids count: {loadedMaids.Count}");
@@ -180,14 +160,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Debugger.WriteLine(LogLevel.Info, $"Updated maid list in {sw.Elapsed.TotalMilliseconds} ms");
 
                 newMaids.ForEach(
-                m => Debugger.WriteLine($"Added {m.Param.status.first_name} {m.Param.status.last_name}"));
+                    m => Debugger.WriteLine($"Added {m.Param.status.first_name} {m.Param.status.last_name}"));
                 Debugger.WriteLine();
 #endif
                 Debugger.WriteLine("Updating list.");
                 UpdateList();
                 Debugger.WriteLine("Finished updating list.");
-            },
-            "Failed to update maid list");
+            }, "Failed to update maid list");
         }
 
         public void UpdateSelectedMaidValues()
@@ -198,13 +177,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 return;
             }
             MaidChangeType cType = 0;
-            Debugger.Assert(
-            () =>
+            Debugger.Assert(() =>
             {
                 int processingQueue = currentQueue;
                 currentQueue = 1 - currentQueue;
-                if (valueUpdateQueue[processingQueue].Count <= 0)
-                    return;
+                if (valueUpdateQueue[processingQueue].Count <= 0) return;
                 Debugger.WriteLine(LogLevel.Info, $"Updating values (Queue {processingQueue})...");
                 foreach (KeyValuePair<MaidChangeType, Action> type in valueUpdateQueue[processingQueue])
                 {
@@ -212,8 +189,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     type.Value();
                 }
                 valueUpdateQueue[processingQueue].Clear();
-            },
-            $"Failed to update scheduled maid value. Type: {cType}");
+            }, $"Failed to update scheduled maid value. Type: {cType}");
         }
 
         private class MaidComparer : IEqualityComparer<Maid>, IComparer<Maid>
@@ -229,7 +205,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 int result = 0;
                 return plugin.MaidCompareMethods.Any(method => (result = method(x, y)) != 0)
-                       ? result : plugin.MaidCompareID(x, y);
+                           ? result : plugin.MaidCompareID(x, y);
             }
 
             public bool Equals(Maid x, Maid y)

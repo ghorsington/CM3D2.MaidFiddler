@@ -11,8 +11,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitClassesTab()
         {
-            Debugger.Assert(
-            () =>
+            Debugger.Assert(() =>
             {
                 Translation.AddTranslatableControl(tabPage_classes);
 
@@ -32,7 +31,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 dataGridView_maid_classes.CellContentClick += OnClassTabCellContentClick;
                 dataGridView_maid_classes.Height = dataGridView_maid_classes.ColumnHeadersHeight
                                                    + dataGridView_maid_classes.Rows[0].Height
-                                                   * dataGridView_maid_classes.RowCount;
+                                                   *dataGridView_maid_classes.RowCount;
 
                 // Yotogi classes
                 Translation.AddTranslatableControl(groupBox_yotogi_classes);
@@ -50,23 +49,20 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 dataGridView_yotogi_classes.CellContentClick += OnClassTabCellContentClick;
                 dataGridView_yotogi_classes.Height = dataGridView_yotogi_classes.ColumnHeadersHeight
                                                      + dataGridView_yotogi_classes.Rows[0].Height
-                                                     * dataGridView_yotogi_classes.RowCount;
-            },
-            "Failed to load maid classes tab");
+                                                     *dataGridView_yotogi_classes.RowCount;
+            }, "Failed to load maid classes tab");
         }
 
         private void OnClassTabCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (clearingTables || e.ColumnIndex != TABLE_COLUMN_HAS)
-                return;
+            if (clearingTables || e.ColumnIndex != TABLE_COLUMN_HAS) return;
             DataGridView table = (DataGridView) sender;
             UpdateMaid_YotogiClassValue<bool>(table, e.ColumnIndex, e.RowIndex);
         }
 
         private void OnClassTabCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (clearingTables)
-                return;
+            if (clearingTables) return;
             DataGridView table = (DataGridView) sender;
             UpdateMaid_YotogiClassValue<int>(table, e.ColumnIndex, e.RowIndex);
         }
@@ -74,23 +70,19 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void UpdateMaid_YotogiClassValue<T>(DataGridView table, int col, int row)
         {
             MaidInfo maid = SelectedMaid;
-            if (maid == null)
-                return;
+            if (maid == null) return;
 
             object val = table[col, row].Value;
 
-            if (val is bool)
-                val = !((bool) val);
+            if (val is bool) val = !((bool) val);
 
             if (table == dataGridView_maid_classes)
             {
                 if (!updateMaidClassField)
                 {
                     MaidClassType type = (MaidClassType) row;
-                    if (val is T)
-                        maid.SetValue(type, col, val);
-                    else
-                        maid.UpdateField(MaidChangeType.MaidClassType, (int) type);
+                    if (val is T) maid.SetValue(type, col, val);
+                    else maid.UpdateField(MaidChangeType.MaidClassType, (int) type);
                 }
                 updateMaidClassField = false;
             }
@@ -99,10 +91,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 if (!updateYotogiClassField)
                 {
                     YotogiClassType type = (YotogiClassType) row;
-                    if (val is T)
-                        maid.SetValue(type, col, val);
-                    else
-                        maid.UpdateField(MaidChangeType.YotogiClassType, (int) type);
+                    if (val is T) maid.SetValue(type, col, val);
+                    else maid.UpdateField(MaidChangeType.YotogiClassType, (int) type);
                 }
                 updateYotogiClassField = false;
             }

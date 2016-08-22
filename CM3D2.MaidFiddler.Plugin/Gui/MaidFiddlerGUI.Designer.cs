@@ -175,6 +175,7 @@
             this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_item_all_yotogi_vis_basic = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_item_all_yotogi_vis = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -208,7 +209,6 @@
             this.mENUMISCSETTINGSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMISCABOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maidFiddlerGUIBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.menu_item_all_yotogi_vis_basic = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_info.SuspendLayout();
@@ -263,7 +263,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 537);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(784, 580);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // listBox1
@@ -277,7 +277,7 @@
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Margin = new System.Windows.Forms.Padding(0);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(215, 537);
+            this.listBox1.Size = new System.Drawing.Size(215, 580);
             this.listBox1.TabIndex = 0;
             // 
             // tabControl1
@@ -294,16 +294,16 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(569, 537);
+            this.tabControl1.Size = new System.Drawing.Size(569, 580);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage_info
             // 
             this.tabPage_info.Controls.Add(this.tableLayoutPanel2);
-            this.tabPage_info.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_info.Location = new System.Drawing.Point(4, 23);
             this.tabPage_info.Name = "tabPage_info";
             this.tabPage_info.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_info.Size = new System.Drawing.Size(561, 511);
+            this.tabPage_info.Size = new System.Drawing.Size(561, 553);
             this.tabPage_info.TabIndex = 0;
             this.tabPage_info.Text = "TAB_INFO";
             this.tabPage_info.UseVisualStyleBackColor = true;
@@ -354,27 +354,27 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 19;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 92F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 81F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(555, 505);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 99F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 87F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(555, 547);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // checkBox_is_marriage
@@ -382,10 +382,10 @@
             this.checkBox_is_marriage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox_is_marriage.AutoSize = true;
-            this.checkBox_is_marriage.Location = new System.Drawing.Point(402, 110);
+            this.checkBox_is_marriage.Location = new System.Drawing.Point(403, 117);
             this.checkBox_is_marriage.Margin = new System.Windows.Forms.Padding(0);
             this.checkBox_is_marriage.Name = "checkBox_is_marriage";
-            this.checkBox_is_marriage.Size = new System.Drawing.Size(75, 20);
+            this.checkBox_is_marriage.Size = new System.Drawing.Size(76, 20);
             this.checkBox_is_marriage.TabIndex = 31;
             this.checkBox_is_marriage.Text = "IsMarriage";
             this.checkBox_is_marriage.UseVisualStyleBackColor = true;
@@ -395,9 +395,9 @@
             this.label_first_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_first_name.AutoSize = true;
-            this.label_first_name.Location = new System.Drawing.Point(28, 20);
+            this.label_first_name.Location = new System.Drawing.Point(27, 22);
             this.label_first_name.Name = "label_first_name";
-            this.label_first_name.Size = new System.Drawing.Size(54, 20);
+            this.label_first_name.Size = new System.Drawing.Size(55, 20);
             this.label_first_name.TabIndex = 0;
             this.label_first_name.Text = "FirstName";
             this.label_first_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -408,7 +408,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_first_name.Enabled = false;
-            this.textBox_first_name.Location = new System.Drawing.Point(85, 20);
+            this.textBox_first_name.Location = new System.Drawing.Point(85, 22);
             this.textBox_first_name.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_first_name.Name = "textBox_first_name";
             this.textBox_first_name.Size = new System.Drawing.Size(100, 20);
@@ -419,7 +419,7 @@
             this.label_last_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_last_name.AutoSize = true;
-            this.label_last_name.Location = new System.Drawing.Point(229, 20);
+            this.label_last_name.Location = new System.Drawing.Point(230, 22);
             this.label_last_name.Name = "label_last_name";
             this.label_last_name.Size = new System.Drawing.Size(55, 20);
             this.label_last_name.TabIndex = 2;
@@ -432,7 +432,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_last_name.Enabled = false;
-            this.textBox_last_name.Location = new System.Drawing.Point(287, 20);
+            this.textBox_last_name.Location = new System.Drawing.Point(288, 22);
             this.textBox_last_name.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_last_name.Name = "textBox_last_name";
             this.textBox_last_name.Size = new System.Drawing.Size(100, 20);
@@ -444,10 +444,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox_is_fist_name_call.AutoSize = true;
             this.checkBox_is_fist_name_call.Enabled = false;
-            this.checkBox_is_fist_name_call.Location = new System.Drawing.Point(402, 20);
+            this.checkBox_is_fist_name_call.Location = new System.Drawing.Point(403, 22);
             this.checkBox_is_fist_name_call.Margin = new System.Windows.Forms.Padding(0);
             this.checkBox_is_fist_name_call.Name = "checkBox_is_fist_name_call";
-            this.checkBox_is_fist_name_call.Size = new System.Drawing.Size(90, 20);
+            this.checkBox_is_fist_name_call.Size = new System.Drawing.Size(91, 20);
             this.checkBox_is_fist_name_call.TabIndex = 4;
             this.checkBox_is_fist_name_call.Text = "FirstNameCall";
             this.checkBox_is_fist_name_call.UseVisualStyleBackColor = true;
@@ -457,9 +457,9 @@
             this.label_personality.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_personality.AutoSize = true;
-            this.label_personality.Location = new System.Drawing.Point(34, 50);
+            this.label_personality.Location = new System.Drawing.Point(33, 53);
             this.label_personality.Name = "label_personality";
-            this.label_personality.Size = new System.Drawing.Size(48, 21);
+            this.label_personality.Size = new System.Drawing.Size(49, 22);
             this.label_personality.TabIndex = 5;
             this.label_personality.Text = "Personal";
             this.label_personality.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -469,10 +469,10 @@
             this.comboBox_personality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_personality.Enabled = false;
             this.comboBox_personality.FormattingEnabled = true;
-            this.comboBox_personality.Location = new System.Drawing.Point(85, 50);
+            this.comboBox_personality.Location = new System.Drawing.Point(85, 53);
             this.comboBox_personality.Margin = new System.Windows.Forms.Padding(0);
             this.comboBox_personality.Name = "comboBox_personality";
-            this.comboBox_personality.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_personality.Size = new System.Drawing.Size(100, 22);
             this.comboBox_personality.TabIndex = 6;
             // 
             // label_condition
@@ -480,9 +480,9 @@
             this.label_condition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_condition.AutoSize = true;
-            this.label_condition.Location = new System.Drawing.Point(31, 81);
+            this.label_condition.Location = new System.Drawing.Point(31, 86);
             this.label_condition.Name = "label_condition";
-            this.label_condition.Size = new System.Drawing.Size(51, 21);
+            this.label_condition.Size = new System.Drawing.Size(51, 22);
             this.label_condition.TabIndex = 7;
             this.label_condition.Text = "Condition";
             this.label_condition.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -495,10 +495,10 @@
             this.comboBox_condition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_condition.Enabled = false;
             this.comboBox_condition.FormattingEnabled = true;
-            this.comboBox_condition.Location = new System.Drawing.Point(85, 81);
+            this.comboBox_condition.Location = new System.Drawing.Point(85, 86);
             this.comboBox_condition.Margin = new System.Windows.Forms.Padding(0);
             this.comboBox_condition.Name = "comboBox_condition";
-            this.comboBox_condition.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_condition.Size = new System.Drawing.Size(100, 22);
             this.comboBox_condition.TabIndex = 8;
             // 
             // label_contract_type
@@ -506,9 +506,9 @@
             this.label_contract_type.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_contract_type.AutoSize = true;
-            this.label_contract_type.Location = new System.Drawing.Point(213, 50);
+            this.label_contract_type.Location = new System.Drawing.Point(214, 53);
             this.label_contract_type.Name = "label_contract_type";
-            this.label_contract_type.Size = new System.Drawing.Size(71, 21);
+            this.label_contract_type.Size = new System.Drawing.Size(71, 22);
             this.label_contract_type.TabIndex = 9;
             this.label_contract_type.Text = "ContractType";
             this.label_contract_type.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -521,20 +521,20 @@
             this.comboBox_contract_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_contract_type.Enabled = false;
             this.comboBox_contract_type.FormattingEnabled = true;
-            this.comboBox_contract_type.Location = new System.Drawing.Point(287, 50);
+            this.comboBox_contract_type.Location = new System.Drawing.Point(288, 53);
             this.comboBox_contract_type.Margin = new System.Windows.Forms.Padding(0);
             this.comboBox_contract_type.Name = "comboBox_contract_type";
-            this.comboBox_contract_type.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_contract_type.Size = new System.Drawing.Size(100, 22);
             this.comboBox_contract_type.TabIndex = 10;
             // 
             // label_sex_experience
             // 
             this.label_sex_experience.AutoSize = true;
             this.tableLayoutPanel2.SetColumnSpan(this.label_sex_experience, 2);
-            this.label_sex_experience.Location = new System.Drawing.Point(3, 153);
+            this.label_sex_experience.Location = new System.Drawing.Point(3, 162);
             this.label_sex_experience.Margin = new System.Windows.Forms.Padding(3);
             this.label_sex_experience.Name = "label_sex_experience";
-            this.label_sex_experience.Size = new System.Drawing.Size(88, 13);
+            this.label_sex_experience.Size = new System.Drawing.Size(83, 14);
             this.label_sex_experience.TabIndex = 11;
             this.label_sex_experience.Text = "MAID_SEX_EXP";
             this.label_sex_experience.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -544,9 +544,9 @@
             this.label_init_seikeiken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_init_seikeiken.AutoSize = true;
-            this.label_init_seikeiken.Location = new System.Drawing.Point(14, 169);
+            this.label_init_seikeiken.Location = new System.Drawing.Point(17, 179);
             this.label_init_seikeiken.Name = "label_init_seikeiken";
-            this.label_init_seikeiken.Size = new System.Drawing.Size(68, 21);
+            this.label_init_seikeiken.Size = new System.Drawing.Size(65, 22);
             this.label_init_seikeiken.TabIndex = 12;
             this.label_init_seikeiken.Text = "InitSeikeiken";
             this.label_init_seikeiken.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -556,10 +556,10 @@
             this.comboBox_init_seikeiken.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_init_seikeiken.Enabled = false;
             this.comboBox_init_seikeiken.FormattingEnabled = true;
-            this.comboBox_init_seikeiken.Location = new System.Drawing.Point(85, 169);
+            this.comboBox_init_seikeiken.Location = new System.Drawing.Point(85, 179);
             this.comboBox_init_seikeiken.Margin = new System.Windows.Forms.Padding(0);
             this.comboBox_init_seikeiken.Name = "comboBox_init_seikeiken";
-            this.comboBox_init_seikeiken.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_init_seikeiken.Size = new System.Drawing.Size(100, 22);
             this.comboBox_init_seikeiken.TabIndex = 13;
             // 
             // label_seikeiken
@@ -567,9 +567,9 @@
             this.label_seikeiken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_seikeiken.AutoSize = true;
-            this.label_seikeiken.Location = new System.Drawing.Point(230, 169);
+            this.label_seikeiken.Location = new System.Drawing.Point(233, 179);
             this.label_seikeiken.Name = "label_seikeiken";
-            this.label_seikeiken.Size = new System.Drawing.Size(54, 21);
+            this.label_seikeiken.Size = new System.Drawing.Size(52, 22);
             this.label_seikeiken.TabIndex = 14;
             this.label_seikeiken.Text = "Seikeiken";
             this.label_seikeiken.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -582,10 +582,10 @@
             this.comboBox_seikeiken.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_seikeiken.Enabled = false;
             this.comboBox_seikeiken.FormattingEnabled = true;
-            this.comboBox_seikeiken.Location = new System.Drawing.Point(287, 169);
+            this.comboBox_seikeiken.Location = new System.Drawing.Point(288, 179);
             this.comboBox_seikeiken.Margin = new System.Windows.Forms.Padding(0);
             this.comboBox_seikeiken.Name = "comboBox_seikeiken";
-            this.comboBox_seikeiken.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_seikeiken.Size = new System.Drawing.Size(100, 22);
             this.comboBox_seikeiken.TabIndex = 15;
             // 
             // label_curr_class
@@ -595,10 +595,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_curr_class.AutoSize = true;
             this.tableLayoutPanel2.SetColumnSpan(this.label_curr_class, 2);
-            this.label_curr_class.Location = new System.Drawing.Point(3, 213);
+            this.label_curr_class.Location = new System.Drawing.Point(3, 226);
             this.label_curr_class.Margin = new System.Windows.Forms.Padding(3);
             this.label_curr_class.Name = "label_curr_class";
-            this.label_curr_class.Size = new System.Drawing.Size(179, 13);
+            this.label_curr_class.Size = new System.Drawing.Size(179, 14);
             this.label_curr_class.TabIndex = 16;
             this.label_curr_class.Text = "MAID_CLASS_SELECTED";
             this.label_curr_class.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -608,9 +608,9 @@
             this.label_curr_maid_class.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_curr_maid_class.AutoSize = true;
-            this.label_curr_maid_class.Location = new System.Drawing.Point(3, 229);
+            this.label_curr_maid_class.Location = new System.Drawing.Point(3, 243);
             this.label_curr_maid_class.Name = "label_curr_maid_class";
-            this.label_curr_maid_class.Size = new System.Drawing.Size(79, 21);
+            this.label_curr_maid_class.Size = new System.Drawing.Size(79, 22);
             this.label_curr_maid_class.TabIndex = 17;
             this.label_curr_maid_class.Text = "MaidClassType";
             this.label_curr_maid_class.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -623,10 +623,10 @@
             this.comboBox_current_maid_class.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_current_maid_class.Enabled = false;
             this.comboBox_current_maid_class.FormattingEnabled = true;
-            this.comboBox_current_maid_class.Location = new System.Drawing.Point(85, 229);
+            this.comboBox_current_maid_class.Location = new System.Drawing.Point(85, 243);
             this.comboBox_current_maid_class.Margin = new System.Windows.Forms.Padding(0);
             this.comboBox_current_maid_class.Name = "comboBox_current_maid_class";
-            this.comboBox_current_maid_class.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_current_maid_class.Size = new System.Drawing.Size(100, 22);
             this.comboBox_current_maid_class.TabIndex = 18;
             // 
             // label_curr_yotogi_class
@@ -634,9 +634,9 @@
             this.label_curr_yotogi_class.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_curr_yotogi_class.AutoSize = true;
-            this.label_curr_yotogi_class.Location = new System.Drawing.Point(198, 229);
+            this.label_curr_yotogi_class.Location = new System.Drawing.Point(198, 243);
             this.label_curr_yotogi_class.Name = "label_curr_yotogi_class";
-            this.label_curr_yotogi_class.Size = new System.Drawing.Size(86, 21);
+            this.label_curr_yotogi_class.Size = new System.Drawing.Size(87, 22);
             this.label_curr_yotogi_class.TabIndex = 19;
             this.label_curr_yotogi_class.Text = "YotogiClassType";
             this.label_curr_yotogi_class.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -646,10 +646,10 @@
             this.comboBox_current_yotogi_class.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_current_yotogi_class.Enabled = false;
             this.comboBox_current_yotogi_class.FormattingEnabled = true;
-            this.comboBox_current_yotogi_class.Location = new System.Drawing.Point(287, 229);
+            this.comboBox_current_yotogi_class.Location = new System.Drawing.Point(288, 243);
             this.comboBox_current_yotogi_class.Margin = new System.Windows.Forms.Padding(0);
             this.comboBox_current_yotogi_class.Name = "comboBox_current_yotogi_class";
-            this.comboBox_current_yotogi_class.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_current_yotogi_class.Size = new System.Drawing.Size(100, 22);
             this.comboBox_current_yotogi_class.TabIndex = 20;
             // 
             // label_condition_special
@@ -657,9 +657,9 @@
             this.label_condition_special.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_condition_special.AutoSize = true;
-            this.label_condition_special.Location = new System.Drawing.Point(198, 81);
+            this.label_condition_special.Location = new System.Drawing.Point(199, 86);
             this.label_condition_special.Name = "label_condition_special";
-            this.label_condition_special.Size = new System.Drawing.Size(86, 21);
+            this.label_condition_special.Size = new System.Drawing.Size(86, 22);
             this.label_condition_special.TabIndex = 21;
             this.label_condition_special.Text = "ConditionSpecial";
             this.label_condition_special.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -672,18 +672,18 @@
             this.comboBox_condition_special.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_condition_special.Enabled = false;
             this.comboBox_condition_special.FormattingEnabled = true;
-            this.comboBox_condition_special.Location = new System.Drawing.Point(287, 81);
+            this.comboBox_condition_special.Location = new System.Drawing.Point(288, 86);
             this.comboBox_condition_special.Margin = new System.Windows.Forms.Padding(0);
             this.comboBox_condition_special.Name = "comboBox_condition_special";
-            this.comboBox_condition_special.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_condition_special.Size = new System.Drawing.Size(100, 22);
             this.comboBox_condition_special.TabIndex = 22;
             // 
             // label_profile
             // 
             this.label_profile.AutoSize = true;
-            this.label_profile.Location = new System.Drawing.Point(3, 270);
+            this.label_profile.Location = new System.Drawing.Point(3, 287);
             this.label_profile.Name = "label_profile";
-            this.label_profile.Size = new System.Drawing.Size(36, 13);
+            this.label_profile.Size = new System.Drawing.Size(37, 14);
             this.label_profile.TabIndex = 23;
             this.label_profile.Text = "Profile";
             this.label_profile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -694,10 +694,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox_leader.AutoSize = true;
             this.checkBox_leader.Enabled = false;
-            this.checkBox_leader.Location = new System.Drawing.Point(402, 50);
+            this.checkBox_leader.Location = new System.Drawing.Point(403, 53);
             this.checkBox_leader.Margin = new System.Windows.Forms.Padding(0);
             this.checkBox_leader.Name = "checkBox_leader";
-            this.checkBox_leader.Size = new System.Drawing.Size(59, 21);
+            this.checkBox_leader.Size = new System.Drawing.Size(60, 22);
             this.checkBox_leader.TabIndex = 25;
             this.checkBox_leader.Text = "Leader";
             this.checkBox_leader.UseVisualStyleBackColor = true;
@@ -707,7 +707,7 @@
             this.label_employment_day.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_employment_day.AutoSize = true;
-            this.label_employment_day.Location = new System.Drawing.Point(18, 110);
+            this.label_employment_day.Location = new System.Drawing.Point(18, 117);
             this.label_employment_day.Name = "label_employment_day";
             this.label_employment_day.Size = new System.Drawing.Size(64, 20);
             this.label_employment_day.TabIndex = 26;
@@ -717,7 +717,7 @@
             // textBox_employment_day
             // 
             this.textBox_employment_day.Enabled = false;
-            this.textBox_employment_day.Location = new System.Drawing.Point(85, 110);
+            this.textBox_employment_day.Location = new System.Drawing.Point(85, 117);
             this.textBox_employment_day.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_employment_day.Name = "textBox_employment_day";
             this.textBox_employment_day.Size = new System.Drawing.Size(100, 20);
@@ -728,10 +728,10 @@
             this.tableLayoutPanel2.SetColumnSpan(this.textBox_profile, 7);
             this.textBox_profile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_profile.Enabled = false;
-            this.textBox_profile.Location = new System.Drawing.Point(3, 286);
+            this.textBox_profile.Location = new System.Drawing.Point(3, 304);
             this.textBox_profile.Multiline = true;
             this.textBox_profile.Name = "textBox_profile";
-            this.textBox_profile.Size = new System.Drawing.Size(549, 86);
+            this.textBox_profile.Size = new System.Drawing.Size(549, 93);
             this.textBox_profile.TabIndex = 24;
             // 
             // textBox_free_comment
@@ -739,11 +739,11 @@
             this.tableLayoutPanel2.SetColumnSpan(this.textBox_free_comment, 7);
             this.textBox_free_comment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_free_comment.Enabled = false;
-            this.textBox_free_comment.Location = new System.Drawing.Point(3, 391);
-            this.textBox_free_comment.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
+            this.textBox_free_comment.Location = new System.Drawing.Point(3, 417);
+            this.textBox_free_comment.Margin = new System.Windows.Forms.Padding(3, 3, 3, 22);
             this.textBox_free_comment.Multiline = true;
             this.textBox_free_comment.Name = "textBox_free_comment";
-            this.textBox_free_comment.Size = new System.Drawing.Size(549, 94);
+            this.textBox_free_comment.Size = new System.Drawing.Size(549, 108);
             this.textBox_free_comment.TabIndex = 28;
             // 
             // label_free_comment
@@ -751,9 +751,9 @@
             this.label_free_comment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label_free_comment.AutoSize = true;
-            this.label_free_comment.Location = new System.Drawing.Point(3, 375);
+            this.label_free_comment.Location = new System.Drawing.Point(3, 400);
             this.label_free_comment.Name = "label_free_comment";
-            this.label_free_comment.Size = new System.Drawing.Size(72, 13);
+            this.label_free_comment.Size = new System.Drawing.Size(73, 14);
             this.label_free_comment.TabIndex = 29;
             this.label_free_comment.Text = "FreeComment";
             this.label_free_comment.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -763,10 +763,10 @@
             this.checkBox_rental.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox_rental.AutoSize = true;
-            this.checkBox_rental.Location = new System.Drawing.Point(402, 81);
+            this.checkBox_rental.Location = new System.Drawing.Point(403, 86);
             this.checkBox_rental.Margin = new System.Windows.Forms.Padding(0);
             this.checkBox_rental.Name = "checkBox_rental";
-            this.checkBox_rental.Size = new System.Drawing.Size(80, 21);
+            this.checkBox_rental.Size = new System.Drawing.Size(78, 22);
             this.checkBox_rental.TabIndex = 30;
             this.checkBox_rental.Text = "RentalMaid";
             this.checkBox_rental.UseVisualStyleBackColor = true;
@@ -775,10 +775,10 @@
             // 
             this.tabPage_stats.AutoScroll = true;
             this.tabPage_stats.Controls.Add(this.tableLayoutPanel5);
-            this.tabPage_stats.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_stats.Location = new System.Drawing.Point(4, 23);
             this.tabPage_stats.Name = "tabPage_stats";
             this.tabPage_stats.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_stats.Size = new System.Drawing.Size(561, 511);
+            this.tabPage_stats.Size = new System.Drawing.Size(561, 553);
             this.tabPage_stats.TabIndex = 5;
             this.tabPage_stats.Text = "TAB_STATS";
             this.tabPage_stats.UseVisualStyleBackColor = true;
@@ -800,7 +800,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(538, 796);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(538, 848);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // groupBox_maid_params_bonus
@@ -809,9 +809,9 @@
             this.groupBox_maid_params_bonus.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox_maid_params_bonus.Controls.Add(this.dataGridView_maid_params_bonus);
             this.groupBox_maid_params_bonus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox_maid_params_bonus.Location = new System.Drawing.Point(3, 202);
+            this.groupBox_maid_params_bonus.Location = new System.Drawing.Point(3, 215);
             this.groupBox_maid_params_bonus.Name = "groupBox_maid_params_bonus";
-            this.groupBox_maid_params_bonus.Size = new System.Drawing.Size(532, 193);
+            this.groupBox_maid_params_bonus.Size = new System.Drawing.Size(532, 206);
             this.groupBox_maid_params_bonus.TabIndex = 8;
             this.groupBox_maid_params_bonus.TabStop = false;
             this.groupBox_maid_params_bonus.Text = "MAID_PARAMS_BONUS";
@@ -838,7 +838,7 @@
             this.dataGridView_maid_params_bonus.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_maid_params_bonus.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_maid_params_bonus.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_maid_params_bonus.Size = new System.Drawing.Size(526, 174);
+            this.dataGridView_maid_params_bonus.Size = new System.Drawing.Size(526, 187);
             this.dataGridView_maid_params_bonus.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn19
@@ -867,7 +867,7 @@
             this.groupBox_params.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_params.Location = new System.Drawing.Point(3, 3);
             this.groupBox_params.Name = "groupBox_params";
-            this.groupBox_params.Size = new System.Drawing.Size(532, 193);
+            this.groupBox_params.Size = new System.Drawing.Size(532, 206);
             this.groupBox_params.TabIndex = 7;
             this.groupBox_params.TabStop = false;
             this.groupBox_params.Text = "MAID_PARAMS";
@@ -895,7 +895,7 @@
             this.dataGridView_params.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_params.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_params.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_params.Size = new System.Drawing.Size(526, 174);
+            this.dataGridView_params.Size = new System.Drawing.Size(526, 187);
             this.dataGridView_params.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn4
@@ -930,9 +930,9 @@
             this.groupBox_statistics.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox_statistics.Controls.Add(this.dataGridView_statistics);
             this.groupBox_statistics.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox_statistics.Location = new System.Drawing.Point(3, 600);
+            this.groupBox_statistics.Location = new System.Drawing.Point(3, 639);
             this.groupBox_statistics.Name = "groupBox_statistics";
-            this.groupBox_statistics.Size = new System.Drawing.Size(532, 193);
+            this.groupBox_statistics.Size = new System.Drawing.Size(532, 206);
             this.groupBox_statistics.TabIndex = 8;
             this.groupBox_statistics.TabStop = false;
             this.groupBox_statistics.Text = "MAID_STATS";
@@ -960,7 +960,7 @@
             this.dataGridView_statistics.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_statistics.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_statistics.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_statistics.Size = new System.Drawing.Size(526, 174);
+            this.dataGridView_statistics.Size = new System.Drawing.Size(526, 187);
             this.dataGridView_statistics.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn8
@@ -995,9 +995,9 @@
             this.groupBox_ero_zones.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox_ero_zones.Controls.Add(this.dataGridView_ero_zones);
             this.groupBox_ero_zones.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox_ero_zones.Location = new System.Drawing.Point(3, 401);
+            this.groupBox_ero_zones.Location = new System.Drawing.Point(3, 427);
             this.groupBox_ero_zones.Name = "groupBox_ero_zones";
-            this.groupBox_ero_zones.Size = new System.Drawing.Size(532, 193);
+            this.groupBox_ero_zones.Size = new System.Drawing.Size(532, 206);
             this.groupBox_ero_zones.TabIndex = 6;
             this.groupBox_ero_zones.TabStop = false;
             this.groupBox_ero_zones.Text = "MAID_ERO_ZONES";
@@ -1025,7 +1025,7 @@
             this.dataGridView_ero_zones.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_ero_zones.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_ero_zones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_ero_zones.Size = new System.Drawing.Size(526, 174);
+            this.dataGridView_ero_zones.Size = new System.Drawing.Size(526, 187);
             this.dataGridView_ero_zones.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn6
@@ -1058,10 +1058,10 @@
             // 
             this.tabPage_classes.AutoScroll = true;
             this.tabPage_classes.Controls.Add(this.tableLayoutPanel4);
-            this.tabPage_classes.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_classes.Location = new System.Drawing.Point(4, 23);
             this.tabPage_classes.Name = "tabPage_classes";
             this.tabPage_classes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_classes.Size = new System.Drawing.Size(561, 511);
+            this.tabPage_classes.Size = new System.Drawing.Size(561, 553);
             this.tabPage_classes.TabIndex = 1;
             this.tabPage_classes.Text = "TAB_CLASSES";
             this.tabPage_classes.UseVisualStyleBackColor = true;
@@ -1079,7 +1079,7 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(538, 613);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(538, 657);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // groupBox_maid_classes
@@ -1090,7 +1090,7 @@
             this.groupBox_maid_classes.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_maid_classes.Location = new System.Drawing.Point(3, 3);
             this.groupBox_maid_classes.Name = "groupBox_maid_classes";
-            this.groupBox_maid_classes.Size = new System.Drawing.Size(532, 300);
+            this.groupBox_maid_classes.Size = new System.Drawing.Size(532, 322);
             this.groupBox_maid_classes.TabIndex = 5;
             this.groupBox_maid_classes.TabStop = false;
             this.groupBox_maid_classes.Text = "MAID_CLASS";
@@ -1119,7 +1119,7 @@
             this.dataGridView_maid_classes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_maid_classes.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_maid_classes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_maid_classes.Size = new System.Drawing.Size(526, 281);
+            this.dataGridView_maid_classes.Size = new System.Drawing.Size(526, 303);
             this.dataGridView_maid_classes.TabIndex = 0;
             // 
             // dataGridViewCheckBoxColumn7
@@ -1163,9 +1163,9 @@
             this.groupBox_yotogi_classes.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox_yotogi_classes.Controls.Add(this.dataGridView_yotogi_classes);
             this.groupBox_yotogi_classes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox_yotogi_classes.Location = new System.Drawing.Point(3, 309);
+            this.groupBox_yotogi_classes.Location = new System.Drawing.Point(3, 331);
             this.groupBox_yotogi_classes.Name = "groupBox_yotogi_classes";
-            this.groupBox_yotogi_classes.Size = new System.Drawing.Size(532, 301);
+            this.groupBox_yotogi_classes.Size = new System.Drawing.Size(532, 323);
             this.groupBox_yotogi_classes.TabIndex = 4;
             this.groupBox_yotogi_classes.TabStop = false;
             this.groupBox_yotogi_classes.Text = "YOTOGI_CLASS";
@@ -1194,7 +1194,7 @@
             this.dataGridView_yotogi_classes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_yotogi_classes.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_yotogi_classes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_yotogi_classes.Size = new System.Drawing.Size(526, 282);
+            this.dataGridView_yotogi_classes.Size = new System.Drawing.Size(526, 304);
             this.dataGridView_yotogi_classes.TabIndex = 0;
             // 
             // dataGridViewCheckBoxColumn1
@@ -1236,10 +1236,10 @@
             // 
             this.tabPage_work.AutoScroll = true;
             this.tabPage_work.Controls.Add(this.tableLayoutPanel7);
-            this.tabPage_work.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_work.Location = new System.Drawing.Point(4, 23);
             this.tabPage_work.Name = "tabPage_work";
             this.tabPage_work.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_work.Size = new System.Drawing.Size(561, 511);
+            this.tabPage_work.Size = new System.Drawing.Size(561, 553);
             this.tabPage_work.TabIndex = 2;
             this.tabPage_work.Text = "TAB_WORK";
             this.tabPage_work.UseVisualStyleBackColor = true;
@@ -1259,7 +1259,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(555, 484);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(555, 517);
             this.tableLayoutPanel7.TabIndex = 0;
             // 
             // groupBox_night_work
@@ -1267,9 +1267,9 @@
             this.groupBox_night_work.AutoSize = true;
             this.groupBox_night_work.Controls.Add(this.dataGridView_night_work);
             this.groupBox_night_work.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox_night_work.Location = new System.Drawing.Point(3, 268);
+            this.groupBox_night_work.Location = new System.Drawing.Point(3, 286);
             this.groupBox_night_work.Name = "groupBox_night_work";
-            this.groupBox_night_work.Size = new System.Drawing.Size(549, 213);
+            this.groupBox_night_work.Size = new System.Drawing.Size(549, 228);
             this.groupBox_night_work.TabIndex = 3;
             this.groupBox_night_work.TabStop = false;
             this.groupBox_night_work.Text = "NIGHT_WORK";
@@ -1296,7 +1296,7 @@
             this.dataGridView_night_work.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_night_work.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_night_work.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_night_work.Size = new System.Drawing.Size(543, 194);
+            this.dataGridView_night_work.Size = new System.Drawing.Size(543, 209);
             this.dataGridView_night_work.TabIndex = 2;
             // 
             // dataGridViewCheckBoxColumn8
@@ -1321,9 +1321,9 @@
             this.groupBox_noon_work.AutoSize = true;
             this.groupBox_noon_work.Controls.Add(this.dataGridView_noon_work_data);
             this.groupBox_noon_work.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox_noon_work.Location = new System.Drawing.Point(3, 49);
+            this.groupBox_noon_work.Location = new System.Drawing.Point(3, 52);
             this.groupBox_noon_work.Name = "groupBox_noon_work";
-            this.groupBox_noon_work.Size = new System.Drawing.Size(549, 213);
+            this.groupBox_noon_work.Size = new System.Drawing.Size(549, 228);
             this.groupBox_noon_work.TabIndex = 0;
             this.groupBox_noon_work.TabStop = false;
             this.groupBox_noon_work.Text = "NOON_WORK";
@@ -1352,7 +1352,7 @@
             this.dataGridView_noon_work_data.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_noon_work_data.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView_noon_work_data.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_noon_work_data.Size = new System.Drawing.Size(543, 194);
+            this.dataGridView_noon_work_data.Size = new System.Drawing.Size(543, 209);
             this.dataGridView_noon_work_data.TabIndex = 2;
             // 
             // dataGridViewCheckBoxColumn5
@@ -1397,7 +1397,7 @@
             this.groupBox_maid_current_work.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_maid_current_work.Location = new System.Drawing.Point(3, 3);
             this.groupBox_maid_current_work.Name = "groupBox_maid_current_work";
-            this.groupBox_maid_current_work.Size = new System.Drawing.Size(549, 40);
+            this.groupBox_maid_current_work.Size = new System.Drawing.Size(549, 43);
             this.groupBox_maid_current_work.TabIndex = 2;
             this.groupBox_maid_current_work.TabStop = false;
             this.groupBox_maid_current_work.Text = "CURRENT_WORK";
@@ -1419,7 +1419,7 @@
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(543, 21);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(543, 24);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // comboBox_work_night
@@ -1427,10 +1427,10 @@
             this.comboBox_work_night.Dock = System.Windows.Forms.DockStyle.Left;
             this.comboBox_work_night.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_work_night.FormattingEnabled = true;
-            this.comboBox_work_night.Location = new System.Drawing.Point(363, 0);
+            this.comboBox_work_night.Location = new System.Drawing.Point(353, 0);
             this.comboBox_work_night.Margin = new System.Windows.Forms.Padding(0);
             this.comboBox_work_night.Name = "comboBox_work_night";
-            this.comboBox_work_night.Size = new System.Drawing.Size(180, 21);
+            this.comboBox_work_night.Size = new System.Drawing.Size(180, 22);
             this.comboBox_work_night.TabIndex = 2;
             // 
             // label_work_night
@@ -1438,9 +1438,9 @@
             this.label_work_night.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_work_night.AutoSize = true;
-            this.label_work_night.Location = new System.Drawing.Point(279, 0);
+            this.label_work_night.Location = new System.Drawing.Point(275, 0);
             this.label_work_night.Name = "label_work_night";
-            this.label_work_night.Size = new System.Drawing.Size(81, 21);
+            this.label_work_night.Size = new System.Drawing.Size(75, 24);
             this.label_work_night.TabIndex = 3;
             this.label_work_night.Text = "WORK_NIGHT";
             this.label_work_night.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1452,7 +1452,7 @@
             this.label_work_noon.AutoSize = true;
             this.label_work_noon.Location = new System.Drawing.Point(3, 0);
             this.label_work_noon.Name = "label_work_noon";
-            this.label_work_noon.Size = new System.Drawing.Size(79, 21);
+            this.label_work_noon.Size = new System.Drawing.Size(75, 24);
             this.label_work_noon.TabIndex = 0;
             this.label_work_noon.Text = "WORK_NOON";
             this.label_work_noon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1462,20 +1462,20 @@
             this.comboBox_work_noon.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBox_work_noon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_work_noon.FormattingEnabled = true;
-            this.comboBox_work_noon.Location = new System.Drawing.Point(85, 0);
+            this.comboBox_work_noon.Location = new System.Drawing.Point(81, 0);
             this.comboBox_work_noon.Margin = new System.Windows.Forms.Padding(0);
             this.comboBox_work_noon.Name = "comboBox_work_noon";
-            this.comboBox_work_noon.Size = new System.Drawing.Size(180, 21);
+            this.comboBox_work_noon.Size = new System.Drawing.Size(180, 22);
             this.comboBox_work_noon.TabIndex = 1;
             // 
             // tabPage_skills
             // 
             this.tabPage_skills.AutoScroll = true;
             this.tabPage_skills.Controls.Add(this.dataGridView_skill_data);
-            this.tabPage_skills.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_skills.Location = new System.Drawing.Point(4, 23);
             this.tabPage_skills.Name = "tabPage_skills";
             this.tabPage_skills.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_skills.Size = new System.Drawing.Size(561, 511);
+            this.tabPage_skills.Size = new System.Drawing.Size(561, 553);
             this.tabPage_skills.TabIndex = 3;
             this.tabPage_skills.Text = "TAB_YOTOGI";
             this.tabPage_skills.UseVisualStyleBackColor = true;
@@ -1504,7 +1504,7 @@
             this.dataGridView_skill_data.RowHeadersVisible = false;
             this.dataGridView_skill_data.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_skill_data.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_skill_data.Size = new System.Drawing.Size(555, 170);
+            this.dataGridView_skill_data.Size = new System.Drawing.Size(555, 183);
             this.dataGridView_skill_data.TabIndex = 4;
             // 
             // dataGridViewCheckBoxColumn6
@@ -1554,10 +1554,10 @@
             // 
             this.tabPage_misc.AutoScroll = true;
             this.tabPage_misc.Controls.Add(this.tableLayoutPanel6);
-            this.tabPage_misc.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_misc.Location = new System.Drawing.Point(4, 23);
             this.tabPage_misc.Name = "tabPage_misc";
             this.tabPage_misc.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_misc.Size = new System.Drawing.Size(561, 511);
+            this.tabPage_misc.Size = new System.Drawing.Size(561, 553);
             this.tabPage_misc.TabIndex = 6;
             this.tabPage_misc.Text = "TAB_MISC";
             this.tabPage_misc.UseVisualStyleBackColor = true;
@@ -1575,7 +1575,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(555, 455);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(555, 470);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // groupBox_feature
@@ -1585,7 +1585,7 @@
             this.groupBox_feature.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox_feature.Location = new System.Drawing.Point(3, 148);
             this.groupBox_feature.Name = "groupBox_feature";
-            this.groupBox_feature.Size = new System.Drawing.Size(549, 304);
+            this.groupBox_feature.Size = new System.Drawing.Size(549, 319);
             this.groupBox_feature.TabIndex = 4;
             this.groupBox_feature.TabStop = false;
             this.groupBox_feature.Text = "MAID_FEATURES";
@@ -1599,7 +1599,7 @@
             this.checkedListBox_feature.FormattingEnabled = true;
             this.checkedListBox_feature.Location = new System.Drawing.Point(3, 16);
             this.checkedListBox_feature.Name = "checkedListBox_feature";
-            this.checkedListBox_feature.Size = new System.Drawing.Size(543, 285);
+            this.checkedListBox_feature.Size = new System.Drawing.Size(543, 300);
             this.checkedListBox_feature.TabIndex = 0;
             // 
             // groupBox_propensity
@@ -1629,10 +1629,10 @@
             // tabPage_player
             // 
             this.tabPage_player.Controls.Add(this.tableLayoutPanel3);
-            this.tabPage_player.Location = new System.Drawing.Point(4, 22);
+            this.tabPage_player.Location = new System.Drawing.Point(4, 23);
             this.tabPage_player.Name = "tabPage_player";
             this.tabPage_player.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage_player.Size = new System.Drawing.Size(561, 511);
+            this.tabPage_player.Size = new System.Drawing.Size(561, 553);
             this.tabPage_player.TabIndex = 4;
             this.tabPage_player.Text = "TAB_GAME";
             this.tabPage_player.UseVisualStyleBackColor = true;
@@ -1680,29 +1680,29 @@
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 22;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(555, 505);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(555, 547);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // label_player_name
@@ -1710,7 +1710,7 @@
             this.label_player_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_player_name.AutoSize = true;
-            this.label_player_name.Location = new System.Drawing.Point(23, 20);
+            this.label_player_name.Location = new System.Drawing.Point(22, 22);
             this.label_player_name.Name = "label_player_name";
             this.label_player_name.Size = new System.Drawing.Size(64, 20);
             this.label_player_name.TabIndex = 0;
@@ -1722,7 +1722,7 @@
             this.textBox_player_name.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_player_name.Location = new System.Drawing.Point(90, 20);
+            this.textBox_player_name.Location = new System.Drawing.Point(89, 22);
             this.textBox_player_name.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_player_name.Name = "textBox_player_name";
             this.textBox_player_name.Size = new System.Drawing.Size(100, 20);
@@ -1733,7 +1733,7 @@
             this.label_money.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_money.AutoSize = true;
-            this.label_money.Location = new System.Drawing.Point(48, 50);
+            this.label_money.Location = new System.Drawing.Point(47, 53);
             this.label_money.Name = "label_money";
             this.label_money.Size = new System.Drawing.Size(39, 20);
             this.label_money.TabIndex = 5;
@@ -1745,7 +1745,7 @@
             this.label_salon_clean.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_salon_clean.AutoSize = true;
-            this.label_salon_clean.Location = new System.Drawing.Point(26, 200);
+            this.label_salon_clean.Location = new System.Drawing.Point(25, 210);
             this.label_salon_clean.Name = "label_salon_clean";
             this.label_salon_clean.Size = new System.Drawing.Size(61, 20);
             this.label_salon_clean.TabIndex = 12;
@@ -1757,9 +1757,9 @@
             this.label_salon_beautiful.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_salon_beautiful.AutoSize = true;
-            this.label_salon_beautiful.Location = new System.Drawing.Point(212, 200);
+            this.label_salon_beautiful.Location = new System.Drawing.Point(212, 210);
             this.label_salon_beautiful.Name = "label_salon_beautiful";
-            this.label_salon_beautiful.Size = new System.Drawing.Size(75, 20);
+            this.label_salon_beautiful.Size = new System.Drawing.Size(76, 20);
             this.label_salon_beautiful.TabIndex = 14;
             this.label_salon_beautiful.Text = "SalonBeautiful";
             this.label_salon_beautiful.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1769,7 +1769,7 @@
             this.textBox_money.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_money.Location = new System.Drawing.Point(90, 50);
+            this.textBox_money.Location = new System.Drawing.Point(89, 53);
             this.textBox_money.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_money.Name = "textBox_money";
             this.textBox_money.Size = new System.Drawing.Size(100, 20);
@@ -1780,7 +1780,7 @@
             this.textBox_salon_clean.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_salon_clean.Location = new System.Drawing.Point(90, 200);
+            this.textBox_salon_clean.Location = new System.Drawing.Point(89, 210);
             this.textBox_salon_clean.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_salon_clean.Name = "textBox_salon_clean";
             this.textBox_salon_clean.Size = new System.Drawing.Size(100, 20);
@@ -1791,7 +1791,7 @@
             this.textBox_salon_beautiful.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_salon_beautiful.Location = new System.Drawing.Point(290, 200);
+            this.textBox_salon_beautiful.Location = new System.Drawing.Point(291, 210);
             this.textBox_salon_beautiful.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_salon_beautiful.Name = "textBox_salon_beautiful";
             this.textBox_salon_beautiful.Size = new System.Drawing.Size(100, 20);
@@ -1802,9 +1802,9 @@
             this.label_salon_evaluation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_salon_evaluation.AutoSize = true;
-            this.label_salon_evaluation.Location = new System.Drawing.Point(3, 231);
+            this.label_salon_evaluation.Location = new System.Drawing.Point(3, 242);
             this.label_salon_evaluation.Name = "label_salon_evaluation";
-            this.label_salon_evaluation.Size = new System.Drawing.Size(84, 20);
+            this.label_salon_evaluation.Size = new System.Drawing.Size(83, 20);
             this.label_salon_evaluation.TabIndex = 17;
             this.label_salon_evaluation.Text = "SalonEvaluation";
             this.label_salon_evaluation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1814,9 +1814,9 @@
             this.label_current_salon_grade.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_current_salon_grade.AutoSize = true;
-            this.label_current_salon_grade.Location = new System.Drawing.Point(24, 261);
+            this.label_current_salon_grade.Location = new System.Drawing.Point(22, 273);
             this.label_current_salon_grade.Name = "label_current_salon_grade";
-            this.label_current_salon_grade.Size = new System.Drawing.Size(63, 20);
+            this.label_current_salon_grade.Size = new System.Drawing.Size(64, 20);
             this.label_current_salon_grade.TabIndex = 28;
             this.label_current_salon_grade.Text = "SalonGrade";
             this.label_current_salon_grade.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1826,7 +1826,7 @@
             this.textBox_salon_evaluation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_salon_evaluation.Location = new System.Drawing.Point(90, 231);
+            this.textBox_salon_evaluation.Location = new System.Drawing.Point(89, 242);
             this.textBox_salon_evaluation.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_salon_evaluation.Name = "textBox_salon_evaluation";
             this.textBox_salon_evaluation.Size = new System.Drawing.Size(100, 20);
@@ -1837,7 +1837,7 @@
             this.textBox_current_salon_grade.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_current_salon_grade.Location = new System.Drawing.Point(90, 261);
+            this.textBox_current_salon_grade.Location = new System.Drawing.Point(89, 273);
             this.textBox_current_salon_grade.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_current_salon_grade.Name = "textBox_current_salon_grade";
             this.textBox_current_salon_grade.Size = new System.Drawing.Size(100, 20);
@@ -1848,9 +1848,9 @@
             this.label_best_salon_grade.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_best_salon_grade.AutoSize = true;
-            this.label_best_salon_grade.Location = new System.Drawing.Point(203, 261);
+            this.label_best_salon_grade.Location = new System.Drawing.Point(202, 273);
             this.label_best_salon_grade.Name = "label_best_salon_grade";
-            this.label_best_salon_grade.Size = new System.Drawing.Size(84, 20);
+            this.label_best_salon_grade.Size = new System.Drawing.Size(86, 20);
             this.label_best_salon_grade.TabIndex = 31;
             this.label_best_salon_grade.Text = "BestSalonGrade";
             this.label_best_salon_grade.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1860,7 +1860,7 @@
             this.textBox_best_salon_grade.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_best_salon_grade.Location = new System.Drawing.Point(290, 261);
+            this.textBox_best_salon_grade.Location = new System.Drawing.Point(291, 273);
             this.textBox_best_salon_grade.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_best_salon_grade.Name = "textBox_best_salon_grade";
             this.textBox_best_salon_grade.Size = new System.Drawing.Size(100, 20);
@@ -1870,10 +1870,10 @@
             // 
             this.label_salon_stats.AutoSize = true;
             this.tableLayoutPanel3.SetColumnSpan(this.label_salon_stats, 2);
-            this.label_salon_stats.Location = new System.Drawing.Point(3, 184);
+            this.label_salon_stats.Location = new System.Drawing.Point(3, 193);
             this.label_salon_stats.Margin = new System.Windows.Forms.Padding(3);
             this.label_salon_stats.Name = "label_salon_stats";
-            this.label_salon_stats.Size = new System.Drawing.Size(84, 13);
+            this.label_salon_stats.Size = new System.Drawing.Size(81, 14);
             this.label_salon_stats.TabIndex = 11;
             this.label_salon_stats.Text = "SALON_STATS";
             this.label_salon_stats.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1883,9 +1883,9 @@
             this.label_init_salon_loan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_init_salon_loan.AutoSize = true;
-            this.label_init_salon_loan.Location = new System.Drawing.Point(215, 80);
+            this.label_init_salon_loan.Location = new System.Drawing.Point(217, 84);
             this.label_init_salon_loan.Name = "label_init_salon_loan";
-            this.label_init_salon_loan.Size = new System.Drawing.Size(72, 20);
+            this.label_init_salon_loan.Size = new System.Drawing.Size(71, 20);
             this.label_init_salon_loan.TabIndex = 33;
             this.label_init_salon_loan.Text = "InitSalonLoan";
             this.label_init_salon_loan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1895,7 +1895,7 @@
             this.textBox_init_salon_loan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_init_salon_loan.Location = new System.Drawing.Point(290, 80);
+            this.textBox_init_salon_loan.Location = new System.Drawing.Point(291, 84);
             this.textBox_init_salon_loan.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_init_salon_loan.Name = "textBox_init_salon_loan";
             this.textBox_init_salon_loan.Size = new System.Drawing.Size(100, 20);
@@ -1906,9 +1906,9 @@
             this.label_phase_days.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_phase_days.AutoSize = true;
-            this.label_phase_days.Location = new System.Drawing.Point(26, 110);
+            this.label_phase_days.Location = new System.Drawing.Point(24, 115);
             this.label_phase_days.Name = "label_phase_days";
-            this.label_phase_days.Size = new System.Drawing.Size(61, 21);
+            this.label_phase_days.Size = new System.Drawing.Size(62, 22);
             this.label_phase_days.TabIndex = 35;
             this.label_phase_days.Text = "PhaseDays";
             this.label_phase_days.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1918,7 +1918,7 @@
             this.textBox_phase_days.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_phase_days.Location = new System.Drawing.Point(90, 110);
+            this.textBox_phase_days.Location = new System.Drawing.Point(89, 115);
             this.textBox_phase_days.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_phase_days.Name = "textBox_phase_days";
             this.textBox_phase_days.Size = new System.Drawing.Size(100, 20);
@@ -1929,9 +1929,9 @@
             this.label_scenario_phase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_scenario_phase.AutoSize = true;
-            this.label_scenario_phase.Location = new System.Drawing.Point(208, 110);
+            this.label_scenario_phase.Location = new System.Drawing.Point(208, 115);
             this.label_scenario_phase.Name = "label_scenario_phase";
-            this.label_scenario_phase.Size = new System.Drawing.Size(79, 21);
+            this.label_scenario_phase.Size = new System.Drawing.Size(80, 22);
             this.label_scenario_phase.TabIndex = 37;
             this.label_scenario_phase.Text = "ScenarioPhase";
             this.label_scenario_phase.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1944,10 +1944,10 @@
             "SCENARIO_NEW",
             "SCENARIO_DEBT",
             "SCENARIO_MAIN"});
-            this.comboBox_scenario_phase.Location = new System.Drawing.Point(290, 110);
+            this.comboBox_scenario_phase.Location = new System.Drawing.Point(291, 115);
             this.comboBox_scenario_phase.Margin = new System.Windows.Forms.Padding(0);
             this.comboBox_scenario_phase.Name = "comboBox_scenario_phase";
-            this.comboBox_scenario_phase.Size = new System.Drawing.Size(100, 21);
+            this.comboBox_scenario_phase.Size = new System.Drawing.Size(100, 22);
             this.comboBox_scenario_phase.TabIndex = 38;
             // 
             // label_salon_loan
@@ -1955,7 +1955,7 @@
             this.label_salon_loan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_salon_loan.AutoSize = true;
-            this.label_salon_loan.Location = new System.Drawing.Point(29, 80);
+            this.label_salon_loan.Location = new System.Drawing.Point(28, 84);
             this.label_salon_loan.Name = "label_salon_loan";
             this.label_salon_loan.Size = new System.Drawing.Size(58, 20);
             this.label_salon_loan.TabIndex = 9;
@@ -1967,7 +1967,7 @@
             this.textBox_salon_loan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_salon_loan.Location = new System.Drawing.Point(90, 80);
+            this.textBox_salon_loan.Location = new System.Drawing.Point(89, 84);
             this.textBox_salon_loan.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_salon_loan.Name = "textBox_salon_loan";
             this.textBox_salon_loan.Size = new System.Drawing.Size(100, 20);
@@ -1978,9 +1978,9 @@
             this.label_days.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_days.AutoSize = true;
-            this.label_days.Location = new System.Drawing.Point(56, 141);
+            this.label_days.Location = new System.Drawing.Point(54, 148);
             this.label_days.Name = "label_days";
-            this.label_days.Size = new System.Drawing.Size(31, 20);
+            this.label_days.Size = new System.Drawing.Size(32, 20);
             this.label_days.TabIndex = 39;
             this.label_days.Text = "Days";
             this.label_days.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1990,7 +1990,7 @@
             this.textBox_days.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_days.Location = new System.Drawing.Point(90, 141);
+            this.textBox_days.Location = new System.Drawing.Point(89, 148);
             this.textBox_days.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_days.Name = "textBox_days";
             this.textBox_days.Size = new System.Drawing.Size(100, 20);
@@ -2001,7 +2001,7 @@
             this.label_shop_use_money.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_shop_use_money.AutoSize = true;
-            this.label_shop_use_money.Location = new System.Drawing.Point(204, 50);
+            this.label_shop_use_money.Location = new System.Drawing.Point(205, 53);
             this.label_shop_use_money.Name = "label_shop_use_money";
             this.label_shop_use_money.Size = new System.Drawing.Size(83, 20);
             this.label_shop_use_money.TabIndex = 41;
@@ -2013,7 +2013,7 @@
             this.textBox_shop_use_money.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_shop_use_money.Location = new System.Drawing.Point(290, 50);
+            this.textBox_shop_use_money.Location = new System.Drawing.Point(291, 53);
             this.textBox_shop_use_money.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_shop_use_money.Name = "textBox_shop_use_money";
             this.textBox_shop_use_money.Size = new System.Drawing.Size(100, 20);
@@ -2024,7 +2024,7 @@
             this.label_maid_points_base.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_maid_points_base.AutoSize = true;
-            this.label_maid_points_base.Location = new System.Drawing.Point(204, 141);
+            this.label_maid_points_base.Location = new System.Drawing.Point(205, 148);
             this.label_maid_points_base.Name = "label_maid_points_base";
             this.label_maid_points_base.Size = new System.Drawing.Size(83, 20);
             this.label_maid_points_base.TabIndex = 43;
@@ -2036,7 +2036,7 @@
             this.textBox_maid_points_base.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_maid_points_base.Location = new System.Drawing.Point(290, 141);
+            this.textBox_maid_points_base.Location = new System.Drawing.Point(291, 148);
             this.textBox_maid_points_base.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_maid_points_base.Name = "textBox_maid_points_base";
             this.textBox_maid_points_base.Size = new System.Drawing.Size(100, 20);
@@ -2044,6 +2044,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Font = new System.Drawing.Font("Arial", 9F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cheatsToolStripMenuItem,
             this.mENUALLMAIDToolStripMenuItem,
@@ -2064,41 +2065,41 @@
             this.unlockAllCostumesToolStripMenuItem,
             this.unlockAllTrophiesToolStripMenuItem});
             this.cheatsToolStripMenuItem.Name = "cheatsToolStripMenuItem";
-            this.cheatsToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.cheatsToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
             this.cheatsToolStripMenuItem.Text = "MENU_GAME";
             // 
             // cleanLoanToolStripMenuItem
             // 
             this.cleanLoanToolStripMenuItem.Name = "cleanLoanToolStripMenuItem";
-            this.cleanLoanToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.cleanLoanToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.cleanLoanToolStripMenuItem.Text = "MENU_GAME_CLEAN_DEBT";
             this.cleanLoanToolStripMenuItem.Click += new System.EventHandler(this.CleanDebt);
             // 
             // maxRatingToolStripMenuItem
             // 
             this.maxRatingToolStripMenuItem.Name = "maxRatingToolStripMenuItem";
-            this.maxRatingToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.maxRatingToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.maxRatingToolStripMenuItem.Text = "MENU_GAME_MAX_RATE";
             this.maxRatingToolStripMenuItem.Click += new System.EventHandler(this.SetMaxSalonGrade);
             // 
             // maxCreditsToolStripMenuItem
             // 
             this.maxCreditsToolStripMenuItem.Name = "maxCreditsToolStripMenuItem";
-            this.maxCreditsToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.maxCreditsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.maxCreditsToolStripMenuItem.Text = "MENU_GAME_MAX_CREDIT";
             this.maxCreditsToolStripMenuItem.Click += new System.EventHandler(this.SetMaxCredits);
             // 
             // unlockAllCostumesToolStripMenuItem
             // 
             this.unlockAllCostumesToolStripMenuItem.Name = "unlockAllCostumesToolStripMenuItem";
-            this.unlockAllCostumesToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.unlockAllCostumesToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.unlockAllCostumesToolStripMenuItem.Text = "MENU_GAME_ALL_ITEMS";
             this.unlockAllCostumesToolStripMenuItem.Click += new System.EventHandler(this.UnlockAllItems);
             // 
             // unlockAllTrophiesToolStripMenuItem
             // 
             this.unlockAllTrophiesToolStripMenuItem.Name = "unlockAllTrophiesToolStripMenuItem";
-            this.unlockAllTrophiesToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.unlockAllTrophiesToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.unlockAllTrophiesToolStripMenuItem.Text = "MENU_GAME_ALL_TROPHY";
             this.unlockAllTrophiesToolStripMenuItem.Click += new System.EventHandler(this.UnlockAllTrophies);
             // 
@@ -2117,70 +2118,77 @@
             this.toolStripSeparator3,
             this.mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem});
             this.mENUALLMAIDToolStripMenuItem.Name = "mENUALLMAIDToolStripMenuItem";
-            this.mENUALLMAIDToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
+            this.mENUALLMAIDToolStripMenuItem.Size = new System.Drawing.Size(117, 20);
             this.mENUALLMAIDToolStripMenuItem.Text = "MENU_ALL_MAID";
             // 
             // mENUALLMAIDLIMITToolStripMenuItem
             // 
             this.mENUALLMAIDLIMITToolStripMenuItem.Name = "mENUALLMAIDLIMITToolStripMenuItem";
-            this.mENUALLMAIDLIMITToolStripMenuItem.Size = new System.Drawing.Size(319, 22);
+            this.mENUALLMAIDLIMITToolStripMenuItem.Size = new System.Drawing.Size(344, 22);
             this.mENUALLMAIDLIMITToolStripMenuItem.Text = "MENU_ALL_MAID_NO_LIMIT";
             this.mENUALLMAIDLIMITToolStripMenuItem.Click += new System.EventHandler(this.ToggleValueLimit);
             // 
             // mENUALLMAIDUNLOCKMAXALLToolStripMenuItem
             // 
             this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Name = "mENUALLMAIDUNLOCKMAXALLToolStripMenuItem";
-            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Size = new System.Drawing.Size(319, 22);
+            this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Size = new System.Drawing.Size(344, 22);
             this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Text = "MENU_ALL_MAID_UNLOCK_MAX_ALL";
             this.mENUALLMAIDUNLOCKMAXALLToolStripMenuItem.Click += new System.EventHandler(this.SetUnlockMaxAllMaids);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(316, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(341, 6);
             // 
             // mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem
             // 
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem.Name = "mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem";
-            this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem.Size = new System.Drawing.Size(319, 22);
+            this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem.Size = new System.Drawing.Size(344, 22);
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem.Text = "MENU_ALL_MAID_ALL_YOTOGI_COM";
             this.mENUALLMAIDALLYOTOGICOMMANDSToolStripMenuItem.Click += new System.EventHandler(this.ToggleYotogiCommandEnable);
+            // 
+            // menu_item_all_yotogi_vis_basic
+            // 
+            this.menu_item_all_yotogi_vis_basic.Name = "menu_item_all_yotogi_vis_basic";
+            this.menu_item_all_yotogi_vis_basic.Size = new System.Drawing.Size(344, 22);
+            this.menu_item_all_yotogi_vis_basic.Text = "MENU_ALL_MAID_ALL_YOTOGI_VISIBLE_BASIC";
+            this.menu_item_all_yotogi_vis_basic.Click += new System.EventHandler(this.ToggleYotogiSkillsVisibleBasic);
             // 
             // menu_item_all_yotogi_vis
             // 
             this.menu_item_all_yotogi_vis.Name = "menu_item_all_yotogi_vis";
-            this.menu_item_all_yotogi_vis.Size = new System.Drawing.Size(319, 22);
+            this.menu_item_all_yotogi_vis.Size = new System.Drawing.Size(344, 22);
             this.menu_item_all_yotogi_vis.Text = "MENU_ALL_MAID_ALL_YOTOGI_VISIBLE";
             this.menu_item_all_yotogi_vis.Click += new System.EventHandler(this.ToggleYotogiSkillsVisible);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(316, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(341, 6);
             // 
             // mENUALLMAIDALLVIPVISIBLEToolStripMenuItem
             // 
             this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Name = "mENUALLMAIDALLVIPVISIBLEToolStripMenuItem";
-            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Size = new System.Drawing.Size(319, 22);
+            this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Size = new System.Drawing.Size(344, 22);
             this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Text = "MENU_ALL_MAID_RESET_VIP";
             this.mENUALLMAIDALLVIPVISIBLEToolStripMenuItem.Click += new System.EventHandler(this.ResetVip);
             // 
             // mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem
             // 
             this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Name = "mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem";
-            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Size = new System.Drawing.Size(319, 22);
+            this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Size = new System.Drawing.Size(344, 22);
             this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Text = "MENU_ALL_MAID_ALL_VIP_VISIBLE_ALWAYS";
             this.mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem.Click += new System.EventHandler(this.ToggleVIPVisible);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(316, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(341, 6);
             // 
             // mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem
             // 
             this.mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem.Name = "mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem";
-            this.mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem.Size = new System.Drawing.Size(319, 22);
+            this.mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem.Size = new System.Drawing.Size(344, 22);
             this.mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem.Text = "MENU_ALL_MAID_ALL_SCENES_VISIBLE";
             this.mENUALLMAIDALLSCENESVISIBLEToolStripMenuItem.Click += new System.EventHandler(this.ToggleAllScenesVisible);
             // 
@@ -2195,7 +2203,7 @@
             this.mENUMAIDLOCKALLToolStripMenuItem,
             this.mENUMAIDUNLOCKALLToolStripMenuItem});
             this.maidToolStripMenuItem.Name = "maidToolStripMenuItem";
-            this.maidToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
+            this.maidToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.maidToolStripMenuItem.Text = "MENU_MAID";
             // 
             // unlockToolStripMenuItem
@@ -2206,34 +2214,34 @@
             this.nightClassesToolStripMenuItem,
             this.allToolStripMenuItem1});
             this.unlockToolStripMenuItem.Name = "unlockToolStripMenuItem";
-            this.unlockToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.unlockToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
             this.unlockToolStripMenuItem.Text = "MENU_MAID_UNLOCK";
             // 
             // sexSkillsToolStripMenuItem
             // 
             this.sexSkillsToolStripMenuItem.Name = "sexSkillsToolStripMenuItem";
-            this.sexSkillsToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.sexSkillsToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.sexSkillsToolStripMenuItem.Text = "UNLOCK_SKILLS";
             this.sexSkillsToolStripMenuItem.Click += new System.EventHandler(this.UnlockAllSkills);
             // 
             // dayClassesToolStripMenuItem
             // 
             this.dayClassesToolStripMenuItem.Name = "dayClassesToolStripMenuItem";
-            this.dayClassesToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.dayClassesToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.dayClassesToolStripMenuItem.Text = "UNLOCK_MAID_CLASSES";
             this.dayClassesToolStripMenuItem.Click += new System.EventHandler(this.UnlockAllMaidClasses);
             // 
             // nightClassesToolStripMenuItem
             // 
             this.nightClassesToolStripMenuItem.Name = "nightClassesToolStripMenuItem";
-            this.nightClassesToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.nightClassesToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.nightClassesToolStripMenuItem.Text = "UNLOCK_YOTOGI_CLASSES";
             this.nightClassesToolStripMenuItem.Click += new System.EventHandler(this.UnlockAllYotogiClasses);
             // 
             // allToolStripMenuItem1
             // 
             this.allToolStripMenuItem1.Name = "allToolStripMenuItem1";
-            this.allToolStripMenuItem1.Size = new System.Drawing.Size(218, 22);
+            this.allToolStripMenuItem1.Size = new System.Drawing.Size(238, 22);
             this.allToolStripMenuItem1.Text = "UNLOCK_ALL";
             this.allToolStripMenuItem1.Click += new System.EventHandler(this.UnlockAll);
             // 
@@ -2249,62 +2257,62 @@
             this.sexualAddictionsToolStripMenuItem,
             this.allToolStripMenuItem});
             this.setMaxValuesToolStripMenuItem.Name = "setMaxValuesToolStripMenuItem";
-            this.setMaxValuesToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.setMaxValuesToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
             this.setMaxValuesToolStripMenuItem.Text = "MENU_MAID_MAX";
             // 
             // mAXCLASSLVLToolStripMenuItem
             // 
             this.mAXCLASSLVLToolStripMenuItem.Name = "mAXCLASSLVLToolStripMenuItem";
-            this.mAXCLASSLVLToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.mAXCLASSLVLToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.mAXCLASSLVLToolStripMenuItem.Text = "MAX_CLASS_LVL";
             this.mAXCLASSLVLToolStripMenuItem.Click += new System.EventHandler(this.SetMaxClassLevel);
             // 
             // statsToolStripMenuItem
             // 
             this.statsToolStripMenuItem.Name = "statsToolStripMenuItem";
-            this.statsToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.statsToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.statsToolStripMenuItem.Text = "MAX_STATS";
             this.statsToolStripMenuItem.Click += new System.EventHandler(this.SetMaxStats);
             // 
             // erogenousZonesToolStripMenuItem
             // 
             this.erogenousZonesToolStripMenuItem.Name = "erogenousZonesToolStripMenuItem";
-            this.erogenousZonesToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.erogenousZonesToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.erogenousZonesToolStripMenuItem.Text = "MAX_ERO_ZONES";
             this.erogenousZonesToolStripMenuItem.Click += new System.EventHandler(this.SetMaxEroZones);
             // 
             // sexSkillLVLToolStripMenuItem
             // 
             this.sexSkillLVLToolStripMenuItem.Name = "sexSkillLVLToolStripMenuItem";
-            this.sexSkillLVLToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.sexSkillLVLToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.sexSkillLVLToolStripMenuItem.Text = "MAX_YOTOGI_LVL";
             this.sexSkillLVLToolStripMenuItem.Click += new System.EventHandler(this.SetMaxYotogiLevel);
             // 
             // workSkillLevelToolStripMenuItem
             // 
             this.workSkillLevelToolStripMenuItem.Name = "workSkillLevelToolStripMenuItem";
-            this.workSkillLevelToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.workSkillLevelToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.workSkillLevelToolStripMenuItem.Text = "MAX_WORK_PLAY_COUNT";
             this.workSkillLevelToolStripMenuItem.Click += new System.EventHandler(this.SetMaxWorkPlayCount);
             // 
             // featuresToolStripMenuItem
             // 
             this.featuresToolStripMenuItem.Name = "featuresToolStripMenuItem";
-            this.featuresToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.featuresToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.featuresToolStripMenuItem.Text = "MAX_FEATURE";
             this.featuresToolStripMenuItem.Click += new System.EventHandler(this.SetMaxFeature);
             // 
             // sexualAddictionsToolStripMenuItem
             // 
             this.sexualAddictionsToolStripMenuItem.Name = "sexualAddictionsToolStripMenuItem";
-            this.sexualAddictionsToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.sexualAddictionsToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.sexualAddictionsToolStripMenuItem.Text = "MAX_PROPENSITY";
             this.sexualAddictionsToolStripMenuItem.Click += new System.EventHandler(this.SetMaxPropensity);
             // 
             // allToolStripMenuItem
             // 
             this.allToolStripMenuItem.Name = "allToolStripMenuItem";
-            this.allToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.allToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.allToolStripMenuItem.Text = "MAX_ALL";
             this.allToolStripMenuItem.Click += new System.EventHandler(this.SetMaxAll);
             // 
@@ -2314,48 +2322,48 @@
             this.mENUMAIDSETCLASSLVLToolStripMenuItem,
             this.mENUMAIDSETYOTOGITIMESToolStripMenuItem});
             this.mENUMAIDSETToolStripMenuItem.Name = "mENUMAIDSETToolStripMenuItem";
-            this.mENUMAIDSETToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.mENUMAIDSETToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
             this.mENUMAIDSETToolStripMenuItem.Text = "MENU_MAID_SET";
             // 
             // mENUMAIDSETCLASSLVLToolStripMenuItem
             // 
             this.mENUMAIDSETCLASSLVLToolStripMenuItem.Name = "mENUMAIDSETCLASSLVLToolStripMenuItem";
-            this.mENUMAIDSETCLASSLVLToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.mENUMAIDSETCLASSLVLToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.mENUMAIDSETCLASSLVLToolStripMenuItem.Text = "MENU_MAID_SET_CLASS_LVL";
             this.mENUMAIDSETCLASSLVLToolStripMenuItem.Click += new System.EventHandler(this.SetClassLevel);
             // 
             // mENUMAIDSETYOTOGITIMESToolStripMenuItem
             // 
             this.mENUMAIDSETYOTOGITIMESToolStripMenuItem.Name = "mENUMAIDSETYOTOGITIMESToolStripMenuItem";
-            this.mENUMAIDSETYOTOGITIMESToolStripMenuItem.Size = new System.Drawing.Size(251, 22);
+            this.mENUMAIDSETYOTOGITIMESToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.mENUMAIDSETYOTOGITIMESToolStripMenuItem.Text = "MENU_MAID_SET_YOTOGI_TIMES";
             this.mENUMAIDSETYOTOGITIMESToolStripMenuItem.Click += new System.EventHandler(this.SetYotogiUsedTimes);
             // 
             // mENUMAIDFORCEENABLEToolStripMenuItem
             // 
             this.mENUMAIDFORCEENABLEToolStripMenuItem.Name = "mENUMAIDFORCEENABLEToolStripMenuItem";
-            this.mENUMAIDFORCEENABLEToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.mENUMAIDFORCEENABLEToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
             this.mENUMAIDFORCEENABLEToolStripMenuItem.Text = "MENU_MAID_FORCE_ENABLE";
             this.mENUMAIDFORCEENABLEToolStripMenuItem.Click += new System.EventHandler(this.SetForceEnableAll);
             // 
             // mENUMAIDWORKFORCEDISABLEToolStripMenuItem
             // 
             this.mENUMAIDWORKFORCEDISABLEToolStripMenuItem.Name = "mENUMAIDWORKFORCEDISABLEToolStripMenuItem";
-            this.mENUMAIDWORKFORCEDISABLEToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.mENUMAIDWORKFORCEDISABLEToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
             this.mENUMAIDWORKFORCEDISABLEToolStripMenuItem.Text = "MENU_MAID_WORK_FORCE_DISABLE";
             this.mENUMAIDWORKFORCEDISABLEToolStripMenuItem.Click += new System.EventHandler(this.SetForceDisableAll);
             // 
             // mENUMAIDLOCKALLToolStripMenuItem
             // 
             this.mENUMAIDLOCKALLToolStripMenuItem.Name = "mENUMAIDLOCKALLToolStripMenuItem";
-            this.mENUMAIDLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.mENUMAIDLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
             this.mENUMAIDLOCKALLToolStripMenuItem.Text = "MENU_MAID_LOCK_ALL";
             this.mENUMAIDLOCKALLToolStripMenuItem.Click += new System.EventHandler(this.LockAllValues);
             // 
             // mENUMAIDUNLOCKALLToolStripMenuItem
             // 
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Name = "mENUMAIDUNLOCKALLToolStripMenuItem";
-            this.mENUMAIDUNLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(272, 22);
+            this.mENUMAIDUNLOCKALLToolStripMenuItem.Size = new System.Drawing.Size(294, 22);
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Text = "MENU_MAID_UNLOCK_ALL";
             this.mENUMAIDUNLOCKALLToolStripMenuItem.Click += new System.EventHandler(this.UnlockAllValues);
             // 
@@ -2390,26 +2398,20 @@
             this.mENUMISCABOUTToolStripMenuItem.Text = "MENU_MISC_ABOUT";
             this.mENUMISCABOUTToolStripMenuItem.Click += new System.EventHandler(this.OpenAboutMenu);
             // 
-            // menu_item_all_yotogi_vis_basic
-            // 
-            this.menu_item_all_yotogi_vis_basic.Name = "menu_item_all_yotogi_vis_basic";
-            this.menu_item_all_yotogi_vis_basic.Size = new System.Drawing.Size(319, 22);
-            this.menu_item_all_yotogi_vis_basic.Text = "MENU_ALL_MAID_ALL_YOTOGI_VISIBLE_BASIC";
-            this.menu_item_all_yotogi_vis_basic.Click += new System.EventHandler(this.ToggleYotogiSkillsVisibleBasic);
-            // 
             // MaidFiddlerGUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(784, 604);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 643);
             this.Name = "MaidFiddlerGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Maid Fiddler";

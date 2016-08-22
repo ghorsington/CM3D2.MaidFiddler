@@ -41,8 +41,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Debugger.WriteLine("Forcing free mode scene visible");
                 e.ForceEnabled = true;
             }
-            else
-                Debugger.WriteLine("Processing free mode scene");
+            else Debugger.WriteLine("Processing free mode scene");
         }
 
         private void OnClassUpdated(object sender, HookEventArgs args)
@@ -75,9 +74,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     valueUpdateQueue[currentQueue].Add(args.Tag, () => maid.UpdateYotogiClasses());
                     break;
                 case MaidChangeType.MaidAndYotogiClass:
-                    valueUpdateQueue[currentQueue].Add(
-                    args.Tag,
-                    () =>
+                    valueUpdateQueue[currentQueue].Add(args.Tag, () =>
                     {
                         maid.UpdateMaidBonusValues();
                         maid.UpdateMaidClasses();
@@ -89,52 +86,42 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnCommandUpdate(object sender, CommandUpdateEventArgs args)
         {
-            if (!allYotogiCommandsVisible)
-                return;
-            Debugger.Assert(
-            () =>
+            if (!allYotogiCommandsVisible) return;
+            Debugger.Assert(() =>
             {
                 for (int i = 0; i < args.Commands[args.PlayerState].Length; i++)
                 {
                     Yotogi.SkillData.Command.Data data = args.Commands[args.PlayerState][i];
                     args.CommandFactory.AddCommand(data);
                 }
-            },
-            "Failed to manually add yotogi command");
+            }, "Failed to manually add yotogi command");
         }
 
         private void OnFeaturePropensityUpdated(object sender, UpdateFeaturePropensityEventArgs args)
         {
-            Debugger.Assert(
-            () =>
+            Debugger.Assert(() =>
             {
                 MaidInfo maid = SelectedMaid;
-                if (maid == null)
-                    return;
+                if (maid == null) return;
 
-                if (args.CallerMaid != maid.Maid)
-                    return;
+                if (args.CallerMaid != maid.Maid) return;
 
                 if (args.UpdateFeature)
                 {
                     Debugger.WriteLine(LogLevel.Info, "Updating all features!");
-                    for (Feature e = Feature.Null + 1; e < EnumHelper.MaxFeature; e++)
-                        maid.UpdateMiscStatus(MaidChangeType.Feature, (int) e);
+                    for (Feature e = Feature.Null + 1; e < EnumHelper.MaxFeature; e++) maid.UpdateMiscStatus(MaidChangeType.Feature, (int) e);
                 }
                 else if (args.UpdatePropensity)
                 {
                     Debugger.WriteLine(LogLevel.Info, "Updating all propensities!");
-                    for (Propensity e = Propensity.Null + 1; e < EnumHelper.MaxPropensity; e++)
-                        maid.UpdateMiscStatus(MaidChangeType.Propensity, (int) e);
+                    for (Propensity e = Propensity.Null + 1; e < EnumHelper.MaxPropensity; e++) maid.UpdateMiscStatus(MaidChangeType.Propensity, (int) e);
                 }
-            },
-            "Failed to update maid features/propensities");
+            }, "Failed to update maid features/propensities");
         }
 
         private void OnMaidThumbnailChanged(object sender, ThumbnailEventArgs args)
         {
-            if (!IsMaidLoaded(args.Maid))
-                return;
+            if (!IsMaidLoaded(args.Maid)) return;
 
             Image img;
             using (MemoryStream stream = new MemoryStream(args.Maid.GetThumIcon().EncodeToPNG()))
@@ -142,8 +129,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 img = Image.FromStream(stream);
             }
 
-            if (!maidThumbnails.ContainsKey(args.Maid.Param.status.guid))
-                maidThumbnails.Add(args.Maid.Param.status.guid, img);
+            if (!maidThumbnails.ContainsKey(args.Maid.Param.status.guid)) maidThumbnails.Add(args.Maid.Param.status.guid, img);
             else
             {
                 maidThumbnails[args.Maid.Param.status.guid].Dispose();
@@ -158,10 +144,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             Debugger.WriteLine("Attempting to check for visibility");
             ScheduleCSVData.NightWorkType workType = ScheduleCSVData.NightWorkData[e.WorkID].nightWorkType;
-            if (workType == ScheduleCSVData.NightWorkType.Trainee || workType == ScheduleCSVData.NightWorkType.Trainer)
-                return;
-            if (!vipAlwaysVisible)
-                return;
+            if (workType == ScheduleCSVData.NightWorkType.Trainee || workType == ScheduleCSVData.NightWorkType.Trainer) return;
+            if (!vipAlwaysVisible) return;
             e.Force = true;
             e.Visible = true;
             Debugger.WriteLine("Visibility set to true!");
@@ -169,21 +153,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnPlayerValueChanged(object sender, PlayerValueChangeEventArgs args)
         {
-            if (Player.Player == null)
-                return;
+            if (Player.Player == null) return;
 
-            if (!playerValueUpdateQueue.ContainsKey(args.Tag))
-                playerValueUpdateQueue.Add(args.Tag, () => Player.UpdateField(args.Tag));
+            if (!playerValueUpdateQueue.ContainsKey(args.Tag)) playerValueUpdateQueue.Add(args.Tag, () => Player.UpdateField(args.Tag));
         }
 
         private void OnPropertyHasChanged(object sender, StatusChangedEventArgs args)
         {
             MaidInfo maid = SelectedMaid;
-            if (maid == null)
-                return;
+            if (maid == null) return;
 
-            if (maid.Maid != args.CallerMaid)
-                return;
+            if (maid.Maid != args.CallerMaid) return;
 
             if (valueUpdateQueue[currentQueue].ContainsKey(args.Tag))
             {
@@ -219,17 +199,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 return;
             }
 
-            if (!valueUpdateQueue[currentQueue].ContainsKey(args.Tag))
-                valueUpdateQueue[currentQueue].Add(args.Tag, () => maid.UpdateField(args.Tag, args.ID, args.Value));
-            else
-                Debugger.WriteLine(LogLevel.Warning, $"Tag already in update queue {currentQueue}! Aborting...");
+            if (!valueUpdateQueue[currentQueue].ContainsKey(args.Tag)) valueUpdateQueue[currentQueue].Add(args.Tag, () => maid.UpdateField(args.Tag, args.ID, args.Value));
+            else Debugger.WriteLine(LogLevel.Warning, $"Tag already in update queue {currentQueue}! Aborting...");
         }
 
         private void OnStatusChanged(object sender, StatusEventArgs args)
         {
             Debugger.WriteLine($"Changed status for property {EnumHelper.GetName(args.Tag)}");
             Debugger.WriteLine(
-            $"Called maid: {args.CallerMaid.Param.status.first_name} {args.CallerMaid.Param.status.last_name}");
+                $"Called maid: {args.CallerMaid.Param.status.first_name} {args.CallerMaid.Param.status.last_name}");
 
             if (!IsMaidLoaded(args.CallerMaid))
             {
@@ -259,24 +237,20 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
             else
             {
-                Debugger.WriteLine(
-                LogLevel.Warning,
-                $"Already in update queue {currentQueue}! Queue length: {valueUpdateQueue[currentQueue].Count}");
+                Debugger.WriteLine(LogLevel.Warning,
+                    $"Already in update queue {currentQueue}! Queue length: {valueUpdateQueue[currentQueue].Count}");
             }
         }
 
         private void OnStatusUpdated(object sender, StatusUpdateEventArgs args)
         {
             MaidInfo maid = SelectedMaid;
-            if (maid == null)
-                return;
+            if (maid == null) return;
 
-            if (args.CallerMaid != maid.Maid)
-                return;
+            if (args.CallerMaid != maid.Maid) return;
 
-            Debugger.WriteLine(
-            LogLevel.Info,
-            $"Updating {EnumHelper.GetName(args.Tag)}.{(args.Tag == MaidChangeType.Feature ? Translation.GetTranslation(EnumHelper.GetName((Feature) args.EnumVal)) : Translation.GetTranslation(EnumHelper.GetName((Propensity) args.EnumVal)))} to {args.Value}...");
+            Debugger.WriteLine(LogLevel.Info,
+                $"Updating {EnumHelper.GetName(args.Tag)}.{(args.Tag == MaidChangeType.Feature ? Translation.GetTranslation(EnumHelper.GetName((Feature) args.EnumVal)) : Translation.GetTranslation(EnumHelper.GetName((Propensity) args.EnumVal)))} to {args.Value}...");
 
             maid.UpdateMiscStatus(args.Tag, args.EnumVal, args.Value);
         }
@@ -288,10 +262,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnWorkEnabledCheck(object sender, WorkEventArgs args)
         {
-            if (args.CallerMaid == null)
-                return;
-            if (!IsMaidLoaded(args.CallerMaid))
-                return;
+            if (args.CallerMaid == null) return;
+            if (!IsMaidLoaded(args.CallerMaid)) return;
 
             switch (args.Tag)
             {
@@ -302,32 +274,28 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     args.ForceEnabled = GetMaidInfo(args.CallerMaid).IsNightWorkForceEnabled(args.ID);
                     break;
             }
-            Debugger.WriteLine(
-            LogLevel.Info,
-            $"Attempting to check work enabled: ID={args.ID}, Force={args.ForceEnabled}");
+            Debugger.WriteLine(LogLevel.Info,
+                $"Attempting to check work enabled: ID={args.ID}, Force={args.ForceEnabled}");
         }
 
         private void OnYotogiSkillVisibilityStageCheck(object sender, YotogiSkillVisibleEventArgs e)
         {
-            Debugger.WriteLine(
-            LogLevel.Info,
-            $"Checking for skill stage visibility. Forcing visible: {yotogiAllSkillsVisible}");
+            Debugger.WriteLine(LogLevel.Info,
+                $"Checking for skill stage visibility. Forcing visible: {yotogiAllSkillsVisible}");
             e.ForceVisible = yotogiAllSkillsVisible;
         }
 
         private void OnYotogiSkillVisibilityCheck(object sender, YotogiSkillVisibleEventArgs e)
         {
-            Debugger.WriteLine(
-            LogLevel.Info,
-            $"Checking for skill visibility. Forcing visible: {yotogiSkillsVisible || yotogiAllSkillsVisible}");
+            Debugger.WriteLine(LogLevel.Info,
+                $"Checking for skill visibility. Forcing visible: {yotogiSkillsVisible || yotogiAllSkillsVisible}");
             e.ForceVisible = yotogiSkillsVisible || yotogiAllSkillsVisible;
         }
 
         private void ReloadNightWorkData(object sender, PostProcessNightEventArgs args)
         {
             Maid m = args.ScheduleScene.slot[args.SlotID].maid;
-            if (m == null || !IsMaidLoaded(m))
-                return;
+            if (m == null || !IsMaidLoaded(m)) return;
 
             Debugger.WriteLine("Reloading all night works...");
             UpdateNightWorksData(args.ScheduleScene.slot[args.SlotID]);
@@ -336,8 +304,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void ReloadNoonWorkData(object sender, PostProcessNoonEventArgs args)
         {
             Maid m = args.ScheduleScene.slot[args.SlotID].maid;
-            if (m == null || !IsMaidLoaded(m))
-                return;
+            if (m == null || !IsMaidLoaded(m)) return;
 
             Debugger.WriteLine("Reloading all noon works...");
             UpdateNoonWorkData(args.ScheduleScene.slot[args.SlotID]);

@@ -23,13 +23,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Timer.Interval = 50;
                 Timer.Tick += (o, args) =>
                 {
-                    if (ProgressBar.Value >= ProgressBar.Maximum)
-                        ProgressBar.Value = ProgressBar.Minimum;
+                    if (ProgressBar.Value >= ProgressBar.Maximum) ProgressBar.Value = ProgressBar.Minimum;
                     ProgressBar.PerformStep();
                 };
             }
-            else
-                Timer = null;
+            else Timer = null;
         }
 
         public ProgressBar ProgressBar { get; private set; }

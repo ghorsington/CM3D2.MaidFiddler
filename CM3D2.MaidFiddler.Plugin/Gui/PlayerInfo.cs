@@ -102,8 +102,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     Player.status_.player_name = obj;
                     UpdateField(PlayerChangeType.Name);
                 }
-                else
-                    Player.SetName(obj);
+                else Player.SetName(obj);
             }
 
             private void SetPhaseDays(int obj)
@@ -156,13 +155,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     int val;
                     string s = value as string;
 #pragma warning disable 642
-                    if (s != null && int.TryParse(s, out val))
-                        ;
+                    if (s != null && int.TryParse(s, out val)) ;
 #pragma warning restore 642
-                    else if (value is int)
-                        val = (int) value;
-                    else
-                        return;
+                    else if (value is int) val = (int) value;
+                    else return;
 
                     setValInt(val);
                 }
@@ -170,13 +166,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     long val;
                     string s = value as string;
-                    if (s == null || !long.TryParse(s, out val))
-                        return;
+                    if (s == null || !long.TryParse(s, out val)) return;
 
                     setValLong(val);
                 }
-                else if (value is string && setMethodString.TryGetValue(type, out setValString))
-                    setValString((string) value);
+                else if (value is string && setMethodString.TryGetValue(type, out setValString)) setValString((string) value);
 
                 gui.valueUpdatePlayer[type] = true;
                 UpdateField(type);
@@ -218,8 +212,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             public void UpdateField(PlayerChangeType type)
             {
                 Action updateVal;
-                if (!updateMethods.TryGetValue(type, out updateVal))
-                    return;
+                if (!updateMethods.TryGetValue(type, out updateVal)) return;
                 gui.valueUpdatePlayer[type] = true;
                 updateVal();
                 gui.valueUpdatePlayer[type] = false;

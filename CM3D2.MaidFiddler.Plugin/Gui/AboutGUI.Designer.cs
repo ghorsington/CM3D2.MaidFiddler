@@ -34,9 +34,9 @@
             this.labelProductName = new System.Windows.Forms.Label();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label_licence = new System.Windows.Forms.Label();
-            this.label_contributors = new System.Windows.Forms.Label();
             this.labelPlugins = new System.Windows.Forms.Label();
-            this.label_plugins = new System.Windows.Forms.Label();
+            this.label_contributors = new System.Windows.Forms.Label();
+            this.textBox_plugins = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,7 +120,7 @@
             this.tableLayoutPanel.Controls.Add(this.labelPlugins, 0, 3);
             this.tableLayoutPanel.Controls.Add(this.label_contributors, 1, 4);
             this.tableLayoutPanel.Controls.Add(this.label_version, 1, 2);
-            this.tableLayoutPanel.Controls.Add(this.label_plugins, 1, 3);
+            this.tableLayoutPanel.Controls.Add(this.textBox_plugins, 1, 3);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(9, 9);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -148,17 +148,6 @@
     "";
             this.label_licence.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label_contributors
-            // 
-            this.label_contributors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.label_contributors.AutoSize = true;
-            this.label_contributors.Location = new System.Drawing.Point(173, 106);
-            this.label_contributors.Name = "label_contributors";
-            this.label_contributors.Size = new System.Drawing.Size(63, 13);
-            this.label_contributors.TabIndex = 27;
-            this.label_contributors.Text = "Contributors";
-            // 
             // labelPlugins
             // 
             this.labelPlugins.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -173,17 +162,30 @@
             this.labelPlugins.Text = "GUI_ABOUT_PLUGINS";
             this.labelPlugins.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label_plugins
+            // label_contributors
             // 
-            this.label_plugins.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.label_contributors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.label_plugins.AutoSize = true;
-            this.label_plugins.Location = new System.Drawing.Point(173, 46);
-            this.label_plugins.Name = "label_plugins";
-            this.label_plugins.Size = new System.Drawing.Size(41, 60);
-            this.label_plugins.TabIndex = 29;
-            this.label_plugins.Text = "Plugins";
-            this.label_plugins.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_contributors.AutoSize = true;
+            this.label_contributors.Location = new System.Drawing.Point(173, 106);
+            this.label_contributors.Name = "label_contributors";
+            this.label_contributors.Size = new System.Drawing.Size(63, 13);
+            this.label_contributors.TabIndex = 27;
+            this.label_contributors.Text = "Contributors";
+            // 
+            // textBox_plugins
+            // 
+            this.textBox_plugins.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_plugins.Location = new System.Drawing.Point(173, 49);
+            this.textBox_plugins.Multiline = true;
+            this.textBox_plugins.Name = "textBox_plugins";
+            this.textBox_plugins.ReadOnly = true;
+            this.textBox_plugins.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_plugins.Size = new System.Drawing.Size(203, 54);
+            this.textBox_plugins.TabIndex = 30;
+            this.textBox_plugins.Text = "Plugins";
             // 
             // AboutGUI
             // 
@@ -219,6 +221,6 @@
         private System.Windows.Forms.Label label_licence;
         private System.Windows.Forms.Label label_contributors;
         private System.Windows.Forms.Label labelPlugins;
-        private System.Windows.Forms.Label label_plugins;
+        private System.Windows.Forms.TextBox textBox_plugins;
     }
 }

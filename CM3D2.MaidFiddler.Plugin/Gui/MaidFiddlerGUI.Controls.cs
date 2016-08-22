@@ -35,42 +35,33 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void ClearAllFields(Control c)
         {
-            if (c == tabPage_player)
-                return;
+            if (c == tabPage_player) return;
             foreach (Control control in c.Controls)
             {
                 ClearAllFields(control);
             }
             TextBox box = c as TextBox;
-            if (box != null)
-                box.Clear();
+            if (box != null) box.Clear();
             else
             {
                 CheckBox checkBox = c as CheckBox;
-                if (checkBox != null)
-                    checkBox.Checked = false;
+                if (checkBox != null) checkBox.Checked = false;
                 else
                 {
                     CBox comboBox = c as CBox;
-                    if (comboBox != null)
-                        comboBox.SelectedIndex = -1;
+                    if (comboBox != null) comboBox.SelectedIndex = -1;
                     else
                     {
                         DataGridView view = c as DataGridView;
-                        if (view == null)
-                            return;
+                        if (view == null) return;
                         clearingTables = true;
                         foreach (DataGridViewCell cell in
-                        view.Rows.Cast<DataGridViewRow>().SelectMany(row => row.Cells.Cast<DataGridViewCell>()))
+                            view.Rows.Cast<DataGridViewRow>().SelectMany(row => row.Cells.Cast<DataGridViewCell>()))
                         {
-                            if (cell.Value is bool)
-                                cell.Value = false;
-                            else if (cell.Value is int)
-                                cell.Value = 0;
-                            else if (cell.Value is long)
-                                cell.Value = 0L;
-                            else if (cell.Value is uint)
-                                cell.Value = (uint) 0;
+                            if (cell.Value is bool) cell.Value = false;
+                            else if (cell.Value is int) cell.Value = 0;
+                            else if (cell.Value is long) cell.Value = 0L;
+                            else if (cell.Value is uint) cell.Value = (uint) 0;
                         }
                         clearingTables = false;
                     }
@@ -96,8 +87,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 else
                 {
                     CheckBox checkBox = control as CheckBox;
-                    if (checkBox == null)
-                        return;
+                    if (checkBox == null) return;
                     CheckBox cb = checkBox;
                     cb.CheckStateChanged += OnCheckStateChanged;
                 }
@@ -106,10 +96,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitField(Label label, Control control, MaidChangeType type)
         {
-            if (label != null)
-                Translation.AddTranslatableControl(label);
-            if (control is CheckBox)
-                Translation.AddTranslatableControl(control);
+            if (label != null) Translation.AddTranslatableControl(label);
+            if (control is CheckBox) Translation.AddTranslatableControl(control);
             uiControls.Add(control, type);
 
             InitControl(control);
@@ -117,10 +105,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitField(Label label, Control control, PlayerChangeType type)
         {
-            if (label != null)
-                Translation.AddTranslatableControl(label);
-            if (control is CheckBox)
-                Translation.AddTranslatableControl(control);
+            if (label != null) Translation.AddTranslatableControl(label);
+            if (control is CheckBox) Translation.AddTranslatableControl(control);
             uiControlsPlayer.Add(control, type);
 
             InitControl(control);
@@ -135,8 +121,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnControlKeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != '\r')
-                return;
+            if (e.KeyChar != '\r') return;
             hasPressedEnter = true;
             tableLayoutPanel1.Focus();
             Control c = (Control) sender;
@@ -147,30 +132,25 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void OnControlLostFocus(object sender, EventArgs e)
         {
             Control c = (Control) sender;
-            if (!hasPressedEnter)
-                UpdateGameValue(c, c.Text);
+            if (!hasPressedEnter) UpdateGameValue(c, c.Text);
             hasPressedEnter = false;
         }
 
         private void OnSelectedIndexChanged(object sender, EventArgs e)
         {
             CBox b = (CBox) sender;
-            if (b.SelectedIndex >= 0)
-                UpdateGameValue(b, b.SelectedIndex);
+            if (b.SelectedIndex >= 0) UpdateGameValue(b, b.SelectedIndex);
         }
 
         private void SetAllControlsEnabled(Control c, bool enabled)
         {
-            if (c == tabPage_player)
-                return;
+            if (c == tabPage_player) return;
             foreach (Control control in c.Controls)
             {
                 SetAllControlsEnabled(control, enabled);
             }
-            if (c is TabPage)
-                c.Enabled = true;
-            else
-                c.Enabled = enabled;
+            if (c is TabPage) c.Enabled = true;
+            else c.Enabled = enabled;
         }
 
         private void UpdateGameValue(Control c, object value)
@@ -178,37 +158,28 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (uiControls.ContainsKey(c))
             {
                 MaidInfo maid = SelectedMaid;
-                if (maid == null)
-                    return;
-                Debugger.Assert(
-                () =>
+                if (maid == null) return;
+                Debugger.Assert(() =>
                 {
                     MaidChangeType type = uiControls[c];
-                    Debugger.WriteLine(
-                    LogLevel.Info,
-                    $"Attempting to update value {type} to {value}. Allowed: {!valueUpdate[type]}.");
-                    if (!valueUpdate[type])
-                        maid.SetValue(type, value);
+                    Debugger.WriteLine(LogLevel.Info,
+                        $"Attempting to update value {type} to {value}. Allowed: {!valueUpdate[type]}.");
+                    if (!valueUpdate[type]) maid.SetValue(type, value);
                     valueUpdate[type] = false;
                 },
-                $"Failed to set maid value for {maid.Maid.Param.status.first_name} {maid.Maid.Param.status.last_name}");
+                    $"Failed to set maid value for {maid.Maid.Param.status.first_name} {maid.Maid.Param.status.last_name}");
             }
             else if (uiControlsPlayer.ContainsKey(c))
             {
-                if (Player == null)
-                    return;
-                Debugger.Assert(
-                () =>
+                if (Player == null) return;
+                Debugger.Assert(() =>
                 {
                     PlayerChangeType type = uiControlsPlayer[c];
-                    Debugger.WriteLine(
-                    LogLevel.Info,
-                    $"Attempting to update player value {type} to {value}. Allowed: {!valueUpdatePlayer[type]}.");
-                    if (!valueUpdatePlayer[type])
-                        Player.SetValue(type, value);
+                    Debugger.WriteLine(LogLevel.Info,
+                        $"Attempting to update player value {type} to {value}. Allowed: {!valueUpdatePlayer[type]}.");
+                    if (!valueUpdatePlayer[type]) Player.SetValue(type, value);
                     valueUpdatePlayer[type] = false;
-                },
-                "Failed to set player value");
+                }, "Failed to set player value");
             }
         }
     }

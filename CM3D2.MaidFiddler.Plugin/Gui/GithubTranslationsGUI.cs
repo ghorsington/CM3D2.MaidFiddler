@@ -23,8 +23,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             translationList = list;
             Text = Translation.GetTranslation(Text);
             Translation.GetTranslation(label_text);
-            foreach (DataGridViewColumn column in dataGridView_translations.Columns)
-                column.HeaderText = Translation.GetTranslation(column.HeaderText);
+            foreach (DataGridViewColumn column in dataGridView_translations.Columns) column.HeaderText = Translation.GetTranslation(column.HeaderText);
             Translation.GetTranslation(button_download);
             Translation.GetTranslation(button_close);
             InitLanguageTable();
@@ -49,12 +48,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     string line = sr.ReadLine();
 
-                    if (line == null || line.Trim() == string.Empty)
-                        continue;
+                    if (line == null || line.Trim() == string.Empty) continue;
 
                     Match match = Translation.TagPattern.Match(line);
-                    if (!match.Success)
-                        continue;
+                    if (!match.Success) continue;
 
                     LangData lang = new LangData
                     {
@@ -68,15 +65,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
 
             foreach (string[] langs in
-            translationList.Split(new[] {'\n', '\r'}, StringSplitOptions.RemoveEmptyEntries)
-                           .Select(s => s.Split(new[] {'\t'}, StringSplitOptions.RemoveEmptyEntries)))
+                translationList.Split(new[] {'\n', '\r'}, StringSplitOptions.RemoveEmptyEntries)
+                               .Select(s => s.Split(new[] {'\t'}, StringSplitOptions.RemoveEmptyEntries)))
             {
                 LangData lang =
-                installedLanguages.FirstOrDefault(
-                data => string.Equals(data.Name, langs[0], StringComparison.InvariantCultureIgnoreCase));
+                    installedLanguages.FirstOrDefault(
+                        data => string.Equals(data.Name, langs[0], StringComparison.InvariantCultureIgnoreCase));
                 Debugger.WriteLine(LogLevel.Info, $"Lang name: {lang.Name}, Ver: {lang.Version}");
                 string version = Equals(lang, default(LangData))
-                                 ? Translation.GetTranslation("TL_NOT_INSTALLED") : lang.Version;
+                                     ? Translation.GetTranslation("TL_NOT_INSTALLED") : lang.Version;
                 dataGridView_translations.Rows.Add(langs[2], langs[1], langs[3], version);
                 langCodes.Add(langs[0].ToUpperInvariant());
                 Debugger.WriteLine(LogLevel.Info, $"Available language: Code={langs[0]}, Version={langs[3]}");
@@ -89,111 +86,94 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             if (dataGridView_translations.SelectedRows.Count == 0)
             {
-                MessageBox.Show(
-                Translation.GetTranslation("TL_NO_TLS_SELECTED"),
-                Translation.GetTranslation("TL_NO_TLS_SELECTED_TITLE"),
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Exclamation);
+                MessageBox.Show(Translation.GetTranslation("TL_NO_TLS_SELECTED"),
+                    Translation.GetTranslation("TL_NO_TLS_SELECTED_TITLE"), MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
                 return;
             }
 
             string translationsPath = Path.Combine(MaidFiddler.DATA_PATH, Translation.TRANSLATIONS_PATH);
-            LoadingBarGUI loadingBarGui = new LoadingBarGUI(
-            Translation.GetTranslation("LOADING"),
-            $"{Translation.GetTranslation("TL_TRANSLATION_DOWNLOAD")}",
-            true,
-            g =>
-            {
-                g.Timer.Start();
-                Thread downloaderThread = new Thread(
-                () =>
+            LoadingBarGUI loadingBarGui = new LoadingBarGUI(Translation.GetTranslation("LOADING"),
+                $"{Translation.GetTranslation("TL_TRANSLATION_DOWNLOAD")}", true, g =>
                 {
-                    foreach (DataGridViewRow selectedRow in dataGridView_translations.SelectedRows)
+                    g.Timer.Start();
+                    Thread downloaderThread = new Thread(() =>
                     {
-                        string tlFileName = langCodes[selectedRow.Index];
-                        g.TextLabel.Text =
-                        $"{Translation.GetTranslation("TL_TRANSLATION_DOWNLOAD")} {selectedRow.Cells[0]}";
-                        Debugger.WriteLine(LogLevel.Info, $"Downloading language ID {selectedRow.Index}");
-
-                        try
+                        foreach (DataGridViewRow selectedRow in dataGridView_translations.SelectedRows)
                         {
-                            HttpWebRequest webRequest =
-                            (HttpWebRequest)
-                            WebRequest.Create($"{MaidFiddler.RESOURCE_URL}/Resources/Translations/{tlFileName}.txt");
+                            string tlFileName = langCodes[selectedRow.Index];
+                            g.TextLabel.Text =
+                                $"{Translation.GetTranslation("TL_TRANSLATION_DOWNLOAD")} {selectedRow.Cells[0]}";
+                            Debugger.WriteLine(LogLevel.Info, $"Downloading language ID {selectedRow.Index}");
 
-                            Debugger.WriteLine(
-                            LogLevel.Info,
-                            $"Getting translation file from {MaidFiddler.RESOURCE_URL}/Resources/Translations/{tlFileName}.txt");
-
-                            HttpWebResponse response = (HttpWebResponse) webRequest.GetResponse();
-
-                            Debugger.WriteLine(LogLevel.Info, "Got response!");
-                            Debugger.WriteLine(LogLevel.Info, $"Response: {response.StatusCode}");
-
-                            if (response.StatusCode == HttpStatusCode.NotFound)
+                            try
                             {
-                                MessageBox.Show(
-                                "Failed to retreive translation: File not found.",
-                                "Boop!",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
+                                HttpWebRequest webRequest =
+                                    (HttpWebRequest)
+                                    WebRequest.Create(
+                                        $"{MaidFiddler.RESOURCE_URL}/Resources/Translations/{tlFileName}.txt");
+
+                                Debugger.WriteLine(LogLevel.Info,
+                                    $"Getting translation file from {MaidFiddler.RESOURCE_URL}/Resources/Translations/{tlFileName}.txt");
+
+                                HttpWebResponse response = (HttpWebResponse) webRequest.GetResponse();
+
+                                Debugger.WriteLine(LogLevel.Info, "Got response!");
+                                Debugger.WriteLine(LogLevel.Info, $"Response: {response.StatusCode}");
+
+                                if (response.StatusCode == HttpStatusCode.NotFound)
+                                {
+                                    MessageBox.Show("Failed to retreive translation: File not found.", "Boop!",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    g.DialogResult = DialogResult.Abort;
+                                    g.Timer.Stop();
+                                    g.Close();
+                                    return;
+                                }
+
+                                Stream s = response.GetResponseStream();
+                                Debugger.WriteLine(LogLevel.Info, "Reading response");
+                                byte[] responseBuffer = new byte[1024];
+                                StringBuilder translationText = new StringBuilder();
+                                int read;
+                                do
+                                {
+                                    read = s.Read(responseBuffer, 0, responseBuffer.Length);
+                                    translationText.Append(Encoding.UTF8.GetString(responseBuffer, 0, read));
+                                } while (read > 0);
+
+                                using (
+                                    TextWriter tw = File.CreateText(Path.Combine(translationsPath, $"{tlFileName}.txt"))
+                                    ) tw.Write(translationText.ToString());
+                            }
+                            catch (WebException we)
+                            {
+                                MessageBox.Show($"Failed to retreive translation.\nResponse: {we.Message}", "Boop!",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 g.DialogResult = DialogResult.Abort;
                                 g.Timer.Stop();
                                 g.Close();
-                                return;
                             }
-
-                            Stream s = response.GetResponseStream();
-                            Debugger.WriteLine(LogLevel.Info, "Reading response");
-                            byte[] responseBuffer = new byte[1024];
-                            StringBuilder translationText = new StringBuilder();
-                            int read;
-                            do
+                            catch (Exception ex)
                             {
-                                read = s.Read(responseBuffer, 0, responseBuffer.Length);
-                                translationText.Append(Encoding.UTF8.GetString(responseBuffer, 0, read));
-                            } while (read > 0);
-
-                            using (TextWriter tw = File.CreateText(Path.Combine(translationsPath, $"{tlFileName}.txt")))
-                                tw.Write(translationText.ToString());
+                                MessageBox.Show($"Could not download the translation.\nInfo: {ex}", "Boop!",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                g.DialogResult = DialogResult.Abort;
+                                g.Timer.Stop();
+                                g.Close();
+                            }
                         }
-                        catch (WebException we)
-                        {
-                            MessageBox.Show(
-                            $"Failed to retreive translation.\nResponse: {we.Message}",
-                            "Boop!",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                            g.DialogResult = DialogResult.Abort;
-                            g.Timer.Stop();
-                            g.Close();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(
-                            $"Could not download the translation.\nInfo: {ex}",
-                            "Boop!",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                            g.DialogResult = DialogResult.Abort;
-                            g.Timer.Stop();
-                            g.Close();
-                        }
-                    }
-                    g.DialogResult = DialogResult.OK;
-                    g.Timer.Stop();
-                    g.Close();
+                        g.DialogResult = DialogResult.OK;
+                        g.Timer.Stop();
+                        g.Close();
+                    });
+                    downloaderThread.Start();
                 });
-                downloaderThread.Start();
-            });
             DialogResult result = loadingBarGui.ShowDialog(this);
             loadingBarGui.Dispose();
-            if (result != DialogResult.OK)
-                return;
-            MessageBox.Show(
-            Translation.GetTranslation("TL_DOWNLOAD_DONE"),
-            Translation.GetTranslation("TL_DOWNLOAD_DONE_TITLE"),
-            MessageBoxButtons.OK);
+            if (result != DialogResult.OK) return;
+            MessageBox.Show(Translation.GetTranslation("TL_DOWNLOAD_DONE"),
+                Translation.GetTranslation("TL_DOWNLOAD_DONE_TITLE"), MessageBoxButtons.OK);
 
             InitLanguageTable();
         }

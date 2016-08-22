@@ -52,9 +52,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 InitFunctions();
 #if DEBUG
                 watch.Stop();
-                Debugger.WriteLine(
-                LogLevel.Info,
-                $"Functions loaded. Time taken: {watch.Elapsed.TotalMilliseconds} ms.");
+                Debugger.WriteLine(LogLevel.Info, $"Functions loaded. Time taken: {watch.Elapsed.TotalMilliseconds} ms.");
 #endif
             }
 
@@ -198,12 +196,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 }
 
                 forceUpdateNoonWorks = new Dictionary<int, bool>();
-                foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
-                    forceUpdateNoonWorks.Add(noonWork.Key, false);
+                foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData) forceUpdateNoonWorks.Add(noonWork.Key, false);
 
                 forceUpdateNightWorks = new Dictionary<int, bool>();
-                foreach (KeyValuePair<int, ScheduleCSVData.NightWork> nightWork in ScheduleCSVData.NightWorkData)
-                    forceUpdateNightWorks.Add(nightWork.Key, false);
+                foreach (KeyValuePair<int, ScheduleCSVData.NightWork> nightWork in ScheduleCSVData.NightWorkData) forceUpdateNightWorks.Add(nightWork.Key, false);
             }
 
             public bool IsHardLocked(MaidChangeType type)
@@ -215,7 +211,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 bool result = ValueLocks[type] && !TempUnlocks[type];
                 Debugger.WriteLine(
-                $"Attempting to change the value of {EnumHelper.GetName(type)}. Is locked: {ValueLocks[type]}. Is temp unlock: {TempUnlocks[type]}.");
+                    $"Attempting to change the value of {EnumHelper.GetName(type)}. Is locked: {ValueLocks[type]}. Is temp unlock: {TempUnlocks[type]}.");
                 TempUnlocks[type] = false;
                 return result;
             }
@@ -232,38 +228,32 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             public void Lock(MaidChangeType type)
             {
-                if (ValueLocks.ContainsKey(type))
-                    ValueLocks[type] = true;
+                if (ValueLocks.ContainsKey(type)) ValueLocks[type] = true;
             }
 
             public void SetAllLock(bool state)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     foreach (KeyValuePair<MaidChangeType, Action<MaidChangeType>> maidParamsUpdater in
-                    maidParamsUpdaters.Where(maidParamsUpdater => maidParamsUpdater.Key <= MaidChangeType.Profile))
+                        maidParamsUpdaters.Where(maidParamsUpdater => maidParamsUpdater.Key <= MaidChangeType.Profile))
                     {
                         DataGridViewRow row;
-                        if (!gui.MaidParameters.TryGetValue(maidParamsUpdater.Key, out row))
-                            continue;
+                        if (!gui.MaidParameters.TryGetValue(maidParamsUpdater.Key, out row)) continue;
                         ValueLocks[maidParamsUpdater.Key] = state;
                         row.Cells[PARAMS_COLUMN_LOCK].Value = ValueLocks[maidParamsUpdater.Key];
                     }
-                },
-                "Failed to set lock state to all parameters");
+                }, "Failed to set lock state to all parameters");
             }
 
             public void Unlock(MaidChangeType type)
             {
-                if (ValueLocks.ContainsKey(type))
-                    ValueLocks[type] = false;
+                if (ValueLocks.ContainsKey(type)) ValueLocks[type] = false;
             }
 
             public void UnlockTemp(MaidChangeType type)
             {
-                if (TempUnlocks.ContainsKey(type))
-                    TempUnlocks[type] = true;
+                if (TempUnlocks.ContainsKey(type)) TempUnlocks[type] = true;
             }
 
             #region Setters
@@ -363,42 +353,34 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             public void SetSkillValue(int skillID, int column, object val)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     Status.SkillData skillData;
                     switch (column)
                     {
                         case TABLE_COLUMN_HAS:
                             bool value = (bool) val;
-                            if (value)
-                                Maid.Param.SetNewGetSkill(skillID);
-                            else
-                                Maid.Param.RemoveSkill(skillID);
+                            if (value) Maid.Param.SetNewGetSkill(skillID);
+                            else Maid.Param.RemoveSkill(skillID);
                             break;
                         case TABLE_COLUMN_LEVEL:
-                            if (Maid.Param.status_.skill_data.TryGetValue(skillID, out skillData))
-                                skillData.exp_system.SetLevel((int) val);
+                            if (Maid.Param.status_.skill_data.TryGetValue(skillID, out skillData)) skillData.exp_system.SetLevel((int) val);
                             break;
                         case TABLE_COLUMN_TOTAL_XP:
-                            if (Maid.Param.status_.skill_data.TryGetValue(skillID, out skillData))
-                                skillData.exp_system.SetTotalExp((int) val);
+                            if (Maid.Param.status_.skill_data.TryGetValue(skillID, out skillData)) skillData.exp_system.SetTotalExp((int) val);
                             break;
                         case SKILL_COLUMN_PLAY_COUNT:
-                            if (Maid.Param.status_.skill_data.TryGetValue(skillID, out skillData))
-                                skillData.play_count = (uint) val;
+                            if (Maid.Param.status_.skill_data.TryGetValue(skillID, out skillData)) skillData.play_count = (uint) val;
                             break;
                     }
                     gui.updateSkillTable = true;
                     UpdateSkillData(skillID);
-                },
-                $"Failed to set skill value for ID {skillID} to ({column}, {val}).");
+                }, $"Failed to set skill value for ID {skillID} to ({column}, {val}).");
             }
 
             public void SetValue(MaidChangeType type, object val)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     Debugger.WriteLine($"Setting {EnumHelper.GetName(type)} to {val}");
                     Action<int> setValInt;
@@ -410,13 +392,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         int v;
                         string str = val as string;
 #pragma warning disable 642
-                        if (str != null && int.TryParse(str, out v))
-                            ;
+                        if (str != null && int.TryParse(str, out v)) ;
 #pragma warning restore 642
-                        else if (val is int)
-                            v = (int) val;
-                        else
-                            return;
+                        else if (val is int) v = (int) val;
+                        else return;
 
                         setValInt(v);
                     }
@@ -424,81 +403,67 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     {
                         long v;
                         string str = val as string;
-                        if (str == null || !long.TryParse(str, out v))
-                            return;
+                        if (str == null || !long.TryParse(str, out v)) return;
 
                         setValLong(v);
                     }
-                    else if (val is string && setFunctionsString.TryGetValue(type, out setValString))
-                        setValString((string) val);
-                    else if (val is bool && setFunctionsBool.TryGetValue(type, out setValBool))
-                        setValBool((bool) val);
+                    else if (val is string && setFunctionsString.TryGetValue(type, out setValString)) setValString((string) val);
+                    else if (val is bool && setFunctionsBool.TryGetValue(type, out setValBool)) setValBool((bool) val);
                     else
-                        Debugger.WriteLine(LogLevel.Error, $"No setter function found for {EnumHelper.GetName(type)}!");
-                },
-                $"Failed to set value for type {EnumHelper.GetName(type)} to {val}");
+                        Debugger.WriteLine(LogLevel.Error,
+                            $"No setter function found for {EnumHelper.GetName(type)}!");
+                }, $"Failed to set value for type {EnumHelper.GetName(type)} to {val}");
             }
 
             public void SetValue(MaidClassType type, int col, object val)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     switch (col)
                     {
                         case TABLE_COLUMN_HAS:
-                            if (!(val is bool))
-                                return;
+                            if (!(val is bool)) return;
                             Maid.Param.status_.maid_class_data[(int) type].is_have = (bool) val;
                             break;
                         case TABLE_COLUMN_LEVEL:
-                            if (!(val is int))
-                                return;
+                            if (!(val is int)) return;
                             Maid.Param.status_.maid_class_data[(int) type].exp_system.SetLevel((int) val);
                             break;
                         case TABLE_COLUMN_TOTAL_XP:
-                            if (!(val is int))
-                                return;
+                            if (!(val is int)) return;
                             Maid.Param.status_.maid_class_data[(int) type].exp_system.SetTotalExp((int) val);
                             break;
                     }
                     UpdateField(MaidChangeType.MaidClassType, (int) type);
-                },
-                $"Failed to set maid value of type {EnumHelper.GetName(type)} to {val}");
+                }, $"Failed to set maid value of type {EnumHelper.GetName(type)} to {val}");
             }
 
             public void SetValue(YotogiClassType type, int col, object val)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     switch (col)
                     {
                         case TABLE_COLUMN_HAS:
-                            if (!(val is bool))
-                                return;
+                            if (!(val is bool)) return;
                             Maid.Param.status_.yotogi_class_data[(int) type].is_have = (bool) val;
                             break;
                         case TABLE_COLUMN_LEVEL:
-                            if (!(val is int))
-                                return;
+                            if (!(val is int)) return;
                             Maid.Param.status_.yotogi_class_data[(int) type].exp_system.SetLevel((int) val);
                             break;
                         case TABLE_COLUMN_TOTAL_XP:
-                            if (!(val is int))
-                                return;
+                            if (!(val is int)) return;
                             Maid.Param.status_.yotogi_class_data[(int) type].exp_system.SetTotalExp((int) val);
                             break;
                     }
                     UpdateField(MaidChangeType.YotogiClassType, (int) type);
-                },
-                $"Failed to set yotogi class type {EnumHelper.GetName(type)} to {val}");
+                }, $"Failed to set yotogi class type {EnumHelper.GetName(type)} to {val}");
             }
 
             public void SetWorkValue(int workID, int column, object val)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     Status.WorkData workData;
                     switch (column)
@@ -510,8 +475,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         case TABLE_COLUMN_LEVEL:
                             bool contains = Maid.Param.status_.work_data.ContainsKey(workID);
                             int level = (int) val;
-                            if (!contains && level > 0)
-                                Maid.Param.SetNewGetWork(workID);
+                            if (!contains && level > 0) Maid.Param.SetNewGetWork(workID);
                             else if (contains && level <= 0)
                             {
                                 Maid.Param.RemoveWork(workID);
@@ -522,15 +486,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                             break;
                         case TABLE_COLUMN_TOTAL_XP:
                             uint play_count = (uint) val;
-                            if (!Maid.Param.status_.work_data.ContainsKey(workID) && play_count > 0)
-                                Maid.Param.SetNewGetWork(workID);
+                            if (!Maid.Param.status_.work_data.ContainsKey(workID) && play_count > 0) Maid.Param.SetNewGetWork(workID);
                             workData = Maid.Param.status_.work_data[workID];
                             workData.play_count = play_count;
                             break;
                     }
                     UpdateWorkData(workID);
-                },
-                $"Failed to set work value for {workID} to {val}");
+                }, $"Failed to set work value for {workID} to {val}");
             }
 
             private void SetCondition(int val)
@@ -562,8 +524,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     Maid.Param.status_.first_name = obj;
                     UpdateField(MaidChangeType.FirstName);
                 }
-                else
-                    Maid.Param.SetFirstName(obj);
+                else Maid.Param.SetFirstName(obj);
             }
 
             private void SetFirstNameCall(bool obj)
@@ -580,8 +541,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     Maid.Param.status_.free_comment = obj;
                     UpdateField(MaidChangeType.FreeComment);
                 }
-                else
-                    Maid.Param.SetFreeComment(obj);
+                else Maid.Param.SetFreeComment(obj);
             }
 
             private void SetInitSeikeiken(int val)
@@ -597,8 +557,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     Maid.Param.status_.last_name = obj;
                     UpdateField(MaidChangeType.LastName);
                 }
-                else
-                    Maid.Param.SetLastName(obj);
+                else Maid.Param.SetLastName(obj);
             }
 
             private void SetLeader(bool obj)
@@ -662,14 +621,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     }
                     action = "Updating maid parameter {0}";
                     foreach (
-                    KeyValuePair<MaidChangeType, Action<MaidChangeType>> maidParamsUpdater in maidParamsUpdaters)
+                        KeyValuePair<MaidChangeType, Action<MaidChangeType>> maidParamsUpdater in maidParamsUpdaters)
                     {
                         cType = maidParamsUpdater.Key;
                         maidParamsUpdater.Value(maidParamsUpdater.Key);
                         DataGridViewRow row;
                         if (maidParamsUpdater.Key <= MaidChangeType.Profile
-                            && gui.MaidParameters.TryGetValue(maidParamsUpdater.Key, out row))
-                            row.Cells[PARAMS_COLUMN_LOCK].Value = ValueLocks[maidParamsUpdater.Key];
+                            && gui.MaidParameters.TryGetValue(maidParamsUpdater.Key, out row)) row.Cells[PARAMS_COLUMN_LOCK].Value = ValueLocks[maidParamsUpdater.Key];
                     }
                     action = "Updating maid noon work";
                     foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
@@ -687,20 +645,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         UpdateSkillData(skill.Value.id);
                     }
                     action = "Updating maid features";
-                    for (Feature e = Feature.Null + 1; e < EnumHelper.MaxFeature; e++)
-                        UpdateMiscStatus(MaidChangeType.Feature, (int) e);
+                    for (Feature e = Feature.Null + 1; e < EnumHelper.MaxFeature; e++) UpdateMiscStatus(MaidChangeType.Feature, (int) e);
                     action = "Updating maid propensity";
-                    for (Propensity e = Propensity.Null + 1; e < EnumHelper.MaxPropensity; e++)
-                        UpdateMiscStatus(MaidChangeType.Propensity, (int) e);
+                    for (Propensity e = Propensity.Null + 1; e < EnumHelper.MaxPropensity; e++) UpdateMiscStatus(MaidChangeType.Propensity, (int) e);
                     UpdateMaidClasses();
                     UpdateYotogiClasses();
                 }
                 catch (Exception e)
                 {
-                    FiddlerUtils.ThrowErrorMessage(
-                    e,
-                    $"Failed to update maid value for maid {Maid.Param.status.first_name} {Maid.Param.status.last_name}. Reason: {string.Format(action, EnumHelper.GetName(cType))}",
-                    gui.Plugin);
+                    FiddlerUtils.ThrowErrorMessage(e,
+                        $"Failed to update maid value for maid {Maid.Param.status.first_name} {Maid.Param.status.last_name}. Reason: {string.Format(action, EnumHelper.GetName(cType))}",
+                        gui.Plugin);
                 }
             }
 
@@ -777,87 +732,72 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             private void UpdateCurrentNightWorkId()
             {
                 gui.comboBox_work_night.SelectedIndex = Maid.Param.status.night_work_id == 0
-                                                        ? -1 : gui.nightWorkIDToRow[Maid.Param.status.night_work_id];
+                                                            ? -1 : gui.nightWorkIDToRow[Maid.Param.status.night_work_id];
             }
 
             private void UpdateCurrentNoonWorkId()
             {
                 gui.comboBox_work_noon.SelectedIndex = Maid.Param.status.noon_work_id == 0
-                                                       ? -1 : gui.noonWorkIDToRow[Maid.Param.status.noon_work_id];
+                                                           ? -1 : gui.noonWorkIDToRow[Maid.Param.status.noon_work_id];
             }
 
             public void UpdateField(MaidChangeType type, int id, int val = -1)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     Debugger.WriteLine($"Updating value {EnumHelper.GetName(type)}");
                     gui.valueUpdate[type] = true;
                     Action<int, int> updateValID;
-                    if (updateFunctionsID.TryGetValue(type, out updateValID))
-                        updateValID(id, val);
+                    if (updateFunctionsID.TryGetValue(type, out updateValID)) updateValID(id, val);
                     gui.valueUpdate[type] = false;
-                },
-                $"Failed to update maid field for type {EnumHelper.GetName(type)}");
+                }, $"Failed to update maid field for type {EnumHelper.GetName(type)}");
             }
 
             public void UpdateField(MaidChangeType type)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     Debugger.WriteLine($"Updating value {EnumHelper.GetName(type)}");
                     gui.valueUpdate[type] = true;
                     Action updateVal;
                     Action<MaidChangeType> updateParam;
-                    if (UpdateFunctions.TryGetValue(type, out updateVal))
-                        updateVal();
-                    else if (maidParamsUpdaters.TryGetValue(type, out updateParam))
-                        updateParam(type);
-                    else
-                        Debugger.WriteLine(LogLevel.Error, $"No update function found for {EnumHelper.GetName(type)}!");
+                    if (UpdateFunctions.TryGetValue(type, out updateVal)) updateVal();
+                    else if (maidParamsUpdaters.TryGetValue(type, out updateParam)) updateParam(type);
+                    else Debugger.WriteLine(LogLevel.Error, $"No update function found for {EnumHelper.GetName(type)}!");
                     gui.valueUpdate[type] = false;
-                },
-                $"Failed to update maid field for type {EnumHelper.GetName(type)}");
+                }, $"Failed to update maid field for type {EnumHelper.GetName(type)}");
             }
 
             public void UpdateHasSkill(int skillID)
             {
                 Debugger.Assert(
-                () =>
-                {
-                    gui.dataGridView_skill_data[TABLE_COLUMN_HAS, gui.skillIDToRow[skillID]].Value =
-                    Maid.Param.status.IsGetSkill(skillID);
-                },
-                $"Failed to update skill ID {skillID}");
+                    () =>
+                    {
+                        gui.dataGridView_skill_data[TABLE_COLUMN_HAS, gui.skillIDToRow[skillID]].Value =
+                            Maid.Param.status.IsGetSkill(skillID);
+                    }, $"Failed to update skill ID {skillID}");
             }
 
             public void UpdateHasWork(int workID)
             {
                 Debugger.Assert(
-                () =>
-                {
-                    gui.dataGridView_noon_work_data[TABLE_COLUMN_HAS, gui.noonWorkIDToRow[workID]].Value =
-                    Maid.Param.status.IsGetWork(workID);
-                },
-                $"Failed to update work ID {workID}");
+                    () =>
+                    {
+                        gui.dataGridView_noon_work_data[TABLE_COLUMN_HAS, gui.noonWorkIDToRow[workID]].Value =
+                            Maid.Param.status.IsGetWork(workID);
+                    }, $"Failed to update work ID {workID}");
             }
 
             public void UpdateMaidClasses()
             {
                 Debugger.Assert(
-                () =>
-                {
-                    for (MaidClassType e = 0; e < EnumHelper.MaxMaidClass; e++)
-                        UpdateMaidClass((int) e, 0);
-                },
-                "Failed to update maid class type");
+                    () => { for (MaidClassType e = 0; e < EnumHelper.MaxMaidClass; e++) UpdateMaidClass((int) e, 0); },
+                    "Failed to update maid class type");
             }
 
             public void UpdateMiscStatus(MaidChangeType tag, int enumVal, bool val)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     switch (tag)
                     {
@@ -873,13 +813,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                             break;
                     }
                 },
-                $"Failed to update misc status of type {EnumHelper.GetName(tag)}. Attempted to update option {enumVal - 1} to {val}.");
+                    $"Failed to update misc status of type {EnumHelper.GetName(tag)}. Attempted to update option {enumVal - 1} to {val}.");
             }
 
             public void UpdateMiscStatus(MaidChangeType tag, int enumVal)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     bool newVal;
                     switch (tag)
@@ -904,26 +843,23 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                             break;
                     }
                 },
-                $"Failed to update misc status of type {EnumHelper.GetName(tag)}. Attempted to update option check {enumVal - 1} ");
+                    $"Failed to update misc status of type {EnumHelper.GetName(tag)}. Attempted to update option check {enumVal - 1} ");
             }
 
             public void UpdateNightWorkValue(int workID)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     int row = gui.nightWorkIDToRow[workID];
                     gui.updateNightWorkTable = true;
                     gui.dataGridView_night_work[TABLE_COLUMN_HAS, row].Value = forceUpdateNightWorks[workID];
                     gui.updateNightWorkTable = false;
-                },
-                $"Failed to update night work force value for {workID}");
+                }, $"Failed to update night work force value for {workID}");
             }
 
             public void UpdateSkillData(int skillID)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     int rowIndex = gui.skillIDToRow[skillID];
                     DataGridViewRow row = gui.dataGridView_skill_data.Rows[rowIndex];
@@ -952,48 +888,40 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         row.Cells[SKILL_COLUMN_PLAY_COUNT].Value = 0;
                     }
                     gui.updateSkillTable = false;
-                },
-                $"Failed to update skill data for skill ID {skillID}");
+                }, $"Failed to update skill data for skill ID {skillID}");
             }
 
             private void UpdateSkillExp(int skillID, int val)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
-                    if (!Maid.Param.status.IsGetSkill(skillID))
-                        return;
+                    if (!Maid.Param.status.IsGetSkill(skillID)) return;
                     gui.updateSkillTable = true;
                     gui.dataGridView_skill_data[TABLE_COLUMN_LEVEL, gui.skillIDToRow[skillID]].Value =
-                    Maid.Param.status_.skill_data[skillID].exp_system.GetCurrentLevel();
+                        Maid.Param.status_.skill_data[skillID].exp_system.GetCurrentLevel();
 
                     gui.updateSkillTable = true;
                     gui.dataGridView_skill_data[TABLE_COLUMN_TOTAL_XP, gui.skillIDToRow[skillID]].Value =
-                    Maid.Param.status_.skill_data[skillID].exp_system.GetTotalExp();
+                        Maid.Param.status_.skill_data[skillID].exp_system.GetTotalExp();
                     gui.updateSkillTable = false;
-                },
-                $"Failed to update skill exp for skill ID {skillID}");
+                }, $"Failed to update skill exp for skill ID {skillID}");
             }
 
             private void UpdateSkillPlayCount(int skillID, int _)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
-                    if (!Maid.Param.status.IsGetSkill(skillID))
-                        return;
+                    if (!Maid.Param.status.IsGetSkill(skillID)) return;
                     gui.updateSkillTable = true;
                     gui.dataGridView_skill_data[SKILL_COLUMN_PLAY_COUNT, gui.skillIDToRow[skillID]].Value =
-                    Maid.Param.status_.skill_data[skillID].play_count;
+                        Maid.Param.status_.skill_data[skillID].play_count;
                     gui.updateSkillTable = false;
-                },
-                $"Failed ti update skill play count for {skillID}");
+                }, $"Failed ti update skill play count for {skillID}");
             }
 
             public void UpdateWorkData(int workId)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     int rowIndex = gui.noonWorkIDToRow[workId];
                     DataGridViewRow row = gui.dataGridView_noon_work_data.Rows[rowIndex];
@@ -1016,50 +944,44 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         row.Cells[TABLE_COLUMN_TOTAL_XP].Value = 0;
                     }
                     gui.updateWorkTable = false;
-                },
-                $"Failed to update work data for work ID {workId}");
+                }, $"Failed to update work data for work ID {workId}");
             }
 
             private void UpdateWorkLevel(int workID, int _)
             {
-                if (!Maid.Param.status.IsGetWork(workID))
-                    return;
+                if (!Maid.Param.status.IsGetWork(workID)) return;
                 gui.updateWorkTable = true;
                 gui.dataGridView_noon_work_data[TABLE_COLUMN_LEVEL, gui.noonWorkIDToRow[workID]].Value =
-                Maid.Param.status_.work_data[workID].level;
+                    Maid.Param.status_.work_data[workID].level;
                 gui.updateWorkTable = false;
             }
 
             private void UpdateWorkPlayCount(int workID, int _)
             {
-                if (!Maid.Param.status.IsGetWork(workID))
-                    return;
+                if (!Maid.Param.status.IsGetWork(workID)) return;
                 gui.updateWorkTable = true;
                 gui.dataGridView_noon_work_data[TABLE_COLUMN_TOTAL_XP, gui.noonWorkIDToRow[workID]].Value =
-                Maid.Param.status_.work_data[workID].play_count;
+                    Maid.Param.status_.work_data[workID].play_count;
                 gui.updateWorkTable = false;
             }
 
             public void UpdateYotogiClasses()
             {
                 Debugger.Assert(
-                () =>
-                {
-                    for (YotogiClassType e = 0; e < EnumHelper.MaxYotogiClass; e++)
-                        UpdateYotogiClass((int) e, 0);
-                },
-                "Failed to update maid yotogi class");
+                    () =>
+                    {
+                        for (YotogiClassType e = 0; e < EnumHelper.MaxYotogiClass; e++) UpdateYotogiClass((int) e, 0);
+                    },
+                    "Failed to update maid yotogi class");
             }
 
             public void UpdateMaidBonusValues()
             {
                 Debugger.Assert(
-                () =>
-                {
-                    for (MaidChangeType e = MaidChangeType.BonusCare; e <= MaidChangeType.BonusTeachRate; e++)
-                        UpdateMaidParam(e);
-                },
-                "Failed to update maid bonus parameter value");
+                    () =>
+                    {
+                        for (MaidChangeType e = MaidChangeType.BonusCare; e <= MaidChangeType.BonusTeachRate; e++) UpdateMaidParam(e);
+                    }, "Failed to update maid bonus parameter value");
             }
 
             private void UpdateCurrentYotogiClass()
@@ -1074,54 +996,48 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             private void UpdateYotogiClass(int id, int _)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     YotogiClassType yotogiClass = (YotogiClassType) id;
                     Debugger.WriteLine($"Updating yotogi class type {EnumHelper.GetName(yotogiClass)}");
-                    if (yotogiClass >= EnumHelper.MaxYotogiClass)
-                        return;
+                    if (yotogiClass >= EnumHelper.MaxYotogiClass) return;
 
                     gui.updateYotogiClassField = true;
                     gui.dataGridView_yotogi_classes[TABLE_COLUMN_HAS, (int) yotogiClass].Value =
-                    Maid.Param.status_.yotogi_class_data[(int) yotogiClass].is_have;
+                        Maid.Param.status_.yotogi_class_data[(int) yotogiClass].is_have;
 
                     gui.updateYotogiClassField = true;
                     gui.dataGridView_yotogi_classes[TABLE_COLUMN_LEVEL, (int) yotogiClass].Value =
-                    Maid.Param.status_.yotogi_class_data[(int) yotogiClass].exp_system.GetCurrentLevel();
+                        Maid.Param.status_.yotogi_class_data[(int) yotogiClass].exp_system.GetCurrentLevel();
 
                     gui.updateYotogiClassField = true;
                     gui.dataGridView_yotogi_classes[TABLE_COLUMN_TOTAL_XP, (int) yotogiClass].Value =
-                    Maid.Param.status_.yotogi_class_data[(int) yotogiClass].exp_system.GetCurrentExp();
+                        Maid.Param.status_.yotogi_class_data[(int) yotogiClass].exp_system.GetCurrentExp();
                     gui.updateYotogiClassField = false;
-                },
-                $"Failed to update yotogi class data for class ID {id}");
+                }, $"Failed to update yotogi class data for class ID {id}");
             }
 
             private void UpdateMaidClass(int id, int _)
             {
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     MaidClassType maidClass = (MaidClassType) id;
                     Debugger.WriteLine($"Updating maid class type {EnumHelper.GetName(maidClass)}");
-                    if (maidClass >= EnumHelper.MaxMaidClass)
-                        return;
+                    if (maidClass >= EnumHelper.MaxMaidClass) return;
 
                     gui.updateMaidClassField = true;
                     gui.dataGridView_maid_classes[TABLE_COLUMN_HAS, (int) maidClass].Value =
-                    Maid.Param.status_.maid_class_data[(int) maidClass].is_have;
+                        Maid.Param.status_.maid_class_data[(int) maidClass].is_have;
 
                     gui.updateMaidClassField = true;
                     gui.dataGridView_maid_classes[TABLE_COLUMN_LEVEL, (int) maidClass].Value =
-                    Maid.Param.status_.maid_class_data[(int) maidClass].exp_system.GetCurrentLevel();
+                        Maid.Param.status_.maid_class_data[(int) maidClass].exp_system.GetCurrentLevel();
 
                     gui.updateMaidClassField = true;
                     gui.dataGridView_maid_classes[TABLE_COLUMN_TOTAL_XP, (int) maidClass].Value =
-                    Maid.Param.status_.maid_class_data[(int) maidClass].exp_system.GetCurrentExp();
+                        Maid.Param.status_.maid_class_data[(int) maidClass].exp_system.GetCurrentExp();
                     gui.updateMaidClassField = false;
-                },
-                $"Failed to update maid class data for class ID {id}");
+                }, $"Failed to update maid class data for class ID {id}");
             }
 
             private void UpdateMaidParam(MaidChangeType type)
@@ -1276,13 +1192,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         val = "ERROR";
                         break;
                 }
-                Debugger.Assert(
-                () =>
+                Debugger.Assert(() =>
                 {
                     gui.MaidParameters[type].Cells[PARAMS_COLUMN_VALUE].Value = val;
                     gui.valueUpdate[type] = false;
                 },
-                $"Failed to update maid parameter {EnumHelper.GetName(type)} for maid {Maid.Param.status.first_name} {Maid.Param.status.last_name}");
+                    $"Failed to update maid parameter {EnumHelper.GetName(type)} for maid {Maid.Param.status.first_name} {Maid.Param.status.last_name}");
             }
 
             private void UpdateCondition()

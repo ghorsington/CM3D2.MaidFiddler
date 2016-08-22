@@ -75,8 +75,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             for (int i = 0; i < keys.Count; i++)
             {
                 sb.Append(GetName(keys[i]));
-                if (i != keys.Count - 1)
-                    sb.Append(separator);
+                if (i != keys.Count - 1) sb.Append(separator);
             }
 
             return sb.ToString();
@@ -87,12 +86,12 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             List<T> result = new List<T>();
 
             string[] values = value.Split(new[] {separator}, StringSplitOptions.RemoveEmptyEntries);
-            if (values.Length == 0)
-                return new List<T>();
+            if (values.Length == 0) return new List<T>();
             try
             {
                 foreach (T val in
-                values.Select(keyCode => (T) Enum.Parse(typeof (T), keyCode, true)).Where(kc => !result.Contains(kc)))
+                    values.Select(keyCode => (T) Enum.Parse(typeof (T), keyCode, true))
+                          .Where(kc => !result.Contains(kc)))
                 {
                     result.Add(val);
                 }

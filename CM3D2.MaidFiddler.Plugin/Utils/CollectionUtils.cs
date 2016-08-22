@@ -7,8 +7,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
     {
         public static void ForEach<T>(this IEnumerable<T> es, Action<T> action)
         {
-            foreach (T e in es)
-                action(e);
+            foreach (T e in es) action(e);
         }
     }
 }

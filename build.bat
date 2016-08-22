@@ -10,6 +10,7 @@ echo Locating MSBuild
 set msbuildpath=%ProgramFiles%\MSBuild\14.0\Bin
 set libspath=%cd%\Libs
 set buildconf=Release
+set buildplat=AnyCPU
 
 if not -%1-==-- (
 	echo Using %1 as building configuration
@@ -17,6 +18,14 @@ if not -%1-==-- (
 )
 if -%1-==-- (
 	echo No custom build configuration specified. Using Release
+)
+
+if not -%2-==-- (
+	echo Using %2 as building platform
+	set buildplat=%2
+)
+if -%2-==-- (
+	echo No custom platform specified. Using AnyCPU
 )
 
 if not exist %msbuildpath%\msbuild.exe (
@@ -30,7 +39,7 @@ if not exist "%msbuildpath%\msbuild.exe" (
 
 echo PHASE 1: Building Hook and Patch
 
-"%msbuildpath%\msbuild.exe" %cd%\CM3D2.MaidFiddler.Patch\CM3D2.MaidFiddler.Patch.csproj /p:Configuration=%buildconf%
+"%msbuildpath%\msbuild.exe" %cd%\CM3D2.MaidFiddler.Patch\CM3D2.MaidFiddler.Patch.csproj /p:Configuration=%buildconf%,Platform=%buildplat%
 
 if not %ERRORLEVEL%==0 (
 	echo Failed to compile Hook and Patch! Make sure you have all the needed assemblies in the "Libs" folder!
@@ -39,7 +48,7 @@ if not %ERRORLEVEL%==0 (
 )
 
 echo Building Sybaris Patcher
-"%msbuildpath%\msbuild.exe" %cd%\CM3D2.MaidFiddler.Sybaris.Patch\CM3D2.MaidFiddler.Sybaris.Patcher.csproj /p:Configuration=%buildconf%
+"%msbuildpath%\msbuild.exe" %cd%\CM3D2.MaidFiddler.Sybaris.Patch\CM3D2.MaidFiddler.Sybaris.Patcher.csproj /p:Configuration=%buildconf%,Platform=%buildplat%
 
 if not %ERRORLEVEL%==0 (
 	echo Failed to compile Hook and Patch! Make sure you have all the needed assemblies in the "Libs" folder!
@@ -69,7 +78,7 @@ pause
 
 echo PHASE 2: Building Plugin
 
-"%msbuildpath%\msbuild.exe" %cd%\CM3D2.MaidFiddler.Plugin\CM3D2.MaidFiddler.Plugin.csproj /p:Configuration=%buildconf%
+"%msbuildpath%\msbuild.exe" %cd%\CM3D2.MaidFiddler.Plugin\CM3D2.MaidFiddler.Plugin.csproj /p:Configuration=%buildconf%,Platform=%buildplat%
 
 if not %ERRORLEVEL%==0 (
 	echo Failed to compile Plugin! Make sure you have patched Assembly-CSharp and copied it into "Libs" folder!

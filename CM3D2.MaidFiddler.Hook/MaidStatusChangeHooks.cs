@@ -378,7 +378,7 @@ namespace CM3D2.MaidFiddler.Hook
 
         public static void OnUpdateCommand(ref YotogiPlay.PlayerState playerState,
                                            ref Dictionary<YotogiPlay.PlayerState, Yotogi.SkillData.Command.Data[]>
-                                           commandDictionary,
+                                               commandDictionary,
                                            ref YotogiCommandFactory commandFactory)
         {
             CommandUpdateEventArgs args = new CommandUpdateEventArgs
