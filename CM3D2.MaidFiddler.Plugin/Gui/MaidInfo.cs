@@ -260,12 +260,14 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             private void SetMarriage(bool marriage)
             {
+                if (FiddlerUtils.GameVersion < 133) return;
                 gui.valueUpdate[MaidChangeType.Marriage] = false;
                 Maid.Param.SetMarriage(marriage);
             }
 
             private void SetRentalMaid(bool obj)
             {
+                if (FiddlerUtils.GameVersion < 121) return;
                 gui.valueUpdate[MaidChangeType.RentalMaid] = false;
                 Maid.Param.SetRentalMaid(obj);
             }
@@ -661,6 +663,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             private void UpdateRentalMaid()
             {
+                if (FiddlerUtils.GameVersion < 121) return;
                 gui.valueUpdate[MaidChangeType.RentalMaid] = false;
                 gui.checkBox_rental.Checked = Maid.Param.status.is_rental_maid;
             }
@@ -1254,6 +1257,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             private void UpdateMarriage()
             {
+                if (FiddlerUtils.GameVersion < 133) return;
                 gui.valueUpdate[MaidChangeType.Marriage] = false;
                 gui.checkBox_is_marriage.Checked = Maid.Param.status.is_marriage;
             }
