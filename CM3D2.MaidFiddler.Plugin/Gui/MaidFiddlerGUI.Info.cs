@@ -81,17 +81,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 }
 
                 InitField(label_curr_maid_class, comboBox_current_maid_class, MaidChangeType.MaidClassType);
-                for (MaidClassType e = 0; e < EnumHelper.MaxMaidClass; e++)
+                for (int e = 0; e < EnumHelper.MaxMaidClass; e++)
                 {
-                    key = $"Maid_{EnumHelper.GetName(e)}";
+                    key = $"Maid_{EnumHelper.GetMaidClassName(e)}";
                     int i = comboBox_current_maid_class.Items.Add(key);
                     Translation.AddTranslationAction(key, s => comboBox_current_maid_class.Items[i] = s);
                 }
 
                 InitField(label_curr_yotogi_class, comboBox_current_yotogi_class, MaidChangeType.YotogiClassType);
-                for (YotogiClassType e = 0; e < EnumHelper.MaxYotogiClass; e++)
+                for (int e = 0; e < EnumHelper.MaxYotogiClass; e++)
                 {
-                    key = $"Yotogi_{EnumHelper.GetName(e)}";
+                    key = $"Yotogi_{EnumHelper.GetYotogiClassName(e)}";
                     int i = comboBox_current_yotogi_class.Items.Add(key);
                     Translation.AddTranslationAction(key, s => comboBox_current_yotogi_class.Items[i] = s);
                 }

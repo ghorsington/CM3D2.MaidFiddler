@@ -1,7 +1,6 @@
 ﻿using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Utils;
-using param;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
@@ -21,9 +20,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
-                for (MaidClassType e = 0; e < EnumHelper.MaxMaidClass; e++)
+                for (int e = 0; e < EnumHelper.MaxMaidClass; e++)
                 {
-                    string key = $"Maid_{EnumHelper.GetName(e)}";
+                    string key = $"Maid_{EnumHelper.GetMaidClassName(e)}";
                     int i = dataGridView_maid_classes.Rows.Add(false, key, 0, 0);
                     Translation.AddTranslationAction(key, s => dataGridView_maid_classes.Rows[i].Cells[1].Value = s);
                 }
@@ -39,9 +38,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
-                for (YotogiClassType e = 0; e < EnumHelper.MaxYotogiClass; e++)
+                for (int e = 0; e < EnumHelper.MaxYotogiClass; e++)
                 {
-                    string key = $"Yotogi_{EnumHelper.GetName(e)}";
+                    string key = $"Yotogi_{EnumHelper.GetYotogiClassName(e)}";
                     int i = dataGridView_yotogi_classes.Rows.Add(false, key, 0, 0);
                     Translation.AddTranslationAction(key, s => dataGridView_yotogi_classes.Rows[i].Cells[1].Value = s);
                 }
@@ -80,9 +79,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 if (!updateMaidClassField)
                 {
-                    MaidClassType type = (MaidClassType) row;
-                    if (val is T) maid.SetValue(type, col, val);
-                    else maid.UpdateField(MaidChangeType.MaidClassType, (int) type);
+                    if (val is T) maid.SetMaidClassValue(row, col, val);
+                    else maid.UpdateField(MaidChangeType.MaidClassType, row);
                 }
                 updateMaidClassField = false;
             }
@@ -90,9 +88,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 if (!updateYotogiClassField)
                 {
-                    YotogiClassType type = (YotogiClassType) row;
-                    if (val is T) maid.SetValue(type, col, val);
-                    else maid.UpdateField(MaidChangeType.YotogiClassType, (int) type);
+                    if (val is T) maid.SetYotogiClassValue(row, col, val);
+                    else maid.UpdateField(MaidChangeType.YotogiClassType, row);
                 }
                 updateYotogiClassField = false;
             }

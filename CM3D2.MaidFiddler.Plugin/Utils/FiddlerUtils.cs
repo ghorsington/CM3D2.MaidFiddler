@@ -79,9 +79,8 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         {
             bool pass = true;
             if (sslPolicyErrors == SslPolicyErrors.None) return true;
-            foreach (
-                X509ChainStatus t in
-                    chain.ChainStatus.Where(t => t.Status != X509ChainStatusFlags.RevocationStatusUnknown))
+            foreach (X509ChainStatus t in
+                chain.ChainStatus.Where(t => t.Status != X509ChainStatusFlags.RevocationStatusUnknown))
             {
                 chain.ChainPolicy.RevocationFlag = X509RevocationFlag.EntireChain;
                 chain.ChainPolicy.RevocationMode = X509RevocationMode.Online;

@@ -17,7 +17,7 @@ namespace CM3D2.MaidFiddler.Patch
         private const string TAG = "CM3D2_MAID_FIDDLER";
         private AssemblyDefinition FiddlerAssembly;
         public override string Name => "MaidFiddler Patcher";
-        public override string Version => "1.2.2.0";
+        public override string Version => "1.3.0.0";
 
         public override bool CanPatch(PatcherArguments args)
         {
@@ -215,11 +215,13 @@ namespace CM3D2.MaidFiddler.Patch
 
             WritePreviousLine("AddMaidClassExp");
             PatchFuncEnum(MaidChangeType.MaidClassType,
-                maidParam.GetMethod("AddMaidClassExp", typeof (MaidClassType), typeof (int)), statusChangeIDHook1);
+                maidParam.GetMethods("AddMaidClassExp").FirstOrDefault(m => m.Parameters.Count == 2),
+                statusChangeIDHook1);
 
             WritePreviousLine("AddYotogiClassExp");
             PatchFuncEnum(MaidChangeType.YotogiClassType,
-                maidParam.GetMethod("AddYotogiClassExp", typeof (YotogiClassType), typeof (int)), statusChangeIDHook1);
+                maidParam.GetMethods("AddYotogiClassExp").FirstOrDefault(m => m.Parameters.Count == 2),
+                statusChangeIDHook1);
 
             WritePreviousLine("ThumShot");
             maidType.GetMethod("ThumShot").InjectWith(thumbnailChangedHook, -1, 0, InjectFlags.PassInvokingInstance);

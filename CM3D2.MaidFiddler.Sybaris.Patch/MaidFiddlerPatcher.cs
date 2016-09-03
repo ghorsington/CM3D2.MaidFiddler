@@ -11,7 +11,7 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
 {
     public static class MaidFiddlerPatcher
     {
-        private const uint PATCHER_VERSION = 1220;
+        private const uint PATCHER_VERSION = 1300;
         public static readonly string[] TargetAssemblyNames = {"Assembly-CSharp.dll"};
 
         public static void Patch(AssemblyDefinition assembly)
@@ -175,10 +175,12 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
                          typeFields: new[] {maidParam.GetField("maid_")});
 
             PatchFuncEnum(MaidChangeType.MaidClassType,
-                maidParam.GetMethod("AddMaidClassExp", "param.MaidClassType", "System.Int32"), statusChangeIDHook1);
+                maidParam.GetMethods("AddMaidClassExp").FirstOrDefault(m => m.Parameters.Count == 2),
+                statusChangeIDHook1);
 
             PatchFuncEnum(MaidChangeType.YotogiClassType,
-                maidParam.GetMethod("AddYotogiClassExp", "param.YotogiClassType", "System.Int32"), statusChangeIDHook1);
+                maidParam.GetMethods("AddYotogiClassExp").FirstOrDefault(m => m.Parameters.Count == 2),
+                statusChangeIDHook1);
 
             maidType.GetMethod("ThumShot").InjectWith(thumbnailChangedHook, -1, 0, InjectFlags.PassInvokingInstance);
             maidType.GetMethod("SetThumIcon")?.InjectWith(thumbnailChangedHook, -1, 0, InjectFlags.PassInvokingInstance);

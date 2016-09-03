@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Utils;
@@ -417,50 +418,65 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 }, $"Failed to set value for type {EnumHelper.GetName(type)} to {val}");
             }
 
-            public void SetValue(MaidClassType type, int col, object val)
+            public void SetMaidClassValue(int type, int col, object val)
             {
                 Debugger.Assert(() =>
                 {
+                    FieldInfo maidClassDataField = Maid.Param.status_.GetType().GetField("maid_class_data");
+                    object maidClassData =
+                        maidClassDataField.FieldType.GetMethod("GetValue", new[] {typeof (int)})
+                                          .Invoke(maidClassDataField.GetValue(Maid.Param.status_), new[] {(object) type});
+                    Func<string, object> getValue =
+                        value => maidClassData.GetType().GetField(value).GetValue(maidClassData);
+
                     switch (col)
                     {
                         case TABLE_COLUMN_HAS:
                             if (!(val is bool)) return;
-                            Maid.Param.status_.maid_class_data[(int) type].is_have = (bool) val;
+                            maidClassData.GetType().GetField("is_have").SetValue(maidClassData, val);
                             break;
                         case TABLE_COLUMN_LEVEL:
                             if (!(val is int)) return;
-                            Maid.Param.status_.maid_class_data[(int) type].exp_system.SetLevel((int) val);
+                            ((SimpleExperienceSystem) getValue("exp_system")).SetLevel((int) val);
                             break;
                         case TABLE_COLUMN_TOTAL_XP:
                             if (!(val is int)) return;
-                            Maid.Param.status_.maid_class_data[(int) type].exp_system.SetTotalExp((int) val);
+                            ((SimpleExperienceSystem) getValue("exp_system")).SetTotalExp((int) val);
                             break;
                     }
-                    UpdateField(MaidChangeType.MaidClassType, (int) type);
-                }, $"Failed to set maid value of type {EnumHelper.GetName(type)} to {val}");
+                    UpdateField(MaidChangeType.MaidClassType, type);
+                }, $"Failed to set maid value of type {EnumHelper.GetMaidClassName(type)} to {val}");
             }
 
-            public void SetValue(YotogiClassType type, int col, object val)
+            public void SetYotogiClassValue(int type, int col, object val)
             {
                 Debugger.Assert(() =>
                 {
+                    FieldInfo yotogiClassDataField = Maid.Param.status_.GetType().GetField("yotogi_class_data");
+                    object yotogiClassData =
+                        yotogiClassDataField.FieldType.GetMethod("GetValue", new[] {typeof (int)})
+                                            .Invoke(yotogiClassDataField.GetValue(Maid.Param.status_),
+                                                new[] {(object) type});
+                    Func<string, object> getValue =
+                        value => yotogiClassData.GetType().GetField(value).GetValue(yotogiClassData);
+
                     switch (col)
                     {
                         case TABLE_COLUMN_HAS:
                             if (!(val is bool)) return;
-                            Maid.Param.status_.yotogi_class_data[(int) type].is_have = (bool) val;
+                            yotogiClassData.GetType().GetField("is_have").SetValue(yotogiClassData, val);
                             break;
                         case TABLE_COLUMN_LEVEL:
                             if (!(val is int)) return;
-                            Maid.Param.status_.yotogi_class_data[(int) type].exp_system.SetLevel((int) val);
+                            ((SimpleExperienceSystem) getValue("exp_system")).SetLevel((int) val);
                             break;
                         case TABLE_COLUMN_TOTAL_XP:
                             if (!(val is int)) return;
-                            Maid.Param.status_.yotogi_class_data[(int) type].exp_system.SetTotalExp((int) val);
+                            ((SimpleExperienceSystem) getValue("exp_system")).SetTotalExp((int) val);
                             break;
                     }
-                    UpdateField(MaidChangeType.YotogiClassType, (int) type);
-                }, $"Failed to set yotogi class type {EnumHelper.GetName(type)} to {val}");
+                    UpdateField(MaidChangeType.YotogiClassType, type);
+                }, $"Failed to set yotogi class type {EnumHelper.GetYotogiClassName(type)} to {val}");
             }
 
             public void SetWorkValue(int workID, int column, object val)
@@ -570,7 +586,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             private void SetMaidClassType(int val)
             {
-                Maid.Param.SetMaidClassType((MaidClassType) val);
+                MethodInfo method = Maid.Param.GetType().GetMethod("SetMaidClassType");
+                Type maidClassType;
+                object value = val;
+                if ((maidClassType = method.GetParameters()[0].ParameterType).Name == "param.MaidClassType")
+                {
+                    value = Enum.ToObject(maidClassType, val);
+                }
+
+                method.Invoke(Maid.Param, new[] {value});
             }
 
             private void SetPersonal(int val)
@@ -600,7 +624,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             private void SetYotogiClassType(int val)
             {
-                Maid.Param.SetYotogiClassType((YotogiClassType) val);
+                MethodInfo method = Maid.Param.GetType().GetMethod("SetYotogiClassType");
+                Type yotogiClassType;
+                object value = val;
+                if ((yotogiClassType = method.GetParameters()[0].ParameterType).Name == "param.YotogiClassType")
+                {
+                    value = Enum.ToObject(yotogiClassType, val);
+                }
+
+                method.Invoke(Maid.Param, new[] {value});
             }
 
             #endregion
@@ -793,8 +825,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             public void UpdateMaidClasses()
             {
-                Debugger.Assert(
-                    () => { for (MaidClassType e = 0; e < EnumHelper.MaxMaidClass; e++) UpdateMaidClass((int) e, 0); },
+                Debugger.Assert(() => { for (int e = 0; e < EnumHelper.MaxMaidClass; e++) UpdateMaidClass(e, 0); },
                     "Failed to update maid class type");
             }
 
@@ -970,11 +1001,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             public void UpdateYotogiClasses()
             {
-                Debugger.Assert(
-                    () =>
-                    {
-                        for (YotogiClassType e = 0; e < EnumHelper.MaxYotogiClass; e++) UpdateYotogiClass((int) e, 0);
-                    },
+                Debugger.Assert(() => { for (int e = 0; e < EnumHelper.MaxYotogiClass; e++) UpdateYotogiClass(e, 0); },
                     "Failed to update maid yotogi class");
             }
 
@@ -989,58 +1016,77 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             private void UpdateCurrentYotogiClass()
             {
-                UpdateYotogiClass((int) Maid.Param.status.current_yotogi_class, -1);
+                UpdateYotogiClass(
+                    (int)
+                    Maid.Param.status.GetType().GetProperty("current_yotogi_class").GetValue(Maid.Param.status, null),
+                    -1);
             }
 
             private void UpdateCurrentMaidClass()
             {
-                UpdateMaidClass((int) Maid.Param.status.current_maid_class, -1);
+                UpdateMaidClass(
+                    (int)
+                    Maid.Param.status.GetType().GetProperty("current_maid_class").GetValue(Maid.Param.status, null), -1);
             }
 
-            private void UpdateYotogiClass(int id, int _)
+            private void UpdateYotogiClass(int yotogiClass, int _)
             {
                 Debugger.Assert(() =>
                 {
-                    YotogiClassType yotogiClass = (YotogiClassType) id;
-                    Debugger.WriteLine($"Updating yotogi class type {EnumHelper.GetName(yotogiClass)}");
+                    Debugger.WriteLine($"Updating yotogi class type {EnumHelper.GetYotogiClassName(yotogiClass)}");
                     if (yotogiClass >= EnumHelper.MaxYotogiClass) return;
 
-                    gui.updateYotogiClassField = true;
-                    gui.dataGridView_yotogi_classes[TABLE_COLUMN_HAS, (int) yotogiClass].Value =
-                        Maid.Param.status_.yotogi_class_data[(int) yotogiClass].is_have;
+                    FieldInfo yotogiClassDataField = Maid.Param.status_.GetType().GetField("yotogi_class_data");
+                    object yotogiClassData =
+                        yotogiClassDataField.FieldType.GetMethod("GetValue", new[] {typeof (int)})
+                                            .Invoke(yotogiClassDataField.GetValue(Maid.Param.status_),
+                                                new[] {(object) yotogiClass});
+
+                    Func<string, object> getValue =
+                        value => yotogiClassData.GetType().GetField(value).GetValue(yotogiClassData);
 
                     gui.updateYotogiClassField = true;
-                    gui.dataGridView_yotogi_classes[TABLE_COLUMN_LEVEL, (int) yotogiClass].Value =
-                        Maid.Param.status_.yotogi_class_data[(int) yotogiClass].exp_system.GetCurrentLevel();
+                    gui.dataGridView_yotogi_classes[TABLE_COLUMN_HAS, yotogiClass].Value = (bool) getValue("is_have");
 
                     gui.updateYotogiClassField = true;
-                    gui.dataGridView_yotogi_classes[TABLE_COLUMN_TOTAL_XP, (int) yotogiClass].Value =
-                        Maid.Param.status_.yotogi_class_data[(int) yotogiClass].exp_system.GetCurrentExp();
+                    gui.dataGridView_yotogi_classes[TABLE_COLUMN_LEVEL, yotogiClass].Value =
+                        ((SimpleExperienceSystem) getValue("exp_system")).GetCurrentLevel();
+
+                    gui.updateYotogiClassField = true;
+                    gui.dataGridView_yotogi_classes[TABLE_COLUMN_TOTAL_XP, yotogiClass].Value =
+                        ((SimpleExperienceSystem) getValue("exp_system")).GetTotalExp();
                     gui.updateYotogiClassField = false;
-                }, $"Failed to update yotogi class data for class ID {id}");
+                }, $"Failed to update yotogi class data for class ID {yotogiClass}");
             }
 
-            private void UpdateMaidClass(int id, int _)
+            private void UpdateMaidClass(int maidClass, int _)
             {
                 Debugger.Assert(() =>
                 {
-                    MaidClassType maidClass = (MaidClassType) id;
-                    Debugger.WriteLine($"Updating maid class type {EnumHelper.GetName(maidClass)}");
+                    Debugger.WriteLine($"Updating maid class type {EnumHelper.GetMaidClassName(maidClass)}");
                     if (maidClass >= EnumHelper.MaxMaidClass) return;
 
-                    gui.updateMaidClassField = true;
-                    gui.dataGridView_maid_classes[TABLE_COLUMN_HAS, (int) maidClass].Value =
-                        Maid.Param.status_.maid_class_data[(int) maidClass].is_have;
+                    FieldInfo maidClassDataField = Maid.Param.status_.GetType().GetField("maid_class_data");
+                    object maidClassData =
+                        maidClassDataField.FieldType.GetMethod("GetValue", new[] {typeof (int)})
+                                          .Invoke(maidClassDataField.GetValue(Maid.Param.status_),
+                                              new[] {(object) maidClass});
+
+                    Func<string, object> getValue =
+                        value => maidClassData.GetType().GetField(value).GetValue(maidClassData);
 
                     gui.updateMaidClassField = true;
-                    gui.dataGridView_maid_classes[TABLE_COLUMN_LEVEL, (int) maidClass].Value =
-                        Maid.Param.status_.maid_class_data[(int) maidClass].exp_system.GetCurrentLevel();
+                    gui.dataGridView_maid_classes[TABLE_COLUMN_HAS, maidClass].Value = getValue("is_have");
 
                     gui.updateMaidClassField = true;
-                    gui.dataGridView_maid_classes[TABLE_COLUMN_TOTAL_XP, (int) maidClass].Value =
-                        Maid.Param.status_.maid_class_data[(int) maidClass].exp_system.GetCurrentExp();
+                    gui.dataGridView_maid_classes[TABLE_COLUMN_LEVEL, maidClass].Value =
+                        ((SimpleExperienceSystem) getValue("exp_system")).GetCurrentLevel();
+
+                    gui.updateMaidClassField = true;
+                    gui.dataGridView_maid_classes[TABLE_COLUMN_TOTAL_XP, maidClass].Value =
+                        ((SimpleExperienceSystem) getValue("exp_system")).GetTotalExp();
                     gui.updateMaidClassField = false;
-                }, $"Failed to update maid class data for class ID {id}");
+                }, $"Failed to update maid class data for class ID {maidClass}");
             }
 
             private void UpdateMaidParam(MaidChangeType type)
@@ -1270,7 +1316,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             private void UpdateMaidClassType()
             {
-                gui.comboBox_current_maid_class.SelectedIndex = (int) Maid.Param.status.current_maid_class;
+                gui.comboBox_current_maid_class.SelectedIndex =
+                    (int)
+                    Maid.Param.status.GetType().GetProperty("current_maid_class").GetValue(Maid.Param.status, null);
             }
 
             private void UpdatePersonal()
@@ -1291,7 +1339,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             private void UpdateYotogiClassType()
             {
-                gui.comboBox_current_yotogi_class.SelectedIndex = (int) Maid.Param.status.current_yotogi_class;
+                gui.comboBox_current_yotogi_class.SelectedIndex =
+                    (int)
+                    Maid.Param.status.GetType().GetProperty("current_yotogi_class").GetValue(Maid.Param.status, null);
             }
 
             #endregion

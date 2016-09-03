@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Plugin.Utils;
 using param;
@@ -44,6 +45,24 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
         }
 
+        private void SetClassIsHave(Maid maid, string classDataFieldName, int classID, bool value)
+        {
+            FieldInfo classDataField = maid.Param.status_.GetType().GetField(classDataFieldName);
+            object classData =
+                classDataField.FieldType.GetMethod("GetValue", new[] {typeof (int)})
+                              .Invoke(classDataField.GetValue(maid.Param.status_), new[] {(object) classID});
+            classData.GetType().GetField("is_have").SetValue(classData, value);
+        }
+
+        private void SetClassLevel(Maid maid, string classDataFieldName, int classID, int level)
+        {
+            FieldInfo classDataField = maid.Param.status_.GetType().GetField(classDataFieldName);
+            object classData =
+                classDataField.FieldType.GetMethod("GetValue", new[] {typeof (int)})
+                              .Invoke(classDataField.GetValue(maid.Param.status_), new[] {(object) classID});
+            ((SimpleExperienceSystem) classData.GetType().GetField("exp_system").GetValue(classData)).SetLevel(level);
+        }
+
         private void SetClassLevel(object sender, EventArgs e)
         {
             Debugger.WriteLine(LogLevel.Info, "Prompting class level set.");
@@ -65,17 +84,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             MaidInfo selected = SelectedMaid;
             Maid maid = selected.Maid;
 
-            for (int maidClass = 0; maidClass < (int) EnumHelper.MaxMaidClass; maidClass++)
+            for (int maidClass = 0; maidClass < EnumHelper.MaxMaidClass; maidClass++)
             {
-                maid.Param.status_.maid_class_data[maidClass].is_have = true;
-                maid.Param.status_.maid_class_data[maidClass].exp_system.SetLevel(val);
+                SetClassIsHave(maid, "maid_class_data", maidClass, true);
+                SetClassLevel(maid, "maid_class_data", maidClass, val);
             }
             selected.UpdateMaidClasses();
 
-            for (int yotogiClass = 0; yotogiClass < (int) EnumHelper.MaxYotogiClass; yotogiClass++)
+            for (int yotogiClass = 0; yotogiClass < EnumHelper.MaxYotogiClass; yotogiClass++)
             {
-                maid.Param.status_.yotogi_class_data[yotogiClass].is_have = true;
-                maid.Param.status_.yotogi_class_data[yotogiClass].exp_system.SetLevel(val);
+                SetClassIsHave(maid, "yotogi_class_data", yotogiClass, true);
+                SetClassLevel(maid, "yotogi_class_data", yotogiClass, val);
             }
             selected.UpdateYotogiClasses();
         }
@@ -130,17 +149,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             MaidInfo selected = SelectedMaid;
             Maid maid = selected.Maid;
 
-            for (int maidClass = 0; maidClass < (int) EnumHelper.MaxMaidClass; maidClass++)
+            for (int maidClass = 0; maidClass < EnumHelper.MaxMaidClass; maidClass++)
             {
-                maid.Param.status_.maid_class_data[maidClass].is_have = true;
-                maid.Param.status_.maid_class_data[maidClass].exp_system.SetLevel(10);
+                SetClassIsHave(maid, "maid_class_data", maidClass, true);
+                SetClassLevel(maid, "maid_class_data", maidClass, 10);
             }
             selected.UpdateMaidClasses();
 
-            for (int yotogiClass = 0; yotogiClass < (int) EnumHelper.MaxYotogiClass; yotogiClass++)
+            for (int yotogiClass = 0; yotogiClass < EnumHelper.MaxYotogiClass; yotogiClass++)
             {
-                maid.Param.status_.yotogi_class_data[yotogiClass].is_have = true;
-                maid.Param.status_.yotogi_class_data[yotogiClass].exp_system.SetLevel(10);
+                SetClassIsHave(maid, "yotogi_class_data", yotogiClass, true);
+                SetClassLevel(maid, "yotogi_class_data", yotogiClass, 10);
             }
             selected.UpdateYotogiClasses();
         }
@@ -248,17 +267,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Debugger.WriteLine(LogLevel.Info,
                     $"Setting all to max for {currentMaid.Param.status.first_name} {currentMaid.Param.status.last_name}");
 
-                for (int maidClass = 0; maidClass < (int) EnumHelper.MaxMaidClass; maidClass++)
+                for (int maidClass = 0; maidClass < EnumHelper.MaxMaidClass; maidClass++)
                 {
-                    maidParam.status_.maid_class_data[maidClass].is_have = true;
-                    maidParam.status_.maid_class_data[maidClass].exp_system.SetLevel(10);
+                    SetClassIsHave(currentMaid, "maid_class_data", maidClass, true);
+                    SetClassLevel(currentMaid, "maid_class_data", maidClass, 10);
                 }
                 maidInfo.UpdateMaidClasses();
 
-                for (int yotogiClass = 0; yotogiClass < (int) EnumHelper.MaxYotogiClass; yotogiClass++)
+                for (int yotogiClass = 0; yotogiClass < EnumHelper.MaxYotogiClass; yotogiClass++)
                 {
-                    maidParam.status_.yotogi_class_data[yotogiClass].is_have = true;
-                    maidParam.status_.yotogi_class_data[yotogiClass].exp_system.SetLevel(10);
+                    SetClassIsHave(currentMaid, "yotogi_class_data", yotogiClass, true);
+                    SetClassLevel(currentMaid, "yotogi_class_data", yotogiClass, 10);
                 }
                 maidInfo.UpdateYotogiClasses();
 
@@ -400,9 +419,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void UnlockAllMaidClasses(object sender, EventArgs e)
         {
             MaidInfo maid = SelectedMaid;
-            for (MaidClassType i = 0; i < EnumHelper.MaxMaidClass; i++)
+            for (int i = 0; i < EnumHelper.MaxMaidClass; i++)
             {
-                maid.SetValue(i, TABLE_COLUMN_HAS, true);
+                maid.SetMaidClassValue(i, TABLE_COLUMN_HAS, true);
             }
         }
 
@@ -433,9 +452,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void UnlockAllYotogiClasses(object sender, EventArgs e)
         {
             MaidInfo maid = SelectedMaid;
-            for (YotogiClassType i = 0; i < EnumHelper.MaxYotogiClass; i++)
+            for (int i = 0; i < EnumHelper.MaxYotogiClass; i++)
             {
-                maid.SetValue(i, TABLE_COLUMN_HAS, true);
+                maid.SetYotogiClassValue(i, TABLE_COLUMN_HAS, true);
             }
         }
     }
