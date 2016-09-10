@@ -1143,15 +1143,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     Func<string, object> getValue =
                     value => yotogiClassData.GetType().GetField(value).GetValue(yotogiClassData);
 
-                    gui.updateYotogiClassField = true;
-                    gui.dataGridView_yotogi_classes[TABLE_COLUMN_HAS, yotogiClass].Value = (bool) getValue("is_have");
+                    int rowNum = EnumHelper.EnabledYotogiClasses.IndexOf(yotogiClass);
 
                     gui.updateYotogiClassField = true;
-                    gui.dataGridView_yotogi_classes[TABLE_COLUMN_LEVEL, yotogiClass].Value =
+                    gui.dataGridView_yotogi_classes[TABLE_COLUMN_HAS, rowNum].Value = (bool) getValue("is_have");
+
+                    gui.updateYotogiClassField = true;
+                    gui.dataGridView_yotogi_classes[TABLE_COLUMN_LEVEL, rowNum].Value =
                     ((SimpleExperienceSystem) getValue("exp_system")).GetCurrentLevel();
 
                     gui.updateYotogiClassField = true;
-                    gui.dataGridView_yotogi_classes[TABLE_COLUMN_TOTAL_XP, yotogiClass].Value =
+                    gui.dataGridView_yotogi_classes[TABLE_COLUMN_TOTAL_XP, rowNum].Value =
                     ((SimpleExperienceSystem) getValue("exp_system")).GetTotalExp();
                     gui.updateYotogiClassField = false;
                 },
