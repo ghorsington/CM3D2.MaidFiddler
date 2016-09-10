@@ -13,7 +13,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitYotogiSkillTab()
         {
-            Debugger.Assert(() =>
+            Debugger.Assert(
+            () =>
             {
                 Translation.AddTranslatableControl(tabPage_skills);
 
@@ -35,38 +36,47 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 dataGridView_skill_data.CellValueChanged += OnSkillCellValueChanged;
                 dataGridView_skill_data.Height = dataGridView_skill_data.ColumnHeadersHeight
                                                  + dataGridView_skill_data.Rows[0].Height
-                                                 *dataGridView_skill_data.RowCount;
-            }, "Failed to initalize yotogi skill tab");
+                                                 * dataGridView_skill_data.RowCount;
+            },
+            "Failed to initalize yotogi skill tab");
         }
 
         private void OnSkillCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (clearingTables || e.ColumnIndex != TABLE_COLUMN_HAS) return;
+            if (clearingTables || e.ColumnIndex != TABLE_COLUMN_HAS)
+                return;
             UpdateSkillCell<bool>(e.ColumnIndex, e.RowIndex);
         }
 
         private void OnSkillCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (clearingTables) return;
-            if (e.ColumnIndex == SKILL_COLUMN_PLAY_COUNT) UpdateSkillCell<uint>(e.ColumnIndex, e.RowIndex);
-            else UpdateSkillCell<int>(e.ColumnIndex, e.RowIndex);
+            if (clearingTables)
+                return;
+            if (e.ColumnIndex == SKILL_COLUMN_PLAY_COUNT)
+                UpdateSkillCell<uint>(e.ColumnIndex, e.RowIndex);
+            else
+                UpdateSkillCell<int>(e.ColumnIndex, e.RowIndex);
         }
 
         private void UpdateSkillCell<T>(int col, int row)
         {
             MaidInfo maid = SelectedMaid;
-            if (maid == null) return;
+            if (maid == null)
+                return;
 
             object val = dataGridView_skill_data[col, row].Value;
 
-            if (val is bool) val = !(bool) val;
+            if (val is bool)
+                val = !(bool) val;
 
             int skillID = rowToSkillID[row];
 
             if (!updateSkillTable)
             {
-                if (val is T || (col == SKILL_COLUMN_PLAY_COUNT && val is uint)) maid.SetSkillValue(skillID, col, val);
-                else maid.UpdateSkillData(skillID);
+                if (val is T || (col == SKILL_COLUMN_PLAY_COUNT && val is uint))
+                    maid.SetSkillValue(skillID, col, val);
+                else
+                    maid.UpdateSkillData(skillID);
             }
             updateSkillTable = false;
         }

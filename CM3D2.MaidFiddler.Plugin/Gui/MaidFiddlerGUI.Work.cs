@@ -17,7 +17,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitWorkTab()
         {
-            Debugger.Assert(() =>
+            Debugger.Assert(
+            () =>
             {
                 Translation.AddTranslatableControl(tabPage_work);
                 Translation.AddTranslatableControl(groupBox_maid_current_work);
@@ -36,8 +37,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     string name = noonWork.Value.name;
                     int index = dataGridView_noon_work_data.Rows.Add(false, name, 0, (uint) 0);
                     int cbIndex = comboBox_work_noon.Items.Add(name);
-                    Translation.AddTranslationAction(name,
-                        s => dataGridView_noon_work_data.Rows[index].Cells[1].Value = s);
+                    Translation.AddTranslationAction(
+                    name,
+                    s => dataGridView_noon_work_data.Rows[index].Cells[1].Value = s);
                     Translation.AddTranslationAction(name, s => comboBox_work_noon.Items[cbIndex] = s);
                     rowToNoonWorkID.Add(index, noonWork.Key);
                     noonWorkIDToRow.Add(noonWork.Key, index);
@@ -46,7 +48,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 dataGridView_noon_work_data.CellValueChanged += OnWorkCellValueChanged;
                 dataGridView_noon_work_data.Height = dataGridView_noon_work_data.ColumnHeadersHeight
                                                      + dataGridView_noon_work_data.Rows[0].Height
-                                                     *dataGridView_noon_work_data.RowCount;
+                                                     * dataGridView_noon_work_data.RowCount;
 
                 // Night
                 Translation.AddTranslatableControl(groupBox_night_work);
@@ -71,71 +73,88 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 dataGridView_night_work.CellValueChanged += OnNightWorkCellChanged;
                 dataGridView_night_work.Height = dataGridView_night_work.ColumnHeadersHeight
                                                  + dataGridView_night_work.Rows[0].Height
-                                                 *dataGridView_night_work.RowCount;
-            }, "Failed to initialize maid work tab");
+                                                 * dataGridView_night_work.RowCount;
+            },
+            "Failed to initialize maid work tab");
         }
 
         private void OnNightWorkCellChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (clearingTables || e.ColumnIndex != TABLE_COLUMN_HAS) return;
+            if (clearingTables || e.ColumnIndex != TABLE_COLUMN_HAS)
+                return;
             MaidInfo maid = SelectedMaid;
-            if (maid == null) return;
+            if (maid == null)
+                return;
 
             int workID = rowToNightWorkID[e.RowIndex];
-            if (!updateNightWorkTable) maid.UpdateNightWorkValue(workID);
+            if (!updateNightWorkTable)
+                maid.UpdateNightWorkValue(workID);
             updateNightWorkTable = false;
         }
 
         private void OnNightWorkCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (clearingTables || e.ColumnIndex != TABLE_COLUMN_HAS) return;
+            if (clearingTables || e.ColumnIndex != TABLE_COLUMN_HAS)
+                return;
 
             MaidInfo maid = SelectedMaid;
-            if (maid == null) return;
+            if (maid == null)
+                return;
             UpdateNightWorkCell(e.ColumnIndex, e.RowIndex);
         }
 
         private void OnWorkCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (clearingTables || e.ColumnIndex != TABLE_COLUMN_HAS) return;
+            if (clearingTables || e.ColumnIndex != TABLE_COLUMN_HAS)
+                return;
             UpdateWorkCell<bool>(e.ColumnIndex, e.RowIndex);
         }
 
         private void OnWorkCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (clearingTables) return;
-            if (e.ColumnIndex == TABLE_COLUMN_TOTAL_XP) UpdateWorkCell<uint>(e.ColumnIndex, e.RowIndex);
-            else UpdateWorkCell<int>(e.ColumnIndex, e.RowIndex);
+            if (clearingTables)
+                return;
+            if (e.ColumnIndex == TABLE_COLUMN_TOTAL_XP)
+                UpdateWorkCell<uint>(e.ColumnIndex, e.RowIndex);
+            else
+                UpdateWorkCell<int>(e.ColumnIndex, e.RowIndex);
         }
 
         private void UpdateNightWorkCell(int col, int row)
         {
-            if (col != TABLE_COLUMN_HAS) return;
+            if (col != TABLE_COLUMN_HAS)
+                return;
             MaidInfo maid = SelectedMaid;
-            if (maid == null) return;
+            if (maid == null)
+                return;
 
             bool val = !(bool) dataGridView_night_work[col, row].Value;
             int workID = rowToNightWorkID[row];
 
-            if (!updateNightWorkTable) maid.SetNightWorkValue(workID, val);
+            if (!updateNightWorkTable)
+                maid.SetNightWorkValue(workID, val);
             updateNightWorkTable = false;
         }
 
         private void UpdateWorkCell<T>(int col, int row)
         {
             MaidInfo maid = SelectedMaid;
-            if (maid == null) return;
+            if (maid == null)
+                return;
 
             object val = dataGridView_noon_work_data[col, row].Value;
 
-            if (val is bool) val = !(bool) val;
+            if (val is bool)
+                val = !(bool) val;
 
             int workID = rowToNoonWorkID[row];
 
             if (!updateWorkTable)
             {
-                if (val is T) maid.SetWorkValue(workID, col, val);
-                else maid.UpdateWorkData(workID);
+                if (val is T)
+                    maid.SetWorkValue(workID, col, val);
+                else
+                    maid.UpdateWorkData(workID);
             }
             updateWorkTable = false;
         }

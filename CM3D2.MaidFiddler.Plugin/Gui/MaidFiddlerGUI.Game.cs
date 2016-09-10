@@ -13,7 +13,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitGameTab()
         {
-            Debugger.Assert(() =>
+            Debugger.Assert(
+            () =>
             {
                 uiControlsPlayer = new Dictionary<Control, PlayerChangeType>();
                 valueUpdatePlayer = EnumHelper.GetValues<PlayerChangeType>().ToDictionary(e => e, e => false);
@@ -31,8 +32,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 for (int i = 0; i < comboBox_scenario_phase.Items.Count; i++)
                 {
                     int i1 = i;
-                    Translation.AddTranslationAction((string) comboBox_scenario_phase.Items[i],
-                        s => comboBox_scenario_phase.Items[i1] = s);
+                    Translation.AddTranslationAction(
+                    (string) comboBox_scenario_phase.Items[i],
+                    s => comboBox_scenario_phase.Items[i1] = s);
                 }
 
                 InitField(label_days, textBox_days, PlayerChangeType.Days);
@@ -42,7 +44,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 InitField(label_current_salon_grade, textBox_current_salon_grade, PlayerChangeType.SalonGrade);
                 InitField(label_best_salon_grade, textBox_best_salon_grade, PlayerChangeType.BestSalonGrade);
                 InitField(label_maid_points_base, textBox_maid_points_base, PlayerChangeType.BaseMaidPoints);
-            }, "Failed to initalize game tab");
+            },
+            "Failed to initalize game tab");
         }
     }
 }

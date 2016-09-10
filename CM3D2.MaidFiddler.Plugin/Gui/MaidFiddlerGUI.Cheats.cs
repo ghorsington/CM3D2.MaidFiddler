@@ -21,6 +21,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void ToggleAllScenesVisible(object sender, EventArgs e)
         {
+            if (FiddlerUtils.GameVersion < 119)
+            {
+                string title = Translation.IsTranslated("FEATURE_UNSUPPORTED_TITLE")
+                               ? Translation.GetTranslation("FEATURE_UNSUPPORTED_TITLE")
+                               : "This feature is unsupported";
+                string text = Translation.IsTranslated("FEATURE_UNSUPPORTED")
+                              ? Translation.GetTranslation("FEATURE_UNSUPPORTED")
+                              : "This feature is unsupported in this version of CM3D2.\nUpdate your game to use this feature.";
+                MessageBox.Show(text, title, MessageBoxButtons.OK);
+                return;
+            }
             ToolStripMenuItem item = (ToolStripMenuItem) sender;
             forceAllScenesEnabled = !forceAllScenesEnabled;
             item.Checked = forceAllScenesEnabled;
@@ -49,8 +60,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             FieldInfo classDataField = maid.Param.status_.GetType().GetField(classDataFieldName);
             object classData =
-                classDataField.FieldType.GetMethod("GetValue", new[] {typeof (int)})
-                              .Invoke(classDataField.GetValue(maid.Param.status_), new[] {(object) classID});
+            classDataField.FieldType.GetMethod("GetValue", new[] {typeof (int)})
+                          .Invoke(classDataField.GetValue(maid.Param.status_), new[] {(object) classID});
             classData.GetType().GetField("is_have").SetValue(classData, value);
         }
 
@@ -58,8 +69,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             FieldInfo classDataField = maid.Param.status_.GetType().GetField(classDataFieldName);
             object classData =
-                classDataField.FieldType.GetMethod("GetValue", new[] {typeof (int)})
-                              .Invoke(classDataField.GetValue(maid.Param.status_), new[] {(object) classID});
+            classDataField.FieldType.GetMethod("GetValue", new[] {typeof (int)})
+                          .Invoke(classDataField.GetValue(maid.Param.status_), new[] {(object) classID});
             ((SimpleExperienceSystem) classData.GetType().GetField("exp_system").GetValue(classData)).SetLevel(level);
         }
 
@@ -67,16 +78,18 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             Debugger.WriteLine(LogLevel.Info, "Prompting class level set.");
             uint v;
-            TextDialog td = new TextDialog(Translation.GetTranslation("GUI_CLASS_LVL_TITLE"),
-                Translation.GetTranslation("GUI_CLASS_LVL_PROMPT"), "0", s => uint.TryParse(s, out v) && v <= 10,
-                Translation.GetTranslation("OK"), Translation.GetTranslation("CANCEL"))
-            {
-                StartPosition = FormStartPosition.CenterParent
-            };
+            TextDialog td = new TextDialog(
+            Translation.GetTranslation("GUI_CLASS_LVL_TITLE"),
+            Translation.GetTranslation("GUI_CLASS_LVL_PROMPT"),
+            "0",
+            s => uint.TryParse(s, out v) && v <= 10,
+            Translation.GetTranslation("OK"),
+            Translation.GetTranslation("CANCEL")) {StartPosition = FormStartPosition.CenterParent};
             DialogResult dr = td.ShowDialog(this);
             Debugger.WriteLine(LogLevel.Info, $"Prompt result: {EnumHelper.GetName(dr)}, {td.Input}");
 
-            if (dr != DialogResult.OK) return;
+            if (dr != DialogResult.OK)
+                return;
             v = uint.Parse(td.Input);
             int val = (int) v;
             td.Dispose();
@@ -91,18 +104,20 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
             selected.UpdateMaidClasses();
 
-            for (int yotogiClass = 0; yotogiClass < EnumHelper.MaxYotogiClass; yotogiClass++)
+            foreach (int yotogiClass in EnumHelper.EnabledYotogiClasses)
             {
                 SetClassIsHave(maid, "yotogi_class_data", yotogiClass, true);
                 SetClassLevel(maid, "yotogi_class_data", yotogiClass, val);
             }
+
             selected.UpdateYotogiClasses();
         }
 
         private void SetForceEnableAll(object sender, EventArgs e)
         {
             MaidInfo maid = SelectedMaid;
-            Debugger.Assert(() =>
+            Debugger.Assert(
+            () =>
             {
                 foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
                 {
@@ -113,13 +128,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     maid.SetNightWorkValue(nightWork.Value.id, true);
                     maid.UpdateNightWorkValue(nightWork.Value.id);
                 }
-            }, "Failed to force all work enabled");
+            },
+            "Failed to force all work enabled");
         }
 
         private void SetForceDisableAll(object sender, EventArgs e)
         {
             MaidInfo maid = SelectedMaid;
-            Debugger.Assert(() =>
+            Debugger.Assert(
+            () =>
             {
                 foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
                 {
@@ -130,7 +147,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     maid.SetNightWorkValue(nightWork.Value.id, false);
                     maid.UpdateNightWorkValue(nightWork.Value.id);
                 }
-            }, "Failed to force all work disabled");
+            },
+            "Failed to force all work disabled");
         }
 
         private void SetMaxAll(object sender, EventArgs e)
@@ -156,7 +174,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             }
             selected.UpdateMaidClasses();
 
-            for (int yotogiClass = 0; yotogiClass < EnumHelper.MaxYotogiClass; yotogiClass++)
+            foreach (int yotogiClass in EnumHelper.EnabledYotogiClasses)
             {
                 SetClassIsHave(maid, "yotogi_class_data", yotogiClass, true);
                 SetClassLevel(maid, "yotogi_class_data", yotogiClass, 10);
@@ -264,8 +282,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 MaidInfo maidInfo = maid.Value;
                 Maid currentMaid = maid.Key;
                 MaidParam maidParam = currentMaid.Param;
-                Debugger.WriteLine(LogLevel.Info,
-                    $"Setting all to max for {currentMaid.Param.status.first_name} {currentMaid.Param.status.last_name}");
+                Debugger.WriteLine(
+                LogLevel.Info,
+                $"Setting all to max for {currentMaid.Param.status.first_name} {currentMaid.Param.status.last_name}");
 
                 for (int maidClass = 0; maidClass < EnumHelper.MaxMaidClass; maidClass++)
                 {
@@ -274,7 +293,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 }
                 maidInfo.UpdateMaidClasses();
 
-                for (int yotogiClass = 0; yotogiClass < EnumHelper.MaxYotogiClass; yotogiClass++)
+                foreach (int yotogiClass in EnumHelper.EnabledYotogiClasses)
                 {
                     SetClassIsHave(currentMaid, "yotogi_class_data", yotogiClass, true);
                     SetClassLevel(currentMaid, "yotogi_class_data", yotogiClass, 10);
@@ -286,9 +305,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 maidParam.SetSexualNipple(1000);
                 maidParam.SetSexualThroat(1000);
 
-                for (Feature i = Feature.Null + 1; i < EnumHelper.MaxFeature; i++) maidParam.SetFeature(i, true);
+                for (Feature i = Feature.Null + 1; i < EnumHelper.MaxFeature; i++)
+                    maidParam.SetFeature(i, true);
 
-                for (Propensity i = Propensity.Null + 1; i < EnumHelper.MaxPropensity; i++) maidParam.SetPropensity(i, true);
+                for (Propensity i = Propensity.Null + 1; i < EnumHelper.MaxPropensity; i++)
+                    maidParam.SetPropensity(i, true);
 
                 maidParam.SetCare(9999);
                 maidParam.SetCharm(9999);
@@ -338,23 +359,25 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void SetYotogiUsedTimes(object sender, EventArgs e)
         {
             uint v;
-            TextDialog td = new TextDialog(Translation.GetTranslation("GUI_YOTOGI_TIMES_TITLE"),
-                Translation.GetTranslation("GUI_YOTOGI_TIMES_PROMPT"), "0", s => uint.TryParse(s, out v),
-                Translation.GetTranslation("OK"), Translation.GetTranslation("CANCEL"))
-            {
-                StartPosition = FormStartPosition.CenterParent
-            };
+            TextDialog td = new TextDialog(
+            Translation.GetTranslation("GUI_YOTOGI_TIMES_TITLE"),
+            Translation.GetTranslation("GUI_YOTOGI_TIMES_PROMPT"),
+            "0",
+            s => uint.TryParse(s, out v),
+            Translation.GetTranslation("OK"),
+            Translation.GetTranslation("CANCEL")) {StartPosition = FormStartPosition.CenterParent};
             DialogResult dr = td.ShowDialog(this);
             Debugger.WriteLine(LogLevel.Info, $"Prompt result: {EnumHelper.GetName(dr)}, {td.Input}");
 
-            if (dr != DialogResult.OK) return;
+            if (dr != DialogResult.OK)
+                return;
             v = uint.Parse(td.Input);
             td.Dispose();
 
             MaidInfo maid = SelectedMaid;
 
             foreach (KeyValuePair<int, Yotogi.SkillData> skill in
-                Yotogi.skill_data_list.SelectMany(ee => ee).Where(ss => maid.Maid.Param.status.IsGetSkill(ss.Key)))
+            Yotogi.skill_data_list.SelectMany(ee => ee).Where(ss => maid.Maid.Param.status.IsGetSkill(ss.Key)))
             {
                 maid.Maid.Param.status_.skill_data[skill.Key].play_count = v;
                 maid.UpdateSkillData(skill.Value.id);
@@ -387,7 +410,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             ToolStripMenuItem item = (ToolStripMenuItem) sender;
             yotogiSkillsVisible = !yotogiSkillsVisible;
             item.Checked = yotogiSkillsVisible;
-            if (!yotogiAllSkillsVisible) return;
+            if (!yotogiAllSkillsVisible)
+                return;
             yotogiAllSkillsVisible = false;
             menu_item_all_yotogi_vis.Checked = false;
         }
@@ -397,7 +421,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             ToolStripMenuItem item = (ToolStripMenuItem) sender;
             yotogiAllSkillsVisible = !yotogiAllSkillsVisible;
             item.Checked = yotogiAllSkillsVisible;
-            if (!yotogiSkillsVisible) return;
+            if (!yotogiSkillsVisible)
+                return;
             yotogiSkillsVisible = false;
             menu_item_all_yotogi_vis_basic.Checked = false;
         }
@@ -412,8 +437,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void UnlockAllItems(object sender, EventArgs e)
         {
             string[] names = Player.Player.status_.have_item_list.Keys.ToArray();
-            for (int i = 0; i < Player.Player.status_.have_item_list.Keys.Count; i++) Player.Player.AddHaveItem(names[i]);
-            foreach (KeyValuePair<int, Shop.ItemDataBase> shopItem in Shop.item_data_dic) Player.Player.SetShopLineup(shopItem.Value.id, Status.ShopItemStatus.Purchased);
+            for (int i = 0; i < Player.Player.status_.have_item_list.Keys.Count; i++)
+                Player.Player.AddHaveItem(names[i]);
+            foreach (KeyValuePair<int, Shop.ItemDataBase> shopItem in Shop.item_data_dic)
+                Player.Player.SetShopLineup(shopItem.Value.id, Status.ShopItemStatus.Purchased);
         }
 
         private void UnlockAllMaidClasses(object sender, EventArgs e)
@@ -452,9 +479,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void UnlockAllYotogiClasses(object sender, EventArgs e)
         {
             MaidInfo maid = SelectedMaid;
-            for (int i = 0; i < EnumHelper.MaxYotogiClass; i++)
+            foreach (int yotogiClass in EnumHelper.EnabledYotogiClasses)
             {
-                maid.SetYotogiClassValue(i, TABLE_COLUMN_HAS, true);
+                maid.SetYotogiClassValue(yotogiClass, TABLE_COLUMN_HAS, true);
             }
         }
     }

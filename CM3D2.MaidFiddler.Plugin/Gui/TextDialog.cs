@@ -37,7 +37,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void TextBoxInputOnKeyPress(object sender, KeyPressEventArgs keyPressEventArgs)
         {
-            if (keyPressEventArgs.KeyChar != '\n' || ValidateInput()) return;
+            if (keyPressEventArgs.KeyChar != '\n' || ValidateInput())
+                return;
             keyPressEventArgs.Handled = true;
         }
 
@@ -62,13 +63,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
             Debugger.WriteLine(LogLevel.Info, $"Closing prompt because: {EnumHelper.GetName(e.CloseReason)}");
-            if (DialogResult != DialogResult.OK) DialogResult = DialogResult.Cancel;
+            if (DialogResult != DialogResult.OK)
+                DialogResult = DialogResult.Cancel;
             e.Cancel = false;
         }
 
         private bool ValidateInput()
         {
-            if (checker(textBox_input.Text)) return true;
+            if (checker(textBox_input.Text))
+                return true;
             textBox_input.Text = defaultVal;
             textBox_input.Select(0, defaultVal.Length);
             SystemSounds.Hand.Play();
@@ -77,7 +80,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnVisibleChanged(object sender, EventArgs e)
         {
-            if (Visible) textBox_input.Focus();
+            if (Visible)
+                textBox_input.Focus();
         }
     }
 }

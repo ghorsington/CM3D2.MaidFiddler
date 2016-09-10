@@ -14,7 +14,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitMaidInfoTab()
         {
-            Debugger.Assert(() =>
+            Debugger.Assert(
+            () =>
             {
                 valueUpdate = EnumHelper.MaidChangeTypes.ToDictionary(e => e, e => false);
                 uiControls = new Dictionary<Control, MaidChangeType>();
@@ -89,9 +90,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 }
 
                 InitField(label_curr_yotogi_class, comboBox_current_yotogi_class, MaidChangeType.YotogiClassType);
-                for (int e = 0; e < EnumHelper.MaxYotogiClass; e++)
+                foreach (int yotogiClass in EnumHelper.EnabledYotogiClasses)
                 {
-                    key = $"Yotogi_{EnumHelper.GetYotogiClassName(e)}";
+                    key = $"Yotogi_{EnumHelper.GetYotogiClassName(yotogiClass)}";
                     int i = comboBox_current_yotogi_class.Items.Add(key);
                     Translation.AddTranslationAction(key, s => comboBox_current_yotogi_class.Items[i] = s);
                 }
@@ -99,10 +100,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 InitField(label_profile, textBox_profile, MaidChangeType.Profile);
                 InitField(label_free_comment, textBox_free_comment, MaidChangeType.FreeComment);
 
-                if (FiddlerUtils.GameVersion < 121 || !FiddlerUtils.PlusPackInstalled) checkBox_rental.Hide();
+                if (FiddlerUtils.GameVersion < 121 || !FiddlerUtils.PlusPackInstalled)
+                    checkBox_rental.Hide();
 
-                if (FiddlerUtils.GameVersion < 133 || !FiddlerUtils.PlusPack2Installed) checkBox_is_marriage.Hide();
-            }, "Failed to initialize maid info tab");
+                if (FiddlerUtils.GameVersion < 133 || !FiddlerUtils.PlusPack2Installed)
+                    checkBox_is_marriage.Hide();
+            },
+            "Failed to initialize maid info tab");
         }
     }
 }

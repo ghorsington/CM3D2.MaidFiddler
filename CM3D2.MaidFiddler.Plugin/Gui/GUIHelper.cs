@@ -11,7 +11,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             Debugger.WriteLine($"Called Close on main thread. Destroy GUI: {exit}");
             destroyGUI = exit;
-            if (destroyGUI) RemoveHookCallbacks();
+            if (destroyGUI)
+                RemoveHookCallbacks();
             Close();
         }
 
@@ -20,7 +21,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (!IsHandleCreated)
             {
                 Debugger.WriteLine(
-                    $"Attempted to invoke asynchronously {method.Method.Name} but found no handle! Creating one...");
+                $"Attempted to invoke asynchronously {method.Method.Name} but found no handle! Creating one...");
                 CreateHandle();
             }
 

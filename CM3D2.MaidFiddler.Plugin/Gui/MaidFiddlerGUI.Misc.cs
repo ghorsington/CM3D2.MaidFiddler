@@ -12,7 +12,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitMiscTab()
         {
-            Debugger.Assert(() =>
+            Debugger.Assert(
+            () =>
             {
                 Translation.AddTranslatableControl(tabPage_misc);
 
@@ -26,7 +27,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     Translation.AddTranslationAction(key, s => checkedListBox_propensity.Items[i] = s);
                 }
                 checkedListBox_propensity.Height = checkedListBox_propensity.ItemHeight
-                                                   *checkedListBox_propensity.Items.Count;
+                                                   * checkedListBox_propensity.Items.Count;
                 checkedListBox_propensity.ItemCheck += OnPropensityChecked;
 
                 // Features
@@ -37,17 +38,20 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     int i = checkedListBox_feature.Items.Add(key, false);
                     Translation.AddTranslationAction(key, s => checkedListBox_feature.Items[i] = s);
                 }
-                checkedListBox_feature.Height = checkedListBox_feature.ItemHeight*checkedListBox_feature.Items.Count;
+                checkedListBox_feature.Height = checkedListBox_feature.ItemHeight * checkedListBox_feature.Items.Count;
                 checkedListBox_feature.ItemCheck += OnFeatureChecked;
-            }, "Failed to initialize propensity/feature tab");
+            },
+            "Failed to initialize propensity/feature tab");
         }
 
         private void OnFeatureChecked(object sender, ItemCheckEventArgs e)
         {
-            if (clearingTables) return;
+            if (clearingTables)
+                return;
 
             MaidInfo maid = SelectedMaid;
-            if (maid == null) return;
+            if (maid == null)
+                return;
 
             if (!updateFeature)
             {
@@ -59,10 +63,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnPropensityChecked(object sender, ItemCheckEventArgs e)
         {
-            if (clearingTables) return;
+            if (clearingTables)
+                return;
 
             MaidInfo maid = SelectedMaid;
-            if (maid == null) return;
+            if (maid == null)
+                return;
 
             if (!updatePropensity)
             {

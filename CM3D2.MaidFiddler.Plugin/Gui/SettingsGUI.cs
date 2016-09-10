@@ -49,7 +49,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             listBox_order_available.DisplayMember = "DisplayName";
             listBox_order_available.SelectedIndexChanged += OnAvailableOrderStyleSelected;
 
-            comboBox_order_direction.SelectedIndex = (((int) plugin.CFGOrderDirection) + 1)/2;
+            comboBox_order_direction.SelectedIndex = (((int) plugin.CFGOrderDirection) + 1) / 2;
 
             button_order_add.Click += OnOrderStyleAdd;
             button_order_remove.Click += OnOrderStyleRemove;
@@ -59,7 +59,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void ValidateKeyCombo(object sender, CancelEventArgs e)
         {
-            if (EnumHelper.ParseEnums<KeyCode>(textBox_key.Text, '+').Count != 0) return;
+            if (EnumHelper.ParseEnums<KeyCode>(textBox_key.Text, '+').Count != 0)
+                return;
             e.Cancel = true;
             textBox_key.Text = originalKeyCombo;
             textBox_key.Select(0, originalKeyCombo.Length);
@@ -68,7 +69,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void MoveUpSelectedOrderStyle(object sender, EventArgs eventArgs)
         {
-            if (listBox_order_selected.SelectedIndex <= 0) return;
+            if (listBox_order_selected.SelectedIndex <= 0)
+                return;
             int selectedIndex = listBox_order_selected.SelectedIndex;
             MaidOrderStyleData orderStyle = (MaidOrderStyleData) listBox_order_selected.Items[selectedIndex];
             listBox_order_selected.Items.RemoveAt(selectedIndex);
@@ -79,7 +81,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void MoveDownSelectedOrderStyle(object sender, EventArgs eventArgs)
         {
             if (listBox_order_selected.SelectedIndex == -1
-                || listBox_order_selected.SelectedIndex >= listBox_order_selected.Items.Count - 1) return;
+                || listBox_order_selected.SelectedIndex >= listBox_order_selected.Items.Count - 1)
+                return;
             int selectedIndex = listBox_order_selected.SelectedIndex;
             MaidOrderStyleData orderStyle = (MaidOrderStyleData) listBox_order_selected.Items[selectedIndex];
             listBox_order_selected.Items.RemoveAt(selectedIndex);
@@ -89,19 +92,22 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnOrderStyleRemove(object sender, EventArgs eventArgs)
         {
-            if (listBox_order_selected.SelectedIndex == -1) return;
+            if (listBox_order_selected.SelectedIndex == -1)
+                return;
             MaidOrderStyleData orderStyle =
-                (MaidOrderStyleData) listBox_order_selected.Items[listBox_order_selected.SelectedIndex];
+            (MaidOrderStyleData) listBox_order_selected.Items[listBox_order_selected.SelectedIndex];
             listBox_order_selected.Items.RemoveAt(listBox_order_selected.SelectedIndex);
             listBox_order_available.Items.Add(orderStyle);
-            if (listBox_order_selected.Items.Count <= 1) button_order_remove.Enabled = false;
+            if (listBox_order_selected.Items.Count <= 1)
+                button_order_remove.Enabled = false;
         }
 
         private void OnOrderStyleAdd(object sender, EventArgs eventArgs)
         {
-            if (listBox_order_available.SelectedIndex == -1) return;
+            if (listBox_order_available.SelectedIndex == -1)
+                return;
             MaidOrderStyleData orderStyle =
-                (MaidOrderStyleData) listBox_order_available.Items[listBox_order_available.SelectedIndex];
+            (MaidOrderStyleData) listBox_order_available.Items[listBox_order_available.SelectedIndex];
             listBox_order_available.Items.RemoveAt(listBox_order_available.SelectedIndex);
             listBox_order_selected.Items.Add(orderStyle);
         }
@@ -145,7 +151,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             for (int i = 0; i < comboBox_order_direction.Items.Count; i++)
             {
                 comboBox_order_direction.Items[i] =
-                    Translation.GetTranslation((string) comboBox_order_direction.Items[i]);
+                Translation.GetTranslation((string) comboBox_order_direction.Items[i]);
             }
 
             Translation.GetTranslation(button_apply);
@@ -154,13 +160,14 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void OnApplyClicked(object sender, EventArgs e)
         {
-            if (!ValidateChildren()) return;
+            if (!ValidateChildren())
+                return;
 
             plugin.CFGStartGUIKey = EnumHelper.ParseEnums<KeyCode>(textBox_key.Text, '+');
             plugin.CFGUseJapaneseNameStyle = comboBox_name_style.SelectedIndex == 1;
             plugin.CFGOrderStyle =
-                listBox_order_selected.Items.Cast<MaidOrderStyleData>().Select(data => data.OrderStyle).ToList();
-            plugin.CFGOrderDirection = (MaidOrderDirection) (comboBox_order_direction.SelectedIndex*2 - 1);
+            listBox_order_selected.Items.Cast<MaidOrderStyleData>().Select(data => data.OrderStyle).ToList();
+            plugin.CFGOrderDirection = (MaidOrderDirection) (comboBox_order_direction.SelectedIndex * 2 - 1);
 
             Close();
         }

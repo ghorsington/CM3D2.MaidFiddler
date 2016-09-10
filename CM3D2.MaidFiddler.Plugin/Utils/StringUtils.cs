@@ -7,7 +7,8 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
     {
         public static T Parse<T>(this string val, T @default) where T : IConvertible
         {
-            if (val == string.Empty) return @default;
+            if (val == string.Empty)
+                return @default;
 
             T result;
             try

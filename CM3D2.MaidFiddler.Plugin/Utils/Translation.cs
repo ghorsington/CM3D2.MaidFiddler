@@ -13,7 +13,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         private static readonly Dictionary<string, List<Action<string>>> translatableControlsDictionary;
 
         public static readonly Regex TagPattern =
-            new Regex("#MAIDFIDDLER_TRANSLATION \"(?<lang>.*)\" \"(?<ver>.*)\" \"(?<auth>.*)\"");
+        new Regex("#MAIDFIDDLER_TRANSLATION \"(?<lang>.*)\" \"(?<ver>.*)\" \"(?<auth>.*)\"");
 
         static Translation()
         {
@@ -50,7 +50,8 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
         public static void GetTranslation(Control c)
         {
             string result;
-            if (translationDictionary.TryGetValue(c.Text, out result)) c.Text = result;
+            if (translationDictionary.TryGetValue(c.Text, out result))
+                c.Text = result;
         }
 
         public static string GetTranslation(string id)
@@ -61,7 +62,8 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
 
         public static void LoadTranslation(string filename)
         {
-            Debugger.Assert(() =>
+            Debugger.Assert(
+            () =>
             {
                 Debugger.WriteLine($"Loading translation: {filename}");
                 string filePath = Path.Combine(MaidFiddler.DATA_PATH, $@"{TRANSLATIONS_PATH}\{filename}.txt");
@@ -85,32 +87,40 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                             if (match.Success)
                             {
                                 version = match.Groups["ver"].Value;
-                                Debugger.WriteLine(LogLevel.Info,
-                                    $"Found translation tag! Language: '{match.Groups["lang"]}', Version: '{match.Groups["ver"]}', Author(s): '{match.Groups["auth"]}'");
+                                Debugger.WriteLine(
+                                LogLevel.Info,
+                                $"Found translation tag! Language: '{match.Groups["lang"]}', Version: '{match.Groups["ver"]}', Author(s): '{match.Groups["auth"]}'");
                             }
-                            else Debugger.WriteLine(LogLevel.Warning, "Did not find any translation tags!");
+                            else
+                                Debugger.WriteLine(LogLevel.Warning, "Did not find any translation tags!");
                         }
                         while ((line = reader.ReadLine()) != null)
                         {
                             line = line.Trim();
-                            if (line == string.Empty || line.StartsWith(";")) continue;
+                            if (line == string.Empty || line.StartsWith(";"))
+                                continue;
 
                             string[] parts = line.Split(new[] {'\t'}, StringSplitOptions.RemoveEmptyEntries);
-                            if (parts.Length != 2) continue;
+                            if (parts.Length != 2)
+                                continue;
 
                             string text = parts[1].Replace(@"\n", "\n").Replace(@"\r", "\r");
 
                             if (text.Trim() == string.Empty)
                             {
-                                Debugger.WriteLine(LogLevel.Warning, $"Translation for {parts[0]} is empty! Skipping...");
+                                Debugger.WriteLine(
+                                LogLevel.Warning,
+                                $"Translation for {parts[0]} is empty! Skipping...");
                                 continue;
                             }
 
-                            if (!newTranslationDictionary.ContainsKey(parts[0])) newTranslationDictionary.Add(parts[0], text);
+                            if (!newTranslationDictionary.ContainsKey(parts[0]))
+                                newTranslationDictionary.Add(parts[0], text);
                             else
                             {
-                                Debugger.WriteLine(LogLevel.Warning,
-                                    $"Translation for {parts[0]} already exists! Replacing with a newer version...");
+                                Debugger.WriteLine(
+                                LogLevel.Warning,
+                                $"Translation for {parts[0]} already exists! Replacing with a newer version...");
                                 newTranslationDictionary[parts[0]] = text;
                             }
                         }
@@ -122,22 +132,27 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                 CurrentTranslationFile = filename;
                 CurrentTranslationVersion = version;
                 ApplyTranslation();
-            }, "Failed to load texts");
+            },
+            "Failed to load texts");
         }
 
         public static void ApplyTranslation()
         {
             Debugger.WriteLine(LogLevel.Info, "Applying translation");
-            Debugger.Assert(() =>
+            Debugger.Assert(
+            () =>
             {
                 foreach (KeyValuePair<string, List<Action<string>>> translationItems in translatableControlsDictionary)
                 {
                     string translation;
-                    if (translationDictionary.TryGetValue(translationItems.Key, out translation)) translationItems.Value.ForEach(a => a.Invoke(translation));
-                    else translationItems.Value.ForEach(a => a.Invoke(translationItems.Key));
+                    if (translationDictionary.TryGetValue(translationItems.Key, out translation))
+                        translationItems.Value.ForEach(a => a.Invoke(translation));
+                    else
+                        translationItems.Value.ForEach(a => a.Invoke(translationItems.Key));
                 }
                 Resources.InitThumbnail();
-            }, "Failed to apply translation.");
+            },
+            "Failed to apply translation.");
         }
 
         public static bool Exists(string name)

@@ -27,7 +27,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void InitMaidStatsTab()
         {
-            Debugger.Assert(() =>
+            Debugger.Assert(
+            () =>
             {
                 MaidParameters = new Dictionary<MaidChangeType, DataGridViewRow>();
                 Translation.AddTranslatableControl(tabPage_stats);
@@ -60,7 +61,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 AddRow(MaidChangeType.Lovely, dataGridView_params, maidParamsTableDic);
                 AddRow(MaidChangeType.Frustration, dataGridView_params, maidParamsTableDic);
                 dataGridView_params.Height = dataGridView_params.ColumnHeadersHeight
-                                             + dataGridView_params.Rows[0].Height*dataGridView_params.RowCount;
+                                             + dataGridView_params.Rows[0].Height * dataGridView_params.RowCount;
 
                 // Maid bonus params
                 Translation.AddTranslatableControl(groupBox_maid_params_bonus);
@@ -84,7 +85,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 AddRow(MaidChangeType.BonusTeachRate, dataGridView_maid_params_bonus, maidBonusStatsTableDic, false);
                 dataGridView_maid_params_bonus.Height = dataGridView_maid_params_bonus.ColumnHeadersHeight
                                                         + dataGridView_maid_params_bonus.Rows[0].Height
-                                                        *dataGridView_maid_params_bonus.RowCount;
+                                                        * dataGridView_maid_params_bonus.RowCount;
 
                 // Maid ero zones
                 Translation.AddTranslatableControl(groupBox_ero_zones);
@@ -102,7 +103,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 AddRow(MaidChangeType.SexualNipple, dataGridView_ero_zones, maidEroTableDic);
                 AddRow(MaidChangeType.SexualThroat, dataGridView_ero_zones, maidEroTableDic);
                 dataGridView_ero_zones.Height = dataGridView_ero_zones.ColumnHeadersHeight
-                                                + dataGridView_ero_zones.Rows[0].Height*dataGridView_ero_zones.RowCount;
+                                                + dataGridView_ero_zones.Rows[0].Height
+                                                * dataGridView_ero_zones.RowCount;
 
 
                 // Maid stats
@@ -127,43 +129,60 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 AddRow(MaidChangeType.PopularRank, dataGridView_statistics, maidStatsTableDic);
                 dataGridView_statistics.Height = dataGridView_statistics.ColumnHeadersHeight
                                                  + dataGridView_statistics.Rows[0].Height
-                                                 *dataGridView_statistics.RowCount;
-            }, "Failed to load maid stats tab");
+                                                 * dataGridView_statistics.RowCount;
+            },
+            "Failed to load maid stats tab");
         }
 
         private void OnCellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (clearingTables) return;
-            if (e.ColumnIndex != PARAMS_COLUMN_LOCK) return;
+            if (clearingTables)
+                return;
+            if (e.ColumnIndex != PARAMS_COLUMN_LOCK)
+                return;
             DataGridView table = (DataGridView) sender;
 
             MaidInfo maid = SelectedMaid;
-            if (maid == null) return;
+            if (maid == null)
+                return;
 
             MaidChangeType? type = null;
-            if (table == dataGridView_params) type = maidParamsTableDic[e.RowIndex];
-            else if (table == dataGridView_ero_zones) type = maidEroTableDic[e.RowIndex];
-            else if (table == dataGridView_statistics) type = maidStatsTableDic[e.RowIndex];
-            if (type == null) return;
+            if (table == dataGridView_params)
+                type = maidParamsTableDic[e.RowIndex];
+            else if (table == dataGridView_ero_zones)
+                type = maidEroTableDic[e.RowIndex];
+            else if (table == dataGridView_statistics)
+                type = maidStatsTableDic[e.RowIndex];
+            if (type == null)
+                return;
 
             bool val = !((bool) table[e.ColumnIndex, e.RowIndex].Value);
-            if (val) maid.Lock(type.Value);
-            else maid.Unlock(type.Value);
+            if (val)
+                maid.Lock(type.Value);
+            else
+                maid.Unlock(type.Value);
         }
 
         private void OnCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (clearingTables || e.ColumnIndex == PARAMS_COLUMN_LOCK) return;
+            if (clearingTables || e.ColumnIndex == PARAMS_COLUMN_LOCK)
+                return;
             DataGridView table = (DataGridView) sender;
             MaidInfo maid = SelectedMaid;
-            if (SelectedMaid == null) return;
+            if (SelectedMaid == null)
+                return;
 
             MaidChangeType? type = null;
-            if (table == dataGridView_params) type = maidParamsTableDic[e.RowIndex];
-            else if (table == dataGridView_ero_zones) type = maidEroTableDic[e.RowIndex];
-            else if (table == dataGridView_maid_params_bonus) type = maidBonusStatsTableDic[e.RowIndex];
-            else if (table == dataGridView_statistics) type = maidStatsTableDic[e.RowIndex];
-            if (type == null) return;
+            if (table == dataGridView_params)
+                type = maidParamsTableDic[e.RowIndex];
+            else if (table == dataGridView_ero_zones)
+                type = maidEroTableDic[e.RowIndex];
+            else if (table == dataGridView_maid_params_bonus)
+                type = maidBonusStatsTableDic[e.RowIndex];
+            else if (table == dataGridView_statistics)
+                type = maidStatsTableDic[e.RowIndex];
+            if (type == null)
+                return;
 
             if (valueUpdate[type.Value])
             {
@@ -181,8 +200,9 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             if (maid.IsHardLocked(type.Value))
             {
-                Debugger.WriteLine(LogLevel.Info,
-                    $"Value {EnumHelper.GetName(type.Value)} is locked! Unlocking temporarily...");
+                Debugger.WriteLine(
+                LogLevel.Info,
+                $"Value {EnumHelper.GetName(type.Value)} is locked! Unlocking temporarily...");
                 maid.UnlockTemp(type.Value);
             }
 

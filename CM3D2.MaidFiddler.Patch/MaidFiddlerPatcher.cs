@@ -42,15 +42,17 @@ namespace CM3D2.MaidFiddler.Patch
             TypeDefinition wf = args.Assembly.MainModule.GetType("wf");
             TypeDefinition status = args.Assembly.MainModule.GetType("param.Status");
             TypeDefinition skillData =
-                args.Assembly.MainModule.GetType("Yotogi").NestedTypes.FirstOrDefault(t => t.Name == "SkillData");
+            args.Assembly.MainModule.GetType("Yotogi").NestedTypes.FirstOrDefault(t => t.Name == "SkillData");
             TypeDefinition freeModeItemEveryday = args.Assembly.MainModule.GetType("FreeModeItemEveryday");
             TypeDefinition freeModeItemVip = args.Assembly.MainModule.GetType("FreeModeItemVip");
 
             TypeDefinition hookType = FiddlerAssembly.MainModule.GetType("CM3D2.MaidFiddler.Hook.FiddlerHooks");
-            TypeDefinition maidHooks = FiddlerAssembly.MainModule.GetType("CM3D2.MaidFiddler.Hook.MaidStatusChangeHooks");
+            TypeDefinition maidHooks = FiddlerAssembly.MainModule.GetType(
+            "CM3D2.MaidFiddler.Hook.MaidStatusChangeHooks");
             TypeDefinition playerHooks =
-                FiddlerAssembly.MainModule.GetType("CM3D2.MaidFiddler.Hook.PlayerStatusChangeHooks");
-            TypeDefinition valueLimitHooks = FiddlerAssembly.MainModule.GetType("CM3D2.MaidFiddler.Hook.ValueLimitHooks");
+            FiddlerAssembly.MainModule.GetType("CM3D2.MaidFiddler.Hook.PlayerStatusChangeHooks");
+            TypeDefinition valueLimitHooks = FiddlerAssembly.MainModule.GetType(
+            "CM3D2.MaidFiddler.Hook.ValueLimitHooks");
 
             gameMainType.GetMethod("Deserialize")
                         .GetInjector(hookType, "OnSaveDeserialize", InjectFlags.PassParametersVal)
@@ -59,48 +61,68 @@ namespace CM3D2.MaidFiddler.Patch
             // Maid hooks
             MethodDefinition statusChangeHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnStatusChanged));
             MethodDefinition statusChangeCallbackHook =
-                maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnStatusChangedCallback));
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnStatusChangedCallback));
             MethodDefinition propertyGetHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnNewPropertyGet));
-            MethodDefinition statusChangeIDHook1 = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnStatusChangedID),
-                typeof (int), typeof (Maid).MakeByRefType(), typeof (int));
-            MethodDefinition statusChangeIDHook2 = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnStatusChangedID),
-                typeof (int), typeof (Maid).MakeByRefType(), typeof (int), typeof (int));
+            MethodDefinition statusChangeIDHook1 = maidHooks.GetMethod(
+            nameof(MaidStatusChangeHooks.OnStatusChangedID),
+            typeof (int),
+            typeof (Maid).MakeByRefType(),
+            typeof (int));
+            MethodDefinition statusChangeIDHook2 = maidHooks.GetMethod(
+            nameof(MaidStatusChangeHooks.OnStatusChangedID),
+            typeof (int),
+            typeof (Maid).MakeByRefType(),
+            typeof (int),
+            typeof (int));
             MethodDefinition propertyRemovedHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnPropertyRemoved));
             MethodDefinition statusUpdateHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnStatusUpdate));
             MethodDefinition maidYotogiUpdateHook =
-                maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnMaidClassAndYotogiUpdate));
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnMaidClassAndYotogiUpdate));
             MethodDefinition classUpdateHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnClassTypeUpdate));
-            MethodDefinition thumbnailChangedHook = maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnThumbnailChanged));
+            MethodDefinition thumbnailChangedHook = maidHooks.GetMethod(
+            nameof(MaidStatusChangeHooks.OnThumbnailChanged));
             MethodDefinition noonWorkEnableCheckHook =
-                maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnNoonWorkEnableCheck));
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnNoonWorkEnableCheck));
             MethodDefinition nightWorkEnableCheckHook =
-                maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnNightWorkEnableCheck));
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnNightWorkEnableCheck));
             MethodDefinition reloadNoonWorkDataHook =
-                maidHooks.GetMethod(nameof(MaidStatusChangeHooks.ReloadNoonWorkData));
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.ReloadNoonWorkData));
             MethodDefinition reloadNightWorkDataHook =
-                maidHooks.GetMethod(nameof(MaidStatusChangeHooks.ReloadNightWorkData));
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.ReloadNightWorkData));
             MethodDefinition featurePropensityUpdatedHook =
-                maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnFeaturePropensityUpdated));
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnFeaturePropensityUpdated));
             MethodDefinition nightWorkVisCheckHook =
-                maidHooks.GetMethod(nameof(MaidStatusChangeHooks.CheckNightWorkVisibility));
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.CheckNightWorkVisibility));
             MethodDefinition yotogiSkillVisCheckHook =
-                maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnYotogiSkillVisibilityCheck));
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnYotogiSkillVisibilityCheck));
             MethodDefinition postProcessFreeModeSceneHook =
-                maidHooks.GetMethod(nameof(MaidStatusChangeHooks.PostProcessFreeModeScene));
+            maidHooks.GetMethod(nameof(MaidStatusChangeHooks.PostProcessFreeModeScene));
 
-            MethodDefinition onValueRoundInt1 = valueLimitHooks.GetMethod(nameof(ValueLimitHooks.OnValueRound),
-                typeof (int).MakeByRefType(), typeof (int));
-            MethodDefinition onValueRoundLong1 = valueLimitHooks.GetMethod(nameof(ValueLimitHooks.OnValueRound),
-                typeof (long).MakeByRefType(), typeof (long));
-            MethodDefinition onValueRoundInt3 = valueLimitHooks.GetMethod(nameof(ValueLimitHooks.OnValueRound),
-                typeof (int).MakeByRefType(), typeof (int), typeof (int), typeof (int));
-            MethodDefinition onValueRoundLong3 = valueLimitHooks.GetMethod(nameof(ValueLimitHooks.OnValueRound),
-                typeof (long).MakeByRefType(), typeof (long), typeof (long), typeof (long));
+            MethodDefinition onValueRoundInt1 = valueLimitHooks.GetMethod(
+            nameof(ValueLimitHooks.OnValueRound),
+            typeof (int).MakeByRefType(),
+            typeof (int));
+            MethodDefinition onValueRoundLong1 = valueLimitHooks.GetMethod(
+            nameof(ValueLimitHooks.OnValueRound),
+            typeof (long).MakeByRefType(),
+            typeof (long));
+            MethodDefinition onValueRoundInt3 = valueLimitHooks.GetMethod(
+            nameof(ValueLimitHooks.OnValueRound),
+            typeof (int).MakeByRefType(),
+            typeof (int),
+            typeof (int),
+            typeof (int));
+            MethodDefinition onValueRoundLong3 = valueLimitHooks.GetMethod(
+            nameof(ValueLimitHooks.OnValueRound),
+            typeof (long).MakeByRefType(),
+            typeof (long),
+            typeof (long),
+            typeof (long));
 
 
             // Player hooks
             MethodDefinition playerStatChangeHook =
-                playerHooks.GetMethod(nameof(PlayerStatusChangeHooks.OnPlayerStatChanged));
+            playerHooks.GetMethod(nameof(PlayerStatusChangeHooks.OnPlayerStatChanged));
 
             const InjectFlags features1 = InjectFlags.PassTag | InjectFlags.PassFields | InjectFlags.ModifyReturn;
             const InjectFlags features2 = features1 | InjectFlags.PassParametersVal;
@@ -127,8 +149,12 @@ namespace CM3D2.MaidFiddler.Patch
             {
                 WritePreviousLine("SetSexual");
                 maidParam.GetMethod("SetSexual")
-                         .InjectWith(statusChangeHook, -1, (int) MaidChangeType.Sexual, features1,
-                             typeFields: new[] {maidParam.GetField("maid_")});
+                         .InjectWith(
+                         statusChangeHook,
+                         -1,
+                         (int) MaidChangeType.Sexual,
+                         features1,
+                         typeFields: new[] {maidParam.GetField("maid_")});
             }
 
 
@@ -141,8 +167,12 @@ namespace CM3D2.MaidFiddler.Patch
                     Console.WriteLine("Method not found (probably older version of the game). Skipping...");
                     continue;
                 }
-                setDefinition.InjectWith(statusChangeHook, 0, i, features1,
-                    typeFields: new[] {maidParam.GetField("maid_")});
+                setDefinition.InjectWith(
+                statusChangeHook,
+                0,
+                i,
+                features1,
+                typeFields: new[] {maidParam.GetField("maid_")});
             }
 
             for (int i = (int) MaidChangeType.MaidClassExp; i <= (int) MaidChangeType.YotogiClassExp; i++)
@@ -156,25 +186,40 @@ namespace CM3D2.MaidFiddler.Patch
             {
                 WritePreviousLine($"Add{typeNames[i]}");
                 maidParam.GetMethod($"Add{typeNames[i]}")
-                         .InjectWith(statusChangeIDHook1, 0, i, features2,
-                             typeFields: new[] {maidParam.GetField("maid_")});
+                         .InjectWith(
+                         statusChangeIDHook1,
+                         0,
+                         i,
+                         features2,
+                         typeFields: new[] {maidParam.GetField("maid_")});
             }
 
             WritePreviousLine("UpdateProfileComment");
             maidParam.GetMethod("UpdateProfileComment")
-                     .InjectWith(statusChangeHook, 0, (int) MaidChangeType.Profile, features1,
-                         typeFields: new[] {maidParam.GetField("maid_")});
+                     .InjectWith(
+                     statusChangeHook,
+                     0,
+                     (int) MaidChangeType.Profile,
+                     features1,
+                     typeFields: new[] {maidParam.GetField("maid_")});
 
             WritePreviousLine($"Add{typeNames[(int) MaidChangeType.SkillExp]}");
             maidParam.GetMethod($"Add{typeNames[(int) MaidChangeType.SkillExp]}")
-                     .InjectWith(statusChangeIDHook2, 0, (int) MaidChangeType.SkillExp,
-                         InjectFlags.PassFields | InjectFlags.PassTag | InjectFlags.PassParametersVal,
-                         typeFields: new[] {maidParam.GetField("maid_")});
+                     .InjectWith(
+                     statusChangeIDHook2,
+                     0,
+                     (int) MaidChangeType.SkillExp,
+                     InjectFlags.PassFields | InjectFlags.PassTag | InjectFlags.PassParametersVal,
+                     typeFields: new[] {maidParam.GetField("maid_")});
 
             WritePreviousLine($"Set{typeNames[(int) MaidChangeType.WorkLevel]}");
             maidParam.GetMethod($"Set{typeNames[(int) MaidChangeType.WorkLevel]}")
-                     .InjectWith(statusChangeIDHook2, 0, (int) MaidChangeType.WorkLevel, features2,
-                         typeFields: new[] {maidParam.GetField("maid_")});
+                     .InjectWith(
+                     statusChangeIDHook2,
+                     0,
+                     (int) MaidChangeType.WorkLevel,
+                     features2,
+                     typeFields: new[] {maidParam.GetField("maid_")});
 
             WritePreviousLine("SetPropensity");
             PatchFuncEnumBool(MaidChangeType.Propensity, maidParam.GetMethod("SetPropensity"), statusUpdateHook);
@@ -186,42 +231,64 @@ namespace CM3D2.MaidFiddler.Patch
             {
                 WritePreviousLine($"Set{typeNames[i]}");
                 maidParam.GetMethod($"Set{typeNames[i]}")
-                         .InjectWith(propertyGetHook, 0, i, features3 | InjectFlags.PassParametersVal,
-                             typeFields: new[] {maidParam.GetField("maid_")});
+                         .InjectWith(
+                         propertyGetHook,
+                         0,
+                         i,
+                         features3 | InjectFlags.PassParametersVal,
+                         typeFields: new[] {maidParam.GetField("maid_")});
             }
 
             for (int i = (int) MaidChangeType.Skill; i <= (int) MaidChangeType.Work; i++)
             {
                 WritePreviousLine($"Remove{typeNames[i]}");
                 maidParam.GetMethod($"Remove{typeNames[i]}")
-                         .InjectWith(propertyRemovedHook, 0, i, features3 | InjectFlags.PassParametersVal,
-                             typeFields: new[] {maidParam.GetField("maid_")});
+                         .InjectWith(
+                         propertyRemovedHook,
+                         0,
+                         i,
+                         features3 | InjectFlags.PassParametersVal,
+                         typeFields: new[] {maidParam.GetField("maid_")});
             }
 
             WritePreviousLine("UpdatetAcquisitionMaidClassType");
             maidParam.GetMethod("UpdatetAcquisitionMaidClassType")
-                     .InjectWith(classUpdateHook, 0, (int) MaidChangeType.MaidClassType, features3,
-                         typeFields: new[] {maidParam.GetField("maid_")});
+                     .InjectWith(
+                     classUpdateHook,
+                     0,
+                     (int) MaidChangeType.MaidClassType,
+                     features3,
+                     typeFields: new[] {maidParam.GetField("maid_")});
 
             WritePreviousLine("UpdatetAcquisitionYotogiClassType");
             maidParam.GetMethod("UpdatetAcquisitionYotogiClassType")
-                     .InjectWith(classUpdateHook, 0, (int) MaidChangeType.YotogiClassType, features3,
-                         typeFields: new[] {maidParam.GetField("maid_")});
+                     .InjectWith(
+                     classUpdateHook,
+                     0,
+                     (int) MaidChangeType.YotogiClassType,
+                     features3,
+                     typeFields: new[] {maidParam.GetField("maid_")});
 
             WritePreviousLine("UpdateMaidClassAndYotogiClassStatus");
             maidParam.GetMethod("UpdateMaidClassAndYotogiClassStatus")
-                     .InjectWith(maidYotogiUpdateHook, 0, 0, InjectFlags.PassFields,
-                         typeFields: new[] {maidParam.GetField("maid_")});
+                     .InjectWith(
+                     maidYotogiUpdateHook,
+                     0,
+                     0,
+                     InjectFlags.PassFields,
+                     typeFields: new[] {maidParam.GetField("maid_")});
 
             WritePreviousLine("AddMaidClassExp");
-            PatchFuncEnum(MaidChangeType.MaidClassType,
-                maidParam.GetMethods("AddMaidClassExp").FirstOrDefault(m => m.Parameters.Count == 2),
-                statusChangeIDHook1);
+            PatchFuncEnum(
+            MaidChangeType.MaidClassType,
+            maidParam.GetMethods("AddMaidClassExp").FirstOrDefault(m => m.Parameters.Count == 2),
+            statusChangeIDHook1);
 
             WritePreviousLine("AddYotogiClassExp");
-            PatchFuncEnum(MaidChangeType.YotogiClassType,
-                maidParam.GetMethods("AddYotogiClassExp").FirstOrDefault(m => m.Parameters.Count == 2),
-                statusChangeIDHook1);
+            PatchFuncEnum(
+            MaidChangeType.YotogiClassType,
+            maidParam.GetMethods("AddYotogiClassExp").FirstOrDefault(m => m.Parameters.Count == 2),
+            statusChangeIDHook1);
 
             WritePreviousLine("ThumShot");
             maidType.GetMethod("ThumShot").InjectWith(thumbnailChangedHook, -1, 0, InjectFlags.PassInvokingInstance);
@@ -234,46 +301,71 @@ namespace CM3D2.MaidFiddler.Patch
             }
             WritePreviousLine("EnableNoonWork");
             scheduleAPI.GetMethod("EnableNoonWork")
-                       .InjectWith(noonWorkEnableCheckHook, 0, 0,
-                           InjectFlags.ModifyReturn | InjectFlags.PassParametersVal);
+                       .InjectWith(
+                       noonWorkEnableCheckHook,
+                       0,
+                       0,
+                       InjectFlags.ModifyReturn | InjectFlags.PassParametersVal);
 
             WritePreviousLine("EnableNightWork");
             scheduleAPI.GetMethod("EnableNightWork")
-                       .InjectWith(nightWorkEnableCheckHook, 0, 0,
-                           InjectFlags.ModifyReturn | InjectFlags.PassParametersVal);
+                       .InjectWith(
+                       nightWorkEnableCheckHook,
+                       0,
+                       0,
+                       InjectFlags.ModifyReturn | InjectFlags.PassParametersVal);
 
             WritePreviousLine("DaytimeTaskCtrl.LoadData");
             daytimeTaskCtrl.GetMethod("LoadData")
-                           .InjectWith(reloadNoonWorkDataHook, 5,
-                               flags: InjectFlags.PassFields | InjectFlags.PassParametersVal,
-                               typeFields: new[] {daytimeTaskCtrl.GetField("m_scheduleApi")});
+                           .InjectWith(
+                           reloadNoonWorkDataHook,
+                           5,
+                           flags: InjectFlags.PassFields | InjectFlags.PassParametersVal,
+                           typeFields: new[] {daytimeTaskCtrl.GetField("m_scheduleApi")});
 
             WritePreviousLine("NightTaskCtrl.LoadData");
             nightTaskCtrl.GetMethod("LoadData")
-                         .InjectWith(reloadNightWorkDataHook, 5,
-                             flags: InjectFlags.PassFields | InjectFlags.PassParametersVal,
-                             typeFields: new[] {nightTaskCtrl.GetField("m_scheduleApi")});
+                         .InjectWith(
+                         reloadNightWorkDataHook,
+                         5,
+                         flags: InjectFlags.PassFields | InjectFlags.PassParametersVal,
+                         typeFields: new[] {nightTaskCtrl.GetField("m_scheduleApi")});
 
             WritePreviousLine("VisibleNightWork");
             scheduleAPI.GetMethod("VisibleNightWork")
-                       .InjectWith(nightWorkVisCheckHook, 0, 0, InjectFlags.ModifyReturn | InjectFlags.PassParametersVal);
+                       .InjectWith(
+                       nightWorkVisCheckHook,
+                       0,
+                       0,
+                       InjectFlags.ModifyReturn | InjectFlags.PassParametersVal);
 
 
             WritePreviousLine("UpdateFeatureAndPropensity");
             maidParam.GetMethod("UpdateFeatureAndPropensity")
-                     .InjectWith(featurePropensityUpdatedHook, -1, 0,
-                         InjectFlags.PassFields | InjectFlags.PassParametersVal,
-                         typeFields: new[] {maidParam.GetField("maid_")});
+                     .InjectWith(
+                     featurePropensityUpdatedHook,
+                     -1,
+                     0,
+                     InjectFlags.PassFields | InjectFlags.PassParametersVal,
+                     typeFields: new[] {maidParam.GetField("maid_")});
 
             WritePreviousLine("SetFeature(HashSet)");
             maidParam.GetMethod("SetFeature", typeof (HashSet<>).MakeGenericType(typeof (Feature)))
-                     .InjectWith(statusChangeCallbackHook, -1, (int) MaidChangeType.FeatureHash,
-                         InjectFlags.PassTag | InjectFlags.PassFields, typeFields: new[] {maidParam.GetField("maid_")});
+                     .InjectWith(
+                     statusChangeCallbackHook,
+                     -1,
+                     (int) MaidChangeType.FeatureHash,
+                     InjectFlags.PassTag | InjectFlags.PassFields,
+                     typeFields: new[] {maidParam.GetField("maid_")});
 
             WritePreviousLine("SetPropensity(HashSet)");
             maidParam.GetMethod("SetPropensity", typeof (HashSet<>).MakeGenericType(typeof (Propensity)))
-                     .InjectWith(statusChangeCallbackHook, -1, (int) MaidChangeType.PropensityHash,
-                         InjectFlags.PassTag | InjectFlags.PassFields, typeFields: new[] {maidParam.GetField("maid_")});
+                     .InjectWith(
+                     statusChangeCallbackHook,
+                     -1,
+                     (int) MaidChangeType.PropensityHash,
+                     InjectFlags.PassTag | InjectFlags.PassFields,
+                     typeFields: new[] {maidParam.GetField("maid_")});
 
             for (PlayerChangeType e = PlayerChangeType.Days; e <= PlayerChangeType.ShopUseMoney; e++)
             {
@@ -296,15 +388,18 @@ namespace CM3D2.MaidFiddler.Patch
 
             WritePreviousLine("UpdateCommand");
             yotogiPlayMgr.GetMethod("UpdateCommand")
-                         .InjectWith(maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnUpdateCommand)), -1, 0,
-                             InjectFlags.PassFields,
-                             typeFields:
-                                 new[]
-                                 {
-                                     yotogiPlayMgr.GetField("player_state_"),
-                                     yotogiPlayMgr.GetField("valid_command_dic_"),
-                                     yotogiPlayMgr.GetField("command_factory_")
-                                 });
+                         .InjectWith(
+                         maidHooks.GetMethod(nameof(MaidStatusChangeHooks.OnUpdateCommand)),
+                         -1,
+                         0,
+                         InjectFlags.PassFields,
+                         typeFields:
+                         new[]
+                         {
+                             yotogiPlayMgr.GetField("player_state_"),
+                             yotogiPlayMgr.GetField("valid_command_dic_"),
+                             yotogiPlayMgr.GetField("command_factory_")
+                         });
 
             WritePreviousLine("IsExecMaid");
             skillData.GetMethod("IsExecMaid")
@@ -346,16 +441,24 @@ namespace CM3D2.MaidFiddler.Patch
             {
                 WritePreviousLine("FreeModeItemEveryday.ctor");
                 freeModeItemEveryday.GetMethod(".ctor")
-                                    .InjectWith(postProcessFreeModeSceneHook, -1, 0, InjectFlags.PassFields,
-                                        typeFields: new[] {freeModeItemEveryday.GetField("is_enabled_")});
+                                    .InjectWith(
+                                    postProcessFreeModeSceneHook,
+                                    -1,
+                                    0,
+                                    InjectFlags.PassFields,
+                                    typeFields: new[] {freeModeItemEveryday.GetField("is_enabled_")});
             }
 
             if (freeModeItemVip != null)
             {
                 WritePreviousLine("FreeModeItemVip.ctor");
                 freeModeItemVip.GetMethod(".ctor")
-                               .InjectWith(postProcessFreeModeSceneHook, -1, 0, InjectFlags.PassFields,
-                                   typeFields: new[] {freeModeItemVip.GetField("is_enabled_")});
+                               .InjectWith(
+                               postProcessFreeModeSceneHook,
+                               -1,
+                               0,
+                               InjectFlags.PassFields,
+                               typeFields: new[] {freeModeItemVip.GetField("is_enabled_")});
             }
 
             Console.WriteLine("Done. Patching class members:\n");
@@ -415,16 +518,16 @@ namespace CM3D2.MaidFiddler.Patch
         private void SetCustomPatchedAttribute(AssemblyDefinition ass)
         {
             CustomAttribute attr =
-                new CustomAttribute(
-                    ass.MainModule.Import(typeof (MaidFiddlerPatchedAttribute).GetConstructor(new[] {typeof (uint)})));
-            attr.ConstructorArguments.Add(new CustomAttributeArgument(ass.MainModule.Import(typeof (uint)),
-                uint.Parse(Version.Replace(".", ""))));
+            new CustomAttribute(
+            ass.MainModule.Import(typeof (MaidFiddlerPatchedAttribute).GetConstructor(new[] {typeof (uint)})));
+            attr.ConstructorArguments.Add(
+            new CustomAttributeArgument(ass.MainModule.Import(typeof (uint)), uint.Parse(Version.Replace(".", ""))));
 
             CustomAttribute attr2 =
-                new CustomAttribute(
-                    ass.MainModule.Import(typeof (MaidFiddlerPatcherAttribute).GetConstructor(new[] {typeof (uint)})));
-            attr2.ConstructorArguments.Add(new CustomAttributeArgument(ass.MainModule.Import(typeof (uint)),
-                (uint) PatcherType.ReiPatcher));
+            new CustomAttribute(
+            ass.MainModule.Import(typeof (MaidFiddlerPatcherAttribute).GetConstructor(new[] {typeof (uint)})));
+            attr2.ConstructorArguments.Add(
+            new CustomAttributeArgument(ass.MainModule.Import(typeof (uint)), (uint) PatcherType.ReiPatcher));
 
             ass.MainModule.GetType("Maid").CustomAttributes.Add(attr);
             ass.MainModule.GetType("Maid").CustomAttributes.Add(attr2);

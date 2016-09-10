@@ -21,13 +21,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             labelProductName.Text += $"\n{MaidFiddler.PROJECT_PAGE}";
 
             PluginData.Type[] plugins =
-                EnumHelper.GetValues<PluginData.Type>().TakeWhile(GameUty.CheckPackFlag).ToArray();
+            EnumHelper.GetValues<PluginData.Type>().TakeWhile(GameUty.CheckPackFlag).ToArray();
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < plugins.Length; i++)
             {
                 sb.Append(EnumHelper.GetName(plugins[i]));
-                if (i < plugins.Length - 1) sb.Append(", ");
-                if ((i + 1)%3 == 0) sb.Append("\n");
+                if (i < plugins.Length - 1)
+                    sb.Append(", ");
+                if ((i + 1) % 3 == 0)
+                    sb.Append("\n");
             }
             Debugger.WriteLine($"Installed plugins: {sb}");
             textBox_plugins.Text = sb.ToString();

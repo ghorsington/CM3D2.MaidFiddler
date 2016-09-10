@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.34" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.35" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -11,7 +11,7 @@
 ; If the translation is missing, <GUI Label> is used as the translation of itself (useful if one wants to leave Japanese labels untranslated).
 
 ; Feel free to edit the title of the tool!
-TITLE_TEXT						- Now with one-click marriages!
+TITLE_TEXT						- Fiddling your maids since 2015!
 
 ; Generic maid thumbnail
 THUMB_TEXT_SIZE					11.0
@@ -165,6 +165,8 @@ Yotogi_School					School
 Yotogi_NTR						NTR
 Yotogi_Marriage					Marriage
 Yotogi_Lily						Lily
+Yotogi_Carnival					Carnival
+Yotogi_Cherish					Cherish
 
 ; Params			
 Care							Care
@@ -689,10 +691,14 @@ ERROR_LOG_MESSAGE_TITLE			Oh noes! An error!
 ERROR_LOG_MESSAGE				Oh no! An error has occurred in Maid Fiddler!
 ERROR_LOG_CREATED				A log named {0} was created.\nPlease, send this log to the developer with the description of what you attempted to do.
 ERROR_LOG_NOT_CREATED			Failed to create a dump message. Send a screenshot of the following stack trace to the developer:\n==START==\n{0}\n==END==
+ERROR_OLD_GAME_VERSION_TITLE	Unsupported game version
+ERROR_OLD_GAME_VERSION			Maid Fiddler {0} detects that you are running an unsupported version of CM3D2.\nYou are running CM3D2 version {1}.\nMaid Fiddler requires CM3D2 version {2} or higher to function.\nThe game may be unstable, until it is updated.
 
 ; Warnings
 WRN_OLD_VERSION_TITLE			Old version of CM3D2
 WRN_OLD_VERSION					Maid Fiddler {0} detected that you are running an older version of CM3D2. Your version of CM3D2 is {1}, but Maid Fiddler supports versions {2} and higher.\nMaid Fiddler can be used, but some features may be disabled\n\nUpdate your game in order to use all of Maid Fiddler's features.
+FEATURE_UNSUPPORTED_TITLE		This feature is unsupported
+FEATURE_UNSUPPORTED				This feature is unsupported in this version of CM3D2.\nUpdate your game to use this feature.
 
 OK								OK
 CANCEL							Cancel
