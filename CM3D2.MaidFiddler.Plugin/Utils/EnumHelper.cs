@@ -49,7 +49,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             MaxPropensity = Propensities[Propensities.Length - 1];
             MaxFeature = Features[Features.Length - 1];
 
-            FieldInfo yotogiClassEnabledDicField = typeof (MaidParam).GetField("yotogi_class_enabled_",
+            FieldInfo yotogiClassEnabledDicField = typeof (MaidParam).GetField("yotogi_class_id_map_",
                 BindingFlags.NonPublic | BindingFlags.Static);
             MaxYotogiClass =
                 (int)
