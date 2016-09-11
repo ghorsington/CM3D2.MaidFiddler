@@ -55,6 +55,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                 ms.Write(thumbnail, 0, thumbnail.Length);
                 OriginalThumbnail = Image.FromStream(ms);
             }
+            Debugger.WriteLine("Loading CM3D2 application icon");
         }
 
         public static Image DefaultThumbnail { get; private set; }

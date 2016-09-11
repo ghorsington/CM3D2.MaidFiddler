@@ -5,6 +5,7 @@
 * Assembly-CSharp.dll (found in `<CM3D2 Root Directory>\CM3D2(x86/x64)_Data\Managed`)
 * Assembly-CSharp-firstpass.dll (found in `<CM3D2 Root Directory>\CM3D2(x86/x64)_Data\Managed`)
 * UnityEngine.dll (found in `<CM3D2 Root Directory>\CM3D2(x86/x64)_Data\Managed`)
+* JsonFx.Json.dll (found in `<CM3D2 Root Directory>\CM3D2(x86/x64)_Data\Managed`)
 * ExIni.dll (found in ReiPatcher's installation directory)
 * UnityInjector.dll (found in `<CM3D2 Root Directory>\CM3D2(x86/x64)_Data\Managed`)
 * Mono.Cecil.dll (found in ReiPatcher's installation directory)

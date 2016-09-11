@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading;
+using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Gui;
 using CM3D2.MaidFiddler.Plugin.Utils;
@@ -19,9 +21,15 @@ namespace CM3D2.MaidFiddler.Plugin
     public class MaidFiddler : PluginBase
     {
         public const string CONTRIBUTORS = "denikson";
-        public const string VERSION = "BETA 0.10c";
+        public const string VERSION = "BETA 0.11";
+        public const string VERSION_TAG = "Beta-0.11";
         public const string PROJECT_PAGE = "https://github.com/denikson/CM3D2.MaidFiddler";
         public const string RESOURCE_URL = "https://raw.githubusercontent.com/denikson/CM3D2.MaidFiddler/master";
+
+        public const string RELEASES_LATEST_REQUEST_URL =
+        "https://api.github.com/repos/denikson/CM3D2.MaidFiddler/releases/latest";
+
+        public const string RELEASES_URL = "https://www.github.com/denikson/CM3D2.MaidFiddler/releases";
         public const int SUPPORTED_MIN_CM3D2_VERSION = 109;
         public const uint SUPPORTED_PATCH_MAX = 1300;
         public const uint SUPPORTED_PATCH_MIN = 1300;
@@ -32,6 +40,7 @@ namespace CM3D2.MaidFiddler.Plugin
         private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.A};
         private readonly List<MaidOrderStyle> DEFAULT_ORDER_STYLES = new List<MaidOrderStyle> {MaidOrderStyle.GUID};
         public MaidFiddlerGUI.MaidCompareMethod[] COMPARE_METHODS;
+        private bool isUpdatePromptShowed;
         private KeyHelper keyCreateGUI;
 
         public bool CFGOpenOnStartup
@@ -244,6 +253,9 @@ namespace CM3D2.MaidFiddler.Plugin
             GuiThread.Start();
 
             Debugger.WriteLine($"MaidFiddler {VERSION} loaded!");
+
+            Thread updateCheckThread = new Thread(FiddlerUtils.RunUpdateChecker);
+            updateCheckThread.Start();
         }
 
         public void LateUpdate()
@@ -324,11 +336,74 @@ namespace CM3D2.MaidFiddler.Plugin
 
         public void Update()
         {
+            if (!isUpdatePromptShowed && FiddlerUtils.UpdatesChecked)
+            {
+                isUpdatePromptShowed = true;
+                if (FiddlerUtils.UpdateInfo.IsAvailable)
+                    ShowUpdatePrompt();
+            }
+
             keyCreateGUI.Update();
 
             if (keyCreateGUI.HasBeenPressed())
                 OpenGUI();
             Gui?.DoIfVisible(Gui.UpdateMaids);
+        }
+
+        private void ShowUpdatePrompt()
+        {
+            Debugger.WriteLine(LogLevel.Info, "Latest version is newer than the current one! Showing update prompt!");
+            ManualResetEvent mre = new ManualResetEvent(false);
+            // ReSharper disable once UseObjectOrCollectionInitializer
+            NotifyIcon notification = new NotifyIcon
+            {
+                Icon = SystemIcons.Application,
+                BalloonTipIcon = ToolTipIcon.Info,
+                BalloonTipTitle =
+                    Translation.IsTranslated("INFO_UPDATE_AVAILABLE_BUBBLE_TITLE")
+                    ? string.Format(
+                    Translation.GetTranslation("INFO_UPDATE_AVAILABLE_BUBBLE_TITLE"),
+                    FiddlerUtils.UpdateInfo.Version)
+                    : $"Maid Fiddler version {FiddlerUtils.UpdateInfo.Version} is available!",
+                BalloonTipText =
+                    Translation.IsTranslated("INFO_UPDATE_AVAILABLE_BUBBLE")
+                    ? Translation.GetTranslation("INFO_UPDATE_AVAILABLE_BUBBLE")
+                    : "Download the new version from Maid Fiddler GitHub page!"
+            };
+            notification.BalloonTipClosed += (sender, args) =>
+            {
+                Debugger.WriteLine(LogLevel.Info, "Closing the notification!");
+                mre.Set();
+            };
+            notification.BalloonTipClicked += (sender, args) =>
+            {
+                Debugger.WriteLine(LogLevel.Info, "Showing update information!");
+                mre.Set();
+                string title = Translation.IsTranslated("INFO_UPDATE_AVAILABLE_TITLE")
+                               ? string.Format(
+                               Translation.GetTranslation("INFO_UPDATE_AVAILABLE_TITLE"),
+                               FiddlerUtils.UpdateInfo.Version)
+                               : $"Version {FiddlerUtils.UpdateInfo.Version} is available!";
+                string text = Translation.IsTranslated("INFO_UPDATE_AVAILABLE")
+                              ? string.Format(
+                              Translation.GetTranslation("INFO_UPDATE_AVAILABLE"),
+                              FiddlerUtils.UpdateInfo.Version,
+                              FiddlerUtils.UpdateInfo.Changelog,
+                              RELEASES_URL)
+                              : $"Maid Fiddler version {FiddlerUtils.UpdateInfo.Version} is available to download!\nUpdate log:\n{FiddlerUtils.UpdateInfo.Changelog}\n\nHead to {RELEASES_URL} to download the latest version.";
+                MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            };
+            notification.Visible = true;
+            notification.ShowBalloonTip(5000);
+            Thread showThread = new Thread(
+            () =>
+            {
+                mre.WaitOne(6000);
+                Debugger.WriteLine(LogLevel.Info, "Closing notification icon...");
+                notification.Visible = false;
+                notification.Dispose();
+            });
+            showThread.Start();
         }
 
         public int MaidCompareEmployedDay(Maid x, Maid y)

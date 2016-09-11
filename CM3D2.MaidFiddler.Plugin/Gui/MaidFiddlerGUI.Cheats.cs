@@ -24,8 +24,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (FiddlerUtils.GameVersion < 119)
             {
                 string title = Translation.IsTranslated("FEATURE_UNSUPPORTED_TITLE")
-                               ? Translation.GetTranslation("FEATURE_UNSUPPORTED_TITLE")
-                               : "This feature is unsupported";
+                               ? Translation.GetTranslation("FEATURE_UNSUPPORTED_TITLE") : "This feature is unsupported";
                 string text = Translation.IsTranslated("FEATURE_UNSUPPORTED")
                               ? Translation.GetTranslation("FEATURE_UNSUPPORTED")
                               : "This feature is unsupported in this version of CM3D2.\nUpdate your game to use this feature.";
