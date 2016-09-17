@@ -1,8 +1,7 @@
 @echo off
-
 echo Locating MSBuild
 
-set msbuildpath=%ProgramFiles%\MSBuild\14.0\Bin
+set "msbuildpath=%ProgramFiles%\MSBuild\14.0\Bin"
 set libspath=%cd%\Libs
 set buildconf=Release
 set buildplat=AnyCPU
@@ -23,8 +22,8 @@ if -%2-==-- (
 	echo No custom platform specified. Using AnyCPU
 )
 
-if not exist %msbuildpath%\msbuild.exe (
-	set msbuildpath=%ProgramFiles(x86)%\MSBuild\14.0\Bin
+if not exist "%msbuildpath%\msbuild.exe" (
+	set "msbuildpath=%ProgramFiles(x86)%\MSBuild\14.0\Bin"
 )
 
 if not exist "%msbuildpath%\msbuild.exe" (
@@ -33,14 +32,18 @@ if not exist "%msbuildpath%\msbuild.exe" (
 )
 
 echo PHASE 0: Cleaning up
-rmdir /Q /S %cd%\CM3D2.MaidFiddler.Hook\bin\%buildconf%
-rmdir /Q /S %cd%\CM3D2.MaidFiddler.Patch\bin\%buildconf%
-rmdir /Q /S %cd%\CM3D2.MaidFiddler.Plugin\bin\%buildconf%
-rmdir /Q /S %cd%\CM3D2.MaidFiddler.Sybaris.Patch\bin\%buildconf%
+rmdir /Q /S "%cd%\CM3D2.MaidFiddler.Hook\bin\%buildconf%" >NUL
+rmdir /Q /S "%cd%\CM3D2.MaidFiddler.Patch\bin\%buildconf%" >NUL
+rmdir /Q /S "%cd%\CM3D2.MaidFiddler.Plugin\bin\%buildconf%" >NUL
+rmdir /Q /S "%cd%\CM3D2.MaidFiddler.Sybaris.Patch\bin\%buildconf%" >NUL
+rmdir /Q /S "%cd%\CM3D2.MaidFiddler.Hook\obj">NUL
+rmdir /Q /S "%cd%\CM3D2.MaidFiddler.Patch\obj" >NUL
+rmdir /Q /S "%cd%\CM3D2.MaidFiddler.Plugin\obj" >NUL
+rmdir /Q /S "%cd%\CM3D2.MaidFiddler.Sybaris.Patch\obj" >NUL
 
 echo PHASE 1: Building Hook and Patch
 
-"%msbuildpath%\msbuild.exe" %cd%\CM3D2.MaidFiddler.Patch\CM3D2.MaidFiddler.Patch.csproj /p:Configuration=%buildconf%,Platform=%buildplat%
+"%msbuildpath%\msbuild.exe" "%cd%\CM3D2.MaidFiddler.Patch\CM3D2.MaidFiddler.Patch.csproj" /p:Configuration=%buildconf%,Platform=%buildplat%
 
 if not %ERRORLEVEL%==0 (
 	echo Failed to compile Hook and Patch! Make sure you have all the needed assemblies in the "Libs" folder!
@@ -49,7 +52,7 @@ if not %ERRORLEVEL%==0 (
 )
 
 echo Building Sybaris Patcher
-"%msbuildpath%\msbuild.exe" %cd%\CM3D2.MaidFiddler.Sybaris.Patch\CM3D2.MaidFiddler.Sybaris.Patcher.csproj /p:Configuration=%buildconf%,Platform=%buildplat%
+"%msbuildpath%\msbuild.exe" "%cd%\CM3D2.MaidFiddler.Sybaris.Patch\CM3D2.MaidFiddler.Sybaris.Patcher.csproj" /p:Configuration=%buildconf%,Platform=%buildplat%
 
 if not %ERRORLEVEL%==0 (
 	echo Failed to compile Hook and Patch! Make sure you have all the needed assemblies in the "Libs" folder!
@@ -58,9 +61,9 @@ if not %ERRORLEVEL%==0 (
 )
 
 mkdir Build
-move /Y %cd%\CM3D2.MaidFiddler.Patch\bin\%buildconf%\CM3D2.MaidFiddler.Hook.dll %cd%\Build\CM3D2.MaidFiddler.Hook.dll
-move /Y %cd%\CM3D2.MaidFiddler.Patch\bin\%buildconf%\CM3D2.MaidFiddler.Patch.dll %cd%\Build\CM3D2.MaidFiddler.Patch.dll
-move /Y %cd%\CM3D2.MaidFiddler.Sybaris.Patch\bin\%buildconf%\CM3D2.MaidFiddler.Sybaris.Patcher.dll %cd%\Build\CM3D2.MaidFiddler.Sybaris.Patcher.dll
+move /Y "%cd%\CM3D2.MaidFiddler.Patch\bin\%buildconf%\CM3D2.MaidFiddler.Hook.dll" "%cd%\Build\CM3D2.MaidFiddler.Hook.dll"
+move /Y "%cd%\CM3D2.MaidFiddler.Patch\bin\%buildconf%\CM3D2.MaidFiddler.Patch.dll" "%cd%\Build\CM3D2.MaidFiddler.Patch.dll"
+move /Y "%cd%\CM3D2.MaidFiddler.Sybaris.Patch\bin\%buildconf%\CM3D2.MaidFiddler.Sybaris.Patcher.dll" "%cd%\Build\CM3D2.MaidFiddler.Sybaris.Patcher.dll"
 
 echo -----------------
 echo PHASE 1 Complete!
@@ -70,7 +73,7 @@ pause
 
 echo PHASE 2: Building Plugin
 
-"%msbuildpath%\msbuild.exe" %cd%\CM3D2.MaidFiddler.Plugin\CM3D2.MaidFiddler.Plugin.csproj /p:Configuration=%buildconf%,Platform=%buildplat%
+"%msbuildpath%\msbuild.exe" "%cd%\CM3D2.MaidFiddler.Plugin\CM3D2.MaidFiddler.Plugin.csproj" /p:Configuration=%buildconf%,Platform=%buildplat%
 
 if not %ERRORLEVEL%==0 (
 	echo Failed to compile Plugin! Make sure you have patched Assembly-CSharp and copied it into "Libs" folder!
@@ -78,7 +81,7 @@ if not %ERRORLEVEL%==0 (
 	exit /b 1
 )
 
-move /Y %cd%\CM3D2.MaidFiddler.Plugin\bin\%buildconf%\CM3D2.MaidFiddler.Plugin.dll %cd%\Build\CM3D2.MaidFiddler.Plugin.dll
+move /Y "%cd%\CM3D2.MaidFiddler.Plugin\bin\%buildconf%\CM3D2.MaidFiddler.Plugin.dll" "%cd%\Build\CM3D2.MaidFiddler.Plugin.dll"
 
 echo All done!
 
@@ -88,11 +91,11 @@ mkdir Distribution\ReiPatcher\Patches 2>NUL
 mkdir Distribution\ReiPatcher\UnityInjector 2>NUL
 mkdir Distribution\ReiPatcher\UnityInjector\Config\MaidFiddler\Translations 2>NUL
 
-copy /Y %cd%\Build\CM3D2.MaidFiddler.Hook.dll %cd%\Distribution\ReiPatcher\Managed\CM3D2.MaidFiddler.Hook.dll >NUL
-copy /Y %cd%\Build\CM3D2.MaidFiddler.Patch.dll %cd%\Distribution\ReiPatcher\Patches\CM3D2.MaidFiddler.Patch.dll >NUL
-copy /Y %cd%\Build\CM3D2.MaidFiddler.Plugin.dll %cd%\Distribution\ReiPatcher\UnityInjector\CM3D2.MaidFiddler.Plugin.dll >NUL
+copy /Y "%cd%\Build\CM3D2.MaidFiddler.Hook.dll" "%cd%\Distribution\ReiPatcher\Managed\CM3D2.MaidFiddler.Hook.dll" >NUL
+copy /Y "%cd%\Build\CM3D2.MaidFiddler.Patch.dll" "%cd%\Distribution\ReiPatcher\Patches\CM3D2.MaidFiddler.Patch.dll" >NUL
+copy /Y "%cd%\Build\CM3D2.MaidFiddler.Plugin.dll" "%cd%\Distribution\ReiPatcher\UnityInjector\CM3D2.MaidFiddler.Plugin.dll" >NUL
 
-copy /Y %cd%\Resources\Translations\ENG.txt %cd%\Distribution\ReiPatcher\UnityInjector\Config\MaidFiddler\Translations\ENG.txt >NUL
+copy /Y "%cd%\Resources\Translations\ENG.txt" "%cd%\Distribution\ReiPatcher\UnityInjector\Config\MaidFiddler\Translations\ENG.txt" >NUL
 
 echo Creating Sybaris distribution
 mkdir Distribution\Sybaris\Managed 2>NUL
@@ -100,11 +103,11 @@ mkdir Distribution\Sybaris\Loader 2>NUL
 mkdir Distribution\Sybaris\UnityInjector 2>NUL
 mkdir Distribution\Sybaris\UnityInjector\Config\MaidFiddler\Translations 2>NUL
 
-copy /Y %cd%\Build\CM3D2.MaidFiddler.Hook.dll %cd%\Distribution\Sybaris\Managed\CM3D2.MaidFiddler.Hook.dll >NUL
-copy /Y %cd%\Build\CM3D2.MaidFiddler.Sybaris.Patcher.dll %cd%\Distribution\Sybaris\Loader\CM3D2.MaidFiddler.Sybaris.Patcher.dll >NUL
-copy /Y %cd%\Build\CM3D2.MaidFiddler.Plugin.dll %cd%\Distribution\Sybaris\UnityInjector\CM3D2.MaidFiddler.Plugin.dll >NUL
-
-copy /Y %cd%\Resources\Translations\ENG.txt %cd%\Distribution\Sybaris\UnityInjector\Config\MaidFiddler\Translations\ENG.txt >NUL
+copy /Y "%cd%\Build\CM3D2.MaidFiddler.Hook.dll" "%cd%\Distribution\Sybaris\Managed\CM3D2.MaidFiddler.Hook.dll" >NUL
+copy /Y "%cd%\Build\CM3D2.MaidFiddler.Sybaris.Patcher.dll" "%cd%\Distribution\Sybaris\Loader\CM3D2.MaidFiddler.Sybaris.Patcher.dll" >NUL
+copy /Y "%cd%\Build\CM3D2.MaidFiddler.Plugin.dll" "%cd%\Distribution\Sybaris\UnityInjector\CM3D2.MaidFiddler.Plugin.dll" >NUL
+        
+copy /Y "%cd%\Resources\Translations\ENG.txt" "%cd%\Distribution\Sybaris\UnityInjector\Config\MaidFiddler\Translations\ENG.txt" >NUL
 
 echo Done
 pause

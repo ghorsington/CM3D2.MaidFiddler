@@ -133,36 +133,15 @@
             this.groupBox_propensity = new System.Windows.Forms.GroupBox();
             this.checkedListBox_propensity = new System.Windows.Forms.CheckedListBox();
             this.tabPage_player = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox_game_params_adv = new System.Windows.Forms.GroupBox();
+            this.dataGridView_game_params = new System.Windows.Forms.DataGridView();
+            this.groupBox_game_params_gen = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label_player_name = new System.Windows.Forms.Label();
             this.textBox_player_name = new System.Windows.Forms.TextBox();
-            this.label_money = new System.Windows.Forms.Label();
-            this.label_salon_clean = new System.Windows.Forms.Label();
-            this.label_salon_beautiful = new System.Windows.Forms.Label();
-            this.textBox_money = new System.Windows.Forms.TextBox();
-            this.textBox_salon_clean = new System.Windows.Forms.TextBox();
-            this.textBox_salon_beautiful = new System.Windows.Forms.TextBox();
-            this.label_salon_evaluation = new System.Windows.Forms.Label();
-            this.label_current_salon_grade = new System.Windows.Forms.Label();
-            this.textBox_salon_evaluation = new System.Windows.Forms.TextBox();
-            this.textBox_current_salon_grade = new System.Windows.Forms.TextBox();
-            this.label_best_salon_grade = new System.Windows.Forms.Label();
-            this.textBox_best_salon_grade = new System.Windows.Forms.TextBox();
-            this.label_salon_stats = new System.Windows.Forms.Label();
-            this.label_init_salon_loan = new System.Windows.Forms.Label();
-            this.textBox_init_salon_loan = new System.Windows.Forms.TextBox();
-            this.label_phase_days = new System.Windows.Forms.Label();
-            this.textBox_phase_days = new System.Windows.Forms.TextBox();
             this.label_scenario_phase = new System.Windows.Forms.Label();
             this.comboBox_scenario_phase = new System.Windows.Forms.ComboBox();
-            this.label_salon_loan = new System.Windows.Forms.Label();
-            this.textBox_salon_loan = new System.Windows.Forms.TextBox();
-            this.label_days = new System.Windows.Forms.Label();
-            this.textBox_days = new System.Windows.Forms.TextBox();
-            this.label_shop_use_money = new System.Windows.Forms.Label();
-            this.textBox_shop_use_money = new System.Windows.Forms.TextBox();
-            this.label_maid_points_base = new System.Windows.Forms.Label();
-            this.textBox_maid_points_base = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cheatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cleanLoanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -209,6 +188,9 @@
             this.mENUMISCSETTINGSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mENUMISCABOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maidFiddlerGUIBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn9 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage_info.SuspendLayout();
@@ -244,6 +226,10 @@
             this.groupBox_feature.SuspendLayout();
             this.groupBox_propensity.SuspendLayout();
             this.tabPage_player.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.groupBox_game_params_adv.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_game_params)).BeginInit();
+            this.groupBox_game_params_gen.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maidFiddlerGUIBindingSource)).BeginInit();
@@ -1628,7 +1614,8 @@
             // 
             // tabPage_player
             // 
-            this.tabPage_player.Controls.Add(this.tableLayoutPanel3);
+            this.tabPage_player.AutoScroll = true;
+            this.tabPage_player.Controls.Add(this.tableLayoutPanel9);
             this.tabPage_player.Location = new System.Drawing.Point(4, 23);
             this.tabPage_player.Name = "tabPage_player";
             this.tabPage_player.Padding = new System.Windows.Forms.Padding(3);
@@ -1637,72 +1624,90 @@
             this.tabPage_player.Text = "TAB_GAME";
             this.tabPage_player.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.AutoSize = true;
+            this.tableLayoutPanel9.ColumnCount = 1;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel9.Controls.Add(this.groupBox_game_params_adv, 0, 1);
+            this.tableLayoutPanel9.Controls.Add(this.groupBox_game_params_gen, 0, 0);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 2;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(555, 372);
+            this.tableLayoutPanel9.TabIndex = 2;
+            // 
+            // groupBox_game_params_adv
+            // 
+            this.groupBox_game_params_adv.AutoSize = true;
+            this.groupBox_game_params_adv.Controls.Add(this.dataGridView_game_params);
+            this.groupBox_game_params_adv.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox_game_params_adv.Location = new System.Drawing.Point(3, 90);
+            this.groupBox_game_params_adv.Name = "groupBox_game_params_adv";
+            this.groupBox_game_params_adv.Size = new System.Drawing.Size(549, 279);
+            this.groupBox_game_params_adv.TabIndex = 2;
+            this.groupBox_game_params_adv.TabStop = false;
+            this.groupBox_game_params_adv.Text = "GAME_PARAMS_ADV";
+            // 
+            // dataGridView_game_params
+            // 
+            this.dataGridView_game_params.AllowUserToAddRows = false;
+            this.dataGridView_game_params.AllowUserToDeleteRows = false;
+            this.dataGridView_game_params.AllowUserToResizeColumns = false;
+            this.dataGridView_game_params.AllowUserToResizeRows = false;
+            this.dataGridView_game_params.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dataGridView_game_params.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView_game_params.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView_game_params.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_game_params.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn22,
+            this.dataGridViewTextBoxColumn23,
+            this.dataGridViewCheckBoxColumn9});
+            this.dataGridView_game_params.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridView_game_params.Location = new System.Drawing.Point(3, 16);
+            this.dataGridView_game_params.MultiSelect = false;
+            this.dataGridView_game_params.Name = "dataGridView_game_params";
+            this.dataGridView_game_params.RowHeadersVisible = false;
+            this.dataGridView_game_params.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView_game_params.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dataGridView_game_params.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridView_game_params.Size = new System.Drawing.Size(543, 260);
+            this.dataGridView_game_params.TabIndex = 1;
+            // 
+            // groupBox_game_params_gen
+            // 
+            this.groupBox_game_params_gen.Controls.Add(this.tableLayoutPanel3);
+            this.groupBox_game_params_gen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox_game_params_gen.Location = new System.Drawing.Point(3, 3);
+            this.groupBox_game_params_gen.Name = "groupBox_game_params_gen";
+            this.groupBox_game_params_gen.Size = new System.Drawing.Size(549, 81);
+            this.groupBox_game_params_gen.TabIndex = 3;
+            this.groupBox_game_params_gen.TabStop = false;
+            this.groupBox_game_params_gen.Text = "GAME_PARAMS_GENERAL";
+            // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 7;
+            this.tableLayoutPanel3.ColumnCount = 5;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.Controls.Add(this.label_player_name, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.textBox_player_name, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label_money, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label_salon_clean, 0, 14);
-            this.tableLayoutPanel3.Controls.Add(this.label_salon_beautiful, 3, 14);
-            this.tableLayoutPanel3.Controls.Add(this.textBox_money, 1, 3);
-            this.tableLayoutPanel3.Controls.Add(this.textBox_salon_clean, 1, 14);
-            this.tableLayoutPanel3.Controls.Add(this.textBox_salon_beautiful, 4, 14);
-            this.tableLayoutPanel3.Controls.Add(this.label_salon_evaluation, 0, 17);
-            this.tableLayoutPanel3.Controls.Add(this.label_current_salon_grade, 0, 19);
-            this.tableLayoutPanel3.Controls.Add(this.textBox_salon_evaluation, 1, 17);
-            this.tableLayoutPanel3.Controls.Add(this.textBox_current_salon_grade, 1, 19);
-            this.tableLayoutPanel3.Controls.Add(this.label_best_salon_grade, 3, 19);
-            this.tableLayoutPanel3.Controls.Add(this.textBox_best_salon_grade, 4, 19);
-            this.tableLayoutPanel3.Controls.Add(this.label_salon_stats, 0, 12);
-            this.tableLayoutPanel3.Controls.Add(this.label_init_salon_loan, 3, 5);
-            this.tableLayoutPanel3.Controls.Add(this.textBox_init_salon_loan, 4, 5);
-            this.tableLayoutPanel3.Controls.Add(this.label_phase_days, 0, 7);
-            this.tableLayoutPanel3.Controls.Add(this.textBox_phase_days, 1, 7);
-            this.tableLayoutPanel3.Controls.Add(this.label_scenario_phase, 3, 7);
-            this.tableLayoutPanel3.Controls.Add(this.comboBox_scenario_phase, 4, 7);
-            this.tableLayoutPanel3.Controls.Add(this.label_salon_loan, 0, 5);
-            this.tableLayoutPanel3.Controls.Add(this.textBox_salon_loan, 1, 5);
-            this.tableLayoutPanel3.Controls.Add(this.label_days, 0, 9);
-            this.tableLayoutPanel3.Controls.Add(this.textBox_days, 1, 9);
-            this.tableLayoutPanel3.Controls.Add(this.label_shop_use_money, 3, 3);
-            this.tableLayoutPanel3.Controls.Add(this.textBox_shop_use_money, 4, 3);
-            this.tableLayoutPanel3.Controls.Add(this.label_maid_points_base, 3, 9);
-            this.tableLayoutPanel3.Controls.Add(this.textBox_maid_points_base, 4, 9);
+            this.tableLayoutPanel3.Controls.Add(this.label_scenario_phase, 3, 1);
+            this.tableLayoutPanel3.Controls.Add(this.comboBox_scenario_phase, 4, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 22;
+            this.tableLayoutPanel3.RowCount = 3;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 12F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 11F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(555, 547);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(543, 62);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // label_player_name
@@ -1710,9 +1715,9 @@
             this.label_player_name.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_player_name.AutoSize = true;
-            this.label_player_name.Location = new System.Drawing.Point(22, 22);
+            this.label_player_name.Location = new System.Drawing.Point(3, 22);
             this.label_player_name.Name = "label_player_name";
-            this.label_player_name.Size = new System.Drawing.Size(64, 20);
+            this.label_player_name.Size = new System.Drawing.Size(64, 22);
             this.label_player_name.TabIndex = 0;
             this.label_player_name.Text = "PlayerName";
             this.label_player_name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1722,214 +1727,18 @@
             this.textBox_player_name.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_player_name.Location = new System.Drawing.Point(89, 22);
+            this.textBox_player_name.Location = new System.Drawing.Point(70, 22);
             this.textBox_player_name.Margin = new System.Windows.Forms.Padding(0);
             this.textBox_player_name.Name = "textBox_player_name";
-            this.textBox_player_name.Size = new System.Drawing.Size(100, 20);
+            this.textBox_player_name.Size = new System.Drawing.Size(160, 20);
             this.textBox_player_name.TabIndex = 1;
-            // 
-            // label_money
-            // 
-            this.label_money.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_money.AutoSize = true;
-            this.label_money.Location = new System.Drawing.Point(47, 53);
-            this.label_money.Name = "label_money";
-            this.label_money.Size = new System.Drawing.Size(39, 20);
-            this.label_money.TabIndex = 5;
-            this.label_money.Text = "Money";
-            this.label_money.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label_salon_clean
-            // 
-            this.label_salon_clean.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_salon_clean.AutoSize = true;
-            this.label_salon_clean.Location = new System.Drawing.Point(25, 210);
-            this.label_salon_clean.Name = "label_salon_clean";
-            this.label_salon_clean.Size = new System.Drawing.Size(61, 20);
-            this.label_salon_clean.TabIndex = 12;
-            this.label_salon_clean.Text = "SalonClean";
-            this.label_salon_clean.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label_salon_beautiful
-            // 
-            this.label_salon_beautiful.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_salon_beautiful.AutoSize = true;
-            this.label_salon_beautiful.Location = new System.Drawing.Point(212, 210);
-            this.label_salon_beautiful.Name = "label_salon_beautiful";
-            this.label_salon_beautiful.Size = new System.Drawing.Size(76, 20);
-            this.label_salon_beautiful.TabIndex = 14;
-            this.label_salon_beautiful.Text = "SalonBeautiful";
-            this.label_salon_beautiful.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox_money
-            // 
-            this.textBox_money.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_money.Location = new System.Drawing.Point(89, 53);
-            this.textBox_money.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox_money.Name = "textBox_money";
-            this.textBox_money.Size = new System.Drawing.Size(100, 20);
-            this.textBox_money.TabIndex = 24;
-            // 
-            // textBox_salon_clean
-            // 
-            this.textBox_salon_clean.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_salon_clean.Location = new System.Drawing.Point(89, 210);
-            this.textBox_salon_clean.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox_salon_clean.Name = "textBox_salon_clean";
-            this.textBox_salon_clean.Size = new System.Drawing.Size(100, 20);
-            this.textBox_salon_clean.TabIndex = 26;
-            // 
-            // textBox_salon_beautiful
-            // 
-            this.textBox_salon_beautiful.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_salon_beautiful.Location = new System.Drawing.Point(291, 210);
-            this.textBox_salon_beautiful.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox_salon_beautiful.Name = "textBox_salon_beautiful";
-            this.textBox_salon_beautiful.Size = new System.Drawing.Size(100, 20);
-            this.textBox_salon_beautiful.TabIndex = 27;
-            // 
-            // label_salon_evaluation
-            // 
-            this.label_salon_evaluation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_salon_evaluation.AutoSize = true;
-            this.label_salon_evaluation.Location = new System.Drawing.Point(3, 242);
-            this.label_salon_evaluation.Name = "label_salon_evaluation";
-            this.label_salon_evaluation.Size = new System.Drawing.Size(83, 20);
-            this.label_salon_evaluation.TabIndex = 17;
-            this.label_salon_evaluation.Text = "SalonEvaluation";
-            this.label_salon_evaluation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label_current_salon_grade
-            // 
-            this.label_current_salon_grade.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_current_salon_grade.AutoSize = true;
-            this.label_current_salon_grade.Location = new System.Drawing.Point(22, 273);
-            this.label_current_salon_grade.Name = "label_current_salon_grade";
-            this.label_current_salon_grade.Size = new System.Drawing.Size(64, 20);
-            this.label_current_salon_grade.TabIndex = 28;
-            this.label_current_salon_grade.Text = "SalonGrade";
-            this.label_current_salon_grade.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox_salon_evaluation
-            // 
-            this.textBox_salon_evaluation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_salon_evaluation.Location = new System.Drawing.Point(89, 242);
-            this.textBox_salon_evaluation.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox_salon_evaluation.Name = "textBox_salon_evaluation";
-            this.textBox_salon_evaluation.Size = new System.Drawing.Size(100, 20);
-            this.textBox_salon_evaluation.TabIndex = 29;
-            // 
-            // textBox_current_salon_grade
-            // 
-            this.textBox_current_salon_grade.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_current_salon_grade.Location = new System.Drawing.Point(89, 273);
-            this.textBox_current_salon_grade.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox_current_salon_grade.Name = "textBox_current_salon_grade";
-            this.textBox_current_salon_grade.Size = new System.Drawing.Size(100, 20);
-            this.textBox_current_salon_grade.TabIndex = 30;
-            // 
-            // label_best_salon_grade
-            // 
-            this.label_best_salon_grade.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_best_salon_grade.AutoSize = true;
-            this.label_best_salon_grade.Location = new System.Drawing.Point(202, 273);
-            this.label_best_salon_grade.Name = "label_best_salon_grade";
-            this.label_best_salon_grade.Size = new System.Drawing.Size(86, 20);
-            this.label_best_salon_grade.TabIndex = 31;
-            this.label_best_salon_grade.Text = "BestSalonGrade";
-            this.label_best_salon_grade.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox_best_salon_grade
-            // 
-            this.textBox_best_salon_grade.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_best_salon_grade.Location = new System.Drawing.Point(291, 273);
-            this.textBox_best_salon_grade.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox_best_salon_grade.Name = "textBox_best_salon_grade";
-            this.textBox_best_salon_grade.Size = new System.Drawing.Size(100, 20);
-            this.textBox_best_salon_grade.TabIndex = 32;
-            // 
-            // label_salon_stats
-            // 
-            this.label_salon_stats.AutoSize = true;
-            this.tableLayoutPanel3.SetColumnSpan(this.label_salon_stats, 2);
-            this.label_salon_stats.Location = new System.Drawing.Point(3, 193);
-            this.label_salon_stats.Margin = new System.Windows.Forms.Padding(3);
-            this.label_salon_stats.Name = "label_salon_stats";
-            this.label_salon_stats.Size = new System.Drawing.Size(81, 14);
-            this.label_salon_stats.TabIndex = 11;
-            this.label_salon_stats.Text = "SALON_STATS";
-            this.label_salon_stats.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label_init_salon_loan
-            // 
-            this.label_init_salon_loan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_init_salon_loan.AutoSize = true;
-            this.label_init_salon_loan.Location = new System.Drawing.Point(217, 84);
-            this.label_init_salon_loan.Name = "label_init_salon_loan";
-            this.label_init_salon_loan.Size = new System.Drawing.Size(71, 20);
-            this.label_init_salon_loan.TabIndex = 33;
-            this.label_init_salon_loan.Text = "InitSalonLoan";
-            this.label_init_salon_loan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox_init_salon_loan
-            // 
-            this.textBox_init_salon_loan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_init_salon_loan.Location = new System.Drawing.Point(291, 84);
-            this.textBox_init_salon_loan.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox_init_salon_loan.Name = "textBox_init_salon_loan";
-            this.textBox_init_salon_loan.Size = new System.Drawing.Size(100, 20);
-            this.textBox_init_salon_loan.TabIndex = 34;
-            // 
-            // label_phase_days
-            // 
-            this.label_phase_days.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_phase_days.AutoSize = true;
-            this.label_phase_days.Location = new System.Drawing.Point(24, 115);
-            this.label_phase_days.Name = "label_phase_days";
-            this.label_phase_days.Size = new System.Drawing.Size(62, 22);
-            this.label_phase_days.TabIndex = 35;
-            this.label_phase_days.Text = "PhaseDays";
-            this.label_phase_days.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox_phase_days
-            // 
-            this.textBox_phase_days.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_phase_days.Location = new System.Drawing.Point(89, 115);
-            this.textBox_phase_days.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox_phase_days.Name = "textBox_phase_days";
-            this.textBox_phase_days.Size = new System.Drawing.Size(100, 20);
-            this.textBox_phase_days.TabIndex = 36;
             // 
             // label_scenario_phase
             // 
             this.label_scenario_phase.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label_scenario_phase.AutoSize = true;
-            this.label_scenario_phase.Location = new System.Drawing.Point(208, 115);
+            this.label_scenario_phase.Location = new System.Drawing.Point(243, 22);
             this.label_scenario_phase.Name = "label_scenario_phase";
             this.label_scenario_phase.Size = new System.Drawing.Size(80, 22);
             this.label_scenario_phase.TabIndex = 37;
@@ -1944,103 +1753,11 @@
             "SCENARIO_NEW",
             "SCENARIO_DEBT",
             "SCENARIO_MAIN"});
-            this.comboBox_scenario_phase.Location = new System.Drawing.Point(291, 115);
+            this.comboBox_scenario_phase.Location = new System.Drawing.Point(326, 22);
             this.comboBox_scenario_phase.Margin = new System.Windows.Forms.Padding(0);
             this.comboBox_scenario_phase.Name = "comboBox_scenario_phase";
-            this.comboBox_scenario_phase.Size = new System.Drawing.Size(100, 22);
+            this.comboBox_scenario_phase.Size = new System.Drawing.Size(160, 22);
             this.comboBox_scenario_phase.TabIndex = 38;
-            // 
-            // label_salon_loan
-            // 
-            this.label_salon_loan.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_salon_loan.AutoSize = true;
-            this.label_salon_loan.Location = new System.Drawing.Point(28, 84);
-            this.label_salon_loan.Name = "label_salon_loan";
-            this.label_salon_loan.Size = new System.Drawing.Size(58, 20);
-            this.label_salon_loan.TabIndex = 9;
-            this.label_salon_loan.Text = "SalonLoan";
-            this.label_salon_loan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox_salon_loan
-            // 
-            this.textBox_salon_loan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_salon_loan.Location = new System.Drawing.Point(89, 84);
-            this.textBox_salon_loan.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox_salon_loan.Name = "textBox_salon_loan";
-            this.textBox_salon_loan.Size = new System.Drawing.Size(100, 20);
-            this.textBox_salon_loan.TabIndex = 25;
-            // 
-            // label_days
-            // 
-            this.label_days.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_days.AutoSize = true;
-            this.label_days.Location = new System.Drawing.Point(54, 148);
-            this.label_days.Name = "label_days";
-            this.label_days.Size = new System.Drawing.Size(32, 20);
-            this.label_days.TabIndex = 39;
-            this.label_days.Text = "Days";
-            this.label_days.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox_days
-            // 
-            this.textBox_days.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_days.Location = new System.Drawing.Point(89, 148);
-            this.textBox_days.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox_days.Name = "textBox_days";
-            this.textBox_days.Size = new System.Drawing.Size(100, 20);
-            this.textBox_days.TabIndex = 40;
-            // 
-            // label_shop_use_money
-            // 
-            this.label_shop_use_money.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_shop_use_money.AutoSize = true;
-            this.label_shop_use_money.Location = new System.Drawing.Point(205, 53);
-            this.label_shop_use_money.Name = "label_shop_use_money";
-            this.label_shop_use_money.Size = new System.Drawing.Size(83, 20);
-            this.label_shop_use_money.TabIndex = 41;
-            this.label_shop_use_money.Text = "ShopUseMoney";
-            this.label_shop_use_money.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox_shop_use_money
-            // 
-            this.textBox_shop_use_money.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_shop_use_money.Location = new System.Drawing.Point(291, 53);
-            this.textBox_shop_use_money.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox_shop_use_money.Name = "textBox_shop_use_money";
-            this.textBox_shop_use_money.Size = new System.Drawing.Size(100, 20);
-            this.textBox_shop_use_money.TabIndex = 42;
-            // 
-            // label_maid_points_base
-            // 
-            this.label_maid_points_base.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_maid_points_base.AutoSize = true;
-            this.label_maid_points_base.Location = new System.Drawing.Point(205, 148);
-            this.label_maid_points_base.Name = "label_maid_points_base";
-            this.label_maid_points_base.Size = new System.Drawing.Size(83, 20);
-            this.label_maid_points_base.TabIndex = 43;
-            this.label_maid_points_base.Text = "BaseMaidPoints";
-            this.label_maid_points_base.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox_maid_points_base
-            // 
-            this.textBox_maid_points_base.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_maid_points_base.Location = new System.Drawing.Point(291, 148);
-            this.textBox_maid_points_base.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox_maid_points_base.Name = "textBox_maid_points_base";
-            this.textBox_maid_points_base.Size = new System.Drawing.Size(100, 20);
-            this.textBox_maid_points_base.TabIndex = 44;
             // 
             // menuStrip1
             // 
@@ -2374,29 +2091,54 @@
             this.mENUMISCSETTINGSToolStripMenuItem,
             this.mENUMISCABOUTToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(86, 20);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(90, 20);
             this.toolStripMenuItem1.Text = "MENU_MISC";
             // 
             // mENUMISCLANGSELECTToolStripMenuItem
             // 
             this.mENUMISCLANGSELECTToolStripMenuItem.Name = "mENUMISCLANGSELECTToolStripMenuItem";
-            this.mENUMISCLANGSELECTToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.mENUMISCLANGSELECTToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.mENUMISCLANGSELECTToolStripMenuItem.Text = "MENU_MISC_LANG_SELECT";
             this.mENUMISCLANGSELECTToolStripMenuItem.Click += new System.EventHandler(this.OpenLangMenu);
             // 
             // mENUMISCSETTINGSToolStripMenuItem
             // 
             this.mENUMISCSETTINGSToolStripMenuItem.Name = "mENUMISCSETTINGSToolStripMenuItem";
-            this.mENUMISCSETTINGSToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.mENUMISCSETTINGSToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.mENUMISCSETTINGSToolStripMenuItem.Text = "MENU_MISC_SETTINGS";
             this.mENUMISCSETTINGSToolStripMenuItem.Click += new System.EventHandler(this.OpenSettings);
             // 
             // mENUMISCABOUTToolStripMenuItem
             // 
             this.mENUMISCABOUTToolStripMenuItem.Name = "mENUMISCABOUTToolStripMenuItem";
-            this.mENUMISCABOUTToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.mENUMISCABOUTToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.mENUMISCABOUTToolStripMenuItem.Text = "MENU_MISC_ABOUT";
             this.mENUMISCABOUTToolStripMenuItem.Click += new System.EventHandler(this.OpenAboutMenu);
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            this.dataGridViewTextBoxColumn22.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn22.HeaderText = "NAME";
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            this.dataGridViewTextBoxColumn22.ReadOnly = true;
+            this.dataGridViewTextBoxColumn22.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn22.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn23
+            // 
+            this.dataGridViewTextBoxColumn23.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn23.HeaderText = "VAL";
+            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            this.dataGridViewTextBoxColumn23.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn23.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewCheckBoxColumn9
+            // 
+            this.dataGridViewCheckBoxColumn9.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewCheckBoxColumn9.HeaderText = "LOCK";
+            this.dataGridViewCheckBoxColumn9.Name = "dataGridViewCheckBoxColumn9";
+            this.dataGridViewCheckBoxColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCheckBoxColumn9.Width = 47;
             // 
             // MaidFiddlerGUI
             // 
@@ -2460,6 +2202,12 @@
             this.groupBox_feature.ResumeLayout(false);
             this.groupBox_propensity.ResumeLayout(false);
             this.tabPage_player.ResumeLayout(false);
+            this.tabPage_player.PerformLayout();
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.tableLayoutPanel9.PerformLayout();
+            this.groupBox_game_params_adv.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_game_params)).EndInit();
+            this.groupBox_game_params_gen.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -2519,29 +2267,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label_player_name;
         private System.Windows.Forms.TextBox textBox_player_name;
-        private System.Windows.Forms.Label label_money;
-        private System.Windows.Forms.Label label_salon_loan;
-        private System.Windows.Forms.Label label_salon_stats;
-        private System.Windows.Forms.Label label_salon_clean;
-        private System.Windows.Forms.Label label_salon_beautiful;
-        private System.Windows.Forms.Label label_salon_evaluation;
-        private System.Windows.Forms.TextBox textBox_salon_loan;
-        private System.Windows.Forms.TextBox textBox_money;
-        private System.Windows.Forms.TextBox textBox_salon_clean;
-        private System.Windows.Forms.TextBox textBox_salon_beautiful;
-        private System.Windows.Forms.Label label_current_salon_grade;
-        private System.Windows.Forms.TextBox textBox_salon_evaluation;
-        private System.Windows.Forms.TextBox textBox_current_salon_grade;
-        private System.Windows.Forms.Label label_best_salon_grade;
-        private System.Windows.Forms.TextBox textBox_best_salon_grade;
-        private System.Windows.Forms.Label label_init_salon_loan;
-        private System.Windows.Forms.TextBox textBox_init_salon_loan;
-        private System.Windows.Forms.Label label_phase_days;
-        private System.Windows.Forms.TextBox textBox_phase_days;
         private System.Windows.Forms.Label label_scenario_phase;
         private System.Windows.Forms.ComboBox comboBox_scenario_phase;
-        private System.Windows.Forms.Label label_days;
-        private System.Windows.Forms.TextBox textBox_days;
         private System.Windows.Forms.TabPage tabPage_misc;
         private System.Windows.Forms.ToolStripMenuItem unlockAllTrophiesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unlockToolStripMenuItem;
@@ -2605,8 +2332,6 @@
         private System.Windows.Forms.DataGridView dataGridView_night_work;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private System.Windows.Forms.Label label_shop_use_money;
-        private System.Windows.Forms.TextBox textBox_shop_use_money;
         private System.Windows.Forms.ToolStripMenuItem mENUALLMAIDToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mENUALLMAIDLIMITToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mENUALLMAIDALLVIPVISIBLEToolStripMenuItem;
@@ -2615,8 +2340,6 @@
         private System.Windows.Forms.ToolStripMenuItem mENUMAIDLOCKALLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mENUMAIDUNLOCKALLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mENUALLMAIDALLVIPVISIBLEALWAYSToolStripMenuItem;
-        private System.Windows.Forms.Label label_maid_points_base;
-        private System.Windows.Forms.TextBox textBox_maid_points_base;
         private System.Windows.Forms.ToolStripMenuItem mENUMAIDSETYOTOGITIMESToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mAXCLASSLVLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mENUMAIDSETToolStripMenuItem;
@@ -2652,5 +2375,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.CheckBox checkBox_is_marriage;
         private System.Windows.Forms.ToolStripMenuItem menu_item_all_yotogi_vis_basic;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
+        private System.Windows.Forms.GroupBox groupBox_game_params_adv;
+        private System.Windows.Forms.DataGridView dataGridView_game_params;
+        private System.Windows.Forms.GroupBox groupBox_game_params_gen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn9;
     }
 }

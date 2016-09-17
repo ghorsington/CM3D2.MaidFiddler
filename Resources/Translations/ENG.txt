@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.35" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.37" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -83,6 +83,8 @@ MAID_FEATURES					Traits
 
 ; Game			
 TAB_GAME						Game General
+GAME_PARAMS_GENERAL				General Parameters
+GAME_PARAMS_ADV					Advanced Parameters
 PlayerName						Player name
 Money							Credits
 ShopUseMoney					Credits used in shop
@@ -224,7 +226,7 @@ BonusTeachRate					Teaching rate
 料理							Cooking
 華道							Flower Arrangement
 接客練習							Chat
-模様替え							Make-up
+模様替え							Decorating
 掃除							Cleaning
 教養							Study
 派遣							Dispatch
@@ -239,7 +241,7 @@ BonusTeachRate					Teaching rate
 ソーププレイ						Soap Play
 ハメ撮りプレイ						Photo Play
 恋人プレイ						Lovers Play
-恋人プ���イ（報告）					Lovers Play (Report)
+恋人プレイ（報告）					Lovers Play (Report)
 野外露出							Outdoors Exposure
 騙され接待01						Deceive Maid 1
 騙され接待02						Deceive Maid 2
@@ -262,10 +264,28 @@ AV撮影							AV Shooting
 フリー撮影会						Free Photo Session
 フリー逆ナンパ						Free Seduction Pick-up
 フリー痴漢プレイ					Free Molester Play
-痴漢克服プレイ						Molester Play [Yoshiko's VIP]
-媚薬プレイ						Aphrodisiac Play [Ayumi's VIP]
-お風呂接待						Bath Play [Sakura's VIP]
-ハーレム特訓プレイ					Harem Training [Ai's VIP]
+痴漢克服プレイ						Molester Play [Doya Yoshiko VIP]
+媚薬プレイ						Aphrodisiac Play [Miyahara Ayumi VIP]
+お風呂接待						Bath Play [Ichinose Sakura VIP]
+ハーレム特訓プレイ					Harem Training [Shiina Ai VIP]
+学園生練習プレイ					School Life Practice Play [Doya Yoshiko VIP]
+濃厚ラブセックス						Concentrated Love Play [Miyahara Ayumi VIP]
+NTR乱交セックス					NTR Orgy Play [Ichinose Sakura VIP]
+NTRレズセックス						NTR Lesbian Play [Shiina Ai VIP]
+オネショタなりきり甘えプレイ				Sister-Shota Foreplay [Karasaki Megumi VIP]
+秘密セフレセックス					Secret Sexfriend Play [Akabane Yuna VIP]
+射精管理プレイ						Ejaculation Control Play [Nishiamane Mikoto VIP]
+逆媚薬セックス						Reverse Aphrodisiac Play [Ginga the Sadist Maid VIP]
+童貞筆おろしプレイ					Virgin's First Time Play
+乱交大浴場プレイ					Public Bath Orgy Play
+寝取られ調教プレイ前半				NTR Dominance Play 1
+寝取られ調教プレイ後半				NTR Dominance Play 2
+寝取られ結婚プレイ					NTR Marriage Play
+ネコミミにゃんにゃんプレイ				Cat Play
+なりきり学園プレイ					School Students Foreplay
+やきもちプレイ						Jealousy Play 
+婚約アプローチプレイ					Engagement Approach Play
+いちゃいちゃ結婚プレイ				Flirty Marriage Play
 
 ; Yotogi skills
 ;Virgin	
@@ -280,7 +300,7 @@ AV撮影							AV Shooting
 バイブ責めChu-B					[Chu-B] Vibrator
 アナルバイブ責め					Anal Vibrator
 アナルバイブ責めChu-B				[Chu-B] Anal Vibrator
-セックス正常���						Missionary Sex
+セックス正常位						Missionary Sex
 セックス正常位Chu-B				[Chu-B] Missionary Sex
 アナルセックス正常位					Missionary Anal Sex
 アナルセックス正常位Chu-B			[Chu-B] Missionary Anal Sex
@@ -311,7 +331,7 @@ AV撮影							AV Shooting
 抱きつきセックス後背位Chu-B			[Chu-B] Hugging Doggy Style Sex
 抱きつきアナルセックス後背位			Hugging Doggy Style Anal Sex
 抱きつきアナルセックス後背位Chu-B		[Chu-B] Hugging Doggy Style Anal Sex
-だいしゅ���ホールド					Loving Hold
+
 ;Pervert
 かっこいいポーズ						Cool Pose
 かわいいポーズ						Cute Pose
@@ -332,7 +352,7 @@ AV撮影							AV Shooting
 太バイブオナニー					Thick Vibrator Masturbation
 太バイブオナニーChu-B				[Chu-B] Thick Vibrator Masturbation
 露出プレイ						Exhibitionism
-犬プ���イ							Pet Play
+犬プレイ							Pet Play
 露出セックス背面立位				Exhibitionist Rear Standing Sex
 露出セックス背面立位Chu-B			[Chu-B] Exhibitionist Rear Standing Sex
 露出アナルセックス背面立位			Exhibitionist Anal Rear Standing Sex
@@ -377,7 +397,7 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 イラマチオChu-B					[Chu-B] Irrumatio
 拘束セックス						Restrained Sex
 拘束セックスChu-B					[Chu-B] Restrained Sex
-拘束アナルセ���クス					Restrained Anal Sex
+拘束アナルセックス					Restrained Anal Sex
 拘束アナルセックスChu-B				[Chu-B] Restrained Anal Sex
 首絞めセックス正常位				Choking Missionary Sex
 首絞めセックス正常位Chu-B			[Chu-B] Choking Missionary Sex
@@ -487,7 +507,7 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 ちんぐりアナルセックス					Reverse Piledriver Anal Sex
 ちんぐりフェラ						Reverse Piledriver Fellatio
 ちんぐり手コキ						Reverse Piledriver Handjob
-顔面騎乗���						Facial Cowgirl
+顔面騎乗位						Facial Cowgirl
 椅子拘束騎乗位					Chair-restrained Cowgirl Sex
 椅子拘束アナル騎乗位				Chair-restrained Cowgirl Anal Sex
 首絞めセックス後背位				Choking Doggy
@@ -497,7 +517,42 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 拘束愛撫アナルバイブ責め				Restrained Anal Vibrator
 吊るし正常位セックス					Hanging Missionary
 吊るし正常位アナルセックス			Hanging Anal Missionary
-
+イチャイチャフェラオナニー				Flirty Fellatio and Masturbation
+腕持ち後背位						Arm-holding Doggy Style
+腕持ちアナル後背位					Arm-holding Anal Doggy Style
+寝フェラ							Sleeping Fellatio
+うつ伏せ後背位					Facedown Doggy Style
+うつ伏せアナル後背位				Facedown Anal Doggy Style
+結婚愛撫							Marriage Caress	
+結婚バイブ責め						Marriage Vibrator
+結婚アナルバイブ責め				Marriage Anal Vibrator
+結婚セックス正常位					Married Missionary
+結婚アナルセックス正常位				Married Anal Missionary
+結婚セックス後背位					Marriage Doggy Style
+結婚アナルセックス後背位				Marriage Anal Doggy Style
+結婚セックス騎乗位					Marriage Cowgirl Sex
+結婚アナルセックス騎乗位				Marriage Anal Cowgirl Sex
+結婚オナニー						Marriage Masturbation
+結婚フェラチオ						Married Fellatio
+結婚シックスナイン					Married Sixty Nine
+結婚ディープスロート					Marriage Deep Throat
+結婚イラマチオ						Marriage Irrumatio
+結婚イチャイチャフェラオナニー			Marriage Flirty Fellatio and Masturbation
+結婚腕持ち後背位					Marriage Arms-holding Doggy Style
+結婚腕持ちアナル後背位				Marriage Arms-holding Anal Doggy Style
+結婚寝フェラ						Marriage Sleeping Fellatio
+結婚うつ伏せ後背位					Marriage Facedown Doggy Style
+結婚うつ伏せアナル後背位			Marriage Facedown Anal Doggy Style
+イチャイチャ愛撫					Flirty Caress
+立ち側位							Standing Spooning Sex
+立ちアナル側位						Standing Anal Spooning Sex
+挟み込み騎乗位					Cowgirl Lunges Sex
+挟み込みアナル騎乗位				Anal Cowgirl Lunges Sex
+騎乗位素股						Intercrural Cowgirl Sex
+台上正常位						Table Missionary
+台上アナル正常位					Table Anal Missionary
+乱交３P馬乗りイラマチオ				Group 3P Riding Irrumatio
+乱交３P馬乗りアナルイラマチオ			Group 3P Ridding Anal Irrumatio
 
 ; CM3D2+ Skills
 トイレセックス						Toilet Sex
@@ -518,6 +573,18 @@ MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
 ハーレム奉仕						Harem Service
 ハーレムセックス						Harem Sex
 ハーレムアナルセックス					Harem Anal Sex
+教室愛撫							Classroom Caress
+教室アナル愛撫					Classroom Anal Caress
+教室セックス						Classroom Sex
+教室アナルセックス					Classroom Anal Sex
+完墜ち背面騎乗位					Submissive Reverse Cowgirl Sex
+完墜ち背面アナル騎乗位				Submissive Reverse Cowgirl Anal Sex
+完墜ちフェラ						Submissive Fellatio
+完墜ち愛撫						Submissive Caress
+百合クンニ						Yuri Cunnilingus
+百合愛撫							Yuri Caress
+百合貝合わせ						Yuri Scissoring
+百合双頭バイブ					Yuri Dual Vibrator
 
 ; Propensity
 M女								Masochist
@@ -550,7 +617,7 @@ M女								Masochist
 高貴							Noble
 魅了							Charming
 魔性の魅力						Devilish
-雅								Refined
+雅								Delicate
 撫子							Loveable
 一途							Earnest
 盲目的							Reckless
@@ -699,6 +766,12 @@ WRN_OLD_VERSION_TITLE			Old version of CM3D2
 WRN_OLD_VERSION					Maid Fiddler {0} detected that you are running an older version of CM3D2. Your version of CM3D2 is {1}, but Maid Fiddler supports versions {2} and higher.\nMaid Fiddler can be used, but some features may be disabled\n\nUpdate your game in order to use all of Maid Fiddler's features.
 FEATURE_UNSUPPORTED_TITLE		This feature is unsupported
 FEATURE_UNSUPPORTED				This feature is unsupported in this version of CM3D2.\nUpdate your game to use this feature.
+
+; Update notification
+INFO_UPDATE_AVAILABLE_BUBBLE_TITLE	Maid Fiddler version {0} is available!
+INFO_UPDATE_AVAILABLE_BUBBLE	Download the new version from Maid Fiddler GitHub page!
+INFO_UPDATE_AVAILABLE_TITLE		Version {0} is available!
+INFO_UPDATE_AVAILABLE			Maid Fiddler version {0} is available to download!\nUpdate log:\n{1}\n\nHead to {2} to download the latest version.
 
 OK								OK
 CANCEL							Cancel

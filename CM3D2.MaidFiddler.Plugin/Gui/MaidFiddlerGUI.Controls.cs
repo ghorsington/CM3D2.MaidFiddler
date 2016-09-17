@@ -36,7 +36,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void ClearAllFields(Control c)
         {
             if (c == tabPage_player)
+            {
+                foreach (
+                DataGridViewCell cell in
+                dataGridView_game_params.Rows.Cast<DataGridViewRow>()
+                                        .SelectMany(row => row.Cells.Cast<DataGridViewCell>())
+                                        .Where(cell => cell.Value is bool))
+                {
+                    cell.Value = false;
+                }
                 return;
+            }
             foreach (Control control in c.Controls)
             {
                 ClearAllFields(control);

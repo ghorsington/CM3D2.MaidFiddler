@@ -11,19 +11,41 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         public class PlayerInfo
         {
             private readonly MaidFiddlerGUI gui;
+            private readonly Dictionary<PlayerChangeType, bool> valueLocks;
             private Dictionary<PlayerChangeType, Action<int>> setMethodInt;
             private Dictionary<PlayerChangeType, Action<long>> setMethodLong;
             private Dictionary<PlayerChangeType, Action<string>> setMethodString;
-            private Dictionary<PlayerChangeType, Action> updateMethods;
+            private Dictionary<PlayerChangeType, Action<PlayerChangeType>> updateMethods;
 
             public PlayerInfo(MaidFiddlerGUI gui)
             {
                 this.gui = gui;
-
+                valueLocks = new Dictionary<PlayerChangeType, bool>();
+                ((PlayerChangeType[]) Enum.GetValues(typeof (PlayerChangeType))).ForEach(t => valueLocks.Add(t, false));
                 InitFunctions();
             }
 
             public PlayerParam Player => GameMain.Instance.CharacterMgr.GetPlayerParam();
+
+            public bool IsLocked(PlayerChangeType type)
+            {
+                Debugger.WriteLine(
+                LogLevel.Info,
+                $"Attempted to change value {EnumHelper.GetName(type)}. Locked: {valueLocks[type]}");
+                return valueLocks[type];
+            }
+
+            public void Lock(PlayerChangeType type)
+            {
+                if (valueLocks.ContainsKey(type))
+                    valueLocks[type] = true;
+            }
+
+            public void Unlock(PlayerChangeType type)
+            {
+                if (valueLocks.ContainsKey(type))
+                    valueLocks[type] = false;
+            }
 
             private void InitFunctions()
             {
@@ -50,23 +72,19 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
                 setMethodString = new Dictionary<PlayerChangeType, Action<string>> {{PlayerChangeType.Name, SetName}};
 
-                updateMethods = new Dictionary<PlayerChangeType, Action>
+                updateMethods = new Dictionary<PlayerChangeType, Action<PlayerChangeType>>
                 {
-                    {PlayerChangeType.Days, UpdateDays},
-                    {PlayerChangeType.PhaseDays, UpdatePhaseDays},
-                    {PlayerChangeType.SalonBeautiful, UpdateSalonBeautiful},
-                    {PlayerChangeType.SalonClean, UpdateSalonClean},
-                    {PlayerChangeType.SalonEvaluation, UpdateSalonEvaluation},
-                    {PlayerChangeType.Money, UpdateMoney},
-                    {PlayerChangeType.SalonLoan, UpdateSalonLoan},
-                    {PlayerChangeType.ShopUseMoney, UpdateShopUseMoney},
-                    {PlayerChangeType.BestSalonGrade, UpdateBestSalonGrade},
-                    {PlayerChangeType.SalonGrade, UpdateSalonGrade},
                     {PlayerChangeType.ScenarioPhase, UpdateScenatioPhase},
-                    {PlayerChangeType.InitSalonLoan, UpdateInitSalonLoad},
-                    {PlayerChangeType.Name, UpdateName},
-                    {PlayerChangeType.BaseMaidPoints, UpdateBaseMaidPoints}
+                    {PlayerChangeType.Name, UpdateName}
                 };
+
+                for (PlayerChangeType e = PlayerChangeType.Days; e < PlayerChangeType.InitSalonLoan; e++)
+                {
+                    if (e == PlayerChangeType.ScenarioPhase)
+                        continue;
+
+                    updateMethods.Add(e, UpdateTableValue);
+                }
             }
 
             private void SetBaseMaidPoints(int obj)
@@ -170,26 +188,29 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     long val;
                     string s = value as string;
-                    if (s == null || !long.TryParse(s, out val))
+#pragma warning disable 642
+                    if (s != null && !long.TryParse(s, out val))
+                        ;
+#pragma warning restore 642
+                    else if (value is int || value is long)
+                        val = (long) value;
+                    else
                         return;
 
                     setValLong(val);
                 }
                 else if (value is string && setMethodString.TryGetValue(type, out setValString))
                     setValString((string) value);
-
-                gui.valueUpdatePlayer[type] = true;
-                UpdateField(type);
             }
 
             public void UpdateAll()
             {
                 try
                 {
-                    foreach (KeyValuePair<PlayerChangeType, Action> updateMethod in updateMethods)
+                    foreach (KeyValuePair<PlayerChangeType, Action<PlayerChangeType>> updateMethod in updateMethods)
                     {
                         gui.valueUpdatePlayer[updateMethod.Key] = true;
-                        updateMethod.Value();
+                        updateMethod.Value(updateMethod.Key);
                         gui.valueUpdatePlayer[updateMethod.Key] = false;
                     }
                 }
@@ -199,85 +220,72 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 }
             }
 
-            private void UpdateBaseMaidPoints()
-            {
-                Debugger.WriteLine("Updating init maid points");
-                gui.textBox_maid_points_base.Text = Status.kInitMaidPoint.ToString();
-            }
-
-            private void UpdateBestSalonGrade()
-            {
-                gui.textBox_best_salon_grade.Text = Player.status.best_salon_grade.ToString();
-            }
-
-            private void UpdateDays()
-            {
-                gui.textBox_days.Text = Player.status.days.ToString();
-            }
-
             public void UpdateField(PlayerChangeType type)
             {
-                Action updateVal;
+                Debugger.WriteLine(LogLevel.Info, $"Updating value {type}!");
+                Action<PlayerChangeType> updateVal;
                 if (!updateMethods.TryGetValue(type, out updateVal))
                     return;
                 gui.valueUpdatePlayer[type] = true;
-                updateVal();
+                updateVal(type);
                 gui.valueUpdatePlayer[type] = false;
             }
 
-            private void UpdateInitSalonLoad()
+            private void UpdateTableValue(PlayerChangeType type)
             {
-                gui.textBox_init_salon_loan.Text = Player.status.init_salon_loan.ToString();
+                object value;
+                switch (type)
+                {
+                    case PlayerChangeType.Days:
+                        value = Player.status.days;
+                        break;
+                    case PlayerChangeType.PhaseDays:
+                        value = Player.status.phase_days;
+                        break;
+                    case PlayerChangeType.SalonBeautiful:
+                        value = Player.status.salon_beautiful;
+                        break;
+                    case PlayerChangeType.SalonClean:
+                        value = Player.status.salon_clean;
+                        break;
+                    case PlayerChangeType.SalonEvaluation:
+                        value = Player.status.salon_evaluation;
+                        break;
+                    case PlayerChangeType.Money:
+                        value = Player.status.money;
+                        break;
+                    case PlayerChangeType.SalonLoan:
+                        value = Player.status.salon_loan;
+                        break;
+                    case PlayerChangeType.ShopUseMoney:
+                        value = Player.status.shop_use_money;
+                        break;
+                    case PlayerChangeType.BestSalonGrade:
+                        value = Player.status.best_salon_grade;
+                        break;
+                    case PlayerChangeType.SalonGrade:
+                        value = Player.status.current_salon_grade;
+                        break;
+                    case PlayerChangeType.InitSalonLoan:
+                        value = Player.status.init_salon_loan;
+                        break;
+                    default:
+                        value = "ERROR";
+                        break;
+                }
+                Debugger.Assert(
+                () => { gui.PlayerParameters[type].Cells[PARAMS_COLUMN_VALUE].Value = value; },
+                $"Failed to update player parameter {EnumHelper.GetName(type)}!");
             }
 
-            private void UpdateMoney()
-            {
-                gui.textBox_money.Text = Player.status.money.ToString();
-            }
-
-            private void UpdateName()
+            private void UpdateName(PlayerChangeType _)
             {
                 gui.textBox_player_name.Text = Player.status.player_name;
             }
 
-            private void UpdatePhaseDays()
-            {
-                gui.textBox_phase_days.Text = Player.status.phase_days.ToString();
-            }
-
-            private void UpdateSalonBeautiful()
-            {
-                gui.textBox_salon_beautiful.Text = Player.status.salon_beautiful.ToString();
-            }
-
-            private void UpdateSalonClean()
-            {
-                gui.textBox_salon_clean.Text = Player.status.salon_clean.ToString();
-            }
-
-            private void UpdateSalonEvaluation()
-            {
-                gui.textBox_salon_evaluation.Text = Player.status.salon_evaluation.ToString();
-            }
-
-            private void UpdateSalonGrade()
-            {
-                gui.textBox_current_salon_grade.Text = Player.status.current_salon_grade.ToString();
-            }
-
-            private void UpdateSalonLoan()
-            {
-                gui.textBox_salon_loan.Text = Player.status.salon_loan.ToString();
-            }
-
-            private void UpdateScenatioPhase()
+            private void UpdateScenatioPhase(PlayerChangeType _)
             {
                 gui.comboBox_scenario_phase.SelectedIndex = Player.status.scenario_phase;
-            }
-
-            private void UpdateShopUseMoney()
-            {
-                gui.textBox_shop_use_money.Text = Player.status.shop_use_money.ToString();
             }
         }
     }

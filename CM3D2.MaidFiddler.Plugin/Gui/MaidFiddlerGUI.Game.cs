@@ -8,26 +8,35 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 {
     public partial class MaidFiddlerGUI
     {
+        private Dictionary<int, PlayerChangeType> gameValuesDic;
         private Dictionary<Control, PlayerChangeType> uiControlsPlayer;
         private Dictionary<PlayerChangeType, bool> valueUpdatePlayer;
+        public Dictionary<PlayerChangeType, DataGridViewRow> PlayerParameters { get; set; }
+
+        private void AddRow(PlayerChangeType type,
+                            DataGridView table,
+                            IDictionary<int, PlayerChangeType> dic,
+                            bool addLock = true)
+        {
+            string key = EnumHelper.GetName(type);
+            int index = addLock ? table.Rows.Add(key, 0, false) : table.Rows.Add(key, 0);
+            dic.Add(index, type);
+            Translation.AddTranslationAction(key, s => table.Rows[index].Cells[0].Value = s);
+            PlayerParameters.Add(type, table.Rows[index]);
+        }
 
         private void InitGameTab()
         {
             Debugger.Assert(
             () =>
             {
+                PlayerParameters = new Dictionary<PlayerChangeType, DataGridViewRow>();
                 uiControlsPlayer = new Dictionary<Control, PlayerChangeType>();
                 valueUpdatePlayer = EnumHelper.GetValues<PlayerChangeType>().ToDictionary(e => e, e => false);
 
                 Translation.AddTranslatableControl(tabPage_player);
-                Translation.AddTranslatableControl(label_salon_stats);
-
+                Translation.AddTranslatableControl(groupBox_game_params_gen);
                 InitField(label_player_name, textBox_player_name, PlayerChangeType.Name);
-                InitField(label_money, textBox_money, PlayerChangeType.Money);
-                InitField(label_shop_use_money, textBox_shop_use_money, PlayerChangeType.ShopUseMoney);
-                InitField(label_salon_loan, textBox_salon_loan, PlayerChangeType.SalonLoan);
-                InitField(label_init_salon_loan, textBox_init_salon_loan, PlayerChangeType.InitSalonLoan);
-                InitField(label_phase_days, textBox_phase_days, PlayerChangeType.PhaseDays);
                 InitField(label_scenario_phase, comboBox_scenario_phase, PlayerChangeType.ScenarioPhase);
                 for (int i = 0; i < comboBox_scenario_phase.Items.Count; i++)
                 {
@@ -37,15 +46,85 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     s => comboBox_scenario_phase.Items[i1] = s);
                 }
 
-                InitField(label_days, textBox_days, PlayerChangeType.Days);
-                InitField(label_salon_clean, textBox_salon_clean, PlayerChangeType.SalonClean);
-                InitField(label_salon_beautiful, textBox_salon_beautiful, PlayerChangeType.SalonBeautiful);
-                InitField(label_salon_evaluation, textBox_salon_evaluation, PlayerChangeType.SalonEvaluation);
-                InitField(label_current_salon_grade, textBox_current_salon_grade, PlayerChangeType.SalonGrade);
-                InitField(label_best_salon_grade, textBox_best_salon_grade, PlayerChangeType.BestSalonGrade);
-                InitField(label_maid_points_base, textBox_maid_points_base, PlayerChangeType.BaseMaidPoints);
+                // Game parameters
+                Translation.AddTranslatableControl(groupBox_game_params_adv);
+                gameValuesDic = new Dictionary<int, PlayerChangeType>();
+                foreach (DataGridViewColumn column in dataGridView_game_params.Columns)
+                {
+                    Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
+                }
+                AddRow(PlayerChangeType.Money, dataGridView_game_params, gameValuesDic);
+                AddRow(PlayerChangeType.ShopUseMoney, dataGridView_game_params, gameValuesDic);
+                AddRow(PlayerChangeType.SalonLoan, dataGridView_game_params, gameValuesDic);
+                AddRow(PlayerChangeType.InitSalonLoan, dataGridView_game_params, gameValuesDic);
+                AddRow(PlayerChangeType.Days, dataGridView_game_params, gameValuesDic);
+                AddRow(PlayerChangeType.PhaseDays, dataGridView_game_params, gameValuesDic);
+                AddRow(PlayerChangeType.BaseMaidPoints, dataGridView_game_params, gameValuesDic);
+                AddRow(PlayerChangeType.SalonClean, dataGridView_game_params, gameValuesDic);
+                AddRow(PlayerChangeType.SalonBeautiful, dataGridView_game_params, gameValuesDic);
+                AddRow(PlayerChangeType.SalonEvaluation, dataGridView_game_params, gameValuesDic);
+                AddRow(PlayerChangeType.SalonGrade, dataGridView_game_params, gameValuesDic);
+                AddRow(PlayerChangeType.BestSalonGrade, dataGridView_game_params, gameValuesDic);
+                dataGridView_game_params.CellValueChanged += OnGameTabCellValueChanged;
+                dataGridView_game_params.CellContentClick += OnGameTabCellContentClick;
+                dataGridView_game_params.Height = dataGridView_game_params.ColumnHeadersHeight
+                                                  + dataGridView_game_params.Rows[0].Height
+                                                  * dataGridView_game_params.RowCount;
             },
             "Failed to initalize game tab");
+        }
+
+        private void OnGameTabCellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (clearingTables || e.ColumnIndex != PARAMS_COLUMN_LOCK)
+                return;
+            DataGridView table = (DataGridView) sender;
+
+            PlayerChangeType type = gameValuesDic[e.RowIndex];
+
+            bool val = !((bool) table[e.ColumnIndex, e.RowIndex].Value);
+            if (val)
+                Player.Lock(type);
+            else
+                Player.Unlock(type);
+        }
+
+        private void OnGameTabCellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (clearingTables || e.ColumnIndex == PARAMS_COLUMN_LOCK)
+                return;
+            DataGridView table = (DataGridView) sender;
+
+            PlayerChangeType type = gameValuesDic[e.RowIndex];
+
+            if (valueUpdatePlayer[type])
+            {
+                valueUpdatePlayer[type] = false;
+                return;
+            }
+
+            object val = table[e.ColumnIndex, e.RowIndex].Value;
+
+            if (!(val is int) && !(val is long))
+            {
+                Player.UpdateField(type);
+                return;
+            }
+
+            bool wasLocked = Player.IsLocked(type);
+            if (wasLocked)
+            {
+                Debugger.WriteLine(LogLevel.Info, $"Value {EnumHelper.GetName(type)} is locked! Unlocking...");
+                Player.Unlock(type);
+            }
+
+            Player.SetValue(type, val);
+
+            if (wasLocked)
+            {
+                Debugger.WriteLine(LogLevel.Info, $"Returning lock to {EnumHelper.GetName(type)}...");
+                Player.Lock(type);
+            }
         }
     }
 }

@@ -31,6 +31,7 @@ namespace CM3D2.MaidFiddler.Hook
 
     public class PlayerValueChangeEventArgs : EventArgs
     {
+        public bool Block { get; set; }
         public PlayerChangeType Tag { get; internal set; }
     }
 
@@ -38,10 +39,15 @@ namespace CM3D2.MaidFiddler.Hook
     {
         public static event EventHandler<PlayerValueChangeEventArgs> PlayerValueChanged;
 
-        public static void OnPlayerStatChanged(int tag)
+        public static bool OnPlayerStatChanged(int tag)
         {
-            PlayerValueChangeEventArgs args = new PlayerValueChangeEventArgs {Tag = (PlayerChangeType) tag};
+            PlayerValueChangeEventArgs args = new PlayerValueChangeEventArgs
+            {
+                Tag = (PlayerChangeType) tag,
+                Block = false
+            };
             PlayerValueChanged?.Invoke(null, args);
+            return args.Block;
         }
     }
 }

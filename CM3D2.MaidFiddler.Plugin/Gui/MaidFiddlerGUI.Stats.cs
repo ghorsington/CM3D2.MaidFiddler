@@ -40,8 +40,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
-                dataGridView_params.CellValueChanged += OnCellValueChanged;
-                dataGridView_params.CellContentClick += OnCellContentClick;
+
                 AddRow(MaidChangeType.CurExcite, dataGridView_params, maidParamsTableDic);
                 AddRow(MaidChangeType.CurMind, dataGridView_params, maidParamsTableDic);
                 AddRow(MaidChangeType.CurReason, dataGridView_params, maidParamsTableDic);
@@ -60,6 +59,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 AddRow(MaidChangeType.Reception, dataGridView_params, maidParamsTableDic);
                 AddRow(MaidChangeType.Lovely, dataGridView_params, maidParamsTableDic);
                 AddRow(MaidChangeType.Frustration, dataGridView_params, maidParamsTableDic);
+                dataGridView_params.CellValueChanged += OnCellValueChanged;
+                dataGridView_params.CellContentClick += OnCellContentClick;
                 dataGridView_params.Height = dataGridView_params.ColumnHeadersHeight
                                              + dataGridView_params.Rows[0].Height * dataGridView_params.RowCount;
 
@@ -70,7 +71,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
-                dataGridView_maid_params_bonus.CellValueChanged += OnCellValueChanged;
                 AddRow(MaidChangeType.BonusCare, dataGridView_maid_params_bonus, maidBonusStatsTableDic, false);
                 AddRow(MaidChangeType.BonusCharm, dataGridView_maid_params_bonus, maidBonusStatsTableDic, false);
                 AddRow(MaidChangeType.BonusElegance, dataGridView_maid_params_bonus, maidBonusStatsTableDic, false);
@@ -86,6 +86,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 dataGridView_maid_params_bonus.Height = dataGridView_maid_params_bonus.ColumnHeadersHeight
                                                         + dataGridView_maid_params_bonus.Rows[0].Height
                                                         * dataGridView_maid_params_bonus.RowCount;
+                dataGridView_maid_params_bonus.CellValueChanged += OnCellValueChanged;
+
 
                 // Maid ero zones
                 Translation.AddTranslatableControl(groupBox_ero_zones);
@@ -94,14 +96,14 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
-                dataGridView_ero_zones.CellValueChanged += OnCellValueChanged;
-                dataGridView_ero_zones.CellContentClick += OnCellContentClick;
                 AddRow(MaidChangeType.SexualBack, dataGridView_ero_zones, maidEroTableDic);
                 AddRow(MaidChangeType.SexualCuri, dataGridView_ero_zones, maidEroTableDic);
                 AddRow(MaidChangeType.SexualFront, dataGridView_ero_zones, maidEroTableDic);
                 AddRow(MaidChangeType.SexualMouth, dataGridView_ero_zones, maidEroTableDic);
                 AddRow(MaidChangeType.SexualNipple, dataGridView_ero_zones, maidEroTableDic);
                 AddRow(MaidChangeType.SexualThroat, dataGridView_ero_zones, maidEroTableDic);
+                dataGridView_ero_zones.CellValueChanged += OnCellValueChanged;
+                dataGridView_ero_zones.CellContentClick += OnCellContentClick;
                 dataGridView_ero_zones.Height = dataGridView_ero_zones.ColumnHeadersHeight
                                                 + dataGridView_ero_zones.Rows[0].Height
                                                 * dataGridView_ero_zones.RowCount;
@@ -114,8 +116,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
                 }
-                dataGridView_statistics.CellValueChanged += OnCellValueChanged;
-                dataGridView_statistics.CellContentClick += OnCellContentClick;
                 AddRow(MaidChangeType.MaidPoint, dataGridView_statistics, maidStatsTableDic);
                 AddRow(MaidChangeType.OthersPlayCount, dataGridView_statistics, maidStatsTableDic);
                 AddRow(MaidChangeType.PlayNumber, dataGridView_statistics, maidStatsTableDic);
@@ -127,6 +127,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 AddRow(MaidChangeType.Evaluation, dataGridView_statistics, maidStatsTableDic);
                 AddRow(MaidChangeType.TotalEvaluation, dataGridView_statistics, maidStatsTableDic);
                 AddRow(MaidChangeType.PopularRank, dataGridView_statistics, maidStatsTableDic);
+                dataGridView_statistics.CellValueChanged += OnCellValueChanged;
+                dataGridView_statistics.CellContentClick += OnCellContentClick;
                 dataGridView_statistics.Height = dataGridView_statistics.ColumnHeadersHeight
                                                  + dataGridView_statistics.Rows[0].Height
                                                  * dataGridView_statistics.RowCount;

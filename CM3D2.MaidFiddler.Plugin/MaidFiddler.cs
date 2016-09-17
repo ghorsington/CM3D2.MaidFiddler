@@ -31,8 +31,8 @@ namespace CM3D2.MaidFiddler.Plugin
 
         public const string RELEASES_URL = "https://www.github.com/denikson/CM3D2.MaidFiddler/releases";
         public const int SUPPORTED_MIN_CM3D2_VERSION = 109;
-        public const uint SUPPORTED_PATCH_MAX = 1300;
-        public const uint SUPPORTED_PATCH_MIN = 1300;
+        public const uint SUPPORTED_PATCH_MAX = 1310;
+        public const uint SUPPORTED_PATCH_MIN = 1310;
         private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
         private const bool DEFAULT_OPEN_ON_STARTUP = false;
         private const MaidOrderDirection DEFAULT_ORDER_DIRECTION = Plugin.MaidOrderDirection.Ascending;

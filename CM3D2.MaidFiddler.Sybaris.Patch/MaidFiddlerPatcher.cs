@@ -11,7 +11,7 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
 {
     public static class MaidFiddlerPatcher
     {
-        private const uint PATCHER_VERSION = 1300;
+        private const uint PATCHER_VERSION = 1310;
         public static readonly string[] TargetAssemblyNames = {"Assembly-CSharp.dll"};
 
         public static void Patch(AssemblyDefinition assembly)
@@ -310,16 +310,19 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
             {
                 string addMethod = $"Add{Enum.GetName(typeof (PlayerChangeType), e)}";
                 string setMethod = $"Set{Enum.GetName(typeof (PlayerChangeType), e)}";
-                playerParam.GetMethod(addMethod).InjectWith(playerStatChangeHook, 0, (int) e, InjectFlags.PassTag);
+                playerParam.GetMethod(addMethod)
+                           .InjectWith(playerStatChangeHook, 0, (int) e, InjectFlags.PassTag | InjectFlags.ModifyReturn);
 
-                playerParam.GetMethod(setMethod).InjectWith(playerStatChangeHook, 0, (int) e, InjectFlags.PassTag);
+                playerParam.GetMethod(setMethod)
+                           .InjectWith(playerStatChangeHook, 0, (int) e, InjectFlags.PassTag | InjectFlags.ModifyReturn);
             }
 
             for (PlayerChangeType e = PlayerChangeType.BestSalonGrade; e <= PlayerChangeType.Name; e++)
             {
                 string setMethod = $"Set{Enum.GetName(typeof (PlayerChangeType), e)}";
 
-                playerParam.GetMethod(setMethod).InjectWith(playerStatChangeHook, 0, (int) e, InjectFlags.PassTag);
+                playerParam.GetMethod(setMethod)
+                           .InjectWith(playerStatChangeHook, 0, (int) e, InjectFlags.PassTag | InjectFlags.ModifyReturn);
             }
 
             yotogiPlayMgr.GetMethod("UpdateCommand")

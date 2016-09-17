@@ -428,8 +428,14 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     else if (setFunctionsLong.TryGetValue(type, out setValLong))
                     {
                         long v;
-                        string str = val as string;
-                        if (str == null || !long.TryParse(str, out v))
+                        string s = val as string;
+#pragma warning disable 642
+                        if (s != null && !long.TryParse(s, out v))
+                            ;
+#pragma warning restore 642
+                        else if (val is int || val is long)
+                            v = (long) val;
+                        else
                             return;
 
                         setValLong(v);

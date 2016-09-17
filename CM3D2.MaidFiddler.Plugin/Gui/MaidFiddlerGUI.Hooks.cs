@@ -170,7 +170,18 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void OnPlayerValueChanged(object sender, PlayerValueChangeEventArgs args)
         {
             if (Player.Player == null)
+            {
+                Debugger.WriteLine(LogLevel.Warning, "Player is NULL! Aborting!");
                 return;
+            }
+
+            Debugger.WriteLine(LogLevel.Info, $"Attempting to update value {args.Tag}");
+            if (Player.IsLocked(args.Tag))
+            {
+                Debugger.WriteLine(LogLevel.Info, "Value locked! Aborting changes...");
+                args.Block = true;
+                return;
+            }
 
             if (!playerValueUpdateQueue.ContainsKey(args.Tag))
                 playerValueUpdateQueue.Add(args.Tag, () => Player.UpdateField(args.Tag));
