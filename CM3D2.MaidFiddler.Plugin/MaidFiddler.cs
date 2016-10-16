@@ -21,8 +21,8 @@ namespace CM3D2.MaidFiddler.Plugin
     public class MaidFiddler : PluginBase
     {
         public const string CONTRIBUTORS = "denikson";
-        public const string VERSION = "BETA 0.11";
-        public const string VERSION_TAG = "Beta-0.11";
+        public const string VERSION = "BETA 0.11.1";
+        public const string VERSION_TAG = "Beta-0.11.1";
         public const string PROJECT_PAGE = "https://github.com/denikson/CM3D2.MaidFiddler";
         public const string RESOURCE_URL = "https://raw.githubusercontent.com/denikson/CM3D2.MaidFiddler/master";
 
@@ -35,6 +35,7 @@ namespace CM3D2.MaidFiddler.Plugin
         public const uint SUPPORTED_PATCH_MIN = 1310;
         private const bool DEFAULT_USE_JAPANESE_NAME_STYLE = false;
         private const bool DEFAULT_OPEN_ON_STARTUP = false;
+        private const bool DEFAULT_CHECK_FOR_UPDATES = true;
         private const MaidOrderDirection DEFAULT_ORDER_DIRECTION = Plugin.MaidOrderDirection.Ascending;
         private const string DEFAULT_LANGUAGE_FILE = "ENG";
         private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.A};
@@ -42,6 +43,26 @@ namespace CM3D2.MaidFiddler.Plugin
         public MaidFiddlerGUI.MaidCompareMethod[] COMPARE_METHODS;
         private bool isUpdatePromptShowed;
         private KeyHelper keyCreateGUI;
+
+        public bool CFGCheckForUpdates
+        {
+            get
+            {
+                IniKey value = Preferences["GUI"]["CheckForUpdates"];
+                bool checkForUpdates = DEFAULT_CHECK_FOR_UPDATES;
+                if (!string.IsNullOrEmpty(value.Value) && bool.TryParse(value.Value, out checkForUpdates))
+                    return checkForUpdates;
+                Debugger.WriteLine(LogLevel.Warning, "Failed to get CheckForUpdates value. Setting to default...");
+                value.Value = DEFAULT_CHECK_FOR_UPDATES.ToString();
+                SaveConfig();
+                return checkForUpdates;
+            }
+            set
+            {
+                Preferences["GUI"]["CheckForUpdates"].Value = value.ToString();
+                SaveConfig();
+            }
+        }
 
         public bool CFGOpenOnStartup
         {
@@ -254,8 +275,16 @@ namespace CM3D2.MaidFiddler.Plugin
 
             Debugger.WriteLine($"MaidFiddler {VERSION} loaded!");
 
-            Thread updateCheckThread = new Thread(FiddlerUtils.RunUpdateChecker);
-            updateCheckThread.Start();
+            if (CFGCheckForUpdates)
+            {
+                Thread updateCheckThread = new Thread(FiddlerUtils.RunUpdateChecker);
+                updateCheckThread.Start();
+            }
+            else
+            {
+                Debugger.WriteLine(LogLevel.Info, "Skipping update checking!");
+            }
+            
         }
 
         public void LateUpdate()

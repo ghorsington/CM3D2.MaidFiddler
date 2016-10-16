@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.37" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.38" "Denikson, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -169,6 +169,7 @@ Yotogi_Marriage					Marriage
 Yotogi_Lily						Lily
 Yotogi_Carnival					Carnival
 Yotogi_Cherish					Cherish
+Yotogi_Bind						Bind
 
 ; Params			
 Care							Care
@@ -711,6 +712,7 @@ GUI_SETTINGS_KEY_LABEL			Maid Fiddler launch key(s)
 GUI_SETTINGS_GUI				GUI Settings
 GUI_SETTINGS_NAME_STYLE			Maids' naming style
 GUI_SETTINGS_OPEN_ON_STARTUP	Open Maid Fiddler when CM3D2 starts
+GUI_SETTINGS_CHECK_FOR_UPDATES	Check for updates when CM3D2 starts
 GUI_SETTINGS_ORDER				Ordering Settings
 GUI_SETTINGS_ORDER_DESCRIPTION	You can specify how maids are ordered in Maid Fiddler.\nSelect the available ordering methods by clicking on them and by pressing ">". Remove from selected by pressing "<".\nChange the order priority by pressing "˄" or "˅".\n\n
 GUI_SETTINGS_ORDER_AVAILABLE	Available order styles

@@ -136,8 +136,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 {
                     {MaidChangeType.FirstNameCall, SetFirstNameCall},
                     {MaidChangeType.Leader, SetLeader},
-                    {MaidChangeType.RentalMaid, SetRentalMaid},
-                    {MaidChangeType.Marriage, SetMarriage}
                 };
 
                 setFunctionsLong = new Dictionary<MaidChangeType, Action<long>>
@@ -162,8 +160,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     {MaidChangeType.FirstName, UpdateFirstName},
                     {MaidChangeType.LastName, UpdateLastName},
                     {MaidChangeType.Leader, UpdateLeader},
-                    {MaidChangeType.Marriage, UpdateMarriage},
-                    {MaidChangeType.RentalMaid, UpdateRentalMaid},
                     {MaidChangeType.FirstNameCall, UpdateFirstNameCall},
                     {MaidChangeType.FreeComment, UpdateFreeComment},
                     {MaidChangeType.Profile, UpdateProfile},
@@ -205,6 +201,18 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 forceUpdateNightWorks = new Dictionary<int, bool>();
                 foreach (KeyValuePair<int, ScheduleCSVData.NightWork> nightWork in ScheduleCSVData.NightWorkData)
                     forceUpdateNightWorks.Add(nightWork.Key, false);
+
+                if (FiddlerUtils.GameVersion >= 121)
+                {
+                    setFunctionsBool.Add(MaidChangeType.RentalMaid, SetRentalMaid);
+                    UpdateFunctions.Add(MaidChangeType.RentalMaid, UpdateRentalMaid);
+                }
+
+                if (FiddlerUtils.GameVersion >= 133)
+                {
+                    setFunctionsBool.Add(MaidChangeType.Marriage, SetMarriage);
+                    UpdateFunctions.Add(MaidChangeType.Marriage, UpdateMarriage);
+                }
             }
 
             public bool IsHardLocked(MaidChangeType type)

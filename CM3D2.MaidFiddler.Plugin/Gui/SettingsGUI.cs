@@ -31,6 +31,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             comboBox_name_style.SelectedIndex = plugin.CFGUseJapaneseNameStyle ? 1 : 0;
             checkBox_open_on_startup.Checked = plugin.CFGOpenOnStartup;
+            checkBox_check_for_updates.Checked = plugin.CFGCheckForUpdates;
 
             List<MaidOrderStyle> orderStyles = EnumHelper.GetValues<MaidOrderStyle>().ToList();
             List<MaidOrderStyle> selectedOrderStyles = plugin.CFGOrderStyle;
@@ -142,6 +143,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 comboBox_name_style.Items[i] = Translation.GetTranslation((string) comboBox_name_style.Items[i]);
             }
             Translation.GetTranslation(checkBox_open_on_startup);
+            Translation.GetTranslation(checkBox_check_for_updates);
 
             Translation.GetTranslation(groupBox_order);
             Translation.GetTranslation(label_order_description);
@@ -187,6 +189,12 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             public MaidOrderStyle OrderStyle;
             public string DisplayName => Translation.GetTranslation($"OrderStyle_{OrderStyle}");
+        }
+
+        private void OnCheckForUpdatesCheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = (CheckBox) sender;
+            plugin.CFGCheckForUpdates = cb.Checked;
         }
     }
 }
