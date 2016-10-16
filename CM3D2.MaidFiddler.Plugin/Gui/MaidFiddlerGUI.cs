@@ -22,7 +22,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 control.Font = uiFont;
             }
-            Opacity = 0.0;
+            if(!plugin.CFGOpenOnStartup)
+                Opacity = 0.0;
             Text = $"CM3D2 Maid Fiddler {MaidFiddler.VERSION}";
             Translation.AddTranslationAction("TITLE_TEXT", s => Text = $"CM3D2 Maid Fiddler {MaidFiddler.VERSION} {s}");
             try
@@ -68,7 +69,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void OnShown(object sender, EventArgs e)
         {
             Visible = Plugin.CFGOpenOnStartup;
-            Opacity = 1.0;
+            if(!Plugin.CFGOpenOnStartup)
+                Opacity = 1.0;
         }
 
         public void DoIfVisible(Action action)
