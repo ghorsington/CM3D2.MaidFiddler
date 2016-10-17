@@ -1,0 +1,783 @@
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.38" "Denikson, Algester and the CM3D2 Translation Team"
+; Maid Fiddler GUI Texts
+;
+; Most of the translations are not by me! 
+; Special thanks go to the HF Translation team and Algester for providing Japanese translations!
+;
+; Syntax:
+; <GUI Label>	<Translation> (NOTE: Separate with tabs, not spaces!)
+; Comment lines with ";"
+; Comments and faulty lines (wrong separators, missing translation) are ignored
+; If the translation is missing, <GUI Label> is used as the translation of itself (useful if one wants to leave Japanese labels untranslated).
+
+; Feel free to edit the title of the tool!
+TITLE_TEXT						- So shiny!
+
+; Generic maid thumbnail
+THUMB_TEXT_SIZE					11.0
+THUMB_TEXT_POS_X				0.0
+THUMB_TEXT_POS_Y				55.0
+THUMB_NONE						        NO\nTHUMBNAIL
+
+; Info tab
+TAB_INFO						Information
+FirstName						First name
+LastName						Last name
+FirstNameCall					Call by first name
+Personal						Personality
+ContractType					Contract type
+Leader							Is leader
+RentalMaid						Is rental
+IsMarriage						Is married
+Condition						Love status
+ConditionSpecial				Yotogi state
+Employment						Employment day
+MAID_SEX_EXP					Sexual experience
+InitSeikeiken					Initial
+Seikeiken						Current
+MAID_CLASS_SELECTED				Selected classes
+MaidClassType					Maid class
+YotogiClassType					Night class
+Profile							Maid description
+FreeComment						User comment
+
+; Table columns			
+NAME							Name
+VAL								Value
+LOCK							Locked
+HAS								Has
+LVL								Level
+TOTAL_XP						Total XP
+FORCE_ENABLE					Force enabled
+PLAY_COUNT						Times done
+
+; Maid stats			
+TAB_STATS						Parameters
+MAID_PARAMS						General parameters
+MAID_PARAMS_BONUS				Parameter bonuses
+MAID_ERO_ZONES					Erogenous zones
+MAID_STATS						Miscellaneous parameters
+
+; Maid classes			
+TAB_CLASSES						Classes
+MAID_CLASS						Maid class
+YOTOGI_CLASS					Night class
+
+; Maid work
+TAB_WORK						Work Data
+CURRENT_WORK					Selected work
+WORK_NOON						Noon
+WORK_NIGHT						Night
+NOON_WORK						Noon work data
+NIGHT_WORK						Night work data
+NoonWorkId						Noon
+NightWorkId						Night
+
+; Maid skills	
+TAB_YOTOGI						Yotogi Skills
+
+; Maid misc			
+TAB_MISC						Traits and Fetishes
+MAID_PROPENSITY					Fetishes
+MAID_FEATURES					Traits
+
+; Game			
+TAB_GAME						Game General
+GAME_PARAMS_GENERAL				General Parameters
+GAME_PARAMS_ADV					Advanced Parameters
+PlayerName						Player name
+Money							Credits
+ShopUseMoney					Credits used in shop
+SalonLoan						Current debt
+InitSalonLoan					Initial debt
+PhaseDays						Days (current phase)
+Days							Days (total)
+ScenarioPhase					Current phase
+SCENARIO_NEW					New game
+SCENARIO_DEBT					Debt phase
+SCENARIO_MAIN					Free play
+SALON_STATS						Club status
+SalonClean						Clean
+SalonBeautiful					Beauty
+SalonEvaluation					Total evaluation
+SalonGrade						Current grade
+BestSalonGrade					Best grade
+BaseMaidPoints					Initial maid points (no bonus)
+
+; Personalities			
+Pure							Innocent
+Cool							Mature
+Pride							Proud
+Yandere							Yandere
+Anesan							Onee-san
+
+; Contract types			
+Nurture							Training
+Free							Free
+Exclusive						Personal
+
+; Condition			
+Tonus							Nervous
+Contact							Close
+Trust							Trusted
+Lover							Lover
+Slave							Love Slave
+
+; Condition Special			
+Null							Normal
+Drunk							Drunk
+Osioki							Punishment
+
+; Sexual exp			
+No_No							Virgin
+Yes_No							Vaginal
+No_Yes							Anal
+Yes_Yes							Both
+
+; Maid class type			
+Maid_Novice						Novice
+Maid_Lovely						Lovely
+Maid_Elegance					Elegant
+Maid_Sexy						Sexy
+Maid_Innocent					Innocent
+Maid_Charm						Charming
+Maid_Ready						Lady
+
+; Yotogi class type			
+Yotogi_Debut					Debut
+Yotogi_Rudeness					Lewd
+Yotogi_Slave					Slave
+Yotogi_Abnormal					Abnormal
+Yotogi_Service					Service
+Yotogi_Escort					Escort
+Yotogi_Soap						Soap
+Yotogi_Sweet					Sweet
+Yotogi_Party					Party
+Yotogi_SexSlave					Sex Slave
+Yotogi_Festival					Festival
+Yotogi_Harlem					Harem
+Yotogi_Royalsoap				Royal Soap
+Yotogi_Toilet					Toilet
+Yotogi_Immoral					Immoral
+Yotogi_Bride					Bridal
+Yotogi_Succubus					Succubus
+Yotogi_Queen					Queen
+Yotogi_Darkness					Darkness
+Yotogi_School					School
+Yotogi_NTR						NTR
+Yotogi_Marriage					Marriage
+Yotogi_Lily						Lily
+Yotogi_Carnival					Carnival
+Yotogi_Cherish					Cherish
+Yotogi_Bind						Bind
+
+; Params			
+Care							Care
+Charm							Charm
+CurExcite						Excitement (Current)
+CurMind							Mind (Current)
+CurReason						Reason (Current)
+Elegance						Elegance
+Frustration						Frustration
+Hentai							Perversion
+Housi							Service
+Hp								Stamina (Max)
+Inyoku							Lust
+Likability						Impression
+Lovely							Sweetness
+MaidPoint						Maid Points
+Mind							Mind (Max)
+MValue							Masochism
+OthersPlayCount					Times entertained
+PlayNumber						Play Number
+Reason							Reason (Max)
+Reception						Reception
+StudyRate						Learning rate
+TeachRate						Leadership
+YotogiPlayCount					Times had sex
+SexualBack						Anal
+SexualCuri						Clitoris
+SexualFront						Vaginal
+SexualMouth						Mouth
+SexualNipple					Nipples
+SexualThroat					Throat
+Sales							Money earned
+TotalSales						Total money earned
+Evaluation						Evaluation
+TotalEvaluation					Total Evaluation
+CurHp							Stamina (Current)
+PopularRank						Popularity
+
+; Bonus params
+BonusCare						Care
+BonusCharm						Charm
+BonusElegance					Elegance
+BonusHentai						Perversion
+BonusHousi						Service
+BonusHp							Stamina
+BonusInyoku						Lust
+BonusLovely						Sweetness
+BonusMind						Mind
+BonusMValue						Masochism	
+BonusReception					Reception
+BonusTeachRate					Teaching rate
+
+; Noon work			
+裁縫							Sewing
+料理							Cooking
+華道							Flower Arrangement
+接客練習							Chat
+模様替え							Decorating
+掃除							Cleaning
+教養							Study
+派遣							Dispatch
+化粧							Make-up
+エステ							Spa
+メイド研修						Maid Training
+休日							Day off
+
+; Night work	
+クラブ接待							Entertainment
+夜伽							Night Service
+ソーププレイ						Soap Play
+ハメ撮りプレイ						Photo Play
+恋人プレイ						Lovers Play
+恋人プレイ（報告）					Lovers Play (Report)
+野外露出							Outdoors Exposure
+騙され接待01						Deceive Maid 1
+騙され接待02						Deceive Maid 2
+騙され接待03						Deceive Maid 3
+騙され接待（報告）					Deceive Maid (Report)
+アナルプレイ						Anal Play
+純愛ソーププレイ					Lover Soap Play
+お仕置きプレイ						Punishment Play
+お客様公開プレイ					Guest Exhibition Play
+路地裏露出セックス					Back Alley Sex
+詰られプレイ						Scolding Play
+らぶらぶ媚薬プレイ					Love Love Aphrodisiac Play
+乱暴なお客様前半					Rough Customer 1
+乱暴なお客様後半１					Rough Customer 2 (Normal end)
+AV撮影							AV Shooting
+純愛プレイ前半						Pure Love Play 1
+純愛プレイ後半						Pure Love Play 2
+なりきり新婚プレイ					Honeymoon play
+乱暴なお客様後半２					Rough Customer 2 (Bad end)
+フリー撮影会						Free Photo Session
+フリー逆ナンパ						Free Seduction Pick-up
+フリー痴漢プレイ					Free Molester Play
+痴漢克服プレイ						Molester Play [Doya Yoshiko VIP]
+媚薬プレイ						Aphrodisiac Play [Miyahara Ayumi VIP]
+お風呂接待						Bath Play [Ichinose Sakura VIP]
+ハーレム特訓プレイ					Harem Training [Shiina Ai VIP]
+学園生練習プレイ					School Life Practice Play [Doya Yoshiko VIP]
+濃厚ラブセックス						Concentrated Love Play [Miyahara Ayumi VIP]
+NTR乱交セックス					NTR Orgy Play [Ichinose Sakura VIP]
+NTRレズセックス						NTR Lesbian Play [Shiina Ai VIP]
+オネショタなりきり甘えプレイ				Sister-Shota Foreplay [Karasaki Megumi VIP]
+秘密セフレセックス					Secret Sexfriend Play [Akabane Yuna VIP]
+射精管理プレイ						Ejaculation Control Play [Nishiamane Mikoto VIP]
+逆媚薬セックス						Reverse Aphrodisiac Play [Ginga the Sadist Maid VIP]
+童貞筆おろしプレイ					Virgin's First Time Play
+乱交大浴場プレイ					Public Bath Orgy Play
+寝取られ調教プレイ前半				NTR Dominance Play 1
+寝取られ調教プレイ後半				NTR Dominance Play 2
+寝取られ結婚プレイ					NTR Marriage Play
+ネコミミにゃんにゃんプレイ				Cat Play
+なりきり学園プレイ					School Students Foreplay
+やきもちプレイ						Jealousy Play 
+婚約アプローチプレイ					Engagement Approach Play
+いちゃいちゃ結婚プレイ				Flirty Marriage Play
+
+; Yotogi skills
+;Virgin	
+処女喪失セックス					Virgin Sex
+処女喪失セックスChu-B				[Chu-B] Virgin Sex
+アナル処女喪失セックス				Anal Virgin Sex
+アナル処女喪失セックスChu-B			[Chu-B] Anal Virgin Sex
+;Pleasure	
+愛撫							Caress
+愛撫Chu-B						[Chu-B] Caress
+バイブ責め						Vibrator
+バイブ責めChu-B					[Chu-B] Vibrator
+アナルバイブ責め					Anal Vibrator
+アナルバイブ責めChu-B				[Chu-B] Anal Vibrator
+セックス正常位						Missionary Sex
+セックス正常位Chu-B				[Chu-B] Missionary Sex
+アナルセックス正常位					Missionary Anal Sex
+アナルセックス正常位Chu-B			[Chu-B] Missionary Anal Sex
+セックス後背位						Doggy Style Sex
+セックス後背位Chu-B				[Chu-B] Doggy Style Sex
+アナルセックス後背位					Doggy Style Anal Sex
+アナルセックス後背位Chu-B			[Chu-B] Doggy Style Anal Sex
+セックス騎乗位						Cowgirl Sex
+セックス騎乗位Chu-B				[Chu-B] Cowgirl Sex
+アナルセックス騎乗位					Cowgirl Anal Sex
+アナルセックス騎乗位Chu-B			[Chu-B] Cowgirl Anal Sex
+言葉責め愛撫						Verbal Abuse Caress
+グラインドセックス騎乗位				Grinding Cowgirl Sex
+グラインドセックス騎乗位Chu-B			[Chu-B] Grinding Cowgirl Sex
+グラインドアナルセックス騎乗位			Grinding Cowgirl Anal Sex
+グラインドアナルセックス騎乗位Chu-B		[Chu-B] Grinding Cowgirl Anal Sex
+太バイブ責め						Thick Vibrator
+太バイブ責めChu-B					[Chu-B] Thick Vibrator
+バイブ責めアナルセックス正常位			Anal Missionary Sex and Vibrator
+バイブ責めアナルセックス正常位Chu-B	[Chu-B] Anal Missionary Sex and Vibrator
+アナルバイブ責めセックス後背位			Doggy Style Sex and Anal Vibrator
+アナルバイブ責めセックス後背位Chu-B	[Chu-B] Doggy Style Sex and Anal Vibrator
+だいしゅきホールドセックス正常位		Leg Locked Missionary Sex
+だいしゅきホールドセックス正常位Chu-B	[Chu-B] Leg Locked Missionary Sex
+だいしゅきホールドアナルセックス正常位	Leg Locked Missionary Anal Sex
+だいしゅきホールドアナル正常位Chu-B	[Chu-B] Leg Locked Missionary Anal Sex
+抱きつきセックス後背位				Hugging Doggy Style Sex
+抱きつきセックス後背位Chu-B			[Chu-B] Hugging Doggy Style Sex
+抱きつきアナルセックス後背位			Hugging Doggy Style Anal Sex
+抱きつきアナルセックス後背位Chu-B		[Chu-B] Hugging Doggy Style Anal Sex
+
+;Pervert
+かっこいいポーズ						Cool Pose
+かわいいポーズ						Cute Pose
+オナニー							Masturbation
+オナニーChu-B						[Chu-B] Masturbation
+アナルオナニー						Anal Masturbation
+アナルオナニーChu-B					[Chu-B] Anal Masturbation
+Ｈなポーズ							Sexy Pose
+手コキオナニー						Handjob and Masturbation
+手コキオナニーChu-B					[Chu-B] Handjob and Masturbation
+フェラオナニー						Fellatio and Masturbation
+フェラオナニーChu-B					[Chu-B] Fellatio and Masturbation
+変態ポーズプレイ					Perverted Pose Play
+バイブオナニー						Vibrator Masturbation
+バイブオナニーChu-B					[Chu-B] Vibrator Masturbation
+アナルバイブオナニー					Anal Vibrator Masturbation
+アナルバイブオナニーChu-B				[Chu-B] Anal Vibrator Masturbation
+太バイブオナニー					Thick Vibrator Masturbation
+太バイブオナニーChu-B				[Chu-B] Thick Vibrator Masturbation
+露出プレイ						Exhibitionism
+犬プレイ							Pet Play
+露出セックス背面立位				Exhibitionist Rear Standing Sex
+露出セックス背面立位Chu-B			[Chu-B] Exhibitionist Rear Standing Sex
+露出アナルセックス背面立位			Exhibitionist Anal Rear Standing Sex
+露出アナルセックス背面立位Chu-B		[Chu-B] Exhibitionist Anal Rear Standing Sex
+実況オナニー						Reporting Masturbation
+実況オナニーChu-B					[Chu-B] Reporting Masturbation
+;Service
+手コキ							Handjob
+手コキChu-B						[Chu-B] Handjob
+フェラチオ							Fellatio
+フェラチオChu-B						[Chu-B] Fellatio
+パイズリ							Paizuri
+パイズリChu-B						[Chu-B] Paizuri
+パイズリフェラ						Paizuri and Fellatio
+パイズリフェラChu-B					[Chu-B] Paizuri and Fellatio
+玉舐めフェラチオ					Ball Licking Fellatio
+セルフイラマ						Self Irrumatio
+セルフイラマChu-B					[Chu-B] Self Irrumatio
+シックスナイン						Sixty Nine
+シックスナインChu-B					[Chu-B] Sixty Nine
+スケベ椅子フェラ					Stool Fellatio
+スケベ椅子フェラChu-B				[Chu-B] Stool Fellatio
+スケベ椅子セックス					Stool Sex
+スケベ椅子セックスChu-B				[Chu-B] Stool Sex
+スケベ椅子アナルセックス				Stool Anal Sex
+スケベ椅子アナルセックスChu-B			[Chu-B] Stool Anal Sex
+MP全身洗い						Mat Play Body Wash
+MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
+ディープスロート						Deepthroat
+ディープスロートChu-B				[Chu-B] Deepthroat
+高級MP全身洗い					Luxurious Mat Play Body Wash
+全身舐め奉仕						Body Licking
+;Scolding	
+詰られパイズリ						Scolding Paizuri
+詰られ手コキ						Scolding Handjob
+詰られ騎乗位						Scolding Cowgirl
+詰られアナル騎乗位					Scolding Anal Cowgirl
+;Bondage	
+拘束愛撫							Restrained Caress
+拘束愛撫Chu-B					[Chu-B] Restrained Caress
+イラマチオ							Irrumatio
+イラマチオChu-B					[Chu-B] Irrumatio
+拘束セックス						Restrained Sex
+拘束セックスChu-B					[Chu-B] Restrained Sex
+拘束アナルセックス					Restrained Anal Sex
+拘束アナルセックスChu-B				[Chu-B] Restrained Anal Sex
+首絞めセックス正常位				Choking Missionary Sex
+首絞めセックス正常位Chu-B			[Chu-B] Choking Missionary Sex
+首絞めアナルセックス正常位			Choking Missionary Anal Sex
+首絞めアナルセックス正常位Chu-B		[Chu-B] Choking Missionary Anal Sex
+三角木馬拘束						Restrained Wooden Horse
+吊るし拘束						Restrained Hanging
+ギロチン拘束セックス					Restrained Guillotine Sex
+ギロチン拘束セックスChu-B			[Chu-B] Restrained Guillotine Sex	
+ギロチン拘束アナルセックス				Restrained Guillotine Anal Sex
+ギロチン拘束アナルセックスChu-B		[Chu-B] Restrained Guillotine Anal Sex
+ハード吊るし拘束					Restrained Hanging (Hard)
+ハード三角木馬拘束				Restrained Wooden Horse (Hard)
+;Swapping	
+スワッピング愛撫					Swapping Caress
+スワッピングフェラチオ					Swapping Fellatio
+スワッピングセックス正常位				Swapping Missionary Sex
+スワッピングアナルセックス正常位			Swapping Missionary Anal Sex
+;Group	
+乱交愛撫							Group Caress
+乱交奉仕							Group Service
+乱交3Pセックス正常位				Group 3P Missionary Sex
+乱交3Pアナルセックス正常位			Group 3P Missionary Anal Sex
+乱交3P2穴セックス					Group 3P Double Penetration
+;Drunk Variations	
+酔い愛撫							Drunk Caress
+酔いオナニー						Drunk Masturbation
+酔いアナルオナニー					Drunk Anal Masturbation
+酔いフェラチオ						Drunk Fellatio
+酔いイラマチオ						Drunk Irrumatio
+酔いディープスロート					Drunk Deepthroat
+酔いバイブ責め						Drunk Vibrator
+酔いアナルバイブ責め					Drunk Anal Vibrator
+酔いアナルセックス正常位				Drunk Missionary Anal Sex
+酔いセックス正常位					Drunk Missionary Sex
+酔いセックス後背位					Drunk Doggy Style Sex
+酔いアナルセックス後背位				Drunk Doggy Style Anal Sex
+酔いセックス騎乗位					Drunk Cowgirl Sex
+酔いシックスナイン					Drunk Sixty Nine
+酔いアナルセックス騎乗位				Drunk Cowgirl Anal Sex
+;Punishment variations	
+お仕置き拘束愛撫					Punishment Restrained Caress
+お仕置き吊るし拘束					Punishment Restrained Hanging
+お仕置き三角木馬拘束				Punishment Restrained Wooden Horse
+お仕置き吊るしセックス				Punishment Hanging Sex
+お仕置き吊るしアナルセックス			Punishment Hanging Anal Sex
+お仕置きギロチン拘束セックス			Punishment Restrained Guillotine Sex
+お仕置きギロチン拘束アナルセックス		Punishment Restrained Guillotine Anal Sex
+お仕置きハード吊るし拘束				Punishment Restrained Hanging (Hard)
+お仕置きハード三角木馬拘束			Punishment Restrained Wooden Horse (Hard)
+お仕置きセックス後背位				Punishment Doggy Style Sex
+お仕置きセックス後背位Chu-B			[Chu-B] Punishment Doggy Style Sex
+お仕置きアナルセックス後背位			Punishment Doggy Style Anal Sex
+お仕置きアナルセックス後背位Chu-B		[Chu-B] Punishment Doggy Style Anal Sex
+
+; Additional (Skill sets etc)
+オナホコキ							Onahole Play
+足コキ							Footjob
+セックス対面座位					Lotus
+アナルセックス対面座位				Anal Lotus
+セックス背面駅弁					Victory
+アナルセックス背面駅弁				Anal Victory
+セックス側位						Leg Glider
+アナルセックス側位					Anal Leg Glider
+まんぐり返しセックス					Piledriver
+まんぐり返しアナルセックス				Anal Piledriver
+スワッピングセックス後背位				Swapping Doggy Style
+スワッピングアナルセックス後背位			Swapping Anal Doggy Style
+スワッピングセックス騎乗位				Swapping Cowgirl
+スワッピングアナルセックス騎乗位			Swapping Anal Cowgirl
+乱交3P口＆セックス後背位			Group 3P Doggy Style w/ Fellatio
+乱交3P口＆アナルセックス後背位		Group 3P Anal Doggy Style w/ Fellatio
+乱交3P2穴セックス正常位				Group 3P Double Penetration Missionary
+乱交4Pセックス						Group 4P
+足舐め							Foot Licking
+足舐めオナニー						Foot Licking w/ masturbation
+ポーズ維持プレイ１					Pose Maitenance play 1
+ポーズ維持プレイ２					Pose Maitenance play 2
+拘束イラマチオ						Restrained Deepthroat
+拘束台愛撫						Restrained Standing Caress
+磔プレイ							Crucifixion Play
+ハード首絞めセックス					Choking Sex
+ハード首絞めアナルセックス				Choking Anal Sex
+セックス背面騎乗位					Inverse Cowgirl
+アナルセックス背面騎乗位				Inverse Anal Cowgirl
+公開オナニー						Public Masturbation
+公開アナルオナニー					Public Anal Masturbation
+セックス立位						Standing Sex
+アナルセックス立位					Standing Anal Sex
+抱えセックス正常位					Hip-Raised Missionary Sex
+抱えアナルセックス正常位				Hip-Raised Missionary Anal Sex
+寄り添いセックス側位					Side Spooning Sex
+寄り添いアナルセックス側位			Side Spooning Anal Sex
+尻上げ後背位						Ass-Raised Doggy Style Sex
+尻上げアナル後背位					Ass-Raised Anal Doggy Style Sex
+スワッピング吊るしセックス				Swapping Hanging Sex
+スワッピング吊るしアナルセックス			Swapping Hanging Anal Sex
+乱交3P2穴駅弁					Group 3P Two-Hole Carrying Sex
+乱交3P口＆セックス騎乗位			Group 3P Oral /w Cowgirl Sex
+乱交3P口＆アナルセックス騎乗位		Group 3P Oral /w Anal Cowgirl Sex
+乱交3Pセックス側位					Group 3P Oral /w Spooning Sex
+乱交3Pアナルセックス側位				Group 3P Oral /w Anal Spooning Sex
+乱交4Pセックス正常位				Group 4P Missionary Sex
+乱交4Pアナルセックス正常位			Group 4P Anal Missionary Sex
+淫乱淫語正常位					Dirty Talk Missionary Sex
+ちんぐりセックス						Reverse Piledriver Sex
+ちんぐりアナルセックス					Reverse Piledriver Anal Sex
+ちんぐりフェラ						Reverse Piledriver Fellatio
+ちんぐり手コキ						Reverse Piledriver Handjob
+顔面騎乗位						Facial Cowgirl
+椅子拘束騎乗位					Chair-restrained Cowgirl Sex
+椅子拘束アナル騎乗位				Chair-restrained Cowgirl Anal Sex
+首絞めセックス後背位				Choking Doggy
+首絞めアナルセックス後背位			Choking Anal Doggy
+腕拘束イラマチオ					Restrained Deep Throating
+拘束愛撫バイブ責め					Restrained Vibrator
+拘束愛撫アナルバイブ責め				Restrained Anal Vibrator
+吊るし正常位セックス					Hanging Missionary
+吊るし正常位アナルセックス			Hanging Anal Missionary
+イチャイチャフェラオナニー				Flirty Fellatio and Masturbation
+腕持ち後背位						Arm-holding Doggy Style
+腕持ちアナル後背位					Arm-holding Anal Doggy Style
+寝フェラ							Sleeping Fellatio
+うつ伏せ後背位					Facedown Doggy Style
+うつ伏せアナル後背位				Facedown Anal Doggy Style
+結婚愛撫							Marriage Caress	
+結婚バイブ責め						Marriage Vibrator
+結婚アナルバイブ責め				Marriage Anal Vibrator
+結婚セックス正常位					Married Missionary
+結婚アナルセックス正常位				Married Anal Missionary
+結婚セックス後背位					Marriage Doggy Style
+結婚アナルセックス後背位				Marriage Anal Doggy Style
+結婚セックス騎乗位					Marriage Cowgirl Sex
+結婚アナルセックス騎乗位				Marriage Anal Cowgirl Sex
+結婚オナニー						Marriage Masturbation
+結婚フェラチオ						Married Fellatio
+結婚シックスナイン					Married Sixty Nine
+結婚ディープスロート					Marriage Deep Throat
+結婚イラマチオ						Marriage Irrumatio
+結婚イチャイチャフェラオナニー			Marriage Flirty Fellatio and Masturbation
+結婚腕持ち後背位					Marriage Arms-holding Doggy Style
+結婚腕持ちアナル後背位				Marriage Arms-holding Anal Doggy Style
+結婚寝フェラ						Marriage Sleeping Fellatio
+結婚うつ伏せ後背位					Marriage Facedown Doggy Style
+結婚うつ伏せアナル後背位			Marriage Facedown Anal Doggy Style
+イチャイチャ愛撫					Flirty Caress
+立ち側位							Standing Spooning Sex
+立ちアナル側位						Standing Anal Spooning Sex
+挟み込み騎乗位					Cowgirl Lunges Sex
+挟み込みアナル騎乗位				Anal Cowgirl Lunges Sex
+騎乗位素股						Intercrural Cowgirl Sex
+台上正常位						Table Missionary
+台上アナル正常位					Table Anal Missionary
+乱交３P馬乗りイラマチオ				Group 3P Riding Irrumatio
+乱交３P馬乗りアナルイラマチオ			Group 3P Ridding Anal Irrumatio
+
+; CM3D2+ Skills
+トイレセックス						Toilet Sex
+トイレアナルセックス					Toilet Anal Sex
+トイレオナニー						Toilet Masturbation
+トイレアナルオナニー					Toilet Anal Masturbation
+痴漢愛撫							Molesting Caress
+痴漢アナル愛撫					Molesting Anal Caress
+痴漢セックス						Molesting Sex
+痴漢アナルセックス					Molesting Anal Sex
+洗い								Washing
+尻舐め							Ass Licking
+尻舐めオナニー						Ass Licking /w Masturbation
+潜望鏡フェラ						Periscope Fellatio
+ダブルフェラ						Double Fellatio
+ダブル足コキ						Double Foot Handjob
+ダブル奉仕						Double Service
+ハーレム奉仕						Harem Service
+ハーレムセックス						Harem Sex
+ハーレムアナルセックス					Harem Anal Sex
+教室愛撫							Classroom Caress
+教室アナル愛撫					Classroom Anal Caress
+教室セックス						Classroom Sex
+教室アナルセックス					Classroom Anal Sex
+完墜ち背面騎乗位					Submissive Reverse Cowgirl Sex
+完墜ち背面アナル騎乗位				Submissive Reverse Cowgirl Anal Sex
+完墜ちフェラ						Submissive Fellatio
+完墜ち愛撫						Submissive Caress
+百合クンニ						Yuri Cunnilingus
+百合愛撫							Yuri Caress
+百合貝合わせ						Yuri Scissoring
+百合双頭バイブ					Yuri Dual Vibrator
+
+; Propensity
+M女								Masochist
+中出し好き						Loves Creampies
+二穴好き							Loves DP
+変態							Perversion
+奉仕好き							Loves Service
+尻穴好き							Loves Anal
+淫乱							Lewdness
+飲精好き							Loves Swallowing
+
+; Features
+とことん尽くす						Devoted
+上品							Elegant
+傅く								Servant
+優美							Graceful
+優雅							Refined
+元気な笑顔						Energetic Smile
+凜とした							Dignified
+大人びた魅力						Mature Appeal
+天使							Angelic
+妖艶な魅力						Bewitching
+恥ずかしがり屋						Bashful
+朗らかな魅力						Cheerful
+疲労							Tired
+純真無垢							Pure
+素直							Meek
+過去の秘密						Past Secret
+過去の過ち						Past Error
+高貴							Noble
+魅了							Charming
+魔性の魅力						Devilish
+雅								Delicate
+撫子							Loveable
+一途							Earnest
+盲目的							Reckless
+風雅							Tasteful
+母性的							Motherly
+女神							Goddess
+
+; Menu items
+MENU_GAME						Game and Salon
+MENU_ALL_MAID					Maid cheats
+MENU_MAID						Selected maid
+
+; Game items
+MENU_GAME_CLEAN_DEBT			Clean debt
+MENU_GAME_MAX_RATE				Maximum grade and evaluation
+MENU_GAME_MAX_CREDIT			Maximum credits
+MENU_GAME_ALL_ITEMS				Enable all items
+MENU_GAME_ALL_TROPHY			Get all trophies
+
+; All maid cheats
+MENU_ALL_MAID_NO_LIMIT			Remove all value limits
+MENU_ALL_MAID_RESET_VIP			Reset VIP encounters
+MENU_ALL_MAID_ALL_YOTOGI_COM	All yotogi skill commands enabled
+MENU_ALL_MAID_ALL_VIP_VISIBLE_ALWAYS	VIP encounters always visible
+MENU_ALL_MAID_ALL_YOTOGI_VISIBLE		All yotogi skills always visible
+MENU_ALL_MAID_ALL_YOTOGI_VISIBLE_BASIC		All stage-specific yotogi skills visible
+MENU_ALL_MAID_UNLOCK_MAX_ALL	Unlock and set all to max for every maid
+MENU_ALL_MAID_ALL_SCENES_VISIBLE	Enable all scenes in Free Mode
+
+; Current maid cheats
+MENU_MAID_UNLOCK				Unlock
+MENU_MAID_MAX					Unlock and set to maximum
+MENU_MAID_FORCE_ENABLE			Force all work enabled
+MENU_MAID_LOCK_ALL				Lock all parameters
+MENU_MAID_UNLOCK_ALL			Unlock all parameters
+MENU_MAID_SET_CLASS_LVL			Set all class levels to...
+MENU_MAID_SET_YOTOGI_TIMES		Set enabled yotogi skills play count to...
+MENU_MAID_SET					Set values
+MENU_MAID_WORK_FORCE_DISABLE	Disable force all work
+
+; Misc tools menu
+MENU_MISC						Other
+MENU_MISC_LANG_SELECT			Language
+MENU_MISC_ABOUT					About Maid Fiddler
+MENU_MISC_SETTINGS				Settings
+
+; Current maid unlock
+UNLOCK_SKILLS					Yotogi skills
+UNLOCK_MAID_CLASSES				Noon classes
+UNLOCK_YOTOGI_CLASSES			Night classes
+UNLOCK_ALL						All of the above
+
+; Current maid max
+MAX_CLASS_LVL					Maid/Yotogi class levels
+MAX_STATS						Maid parameters
+MAX_ERO_ZONES					Erogenous zones
+MAX_YOTOGI_LVL					Yotogi skill level
+MAX_WORK_PLAY_COUNT				Noon work play count
+MAX_FEATURE						Traits
+MAX_PROPENSITY					Fetishes
+MAX_ALL							All of the above
+
+; GUI and misc windows
+GUI_YOTOGI_TIMES_TITLE			Set enabled yotogi skills play count to...
+GUI_YOTOGI_TIMES_PROMPT			Update play count for all enabled yotogi skills.\nSpecify the number to which to set the play count.
+
+GUI_CLASS_LVL_TITLE				Set all class levels to...
+GUI_CLASS_LVL_PROMPT			Specify the level (1-10) to set all maid and yotogi classes to.
+
+; Language selection GUI
+GUI_TRANS_SELECT_TITLE			Language select
+GUI_TRANS_SELECT_PROMPT			Below is the list of available translations.\nSelect one and press Apply to apply it.
+GUI_TS_OPEN_TS_FOLDER			Open Translations folder
+GUI_TS_DL_URL					Download from URL
+GUI_TS_DL_GITHUB				Get official translations
+GUI_TS_LANG						Language:
+GUI_TS_VERSION					Version:
+GUI_TS_AUTHOR					Author(s):
+
+; About menu
+GUI_ABOUT_TITLE					About Maid Fiddler
+GUI_ABOUT_VERSION				Version:
+GUI_ABOUT_CONTRIBUTORS			Contributors:
+GUI_ABOUT_PLUGINS				Installed DLC:
+
+; Settings menu
+GUI_SETTINGS_TITLE				Settings
+GUI_SETTINGS_KEY				Maid Fiddler Launch Key
+GUI_SETTINGS_KEY_DESCRIPTION	Specify the key code(s) that will used to launch Maid Fiddler.\nRefer to Unity Scripting API KeyCode enumeration for a complete list of all keys.\nTo specify a key combination, separate the keys with a "+" sign.
+GUI_SETTINGS_KEY_LABEL			Maid Fiddler launch key(s)
+GUI_SETTINGS_GUI				GUI Settings
+GUI_SETTINGS_NAME_STYLE			Maids' naming style
+GUI_SETTINGS_OPEN_ON_STARTUP	Open Maid Fiddler when CM3D2 starts
+GUI_SETTINGS_CHECK_FOR_UPDATES	Check for updates when CM3D2 starts
+GUI_SETTINGS_ORDER				Ordering Settings
+GUI_SETTINGS_ORDER_DESCRIPTION	You can specify how maids are ordered in Maid Fiddler.\nSelect the available ordering methods by clicking on them and by pressing ">". Remove from selected by pressing "<".\nChange the order priority by pressing "˄" or "˅".\n\n
+GUI_SETTINGS_ORDER_AVAILABLE	Available order styles
+GUI_SETTINGS_ORDER_SELECTED		Selected order styles
+GUI_SETTINGS_ORDER_DIRECTION	Order direction
+GUI_SETTINGS_NS_FIRST_LAST		First name, Last name
+GUI_SETTINGS_NS_LAST_FIRST		Last name, First name
+GUI_SETTINGS_DIR_DESC			Descending
+GUI_SETTINGS_DIR_ASC			Ascending
+
+; Order styles
+OrderStyle_GUID					Order by ID
+OrderStyle_CreationTime			Order by creation time
+OrderStyle_FirstName			Order by first name
+OrderStyle_LastName				Order by last name
+OrderStyle_EmployedDay			Order by employment day
+
+; GitHub TL Menu
+TL_GITHUB_TITLE					Maid Fiddler Translations from GitHub
+TL_GITHUB_TEXT					Here you can download translations from Maid Fiddler's GitHub repository.\nSelect the translation from the list and click "Download translation" to install it.
+TL_NAME							Language
+TL_NAME_ENG						Language (In English)
+TL_VERSION						Version
+TL_CURR_VERSION					Installed version
+TL_DOWNLOAD						Download translation	
+TL_NOT_INSTALLED				NOT INSTALLED
+TL_LIST_LOADING					Downloading translation list. Please wait...
+TL_TRANSLATION_DOWNLOAD			Downloading translation:
+TL_DOWNLOAD_DONE				Translations downloaded.\nTo apply the translations, click "Close", select the translation and click "Apply".
+TL_DOWNLOAD_DONE_TITLE			Download complete
+TL_URL_DOWNLOADING				Downloading the translation
+TL_URL_TITLE					Download translation from URL
+TL_URL_TEXT						Input a valid URL of the translation file.\nCurrently Maid Fiddler supports only HTTP or HTTPS links.\n\nNote that the translation file must have a valid translation tag in order to be saved.
+TL_NAME_CHANGE_TITLE			Rename translation file name
+TL_NAME_CHANGE					The translation file with the name below already exists (or the translation file has no name).\nYou can	rename the file and click "OK", or click "CANCEL" to overwrite the existing translation file.\nIf the field is left empty, Maid Fiddler will generate a random file name.
+
+; Errors
+ERROR_UNPATCHED					Maid Fiddler {0} detects that Assembly-CSharp.dll hasn't been patched or is patched with an outdated version of Maid Fiddler Patcher.\nIn order to function, Maid Fiddler requires that the assembly is patched with ReiPatcher or Sybaris.\nThe game may be unstable, until it is patched.\n\nMake sure you have the latest patcher downloaded and re-patch the game.
+ERROR_UNPATCHED_TITLE			No patch detected
+ERROR_OLD_PATCH					Maid Fiddler {0} detected that Assembly-CSharp.dll is patched with an unsupported version of Maid Fiddler Patcher.\nThe game was patched with patcher version {1}, but this version of Maid Fiddler supports only patcher versions {2} through {3}.\nThe game may not be functional until it is re-patched!\n\nMake sure you have the latest patcher downloaded and re-patch the game.
+ERROR_OLD_PATCH_TITLE			Outdated Maid Fiddler patch
+ERROR_CHECK_FAILED				Maid Fiddler failed to check that Assembly-CSharp.dll has been patched properly. Perhaps some other patch is causing the issue.\nMaid Fiddler can still be used, but it may cause errors.\n\nPlease re-patch the game and make sure no other plug-ins cause any interference.
+ERROR_CHECK_FAILED_TITLE		Failed to locate the patcher
+ERROR_LOG_MESSAGE_TITLE			Oh noes! An error!
+ERROR_LOG_MESSAGE				Oh no! An error has occurred in Maid Fiddler!
+ERROR_LOG_CREATED				A log named {0} was created.\nPlease, send this log to the developer with the description of what you attempted to do.
+ERROR_LOG_NOT_CREATED			Failed to create a dump message. Send a screenshot of the following stack trace to the developer:\n==START==\n{0}\n==END==
+ERROR_OLD_GAME_VERSION_TITLE	Unsupported game version
+ERROR_OLD_GAME_VERSION			Maid Fiddler {0} detects that you are running an unsupported version of CM3D2.\nYou are running CM3D2 version {1}.\nMaid Fiddler requires CM3D2 version {2} or higher to function.\nThe game may be unstable, until it is updated.
+
+; Warnings
+WRN_OLD_VERSION_TITLE			Old version of CM3D2
+WRN_OLD_VERSION					Maid Fiddler {0} detected that you are running an older version of CM3D2. Your version of CM3D2 is {1}, but Maid Fiddler supports versions {2} and higher.\nMaid Fiddler can be used, but some features may be disabled\n\nUpdate your game in order to use all of Maid Fiddler's features.
+FEATURE_UNSUPPORTED_TITLE		This feature is unsupported
+FEATURE_UNSUPPORTED				This feature is unsupported in this version of CM3D2.\nUpdate your game to use this feature.
+
+; Update notification
+INFO_UPDATE_AVAILABLE_BUBBLE_TITLE	Maid Fiddler version {0} is available!
+INFO_UPDATE_AVAILABLE_BUBBLE	Download the new version from Maid Fiddler GitHub page!
+INFO_UPDATE_AVAILABLE_TITLE		Version {0} is available!
+INFO_UPDATE_AVAILABLE			Maid Fiddler version {0} is available to download!\nUpdate log:\n{1}\n\nHead to {2} to download the latest version.
+
+OK								OK
+CANCEL							Cancel
+APPLY							Apply
+UNKNOWN							Not available
+CLOSE							Close
+LOADING							Loading

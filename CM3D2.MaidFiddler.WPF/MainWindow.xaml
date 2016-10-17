@@ -1,0 +1,41 @@
+﻿<Window x:Class="CM3D2.MaidFiddler.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:l="clr-namespace:CM3D2.MaidFiddler.WPF"
+        xmlns:t="clr-namespace:CM3D2.MaidFiddler.WPF.Translations"
+        xmlns:tabs="clr-namespace:CM3D2.MaidFiddler.WPF.TabControls"
+        mc:Ignorable="d"
+        Title="{Binding Path=ToolTitle}" Height="650" Width="800" ResizeMode="CanMinimize">
+    <Grid>
+        <DockPanel>
+            <l:TopMenu DockPanel.Dock="Top" />
+            <ListView DockPanel.Dock="Left" Width="220" />
+            <TabControl x:Name="tcMain" DockPanel.Dock="Right">
+                <TabItem Header="{t:Translate TAB_INFO}">
+                    <tabs:TabInfo />
+                </TabItem>
+                <TabItem Header="{t:Translate TAB_STATS}">
+                    <tabs:TabStats />
+                </TabItem>
+                <TabItem Header="{t:Translate TAB_CLASSES}">
+                    <tabs:TabClasses />
+                </TabItem>
+                <TabItem Header="{t:Translate TAB_WORK}">
+                    <tabs:TabWork />
+                </TabItem>
+                <TabItem Header="{t:Translate TAB_YOTOGI}">
+                    <tabs:TabYotogi />
+                </TabItem>
+                <TabItem Header="{t:Translate TAB_MISC}">
+                    <tabs:TabMisc />
+                </TabItem>
+                <TabItem Header="{t:Translate TAB_GAME}">
+                    <tabs:TabGame />
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+
+    </Grid>
+</Window>
