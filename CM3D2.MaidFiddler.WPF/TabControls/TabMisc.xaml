@@ -4,6 +4,32 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:CM3D2.MaidFiddler.WPF.TabControls"
+             xmlns:t="clr-namespace:CM3D2.MaidFiddler.WPF.Translations"
              mc:Ignorable="d">
-    <Grid Background="#FFE5E5E5" />
+    <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto">
+        <Grid Background="#FFE5E5E5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <GroupBox Header="{t:Translate MAID_PROPENSITY}" Grid.Row="0">
+                <ListView MinHeight="100" Name="lvPropensity" SelectionMode="Single">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </GroupBox>
+            <GroupBox Header="{t:Translate MAID_FEATURES}" Grid.Row="1">
+                <ListView MinHeight="100" Name="lvFeatures" SelectionMode="Single">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </GroupBox>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

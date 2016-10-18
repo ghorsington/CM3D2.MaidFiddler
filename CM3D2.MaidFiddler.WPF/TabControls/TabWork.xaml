@@ -4,6 +4,58 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:CM3D2.MaidFiddler.WPF.TabControls"
+             xmlns:t="clr-namespace:CM3D2.MaidFiddler.WPF.Translations"
              mc:Ignorable="d">
-    <Grid Background="#FFE5E5E5" />
+    <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto">
+        <Grid Background="#FFE5E5E5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <GroupBox Header="{t:Translate CURRENT_WORK}" Grid.Row="0">
+                <Grid>
+                    <Grid.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="Padding" Value="5,3"/>
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                        </Style>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="Padding" Value="0,1"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="{t:Translate WORK_NOON}" Grid.Column="0"/>
+                    <ComboBox Grid.Column="1"/>
+                    
+                    <Label Content="{t:Translate WORK_NIGHT}" Grid.Column="3"/>
+                    <ComboBox Grid.Column="4"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="{t:Translate NOON_WORK}" Grid.Row="1">
+                <DataGrid Name="dgNoonWork">
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Header="{t:Translate FORCE_ENABLE}" Width="Auto"/>
+                        <DataGridTextColumn Header="{t:Translate NAME}" Width="*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="{t:Translate LVL}" Width="50"/>
+                        <DataGridTextColumn Header="{t:Translate PLAY_COUNT}" Width="Auto"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+            <GroupBox Header="{t:Translate NIGHT_WORK}" Grid.Row="2">
+                <DataGrid Name="dgNightWork">
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Header="{t:Translate FORCE_ENABLE}" Width="Auto"/>
+                        <DataGridTextColumn Header="{t:Translate NAME}" Width="*" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

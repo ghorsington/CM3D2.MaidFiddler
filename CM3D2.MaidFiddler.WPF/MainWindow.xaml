@@ -7,17 +7,17 @@
         xmlns:t="clr-namespace:CM3D2.MaidFiddler.WPF.Translations"
         xmlns:tabs="clr-namespace:CM3D2.MaidFiddler.WPF.TabControls"
         mc:Ignorable="d"
-        Title="{Binding Path=ToolTitle}" Height="650" Width="800" ResizeMode="CanMinimize">
+        Title="{Binding Path=ToolTitle}" Height="650" Width="850" ResizeMode="CanMinimize">
     <Grid>
         <DockPanel>
             <l:TopMenu DockPanel.Dock="Top" />
             <ListView DockPanel.Dock="Left" Width="220" />
-            <TabControl x:Name="tcMain" DockPanel.Dock="Right">
+            <TabControl Background="#FFE5E5E5" x:Name="tcMain" DockPanel.Dock="Right">
                 <TabItem Header="{t:Translate TAB_INFO}">
                     <tabs:TabInfo />
                 </TabItem>
                 <TabItem Header="{t:Translate TAB_STATS}">
-                    <tabs:TabStats />
+                    <tabs:TabStats ScrollViewer.VerticalScrollBarVisibility="Auto" VerticalContentAlignment="Top" />
                 </TabItem>
                 <TabItem Header="{t:Translate TAB_CLASSES}">
                     <tabs:TabClasses />
