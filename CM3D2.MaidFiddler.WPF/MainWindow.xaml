@@ -7,7 +7,12 @@
         xmlns:t="clr-namespace:CM3D2.MaidFiddler.WPF.Translations"
         xmlns:tabs="clr-namespace:CM3D2.MaidFiddler.WPF.TabControls"
         mc:Ignorable="d"
-        Title="{Binding Path=ToolTitle}" Height="650" Width="850" ResizeMode="CanMinimize">
+        Height="650" Width="850" ResizeMode="CanMinimize">
+    <Window.Title>
+        <Binding Path="TitleText"
+                 StringFormat="{x:Static l:MainWindow.TITLE_FORMAT}"
+                 TargetNullValue="{x:Static l:MainWindow.TITLE_NULL}"/>
+    </Window.Title>
     <Grid>
         <DockPanel>
             <l:TopMenu DockPanel.Dock="Top" />

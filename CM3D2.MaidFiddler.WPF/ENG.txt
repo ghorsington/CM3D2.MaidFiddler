@@ -11,7 +11,7 @@
 ; If the translation is missing, <GUI Label> is used as the translation of itself (useful if one wants to leave Japanese labels untranslated).
 
 ; Feel free to edit the title of the tool!
-TITLE_TEXT						- So shiny!
+TITLE_TEXT						So shiny!
 
 ; Generic maid thumbnail
 THUMB_TEXT_SIZE					11.0

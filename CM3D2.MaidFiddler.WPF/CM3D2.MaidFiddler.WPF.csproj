@@ -54,6 +54,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\CM3D2.cs" />
+    <Compile Include="Model\Maid.cs" />
+    <Compile Include="Model\MaidParam.cs" />
     <Compile Include="TabControls\TabClasses.xaml.cs">
       <DependentUpon>TabClasses.xaml</DependentUpon>
     </Compile>
