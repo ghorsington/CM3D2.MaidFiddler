@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using CM3D2.MaidFiddler.Hook;
@@ -25,7 +24,6 @@ namespace CM3D2.MaidFiddler.Patch
 
         public override void Patch(PatcherArguments args)
         {
-            Debugger.Break();
             TypeDefinition maidParam = args.Assembly.MainModule.GetType("MaidParam");
             TypeDefinition playerParam = args.Assembly.MainModule.GetType("PlayerParam");
             TypeDefinition status = args.Assembly.MainModule.GetType("param.Status");

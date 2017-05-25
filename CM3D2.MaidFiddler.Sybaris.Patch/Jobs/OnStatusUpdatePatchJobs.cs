@@ -1,13 +1,11 @@
-﻿using System;
-using System.Linq;
-using CM3D2.MaidFiddler.Hook;
-using CM3D2.MaidFiddler.Patch.PatchJob;
+﻿using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Sybaris.Patcher.PatchJob;
 using Mono.Cecil;
 using Mono.Cecil.Inject;
 
-namespace CM3D2.MaidFiddler.Patch.Jobs
+namespace CM3D2.MaidFiddler.Sybaris.Patcher.Jobs
 {
-    public class AddClassExpPatchJob : PatchJobCollection
+    public class OnStatusUpdatePatchJobs : PatchJobCollection
     {
         protected override MethodDefinition HookMethod { get; set; }
         protected override InjectFlags InjectFlags => 0;
@@ -19,28 +17,27 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
             TargetType = gameAssembly.MainModule.GetType("MaidParam");
 
             HookMethod = hookAssembly.MainModule.GetType("CM3D2.MaidFiddler.Hook.MaidStatusChangeHooks")
-                                     .GetMethod(nameof(MaidStatusChangeHooks.OnStatusChangedID));
+                                     .GetMethod(nameof(MaidStatusChangeHooks.OnStatusUpdate));
 
             MemberFields = new[] {TargetType.GetField("maid_")};
         }
 
         protected override void LoadJobs()
         {
-            AddEnum("MaidClassExp", 2);
-            AddEnum("YotogiClassExp", 2);
+            SetEnumBool("Propensity");
+            SetEnumBool("Feature");
         }
 
-        protected void AddEnum(string name, int paramCount)
+        protected void SetEnumBool(string name)
         {
-            MethodDefinition target = TargetType.GetMethods("Add" + name)
-                                                .FirstOrDefault(m => m.Parameters.Count == paramCount);
+            MethodDefinition target = TargetType.GetMethod("Set" + name);
             if (target == null)
             {
-                Console.WriteLine($"Method {TargetType.Name}.Add{name} not found, skipping...");
+                Logger.Log($"Method {TargetType.Name}.Set{name} not found, skipping...");
                 return;
             }
 
-            PatchTargets.Add(new EnumHookInjectJob(name, target, HookMethod, MemberFields));
+            PatchTargets.Add(new EnumBoolHookInjectJob(name, target, HookMethod, MemberFields));
         }
     }
 }

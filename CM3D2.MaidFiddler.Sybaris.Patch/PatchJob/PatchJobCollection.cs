@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Mono.Cecil;
 using Mono.Cecil.Inject;
 
-namespace CM3D2.MaidFiddler.Patch.PatchJob
+namespace CM3D2.MaidFiddler.Sybaris.Patcher.PatchJob
 {
     public abstract class PatchJobCollection
     {
@@ -71,7 +71,7 @@ namespace CM3D2.MaidFiddler.Patch.PatchJob
             MethodDefinition target = TargetType.GetMethod(name);
             if (target == null)
             {
-                Console.WriteLine($"Method {TargetType.Name}.{name} not found, skipping...");
+                Logger.Log($"Method {TargetType.Name}.{name} not found, skipping...");
                 return;
             }
 
@@ -83,7 +83,7 @@ namespace CM3D2.MaidFiddler.Patch.PatchJob
             MethodDefinition target = TargetType.GetMethod(name, parameters);
             if (target == null)
             {
-                Console.WriteLine($"Method {TargetType.Name}.{name} not found, skipping...");
+                Logger.Log($"Method {TargetType.Name}.{name} not found, skipping...");
                 return;
             }
 
@@ -127,7 +127,7 @@ namespace CM3D2.MaidFiddler.Patch.PatchJob
             MethodDefinition target = targetType.GetMethod(name);
             if (target == null)
             {
-                Console.WriteLine($"Method {targetType.Name}.{name} not found, skipping...");
+                Logger.Log($"Method {targetType.Name}.{name} not found, skipping...");
                 return;
             }
 
@@ -148,7 +148,7 @@ namespace CM3D2.MaidFiddler.Patch.PatchJob
             MethodDefinition target = TargetType.GetMethod(name, parameters);
             if (target == null)
             {
-                Console.WriteLine($"Method {TargetType.Name}.{name} not found, skipping...");
+                Logger.Log($"Method {TargetType.Name}.{name} not found, skipping...");
                 return;
             }
 

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using CM3D2.MaidFiddler.Hook;
-using CM3D2.MaidFiddler.Patch.PatchJob;
+using CM3D2.MaidFiddler.Sybaris.Patcher.PatchJob;
 using Mono.Cecil;
 using Mono.Cecil.Inject;
 
-namespace CM3D2.MaidFiddler.Patch.Jobs
+namespace CM3D2.MaidFiddler.Sybaris.Patcher.Jobs
 {
     public class AddClassExpPatchJob : PatchJobCollection
     {
@@ -36,7 +35,7 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
                                                 .FirstOrDefault(m => m.Parameters.Count == paramCount);
             if (target == null)
             {
-                Console.WriteLine($"Method {TargetType.Name}.Add{name} not found, skipping...");
+                Logger.Log($"Method {TargetType.Name}.Add{name} not found, skipping...");
                 return;
             }
 

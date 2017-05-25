@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using CM3D2.MaidFiddler.Hook;
-using CM3D2.MaidFiddler.Patch.PatchJob;
+﻿using CM3D2.MaidFiddler.Hook;
+using CM3D2.MaidFiddler.Sybaris.Patcher.PatchJob;
 using Mono.Cecil;
 using Mono.Cecil.Inject;
-using param;
 
-namespace CM3D2.MaidFiddler.Patch.Jobs
+namespace CM3D2.MaidFiddler.Sybaris.Patcher.Jobs
 {
     public class OnStatusChangedPatchJob : PatchJobCollection
     {
@@ -72,6 +69,14 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
             Set("FirstName");
             Set("LastName");
             Set("FreeComment");
+            Set("Personal");
+            Set("ContractType");
+            Set("MaidClassType");
+            Set("Name");
+            Set("YotogiClassType");
+            Set("Condition");
+            Set("ConditionSpecial");
+            Set("InitSeikeiken");
             Set("CurHp");
             Set("NightWorkId");
             Set("NoonWorkId");
@@ -83,14 +88,6 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
             Set("RentalMaid");
             Set("SeikeikenFront");
             Set("SeikeikenBack");
-            Set("Personal");
-            Set("ContractType");
-            Set("MaidClassType");
-            Set("Name");
-            Set("YotogiClassType");
-            Set("Condition");
-            Set("ConditionSpecial");
-            Set("InitSeikeiken");
             Set("Seikeiken");
             Set("NewWife");
 
@@ -99,11 +96,14 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
 
             MethodWithTag("UpdateProfileComment", "Profile");
 
-            SpecialSet("Feature", -1, FeaturePropensityInjectFlags, typeof(HashSet<>).MakeGenericType(typeof(Feature)));
+            SpecialSet("Feature",
+                       -1,
+                       FeaturePropensityInjectFlags,
+                       "System.Collections.Generic.HashSet`1<param.Feature>");
             SpecialSet("Propensity",
                        -1,
                        FeaturePropensityInjectFlags,
-                       typeof(HashSet<>).MakeGenericType(typeof(Propensity)));
+                       "System.Collections.Generic.HashSet`1<param.Propensity>");
             SpecialClear("Feature", 0, FeaturePropensityInjectFlags);
             SpecialClear("Propensity", 0, FeaturePropensityInjectFlags);
         }
@@ -113,7 +113,7 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
             MethodDefinition target = TargetType.GetMethod($"Clear{name}");
             if (target == null)
             {
-                Console.WriteLine($"Method {TargetType.Name}.Clear{name} not found, skipping...");
+                Logger.Log($"Method {TargetType.Name}.Clear{name} not found, skipping...");
                 return;
             }
 
@@ -126,12 +126,12 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
                                                MemberFields));
         }
 
-        private void SpecialSet(string name, int offset, InjectFlags customFlags, params Type[] parameters)
+        private void SpecialSet(string name, int offset, InjectFlags customFlags, params string[] parameters)
         {
             MethodDefinition target = TargetType.GetMethod($"Set{name}", parameters);
             if (target == null)
             {
-                Console.WriteLine($"Method {TargetType.Name}.Set{name} not found, skipping...");
+                Logger.Log($"Method {TargetType.Name}.Set{name} not found, skipping...");
                 return;
             }
 

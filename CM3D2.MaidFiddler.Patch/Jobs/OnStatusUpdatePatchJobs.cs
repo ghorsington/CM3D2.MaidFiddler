@@ -33,7 +33,10 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
         {
             MethodDefinition target = TargetType.GetMethod("Set" + name);
             if (target == null)
+            {
                 Console.WriteLine($"Method {TargetType.Name}.Set{name} not found, skipping...");
+                return;
+            }
 
             PatchTargets.Add(new EnumBoolHookInjectJob(name, target, HookMethod, MemberFields));
         }
