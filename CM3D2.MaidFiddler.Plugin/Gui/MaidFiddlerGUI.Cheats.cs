@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -23,11 +24,11 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (FiddlerUtils.GameVersion < 119)
             {
                 string title = Translation.IsTranslated("FEATURE_UNSUPPORTED_TITLE")
-                                   ? Translation.GetTranslation("FEATURE_UNSUPPORTED_TITLE")
-                                   : "This feature is unsupported";
+                    ? Translation.GetTranslation("FEATURE_UNSUPPORTED_TITLE")
+                    : "This feature is unsupported";
                 string text = Translation.IsTranslated("FEATURE_UNSUPPORTED")
-                                  ? Translation.GetTranslation("FEATURE_UNSUPPORTED")
-                                  : "This feature is unsupported in this version of CM3D2.\nUpdate your game to use this feature.";
+                    ? Translation.GetTranslation("FEATURE_UNSUPPORTED")
+                    : "This feature is unsupported in this version of CM3D2.\nUpdate your game to use this feature.";
                 MessageBox.Show(text, title, MessageBoxButtons.OK);
                 return;
             }
@@ -49,7 +50,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void ResetVip(object sender, EventArgs e)
         {
-            foreach (var workState in Player.Player.status_.night_works_state_dic)
+            foreach (KeyValuePair<int, Status.NightWorkState> workState in Player.Player.status_.night_works_state_dic)
                 workState.Value.finish = false;
         }
 
@@ -57,8 +58,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             FieldInfo classDataField = maid.Param.status_.GetType().GetField(classDataFieldName);
             object classData =
-                classDataField.FieldType.GetMethod("GetValue", new[] {typeof(int)})
-                              .Invoke(classDataField.GetValue(maid.Param.status_), new[] {(object) classID});
+                    classDataField.FieldType.GetMethod("GetValue", new[] {typeof(int)})
+                                  .Invoke(classDataField.GetValue(maid.Param.status_), new[] {(object) classID});
             classData.GetType().GetField("is_have").SetValue(classData, value);
         }
 
@@ -66,8 +67,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             FieldInfo classDataField = maid.Param.status_.GetType().GetField(classDataFieldName);
             object classData =
-                classDataField.FieldType.GetMethod("GetValue", new[] {typeof(int)})
-                              .Invoke(classDataField.GetValue(maid.Param.status_), new[] {(object) classID});
+                    classDataField.FieldType.GetMethod("GetValue", new[] {typeof(int)})
+                                  .Invoke(classDataField.GetValue(maid.Param.status_), new[] {(object) classID});
             ((SimpleExperienceSystem) classData.GetType().GetField("exp_system").GetValue(classData)).SetLevel(level);
         }
 
@@ -76,8 +77,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Debugger.WriteLine(LogLevel.Info, "Prompting class level set.");
             uint v;
             TextDialog td = new TextDialog(Translation.GetTranslation("GUI_CLASS_LVL_TITLE"),
-                                           Translation.GetTranslation("GUI_CLASS_LVL_PROMPT"), "0",
-                                           s => uint.TryParse(s, out v) && (v <= 10), Translation.GetTranslation("OK"),
+                                           Translation.GetTranslation("GUI_CLASS_LVL_PROMPT"),
+                                           "0",
+                                           s => uint.TryParse(s, out v) && v <= 10,
+                                           Translation.GetTranslation("OK"),
                                            Translation.GetTranslation("CANCEL"))
             {
                 StartPosition = FormStartPosition.CenterParent
@@ -115,14 +118,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             MaidInfo maid = SelectedMaid;
             Debugger.Assert(() =>
                             {
-                                foreach (var noonWork in ScheduleCSVData.NoonWorkData)
+                                foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData
+                                        .NoonWorkData)
                                     maid.SetWorkValue(noonWork.Value.id, TABLE_COLUMN_HAS, true);
-                                foreach (var nightWork in ScheduleCSVData.NightWorkData)
+                                foreach (KeyValuePair<int, ScheduleCSVData.NightWork> nightWork in ScheduleCSVData
+                                        .NightWorkData)
                                 {
                                     maid.SetNightWorkValue(nightWork.Value.id, true);
                                     maid.UpdateNightWorkValue(nightWork.Value.id);
                                 }
-                            }, "Failed to force all work enabled");
+                            },
+                            "Failed to force all work enabled");
         }
 
         private void SetForceDisableAll(object sender, EventArgs e)
@@ -130,14 +136,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             MaidInfo maid = SelectedMaid;
             Debugger.Assert(() =>
                             {
-                                foreach (var noonWork in ScheduleCSVData.NoonWorkData)
+                                foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData
+                                        .NoonWorkData)
                                     maid.SetWorkValue(noonWork.Value.id, TABLE_COLUMN_HAS, false);
-                                foreach (var nightWork in ScheduleCSVData.NightWorkData)
+                                foreach (KeyValuePair<int, ScheduleCSVData.NightWork> nightWork in ScheduleCSVData
+                                        .NightWorkData)
                                 {
                                     maid.SetNightWorkValue(nightWork.Value.id, false);
                                     maid.UpdateNightWorkValue(nightWork.Value.id);
                                 }
-                            }, "Failed to force all work disabled");
+                            },
+                            "Failed to force all work disabled");
         }
 
         private void SetMaxAll(object sender, EventArgs e)
@@ -241,7 +250,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void SetMaxWorkPlayCount(object sender, EventArgs e)
         {
             MaidInfo maid = SelectedMaid;
-            foreach (var noonWork in ScheduleCSVData.NoonWorkData)
+            foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
             {
                 maid.Maid.Param.SetNewGetWork(noonWork.Value.id);
                 maid.SetWorkValue(noonWork.Value.id, TABLE_COLUMN_TOTAL_XP, 999U);
@@ -251,21 +260,23 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void SetMaxYotogiLevel(object sender, EventArgs e)
         {
             Debugger.Assert(() =>
-            {
-                MaidInfo maid = SelectedMaid;
-                foreach (var dataDic in Yotogi.skill_data_list.SelectMany(s => s))
-                {
-                    maid.Maid.Param.SetNewGetSkill(dataDic.Value.id);
-                    maid.Maid.Param.AddSkillExp(dataDic.Value.id, 10000);
-                    maid.Maid.Param.status_.skill_data[dataDic.Value.id].play_count = 1;
-                    maid.UpdateSkillData(dataDic.Value.id);
-                }
-            }, "Failed to set all yotogi levels to max");
+                            {
+                                MaidInfo maid = SelectedMaid;
+                                foreach (KeyValuePair<int, Yotogi.SkillData> dataDic in Yotogi.skill_data_list
+                                                                                              .SelectMany(s => s))
+                                {
+                                    maid.Maid.Param.SetNewGetSkill(dataDic.Value.id);
+                                    maid.Maid.Param.AddSkillExp(dataDic.Value.id, 10000);
+                                    maid.Maid.Param.status_.skill_data[dataDic.Value.id].play_count = 1;
+                                    maid.UpdateSkillData(dataDic.Value.id);
+                                }
+                            },
+                            "Failed to set all yotogi levels to max");
         }
 
         private void SetUnlockMaxAllMaids(object sender, EventArgs e)
         {
-            foreach (var maid in loadedMaids)
+            foreach (KeyValuePair<Maid, MaidInfo> maid in loadedMaids)
             {
                 MaidInfo maidInfo = maid.Value;
                 Maid currentMaid = maid.Key;
@@ -321,13 +332,13 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 maidParam.SetCurMind(999);
                 maidParam.SetCurReason(999);
 
-                foreach (var noonWork in ScheduleCSVData.NoonWorkData)
+                foreach (KeyValuePair<int, ScheduleCSVData.NoonWork> noonWork in ScheduleCSVData.NoonWorkData)
                 {
                     maidParam.SetNewGetWork(noonWork.Value.id);
                     maidInfo.SetWorkValue(noonWork.Value.id, TABLE_COLUMN_TOTAL_XP, 999U);
                 }
 
-                foreach (var dataDic in Yotogi.skill_data_list.SelectMany(s => s))
+                foreach (KeyValuePair<int, Yotogi.SkillData> dataDic in Yotogi.skill_data_list.SelectMany(s => s))
                 {
                     maidParam.SetNewGetSkill(dataDic.Value.id);
                     maidParam.AddSkillExp(dataDic.Value.id, 10000);
@@ -335,7 +346,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     maidInfo.UpdateSkillData(dataDic.Value.id);
                 }
 
-                foreach (var dataDic in Yotogi.skill_data_list.SelectMany(s => s))
+                foreach (KeyValuePair<int, Yotogi.SkillData> dataDic in Yotogi.skill_data_list.SelectMany(s => s))
                 {
                     maidParam.SetNewGetSkill(dataDic.Value.id);
                     maidInfo.UpdateHasSkill(dataDic.Value.id);
@@ -347,8 +358,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         {
             uint v;
             TextDialog td = new TextDialog(Translation.GetTranslation("GUI_YOTOGI_TIMES_TITLE"),
-                                           Translation.GetTranslation("GUI_YOTOGI_TIMES_PROMPT"), "0",
-                                           s => uint.TryParse(s, out v), Translation.GetTranslation("OK"),
+                                           Translation.GetTranslation("GUI_YOTOGI_TIMES_PROMPT"),
+                                           "0",
+                                           s => uint.TryParse(s, out v),
+                                           Translation.GetTranslation("OK"),
                                            Translation.GetTranslation("CANCEL"))
             {
                 StartPosition = FormStartPosition.CenterParent
@@ -363,7 +376,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
             MaidInfo maid = SelectedMaid;
 
-            foreach (var skill in
+            foreach (KeyValuePair<int, Yotogi.SkillData> skill in
                 Yotogi.skill_data_list.SelectMany(ee => ee).Where(ss => maid.Maid.Param.status.IsGetSkill(ss.Key)))
             {
                 maid.Maid.Param.status_.skill_data[skill.Key].play_count = v;
@@ -423,10 +436,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void UnlockAllItems(object sender, EventArgs e)
         {
-            var names = Player.Player.status_.have_item_list.Keys.ToArray();
+            string[] names = Player.Player.status_.have_item_list.Keys.ToArray();
             for (int i = 0; i < Player.Player.status_.have_item_list.Keys.Count; i++)
                 Player.Player.AddHaveItem(names[i]);
-            foreach (var shopItem in Shop.item_data_dic)
+            foreach (KeyValuePair<int, Shop.ItemDataBase> shopItem in Shop.item_data_dic)
                 Player.Player.SetShopLineup(shopItem.Value.id, Status.ShopItemStatus.Purchased);
         }
 
@@ -440,7 +453,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void UnlockAllSkills(object sender, EventArgs e)
         {
             MaidInfo maid = SelectedMaid;
-            foreach (var dataDic in Yotogi.skill_data_list.SelectMany(s => s))
+            foreach (KeyValuePair<int, Yotogi.SkillData> dataDic in Yotogi.skill_data_list.SelectMany(s => s))
             {
                 maid.Maid.Param.SetNewGetSkill(dataDic.Value.id);
                 maid.UpdateHasSkill(dataDic.Value.id);
@@ -449,7 +462,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void UnlockAllTrophies(object sender, EventArgs e)
         {
-            foreach (var data in Trophy.trophy_list)
+            foreach (KeyValuePair<int, Trophy.Data> data in Trophy.trophy_list)
                 Player.Player.AddHaveTrophy(data.Key);
         }
 

@@ -17,7 +17,8 @@ using Application = System.Windows.Forms.Application;
 
 namespace CM3D2.MaidFiddler.Plugin
 {
-    [PluginName("Maid Fiddler"), PluginVersion(VERSION)]
+    [PluginName("Maid Fiddler")]
+    [PluginVersion(VERSION)]
     public class MaidFiddler : PluginBase
     {
         public const string CONTRIBUTORS = "denikson";
@@ -27,7 +28,7 @@ namespace CM3D2.MaidFiddler.Plugin
         public const string RESOURCE_URL = "https://raw.githubusercontent.com/denikson/CM3D2.MaidFiddler/master";
 
         public const string RELEASES_LATEST_REQUEST_URL =
-        "https://api.github.com/repos/denikson/CM3D2.MaidFiddler/releases/latest";
+                "https://api.github.com/repos/denikson/CM3D2.MaidFiddler/releases/latest";
 
         public const string RELEASES_URL = "https://www.github.com/denikson/CM3D2.MaidFiddler/releases";
         public const int SUPPORTED_MIN_CM3D2_VERSION = 109;
@@ -39,7 +40,12 @@ namespace CM3D2.MaidFiddler.Plugin
         private const MaidOrderDirection DEFAULT_ORDER_DIRECTION = Plugin.MaidOrderDirection.Ascending;
         private const string DEFAULT_LANGUAGE_FILE = "ENG";
         private static readonly KeyCode[] DEFAULT_KEY_CODE = {KeyCode.A};
-        private readonly List<MaidOrderStyle> DEFAULT_ORDER_STYLES = new List<MaidOrderStyle> {MaidOrderStyle.GUID};
+
+        private readonly List<MaidOrderStyle> DEFAULT_ORDER_STYLES = new List<MaidOrderStyle>
+        {
+            MaidOrderStyle.GUID
+        };
+
         public MaidFiddlerGUI.MaidCompareMethod[] COMPARE_METHODS;
         private bool isUpdatePromptShowed;
         private KeyHelper keyCreateGUI;
@@ -226,9 +232,9 @@ namespace CM3D2.MaidFiddler.Plugin
         {
             get
             {
-                object[] attributes = typeof (Maid).GetCustomAttributes(typeof (MaidFiddlerPatcherAttribute), false);
-                return attributes.Length == 1
-                       && (PatcherType) ((MaidFiddlerPatcherAttribute) attributes[0]).PatcherType == PatcherType.Sybaris;
+                object[] attributes = typeof(Maid).GetCustomAttributes(typeof(MaidFiddlerPatcherAttribute), false);
+                return attributes.Length == 1 &&
+                       (PatcherType) ((MaidFiddlerPatcherAttribute) attributes[0]).PatcherType == PatcherType.Sybaris;
             }
         }
 
@@ -256,7 +262,8 @@ namespace CM3D2.MaidFiddler.Plugin
             };
 
             DATA_PATH = RunningOnSybaris
-                        ? Path.Combine(DataPath, "..\\..\\Sybaris\\Plugins\\UnityInjector\\Config\\") : DataPath;
+                ? Path.Combine(DataPath, "..\\..\\Sybaris\\Plugins\\UnityInjector\\Config\\")
+                : DataPath;
 
             Debugger.WriteLine(LogLevel.Info, $"Data path: {DATA_PATH}");
             LoadConfig();
@@ -281,45 +288,13 @@ namespace CM3D2.MaidFiddler.Plugin
                 updateCheckThread.Start();
             }
             else
-            {
                 Debugger.WriteLine(LogLevel.Info, "Skipping update checking!");
-            }
-            
         }
 
         public void LateUpdate()
         {
             Gui?.DoIfVisible(Gui.UpdateSelectedMaidValues);
             Gui?.DoIfVisible(Gui.UpdatePlayerValues);
-        }
-
-        private void LoadConfig()
-        {
-            Debugger.WriteLine(LogLevel.Info, "Loading launching key combination...");
-            keyCreateGUI = new KeyHelper(CFGStartGUIKey.ToArray());
-            Debugger.WriteLine(
-            LogLevel.Info,
-            $"Loaded {keyCreateGUI.Keys.Length} long key combo: {EnumHelper.EnumsToString(keyCreateGUI.Keys, '+')}");
-
-            Debugger.WriteLine(LogLevel.Info, "Loading name style info...");
-            UseJapaneseNameStyle = CFGUseJapaneseNameStyle;
-            Debugger.WriteLine(LogLevel.Info, $"Using Japanese name style: {UseJapaneseNameStyle}");
-
-            Debugger.WriteLine(LogLevel.Info, "Loading order style info...");
-            List<MaidOrderStyle> orderStyles = CFGOrderStyle;
-            MaidCompareMethods = orderStyles.Select(o => COMPARE_METHODS[(int) o]).ToArray();
-            Debugger.WriteLine(
-            LogLevel.Info,
-            $"Sorting maids by method order {EnumHelper.EnumsToString(orderStyles, '>')}");
-
-
-            Debugger.WriteLine(LogLevel.Info, "Loading order direction info...");
-            MaidOrderDirection = (int) CFGOrderDirection;
-            Debugger.WriteLine(
-            LogLevel.Info,
-            $"Sorting maids in {EnumHelper.GetName((MaidOrderDirection) MaidOrderDirection)} direction");
-
-            Translation.LoadTranslation(CFGSelectedDefaultLanguage);
         }
 
         public void LoadGUI()
@@ -379,6 +354,66 @@ namespace CM3D2.MaidFiddler.Plugin
             Gui?.DoIfVisible(Gui.UpdateMaids);
         }
 
+        public int MaidCompareEmployedDay(Maid x, Maid y)
+        {
+            return ComputeOrder(x.Param.status.employment_day, y.Param.status.employment_day);
+        }
+
+        public int MaidCompareCreateTime(Maid x, Maid y)
+        {
+            return ComputeOrder(x.Param.status.create_time_num, y.Param.status.create_time_num);
+        }
+
+        public int MaidCompareFirstName(Maid x, Maid y)
+        {
+            return MaidOrderDirection *
+                   string.CompareOrdinal(
+                       x.Param.status.first_name.ToUpperInvariant(),
+                       y.Param.status.first_name.ToUpperInvariant());
+        }
+
+        public int MaidCompareID(Maid x, Maid y)
+        {
+            return MaidOrderDirection * string.CompareOrdinal(x.Param.status.guid, y.Param.status.guid);
+        }
+
+        public int MaidCompareLastName(Maid x, Maid y)
+        {
+            return MaidOrderDirection *
+                   string.CompareOrdinal(
+                       x.Param.status.last_name.ToUpperInvariant(),
+                       y.Param.status.last_name.ToUpperInvariant());
+        }
+
+        private void LoadConfig()
+        {
+            Debugger.WriteLine(LogLevel.Info, "Loading launching key combination...");
+            keyCreateGUI = new KeyHelper(CFGStartGUIKey.ToArray());
+            Debugger.WriteLine(
+                LogLevel.Info,
+                $"Loaded {keyCreateGUI.Keys.Length} long key combo: {EnumHelper.EnumsToString(keyCreateGUI.Keys, '+')}");
+
+            Debugger.WriteLine(LogLevel.Info, "Loading name style info...");
+            UseJapaneseNameStyle = CFGUseJapaneseNameStyle;
+            Debugger.WriteLine(LogLevel.Info, $"Using Japanese name style: {UseJapaneseNameStyle}");
+
+            Debugger.WriteLine(LogLevel.Info, "Loading order style info...");
+            List<MaidOrderStyle> orderStyles = CFGOrderStyle;
+            MaidCompareMethods = orderStyles.Select(o => COMPARE_METHODS[(int) o]).ToArray();
+            Debugger.WriteLine(
+                LogLevel.Info,
+                $"Sorting maids by method order {EnumHelper.EnumsToString(orderStyles, '>')}");
+
+
+            Debugger.WriteLine(LogLevel.Info, "Loading order direction info...");
+            MaidOrderDirection = (int) CFGOrderDirection;
+            Debugger.WriteLine(
+                LogLevel.Info,
+                $"Sorting maids in {EnumHelper.GetName((MaidOrderDirection) MaidOrderDirection)} direction");
+
+            Translation.LoadTranslation(CFGSelectedDefaultLanguage);
+        }
+
         private void ShowUpdatePrompt()
         {
             Debugger.WriteLine(LogLevel.Info, "Latest version is newer than the current one! Showing update prompt!");
@@ -389,15 +424,15 @@ namespace CM3D2.MaidFiddler.Plugin
                 Icon = SystemIcons.Application,
                 BalloonTipIcon = ToolTipIcon.Info,
                 BalloonTipTitle =
-                    Translation.IsTranslated("INFO_UPDATE_AVAILABLE_BUBBLE_TITLE")
-                    ? string.Format(
-                    Translation.GetTranslation("INFO_UPDATE_AVAILABLE_BUBBLE_TITLE"),
-                    FiddlerUtils.UpdateInfo.Version)
-                    : $"Maid Fiddler version {FiddlerUtils.UpdateInfo.Version} is available!",
+                        Translation.IsTranslated("INFO_UPDATE_AVAILABLE_BUBBLE_TITLE")
+                            ? string.Format(
+                                Translation.GetTranslation("INFO_UPDATE_AVAILABLE_BUBBLE_TITLE"),
+                                FiddlerUtils.UpdateInfo.Version)
+                            : $"Maid Fiddler version {FiddlerUtils.UpdateInfo.Version} is available!",
                 BalloonTipText =
-                    Translation.IsTranslated("INFO_UPDATE_AVAILABLE_BUBBLE")
-                    ? Translation.GetTranslation("INFO_UPDATE_AVAILABLE_BUBBLE")
-                    : "Download the new version from Maid Fiddler GitHub page!"
+                        Translation.IsTranslated("INFO_UPDATE_AVAILABLE_BUBBLE")
+                            ? Translation.GetTranslation("INFO_UPDATE_AVAILABLE_BUBBLE")
+                            : "Download the new version from Maid Fiddler GitHub page!"
             };
             notification.BalloonTipClosed += (sender, args) =>
             {
@@ -409,66 +444,35 @@ namespace CM3D2.MaidFiddler.Plugin
                 Debugger.WriteLine(LogLevel.Info, "Showing update information!");
                 mre.Set();
                 string title = Translation.IsTranslated("INFO_UPDATE_AVAILABLE_TITLE")
-                               ? string.Format(
-                               Translation.GetTranslation("INFO_UPDATE_AVAILABLE_TITLE"),
-                               FiddlerUtils.UpdateInfo.Version)
-                               : $"Version {FiddlerUtils.UpdateInfo.Version} is available!";
+                    ? string.Format(
+                        Translation.GetTranslation("INFO_UPDATE_AVAILABLE_TITLE"),
+                        FiddlerUtils.UpdateInfo.Version)
+                    : $"Version {FiddlerUtils.UpdateInfo.Version} is available!";
                 string text = Translation.IsTranslated("INFO_UPDATE_AVAILABLE")
-                              ? string.Format(
-                              Translation.GetTranslation("INFO_UPDATE_AVAILABLE"),
-                              FiddlerUtils.UpdateInfo.Version,
-                              FiddlerUtils.UpdateInfo.Changelog,
-                              RELEASES_URL)
-                              : $"Maid Fiddler version {FiddlerUtils.UpdateInfo.Version} is available to download!\nUpdate log:\n{FiddlerUtils.UpdateInfo.Changelog}\n\nHead to {RELEASES_URL} to download the latest version.";
+                    ? string.Format(
+                        Translation.GetTranslation("INFO_UPDATE_AVAILABLE"),
+                        FiddlerUtils.UpdateInfo.Version,
+                        FiddlerUtils.UpdateInfo.Changelog,
+                        RELEASES_URL)
+                    : $"Maid Fiddler version {FiddlerUtils.UpdateInfo.Version} is available to download!\nUpdate log:\n{FiddlerUtils.UpdateInfo.Changelog}\n\nHead to {RELEASES_URL} to download the latest version.";
                 MessageBox.Show(text, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
             notification.Visible = true;
             notification.ShowBalloonTip(5000);
             Thread showThread = new Thread(
-            () =>
-            {
-                mre.WaitOne(6000);
-                Debugger.WriteLine(LogLevel.Info, "Closing notification icon...");
-                notification.Visible = false;
-                notification.Dispose();
-            });
+                () =>
+                {
+                    mre.WaitOne(6000);
+                    Debugger.WriteLine(LogLevel.Info, "Closing notification icon...");
+                    notification.Visible = false;
+                    notification.Dispose();
+                });
             showThread.Start();
-        }
-
-        public int MaidCompareEmployedDay(Maid x, Maid y)
-        {
-            return ComputeOrder(x.Param.status.employment_day, y.Param.status.employment_day);
-        }
-
-        public int MaidCompareCreateTime(Maid x, Maid y)
-        {
-            return ComputeOrder(x.Param.status.create_time_num, y.Param.status.create_time_num);
         }
 
         private int ComputeOrder<T>(T x, T y) where T : IComparable<T>
         {
             return MaidOrderDirection * x.CompareTo(y);
-        }
-
-        public int MaidCompareFirstName(Maid x, Maid y)
-        {
-            return MaidOrderDirection
-                   * string.CompareOrdinal(
-                   x.Param.status.first_name.ToUpperInvariant(),
-                   y.Param.status.first_name.ToUpperInvariant());
-        }
-
-        public int MaidCompareID(Maid x, Maid y)
-        {
-            return MaidOrderDirection * string.CompareOrdinal(x.Param.status.guid, y.Param.status.guid);
-        }
-
-        public int MaidCompareLastName(Maid x, Maid y)
-        {
-            return MaidOrderDirection
-                   * string.CompareOrdinal(
-                   x.Param.status.last_name.ToUpperInvariant(),
-                   y.Param.status.last_name.ToUpperInvariant());
         }
     }
 

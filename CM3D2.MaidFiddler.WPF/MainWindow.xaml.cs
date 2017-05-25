@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using System.ComponentModel;
 using System.Windows;
 using CM3D2.MaidFiddler.WPF.Model;
 using CM3D2.MaidFiddler.WPF.Translations;
-using CM3D2 = CM3D2.MaidFiddler.WPF.Model.CM3D2;
 
 namespace CM3D2.MaidFiddler.WPF
 {
@@ -18,8 +15,6 @@ namespace CM3D2.MaidFiddler.WPF
         public const string TITLE_NULL = TITLE + " " + VERSION;
         public const string TITLE_FORMAT = TITLE + " " + VERSION + " - {0}";
 
-        public Maid SelectedMaid { get; set; }
-
         public MainWindow()
         {
             SelectedMaid = new Maid();
@@ -27,12 +22,11 @@ namespace CM3D2.MaidFiddler.WPF
             DataContext = this;
 
             LanguageChangedEventManager.AddHandler(TranslationManager.Instance,
-                                                   (sender, args) =>
-                                                   {
-                                                       OnPropertyChanged(nameof(TitleText));
-                                                   });
+                                                   (sender, args) => { OnPropertyChanged(nameof(TitleText)); });
             TranslationManager.Instance.LoadTranslation("ENG");
         }
+
+        public Maid SelectedMaid { get; set; }
 
         public string TitleText => (string) TranslationManager.Instance.Translate("TITLE_TEXT");
 

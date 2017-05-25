@@ -21,10 +21,11 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
 
     public static class Debugger
     {
-        public delegate void ErrorCallback(Exception e, string errorMessage);
-
         private const string TAG = "MaidFiddler";
         private const ConsoleColor TAG_COLOR = ConsoleColor.Green;
+
+        public delegate void ErrorCallback(Exception e, string errorMessage);
+
         public static event ErrorCallback ErrorOccured;
 
         public static void Assert(Action action, string errMsg)

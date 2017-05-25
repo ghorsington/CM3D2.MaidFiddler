@@ -13,7 +13,10 @@ namespace CM3D2.MaidFiddler.Hook
 
         public static bool OnValueRound(out int result, int num)
         {
-            ValueLimitEventArgs args = new ValueLimitEventArgs {RemoveLimit = false};
+            ValueLimitEventArgs args = new ValueLimitEventArgs
+            {
+                RemoveLimit = false
+            };
             ToggleValueLimit?.Invoke(null, args);
             result = num;
             return args.RemoveLimit;
@@ -21,7 +24,10 @@ namespace CM3D2.MaidFiddler.Hook
 
         public static bool OnValueRound(out long result, long num)
         {
-            ValueLimitEventArgs args = new ValueLimitEventArgs {RemoveLimit = false};
+            ValueLimitEventArgs args = new ValueLimitEventArgs
+            {
+                RemoveLimit = false
+            };
             ToggleValueLimit?.Invoke(null, args);
             result = num;
             return args.RemoveLimit;
@@ -29,7 +35,10 @@ namespace CM3D2.MaidFiddler.Hook
 
         public static bool OnValueRound(out int result, int num, int min, int max)
         {
-            ValueLimitEventArgs args = new ValueLimitEventArgs {RemoveLimit = false};
+            ValueLimitEventArgs args = new ValueLimitEventArgs
+            {
+                RemoveLimit = false
+            };
             ToggleValueLimit?.Invoke(null, args);
             result = num;
             return args.RemoveLimit;
@@ -37,7 +46,10 @@ namespace CM3D2.MaidFiddler.Hook
 
         public static bool OnValueRound(out long result, long num, long min, long max)
         {
-            ValueLimitEventArgs args = new ValueLimitEventArgs {RemoveLimit = false};
+            ValueLimitEventArgs args = new ValueLimitEventArgs
+            {
+                RemoveLimit = false
+            };
             ToggleValueLimit?.Invoke(null, args);
             result = num;
             return args.RemoveLimit;

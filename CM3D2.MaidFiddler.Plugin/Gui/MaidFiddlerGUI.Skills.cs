@@ -14,31 +14,30 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void InitYotogiSkillTab()
         {
             Debugger.Assert(
-            () =>
-            {
-                Translation.AddTranslatableControl(tabPage_skills);
+                () =>
+                {
+                    Translation.AddTranslatableControl(tabPage_skills);
 
-                rowToSkillID = new Dictionary<int, int>();
-                skillIDToRow = new Dictionary<int, int>();
-                foreach (DataGridViewColumn column in dataGridView_skill_data.Columns)
-                {
-                    Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
-                }
-                foreach (KeyValuePair<int, Yotogi.SkillData> dataDic in Yotogi.skill_data_list.SelectMany(e => e))
-                {
-                    string key = dataDic.Value.name;
-                    int row = dataGridView_skill_data.Rows.Add(false, key, 0, 0, (uint) 0);
-                    Translation.AddTranslationAction(key, s => dataGridView_skill_data.Rows[row].Cells[1].Value = s);
-                    rowToSkillID.Add(row, dataDic.Key);
-                    skillIDToRow.Add(dataDic.Key, row);
-                }
-                dataGridView_skill_data.CellContentClick += OnSkillCellContentClick;
-                dataGridView_skill_data.CellValueChanged += OnSkillCellValueChanged;
-                dataGridView_skill_data.Height = dataGridView_skill_data.ColumnHeadersHeight
-                                                 + dataGridView_skill_data.Rows[0].Height
-                                                 * dataGridView_skill_data.RowCount;
-            },
-            "Failed to initalize yotogi skill tab");
+                    rowToSkillID = new Dictionary<int, int>();
+                    skillIDToRow = new Dictionary<int, int>();
+                    foreach (DataGridViewColumn column in dataGridView_skill_data.Columns)
+                        Translation.AddTranslationAction(column.HeaderText, s => column.HeaderText = s);
+                    foreach (KeyValuePair<int, Yotogi.SkillData> dataDic in Yotogi.skill_data_list.SelectMany(e => e))
+                    {
+                        string key = dataDic.Value.name;
+                        int row = dataGridView_skill_data.Rows.Add(false, key, 0, 0, (uint) 0);
+                        Translation.AddTranslationAction(key,
+                                                         s => dataGridView_skill_data.Rows[row].Cells[1].Value = s);
+                        rowToSkillID.Add(row, dataDic.Key);
+                        skillIDToRow.Add(dataDic.Key, row);
+                    }
+                    dataGridView_skill_data.CellContentClick += OnSkillCellContentClick;
+                    dataGridView_skill_data.CellValueChanged += OnSkillCellValueChanged;
+                    dataGridView_skill_data.Height = dataGridView_skill_data.ColumnHeadersHeight +
+                                                     dataGridView_skill_data.Rows[0].Height *
+                                                     dataGridView_skill_data.RowCount;
+                },
+                "Failed to initalize yotogi skill tab");
         }
 
         private void OnSkillCellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -72,12 +71,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             int skillID = rowToSkillID[row];
 
             if (!updateSkillTable)
-            {
-                if (val is T || (col == SKILL_COLUMN_PLAY_COUNT && val is uint))
+                if (val is T || col == SKILL_COLUMN_PLAY_COUNT && val is uint)
                     maid.SetSkillValue(skillID, col, val);
                 else
                     maid.UpdateSkillData(skillID);
-            }
             updateSkillTable = false;
         }
     }

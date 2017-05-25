@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using CM3D2.MaidFiddler.Hook;
 using param;
 
 namespace CM3D2.MaidFiddler.Plugin.Utils
@@ -49,22 +48,12 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             MaxMaidClass = maidClassIDtoNameDic.Count;
         }
 
-        private static void CreateMaidClassAndYotogiClassMaps()
-        {
-            MethodInfo createEnabledMap = typeof (MaidParam).GetMethod(
-            "CreateMaidClassAndYotogiClassEnabled",
-            BindingFlags.Static | BindingFlags.NonPublic);
-
-            createEnabledMap.Invoke(null, null);
-            CreateMaidClassNameMap();
-            CreateEnabledYotogiClassMap();
-        }
-
         public static string GetYotogiClassName(int yotogiClass)
         {
             string result;
             return yotogiClassToNameDic.TryGetValue(yotogiClass, out result)
-                   ? result : yotogiClass.ToString(CultureInfo.InvariantCulture);
+                ? result
+                : yotogiClass.ToString(CultureInfo.InvariantCulture);
         }
 
         public static bool IsValidYotogiClass(int yotogiClass)
@@ -77,85 +66,21 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             return maidClassIDtoNameDic[maidClass];
         }
 
-        private static void CreateMaidClassNameMap()
-        {
-            if (0 < maidClassIDtoNameDic.Count)
-                return;
-            int maxVal = 0;
-            using (AFileBase aFileBase = GameUty.FileSystem.FileOpen("maid_class_infotext.nei"))
-            {
-                using (CsvParser csvParser = new CsvParser())
-                {
-                    bool condition = csvParser.Open(aFileBase);
-                    NDebug.Assert(condition, "file open error[maid_class_infotext.nei]");
-                    for (int i = 1; i < csvParser.max_cell_y; i++)
-                    {
-                        if (!csvParser.IsCellToExistData(0, i))
-                            continue;
-                        string cellAsString = csvParser.GetCellAsString(0, i);
-                        maidClassIDtoNameDic.Add(maxVal, cellAsString);
-                        maxVal++;
-                    }
-                }
-            }
-        }
-
-        private static void CreateEnabledYotogiClassMap()
-        {
-            Type yotogiClassType = typeof (Maid).Assembly.GetType("param.YotogiClassType");
-            MethodInfo getYotogiClassIdFromNameMethod = typeof (MaidParam).GetMethod(
-            "GetYotogiClassIdFromName",
-            BindingFlags.Public | BindingFlags.Static);
-            bool isOldVersion = yotogiClassType != null;
-
-            Action<string> readYotogiClasses = delegate(string fileName)
-            {
-                fileName += ".nei";
-                if (!GameUty.FileSystem.IsExistentFile(fileName))
-                    return;
-                using (AFileBase aFileBase = GameUty.FileSystem.FileOpen(fileName))
-                {
-                    using (CsvParser csvParser = new CsvParser())
-                    {
-                        bool condition = csvParser.Open(aFileBase);
-                        NDebug.Assert(condition, fileName + " open failed.");
-                        for (int k = 1; k < csvParser.max_cell_y; k++)
-                        {
-                            if (!csvParser.IsCellToExistData(0, k))
-                                continue;
-                            string className = csvParser.GetCellAsString(0, k);
-                            int key = isOldVersion
-                                      ? (int) Enum.Parse(yotogiClassType, className, true)
-                                      : (int) getYotogiClassIdFromNameMethod.Invoke(null, new object[] {className});
-                            if (!yotogiClassToNameDic.ContainsKey(key))
-                                yotogiClassToNameDic.Add(key, className);
-                            EnabledYotogiClasses.Add(key);
-                        }
-                    }
-                }
-            };
-
-            readYotogiClasses("yotogi_class_enabled_list");
-            foreach (string path in GameUty.PathList)
-                readYotogiClasses($"yotogi_class_enabled_list_{path}");
-            EnabledYotogiClasses.Sort();
-        }
-
         public static string GetName<T>(T value)
         {
-            return Enum.GetName(typeof (T), value);
+            return Enum.GetName(typeof(T), value);
         }
 
         public static T[] GetValues<T>()
         {
-            return (T[]) Enum.GetValues(typeof (T));
+            return (T[]) Enum.GetValues(typeof(T));
         }
 
         public static bool TryParse<T>(string val, out T result, bool ignoreCase = false)
         {
             try
             {
-                result = (T) Enum.Parse(typeof (T), val, ignoreCase);
+                result = (T) Enum.Parse(typeof(T), val, ignoreCase);
             }
             catch (Exception)
             {
@@ -188,10 +113,9 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             try
             {
                 foreach (T val in
-                values.Select(keyCode => (T) Enum.Parse(typeof (T), keyCode, true)).Where(kc => !result.Contains(kc)))
-                {
+                    values.Select(keyCode => (T) Enum.Parse(typeof(T), keyCode, true))
+                          .Where(kc => !result.Contains(kc)))
                     result.Add(val);
-                }
             }
             catch (Exception)
             {
@@ -199,6 +123,81 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             }
 
             return result;
+        }
+
+        private static void CreateMaidClassAndYotogiClassMaps()
+        {
+            MethodInfo createEnabledMap = typeof(MaidParam).GetMethod(
+                "CreateMaidClassAndYotogiClassEnabled",
+                BindingFlags.Static | BindingFlags.NonPublic);
+
+            createEnabledMap.Invoke(null, null);
+            CreateMaidClassNameMap();
+            CreateEnabledYotogiClassMap();
+        }
+
+        private static void CreateMaidClassNameMap()
+        {
+            if (0 < maidClassIDtoNameDic.Count)
+                return;
+            int maxVal = 0;
+            using (AFileBase aFileBase = GameUty.FileSystem.FileOpen("maid_class_infotext.nei"))
+            {
+                using (CsvParser csvParser = new CsvParser())
+                {
+                    bool condition = csvParser.Open(aFileBase);
+                    NDebug.Assert(condition, "file open error[maid_class_infotext.nei]");
+                    for (int i = 1; i < csvParser.max_cell_y; i++)
+                    {
+                        if (!csvParser.IsCellToExistData(0, i))
+                            continue;
+                        string cellAsString = csvParser.GetCellAsString(0, i);
+                        maidClassIDtoNameDic.Add(maxVal, cellAsString);
+                        maxVal++;
+                    }
+                }
+            }
+        }
+
+        private static void CreateEnabledYotogiClassMap()
+        {
+            Type yotogiClassType = typeof(Maid).Assembly.GetType("param.YotogiClassType");
+            MethodInfo getYotogiClassIdFromNameMethod = typeof(MaidParam).GetMethod(
+                "GetYotogiClassIdFromName",
+                BindingFlags.Public | BindingFlags.Static);
+            bool isOldVersion = yotogiClassType != null;
+
+            Action<string> readYotogiClasses = delegate(string fileName)
+            {
+                fileName += ".nei";
+                if (!GameUty.FileSystem.IsExistentFile(fileName))
+                    return;
+                using (AFileBase aFileBase = GameUty.FileSystem.FileOpen(fileName))
+                {
+                    using (CsvParser csvParser = new CsvParser())
+                    {
+                        bool condition = csvParser.Open(aFileBase);
+                        NDebug.Assert(condition, fileName + " open failed.");
+                        for (int k = 1; k < csvParser.max_cell_y; k++)
+                        {
+                            if (!csvParser.IsCellToExistData(0, k))
+                                continue;
+                            string className = csvParser.GetCellAsString(0, k);
+                            int key = isOldVersion
+                                ? (int) Enum.Parse(yotogiClassType, className, true)
+                                : (int) getYotogiClassIdFromNameMethod.Invoke(null, new object[] {className});
+                            if (!yotogiClassToNameDic.ContainsKey(key))
+                                yotogiClassToNameDic.Add(key, className);
+                            EnabledYotogiClasses.Add(key);
+                        }
+                    }
+                }
+            };
+
+            readYotogiClasses("yotogi_class_enabled_list");
+            foreach (string path in GameUty.PathList)
+                readYotogiClasses($"yotogi_class_enabled_list_{path}");
+            EnabledYotogiClasses.Sort();
         }
     }
 }

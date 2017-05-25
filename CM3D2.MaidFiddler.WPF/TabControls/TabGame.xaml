@@ -9,43 +9,43 @@
     <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto">
         <Grid Background="#FFE5E5E5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <GroupBox Header="{t:Translate CURRENT_WORK}" Grid.Row="0">
                 <Grid>
                     <Grid.Resources>
                         <Style TargetType="Label">
-                            <Setter Property="Padding" Value="5,3"/>
-                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                            <Setter Property="Padding" Value="5,3" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
                         </Style>
                         <Style TargetType="ComboBox">
-                            <Setter Property="Padding" Value="0,1"/>
+                            <Setter Property="Padding" Value="0,1" />
                         </Style>
                         <Style TargetType="TextBox">
-                            <Setter Property="Padding" Value="0,1"/>
+                            <Setter Property="Padding" Value="0,1" />
                         </Style>
                     </Grid.Resources>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Label Content="{t:Translate PlayerName}" Grid.Column="0"/>
-                    <TextBox Grid.Column="1"/>
+                    <Label Content="{t:Translate PlayerName}" Grid.Column="0" />
+                    <TextBox Grid.Column="1" />
 
-                    <Label Content="{t:Translate ScenarioPhase}" Grid.Column="3"/>
-                    <ComboBox Grid.Column="4"/>
+                    <Label Content="{t:Translate ScenarioPhase}" Grid.Column="3" />
+                    <ComboBox Grid.Column="4" />
                 </Grid>
             </GroupBox>
             <GroupBox Header="{t:Translate GAME_PARAMS_ADV}" Grid.Row="1">
                 <DataGrid Name="dgGameParamsAdv">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="{t:Translate NAME}" Width="*" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="{t:Translate VAL}" Width="50"/>
-                        <DataGridCheckBoxColumn Header="{t:Translate LOCK}" Width="Auto"/>
+                        <DataGridTextColumn Header="{t:Translate NAME}" Width="*" IsReadOnly="True" />
+                        <DataGridTextColumn Header="{t:Translate VAL}" Width="50" />
+                        <DataGridCheckBoxColumn Header="{t:Translate LOCK}" Width="Auto" />
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>

@@ -16,7 +16,10 @@ namespace CM3D2.MaidFiddler.WPF.Translations
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            Binding bindng = new Binding("Value") {Source = new TranslationData(Key)};
+            Binding bindng = new Binding("Value")
+            {
+                Source = new TranslationData(Key)
+            };
             return bindng.ProvideValue(serviceProvider);
         }
     }

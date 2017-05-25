@@ -102,6 +102,7 @@
     <Compile Include="Gui\TextDialog.Designer.cs">
       <DependentUpon>TextDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Net\Connection.cs" />
     <Compile Include="Utils\CollectionUtils.cs" />
     <Compile Include="Utils\Debug.cs" />
     <Compile Include="Utils\EnumHelper.cs" />

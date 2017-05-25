@@ -11,7 +11,7 @@
     <Window.Title>
         <Binding Path="TitleText"
                  StringFormat="{x:Static l:MainWindow.TITLE_FORMAT}"
-                 TargetNullValue="{x:Static l:MainWindow.TITLE_NULL}"/>
+                 TargetNullValue="{x:Static l:MainWindow.TITLE_NULL}" />
     </Window.Title>
     <Grid>
         <DockPanel>

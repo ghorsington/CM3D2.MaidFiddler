@@ -34,11 +34,6 @@ namespace CM3D2.MaidFiddler.WPF.Translations
             return false;
         }
 
-        ~TranslationData()
-        {
-            Dispose(false);
-        }
-
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
@@ -48,6 +43,11 @@ namespace CM3D2.MaidFiddler.WPF.Translations
         private void OnLanguageChanged(object sender, EventArgs args)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Value"));
+        }
+
+        ~TranslationData()
+        {
+            Dispose(false);
         }
     }
 }

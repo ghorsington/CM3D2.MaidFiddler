@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using CM3D2.MaidFiddler.WPF.Translations;
 
 namespace CM3D2.MaidFiddler.WPF.Model
@@ -12,7 +7,20 @@ namespace CM3D2.MaidFiddler.WPF.Model
     public class CM3D2 : INotifyPropertyChanged
     {
         private static CM3D2 _instance;
-        public static CM3D2 Instance => _instance ?? (_instance = new CM3D2());
+
+        private List<TranslationData> _condition;
+
+        private List<TranslationData> _conditionSpecal;
+
+        private List<TranslationData> _contractType;
+
+        private List<TranslationData> _maidClassData;
+
+        private List<TranslationData> _personaList;
+
+        private List<TranslationData> _seikeiken;
+
+        private List<TranslationData> _yotogiClassData;
 
         private CM3D2()
         {
@@ -67,10 +75,11 @@ namespace CM3D2.MaidFiddler.WPF.Model
             };
         }
 
-        private List<TranslationData> _personaList;
+        public static CM3D2 Instance => _instance ?? (_instance = new CM3D2());
+
         public List<TranslationData> PersonaList
         {
-            get { return _personaList;}
+            get => _personaList;
             set
             {
                 _personaList = value;
@@ -78,10 +87,9 @@ namespace CM3D2.MaidFiddler.WPF.Model
             }
         }
 
-        private List<TranslationData> _contractType;
         public List<TranslationData> ContractType
         {
-            get { return _contractType; }
+            get => _contractType;
             set
             {
                 _contractType = value;
@@ -89,10 +97,9 @@ namespace CM3D2.MaidFiddler.WPF.Model
             }
         }
 
-        private List<TranslationData> _condition;
         public List<TranslationData> Condition
         {
-            get { return _condition; }
+            get => _condition;
             set
             {
                 _condition = value;
@@ -100,10 +107,9 @@ namespace CM3D2.MaidFiddler.WPF.Model
             }
         }
 
-        private List<TranslationData> _conditionSpecal;
         public List<TranslationData> ConditionSpecial
         {
-            get { return _conditionSpecal; }
+            get => _conditionSpecal;
             set
             {
                 _conditionSpecal = value;
@@ -111,10 +117,9 @@ namespace CM3D2.MaidFiddler.WPF.Model
             }
         }
 
-        private List<TranslationData> _seikeiken;
         public List<TranslationData> Seikeiken
         {
-            get { return _seikeiken; }
+            get => _seikeiken;
             set
             {
                 _seikeiken = value;
@@ -122,10 +127,9 @@ namespace CM3D2.MaidFiddler.WPF.Model
             }
         }
 
-        private List<TranslationData> _maidClassData;
         public List<TranslationData> MaidClassData
         {
-            get { return _maidClassData; }
+            get => _maidClassData;
             set
             {
                 _maidClassData = value;
@@ -133,10 +137,9 @@ namespace CM3D2.MaidFiddler.WPF.Model
             }
         }
 
-        private List<TranslationData> _yotogiClassData;
         public List<TranslationData> YotogiClassData
         {
-            get { return _yotogiClassData; }
+            get => _yotogiClassData;
             set
             {
                 _yotogiClassData = value;

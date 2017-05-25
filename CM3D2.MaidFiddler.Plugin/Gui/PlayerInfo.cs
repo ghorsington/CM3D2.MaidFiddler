@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Utils;
 using param;
 
@@ -21,7 +20,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 this.gui = gui;
                 valueLocks = new Dictionary<PlayerChangeType, bool>();
-                ((PlayerChangeType[]) Enum.GetValues(typeof (PlayerChangeType))).ForEach(t => valueLocks.Add(t, false));
+                ((PlayerChangeType[]) Enum.GetValues(typeof(PlayerChangeType))).ForEach(t => valueLocks.Add(t, false));
                 InitFunctions();
             }
 
@@ -30,8 +29,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             public bool IsLocked(PlayerChangeType type)
             {
                 Debugger.WriteLine(
-                LogLevel.Info,
-                $"Attempted to change value {EnumHelper.GetName(type)}. Locked: {valueLocks[type]}");
+                    LogLevel.Info,
+                    $"Attempted to change value {EnumHelper.GetName(type)}. Locked: {valueLocks[type]}");
                 return valueLocks[type];
             }
 
@@ -45,6 +44,73 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             {
                 if (valueLocks.ContainsKey(type))
                     valueLocks[type] = false;
+            }
+
+            public void SetValue(PlayerChangeType type, object value)
+            {
+                Action<int> setValInt;
+                Action<long> setValLong;
+                Action<string> setValString;
+                if (setMethodInt.TryGetValue(type, out setValInt))
+                {
+                    int val;
+                    string s = value as string;
+#pragma warning disable 642
+                    if (s != null && int.TryParse(s, out val))
+                        ;
+#pragma warning restore 642
+                    else if (value is int)
+                        val = (int) value;
+                    else
+                        return;
+
+                    setValInt(val);
+                }
+                else if (setMethodLong.TryGetValue(type, out setValLong))
+                {
+                    long val;
+                    string s = value as string;
+#pragma warning disable 642
+                    if (s != null && !long.TryParse(s, out val))
+                        ;
+#pragma warning restore 642
+                    else if (value is int || value is long)
+                        val = (long) value;
+                    else
+                        return;
+
+                    setValLong(val);
+                }
+                else if (value is string && setMethodString.TryGetValue(type, out setValString))
+                    setValString((string) value);
+            }
+
+            public void UpdateAll()
+            {
+                try
+                {
+                    foreach (KeyValuePair<PlayerChangeType, Action<PlayerChangeType>> updateMethod in updateMethods)
+                    {
+                        gui.valueUpdatePlayer[updateMethod.Key] = true;
+                        updateMethod.Value(updateMethod.Key);
+                        gui.valueUpdatePlayer[updateMethod.Key] = false;
+                    }
+                }
+                catch (Exception e)
+                {
+                    FiddlerUtils.ThrowErrorMessage(e, "Failed to update player values", gui.Plugin);
+                }
+            }
+
+            public void UpdateField(PlayerChangeType type)
+            {
+                Debugger.WriteLine(LogLevel.Info, $"Updating value {type}!");
+                Action<PlayerChangeType> updateVal;
+                if (!updateMethods.TryGetValue(type, out updateVal))
+                    return;
+                gui.valueUpdatePlayer[type] = true;
+                updateVal(type);
+                gui.valueUpdatePlayer[type] = false;
             }
 
             private void InitFunctions()
@@ -70,7 +136,10 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                     {PlayerChangeType.InitSalonLoan, SetInitSalonLoan}
                 };
 
-                setMethodString = new Dictionary<PlayerChangeType, Action<string>> {{PlayerChangeType.Name, SetName}};
+                setMethodString = new Dictionary<PlayerChangeType, Action<string>>
+                {
+                    {PlayerChangeType.Name, SetName}
+                };
 
                 updateMethods = new Dictionary<PlayerChangeType, Action<PlayerChangeType>>
                 {
@@ -164,73 +233,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 Player.SetShopUseMoney(obj);
             }
 
-            public void SetValue(PlayerChangeType type, object value)
-            {
-                Action<int> setValInt;
-                Action<long> setValLong;
-                Action<string> setValString;
-                if (setMethodInt.TryGetValue(type, out setValInt))
-                {
-                    int val;
-                    string s = value as string;
-#pragma warning disable 642
-                    if (s != null && int.TryParse(s, out val))
-                        ;
-#pragma warning restore 642
-                    else if (value is int)
-                        val = (int) value;
-                    else
-                        return;
-
-                    setValInt(val);
-                }
-                else if (setMethodLong.TryGetValue(type, out setValLong))
-                {
-                    long val;
-                    string s = value as string;
-#pragma warning disable 642
-                    if (s != null && !long.TryParse(s, out val))
-                        ;
-#pragma warning restore 642
-                    else if (value is int || value is long)
-                        val = (long) value;
-                    else
-                        return;
-
-                    setValLong(val);
-                }
-                else if (value is string && setMethodString.TryGetValue(type, out setValString))
-                    setValString((string) value);
-            }
-
-            public void UpdateAll()
-            {
-                try
-                {
-                    foreach (KeyValuePair<PlayerChangeType, Action<PlayerChangeType>> updateMethod in updateMethods)
-                    {
-                        gui.valueUpdatePlayer[updateMethod.Key] = true;
-                        updateMethod.Value(updateMethod.Key);
-                        gui.valueUpdatePlayer[updateMethod.Key] = false;
-                    }
-                }
-                catch (Exception e)
-                {
-                    FiddlerUtils.ThrowErrorMessage(e, "Failed to update player values", gui.Plugin);
-                }
-            }
-
-            public void UpdateField(PlayerChangeType type)
-            {
-                Debugger.WriteLine(LogLevel.Info, $"Updating value {type}!");
-                Action<PlayerChangeType> updateVal;
-                if (!updateMethods.TryGetValue(type, out updateVal))
-                    return;
-                gui.valueUpdatePlayer[type] = true;
-                updateVal(type);
-                gui.valueUpdatePlayer[type] = false;
-            }
-
             private void UpdateTableValue(PlayerChangeType type)
             {
                 object value;
@@ -274,8 +276,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         break;
                 }
                 Debugger.Assert(
-                () => { gui.PlayerParameters[type].Cells[PARAMS_COLUMN_VALUE].Value = value; },
-                $"Failed to update player parameter {EnumHelper.GetName(type)}!");
+                    () => { gui.PlayerParameters[type].Cells[PARAMS_COLUMN_VALUE].Value = value; },
+                    $"Failed to update player parameter {EnumHelper.GetName(type)}!");
             }
 
             private void UpdateName(PlayerChangeType _)

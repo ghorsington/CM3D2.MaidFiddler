@@ -36,21 +36,23 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             List<MaidOrderStyle> orderStyles = EnumHelper.GetValues<MaidOrderStyle>().ToList();
             List<MaidOrderStyle> selectedOrderStyles = plugin.CFGOrderStyle;
             foreach (MaidOrderStyle orderStyle in selectedOrderStyles)
-            {
-                listBox_order_selected.Items.Add(new MaidOrderStyleData {OrderStyle = orderStyle});
-            }
+                listBox_order_selected.Items.Add(new MaidOrderStyleData
+                {
+                    OrderStyle = orderStyle
+                });
             listBox_order_selected.DisplayMember = "DisplayName";
             listBox_order_selected.SelectedIndexChanged += OnSelectedOrderStyleSelected;
 
             IEnumerable<MaidOrderStyle> avalableOrderStyles = orderStyles.Except(selectedOrderStyles);
             foreach (MaidOrderStyle orderStyle in avalableOrderStyles)
-            {
-                listBox_order_available.Items.Add(new MaidOrderStyleData {OrderStyle = orderStyle});
-            }
+                listBox_order_available.Items.Add(new MaidOrderStyleData
+                {
+                    OrderStyle = orderStyle
+                });
             listBox_order_available.DisplayMember = "DisplayName";
             listBox_order_available.SelectedIndexChanged += OnAvailableOrderStyleSelected;
 
-            comboBox_order_direction.SelectedIndex = (((int) plugin.CFGOrderDirection) + 1) / 2;
+            comboBox_order_direction.SelectedIndex = ((int) plugin.CFGOrderDirection + 1) / 2;
 
             button_order_add.Click += OnOrderStyleAdd;
             button_order_remove.Click += OnOrderStyleRemove;
@@ -81,8 +83,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         private void MoveDownSelectedOrderStyle(object sender, EventArgs eventArgs)
         {
-            if (listBox_order_selected.SelectedIndex == -1
-                || listBox_order_selected.SelectedIndex >= listBox_order_selected.Items.Count - 1)
+            if (listBox_order_selected.SelectedIndex == -1 ||
+                listBox_order_selected.SelectedIndex >= listBox_order_selected.Items.Count - 1)
                 return;
             int selectedIndex = listBox_order_selected.SelectedIndex;
             MaidOrderStyleData orderStyle = (MaidOrderStyleData) listBox_order_selected.Items[selectedIndex];
@@ -96,7 +98,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (listBox_order_selected.SelectedIndex == -1)
                 return;
             MaidOrderStyleData orderStyle =
-            (MaidOrderStyleData) listBox_order_selected.Items[listBox_order_selected.SelectedIndex];
+                    (MaidOrderStyleData) listBox_order_selected.Items[listBox_order_selected.SelectedIndex];
             listBox_order_selected.Items.RemoveAt(listBox_order_selected.SelectedIndex);
             listBox_order_available.Items.Add(orderStyle);
             if (listBox_order_selected.Items.Count <= 1)
@@ -108,7 +110,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (listBox_order_available.SelectedIndex == -1)
                 return;
             MaidOrderStyleData orderStyle =
-            (MaidOrderStyleData) listBox_order_available.Items[listBox_order_available.SelectedIndex];
+                    (MaidOrderStyleData) listBox_order_available.Items[listBox_order_available.SelectedIndex];
             listBox_order_available.Items.RemoveAt(listBox_order_available.SelectedIndex);
             listBox_order_selected.Items.Add(orderStyle);
         }
@@ -124,8 +126,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             bool enable = listBox_order_selected.SelectedIndex != -1;
             button_order_remove.Enabled = enable && listBox_order_selected.Items.Count > 1;
             button_order_up.Enabled = listBox_order_selected.SelectedIndex > 0;
-            button_order_down.Enabled = enable
-                                        && listBox_order_selected.SelectedIndex < listBox_order_selected.Items.Count - 1;
+            button_order_down.Enabled = enable &&
+                                        listBox_order_selected.SelectedIndex < listBox_order_selected.Items.Count - 1;
         }
 
         private void LoadLabels()
@@ -139,9 +141,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Translation.GetTranslation(groupBox_gui);
             Translation.GetTranslation(label_name_style);
             for (int i = 0; i < comboBox_name_style.Items.Count; i++)
-            {
                 comboBox_name_style.Items[i] = Translation.GetTranslation((string) comboBox_name_style.Items[i]);
-            }
             Translation.GetTranslation(checkBox_open_on_startup);
             Translation.GetTranslation(checkBox_check_for_updates);
 
@@ -151,10 +151,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Translation.GetTranslation(label_order_selected);
             Translation.GetTranslation(label_order_direction);
             for (int i = 0; i < comboBox_order_direction.Items.Count; i++)
-            {
                 comboBox_order_direction.Items[i] =
-                Translation.GetTranslation((string) comboBox_order_direction.Items[i]);
-            }
+                        Translation.GetTranslation((string) comboBox_order_direction.Items[i]);
 
             Translation.GetTranslation(button_apply);
             Translation.GetTranslation(button_cancel);
@@ -168,7 +166,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             plugin.CFGStartGUIKey = EnumHelper.ParseEnums<KeyCode>(textBox_key.Text, '+');
             plugin.CFGUseJapaneseNameStyle = comboBox_name_style.SelectedIndex == 1;
             plugin.CFGOrderStyle =
-            listBox_order_selected.Items.Cast<MaidOrderStyleData>().Select(data => data.OrderStyle).ToList();
+                    listBox_order_selected.Items.Cast<MaidOrderStyleData>().Select(data => data.OrderStyle).ToList();
             plugin.CFGOrderDirection = (MaidOrderDirection) (comboBox_order_direction.SelectedIndex * 2 - 1);
 
             Close();
@@ -185,16 +183,16 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             plugin.CFGOpenOnStartup = cb.Checked;
         }
 
-        private struct MaidOrderStyleData
-        {
-            public MaidOrderStyle OrderStyle;
-            public string DisplayName => Translation.GetTranslation($"OrderStyle_{OrderStyle}");
-        }
-
         private void OnCheckForUpdatesCheckedChanged(object sender, EventArgs e)
         {
             CheckBox cb = (CheckBox) sender;
             plugin.CFGCheckForUpdates = cb.Checked;
+        }
+
+        private struct MaidOrderStyleData
+        {
+            public MaidOrderStyle OrderStyle;
+            public string DisplayName => Translation.GetTranslation($"OrderStyle_{OrderStyle}");
         }
     }
 }

@@ -9,26 +9,26 @@
     <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto">
         <Grid Background="#FFE5E5E5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <GroupBox Header="{t:Translate MAID_CLASS}" Grid.Row="0">
                 <DataGrid Name="dgMaidClass">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Header="{t:Translate HAS}" Width="Auto"/>
-                        <DataGridTextColumn Header="{t:Translate NAME}" Width="*" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="{t:Translate LVL}" Width="50"/>
-                        <DataGridTextColumn Header="{t:Translate TOTAL_XP}" Width="Auto"/>
+                        <DataGridCheckBoxColumn Header="{t:Translate HAS}" Width="Auto" />
+                        <DataGridTextColumn Header="{t:Translate NAME}" Width="*" IsReadOnly="True" />
+                        <DataGridTextColumn Header="{t:Translate LVL}" Width="50" />
+                        <DataGridTextColumn Header="{t:Translate TOTAL_XP}" Width="Auto" />
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>
             <GroupBox Header="{t:Translate YOTOGI_CLASS}" Grid.Row="1">
                 <DataGrid Name="dgYotogiClass">
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Header="{t:Translate HAS}" Width="Auto"/>
-                        <DataGridTextColumn Header="{t:Translate NAME}" Width="*" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="{t:Translate LVL}" Width="50"/>
-                        <DataGridTextColumn Header="{t:Translate TOTAL_XP}" Width="Auto"/>
+                        <DataGridCheckBoxColumn Header="{t:Translate HAS}" Width="Auto" />
+                        <DataGridTextColumn Header="{t:Translate NAME}" Width="*" IsReadOnly="True" />
+                        <DataGridTextColumn Header="{t:Translate LVL}" Width="50" />
+                        <DataGridTextColumn Header="{t:Translate TOTAL_XP}" Width="Auto" />
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>

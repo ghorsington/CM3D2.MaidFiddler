@@ -6,7 +6,7 @@ using CM3D2.MaidFiddler.Plugin.Utils;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
 {
-    partial class AboutGUI : Form
+    internal partial class AboutGUI : Form
     {
         public AboutGUI()
         {
@@ -21,7 +21,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             labelProductName.Text += $"\n{MaidFiddler.PROJECT_PAGE}";
 
             PluginData.Type[] plugins =
-            EnumHelper.GetValues<PluginData.Type>().TakeWhile(GameUty.CheckPackFlag).ToArray();
+                    EnumHelper.GetValues<PluginData.Type>().TakeWhile(GameUty.CheckPackFlag).ToArray();
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < plugins.Length; i++)
             {

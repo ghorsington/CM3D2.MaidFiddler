@@ -4,112 +4,10 @@ using Schedule;
 
 namespace CM3D2.MaidFiddler.Hook
 {
-    public enum MaidChangeType
-    {
-        // Get value ids
-        MaidClassExp, // Also ADD
-        YotogiClassExp, // Also ADD
-        SkillPlayCount, // Add (id)
-        WorkPlayCount, // Add (id)
-        SkillExp, // Add (skill_id, add_val)
-        WorkLevel, // Set (id, level)
-        Propensity, // Set (target, val)
-        Feature, // Set (target, val)
-        FeatureHash, // Set (HashMap)
-        PropensityHash, // Set (HashMap)
-        Sexual, // Set
-        // Set (return booleans)
-        NewGetSkill,
-        NewGetWork,
-
-        // Add/Set (int)
-        Care,
-        Charm,
-        CurExcite,
-        CurMind,
-        CurReason,
-        Elegance,
-        Frustration,
-        Hentai,
-        Housi,
-        Hp,
-        Inyoku,
-        Likability,
-        Lovely,
-        MaidPoint,
-        Mind,
-        MValue,
-        OthersPlayCount,
-        PlayNumber,
-        Reason,
-        Reception,
-        StudyRate,
-        TeachRate,
-        YotogiPlayCount,
-        // Sexual (add with limit/set)
-        SexualBack,
-        SexualCuri,
-        SexualFront,
-        SexualMouth,
-        SexualNipple,
-        SexualThroat,
-        // Add/Set (long)
-        Sales,
-        TotalSales,
-        Evaluation,
-        TotalEvaluation,
-        // Set (string)
-        FirstName,
-        LastName,
-        FreeComment,
-        // Only Set
-        CurHp,
-        NightWorkId,
-        NoonWorkId,
-        PopularRank,
-        // Set (bool)
-        Employment,
-        Marriage,
-        FirstNameCall,
-        Leader,
-        RentalMaid,
-        SeikeikenFront,
-        SeikeikenBack,
-        // Custom set
-        Personal,
-        ContractType,
-        MaidClassType,
-        Name,
-        YotogiClassType,
-        Condition,
-        ConditionSpecial,
-        InitSeikeiken,
-        Seikeiken,
-        //Remove
-        Skill,
-        Work,
-
-        //Misc
-        MaidAndYotogiClass,
-        Profile,
-        BonusCare,
-        BonusCharm,
-        BonusElegance,
-        BonusHentai,
-        BonusHousi,
-        BonusHp,
-        BonusInyoku,
-        BonusLovely,
-        BonusMind,
-        BonusMValue,
-        BonusReception,
-        BonusTeachRate
-    }
-
     public class HookEventArgs : EventArgs
     {
         public Maid CallerMaid { get; internal set; }
-        public MaidChangeType Tag { get; internal set; }
+        public string Tag { get; internal set; }
     }
 
     public class StatusEventArgs : HookEventArgs
@@ -136,21 +34,15 @@ namespace CM3D2.MaidFiddler.Hook
 
     public class WorkEventArgs : HookEventArgs
     {
-        public bool CheckCalledTarget { get; internal set; }
         public bool ForceEnabled { get; set; }
         public int ID { get; internal set; }
     }
 
-    public class PostProcessNoonEventArgs : EventArgs
+    public class PostProcessEventArgs : EventArgs
     {
         public ScheduleScene ScheduleScene { get; internal set; }
         public int SlotID { get; internal set; }
-    }
-
-    public class PostProcessNightEventArgs : EventArgs
-    {
-        public ScheduleScene ScheduleScene { get; internal set; }
-        public int SlotID { get; internal set; }
+        public string WorkType { get; internal set; }
     }
 
     public class UpdateFeaturePropensityEventArgs : EventArgs
@@ -176,6 +68,7 @@ namespace CM3D2.MaidFiddler.Hook
 
     public class YotogiSkillVisibleEventArgs : EventArgs
     {
+        public string Type { get; internal set; }
         public bool ForceVisible { get; set; }
     }
 
@@ -192,15 +85,13 @@ namespace CM3D2.MaidFiddler.Hook
         public static event EventHandler<UpdateFeaturePropensityEventArgs> FeaturePropensityUpdated;
         public static event EventHandler<StatusChangedEventArgs> NewProperty;
         public static event EventHandler<NightWorkVisibleEventArgs> NightWorkVisibilityCheck;
-        public static event EventHandler<PostProcessNightEventArgs> ProcessNightWorkData;
-        public static event EventHandler<PostProcessNoonEventArgs> ProcessNoonWorkData;
+        public static event EventHandler<PostProcessEventArgs> ProcessWorkData;
         public static event EventHandler<StatusChangedEventArgs> PropertyRemoved;
         public static event EventHandler<StatusEventArgs> StatusChanged;
         public static event EventHandler<StatusChangedEventArgs> StatusChangedID;
         public static event EventHandler<StatusUpdateEventArgs> StatusUpdated;
         public static event EventHandler<ThumbnailEventArgs> ThumbnailChanged;
         public static event EventHandler<YotogiSkillVisibleEventArgs> YotogiSkillVisibilityCheck;
-        public static event EventHandler<YotogiSkillVisibleEventArgs> YotogiSkillVisibilityStageCheck;
         public static event EventHandler<PostProcessSceneEventArgs> ProcessFreeModeScene;
 
         public static bool CheckNightWorkVisibility(out bool result, int workID)
@@ -216,9 +107,13 @@ namespace CM3D2.MaidFiddler.Hook
             return args.Force;
         }
 
-        public static void OnClassTypeUpdate(int tag, ref Maid currentMaid)
+        public static void OnClassTypeUpdate(string tag, ref Maid currentMaid)
         {
-            HookEventArgs args = new HookEventArgs {CallerMaid = currentMaid, Tag = (MaidChangeType) tag};
+            HookEventArgs args = new HookEventArgs
+            {
+                CallerMaid = currentMaid,
+                Tag = tag
+            };
             ClassUpdated?.Invoke(null, args);
         }
 
@@ -233,17 +128,12 @@ namespace CM3D2.MaidFiddler.Hook
             FeaturePropensityUpdated?.Invoke(null, args);
         }
 
-        public static void OnMaidClassAndYotogiUpdate(ref Maid currentMaid)
-        {
-            HookEventArgs args = new HookEventArgs {CallerMaid = currentMaid, Tag = MaidChangeType.MaidAndYotogiClass};
-            ClassUpdated?.Invoke(null, args);
-        }
 
-        public static void OnNewPropertyGet(int tag, ref Maid currentMaid, int id)
+        public static void OnNewPropertyGet(string tag, ref Maid currentMaid, int id)
         {
             StatusChangedEventArgs args = new StatusChangedEventArgs
             {
-                Tag = (MaidChangeType) tag,
+                Tag = tag,
                 CallerMaid = currentMaid,
                 BlockAssignment = false,
                 ID = id,
@@ -254,18 +144,20 @@ namespace CM3D2.MaidFiddler.Hook
 
         public static void PostProcessFreeModeScene(ref bool enabled)
         {
-            PostProcessSceneEventArgs args = new PostProcessSceneEventArgs {ForceEnabled = enabled};
+            PostProcessSceneEventArgs args = new PostProcessSceneEventArgs
+            {
+                ForceEnabled = enabled
+            };
             ProcessFreeModeScene?.Invoke(null, args);
             enabled = args.ForceEnabled;
         }
 
-        public static bool OnNightWorkEnableCheck(out bool result, int workID, Maid maid, bool calledTargetCheck)
+        public static bool OnWorkEnableCheck(string tag, out bool result, int workID, Maid maid)
         {
             WorkEventArgs args = new WorkEventArgs
             {
-                Tag = MaidChangeType.NightWorkId,
+                Tag = tag,
                 CallerMaid = maid,
-                CheckCalledTarget = calledTargetCheck,
                 ForceEnabled = false,
                 ID = workID
             };
@@ -274,26 +166,11 @@ namespace CM3D2.MaidFiddler.Hook
             return args.ForceEnabled;
         }
 
-        public static bool OnNoonWorkEnableCheck(out bool result, int workID, Maid maid)
-        {
-            WorkEventArgs args = new WorkEventArgs
-            {
-                Tag = MaidChangeType.NoonWorkId,
-                CallerMaid = maid,
-                CheckCalledTarget = false,
-                ForceEnabled = false,
-                ID = workID
-            };
-            CheckWorkEnabled?.Invoke(null, args);
-            result = args.ForceEnabled;
-            return args.ForceEnabled;
-        }
-
-        public static void OnPropertyRemoved(int tag, ref Maid currentMaid, int id)
+        public static void OnPropertyRemoved(string tag, ref Maid currentMaid, int id)
         {
             StatusChangedEventArgs args = new StatusChangedEventArgs
             {
-                Tag = (MaidChangeType) tag,
+                Tag = tag,
                 CallerMaid = currentMaid,
                 ID = id,
                 Value = -1,
@@ -302,11 +179,11 @@ namespace CM3D2.MaidFiddler.Hook
             PropertyRemoved?.Invoke(null, args);
         }
 
-        public static bool OnStatusChanged(int tag, ref Maid currentMaid)
+        public static bool OnStatusChanged(string tag, ref Maid currentMaid)
         {
             StatusEventArgs args = new StatusEventArgs
             {
-                Tag = (MaidChangeType) tag,
+                Tag = tag,
                 CallerMaid = currentMaid,
                 BlockAssignment = false
             };
@@ -316,25 +193,12 @@ namespace CM3D2.MaidFiddler.Hook
             return args.BlockAssignment;
         }
 
-        public static void OnStatusChangedCallback(int tag, ref Maid currentMaid)
+
+        public static bool OnStatusChangedID(string tag, ref Maid currentMaid, int id)
         {
             StatusChangedEventArgs args = new StatusChangedEventArgs
             {
-                Tag = (MaidChangeType) tag,
-                CallerMaid = currentMaid,
-                ID = -1,
-                Value = -1,
-                BlockAssignment = false
-            };
-
-            StatusChanged?.Invoke(null, args);
-        }
-
-        public static bool OnStatusChangedID(int tag, ref Maid currentMaid, int id)
-        {
-            StatusChangedEventArgs args = new StatusChangedEventArgs
-            {
-                Tag = (MaidChangeType) tag,
+                Tag = tag,
                 CallerMaid = currentMaid,
                 ID = id,
                 Value = -1,
@@ -344,25 +208,12 @@ namespace CM3D2.MaidFiddler.Hook
             return args.BlockAssignment;
         }
 
-        public static bool OnStatusChangedID(int tag, ref Maid currentMaid, int id, int val)
-        {
-            StatusChangedEventArgs args = new StatusChangedEventArgs
-            {
-                Tag = (MaidChangeType) tag,
-                CallerMaid = currentMaid,
-                ID = id,
-                Value = val,
-                BlockAssignment = false
-            };
-            StatusChangedID?.Invoke(null, args);
-            return args.BlockAssignment;
-        }
 
-        public static void OnStatusUpdate(int tag, ref Maid currentMaid, int enumVal, bool value)
+        public static void OnStatusUpdate(string tag, ref Maid currentMaid, int enumVal, bool value)
         {
             StatusUpdateEventArgs args = new StatusUpdateEventArgs
             {
-                Tag = (MaidChangeType) tag,
+                Tag = tag,
                 CallerMaid = currentMaid,
                 EnumVal = enumVal,
                 Value = value
@@ -372,13 +223,16 @@ namespace CM3D2.MaidFiddler.Hook
 
         public static void OnThumbnailChanged(Maid maid)
         {
-            ThumbnailEventArgs args = new ThumbnailEventArgs {Maid = maid};
+            ThumbnailEventArgs args = new ThumbnailEventArgs
+            {
+                Maid = maid
+            };
             ThumbnailChanged?.Invoke(null, args);
         }
 
         public static void OnUpdateCommand(ref YotogiPlay.PlayerState playerState,
                                            ref Dictionary<YotogiPlay.PlayerState, Yotogi.SkillData.Command.Data[]>
-                                           commandDictionary,
+                                                   commandDictionary,
                                            ref YotogiCommandFactory commandFactory)
         {
             CommandUpdateEventArgs args = new CommandUpdateEventArgs
@@ -390,40 +244,27 @@ namespace CM3D2.MaidFiddler.Hook
             CommandUpdate?.Invoke(null, args);
         }
 
-        public static bool OnYotogiSkillVisibilityCheck(int tag, out bool ret)
+        public static bool OnYotogiSkillVisibilityCheck(string tag, out bool ret)
         {
-            YotogiSkillVisibleEventArgs args = new YotogiSkillVisibleEventArgs {ForceVisible = false};
-            switch (tag)
+            YotogiSkillVisibleEventArgs args = new YotogiSkillVisibleEventArgs
             {
-                case 0:
-                    YotogiSkillVisibilityCheck?.Invoke(null, args);
-                    break;
-                case 1:
-                    YotogiSkillVisibilityStageCheck?.Invoke(null, args);
-                    break;
-            }
+                Type = tag,
+                ForceVisible = false
+            };
+            YotogiSkillVisibilityCheck?.Invoke(null, args);
             ret = true;
             return args.ForceVisible;
         }
 
-        public static void ReloadNightWorkData(ref ScheduleScene scheduleScene, int slotNo)
+        public static void ReloadWorkData(string tag, ref ScheduleScene scheduleScene, int slotNo)
         {
-            PostProcessNightEventArgs args = new PostProcessNightEventArgs
+            PostProcessEventArgs args = new PostProcessEventArgs
             {
                 ScheduleScene = scheduleScene,
-                SlotID = slotNo
+                SlotID = slotNo,
+                WorkType = tag
             };
-            ProcessNightWorkData?.Invoke(null, args);
-        }
-
-        public static void ReloadNoonWorkData(ref ScheduleScene scheduleScene, int slotNo)
-        {
-            PostProcessNoonEventArgs args = new PostProcessNoonEventArgs
-            {
-                ScheduleScene = scheduleScene,
-                SlotID = slotNo
-            };
-            ProcessNoonWorkData?.Invoke(null, args);
+            ProcessWorkData?.Invoke(null, args);
         }
     }
 }

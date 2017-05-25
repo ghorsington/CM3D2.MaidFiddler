@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Utils;
 
 namespace CM3D2.MaidFiddler.Plugin.Gui
@@ -19,10 +18,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             Font uiFont = new Font(FontFamily.GenericSansSerif, 8.25F);
             Font = uiFont;
             foreach (Control control in Controls)
-            {
                 control.Font = uiFont;
-            }
-            if(!plugin.CFGOpenOnStartup)
+            if (!plugin.CFGOpenOnStartup)
                 Opacity = 0.0;
             Text = $"CM3D2 Maid Fiddler {MaidFiddler.VERSION}";
             Translation.AddTranslationAction("TITLE_TEXT", s => Text = $"CM3D2 Maid Fiddler {MaidFiddler.VERSION} {s}");
@@ -66,17 +63,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
 
         public MaidFiddler Plugin { get; }
 
-        private void OnShown(object sender, EventArgs e)
-        {
-            Visible = Plugin.CFGOpenOnStartup;
-            if(!Plugin.CFGOpenOnStartup)
-                Opacity = 1.0;
-        }
-
         public void DoIfVisible(Action action)
         {
             if (Visible)
                 action();
+        }
+
+        private void OnShown(object sender, EventArgs e)
+        {
+            Visible = Plugin.CFGOpenOnStartup;
+            if (!Plugin.CFGOpenOnStartup)
+                Opacity = 1.0;
         }
 
         private void DrawListBox(object sender, DrawItemEventArgs e)
@@ -94,24 +91,22 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (maidThumb == null && Resources.DefaultThumbnail == null)
                 e.Graphics.FillRectangle(Brushes.BlueViolet, e.Bounds.X, e.Bounds.Y, e.Bounds.Height, e.Bounds.Height);
             else
-            {
                 e.Graphics.DrawImage(
-                maidThumb ?? Resources.DefaultThumbnail,
-                e.Bounds.X,
-                e.Bounds.Y,
-                e.Bounds.Height,
-                e.Bounds.Height);
-            }
+                    maidThumb ?? Resources.DefaultThumbnail,
+                    e.Bounds.X,
+                    e.Bounds.Y,
+                    e.Bounds.Height,
+                    e.Bounds.Height);
             string name = Plugin.UseJapaneseNameStyle
-                          ? $"{m.Maid.Param.status.last_name} {m.Maid.Param.status.first_name}"
-                          : $"{m.Maid.Param.status.first_name} {m.Maid.Param.status.last_name}";
+                ? $"{m.Maid.Param.status.last_name} {m.Maid.Param.status.first_name}"
+                : $"{m.Maid.Param.status.first_name} {m.Maid.Param.status.last_name}";
             e.Graphics.DrawString(
-            name,
-            e.Font,
-            Brushes.Black,
-            e.Bounds.X + e.Bounds.Height + 5,
-            e.Bounds.Y + (e.Bounds.Height - e.Font.Height) / 2,
-            StringFormat.GenericDefault);
+                name,
+                e.Font,
+                Brushes.Black,
+                e.Bounds.X + e.Bounds.Height + 5,
+                e.Bounds.Y + (e.Bounds.Height - e.Font.Height) / 2,
+                StringFormat.GenericDefault);
 
             e.DrawFocusRectangle();
         }
@@ -139,7 +134,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void OnFormClosing(object sender, FormClosingEventArgs formClosingEventArgs)
         {
             Debugger.WriteLine(
-            $"Closing GUI. Destroying the GUI: {destroyGUI}. Running on application thread: {!InvokeRequired}");
+                $"Closing GUI. Destroying the GUI: {destroyGUI}. Running on application thread: {!InvokeRequired}");
             formClosingEventArgs.Cancel = !destroyGUI;
             if (!destroyGUI)
                 Hide();
@@ -163,8 +158,8 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 return;
             }
             Debugger.WriteLine(
-            LogLevel.Info,
-            $"New maid: {maid.Maid.Param.status.first_name} {maid.Maid.Param.status.last_name}");
+                LogLevel.Info,
+                $"New maid: {maid.Maid.Param.status.first_name} {maid.Maid.Param.status.last_name}");
             ControlsEnabled = true;
             maid.UpdateAll();
         }
@@ -172,37 +167,37 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void OnVisibleChanged(object sender, EventArgs eventArgs)
         {
             Debugger.Assert(
-            () =>
-            {
-                if (!initialized && Visible && !IsHandleCreated)
+                () =>
                 {
-                    Debugger.WriteLine(LogLevel.Info, "No handle! Creating one...");
-                    CreateControl();
-                    initialized = true;
-                }
-                if (!Visible)
-                    return;
-                UpdateMaids(GameMain.Instance.CharacterMgr.GetStockMaidList().ToList());
-                Player.UpdateAll();
-            },
-            $"Failed to {(Visible ? "restore" : "hide")} the Maid Fiddler window");
+                    if (!initialized && Visible && !IsHandleCreated)
+                    {
+                        Debugger.WriteLine(LogLevel.Info, "No handle! Creating one...");
+                        CreateControl();
+                        initialized = true;
+                    }
+                    if (!Visible)
+                        return;
+                    UpdateMaids(GameMain.Instance.CharacterMgr.GetStockMaidList().ToList());
+                    Player.UpdateAll();
+                },
+                $"Failed to {(Visible ? "restore" : "hide")} the Maid Fiddler window");
         }
 
         private void UpdateList()
         {
             Debugger.Assert(
-            () =>
-            {
-                listBox1.ClearSelected();
-                ClearAllFields();
-                listBox1.BeginUpdate();
-                listBox1.Items.Clear();
-                if (loadedMaids.Count > 0)
-                    listBox1.Items.AddRange(loadedMaids.Select(m => m.Value as object).ToArray());
-                listBox1.EndUpdate();
-                listBox1.Invalidate();
-            },
-            "Failed to update maid GUI list");
+                () =>
+                {
+                    listBox1.ClearSelected();
+                    ClearAllFields();
+                    listBox1.BeginUpdate();
+                    listBox1.Items.Clear();
+                    if (loadedMaids.Count > 0)
+                        listBox1.Items.AddRange(loadedMaids.Select(m => m.Value as object).ToArray());
+                    listBox1.EndUpdate();
+                    listBox1.Invalidate();
+                },
+                "Failed to update maid GUI list");
         }
 
         private void OpenLangMenu(object sender, EventArgs e)

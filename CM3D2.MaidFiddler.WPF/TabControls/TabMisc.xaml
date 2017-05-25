@@ -9,14 +9,14 @@
     <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto">
         <Grid Background="#FFE5E5E5">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <GroupBox Header="{t:Translate MAID_PROPENSITY}" Grid.Row="0">
                 <ListView MinHeight="100" Name="lvPropensity" SelectionMode="Single">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox Content="{Binding Name}"/>
+                            <CheckBox Content="{Binding Name}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
@@ -25,7 +25,7 @@
                 <ListView MinHeight="100" Name="lvFeatures" SelectionMode="Single">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <CheckBox Content="{Binding Name}"/>
+                            <CheckBox Content="{Binding Name}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Utils;
 using CBox = System.Windows.Forms.ComboBox;
 
@@ -38,19 +37,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (c == tabPage_player)
             {
                 foreach (
-                DataGridViewCell cell in
-                dataGridView_game_params.Rows.Cast<DataGridViewRow>()
-                                        .SelectMany(row => row.Cells.Cast<DataGridViewCell>())
-                                        .Where(cell => cell.Value is bool))
-                {
+                    DataGridViewCell cell in
+                    dataGridView_game_params.Rows.Cast<DataGridViewRow>()
+                                            .SelectMany(row => row.Cells.Cast<DataGridViewCell>())
+                                            .Where(cell => cell.Value is bool))
                     cell.Value = false;
-                }
                 return;
             }
             foreach (Control control in c.Controls)
-            {
                 ClearAllFields(control);
-            }
             TextBox box = c as TextBox;
             if (box != null)
                 box.Clear();
@@ -71,8 +66,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                             return;
                         clearingTables = true;
                         foreach (DataGridViewCell cell in
-                        view.Rows.Cast<DataGridViewRow>().SelectMany(row => row.Cells.Cast<DataGridViewCell>()))
-                        {
+                            view.Rows.Cast<DataGridViewRow>().SelectMany(row => row.Cells.Cast<DataGridViewCell>()))
                             if (cell.Value is bool)
                                 cell.Value = false;
                             else if (cell.Value is int)
@@ -81,7 +75,6 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                                 cell.Value = 0L;
                             else if (cell.Value is uint)
                                 cell.Value = (uint) 0;
-                        }
                         clearingTables = false;
                     }
                 }
@@ -174,9 +167,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (c == tabPage_player)
                 return;
             foreach (Control control in c.Controls)
-            {
                 SetAllControlsEnabled(control, enabled);
-            }
             if (c is TabPage)
                 c.Enabled = true;
             else
@@ -191,36 +182,36 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                 if (maid == null)
                     return;
                 Debugger.Assert(
-                () =>
-                {
-                    MaidChangeType type = uiControls[c];
-                    if (type == MaidChangeType.YotogiClassType)
-                        value = EnumHelper.EnabledYotogiClasses[(int) value];
-                    Debugger.WriteLine(
-                    LogLevel.Info,
-                    $"Attempting to update value {type} to {value}. Allowed: {!valueUpdate[type]}.");
-                    if (!valueUpdate[type])
-                        maid.SetValue(type, value);
-                    valueUpdate[type] = false;
-                },
-                $"Failed to set maid value for {maid.Maid.Param.status.first_name} {maid.Maid.Param.status.last_name}");
+                    () =>
+                    {
+                        MaidChangeType type = uiControls[c];
+                        if (type == MaidChangeType.YotogiClassType)
+                            value = EnumHelper.EnabledYotogiClasses[(int) value];
+                        Debugger.WriteLine(
+                            LogLevel.Info,
+                            $"Attempting to update value {type} to {value}. Allowed: {!valueUpdate[type]}.");
+                        if (!valueUpdate[type])
+                            maid.SetValue(type, value);
+                        valueUpdate[type] = false;
+                    },
+                    $"Failed to set maid value for {maid.Maid.Param.status.first_name} {maid.Maid.Param.status.last_name}");
             }
             else if (uiControlsPlayer.ContainsKey(c))
             {
                 if (Player == null)
                     return;
                 Debugger.Assert(
-                () =>
-                {
-                    PlayerChangeType type = uiControlsPlayer[c];
-                    Debugger.WriteLine(
-                    LogLevel.Info,
-                    $"Attempting to update player value {type} to {value}. Allowed: {!valueUpdatePlayer[type]}.");
-                    if (!valueUpdatePlayer[type])
-                        Player.SetValue(type, value);
-                    valueUpdatePlayer[type] = false;
-                },
-                "Failed to set player value");
+                    () =>
+                    {
+                        PlayerChangeType type = uiControlsPlayer[c];
+                        Debugger.WriteLine(
+                            LogLevel.Info,
+                            $"Attempting to update player value {type} to {value}. Allowed: {!valueUpdatePlayer[type]}.");
+                        if (!valueUpdatePlayer[type])
+                            Player.SetValue(type, value);
+                        valueUpdatePlayer[type] = false;
+                    },
+                    "Failed to set player value");
             }
         }
     }

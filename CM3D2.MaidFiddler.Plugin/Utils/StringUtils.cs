@@ -13,7 +13,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             T result;
             try
             {
-                result = (T) Convert.ChangeType(val, typeof (T), CultureInfo.InvariantCulture);
+                result = (T) Convert.ChangeType(val, typeof(T), CultureInfo.InvariantCulture);
             }
             catch (Exception)
             {

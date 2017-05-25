@@ -11,7 +11,7 @@ namespace CM3D2.MaidFiddler.WPF.Translations
         private static TranslationManager instance;
 
         public static readonly Regex TagPattern =
-            new Regex("#MAIDFIDDLER_TRANSLATION \"(?<lang>.*)\" \"(?<ver>.*)\" \"(?<auth>.*)\"");
+                new Regex("#MAIDFIDDLER_TRANSLATION \"(?<lang>.*)\" \"(?<ver>.*)\" \"(?<auth>.*)\"");
 
         private Dictionary<string, string> translationDictionary;
 
@@ -29,17 +29,12 @@ namespace CM3D2.MaidFiddler.WPF.Translations
 
         public event EventHandler LanguageChanged;
 
-        private void OnLanguageChanged()
-        {
-            LanguageChanged?.Invoke(this, EventArgs.Empty);
-        }
-
         public object Translate(object key)
         {
             string translation;
             return translationDictionary.TryGetValue((string) key, out translation)
-                       ? translation
-                       : $"{key}".Replace("_", "__");
+                ? translation
+                : $"{key}".Replace("_", "__");
         }
 
         public void LoadTranslation(string filename)
@@ -47,12 +42,10 @@ namespace CM3D2.MaidFiddler.WPF.Translations
             string filePath = $"{filename}.txt";
             string version = string.Empty;
             if (!File.Exists(filePath))
-            {
                 filename = string.Empty;
-            }
             else
             {
-                var newTranslationDictionary = new Dictionary<string, string>();
+                Dictionary<string, string> newTranslationDictionary = new Dictionary<string, string>();
                 using (TextReader reader = File.OpenText(filePath))
                 {
                     string line = reader.ReadLine();
@@ -65,10 +58,10 @@ namespace CM3D2.MaidFiddler.WPF.Translations
                     while ((line = reader.ReadLine()) != null)
                     {
                         line = line.Trim();
-                        if ((line == string.Empty) || line.StartsWith(";"))
+                        if (line == string.Empty || line.StartsWith(";"))
                             continue;
 
-                        var parts = line.Split(new[] {'\t'}, StringSplitOptions.RemoveEmptyEntries);
+                        string[] parts = line.Split(new[] {'\t'}, StringSplitOptions.RemoveEmptyEntries);
                         if (parts.Length != 2)
                             continue;
 
@@ -90,11 +83,18 @@ namespace CM3D2.MaidFiddler.WPF.Translations
             CurrentTranslationVersion = version;
             OnLanguageChanged();
         }
+
+        private void OnLanguageChanged()
+        {
+            LanguageChanged?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public class LanguageChangedEventManager : WeakEventManager
     {
-        private LanguageChangedEventManager() {}
+        private LanguageChangedEventManager()
+        {
+        }
 
         private static LanguageChangedEventManager CurrentManager
         {

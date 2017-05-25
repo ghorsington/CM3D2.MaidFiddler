@@ -1,5 +1,4 @@
 ﻿using System.Windows.Forms;
-using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Utils;
 using param;
 
@@ -13,35 +12,36 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
         private void InitMiscTab()
         {
             Debugger.Assert(
-            () =>
-            {
-                Translation.AddTranslatableControl(tabPage_misc);
-
-                // Propensity
-                Translation.AddTranslatableControl(groupBox_propensity);
-                string key;
-                for (Propensity e = Propensity.Null + 1; e < EnumHelper.MaxPropensity; e++)
+                () =>
                 {
-                    key = EnumHelper.GetName(e);
-                    int i = checkedListBox_propensity.Items.Add(key, false);
-                    Translation.AddTranslationAction(key, s => checkedListBox_propensity.Items[i] = s);
-                }
-                checkedListBox_propensity.Height = checkedListBox_propensity.ItemHeight
-                                                   * checkedListBox_propensity.Items.Count;
-                checkedListBox_propensity.ItemCheck += OnPropensityChecked;
+                    Translation.AddTranslatableControl(tabPage_misc);
 
-                // Features
-                Translation.AddTranslatableControl(groupBox_feature);
-                for (Feature e = Feature.Null + 1; e < EnumHelper.MaxFeature; e++)
-                {
-                    key = EnumHelper.GetName(e);
-                    int i = checkedListBox_feature.Items.Add(key, false);
-                    Translation.AddTranslationAction(key, s => checkedListBox_feature.Items[i] = s);
-                }
-                checkedListBox_feature.Height = checkedListBox_feature.ItemHeight * checkedListBox_feature.Items.Count;
-                checkedListBox_feature.ItemCheck += OnFeatureChecked;
-            },
-            "Failed to initialize propensity/feature tab");
+                    // Propensity
+                    Translation.AddTranslatableControl(groupBox_propensity);
+                    string key;
+                    for (Propensity e = Propensity.Null + 1; e < EnumHelper.MaxPropensity; e++)
+                    {
+                        key = EnumHelper.GetName(e);
+                        int i = checkedListBox_propensity.Items.Add(key, false);
+                        Translation.AddTranslationAction(key, s => checkedListBox_propensity.Items[i] = s);
+                    }
+                    checkedListBox_propensity.Height = checkedListBox_propensity.ItemHeight *
+                                                       checkedListBox_propensity.Items.Count;
+                    checkedListBox_propensity.ItemCheck += OnPropensityChecked;
+
+                    // Features
+                    Translation.AddTranslatableControl(groupBox_feature);
+                    for (Feature e = Feature.Null + 1; e < EnumHelper.MaxFeature; e++)
+                    {
+                        key = EnumHelper.GetName(e);
+                        int i = checkedListBox_feature.Items.Add(key, false);
+                        Translation.AddTranslationAction(key, s => checkedListBox_feature.Items[i] = s);
+                    }
+                    checkedListBox_feature.Height = checkedListBox_feature.ItemHeight *
+                                                    checkedListBox_feature.Items.Count;
+                    checkedListBox_feature.ItemCheck += OnFeatureChecked;
+                },
+                "Failed to initialize propensity/feature tab");
         }
 
         private void OnFeatureChecked(object sender, ItemCheckEventArgs e)

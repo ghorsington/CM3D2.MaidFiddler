@@ -29,7 +29,7 @@ namespace CM3D2.MaidFiddler.WPF.Model
         public int Seikeiken { get; set; }
 
         public int Personal { get; set; }
-   
+
         public int ContractType { get; set; }
 
         public MaidClassData<int>[] MaidClassDataA { get; set; }
@@ -53,7 +53,7 @@ namespace CM3D2.MaidFiddler.WPF.Model
         public int OthersPlayCount { get; set; }
 
         public int Likability { get; set; }
-    
+
         public int StudyRate { get; set; }
 
         public int CurExcite { get; set; }
@@ -91,7 +91,7 @@ namespace CM3D2.MaidFiddler.WPF.Model
         public int TeachRate { get; set; }
 
         public int Sexual { get; set; }
-    
+
         public int PlayNumber { get; set; }
 
         public int Frustration { get; set; }

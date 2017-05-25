@@ -21,7 +21,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
             if (!IsHandleCreated)
             {
                 Debugger.WriteLine(
-                $"Attempted to invoke asynchronously {method.Method.Name} but found no handle! Creating one...");
+                    $"Attempted to invoke asynchronously {method.Method.Name} but found no handle! Creating one...");
                 CreateHandle();
             }
 

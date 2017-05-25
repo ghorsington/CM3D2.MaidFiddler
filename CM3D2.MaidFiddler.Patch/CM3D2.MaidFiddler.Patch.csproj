@@ -53,7 +53,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PatchJob\EnumBoolHookInjectJob.cs" />
+    <Compile Include="PatchJob\EnumHookInjectJob.cs" />
+    <Compile Include="PatchJob\HookInjectJob.cs" />
+    <Compile Include="PatchJob\IPatchJob.cs" />
     <Compile Include="MaidFiddlerPatcher.cs" />
+    <Compile Include="Jobs\AddClassExpPatchJob.cs" />
+    <Compile Include="Jobs\OnClassTypeUpdatePatchJob.cs" />
+    <Compile Include="Jobs\OnFeaturePropensityUpdatedPatchJob.cs" />
+    <Compile Include="Jobs\OnNewPropertyGetPatchJob.cs" />
+    <Compile Include="Jobs\OnPlayerStatusChangePatchJob.cs" />
+    <Compile Include="Jobs\OnPropertyRemovedPatchJob.cs" />
+    <Compile Include="Jobs\OnSaveDeserializePatchJob.cs" />
+    <Compile Include="Jobs\OnStatusChangedIDPatchJob.cs" />
+    <Compile Include="Jobs\OnStatusUpdatePatchJobs.cs" />
+    <Compile Include="Jobs\OnThumbnailChangedPatchJob.cs" />
+    <Compile Include="Jobs\OnYotogiSkillVisibilityCheckPatchJob.cs" />
+    <Compile Include="Jobs\OnYotogiUpdateCommandPatchJob.cs" />
+    <Compile Include="PatchJob\PatchJobCollection.cs" />
+    <Compile Include="Jobs\OnStatusChangedPatchJob.cs" />
+    <Compile Include="Jobs\PostProcessFreeModeScenePatchJob.cs" />
+    <Compile Include="Jobs\WfRoundPatchJob.cs" />
+    <Compile Include="Jobs\WorkHookPatchJobs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

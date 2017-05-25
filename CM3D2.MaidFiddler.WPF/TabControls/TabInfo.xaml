@@ -11,84 +11,104 @@
     <Grid Background="#FFE5E5E5" Margin="10">
         <Grid.Resources>
             <Style TargetType="Label">
-                <Setter Property="Padding" Value="5,3"/>
-                <Setter Property="HorizontalAlignment" Value="Right"/>
+                <Setter Property="Padding" Value="5,3" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
             </Style>
             <Style TargetType="TextBox">
-                <Setter Property="Padding" Value="0,1"/>
+                <Setter Property="Padding" Value="0,1" />
             </Style>
             <Style TargetType="ComboBox">
-                <Setter Property="Padding" Value="3,1"/>
+                <Setter Property="Padding" Value="3,1" />
             </Style>
         </Grid.Resources>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="120"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="120"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="100" />
         </Grid.RowDefinitions>
-        
-        <Label Content="{t:Translate FirstName}"/>
-        <TextBox Name="tbFirstName" Grid.Column="1" Grid.Row="0" Text="{Binding SelectedMaid.Param.FirstName}"/>
-        <Label Grid.Column="3" Grid.Row="0" Content="{t:Translate LastName}"/>
-        <TextBox Name="tbLastName" Grid.Column="4" Grid.Row="0" Text="{Binding SelectedMaid.Param.LastName}"/>
-        <CheckBox Name="cbFirstNameCall" Grid.Column="6" Grid.Row="0" Content="{t:Translate FirstNameCall}" VerticalAlignment="Center" IsChecked="{Binding SelectedMaid.Param.IsFirstNameCall}"/>
-        
-        <Label Content="{t:Translate Personal}" Grid.Column="0" Grid.Row="2"/>
-        <ComboBox Name="cbPersonal" Grid.Column="1" Grid.Row="2" SelectedIndex="{Binding SelectedMaid.Param.Personal}" DisplayMemberPath="Value" ItemsSource="{Binding Path=PersonaList, Source={x:Static model:CM3D2.Instance}}"/>
-        <Label Content="{t:Translate ContractType}" Grid.Column="3" Grid.Row="2"/>
-        <ComboBox Name="cbContractType" Grid.Column="4" Grid.Row="2" SelectedIndex="{Binding SelectedMaid.Param.ContractType}" DisplayMemberPath="Value" ItemsSource="{Binding Path=ContractType, Source={x:Static model:CM3D2.Instance}}"/>
-        <CheckBox Name="cbLeader" Grid.Column="6" Grid.Row="2" Content="{t:Translate Leader}" VerticalAlignment="Center" IsChecked="{Binding SelectedMaid.Param.Leader}"/>
 
-        <Label Content="{t:Translate Condition}" Grid.Column="0" Grid.Row="4"/>
-        <ComboBox Name="cbCondition" Grid.Column="1" Grid.Row="4" SelectedIndex="{Binding SelectedMaid.Param.Condition}" DisplayMemberPath="Value" ItemsSource="{Binding Path=Condition, Source={x:Static model:CM3D2.Instance}}"/>
-        <Label Content="{t:Translate ConditionSpecial}" Grid.Column="3" Grid.Row="4"/>
-        <ComboBox Name="cbConditionSpecial" Grid.Column="4" Grid.Row="4" SelectedIndex="{Binding SelectedMaid.Param.ConditionSpecial}" DisplayMemberPath="Value" ItemsSource="{Binding Path=ConditionSpecial, Source={x:Static model:CM3D2.Instance}}"/>
-        <CheckBox Name="cbRentalMaid" Grid.Column="6" Grid.Row="4" Content="{t:Translate RentalMaid}" VerticalAlignment="Center" IsChecked="{Binding SelectedMaid.Param.IsRentalMaid}"/>
+        <Label Content="{t:Translate FirstName}" />
+        <TextBox Name="tbFirstName" Grid.Column="1" Grid.Row="0" Text="{Binding SelectedMaid.Param.FirstName}" />
+        <Label Grid.Column="3" Grid.Row="0" Content="{t:Translate LastName}" />
+        <TextBox Name="tbLastName" Grid.Column="4" Grid.Row="0" Text="{Binding SelectedMaid.Param.LastName}" />
+        <CheckBox Name="cbFirstNameCall" Grid.Column="6" Grid.Row="0" Content="{t:Translate FirstNameCall}"
+                  VerticalAlignment="Center" IsChecked="{Binding SelectedMaid.Param.IsFirstNameCall}" />
 
-        <Label Content="{t:Translate Employment}" Grid.Column="0" Grid.Row="6"/>
-        <TextBox Name="tbEmployment" Grid.Column="1" Grid.Row="6" Text="{Binding SelectedMaid.Param.EmploymentDay}"/>
-        <CheckBox Name="cbIsMarriage" Grid.Column="6" Grid.Row="6" Content="{t:Translate IsMarriage}" VerticalAlignment="Center" IsChecked="{Binding SelectedMaid.Param.IsMarriage}"/>
+        <Label Content="{t:Translate Personal}" Grid.Column="0" Grid.Row="2" />
+        <ComboBox Name="cbPersonal" Grid.Column="1" Grid.Row="2" SelectedIndex="{Binding SelectedMaid.Param.Personal}"
+                  DisplayMemberPath="Value"
+                  ItemsSource="{Binding Path=PersonaList, Source={x:Static model:CM3D2.Instance}}" />
+        <Label Content="{t:Translate ContractType}" Grid.Column="3" Grid.Row="2" />
+        <ComboBox Name="cbContractType" Grid.Column="4" Grid.Row="2"
+                  SelectedIndex="{Binding SelectedMaid.Param.ContractType}" DisplayMemberPath="Value"
+                  ItemsSource="{Binding Path=ContractType, Source={x:Static model:CM3D2.Instance}}" />
+        <CheckBox Name="cbLeader" Grid.Column="6" Grid.Row="2" Content="{t:Translate Leader}"
+                  VerticalAlignment="Center" IsChecked="{Binding SelectedMaid.Param.Leader}" />
 
-        <Label Content="{t:Translate MAID_SEX_EXP}" Grid.Column="0" Grid.Row="8"/>
-        <Label Content="{t:Translate InitSeikeiken}" Grid.Column="0" Grid.Row="9"/>
-        <ComboBox Name="cbInitSeikeiken" Grid.Column="1" Grid.Row="9" SelectedIndex="{Binding SelectedMaid.Param.InitSeikeiken}" DisplayMemberPath="Value" ItemsSource="{Binding Path=Seikeiken, Source={x:Static model:CM3D2.Instance}}"/>
-        <Label Content="{t:Translate Seikeiken}" Grid.Column="3" Grid.Row="9"/>
-        <ComboBox Name="cbSeikeiken" Grid.Column="4" Grid.Row="9" SelectedIndex="{Binding SelectedMaid.Param.Seikeiken}" DisplayMemberPath="Value" ItemsSource="{Binding Path=Seikeiken, Source={x:Static model:CM3D2.Instance}}"/>
+        <Label Content="{t:Translate Condition}" Grid.Column="0" Grid.Row="4" />
+        <ComboBox Name="cbCondition" Grid.Column="1" Grid.Row="4"
+                  SelectedIndex="{Binding SelectedMaid.Param.Condition}" DisplayMemberPath="Value"
+                  ItemsSource="{Binding Path=Condition, Source={x:Static model:CM3D2.Instance}}" />
+        <Label Content="{t:Translate ConditionSpecial}" Grid.Column="3" Grid.Row="4" />
+        <ComboBox Name="cbConditionSpecial" Grid.Column="4" Grid.Row="4"
+                  SelectedIndex="{Binding SelectedMaid.Param.ConditionSpecial}" DisplayMemberPath="Value"
+                  ItemsSource="{Binding Path=ConditionSpecial, Source={x:Static model:CM3D2.Instance}}" />
+        <CheckBox Name="cbRentalMaid" Grid.Column="6" Grid.Row="4" Content="{t:Translate RentalMaid}"
+                  VerticalAlignment="Center" IsChecked="{Binding SelectedMaid.Param.IsRentalMaid}" />
 
-        <Label Content="{t:Translate MAID_CLASS_SELECTED}" Grid.Column="0" Grid.Row="11"/>
-        <Label Content="{t:Translate MaidClassType}" Grid.Column="0" Grid.Row="12"/>
-        <ComboBox Name="cbMaidClassType" Grid.Column="1" Grid.Row="12" SelectedIndex="{Binding SelectedMaid.Param.CurrentMaidClass}" DisplayMemberPath="Value" ItemsSource="{Binding Path=MaidClassData, Source={x:Static model:CM3D2.Instance}}"/>
-        <Label Content="{t:Translate YotogiClassType}" Grid.Column="3" Grid.Row="12"/>
-        <ComboBox Name="cbYotogiClassType" Grid.Column="4" Grid.Row="12" SelectedIndex="{Binding SelectedMaid.Param.CurrentYotogiClass}" DisplayMemberPath="Value" ItemsSource="{Binding Path=YotogiClassData, Source={x:Static model:CM3D2.Instance}}"/>
+        <Label Content="{t:Translate Employment}" Grid.Column="0" Grid.Row="6" />
+        <TextBox Name="tbEmployment" Grid.Column="1" Grid.Row="6" Text="{Binding SelectedMaid.Param.EmploymentDay}" />
+        <CheckBox Name="cbIsMarriage" Grid.Column="6" Grid.Row="6" Content="{t:Translate IsMarriage}"
+                  VerticalAlignment="Center" IsChecked="{Binding SelectedMaid.Param.IsMarriage}" />
 
-        <Label Content="{t:Translate Profile}" Grid.Column="0" Grid.Row="14" HorizontalAlignment="Left"/>
-        <TextBox Grid.Column="0" Grid.Row="15" Grid.ColumnSpan="7" Text="{Binding SelectedMaid.Param.Profile}"/>
+        <Label Content="{t:Translate MAID_SEX_EXP}" Grid.Column="0" Grid.Row="8" />
+        <Label Content="{t:Translate InitSeikeiken}" Grid.Column="0" Grid.Row="9" />
+        <ComboBox Name="cbInitSeikeiken" Grid.Column="1" Grid.Row="9"
+                  SelectedIndex="{Binding SelectedMaid.Param.InitSeikeiken}" DisplayMemberPath="Value"
+                  ItemsSource="{Binding Path=Seikeiken, Source={x:Static model:CM3D2.Instance}}" />
+        <Label Content="{t:Translate Seikeiken}" Grid.Column="3" Grid.Row="9" />
+        <ComboBox Name="cbSeikeiken" Grid.Column="4" Grid.Row="9"
+                  SelectedIndex="{Binding SelectedMaid.Param.Seikeiken}" DisplayMemberPath="Value"
+                  ItemsSource="{Binding Path=Seikeiken, Source={x:Static model:CM3D2.Instance}}" />
 
-        <Label Content="{t:Translate FreeComment}" Grid.Column="0" Grid.Row="16" HorizontalAlignment="Left"/>
-        <TextBox Grid.Column="0" Grid.Row="17" Grid.ColumnSpan="7" Text="{Binding SelectedMaid.Param.FreeComment}"/>
+        <Label Content="{t:Translate MAID_CLASS_SELECTED}" Grid.Column="0" Grid.Row="11" />
+        <Label Content="{t:Translate MaidClassType}" Grid.Column="0" Grid.Row="12" />
+        <ComboBox Name="cbMaidClassType" Grid.Column="1" Grid.Row="12"
+                  SelectedIndex="{Binding SelectedMaid.Param.CurrentMaidClass}" DisplayMemberPath="Value"
+                  ItemsSource="{Binding Path=MaidClassData, Source={x:Static model:CM3D2.Instance}}" />
+        <Label Content="{t:Translate YotogiClassType}" Grid.Column="3" Grid.Row="12" />
+        <ComboBox Name="cbYotogiClassType" Grid.Column="4" Grid.Row="12"
+                  SelectedIndex="{Binding SelectedMaid.Param.CurrentYotogiClass}" DisplayMemberPath="Value"
+                  ItemsSource="{Binding Path=YotogiClassData, Source={x:Static model:CM3D2.Instance}}" />
+
+        <Label Content="{t:Translate Profile}" Grid.Column="0" Grid.Row="14" HorizontalAlignment="Left" />
+        <TextBox Grid.Column="0" Grid.Row="15" Grid.ColumnSpan="7" Text="{Binding SelectedMaid.Param.Profile}" />
+
+        <Label Content="{t:Translate FreeComment}" Grid.Column="0" Grid.Row="16" HorizontalAlignment="Left" />
+        <TextBox Grid.Column="0" Grid.Row="17" Grid.ColumnSpan="7" Text="{Binding SelectedMaid.Param.FreeComment}" />
     </Grid>
 </UserControl>
