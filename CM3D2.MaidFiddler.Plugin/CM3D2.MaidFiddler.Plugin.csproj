@@ -53,9 +53,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Libs\UnityEngine.dll</HintPath>
@@ -66,103 +63,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Gui\AboutGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\AboutGUI.Designer.cs">
-      <DependentUpon>AboutGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Gui\GithubTranslationsGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\GithubTranslationsGUI.Designer.cs">
-      <DependentUpon>GithubTranslationsGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Gui\LoadingBarGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\LoadingBarGUI.Designer.cs">
-      <DependentUpon>LoadingBarGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Gui\SettingsGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\SettingsGUI.Designer.cs">
-      <DependentUpon>SettingsGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Gui\TranslationSelectionGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\TranslationSelectionGUI.Designer.cs">
-      <DependentUpon>TranslationSelectionGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Gui\TextDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\TextDialog.Designer.cs">
-      <DependentUpon>TextDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Net\Connection.cs" />
     <Compile Include="Utils\CollectionUtils.cs" />
     <Compile Include="Utils\Debug.cs" />
     <Compile Include="Utils\EnumHelper.cs" />
     <Compile Include="Utils\FiddlerUtils.cs" />
-    <Compile Include="Gui\GUIHelper.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\MaidFiddlerGUI.Cheats.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\MaidFiddlerGUI.Classes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\MaidFiddlerGUI.Controls.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\MaidFiddlerGUI.Hooks.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\MaidFiddlerGUI.Info.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\MaidFiddlerGUI.Maids.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\MaidFiddlerGUI.Misc.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\MaidFiddlerGUI.Player.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\MaidFiddlerGUI.Skills.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\MaidFiddlerGUI.Stats.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Utils\StringUtils.cs" />
-    <Compile Include="Utils\Resources.cs" />
-    <Compile Include="Utils\Translation.cs" />
-    <Compile Include="Gui\MaidFiddlerGUI.Work.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Utils\KeyHelper.cs" />
     <Compile Include="MaidFiddler.cs" />
-    <Compile Include="Gui\MaidFiddlerGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\MaidFiddlerGUI.Designer.cs">
-      <DependentUpon>MaidFiddlerGUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Gui\MaidFiddlerGUI.Game.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\MaidInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gui\PlayerInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -170,29 +77,6 @@
       <Project>{a3f0fe97-ed5d-4ddb-af6c-539aeeb236a3}</Project>
       <Name>CM3D2.MaidFiddler.Hook</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Gui\AboutGUI.resx">
-      <DependentUpon>AboutGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Gui\GithubTranslationsGUI.resx">
-      <DependentUpon>GithubTranslationsGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Gui\LoadingBarGUI.resx">
-      <DependentUpon>LoadingBarGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Gui\SettingsGUI.resx">
-      <DependentUpon>SettingsGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Gui\TranslationSelectionGUI.resx">
-      <DependentUpon>TranslationSelectionGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Gui\MaidFiddlerGUI.resx">
-      <DependentUpon>MaidFiddlerGUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Gui\TextDialog.resx">
-      <DependentUpon>TextDialog.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -12,7 +12,6 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
     {
         public static readonly Propensity[] Propensities;
         public static readonly Feature[] Features;
-        public static readonly MaidChangeType[] MaidChangeTypes;
         public static readonly Personal[] Personalities;
         public static readonly Condition[] Conditions;
         public static readonly ContractType[] ContractTypes;
@@ -35,7 +34,6 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             ContractTypes = GetValues<ContractType>();
             Conditions = GetValues<Condition>();
             Personalities = GetValues<Personal>();
-            MaidChangeTypes = GetValues<MaidChangeType>();
             Propensities = GetValues<Propensity>();
             Features = GetValues<Feature>();
 
@@ -167,7 +165,7 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                 BindingFlags.Public | BindingFlags.Static);
             bool isOldVersion = yotogiClassType != null;
 
-            Action<string> readYotogiClasses = delegate(string fileName)
+            void ReadYotogiClasses(string fileName)
             {
                 fileName += ".nei";
                 if (!GameUty.FileSystem.IsExistentFile(fileName))
@@ -192,11 +190,11 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
                         }
                     }
                 }
-            };
+            }
 
-            readYotogiClasses("yotogi_class_enabled_list");
+            ReadYotogiClasses("yotogi_class_enabled_list");
             foreach (string path in GameUty.PathList)
-                readYotogiClasses($"yotogi_class_enabled_list_{path}");
+                ReadYotogiClasses($"yotogi_class_enabled_list_{path}");
             EnabledYotogiClasses.Sort();
         }
     }
