@@ -6,6 +6,7 @@ using System.Net;
 using System.Threading;
 using CM3D2.MaidFiddler.Hook;
 using CM3D2.MaidFiddler.Plugin.Net;
+using CM3D2.MaidFiddler.Plugin.Net.RPC;
 using CM3D2.MaidFiddler.Plugin.Utils;
 using UnityInjector;
 using UnityInjector.Attributes;
@@ -68,6 +69,12 @@ namespace CM3D2.MaidFiddler.Plugin
 
             Debugger.WriteLine($"MaidFiddler {Version} loaded!");
 
+        }
+
+        [RpcCall]
+        public static void TestMethod()
+        {
+            
         }
 
         public void LateUpdate()
