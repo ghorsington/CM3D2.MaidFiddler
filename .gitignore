@@ -3,8 +3,7 @@
 
 Distribution/*
 Build/*
-Libs/*.dll
-Libs/*.exe
+Libs/*
 
 # User-specific files
 *.suo
@@ -234,3 +233,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/Libs
