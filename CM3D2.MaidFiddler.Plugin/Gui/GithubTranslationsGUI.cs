@@ -146,16 +146,16 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                             Stream s = response.GetResponseStream();
                             Debugger.WriteLine(LogLevel.Info, "Reading response");
                             byte[] responseBuffer = new byte[1024];
-                            StringBuilder translationText = new StringBuilder();
+                            List<byte> stringBuffer = new List<byte>();
                             int read;
                             do
                             {
                                 read = s.Read(responseBuffer, 0, responseBuffer.Length);
-                                translationText.Append(Encoding.UTF8.GetString(responseBuffer, 0, read));
+                                stringBuffer.AddRange(responseBuffer, 0, read);
                             } while (read > 0);
 
                             using (TextWriter tw = File.CreateText(Path.Combine(translationsPath, $"{tlFileName}.txt")))
-                                tw.Write(translationText.ToString());
+                                tw.Write(Encoding.UTF8.GetString(stringBuffer.ToArray()));
                         }
                         catch (WebException we)
                         {

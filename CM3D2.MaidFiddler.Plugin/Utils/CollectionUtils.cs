@@ -10,5 +10,11 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
             foreach (T e in es)
                 action(e);
         }
+
+        public static void AddRange<T>(this List<T> self, T[] buffer, int start, int count)
+        {
+            for (int i = start; i < start + count; i++)
+                self.Add(buffer[i]);
+        }
     }
 }

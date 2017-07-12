@@ -201,7 +201,6 @@
             this.Name = "AboutGUI";
             this.Padding = new System.Windows.Forms.Padding(9);
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "GUI_ABOUT_TITLE";
             this.tableLayoutPanel.ResumeLayout(false);

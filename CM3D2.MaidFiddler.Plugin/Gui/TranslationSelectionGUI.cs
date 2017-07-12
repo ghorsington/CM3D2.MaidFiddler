@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -162,15 +163,15 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         }
                         Stream s = response.GetResponseStream();
                         Debugger.WriteLine(LogLevel.Info, "Reading response");
-                        StringBuilder sb = new StringBuilder();
                         byte[] responseBuffer = new byte[1024];
+                        List<byte> byteBuffer = new List<byte>();
                         int read;
                         do
                         {
                             read = s.Read(responseBuffer, 0, responseBuffer.Length);
-                            sb.Append(Encoding.UTF8.GetString(responseBuffer, 0, read));
+                            byteBuffer.AddRange(responseBuffer, 0, read);
                         } while (read > 0);
-                        list = sb.ToString();
+                        list = Encoding.UTF8.GetString(byteBuffer.ToArray());
                         g.DialogResult = DialogResult.OK;
                     }
                     catch (WebException we)
@@ -268,16 +269,17 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         }
                         Stream s = response.GetResponseStream();
                         Debugger.WriteLine(LogLevel.Info, "Reading response");
-                        StringBuilder sb = new StringBuilder();
+                        List<byte> resultBuffer = new List<byte>();
                         byte[] responseBuffer = new byte[1024];
                         int read;
                         do
                         {
                             read = s.Read(responseBuffer, 0, responseBuffer.Length);
-                            sb.Append(Encoding.UTF8.GetString(responseBuffer, 0, read));
+                            resultBuffer.AddRange(responseBuffer, 0, read);
                         } while (read > 0);
+                        string translationString = Encoding.UTF8.GetString(resultBuffer.ToArray());
 
-                        using (TextReader tr = new StringReader(sb.ToString()))
+                        using (TextReader tr = new StringReader(translationString))
                         {
                             if (!Translation.TagPattern.Match(tr.ReadLine()).Success)
                             {
@@ -320,7 +322,7 @@ namespace CM3D2.MaidFiddler.Plugin.Gui
                         Debugger.WriteLine($"Writing translation to {path}");
 
                         using (TextWriter tw = File.CreateText(path))
-                            tw.Write(sb.ToString());
+                            tw.Write(translationString);
                         g.DialogResult = DialogResult.OK;
                     }
                     catch (WebException we)

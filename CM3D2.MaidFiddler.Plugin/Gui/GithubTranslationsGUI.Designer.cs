@@ -30,12 +30,12 @@
         {
             this.label_text = new System.Windows.Forms.Label();
             this.dataGridView_translations = new System.Windows.Forms.DataGridView();
-            this.button_close = new System.Windows.Forms.Button();
-            this.button_download = new System.Windows.Forms.Button();
             this.TlName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TlNameEng = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TlVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TlCurrentVersion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_close = new System.Windows.Forms.Button();
+            this.button_download = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_translations)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,26 +71,6 @@
             this.dataGridView_translations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_translations.Size = new System.Drawing.Size(400, 158);
             this.dataGridView_translations.TabIndex = 1;
-            // 
-            // button_close
-            // 
-            this.button_close.Location = new System.Drawing.Point(337, 226);
-            this.button_close.Name = "button_close";
-            this.button_close.Size = new System.Drawing.Size(75, 23);
-            this.button_close.TabIndex = 2;
-            this.button_close.Text = "CLOSE";
-            this.button_close.UseVisualStyleBackColor = true;
-            this.button_close.Click += new System.EventHandler(this.CloseGui);
-            // 
-            // button_download
-            // 
-            this.button_download.Location = new System.Drawing.Point(12, 226);
-            this.button_download.Name = "button_download";
-            this.button_download.Size = new System.Drawing.Size(119, 23);
-            this.button_download.TabIndex = 3;
-            this.button_download.Text = "TL_DOWNLOAD";
-            this.button_download.UseVisualStyleBackColor = true;
-            this.button_download.Click += new System.EventHandler(this.DownloadTranslations);
             // 
             // TlName
             // 
@@ -128,6 +108,26 @@
             this.TlCurrentVersion.ReadOnly = true;
             this.TlCurrentVersion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // button_close
+            // 
+            this.button_close.Location = new System.Drawing.Point(337, 226);
+            this.button_close.Name = "button_close";
+            this.button_close.Size = new System.Drawing.Size(75, 23);
+            this.button_close.TabIndex = 2;
+            this.button_close.Text = "CLOSE";
+            this.button_close.UseVisualStyleBackColor = true;
+            this.button_close.Click += new System.EventHandler(this.CloseGui);
+            // 
+            // button_download
+            // 
+            this.button_download.Location = new System.Drawing.Point(12, 226);
+            this.button_download.Name = "button_download";
+            this.button_download.Size = new System.Drawing.Size(119, 23);
+            this.button_download.TabIndex = 3;
+            this.button_download.Text = "TL_DOWNLOAD";
+            this.button_download.UseVisualStyleBackColor = true;
+            this.button_download.Click += new System.EventHandler(this.DownloadTranslations);
+            // 
             // GithubTranslationsGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,7 +142,6 @@
             this.MinimizeBox = false;
             this.Name = "GithubTranslationsGUI";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TL_GITHUB_TITLE";
             this.TopMost = true;

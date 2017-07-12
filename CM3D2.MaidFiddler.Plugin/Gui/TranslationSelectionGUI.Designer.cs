@@ -216,7 +216,6 @@
             this.MinimizeBox = false;
             this.Name = "TranslationSelectionGUI";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "GUI_TRANS_SELECT_TITLE";
             this.tableLayoutPanel1.ResumeLayout(false);

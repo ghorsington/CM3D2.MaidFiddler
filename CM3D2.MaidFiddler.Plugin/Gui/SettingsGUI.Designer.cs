@@ -42,6 +42,7 @@
             this.label_name_style = new System.Windows.Forms.Label();
             this.comboBox_name_style = new System.Windows.Forms.ComboBox();
             this.checkBox_open_on_startup = new System.Windows.Forms.CheckBox();
+            this.checkBox_check_for_updates = new System.Windows.Forms.CheckBox();
             this.groupBox_order = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.listBox_order_available = new System.Windows.Forms.ListBox();
@@ -55,7 +56,6 @@
             this.label_order_description = new System.Windows.Forms.Label();
             this.label_order_direction = new System.Windows.Forms.Label();
             this.comboBox_order_direction = new System.Windows.Forms.ComboBox();
-            this.checkBox_check_for_updates = new System.Windows.Forms.CheckBox();
             this.groupBox_key.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -256,6 +256,19 @@
             this.checkBox_open_on_startup.UseVisualStyleBackColor = true;
             this.checkBox_open_on_startup.CheckedChanged += new System.EventHandler(this.OnOpenOnStartupCheckedChanged);
             // 
+            // checkBox_check_for_updates
+            // 
+            this.checkBox_check_for_updates.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.checkBox_check_for_updates.AutoSize = true;
+            this.checkBox_check_for_updates.Location = new System.Drawing.Point(172, 55);
+            this.checkBox_check_for_updates.Name = "checkBox_check_for_updates";
+            this.checkBox_check_for_updates.Size = new System.Drawing.Size(232, 20);
+            this.checkBox_check_for_updates.TabIndex = 4;
+            this.checkBox_check_for_updates.Text = "GUI_SETTINGS_CHECK_FOR_UPDATES";
+            this.checkBox_check_for_updates.UseVisualStyleBackColor = true;
+            this.checkBox_check_for_updates.CheckedChanged += new System.EventHandler(this.OnCheckForUpdatesCheckedChanged);
+            // 
             // groupBox_order
             // 
             this.groupBox_order.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -418,19 +431,6 @@
             this.comboBox_order_direction.Size = new System.Drawing.Size(197, 21);
             this.comboBox_order_direction.TabIndex = 10;
             // 
-            // checkBox_check_for_updates
-            // 
-            this.checkBox_check_for_updates.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox_check_for_updates.AutoSize = true;
-            this.checkBox_check_for_updates.Location = new System.Drawing.Point(172, 55);
-            this.checkBox_check_for_updates.Name = "checkBox_check_for_updates";
-            this.checkBox_check_for_updates.Size = new System.Drawing.Size(232, 20);
-            this.checkBox_check_for_updates.TabIndex = 4;
-            this.checkBox_check_for_updates.Text = "GUI_SETTINGS_CHECK_FOR_UPDATES";
-            this.checkBox_check_for_updates.UseVisualStyleBackColor = true;
-            this.checkBox_check_for_updates.CheckedChanged += new System.EventHandler(this.OnCheckForUpdatesCheckedChanged);
-            // 
             // SettingsGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -444,7 +444,6 @@
             this.MinimizeBox = false;
             this.Name = "SettingsGUI";
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "GUI_SETTINGS_TITLE";
             this.groupBox_key.ResumeLayout(false);
