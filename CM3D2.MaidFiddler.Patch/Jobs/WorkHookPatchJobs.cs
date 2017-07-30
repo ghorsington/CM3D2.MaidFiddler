@@ -11,9 +11,9 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
 
         protected override MethodDefinition HookMethod { get; set; }
 
-        protected override InjectFlags InjectFlags => InjectFlags.PassStringTag |
-                                                      InjectFlags.ModifyReturn |
-                                                      InjectFlags.PassParametersVal;
+        protected override InjectFlags InjectFlags => InjectFlags.PassStringTag
+                                                      | InjectFlags.ModifyReturn
+                                                      | InjectFlags.PassParametersVal;
 
         protected override FieldDefinition[] MemberFields { get; set; }
         protected override TypeDefinition TargetType { get; set; }
@@ -64,9 +64,9 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
     {
         protected override MethodDefinition HookMethod { get; set; }
 
-        protected override InjectFlags InjectFlags => InjectFlags.PassStringTag |
-                                                      InjectFlags.PassFields |
-                                                      InjectFlags.PassParametersVal;
+        protected override InjectFlags InjectFlags => InjectFlags.PassStringTag
+                                                      | InjectFlags.PassFields
+                                                      | InjectFlags.PassParametersVal;
 
         protected override FieldDefinition[] MemberFields { get; set; }
         protected override TypeDefinition TargetType { get; set; }
@@ -91,9 +91,9 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
     {
         protected override MethodDefinition HookMethod { get; set; }
 
-        protected override InjectFlags InjectFlags => InjectFlags.PassStringTag |
-                                                      InjectFlags.PassFields |
-                                                      InjectFlags.PassParametersVal;
+        protected override InjectFlags InjectFlags => InjectFlags.PassStringTag
+                                                      | InjectFlags.PassFields
+                                                      | InjectFlags.PassParametersVal;
 
         protected override FieldDefinition[] MemberFields { get; set; }
         protected override TypeDefinition TargetType { get; set; }

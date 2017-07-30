@@ -9,15 +9,14 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher.Jobs
     {
         protected override MethodDefinition HookMethod { get; set; }
 
-        protected override InjectFlags InjectFlags => InjectFlags.PassStringTag |
-                                                      InjectFlags.PassFields |
-                                                      InjectFlags.ModifyReturn;
+        protected override InjectFlags InjectFlags => InjectFlags.PassStringTag
+                                                      | InjectFlags.PassFields
+                                                      | InjectFlags.ModifyReturn;
 
         protected override FieldDefinition[] MemberFields { get; set; }
         protected override TypeDefinition TargetType { get; set; }
 
-        private InjectFlags FeaturePropensityInjectFlags => InjectFlags.PassStringTag |
-                                                            InjectFlags.PassFields;
+        private InjectFlags FeaturePropensityInjectFlags => InjectFlags.PassStringTag | InjectFlags.PassFields;
 
         public override void Initialize(AssemblyDefinition gameAssembly, AssemblyDefinition hookAssembly)
         {

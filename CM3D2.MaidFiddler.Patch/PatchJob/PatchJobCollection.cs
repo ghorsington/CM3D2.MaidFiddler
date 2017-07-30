@@ -12,11 +12,14 @@ namespace CM3D2.MaidFiddler.Patch.PatchJob
             PatchTargets = new List<IPatchJob>();
         }
 
-        protected List<IPatchJob> PatchTargets { get; }
         protected abstract MethodDefinition HookMethod { get; set; }
         protected abstract InjectFlags InjectFlags { get; }
         protected abstract FieldDefinition[] MemberFields { get; set; }
+
+        protected List<IPatchJob> PatchTargets { get; }
         protected abstract TypeDefinition TargetType { get; set; }
+
+        public abstract void Initialize(AssemblyDefinition gameAssembly, AssemblyDefinition hookAssembly);
 
         public virtual void Patch()
         {
@@ -26,29 +29,9 @@ namespace CM3D2.MaidFiddler.Patch.PatchJob
                 patchJob.Patch();
         }
 
-        public abstract void Initialize(AssemblyDefinition gameAssembly, AssemblyDefinition hookAssembly);
-
-        protected abstract void LoadJobs();
-
-        protected void AddSet(string name)
-        {
-            MethodWithPrefix("Add", name);
-            MethodWithPrefix("Set", name);
-        }
-
-        protected void Set(string name, int offset = 0)
-        {
-            MethodWithPrefix("Set", name, offset);
-        }
-
         protected void Add(string name)
         {
             MethodWithPrefix("Add", name);
-        }
-
-        protected void Set(string name, int offset, params Type[] parameters)
-        {
-            MethodWithTag($"Set{name}", name, offset, parameters);
         }
 
         protected void Add(string name, int offset, params Type[] parameters)
@@ -56,52 +39,19 @@ namespace CM3D2.MaidFiddler.Patch.PatchJob
             MethodWithTag($"Add{name}", name, offset, parameters);
         }
 
-        protected void MethodWithPrefix(string prefix, string name, int offset = 0)
+        protected void AddSet(string name)
         {
-            MethodWithTag(prefix + name, name, offset);
-        }
-
-        protected void Method(string name, int offset = 0)
-        {
-            MethodWithTag(name, name, offset);
-        }
-
-        protected void MethodWithTag(string name, string tag, int offset = 0)
-        {
-            MethodDefinition target = TargetType.GetMethod(name);
-            if (target == null)
-            {
-                Console.WriteLine($"Method {TargetType.Name}.{name} not found, skipping...");
-                return;
-            }
-
-            PatchTargets.Add(new HookInjectJob(tag, offset, target, HookMethod, InjectFlags, new int[0], MemberFields));
-        }
-
-        protected void MethodWithTag(string name, string tag, int offset, params Type[] parameters)
-        {
-            MethodDefinition target = TargetType.GetMethod(name, parameters);
-            if (target == null)
-            {
-                Console.WriteLine($"Method {TargetType.Name}.{name} not found, skipping...");
-                return;
-            }
-
-            PatchTargets.Add(new HookInjectJob(tag, offset, target, HookMethod, InjectFlags, new int[0], MemberFields));
+            MethodWithPrefix("Add", name);
+            MethodWithPrefix("Set", name);
         }
 
 
-        protected void CustomMethod(string name,
-                                    MethodDefinition hookMethod,
-                                    int offset = 0)
+        protected void CustomMethod(string name, MethodDefinition hookMethod, int offset = 0)
         {
             CustomMethod(name, name, hookMethod, offset);
         }
 
-        protected void CustomMethod(string name,
-                                    string tag,
-                                    MethodDefinition hookMethod,
-                                    int offset = 0)
+        protected void CustomMethod(string name, string tag, MethodDefinition hookMethod, int offset = 0)
         {
             CustomMethod(name, offset, TargetType, hookMethod, InjectFlags, MemberFields);
         }
@@ -131,19 +81,10 @@ namespace CM3D2.MaidFiddler.Patch.PatchJob
                 return;
             }
 
-            PatchTargets.Add(new HookInjectJob(tag,
-                                               offset,
-                                               target,
-                                               hookMethod,
-                                               injectFlags,
-                                               new int[0],
-                                               memberFields));
+            PatchTargets.Add(new HookInjectJob(tag, offset, target, hookMethod, injectFlags, new int[0], memberFields));
         }
 
-        protected void CustomMethod(string name,
-                                    MethodDefinition hookMethod,
-                                    int offset,
-                                    params Type[] parameters)
+        protected void CustomMethod(string name, MethodDefinition hookMethod, int offset, params Type[] parameters)
         {
             MethodDefinition target = TargetType.GetMethod(name, parameters);
             if (target == null)
@@ -159,6 +100,52 @@ namespace CM3D2.MaidFiddler.Patch.PatchJob
                                                InjectFlags,
                                                new int[0],
                                                MemberFields));
+        }
+
+        protected abstract void LoadJobs();
+
+        protected void Method(string name, int offset = 0)
+        {
+            MethodWithTag(name, name, offset);
+        }
+
+        protected void MethodWithPrefix(string prefix, string name, int offset = 0)
+        {
+            MethodWithTag(prefix + name, name, offset);
+        }
+
+        protected void MethodWithTag(string name, string tag, int offset = 0)
+        {
+            MethodDefinition target = TargetType.GetMethod(name);
+            if (target == null)
+            {
+                Console.WriteLine($"Method {TargetType.Name}.{name} not found, skipping...");
+                return;
+            }
+
+            PatchTargets.Add(new HookInjectJob(tag, offset, target, HookMethod, InjectFlags, new int[0], MemberFields));
+        }
+
+        protected void MethodWithTag(string name, string tag, int offset, params Type[] parameters)
+        {
+            MethodDefinition target = TargetType.GetMethod(name, parameters);
+            if (target == null)
+            {
+                Console.WriteLine($"Method {TargetType.Name}.{name} not found, skipping...");
+                return;
+            }
+
+            PatchTargets.Add(new HookInjectJob(tag, offset, target, HookMethod, InjectFlags, new int[0], MemberFields));
+        }
+
+        protected void Set(string name, int offset = 0)
+        {
+            MethodWithPrefix("Set", name, offset);
+        }
+
+        protected void Set(string name, int offset, params Type[] parameters)
+        {
+            MethodWithTag($"Set{name}", name, offset, parameters);
         }
     }
 }

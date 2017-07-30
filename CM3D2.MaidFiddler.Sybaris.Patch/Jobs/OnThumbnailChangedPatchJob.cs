@@ -8,7 +8,9 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher.Jobs
     public class OnThumbnailChangedPatchJob : PatchJobCollection
     {
         protected override MethodDefinition HookMethod { get; set; }
+
         protected override InjectFlags InjectFlags => InjectFlags.PassInvokingInstance;
+
         protected override FieldDefinition[] MemberFields { get; set; }
         protected override TypeDefinition TargetType { get; set; }
 

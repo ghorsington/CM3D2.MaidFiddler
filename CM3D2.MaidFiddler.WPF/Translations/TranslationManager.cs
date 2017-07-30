@@ -8,10 +8,10 @@ namespace CM3D2.MaidFiddler.WPF.Translations
 {
     public class TranslationManager
     {
-        private static TranslationManager instance;
-
         public static readonly Regex TagPattern =
                 new Regex("#MAIDFIDDLER_TRANSLATION \"(?<lang>.*)\" \"(?<ver>.*)\" \"(?<auth>.*)\"");
+
+        private static TranslationManager instance;
 
         private Dictionary<string, string> translationDictionary;
 
@@ -22,20 +22,12 @@ namespace CM3D2.MaidFiddler.WPF.Translations
             CurrentTranslationVersion = string.Empty;
         }
 
-        public static TranslationManager Instance => instance ?? (instance = new TranslationManager());
-
         public static string CurrentTranslationFile { get; private set; }
         public static string CurrentTranslationVersion { get; private set; }
 
-        public event EventHandler LanguageChanged;
+        public static TranslationManager Instance => instance ?? (instance = new TranslationManager());
 
-        public object Translate(object key)
-        {
-            string translation;
-            return translationDictionary.TryGetValue((string) key, out translation)
-                ? translation
-                : $"{key}".Replace("_", "__");
-        }
+        public event EventHandler LanguageChanged;
 
         public void LoadTranslation(string filename)
         {
@@ -84,6 +76,14 @@ namespace CM3D2.MaidFiddler.WPF.Translations
             OnLanguageChanged();
         }
 
+        public object Translate(object key)
+        {
+            string translation;
+            return translationDictionary.TryGetValue((string) key, out translation)
+                       ? translation
+                       : $"{key}".Replace("_", "__");
+        }
+
         private void OnLanguageChanged()
         {
             LanguageChanged?.Invoke(this, EventArgs.Empty);
@@ -92,9 +92,7 @@ namespace CM3D2.MaidFiddler.WPF.Translations
 
     public class LanguageChangedEventManager : WeakEventManager
     {
-        private LanguageChangedEventManager()
-        {
-        }
+        private LanguageChangedEventManager() { }
 
         private static LanguageChangedEventManager CurrentManager
         {
@@ -117,14 +115,14 @@ namespace CM3D2.MaidFiddler.WPF.Translations
             CurrentManager.ProtectedAddHandler(source, handler);
         }
 
-        public static void RemoveHandler(TranslationManager source, EventHandler handler)
-        {
-            CurrentManager.ProtectedRemoveHandler(source, handler);
-        }
-
         public static void AddListener(TranslationManager source, IWeakEventListener listener)
         {
             CurrentManager.ProtectedAddListener(source, listener);
+        }
+
+        public static void RemoveHandler(TranslationManager source, EventHandler handler)
+        {
+            CurrentManager.ProtectedRemoveHandler(source, handler);
         }
 
         public static void RemoveListener(TranslationManager source, IWeakEventListener listener)

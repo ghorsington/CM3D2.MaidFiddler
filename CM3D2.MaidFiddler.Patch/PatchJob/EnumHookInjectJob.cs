@@ -11,16 +11,13 @@ namespace CM3D2.MaidFiddler.Patch.PatchJob
         public EnumHookInjectJob(string name,
                                  MethodDefinition target,
                                  MethodDefinition hook,
-                                 FieldDefinition[] fields) : base(
-            name,
-            0,
-            target,
-            hook,
-            InjectFlags.None,
-            new int[0],
-            fields)
-        {
-        }
+                                 FieldDefinition[] fields) : base(name,
+                                                                  0,
+                                                                  target,
+                                                                  hook,
+                                                                  InjectFlags.None,
+                                                                  new int[0],
+                                                                  fields) { }
 
         public override void Patch()
         {

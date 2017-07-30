@@ -12,8 +12,10 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
 {
     public static class MaidFiddlerPatcher
     {
-        private const string AssembliesDir = @"..\Plugins\Managed\";
         public static readonly string[] TargetAssemblyNames = {"Assembly-CSharp.dll"};
+
+        private const string AssembliesDir = @"..\Plugins\Managed\";
+
         private static string Version => Assembly.GetExecutingAssembly().GetName().Version.ToString();
 
         public static void Patch(AssemblyDefinition assembly)
@@ -25,12 +27,11 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
 
             IEnumerable<PatchJobCollection> jobs = Assembly.GetExecutingAssembly()
                                                            .GetTypes()
-                                                           .Where(
-                                                               type => type.Namespace ==
-                                                                       "CM3D2.MaidFiddler.Patch.Jobs" &&
-                                                                       !type.IsAbstract &&
-                                                                       typeof(PatchJobCollection).IsAssignableFrom(
-                                                                           type))
+                                                           .Where(type => type.Namespace
+                                                                          == "CM3D2.MaidFiddler.Patch.Jobs"
+                                                                          && !type.IsAbstract
+                                                                          && typeof(PatchJobCollection)
+                                                                                  .IsAssignableFrom(type))
                                                            .Select(Activator.CreateInstance)
                                                            .Cast<PatchJobCollection>();
 
@@ -57,19 +58,20 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher
         private static void SetCustomPatchedAttribute(AssemblyDefinition ass)
         {
             CustomAttribute attr =
-                    new CustomAttribute(
-                        ass.MainModule.Import(
-                            typeof(MaidFiddlerPatchedAttribute).GetConstructor(new[] {typeof(uint)})));
-            attr.ConstructorArguments.Add(
-                new CustomAttributeArgument(ass.MainModule.Import(typeof(uint)),
-                                            uint.Parse(Version.Replace(".", ""))));
+                    new CustomAttribute(ass.MainModule.Import(typeof(MaidFiddlerPatchedAttribute).GetConstructor(new[]
+                    {
+                        typeof(uint)
+                    })));
+            attr.ConstructorArguments.Add(new CustomAttributeArgument(ass.MainModule.Import(typeof(uint)),
+                                                                      uint.Parse(Version.Replace(".", ""))));
 
             CustomAttribute attr2 =
-                    new CustomAttribute(
-                        ass.MainModule.Import(
-                            typeof(MaidFiddlerPatcherAttribute).GetConstructor(new[] {typeof(uint)})));
-            attr2.ConstructorArguments.Add(
-                new CustomAttributeArgument(ass.MainModule.Import(typeof(uint)), (uint) PatcherType.Sybaris));
+                    new CustomAttribute(ass.MainModule.Import(typeof(MaidFiddlerPatcherAttribute).GetConstructor(new[]
+                    {
+                        typeof(uint)
+                    })));
+            attr2.ConstructorArguments.Add(new CustomAttributeArgument(ass.MainModule.Import(typeof(uint)),
+                                                                       (uint) PatcherType.Sybaris));
 
             ass.MainModule.GetType("Maid").CustomAttributes.Add(attr);
             ass.MainModule.GetType("Maid").CustomAttributes.Add(attr2);

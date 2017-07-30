@@ -6,7 +6,9 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
     public struct LogLevel
     {
         public static LogLevel Info = new LogLevel("INFO", ConsoleColor.Blue);
+
         public static LogLevel Warning = new LogLevel("WARNING", ConsoleColor.Yellow);
+
         public static LogLevel Error = new LogLevel("ERROR", ConsoleColor.Red);
 
         public LogLevel(string tag, ConsoleColor col)
@@ -21,10 +23,10 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
 
     public static class Debugger
     {
+        public delegate void ErrorCallback(Exception e, string errorMessage);
+
         private const string TAG = "MaidFiddler";
         private const ConsoleColor TAG_COLOR = ConsoleColor.Green;
-
-        public delegate void ErrorCallback(Exception e, string errorMessage);
 
         public static event ErrorCallback ErrorOccured;
 

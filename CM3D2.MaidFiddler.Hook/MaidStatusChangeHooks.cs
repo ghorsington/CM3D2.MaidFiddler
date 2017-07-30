@@ -55,7 +55,9 @@ namespace CM3D2.MaidFiddler.Hook
     public class CommandUpdateEventArgs : EventArgs
     {
         public YotogiCommandFactory CommandFactory { get; internal set; }
+
         public Dictionary<YotogiPlay.PlayerState, Yotogi.SkillData.Command.Data[]> Commands { get; internal set; }
+
         public YotogiPlay.PlayerState PlayerState { get; internal set; }
     }
 
@@ -68,8 +70,8 @@ namespace CM3D2.MaidFiddler.Hook
 
     public class YotogiSkillVisibleEventArgs : EventArgs
     {
-        public string Type { get; internal set; }
         public bool ForceVisible { get; set; }
+        public string Type { get; internal set; }
     }
 
     public class PostProcessSceneEventArgs : EventArgs
@@ -82,17 +84,27 @@ namespace CM3D2.MaidFiddler.Hook
         public static event EventHandler<WorkEventArgs> CheckWorkEnabled;
         public static event EventHandler<HookEventArgs> ClassUpdated;
         public static event EventHandler<CommandUpdateEventArgs> CommandUpdate;
+
         public static event EventHandler<UpdateFeaturePropensityEventArgs> FeaturePropensityUpdated;
+
         public static event EventHandler<StatusChangedEventArgs> NewProperty;
+
         public static event EventHandler<NightWorkVisibleEventArgs> NightWorkVisibilityCheck;
+
+        public static event EventHandler<PostProcessSceneEventArgs> ProcessFreeModeScene;
+
         public static event EventHandler<PostProcessEventArgs> ProcessWorkData;
+
         public static event EventHandler<StatusChangedEventArgs> PropertyRemoved;
+
         public static event EventHandler<StatusEventArgs> StatusChanged;
+
         public static event EventHandler<StatusChangedEventArgs> StatusChangedID;
+
         public static event EventHandler<StatusUpdateEventArgs> StatusUpdated;
         public static event EventHandler<ThumbnailEventArgs> ThumbnailChanged;
+
         public static event EventHandler<YotogiSkillVisibleEventArgs> YotogiSkillVisibilityCheck;
-        public static event EventHandler<PostProcessSceneEventArgs> ProcessFreeModeScene;
 
         public static bool CheckNightWorkVisibility(out bool result, int workID)
         {
@@ -140,30 +152,6 @@ namespace CM3D2.MaidFiddler.Hook
                 Value = -1
             };
             NewProperty?.Invoke(null, args);
-        }
-
-        public static void PostProcessFreeModeScene(ref bool enabled)
-        {
-            PostProcessSceneEventArgs args = new PostProcessSceneEventArgs
-            {
-                ForceEnabled = enabled
-            };
-            ProcessFreeModeScene?.Invoke(null, args);
-            enabled = args.ForceEnabled;
-        }
-
-        public static bool OnWorkEnableCheck(string tag, out bool result, int workID, Maid maid)
-        {
-            WorkEventArgs args = new WorkEventArgs
-            {
-                Tag = tag,
-                CallerMaid = maid,
-                ForceEnabled = false,
-                ID = workID
-            };
-            CheckWorkEnabled?.Invoke(null, args);
-            result = args.ForceEnabled;
-            return args.ForceEnabled;
         }
 
         public static void OnPropertyRemoved(string tag, ref Maid currentMaid, int id)
@@ -244,6 +232,20 @@ namespace CM3D2.MaidFiddler.Hook
             CommandUpdate?.Invoke(null, args);
         }
 
+        public static bool OnWorkEnableCheck(string tag, out bool result, int workID, Maid maid)
+        {
+            WorkEventArgs args = new WorkEventArgs
+            {
+                Tag = tag,
+                CallerMaid = maid,
+                ForceEnabled = false,
+                ID = workID
+            };
+            CheckWorkEnabled?.Invoke(null, args);
+            result = args.ForceEnabled;
+            return args.ForceEnabled;
+        }
+
         public static bool OnYotogiSkillVisibilityCheck(string tag, out bool ret)
         {
             YotogiSkillVisibleEventArgs args = new YotogiSkillVisibleEventArgs
@@ -254,6 +256,16 @@ namespace CM3D2.MaidFiddler.Hook
             YotogiSkillVisibilityCheck?.Invoke(null, args);
             ret = true;
             return args.ForceVisible;
+        }
+
+        public static void PostProcessFreeModeScene(ref bool enabled)
+        {
+            PostProcessSceneEventArgs args = new PostProcessSceneEventArgs
+            {
+                ForceEnabled = enabled
+            };
+            ProcessFreeModeScene?.Invoke(null, args);
+            enabled = args.ForceEnabled;
         }
 
         public static void ReloadWorkData(string tag, ref ScheduleScene scheduleScene, int slotNo)

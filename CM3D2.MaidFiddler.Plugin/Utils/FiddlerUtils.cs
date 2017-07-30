@@ -4,17 +4,19 @@ namespace CM3D2.MaidFiddler.Plugin.Utils
 {
     public static class FiddlerUtils
     {
-        private const string ERROR_UNPATCHED = "ERR_UNPATCHED";
-        private const string ERROR_OLD_PATCH = "ERR_OLD_PATCH";
         private const string ERROR_CHECK_FAILED = "ERR_CHECK_FAILED";
         private const string ERROR_OLD_GAME_VERSION = "ERR_OLD_GAME_VERSION";
+        private const string ERROR_OLD_PATCH = "ERR_OLD_PATCH";
+        private const string ERROR_UNPATCHED = "ERR_UNPATCHED";
         private static bool errorThrown;
 
         private static readonly Regex versionPattern =
                 new Regex(@"^(?<prefix>[A-z\-]+)(?<major>\d+)\.(?<minor>\d+)(\.(?<patch>\d+))?$");
 
         public static int GameVersion => (int) typeof(Misc).GetField(nameof(Misc.GAME_VERSION)).GetValue(null);
+
         public static bool PlusPack2Installed => GameUty.CheckPackFlag(PluginData.Type.PP002);
+
         public static bool PlusPackInstalled => GameUty.CheckPackFlag(PluginData.Type.PP001);
 
         public static bool UpdatesChecked { get; private set; }

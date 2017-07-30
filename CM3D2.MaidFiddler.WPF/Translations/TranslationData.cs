@@ -16,13 +16,18 @@ namespace CM3D2.MaidFiddler.WPF.Translations
 
         public object Value => TranslationManager.Instance.Translate(key);
 
+        ~TranslationData()
+        {
+            Dispose(false);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public bool ReceiveWeakEvent(Type managerType, object sender, EventArgs e)
         {
@@ -43,11 +48,6 @@ namespace CM3D2.MaidFiddler.WPF.Translations
         private void OnLanguageChanged(object sender, EventArgs args)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Value"));
-        }
-
-        ~TranslationData()
-        {
-            Dispose(false);
         }
     }
 }

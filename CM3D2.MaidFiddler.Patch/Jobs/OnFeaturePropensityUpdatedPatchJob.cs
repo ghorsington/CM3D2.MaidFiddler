@@ -8,7 +8,9 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
     public class OnFeaturePropensityUpdatedPatchJob : PatchJobCollection
     {
         protected override MethodDefinition HookMethod { get; set; }
+
         protected override InjectFlags InjectFlags => InjectFlags.PassFields | InjectFlags.PassParametersVal;
+
         protected override FieldDefinition[] MemberFields { get; set; }
         protected override TypeDefinition TargetType { get; set; }
 

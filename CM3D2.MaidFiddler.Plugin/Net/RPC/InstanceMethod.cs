@@ -11,8 +11,6 @@ namespace CM3D2.MaidFiddler.Plugin.Net.RPC
 
         public IInstanceProvider InstanceProvider { get; }
 
-        public override void Invoke(params object[] parameters)
-        {
-        }
+        public override void Invoke(params object[] parameters) { }
     }
 }

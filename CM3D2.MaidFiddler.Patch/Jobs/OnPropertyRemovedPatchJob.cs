@@ -11,9 +11,9 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
 
         protected override MethodDefinition HookMethod { get; set; }
 
-        protected override InjectFlags InjectFlags => InjectFlags.PassFields |
-                                                      InjectFlags.PassStringTag |
-                                                      InjectFlags.PassParametersVal;
+        protected override InjectFlags InjectFlags => InjectFlags.PassFields
+                                                      | InjectFlags.PassStringTag
+                                                      | InjectFlags.PassParametersVal;
 
         protected override FieldDefinition[] MemberFields { get; set; }
         protected override TypeDefinition TargetType { get; set; }

@@ -75,28 +75,6 @@ namespace CM3D2.MaidFiddler.WPF.Model
             };
         }
 
-        public static CM3D2 Instance => _instance ?? (_instance = new CM3D2());
-
-        public List<TranslationData> PersonaList
-        {
-            get => _personaList;
-            set
-            {
-                _personaList = value;
-                OnPropertyChanged(nameof(PersonaList));
-            }
-        }
-
-        public List<TranslationData> ContractType
-        {
-            get => _contractType;
-            set
-            {
-                _contractType = value;
-                OnPropertyChanged(nameof(ContractType));
-            }
-        }
-
         public List<TranslationData> Condition
         {
             get => _condition;
@@ -117,15 +95,17 @@ namespace CM3D2.MaidFiddler.WPF.Model
             }
         }
 
-        public List<TranslationData> Seikeiken
+        public List<TranslationData> ContractType
         {
-            get => _seikeiken;
+            get => _contractType;
             set
             {
-                _seikeiken = value;
-                OnPropertyChanged(nameof(Seikeiken));
+                _contractType = value;
+                OnPropertyChanged(nameof(ContractType));
             }
         }
+
+        public static CM3D2 Instance => _instance ?? (_instance = new CM3D2());
 
         public List<TranslationData> MaidClassData
         {
@@ -134,6 +114,26 @@ namespace CM3D2.MaidFiddler.WPF.Model
             {
                 _maidClassData = value;
                 OnPropertyChanged(nameof(MaidClassData));
+            }
+        }
+
+        public List<TranslationData> PersonaList
+        {
+            get => _personaList;
+            set
+            {
+                _personaList = value;
+                OnPropertyChanged(nameof(PersonaList));
+            }
+        }
+
+        public List<TranslationData> Seikeiken
+        {
+            get => _seikeiken;
+            set
+            {
+                _seikeiken = value;
+                OnPropertyChanged(nameof(Seikeiken));
             }
         }
 

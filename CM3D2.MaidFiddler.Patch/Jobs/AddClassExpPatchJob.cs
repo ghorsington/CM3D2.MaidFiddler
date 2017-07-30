@@ -24,12 +24,6 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
             MemberFields = new[] {TargetType.GetField("maid_")};
         }
 
-        protected override void LoadJobs()
-        {
-            AddEnum("MaidClassExp", 2);
-            AddEnum("YotogiClassExp", 2);
-        }
-
         protected void AddEnum(string name, int paramCount)
         {
             MethodDefinition target = TargetType.GetMethods("Add" + name)
@@ -41,6 +35,12 @@ namespace CM3D2.MaidFiddler.Patch.Jobs
             }
 
             PatchTargets.Add(new EnumHookInjectJob(name, target, HookMethod, MemberFields));
+        }
+
+        protected override void LoadJobs()
+        {
+            AddEnum("MaidClassExp", 2);
+            AddEnum("YotogiClassExp", 2);
         }
     }
 }

@@ -11,9 +11,9 @@ namespace CM3D2.MaidFiddler.WPF
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public const string TITLE = "Maid Fiddler";
-        public const string VERSION = "WPF BETA 0.1";
-        public const string TITLE_NULL = TITLE + " " + VERSION;
         public const string TITLE_FORMAT = TITLE + " " + VERSION + " - {0}";
+        public const string TITLE_NULL = TITLE + " " + VERSION;
+        public const string VERSION = "WPF BETA 0.1";
 
         public MainWindow()
         {

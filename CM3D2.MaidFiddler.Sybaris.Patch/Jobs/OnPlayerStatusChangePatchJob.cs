@@ -8,7 +8,9 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher.Jobs
     public class OnPlayerStatusChangePatchJob : PatchJobCollection
     {
         protected override MethodDefinition HookMethod { get; set; }
+
         protected override InjectFlags InjectFlags => InjectFlags.PassStringTag | InjectFlags.ModifyReturn;
+
         protected override FieldDefinition[] MemberFields { get; set; }
         protected override TypeDefinition TargetType { get; set; }
 

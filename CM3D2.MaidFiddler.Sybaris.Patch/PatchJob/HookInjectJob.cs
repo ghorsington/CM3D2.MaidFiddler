@@ -23,9 +23,7 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher.PatchJob
             Fields = fields;
         }
 
-        protected string Name { get; }
-
-        protected MethodDefinition TargetMethod { get; }
+        protected FieldDefinition[] Fields { get; }
 
         protected MethodDefinition HookMethod { get; }
 
@@ -33,9 +31,11 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher.PatchJob
 
         protected int[] LocalIds { get; }
 
-        protected FieldDefinition[] Fields { get; }
+        protected string Name { get; }
 
         protected int Offset { get; }
+
+        protected MethodDefinition TargetMethod { get; }
 
         public virtual void Patch()
         {

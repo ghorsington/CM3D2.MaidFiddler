@@ -1,4 +1,4 @@
-﻿namespace CM3D2.MaidFiddler.Plugin.Net.RPC
+﻿namespace CM3D2.MaidFiddler.Plugin.Net.RPC.Data
 {
     public enum RpcErrorCode
     {

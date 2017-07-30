@@ -2,6 +2,6 @@
 {
     public interface IInstanceProvider
     {
-        object GetInstance(string instanceIdentifier);
+        object GetInstance(object instanceIdentifier);
     }
 }

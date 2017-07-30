@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
+using CM3D2.MaidFiddler.Plugin.Net.RPC.Data;
 using CM3D2.MaidFiddler.Plugin.Utils;
 using JsonFx.Json;
 
@@ -14,25 +16,30 @@ namespace CM3D2.MaidFiddler.Plugin.Net.RPC
 
     public class RpcManager
     {
+        public delegate void OnMessageParseFail(MessageParseFailEventArgs args);
+
+        private Queue<RpcObject> incomingObjectQueue;
+
+        private bool isRunningMessageProcessor;
+        private readonly Thread messageParserThread;
+
+        private readonly Queue<string> messageQueue;
+        private readonly Semaphore unprocessedMessages;
+
         public RpcManager()
         {
             Methods = new Dictionary<string, Method>();
             InstanceProviders = new Dictionary<Type, IInstanceProvider>();
+
+            messageQueue = new Queue<string>();
+            incomingObjectQueue = new Queue<RpcObject>();
+            unprocessedMessages = new Semaphore(0, int.MaxValue);
+            messageParserThread = new Thread(ParseMessages);
         }
 
-        public delegate void OnMessageParseFail(MessageParseFailEventArgs args);
-
-        private Dictionary<string, Method> Methods { get; }
         private Dictionary<Type, IInstanceProvider> InstanceProviders { get; }
 
-        public event OnMessageParseFail MessageParsingFailed;
-
-        public void ParseMessageAsync(string message)
-        {
-            ParseMessageWorker worker = ParseMessageWork;
-
-            worker.BeginInvoke(message, null, null);
-        }
+        private Dictionary<string, Method> Methods { get; }
 
         public void CollectMethods(Assembly assembly)
         {
@@ -51,8 +58,11 @@ namespace CM3D2.MaidFiddler.Plugin.Net.RPC
                 {
                     if (rpcMethod.method.IsAbstract)
                         continue;
+                    if (rpcMethod.method.ContainsGenericParameters && rpcMethod.method.GetParameters().Length == 0)
+                        continue;
                     RpcCallAttribute attribute = (RpcCallAttribute) rpcMethod.attr[0];
 
+                    // TODO: Handle overloads and identically named methods
                     if (rpcMethod.method.IsStatic)
                         Methods.Add(string.IsNullOrEmpty(attribute.CallName)
                                         ? rpcMethod.method.Name
@@ -63,17 +73,12 @@ namespace CM3D2.MaidFiddler.Plugin.Net.RPC
                         Type declaringType = rpcMethod.method.DeclaringType;
                         if (!InstanceProviders.TryGetValue(declaringType, out IInstanceProvider provider))
                             throw new Exception($"No instance provider found for {declaringType.Name}");
-                        Methods.Add(
-                            $"{declaringType.Name}.{(string.IsNullOrEmpty(attribute.CallName) ? rpcMethod.method.Name : attribute.CallName)}",
-                            new InstanceMethod(rpcMethod.method, provider));
+                        Methods
+                                .Add($"{declaringType.Name}.{(string.IsNullOrEmpty(attribute.CallName) ? rpcMethod.method.Name : attribute.CallName)}",
+                                     new InstanceMethod(rpcMethod.method, provider));
                     }
                 }
             }
-        }
-
-        public void RegisterInstanceProvider<T>(IInstanceProvider provider)
-        {
-            InstanceProviders.Add(typeof(T), provider);
         }
 
         public Method GetMethod(string method)
@@ -81,28 +86,61 @@ namespace CM3D2.MaidFiddler.Plugin.Net.RPC
             return Methods.TryGetValue(method, out Method result) ? result : null;
         }
 
-        private void ParseMessageWork(string message)
+        public void ParseMessage(string message)
         {
-            Debugger.WriteLine(LogLevel.Info, "Attempting to deserialize the message...");
-            JsonReader reader = new JsonReader(message);
-            try
+            lock (messageQueue)
             {
-                RpcData result = reader.Deserialize<RpcData>();
-
-                if (!result.ValidVersion)
-                    throw new RpcException(RpcErrorCode.ParseError - 1,
-                                           $"This JSON-RPC implementation only supports version {RpcData.JsonRpcVersion}.");
+                messageQueue.Enqueue(message);
             }
-            catch (Exception e)
-            {
-                MessageParseFailEventArgs args = new MessageParseFailEventArgs
-                {
-                    Exception = e
-                };
-                MessageParsingFailed?.BeginInvoke(args, null, null);
-            }
+            unprocessedMessages.Release();
         }
 
-        private delegate void ParseMessageWorker(string message);
+        public void RegisterInstanceProvider<T>(IInstanceProvider provider)
+        {
+            InstanceProviders.Add(typeof(T), provider);
+        }
+
+        public void Start()
+        {
+            if (isRunningMessageProcessor)
+                return;
+            isRunningMessageProcessor = true;
+            messageParserThread.Start();
+        }
+
+        public void Stop()
+        {
+            if (!isRunningMessageProcessor)
+                return;
+            isRunningMessageProcessor = false;
+            messageParserThread.Abort();
+        }
+
+        private void ParseMessages()
+        {
+            while (unprocessedMessages.WaitOne())
+            {
+                string message;
+                lock (messageQueue)
+                {
+                    message = messageQueue.Dequeue();
+                }
+                Debugger.WriteLine(LogLevel.Info, "Attempting to deserialize the message...");
+                JsonReader reader = new JsonReader(message);
+                try
+                {
+                    RpcRawData result = reader.Deserialize<RpcRawData>();
+
+                    Debugger.WriteLine(LogLevel.Info, result.ToString());
+                    if (!result.ValidVersion)
+                        throw new RpcException(RpcErrorCode.ParseError - 1,
+                                               $"This JSON-RPC implementation only supports version {RpcRawData.JsonRpcVersion}.");
+                }
+                catch (Exception e)
+                {
+                    Debugger.WriteLine(LogLevel.Info, $"Failed to parse message because: {e}");
+                }
+            }
+        }
     }
 }

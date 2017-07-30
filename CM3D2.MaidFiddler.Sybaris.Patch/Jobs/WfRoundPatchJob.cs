@@ -8,15 +8,17 @@ namespace CM3D2.MaidFiddler.Sybaris.Patcher.Jobs
     public class WfRoundPatchJob : PatchJobCollection
     {
         protected override MethodDefinition HookMethod { get; set; }
+
         protected override InjectFlags InjectFlags => InjectFlags.ModifyReturn | InjectFlags.PassParametersVal;
+
         protected override FieldDefinition[] MemberFields { get; set; }
         protected override TypeDefinition TargetType { get; set; }
 
-        private MethodDefinition HookMethodRoundLong { get; set; }
+        private MethodDefinition HookMethodLong { get; set; }
 
         private MethodDefinition HookMethodRoundInt { get; set; }
 
-        private MethodDefinition HookMethodLong { get; set; }
+        private MethodDefinition HookMethodRoundLong { get; set; }
 
         public override void Initialize(AssemblyDefinition gameAssembly, AssemblyDefinition hookAssembly)
         {
