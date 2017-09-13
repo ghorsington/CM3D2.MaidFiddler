@@ -1,3 +1,3 @@
 ﻿ENG	English		English	1.38
 JPN	Japanese	日本語	1.26
-CHS	Chinese (Simplified)		简体中文	2.2
+CHS	Chinese (Simplified)		简体中文	1.51
