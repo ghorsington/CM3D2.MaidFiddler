@@ -1,4 +1,4 @@
-﻿#MAIDFIDDLER_TRANSLATION "English" "1.38" "Denikson, Algester and the CM3D2 Translation Team"
+﻿#MAIDFIDDLER_TRANSLATION "English" "1.53" "Denikson, imfire3605, Algester and the CM3D2 Translation Team"
 ; Maid Fiddler GUI Texts
 ;
 ; Most of the translations are not by me! 
@@ -17,7 +17,7 @@ TITLE_TEXT						- Fiddling your maids since 2015!
 THUMB_TEXT_SIZE					11.0
 THUMB_TEXT_POS_X				0.0
 THUMB_TEXT_POS_Y				55.0
-THUMB_NONE						        NO\nTHUMBNAIL
+THUMB_NONE						NO\nTHUMBNAIL
 
 ; Info tab
 TAB_INFO						Information
@@ -170,6 +170,18 @@ Yotogi_Lily						Lily
 Yotogi_Carnival					Carnival
 Yotogi_Cherish					Cherish
 Yotogi_Bind						Bind
+Yotogi_Erotic					Erotic
+Yotogi_Celebrate				Celebration
+Yotogi_Celebration				Celebration
+Yotogi_Despair					Despair
+Yotogi_Empress					Empress
+Yotogi_Ityalove					Flirty Love
+Yotogi_Live						Live
+Yotogi_abyss					Abyss
+Yotogi_Breeding					Pig Breeding
+Yotogi_Victim					Victim
+Yotogi_Anniversary				Anniversary
+Yotogi_Ecstasy					Ecstasy
 
 ; Params			
 Care							Care
@@ -226,366 +238,548 @@ BonusTeachRate					Teaching rate
 裁縫							Sewing
 料理							Cooking
 華道							Flower Arrangement
-接客練習							Chat
-模様替え							Decorating
+接客練習						Chat
+模様替え						Decorating
 掃除							Cleaning
 教養							Study
 派遣							Dispatch
 化粧							Make-up
-エステ							Spa
+エステ						Spa
 メイド研修						Maid Training
-休日							Day off
+休日							Rest (Day off)
+新婚生活						Married Life
+新婚旅行						Honeymoon
 
 ; Night work	
-クラブ接待							Entertainment
+クラブ接待						Entertainment
 夜伽							Night Service
-ソーププレイ						Soap Play
-ハメ撮りプレイ						Photo Play
+休息							Rest (Night Off)
+ソーププレイ					Soap Play
+ハメ撮りプレイ					Photo Play
 恋人プレイ						Lovers Play
-恋人プレイ（報告）					Lovers Play (Report)
-野外露出							Outdoors Exposure
-騙され接待01						Deceive Maid 1
-騙され接待02						Deceive Maid 2
-騙され接待03						Deceive Maid 3
-騙され接待（報告）					Deceive Maid (Report)
-アナルプレイ						Anal Play
+恋人プレイ（報告）				Lovers Play (Report)
+野外露出						Outdoors Exposure
+騙され接待01					Deceive Maid 1
+騙され接待02					Deceive Maid 2
+騙され接待03					Deceive Maid 3
+騙され接待（報告）				Deceive Maid (Report)
+アナルプレイ					Anal Play
 純愛ソーププレイ					Lover Soap Play
-お仕置きプレイ						Punishment Play
-お客様公開プレイ					Guest Exhibition Play
-路地裏露出セックス					Back Alley Sex
-詰られプレイ						Scolding Play
-らぶらぶ媚薬プレイ					Love Love Aphrodisiac Play
-乱暴なお客様前半					Rough Customer 1
-乱暴なお客様後半１					Rough Customer 2 (Normal end)
-AV撮影							AV Shooting
-純愛プレイ前半						Pure Love Play 1
-純愛プレイ後半						Pure Love Play 2
-なりきり新婚プレイ					Honeymoon play
-乱暴なお客様後半２					Rough Customer 2 (Bad end)
-フリー撮影会						Free Photo Session
-フリー逆ナンパ						Free Seduction Pick-up
+お仕置きプレイ					Punishment Play
+お客様公開プレイ				Guest Exhibition Play
+路地裏露出セックス				Back Alley Sex
+詰られプレイ					Scolding Play
+らぶらぶ媚薬プレイ				Love Love Aphrodisiac Play
+乱暴なお客様前半				Rough Customer 1
+乱暴なお客様後半１				Rough Customer 2 (Normal end)
+AV撮影						AV Shooting
+純愛プレイ前半					Pure Love Play 1
+純愛プレイ後半					Pure Love Play 2
+なりきり新婚プレイ				Honeymoon play
+乱暴なお客様後半２				Rough Customer 2 (Bad end)
+フリー撮影会					Free Photo Session
+フリー逆ナンパ					Free Seduction Pick-up
 フリー痴漢プレイ					Free Molester Play
-痴漢克服プレイ						Molester Play [Doya Yoshiko VIP]
+痴漢克服プレイ					Molester Play [Doya Yoshiko VIP]
 媚薬プレイ						Aphrodisiac Play [Miyahara Ayumi VIP]
-お風呂接待						Bath Play [Ichinose Sakura VIP]
-ハーレム特訓プレイ					Harem Training [Shiina Ai VIP]
-学園生練習プレイ					School Life Practice Play [Doya Yoshiko VIP]
-濃厚ラブセックス						Concentrated Love Play [Miyahara Ayumi VIP]
+お風呂接待					Bath Play [Ichinose Sakura VIP]
+ハーレム特訓プレイ				Harem Training [Shiina Ai VIP]
+学園生練習プレイ				School Life Practice Play [Doya Yoshiko VIP]
+濃厚ラブセックス					Concentrated Love Play [Miyahara Ayumi VIP]
 NTR乱交セックス					NTR Orgy Play [Ichinose Sakura VIP]
-NTRレズセックス						NTR Lesbian Play [Shiina Ai VIP]
-オネショタなりきり甘えプレイ				Sister-Shota Foreplay [Karasaki Megumi VIP]
-秘密セフレセックス					Secret Sexfriend Play [Akabane Yuna VIP]
-射精管理プレイ						Ejaculation Control Play [Nishiamane Mikoto VIP]
-逆媚薬セックス						Reverse Aphrodisiac Play [Ginga the Sadist Maid VIP]
-童貞筆おろしプレイ					Virgin's First Time Play
-乱交大浴場プレイ					Public Bath Orgy Play
-寝取られ調教プレイ前半				NTR Dominance Play 1
-寝取られ調教プレイ後半				NTR Dominance Play 2
-寝取られ結婚プレイ					NTR Marriage Play
-ネコミミにゃんにゃんプレイ				Cat Play
-なりきり学園プレイ					School Students Foreplay
-やきもちプレイ						Jealousy Play 
-婚約アプローチプレイ					Engagement Approach Play
+NTRレズセックス					NTR Lesbian Play [Shiina Ai VIP]
+オネショタなりきり甘えプレイ			Sister-Shota Foreplay [Karasaki Megumi VIP]
+秘密セフレセックス				Secret Sexfriend Play [Akabane Yuna VIP]
+射精管理プレイ					Ejaculation Control Play [Nishiamane Mikoto VIP]
+逆媚薬セックス					Reverse Aphrodisiac Play [Ginga the Sadist Maid VIP]
+童貞筆おろしプレイ				Virgin's First Time Play
+乱交大浴場プレイ				Public Bath Orgy Play
+寝取られ調教プレイ前半			NTR Dominance Play 1
+寝取られ調教プレイ後半			NTR Dominance Play 2
+寝取られ結婚プレイ				NTR Marriage Play
+ネコミミにゃんにゃんプレイ			Cat Play
+なりきり学園プレイ				School Students Foreplay
+やきもちプレイ					Jealousy Play 
+婚約アプローチプレイ				Engagement Approach Play
 いちゃいちゃ結婚プレイ				Flirty Marriage Play
+対魔忍イメージプレイ				Taimanin Foreplay
+対魔忍乱暴プレイ				Taimanin Rough Play
+催眠強制オナニー				Hypnotic Forced Masturbation
+催眠寝取られプレイ				Hypnotic NTR Play
+壁の向こうのメイドの嬌声			The Maid's Voice Behind These Walls
+一夜の過ち					One Night's Indiscretion
+オナニー盗撮					Voyueristic Masturbation
+ツンデレご褒美プレイ				Tsundere's Reward Play
+クーデレお風呂プレイ				Kuudere's Bath Play
+純真なりきりワンちゃんプレイ			Innocent's Doggy Foreplay
+ヤンデレおねだりプレイ				Yandere's Begging Play
+キツめに詰られプレイ				Intense Scolding Play
+恋人SMアナルセックス				Lover's SM Anal Sex
+お客様視点プレイ				Customer's Prespective Play
+屋外恐喝６Pレイプ				Blackmailed 6P Outdoor Rape
+浮気NTRプレイ前半				Cheating Play 1
+浮気NTRプレイ後半				Cheating Play 2
+キモオタなお客様プレイ				Ugly Bastard Customer Play
+ギンガとSとMプレイ				Ginga's S&M Play
+よし子とイチャイチャセックス			Yoshiko's Flirty Sex
+いいなりメイドプレイ				Good Maid Play
+派遣浮気NTR					Dispatch Affair
+お姉ちゃん受け入れ性欲処理プレイ	Onee-chan's Sexually Gratifying Reception Play
+猫屋敷メアなりきりプレイ			Nekoyashiki Maher Foreplay
+猫屋敷メアなりきり乱暴プレイ		Nekoyashiki Maher Rough Foreplay
+こもりちゃんとセックス				Komori's Proper Sex
+お疲れ労いプレイ				Hardwork Gratitude Play
+ボクッ娘エッチな水着プレイ			Tomboy's Lewd Swimsuit Play
+レオのはじめて					Reo's First Time
+まこさんにおしおきックス				Mako's Punishing Sex
+なっひーコスプレなりきりセックス		Nahhi's Cosplay Sex
+スワッピングプレイ					Swapping Play
+桜ちゃんVIP会員放送				Sakura's VIP Broadcast
+お仕置き露出プレイ				Punishment Exposure Play
+逆誘い筆おろしプレイ				Reverse First-Timer Play
+ドS射精管理プレイ				Sadist's Ejaculation Control Play
+プールサイドの選択				A Poolside's Selection
+NTR調教ビデオレター				NTR Training Video Letter
+不感症という設定？				A Condition Known As Frigidity?
 
-; Yotogi skills
-;Virgin	
-処女喪失セックス					Virgin Sex
-処女喪失セックスChu-B				[Chu-B] Virgin Sex
-アナル処女喪失セックス				Anal Virgin Sex
-アナル処女喪失セックスChu-B			[Chu-B] Anal Virgin Sex
-;Pleasure	
+; Main
+処女喪失セックス				Virgin Sex
+アナル処女喪失セックス			Anal Virgin Sex
 愛撫							Caress
-愛撫Chu-B						[Chu-B] Caress
+酔い愛撫						[Drunk] Caress
 バイブ責め						Vibrator
-バイブ責めChu-B					[Chu-B] Vibrator
+酔いバイブ責め					[Drunk] Vibrator
 アナルバイブ責め					Anal Vibrator
-アナルバイブ責めChu-B				[Chu-B] Anal Vibrator
-セックス正常位						Missionary Sex
-セックス正常位Chu-B				[Chu-B] Missionary Sex
-アナルセックス正常位					Missionary Anal Sex
-アナルセックス正常位Chu-B			[Chu-B] Missionary Anal Sex
-セックス後背位						Doggy Style Sex
-セックス後背位Chu-B				[Chu-B] Doggy Style Sex
-アナルセックス後背位					Doggy Style Anal Sex
-アナルセックス後背位Chu-B			[Chu-B] Doggy Style Anal Sex
-セックス騎乗位						Cowgirl Sex
-セックス騎乗位Chu-B				[Chu-B] Cowgirl Sex
-アナルセックス騎乗位					Cowgirl Anal Sex
-アナルセックス騎乗位Chu-B			[Chu-B] Cowgirl Anal Sex
-言葉責め愛撫						Verbal Abuse Caress
-グラインドセックス騎乗位				Grinding Cowgirl Sex
-グラインドセックス騎乗位Chu-B			[Chu-B] Grinding Cowgirl Sex
-グラインドアナルセックス騎乗位			Grinding Cowgirl Anal Sex
-グラインドアナルセックス騎乗位Chu-B		[Chu-B] Grinding Cowgirl Anal Sex
-太バイブ責め						Thick Vibrator
-太バイブ責めChu-B					[Chu-B] Thick Vibrator
-バイブ責めアナルセックス正常位			Anal Missionary Sex and Vibrator
-バイブ責めアナルセックス正常位Chu-B	[Chu-B] Anal Missionary Sex and Vibrator
-アナルバイブ責めセックス後背位			Doggy Style Sex and Anal Vibrator
-アナルバイブ責めセックス後背位Chu-B	[Chu-B] Doggy Style Sex and Anal Vibrator
-だいしゅきホールドセックス正常位		Leg Locked Missionary Sex
-だいしゅきホールドセックス正常位Chu-B	[Chu-B] Leg Locked Missionary Sex
-だいしゅきホールドアナルセックス正常位	Leg Locked Missionary Anal Sex
-だいしゅきホールドアナル正常位Chu-B	[Chu-B] Leg Locked Missionary Anal Sex
+酔いアナルバイブ責め				[Drunk] Anal Vibrator
+セックス正常位					Missionary Sex
+酔いセックス正常位					[Drunk] Missionary Sex
+アナルセックス正常位				Missionary Anal Sex
+酔いアナルセックス正常位				[Drunk] Missionary Anal Sex
+セックス後背位					Doggy Style Sex
+酔いセックス後背位					[Drunk] Doggy Style Sex
+アナルセックス後背位				Doggy Style Anal Sex
+酔いアナルセックス後背位				[Drunk] Doggy Style Anal Sex
+セックス騎乗位					Cowgirl Sex
+酔いセックス騎乗位					[Drunk] Cowgirl Sex
+アナルセックス騎乗位				Cowgirl Anal Sex
+酔いアナルセックス騎乗位				[Drunk] Cowgirl Anal Sex
+言葉責め愛撫					Verbal Abuse Caress
+だいしゅきホールドセックス正常位			Leg Locked Missionary Sex
+だいしゅきホールドアナルセックス正常位		Leg Locked Missionary Anal Sex
 抱きつきセックス後背位				Hugging Doggy Style Sex
-抱きつきセックス後背位Chu-B			[Chu-B] Hugging Doggy Style Sex
 抱きつきアナルセックス後背位			Hugging Doggy Style Anal Sex
-抱きつきアナルセックス後背位Chu-B		[Chu-B] Hugging Doggy Style Anal Sex
-
-;Pervert
-かっこいいポーズ						Cool Pose
-かわいいポーズ						Cute Pose
-オナニー							Masturbation
-オナニーChu-B						[Chu-B] Masturbation
-アナルオナニー						Anal Masturbation
-アナルオナニーChu-B					[Chu-B] Anal Masturbation
-Ｈなポーズ							Sexy Pose
-手コキオナニー						Handjob and Masturbation
-手コキオナニーChu-B					[Chu-B] Handjob and Masturbation
-フェラオナニー						Fellatio and Masturbation
-フェラオナニーChu-B					[Chu-B] Fellatio and Masturbation
+グラインドセックス騎乗位				Grinding Cowgirl Sex
+グラインドアナルセックス騎乗位			Grinding Cowgirl Anal Sex
+太バイブ責め						Thick Vibrator
+バイブ責めアナルセックス正常位			Anal Missionary Sex & Vibrator
+アナルバイブ責めセックス後背位			Doggy Style Sex & Anal Vibrator
+かっこいいポーズ					Cool Pose
+かわいいポーズ					Cute Pose
+オナニー						Masturbation
+酔いオナニー						[Drunk] Masturbation
+アナルオナニー					Anal Masturbation
+Ｈなポーズ						Sexy Pose
+手コキオナニー					Handjob & Masturbation
+フェラオナニー						Fellatio & Masturbation
 変態ポーズプレイ					Perverted Pose Play
-バイブオナニー						Vibrator Masturbation
-バイブオナニーChu-B					[Chu-B] Vibrator Masturbation
+バイブオナニー					Vibrator Masturbation
 アナルバイブオナニー					Anal Vibrator Masturbation
-アナルバイブオナニーChu-B				[Chu-B] Anal Vibrator Masturbation
-太バイブオナニー					Thick Vibrator Masturbation
-太バイブオナニーChu-B				[Chu-B] Thick Vibrator Masturbation
-露出プレイ						Exhibitionism
-犬プレイ							Pet Play
 露出セックス背面立位				Exhibitionist Rear Standing Sex
-露出セックス背面立位Chu-B			[Chu-B] Exhibitionist Rear Standing Sex
 露出アナルセックス背面立位			Exhibitionist Anal Rear Standing Sex
-露出アナルセックス背面立位Chu-B		[Chu-B] Exhibitionist Anal Rear Standing Sex
+太バイブオナニー					Thick Vibrator Masturbation
 実況オナニー						Reporting Masturbation
-実況オナニーChu-B					[Chu-B] Reporting Masturbation
-;Service
+露出プレイ						Exhibitionism
+犬プレイ						Pet Play
 手コキ							Handjob
-手コキChu-B						[Chu-B] Handjob
-フェラチオ							Fellatio
-フェラチオChu-B						[Chu-B] Fellatio
-パイズリ							Paizuri
-パイズリChu-B						[Chu-B] Paizuri
-パイズリフェラ						Paizuri and Fellatio
-パイズリフェラChu-B					[Chu-B] Paizuri and Fellatio
-玉舐めフェラチオ					Ball Licking Fellatio
-セルフイラマ						Self Irrumatio
-セルフイラマChu-B					[Chu-B] Self Irrumatio
+フェラチオ						Fellatio
+酔いフェラチオ					[Drunk] Fellatio
+パイズリ						Paizuri
 シックスナイン						Sixty Nine
-シックスナインChu-B					[Chu-B] Sixty Nine
+酔いシックスナイン					[Drunk] Sixty Nine
+パイズリフェラ						Paizuri & Fellatio
 スケベ椅子フェラ					Stool Fellatio
-スケベ椅子フェラChu-B				[Chu-B] Stool Fellatio
-スケベ椅子セックス					Stool Sex
-スケベ椅子セックスChu-B				[Chu-B] Stool Sex
-スケベ椅子アナルセックス				Stool Anal Sex
-スケベ椅子アナルセックスChu-B			[Chu-B] Stool Anal Sex
 MP全身洗い						Mat Play Body Wash
-MP全身洗いChu-B					[Chu-B] Mat Play Body Wash
-ディープスロート						Deepthroat
-ディープスロートChu-B				[Chu-B] Deepthroat
+玉舐めフェラチオ					Ball Licking Fellatio
+スケベ椅子セックス					Stool Sex
+スケベ椅子アナルセックス				Stool Anal Sex
+ディープスロート					Deepthroat
+酔いディープスロート					[Drunk] Deepthroat
+全身舐め奉仕					Body Licking
+セルフイラマ						Self Irrumatio
 高級MP全身洗い					Luxurious Mat Play Body Wash
-全身舐め奉仕						Body Licking
-;Scolding	
-詰られパイズリ						Scolding Paizuri
-詰られ手コキ						Scolding Handjob
-詰られ騎乗位						Scolding Cowgirl
-詰られアナル騎乗位					Scolding Anal Cowgirl
-;Bondage	
-拘束愛撫							Restrained Caress
-拘束愛撫Chu-B					[Chu-B] Restrained Caress
-イラマチオ							Irrumatio
-イラマチオChu-B					[Chu-B] Irrumatio
+拘束愛撫						Restrained Caress
 拘束セックス						Restrained Sex
-拘束セックスChu-B					[Chu-B] Restrained Sex
 拘束アナルセックス					Restrained Anal Sex
-拘束アナルセックスChu-B				[Chu-B] Restrained Anal Sex
+イラマチオ						Irrumatio
+酔いイラマチオ					[Drunk] Irrumatio
+お仕置きセックス後背位				[Punishment] Doggy Style Sex
+お仕置きアナルセックス後背位			[Punishment] Doggy Style Anal Sex
 首絞めセックス正常位				Choking Missionary Sex
-首絞めセックス正常位Chu-B			[Chu-B] Choking Missionary Sex
 首絞めアナルセックス正常位			Choking Missionary Anal Sex
-首絞めアナルセックス正常位Chu-B		[Chu-B] Choking Missionary Anal Sex
-三角木馬拘束						Restrained Wooden Horse
 吊るし拘束						Restrained Hanging
-ギロチン拘束セックス					Restrained Guillotine Sex
-ギロチン拘束セックスChu-B			[Chu-B] Restrained Guillotine Sex	
-ギロチン拘束アナルセックス				Restrained Guillotine Anal Sex
-ギロチン拘束アナルセックスChu-B		[Chu-B] Restrained Guillotine Anal Sex
-ハード吊るし拘束					Restrained Hanging (Hard)
-ハード三角木馬拘束				Restrained Wooden Horse (Hard)
-;Swapping	
-スワッピング愛撫					Swapping Caress
-スワッピングフェラチオ					Swapping Fellatio
-スワッピングセックス正常位				Swapping Missionary Sex
-スワッピングアナルセックス正常位			Swapping Missionary Anal Sex
-;Group	
-乱交愛撫							Group Caress
-乱交奉仕							Group Service
-乱交3Pセックス正常位				Group 3P Missionary Sex
-乱交3Pアナルセックス正常位			Group 3P Missionary Anal Sex
-乱交3P2穴セックス					Group 3P Double Penetration
-;Drunk Variations	
-酔い愛撫							Drunk Caress
-酔いオナニー						Drunk Masturbation
-酔いアナルオナニー					Drunk Anal Masturbation
-酔いフェラチオ						Drunk Fellatio
-酔いイラマチオ						Drunk Irrumatio
-酔いディープスロート					Drunk Deepthroat
-酔いバイブ責め						Drunk Vibrator
-酔いアナルバイブ責め					Drunk Anal Vibrator
-酔いアナルセックス正常位				Drunk Missionary Anal Sex
-酔いセックス正常位					Drunk Missionary Sex
-酔いセックス後背位					Drunk Doggy Style Sex
-酔いアナルセックス後背位				Drunk Doggy Style Anal Sex
-酔いセックス騎乗位					Drunk Cowgirl Sex
-酔いシックスナイン					Drunk Sixty Nine
-酔いアナルセックス騎乗位				Drunk Cowgirl Anal Sex
-;Punishment variations	
-お仕置き拘束愛撫					Punishment Restrained Caress
-お仕置き吊るし拘束					Punishment Restrained Hanging
-お仕置き三角木馬拘束				Punishment Restrained Wooden Horse
-お仕置き吊るしセックス				Punishment Hanging Sex
-お仕置き吊るしアナルセックス			Punishment Hanging Anal Sex
-お仕置きギロチン拘束セックス			Punishment Restrained Guillotine Sex
-お仕置きギロチン拘束アナルセックス		Punishment Restrained Guillotine Anal Sex
-お仕置きハード吊るし拘束				Punishment Restrained Hanging (Hard)
-お仕置きハード三角木馬拘束			Punishment Restrained Wooden Horse (Hard)
-お仕置きセックス後背位				Punishment Doggy Style Sex
-お仕置きセックス後背位Chu-B			[Chu-B] Punishment Doggy Style Sex
-お仕置きアナルセックス後背位			Punishment Doggy Style Anal Sex
-お仕置きアナルセックス後背位Chu-B		[Chu-B] Punishment Doggy Style Anal Sex
-
-; Additional (Skill sets etc)
-オナホコキ							Onahole Play
+三角木馬拘束					Restrained Wooden Horse
+ギロチン拘束セックス				Restrained Pillory Sex
+ギロチン拘束アナルセックス				Restrained Pillory Anal Sex
+ハード吊るし拘束					[Hard]Restrained Hanging 
+ハード三角木馬拘束				[Hard]Restrained Wooden Horse 
+スワッピング愛撫					[Swapping] Caress
+スワッピングフェラチオ					[Swapping] Fellatio
+スワッピングセックス正常位				[Swapping] Missionary Sex
+スワッピングアナルセックス正常位			[Swapping] Missionary Anal Sex
+乱交愛撫						[Group] Caress
+乱交奉仕						[Group] Service
+乱交3Pセックス正常位				[Group] 3P Missionary Sex
+乱交3Pアナルセックス正常位			[Group] 3P Missionary Anal Sex
+乱交3P2穴セックス					[Group] 3P Double Penetration
+詰られ手コキ						[Scolding] Handjob
+詰られパイズリ					[Scolding] Paizuri
+詰られ騎乗位					[Scolding] Cowgirl
+詰られアナル騎乗位				[Scolding] Anal Cowgirl
+お仕置き拘束愛撫					[Punishment] Restrained Caress
+お仕置き吊るしセックス				[Punishment] Hanging Sex
+お仕置き吊るしアナルセックス			[Punishment] Hanging Anal Sex
+お仕置きギロチン拘束セックス			[Punishment] Restrained Pillory Sex
+お仕置きギロチン拘束アナルセックス		[Punishment] Restrained Pillory Anal Sex
+お仕置き吊るし拘束				[Punishment] Restrained Hanging
+お仕置き三角木馬拘束				[Punishment] Restrained Wooden Horse
+お仕置きハード吊るし拘束				[Punishment][Hard] Restrained Hanging 
+お仕置きハード三角木馬拘束			[Punishment][Hard] Restrained Wooden Horse 
+; Chu-b Lip
+処女喪失セックスChu-B				[Chu-B]Virgin Sex 
+アナル処女喪失セックスChu-B			[Chu-B]Anal Virgin Sex 
+愛撫Chu-B					[Chu-B]Caress 
+バイブ責めChu-B					[Chu-B]Vibrator 
+アナルバイブ責めChu-B				[Chu-B]Anal Vibrator 
+セックス正常位Chu-B				[Chu-B]Missionary Sex 
+アナルセックス正常位Chu-B			[Chu-B]Missionary Anal Sex 
+セックス後背位Chu-B				[Chu-B]Doggy Style Sex 
+アナルセックス後背位Chu-B			[Chu-B]Doggy Style Anal Sex 
+セックス騎乗位Chu-B				[Chu-B]Cowgirl Sex 
+アナルセックス騎乗位Chu-B			[Chu-B]Cowgirl Anal Sex 
+だいしゅきホールドセックス正常位Chu-B	[Chu-B]Leg Locked Missionary Sex 
+だいしゅきホールドアナル正常位Chu-B		[Chu-B]Leg Locked Missionary Anal Sex 
+抱きつきセックス後背位Chu-B			[Chu-B]Hugging Doggy Style Sex 
+抱きつきアナルセックス後背位Chu-B		[Chu-B]Hugging Doggy Style Anal Sex 
+グラインドセックス騎乗位Chu-B			[Chu-B]Grinding Cowgirl Sex 
+グラインドアナルセックス騎乗位Chu-B		[Chu-B]Grinding Cowgirl Anal Sex 
+太バイブ責めChu-B				[Chu-B]Thick Vibrator 
+バイブ責めアナルセックス正常位Chu-B		[Chu-B]Anal Missionary Sex & Vibrator 
+アナルバイブ責めセックス後背位Chu-B		[Chu-B]Doggy Style Sex & Anal Vibrator 
+オナニーChu-B					[Chu-B]Masturbation 
+アナルオナニーChu-B				[Chu-B]Anal Masturbation 
+手コキオナニーChu-B				[Chu-B]Handjob & Masturbation 
+フェラオナニーChu-B				[Chu-B]Fellatio & Masturbation 
+バイブオナニーChu-B				[Chu-B]Vibrator Masturbation 
+アナルバイブオナニーChu-B			[Chu-B]Anal Vibrator Masturbation 
+露出セックス背面立位Chu-B			[Chu-B]Exhibitionist Rear Standing Sex 
+露出アナルセックス背面立位Chu-B		[Chu-B]Exhibitionist Anal Rear Standing Sex 
+太バイブオナニーChu-B				[Chu-B]Thick Vibrator Masturbation 
+実況オナニーChu-B				[Chu-B]Reporting Masturbation 
+手コキChu-B					[Chu-B]Handjob 
+フェラチオChu-B					[Chu-B]Fellatio 
+パイズリChu-B					[Chu-B]Paizuri 
+シックスナインChu-B				[Chu-B]Sixty Nine 
+パイズリフェラChu-B				[Chu-B]Paizuri & Fellatio 
+スケベ椅子フェラChu-B				[Chu-B]Stool Fellatio 
+MP全身洗いChu-B				[Chu-B]Mat Play Body Wash 
+スケベ椅子セックスChu-B				[Chu-B]Stool Sex 
+スケベ椅子アナルセックスChu-B			[Chu-B]Stool Anal Sex 
+ディープスロートChu-B				[Chu-B]Deepthroat 
+セルフイラマChu-B					[Chu-B]Self Irrumatio 
+拘束愛撫Chu-B					[Chu-B]Restrained Caress 
+拘束セックスChu-B				[Chu-B]Restrained Sex 
+拘束アナルセックスChu-B				[Chu-B]Restrained Anal Sex 
+イラマチオChu-B					[Chu-B]Irrumatio 
+お仕置きセックス後背位Chu-B			[Chu-B][Punishment] Doggy Style Sex 
+お仕置きアナルセックス後背位Chu-B		[Chu-B][Punishment] Doggy Style Anal Sex 
+首絞めセックス正常位Chu-B			[Chu-B]Choking Missionary Sex 
+首絞めアナルセックス正常位Chu-B		[Chu-B]Choking Missionary Anal Sex 
+ギロチン拘束セックスChu-B			[Chu-B]Restrained Pillory Sex 
+ギロチン拘束アナルセックスChu-B		[Chu-B]Restrained Pillory Anal Sex 
+オナホコキ						Onaholejob
 足コキ							Footjob
-セックス対面座位					Lotus
-アナルセックス対面座位				Anal Lotus
-セックス背面駅弁					Victory
-アナルセックス背面駅弁				Anal Victory
-セックス側位						Leg Glider
-アナルセックス側位					Anal Leg Glider
-まんぐり返しセックス					Piledriver
-まんぐり返しアナルセックス				Anal Piledriver
-スワッピングセックス後背位				Swapping Doggy Style
-スワッピングアナルセックス後背位			Swapping Anal Doggy Style
-スワッピングセックス騎乗位				Swapping Cowgirl
-スワッピングアナルセックス騎乗位			Swapping Anal Cowgirl
-乱交3P口＆セックス後背位			Group 3P Doggy Style w/ Fellatio
-乱交3P口＆アナルセックス後背位		Group 3P Anal Doggy Style w/ Fellatio
-乱交3P2穴セックス正常位				Group 3P Double Penetration Missionary
-乱交4Pセックス						Group 4P
-足舐め							Foot Licking
-足舐めオナニー						Foot Licking w/ masturbation
-ポーズ維持プレイ１					Pose Maitenance play 1
-ポーズ維持プレイ２					Pose Maitenance play 2
-拘束イラマチオ						Restrained Deepthroat
-拘束台愛撫						Restrained Standing Caress
-磔プレイ							Crucifixion Play
-ハード首絞めセックス					Choking Sex
-ハード首絞めアナルセックス				Choking Anal Sex
-セックス背面騎乗位					Inverse Cowgirl
-アナルセックス背面騎乗位				Inverse Anal Cowgirl
-公開オナニー						Public Masturbation
-公開アナルオナニー					Public Anal Masturbation
+パンツコキ						Pantyjob
+; Yotogi 001
+セックス側位						Spooning Sex
+アナルセックス側位					Spooning Anal Sex
+セックス対面座位					Seated Facing Sex
+アナルセックス対面座位				Seated Facing Anal Sex
+セックス背面駅弁					Rear Carrying Sex
+アナルセックス背面駅弁				Rear Carrying Anal Sex
+まんぐり返しセックス					Piledriver Sex
+まんぐり返しアナルセックス				Anal Piledriver Sex
+; Yotogi 002
+スワッピングセックス後背位				[Swapping] Doggy Style Sex
+スワッピングアナルセックス後背位			[Swapping] Doggy Style Anal Sex
+スワッピングセックス騎乗位				[Swapping] Cowgirl Sex
+スワッピングアナルセックス騎乗位			[Swapping] Cowgirl Anal Sex
+乱交3P口＆セックス後背位			[Group] 3P Oral & Doggy Style Sex
+乱交3P口＆アナルセックス後背位		[Group] 3P Oral & Doggy Style Anal Sex
+乱交3P2穴セックス正常位			[Group] 3P 2 Hole Missionary Sex
+乱交4Pセックス					[Group] 4P Sex
+; Yotogi 003
+拘束イラマチオ					Restrained Irrumatio
+拘束台愛撫						Restrained Table Caress
+磔プレイ						Crucifixion Play
+ハード首絞めセックス				[Hard]Choking Sex 
+ハード首絞めアナルセックス				[Hard]Choking Anal Sex 
+足舐め						Feet Licking
+足舐めオナニー					Feet Licking & Masturbation
+ポーズ維持プレイ１					Maintain Pose Play 1
+ポーズ維持プレイ２					Maintain Pose Play 2
+; Denkigai 2015 Winter
+セックス背面騎乗位					Reverse Cowgirl Sex
+アナルセックス背面騎乗位				Reverse Cowgirl Anal Sex
+公開オナニー						Public Mastubation
+公開アナルオナニー					Public Anal Mastubation
+; pp001
+洗い							Washing
+尻舐め						Ass-licking
+尻舐めオナニー					Ass-licking masturbation
+潜望鏡フェラ						Periscope Fellatio
+痴漢愛撫						Molester Caress
+痴漢アナル愛撫					Molester Anal Caress
+痴漢セックス						Molester Sex
+痴漢アナルセックス					Molester Anal Sex
+トイレオナニー					Toilet Mastubation
+トイレアナルオナニー					Toilet Anal Mastubation
+トイレセックス						Toilet Sex
+トイレアナルセックス					Toilet Anal Sex
+ダブルフェラ						Double Fellatio
+ダブル足コキ						Double Footjob
+ダブル奉仕						Double Service
+ハーレム奉仕					Harem Service
+ハーレムセックス					Harem Sex
+ハーレムアナルセックス				Harem Anal Sex
+;Yotogi 004
 セックス立位						Standing Sex
 アナルセックス立位					Standing Anal Sex
 抱えセックス正常位					Hip-Raised Missionary Sex
 抱えアナルセックス正常位				Hip-Raised Missionary Anal Sex
-寄り添いセックス側位					Side Spooning Sex
+寄り添いセックス側位				Side Spooning Sex
 寄り添いアナルセックス側位			Side Spooning Anal Sex
-尻上げ後背位						Ass-Raised Doggy Style Sex
-尻上げアナル後背位					Ass-Raised Anal Doggy Style Sex
-スワッピング吊るしセックス				Swapping Hanging Sex
-スワッピング吊るしアナルセックス			Swapping Hanging Anal Sex
-乱交3P2穴駅弁					Group 3P Two-Hole Carrying Sex
-乱交3P口＆セックス騎乗位			Group 3P Oral /w Cowgirl Sex
-乱交3P口＆アナルセックス騎乗位		Group 3P Oral /w Anal Cowgirl Sex
-乱交3Pセックス側位					Group 3P Oral /w Spooning Sex
-乱交3Pアナルセックス側位				Group 3P Oral /w Anal Spooning Sex
-乱交4Pセックス正常位				Group 4P Missionary Sex
-乱交4Pアナルセックス正常位			Group 4P Anal Missionary Sex
-淫乱淫語正常位					Dirty Talk Missionary Sex
-ちんぐりセックス						Reverse Piledriver Sex
-ちんぐりアナルセックス					Reverse Piledriver Anal Sex
+尻上げ後背位					Ass-Raised Doggy Style Sex
+尻上げアナル後背位				Ass-Raised Anal Doggy Style Sex
+;Yotogi 005
+乱交3P2穴駅弁					[Group] 3P 2 Hole Carrying Sex
+乱交3P口＆セックス騎乗位			[Group] 3P Oral & Cowgirl Sex
+乱交3P口＆アナルセックス騎乗位		[Group] 3P Oral & Cowgirl Anal Sex 
+乱交3Pセックス側位				[Group] 3P Oral & Side Spooning Sex
+乱交3Pアナルセックス側位				[Group] 3P Oral & Side Spooning Anal Sex
+乱交4Pセックス正常位				[Group] 4P Missionary Sex
+乱交4Pアナルセックス正常位			[Group] 4P Missionary Anal Sex
+スワッピング吊るしセックス				[Swapping] Hanging Sex
+スワッピング吊るしアナルセックス			[Swapping] Hanging Anal Sex
+;cos001
+淫乱淫語正常位					[Lewd] Dirty-talked Missionary Sex
+;cos002
+淫乱淫語尻穴拡げアナル後背位			[Lewd] Dirty-talked Ass-spreading Anal Doggy Sex 
+;Yotogi 006
+ちんぐりセックス					Reverse Piledriver Sex
+ちんぐりアナルセックス				Reverse Piledriver Anal Sex
 ちんぐりフェラ						Reverse Piledriver Fellatio
-ちんぐり手コキ						Reverse Piledriver Handjob
-顔面騎乗位						Facial Cowgirl
-椅子拘束騎乗位					Chair-restrained Cowgirl Sex
-椅子拘束アナル騎乗位				Chair-restrained Cowgirl Anal Sex
-首絞めセックス後背位				Choking Doggy
-首絞めアナルセックス後背位			Choking Anal Doggy
-腕拘束イラマチオ					Restrained Deep Throating
-拘束愛撫バイブ責め					Restrained Vibrator
-拘束愛撫アナルバイブ責め				Restrained Anal Vibrator
-吊るし正常位セックス					Hanging Missionary
-吊るし正常位アナルセックス			Hanging Anal Missionary
-イチャイチャフェラオナニー				Flirty Fellatio and Masturbation
-腕持ち後背位						Arm-holding Doggy Style
-腕持ちアナル後背位					Arm-holding Anal Doggy Style
-寝フェラ							Sleeping Fellatio
-うつ伏せ後背位					Facedown Doggy Style
-うつ伏せアナル後背位				Facedown Anal Doggy Style
-結婚愛撫							Marriage Caress	
-結婚バイブ責め						Marriage Vibrator
-結婚アナルバイブ責め				Marriage Anal Vibrator
-結婚セックス正常位					Married Missionary
-結婚アナルセックス正常位				Married Anal Missionary
-結婚セックス後背位					Marriage Doggy Style
-結婚アナルセックス後背位				Marriage Anal Doggy Style
-結婚セックス騎乗位					Marriage Cowgirl Sex
-結婚アナルセックス騎乗位				Marriage Anal Cowgirl Sex
-結婚オナニー						Marriage Masturbation
-結婚フェラチオ						Married Fellatio
-結婚シックスナイン					Married Sixty Nine
-結婚ディープスロート					Marriage Deep Throat
-結婚イラマチオ						Marriage Irrumatio
-結婚イチャイチャフェラオナニー			Marriage Flirty Fellatio and Masturbation
-結婚腕持ち後背位					Marriage Arms-holding Doggy Style
-結婚腕持ちアナル後背位				Marriage Arms-holding Anal Doggy Style
-結婚寝フェラ						Marriage Sleeping Fellatio
-結婚うつ伏せ後背位					Marriage Facedown Doggy Style
-結婚うつ伏せアナル後背位			Marriage Facedown Anal Doggy Style
-イチャイチャ愛撫					Flirty Caress
-立ち側位							Standing Spooning Sex
-立ちアナル側位						Standing Anal Spooning Sex
-挟み込み騎乗位					Cowgirl Lunges Sex
-挟み込みアナル騎乗位				Anal Cowgirl Lunges Sex
-騎乗位素股						Intercrural Cowgirl Sex
-台上正常位						Table Missionary
-台上アナル正常位					Table Anal Missionary
+ちんぐり手コキ					Reverse Piledriver Handjob
+顔面騎乗位						Face-sitting
+椅子拘束騎乗位					Chair Restrained Cowgirl Sex
+椅子拘束アナル騎乗位				Chair Restrained Cowgirl Anal Sex
+;cos003
+淫乱淫語犬プレイセックス				[Lewd] Dirty-talked Pet Play
+;cos004
+椅子愛撫						Chair Caress
+:Yotogi 007
+首絞めセックス後背位				Choking Doggy Sex
+首絞めアナルセックス後背位			Choking Doggy Anal Sex
+腕拘束イラマチオ					Arm Restrained Irrumatio
 乱交３P馬乗りイラマチオ				Group 3P Riding Irrumatio
-乱交３P馬乗りアナルイラマチオ			Group 3P Ridding Anal Irrumatio
-
-; CM3D2+ Skills
-トイレセックス						Toilet Sex
-トイレアナルセックス					Toilet Anal Sex
-トイレオナニー						Toilet Masturbation
-トイレアナルオナニー					Toilet Anal Masturbation
-痴漢愛撫							Molesting Caress
-痴漢アナル愛撫					Molesting Anal Caress
-痴漢セックス						Molesting Sex
-痴漢アナルセックス					Molesting Anal Sex
-洗い								Washing
-尻舐め							Ass Licking
-尻舐めオナニー						Ass Licking /w Masturbation
-潜望鏡フェラ						Periscope Fellatio
-ダブルフェラ						Double Fellatio
-ダブル足コキ						Double Foot Handjob
-ダブル奉仕						Double Service
-ハーレム奉仕						Harem Service
-ハーレムセックス						Harem Sex
-ハーレムアナルセックス					Harem Anal Sex
-教室愛撫							Classroom Caress
+乱交３P馬乗りアナルイラマチオ			Group 3P Anal Riding Irrumatio
+拘束愛撫バイブ責め				Restrained Caress & Vibrator
+拘束愛撫アナルバイブ責め				Restrained Caress & Anal Vibrator
+吊るし正常位セックス				Hanging Missionary Sex
+吊るし正常位アナルセックス			Hanging Missionary Anal Sex
+;pp002
+教室愛撫						Classroom Carees
 教室アナル愛撫					Classroom Anal Caress
 教室セックス						Classroom Sex
 教室アナルセックス					Classroom Anal Sex
+イチャイチャフェラオナニー				Flirty Fellatio & Masturbation
+腕持ち後背位					Arm-holding Doggy Sex
+腕持ちアナル後背位				Arm-holding Doggy Anal Sex
+寝フェラ						Sleeping Fellatio
+うつ伏せ後背位					Facedown Doggy Sex
+うつ伏せアナル後背位				Facedown Doggy Anal Sex
+百合クンニ						Lesbian Cullingus
+百合愛撫						Lesbian Caress
+百合貝合わせ					Lesbian Tribadism
+百合双頭バイブ					Lesbian Dual Vibrator
 完墜ち背面騎乗位					Submissive Reverse Cowgirl Sex
 完墜ち背面アナル騎乗位				Submissive Reverse Cowgirl Anal Sex
 完墜ちフェラ						Submissive Fellatio
 完墜ち愛撫						Submissive Caress
-百合クンニ						Yuri Cunnilingus
-百合愛撫							Yuri Caress
-百合貝合わせ						Yuri Scissoring
-百合双頭バイブ					Yuri Dual Vibrator
+結婚愛撫						Marriage Caress
+結婚バイブ責め					Marriage Vibrator
+結婚アナルバイブ責め				Marriage Anal Vibrator
+結婚セックス正常位					Marriage Missionary Sex
+結婚アナルセックス正常位				Marriage Missionary Anal Sex
+結婚セックス後背位					Marriage Doggy Sex
+結婚アナルセックス後背位				Marriage Doggy Anal Sex
+結婚セックス騎乗位					Marriage Cowgirl Sex
+結婚アナルセックス騎乗位				Marriage Cowgirl Anal Sex
+結婚オナニー						Marriage Masturbation
+結婚フェラチオ					Marriage Fellatio
+結婚シックスナイン					Marriage Sixty Nine
+結婚ディープスロート				Marriage Deepthroat
+結婚イラマチオ					Marriage Irrumatio
+結婚イチャイチャフェラオナニー			Marriage Flirty Fellatio & Masturbation
+結婚腕持ち後背位					Marriage Arm-holding Doggy Sex
+結婚腕持ちアナル後背位				Marriage Arm-holding Doggy Anal Sex
+結婚寝フェラ						Marriage Sleeping Fellatio
+結婚うつ伏せ後背位				Marriage Facedown Doggy Sex
+結婚うつ伏せアナル後背位			Marriage Facedown Doggy Anal Sex
+;Summer Denkigai 2016
+まんぐり返しセックス2				Piledriver Sex 2
+まんぐり返しアナルセックス2				Piledriver Anal Sex 2
+M字開脚フェラチオ					M-shaped Leg Spreading Fellatio
+;Summer Denkigai 2016 Sleeping Blindfold DLC
+目隠しポーズ維持プレイ1				Blindfolded Maintain Pose Play 1
+目隠しポーズ維持プレイ2				Blindfolded Maintain Pose Play 2
+;Summer Denkigai 2016 School Swimsuit
+スク水ズリ						Swimsuit Body Wash
+;Summer Denkigai 2016 Coaster
+キメセクぶっかけセックス正常位			Drug-induced Bukkake Missionary Sex
+;Yotogi 008
+イチャイチャ愛撫					Flirty Caress
+立ち側位						Standing Spooning Sex
+立ちアナル側位					Standing Spooning Anal Sex
+挟み込み騎乗位					Cowgirl Lunges Sex
+挟み込みアナル騎乗位				Cowgirl Lunges Anal Sex
+騎乗位素股						Cowgirl Intercrural Sex
+台上正常位						Table Missionary Sex
+台上アナル正常位					Table Missionary Anal Sex
+;cos005
+腰掛けパイズリ					Sitting Paizuri
+;Yotogi 009
+拘束両穴バイブ					Restrained Two Hole Vibrator
+拘束3Pギロチンセックス				Restrained 3P Pillory Sex
+拘束3Pギロチンアナルセックス			Restrained 3P Pillory Anal Sex
+拘束正常位						Restrained Missionary Sex
+拘束アナル正常位					Restrained Anal Missionary Sex
+拘束立ち後背位					Restrained Standing Doggy Sex
+拘束立ちアナル後背位				Restrained Standing Anal Doggy Sex
+磔セックス						Cruxifiction Sex
+磔アナルセックス					Cruxifiction Anal Sex
+;cos006
+抱き着き騎乗位					Clinging Cowgirl Sex
+;Yotogi 010
+ディルドオナニー					Dildo masturbation
+ディルドアナルオナニー				Anal dildo masturbation
+オナニー3						Masturbation 3
+立ちクンニ						Standing Cunnilingus
+壁面立ち側位					Wall-supported Standing Sex
+壁面立ちアナル側位				Wall-supported Standing Anal Sex
+抱えＭ字セックス					M-shaped Leg Carrying Sex
+抱えＭ字アナルセックス				M-shaped Leg Carrying Anal Sex
+;Winter Denkigai 2016
+床ドンフェラ						Bed-Locked Fellatio
+イチャイチャ正常位					Flirty Missionary Sex
+イチャイチャアナル正常位				Flirty Missionary Anal Sex
+;Winter Denkigai 2016 Collar
+性奴隷背面立位					Sexual Slavery Rear Standing Sex
+性奴隷背面アナル立位				Sexual Slavery Rear Standing Anal Sex
+;pp003
+拘束台セックス					Restrained Table Sex
+拘束台アナルセックス				Restrained Table Anal Sex
+腰掛け足コキ					Chaired Footjob
+立ち後背位						Standing Doggy Style Sex
+立ちアナル後背位					Standing Doggy Style Anal Sex
+結婚駅弁セックス					Marriage Carrying Sex
+結婚駅弁アナルセックス				Marriage Carrying Anal Sex
+結婚背面騎乗位					Marriage Reverse Cowgirl Sex
+結婚背面アナル騎乗位				Marriage Reverse Cowgirl Anal Sex
+結婚対面座位２					Marriage Seated Facing Sex 2
+結婚アナル対面座位２				Marriage Seated Facing Anal Sex 2
+結婚まんぐり愛撫					Marriage Piledriver Caress
+結婚まんぐりバイブ責め				Marriage Piledriver Vibrator
+結婚台上正常位					Marriage Table Missionary Sex
+結婚台上アナル正常位				Marriage Table Missionary Anal Sex
+ムリヤリ3P押さえつけセックス			Forced 3P Pinned Down Sex
+ムリヤリ3P押さえつけアナルセックス正常位	Forced 3P Pinned Down Anal Sex
+ムリヤリ3Pセックス					Forced 3P Sex
+ムリヤリ3Pアナルセックス				Forced 3P Anal Sex
+ムリヤリ輪姦6Pセックス				Forced 6P Gangbang Sex
+ムリヤリ輪姦6Pアナルセックス			Forced 6P Gangbang Anal Sex
+酔いだいしゅきホールドセックス正常位		Drunk Leg Locked Missionary Sex
+酔いだいしゅきホールドアナルセックス正常位	Drunk Leg Locked Missionary Anal Sex
+酔い抱きつきセックス後背位			Drunk Hugging Doggy Style Sex
+酔い抱きつきアナルセックス後背位		Drunk Hugging Doggy Style Anal Sex
+酔いグラインドセックス騎乗位			Drunk Grinding Cowgirl Sex
+酔いグラインドアナルセックス騎乗位		Drunk Grinding Cowgirl Anal Sex
+酔いパイズリ						Drunk Paizuri
+酔い高級MP洗い					Drunk Luxurious Mat Play Body Wash
+;Yotogi 011
+セックス後背位2					Doggy Style Sex 2
+アナルセックス後背位2				Doggy Style Anal Sex 2
+セックス背面座位					Lap Dance Sex
+アナルセックス背面座位				Lap Dance Anal Sex
+セックスソファー対面座位				Yoga Sofa Seated Facing Sex
+アナルセックスソファー対面座位			Yoga Sofa Seated Facing Anal Sex
+セックスソファーシックスナイン			Yoga Sofa Sixty Nine
+;VR Event 2017
+セックス側位2					Spooning Sex 2
+アナルセックス側位2					Spooning Anal Sex 2
+台上羞恥後背位					Shameful Platform Doggy Sex
+台上アナル羞恥後背位				Shameful Platform Anal Doggy Sex
+;Yotogi 012
+ムリヤリ6P愛撫					Forced 6P Caress
+ムリヤリ6Pアナル愛撫				Forced 6P Anal Caress
+ムリヤリ6P正常位3穴				Forced 6P 3 Hole Missionary Sex
+乱交4P騎乗位					Group 4P Cowgirl Sex
+乱交4Pアナル騎乗位				Group 4P Cowgirl Anal Sex
+腕拘束正常位＆ぶっかけ				Arm Restrained & Bukkake Missionary Sex
+腕拘束アナル正常位＆ぶっかけ			Arm Restrained & Bukkake Missionary Sex
+;Yotogi 013
+M豚責め手コキ					Masochistic Pig's Torturing Handjob
+M豚責め騎乗位					Masochistic Pig's Torturing Cowgirl Sex
+M豚責めアナル騎乗位				Masochistic Pig's Torturing Cowgirl Anal Sex
+M豚責め背面手コキ				Masochistic Pig's Torturing Reverse Handjob
+M豚責め背面オナホコキ				Masochistic Pig's Torturing Reverse Onahole-job
+M豚責め松葉崩し					Masochistic Pig's Torturing Scissors Sex
+M豚責めアナル松葉崩し				Masochistic Pig's Torturing Scissors Anal Sex
+;Yotogi 014
+腕拘束イラマチオ2					Arm-Restrained Irrumatio 2
+腕拘束イラマチオ2バイブ責め			Arm-Restrained Irrumatio 2 with Vibrator
+腕持ち立ち後背位					Arm-Holding Standing Doggy Sex
+腕持ち立ちアナル後背位				Arm-Holding Standing Doggy Anal Sex
+拘束背面騎乗位					Restrained Reverse Cowgirl Sex
+拘束背面アナル騎乗位				Restrained Reverse Cowgirl Anal Sex
+拘束セックス側位					Restrained Spooning Sex
+拘束アナルセックス側位				Restrained Spooning Anal Sex
+;Yotogi 015
+セックスソファーまんぐりセックス			Yoga Sofa Piledriver Sex
+セックスソファーまんぐりアナルセックス		Yoga Sofa Piledriver Anal Sex
+セックスソファー後背位				Yoga Sofa Doggy Sex
+セックスソファーアナル後背位			Yoga Sofa Doggy Anal Sex
+壁面バイブ責め					Wall-supported Vibrator Teasing
+壁面アナルバイブ責め				Wall-supported Anal Vibrator Teasing
+乱交3Pバイブ責め					Group 3P Vibrator Teasing
+乱交3Pアナルバイブ責め				Group 3P Anal Vibrator Teasing
+;Summer Denkigai 2017
+セックス対面座位2					Cowgirl Sex 2
+アナルセックス対面座位2				Cowgirl Anal Sex 2
+拘束吊るしクンニ					Restrained Cunnilingus
+;bugbug 001
+壁面立位セックス					Wall-supported Standing Sex
+壁面立位アナルセックス				Wall-supported Standing Anal Sex
+完墜ち撞木反りセックス				Mind-breaking Backward Body Drop Sex
+完墜ち撞木反りアナルセックス			Mind-breaking Backward Body Drop Anal Sex
+;Extra skill name because somehow the name is different when entering the skill selection for night service
+セックス挟み込み騎乗位				Cowgirl Lunges Sex
+セックス挟み込みアナル騎乗位			Cowgirl Lunges Anal Sex
+目隠しポーズ維持プレイ１				Blindfolded Maintain Pose Play 1
+目隠しポーズ維持プレイ２				Blindfolded Maintain Pose Play 2
+抱えM字セックス					M-shaped Leg Carrying Sex
+抱えM字アナルセックス				M-shaped Leg Carrying Anal Sex
+スワッピング拘束セックス				[Swapping] Hanging Sex
+スワッピング拘束アナルセックス			[Swapping] Hanging Anal Sex
 
 ; Propensity
 M女								Masochist
@@ -600,31 +794,40 @@ M女								Masochist
 ; Features
 とことん尽くす						Devoted
 上品							Elegant
-傅く								Servant
+傅く							Servant
 優美							Graceful
 優雅							Refined
 元気な笑顔						Energetic Smile
-凜とした							Dignified
-大人びた魅力						Mature Appeal
+凜とした						Dignified
+大人びた魅力					Mature Appeal
 天使							Angelic
 妖艶な魅力						Bewitching
-恥ずかしがり屋						Bashful
-朗らかな魅力						Cheerful
+恥ずかしがり屋					Bashful
+朗らかな魅力					Cheerful
 疲労							Tired
-純真無垢							Pure
+純真無垢						Pure
 素直							Meek
 過去の秘密						Past Secret
 過去の過ち						Past Error
 高貴							Noble
 魅了							Charming
 魔性の魅力						Devilish
-雅								Delicate
+雅							Delicate
 撫子							Loveable
 一途							Earnest
-盲目的							Reckless
+盲目的						Reckless
 風雅							Tasteful
-母性的							Motherly
+母性的						Motherly
 女神							Goddess
+風雅							Grace
+無防備						Vulnerable
+小悪魔						Devil
+落ち着きがある					Calm
+礼儀正しい						Polite
+妹系							Younger Sister-like
+元気							Energetic
+ハニートラップ						Honey Trapper
+傾国の美女						Femme Fatale
 
 ; Menu items
 MENU_GAME						Game and Salon
