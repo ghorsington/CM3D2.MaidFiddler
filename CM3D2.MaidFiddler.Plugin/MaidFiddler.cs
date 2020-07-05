@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using CM3D2.MaidFiddler.Hook;
@@ -21,8 +22,8 @@ namespace CM3D2.MaidFiddler.Plugin
     public class MaidFiddler : PluginBase
     {
         public const string CONTRIBUTORS = "denikson";
-        public const string VERSION = "BETA 0.11.2";
-        public const string VERSION_TAG = "Beta-0.11.2";
+        public const string VERSION = "BETA 0.11.3";
+        public const string VERSION_TAG = "Beta-0.11.3";
         public const string PROJECT_PAGE = "https://github.com/denikson/CM3D2.MaidFiddler";
         public const string RESOURCE_URL = "https://raw.githubusercontent.com/denikson/CM3D2.MaidFiddler/master";
 
@@ -256,7 +257,7 @@ namespace CM3D2.MaidFiddler.Plugin
             };
 
             DATA_PATH = RunningOnSybaris
-                        ? Path.Combine(DataPath, "..\\..\\Sybaris\\Plugins\\UnityInjector\\Config\\") : DataPath;
+                        ? Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Config") : DataPath;
 
             Debugger.WriteLine(LogLevel.Info, $"Data path: {DATA_PATH}");
             LoadConfig();
