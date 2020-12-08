@@ -1,3 +1,7 @@
+> **NOTE**  
+> MaidFiddler for CM3D2 is not being maintained at the moment.  
+> Expect possible errors with new plugins.
+
 ![Preview](https://raw.githubusercontent.com/denikson/CM3D2.MaidFiddler/master/thumbnail.png)
 # CM3D2.MaidFiddler
 Maid Fiddler is a plug-in for CM3D2 which functions as a real-time game editor.
